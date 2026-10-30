@@ -14,7 +14,8 @@ with Studio open and the Studio MCP connected.
 
 ## 1. Find out which fixes are in the place (read-only: script_grep / script_read in Edit)
 Use the table to mark each fix as present or missing. Send a builder only for the missing ones. Each still gets a test
-first.
+first. The builder was probably cut off by the owner's weekly usage limit partway through. So count a fix as missing if
+its code is there but its test isn't, or if its test doesn't pass.
 
 | # | Fix | How to tell it's in |
 |---|---|---|
