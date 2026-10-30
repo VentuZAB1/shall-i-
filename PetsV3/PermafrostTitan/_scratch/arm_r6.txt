@@ -1,0 +1,1 @@
+ARMPROBE {"idle": {"L": {"travel_f0_f30": 0.133, "range": 0.142, "min_gap": [0.067, 112, "Leg_L"]}, "R": {"travel_f0_f30": 0.033, "range": 0.137, "min_gap": [0.066, 20, "Leg_R"]}}, "walk": {"L": {"travel_f0_f30": 0.104, "range": 0.215, "min_gap": [0.057, 26, "Leg_L"]}, "R": {"travel_f0_f30": 0.092, "range": 0.215, "min_gap": [0.057, 2, "Leg_R"]}}}

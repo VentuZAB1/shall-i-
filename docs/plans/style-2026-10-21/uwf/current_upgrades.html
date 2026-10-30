@@ -1,0 +1,78 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>CURRENT Upgrades window (Check-UI) - reconstruction from UpgradeClient (planner 2026-10-22)</title>
+<!-- No capture of the live Upgrades window exists (it is built at run time; the planner may not Play). This page redraws it from
+     UpgradeClient's numbers at Studio 1519 x 753: root 0.62 x 0.62 of the screen, aspect 1.6 -> 747 x 467 at (386, 143);
+     Check-UI "Codes" header 0.17; rows 0.95 x 0.22 at y 0.215 + 0.245 (i - 1); TextScaled copy. Fredoka One is drawn with
+     Montserrat Bold (stand-in). The state = the mockups' "mid" view: Rebirth 2, Sling Lv 6 affordable, Grab / Shield locked.
+     The builder re-shoots the real window in Task 0 (upgrades_before.jpg) and replaces this in the compare sheet. -->
+<style>
+@font-face{font-family:LG;src:url("../assets/fonts/LuckiestGuy-Regular.ttf")}
+@font-face{font-family:FR;src:url("../assets/fonts/Montserrat-Bold.ttf")}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1519px;height:753px;overflow:hidden;background:url(../assets/bg_pc.jpg) left top/cover}
+.a{position:absolute}
+.t{position:absolute;white-space:nowrap;color:#fff;display:flex;align-items:center;-webkit-text-stroke:2px #000;paint-order:stroke fill}
+.lg{font-family:LG}.fr{font-family:FR}
+.brick{position:absolute;border-radius:10px;box-shadow:0 0 0 3px #0C141A,inset 0 -6px 0 rgba(0,0,0,.28)}
+.damier{background-image:linear-gradient(45deg,rgba(0,0,0,.07) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.07) 75%),linear-gradient(45deg,rgba(0,0,0,.07) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.07) 75%);background-size:20px 20px;background-position:0 0,10px 10px}
+</style></head><body>
+<div class="a" style="left:386px;top:151px;width:747px;height:467px;border-radius:12px;background:#26282F"></div>
+<div id="win" class="a damier" style="left:386px;top:143px;width:747px;height:467px;border-radius:12px;background-color:#3A3C44;box-shadow:0 0 0 3.5px #181E22"></div>
+<script>
+Promise.all([document.fonts.load('20px LG'), document.fonts.load('20px FR')]).then(() => {
+const win = document.getElementById('win');
+function el(cls, x, y, w, h, css, parent, text) {
+  const e = document.createElement('div'); e.className = cls;
+  Object.assign(e.style, {left: x + 'px', top: y + 'px', width: w + 'px', height: h + 'px'}, css || {});
+  if (text !== undefined) e.innerHTML = text;
+  (parent || win).appendChild(e); return e;
+}
+function fit(e, max) { // TextScaled: the biggest size whose text fits the box (measured on an inline span)
+  const sp = document.createElement('span'); sp.innerHTML = e.innerHTML; e.innerHTML = ''; e.appendChild(sp);
+  let s = max; e.style.fontSize = s + 'px';
+  while (s > 6 && (sp.offsetWidth > e.clientWidth || sp.offsetHeight > e.clientHeight)) { s -= 0.5; e.style.fontSize = s + 'px'; }
+  return e;
+}
+// header (Codes theme: cyan, checker fade, top highlight, 2-tier divider)
+const hd = el('a damier', 0, 0, 747, 79, {background: 'linear-gradient(180deg,#00CDFF,#0082F5)', borderRadius: '12px 12px 0 0'});
+el('a', 4, 3, 739, 2, {background: '#B4F0FF'}, hd);
+el('a', 0, 73, 747, 3, {background: '#00326E'}, hd); el('a', 0, 76, 747, 3, {background: '#000'}, hd);
+const ic = document.createElement('img'); ic.src = 'assets/boost.png'; ic.className = 'a';
+Object.assign(ic.style, {left: '13px', top: '8px', width: '63px', height: '63px'}); hd.appendChild(ic);
+fit(el('t lg', 90, 15, 300, 49, {}, hd, 'Upgrades'), 46);
+const rb = el('brick', 516, 16, 149, 47, {background: '#AA50F0'}, hd);
+fit(el('t lg', 10, 8, 129, 30, {justifyContent: 'center'}, rb, 'REBIRTH 2'), 30);
+const x = el('brick', 676, 13, 60, 54, {background: 'linear-gradient(180deg,#FF7DAF,#FF1428)'}, hd);
+fit(el('t lg', 0, 4, 60, 44, {justifyContent: 'center'}, x, 'X'), 34);
+// rows
+const ROWS = [
+  ['#FF9628', 'roket', 'Slingshot Power', 'Launch further down the runway', 'Lv 6/25', 0.24, 'Range 833 &rarr; <span style="color:#7dff5a">910</span> studs (Thunder)', ['#5FD728', '$150K', 'A'], '15'],
+  ['#50C8FF', 'bolt', 'Fast Grab', 'Pick up eggs quicker', 'Lv 1/5', 0.2, 'Grab time 1.2s &rarr; <span style="color:#7dff5a">0.9s</span>', ['#3E4252', 'REBIRTH 3', 'L'], '15'],
+  ['#AA6EFF', 'heart', 'Wave Shield', 'Survive 1 wave hit on every trip', 'Lv 0/1', 0, 'Survive 0 hits &rarr; <span style="color:#7dff5a">1 hit</span> per trip', ['#3E4252', 'REBIRTH 10', 'L'], '50'],
+];
+ROWS.forEach((r, i) => {
+  const y = 467 * (0.215 + 0.245 * i);
+  const row = el('a', 18.5, y, 710, 103, {background: '#202228', borderRadius: '12px', boxShadow: '0 0 0 1.5px #464850'});
+  const tile = el('brick', 10.5, 16, 71, 71, {background: r[0]}, row);
+  const im = document.createElement('img'); im.src = 'assets/' + r[1] + '.png'; im.className = 'a';
+  Object.assign(im.style, {left: '7px', top: '7px', width: '57px', height: '57px'}); tile.appendChild(im);
+  fit(el('t lg', 96, 13, 199, 35, {}, row, r[2]), 30);
+  fit(el('t fr', 96, 51, 199, 23, {color: '#B9BECD', webkitTextStroke: '1px #000'}, row, r[3]), 20);
+  fit(el('t lg', 305, 12, 170, 27, {color: r[0]}, row, r[4]), 26);
+  const bar = el('a', 305, 44, 170, 13, {background: '#121316', borderRadius: '7px'}, row);
+  if (r[5] > 0) el('a', 0, 0, 170 * r[5], 13, {background: r[0], borderRadius: '7px'}, bar);
+  fit(el('t fr', 305, 68, 177, 23, {webkitTextStroke: '1px #000'}, row, r[6]), 20);
+  const buy = el('brick', 486.5, 19.5, 121, 64, {background: r[7][0]}, row);
+  const bi = document.createElement('img'); bi.src = r[7][2] === 'A' ? '../assets/cash.png' : 'assets/locked.png'; bi.className = 'a';
+  Object.assign(bi.style, {left: '5px', top: '10px', width: '31px', height: '45px', objectFit: 'contain'}); buy.appendChild(bi);
+  fit(el('t lg', 38, 14, 75, 35, {justifyContent: 'center'}, buy, r[7][1]), 30);
+  const rx = el('brick', 616, 15.5, 82, 72, {background: '#B946EB'}, row);
+  fit(el('t lg', 8, 6, 66, 26, {justifyContent: 'center', color: '#FFF078'}, rx, '+1 LV'), 24);
+  const ri = document.createElement('img'); ri.src = 'assets/robux_white.png'; ri.className = 'a';
+  Object.assign(ri.style, {left: '12px', top: '37px', width: '28px', height: '28px'}); rx.appendChild(ri);
+  fit(el('t lg', 42, 36, 32, 29, {}, rx, r[8]), 26);
+});
+fit(el('t fr', 37.5, 435.5, 672, 21, {justifyContent: 'center', color: '#BEC3D2', webkitTextStroke: '1px #000'}, win, 'Upgrades are yours forever - even after a rebirth!'), 20);
+});
+</script>
+</body></html>

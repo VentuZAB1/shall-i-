@@ -1,0 +1,22 @@
+// SLINGSHOT Halloween - Ember (64 px): a hot spark (vfx.py prepends common.h).
+// A small solid white-yellow core inside an orange glow; the core keeps the spark readable when the particle is only a
+// few pixels on screen, the glow sells the heat. Exactly 0 before the image edge.
+
+shader ember(int mode = 0, int cols = 1, output color Out = 0)
+{
+    float x, y, T, frame;
+    tile(transform("object", P), cols, x, y, T, frame);
+    float r = hypot(x, y);
+
+    float core = 1.0 - smoothstep(0.17, 0.30, r);
+    float glow = 0.60 * exp(-sq(r / 0.36));
+    float A = 1.0 - (1.0 - core) * (1.0 - glow);
+    A *= 1.0 - smoothstep(0.75, 0.93, r);
+
+    float K[7] = { 0.0, 0.14, 0.24, 0.34, 0.48, 0.66, 1.0 };
+    color C[7] = { color(1.0, 0.98, 0.86), color(1.0, 0.93, 0.62), color(1.0, 0.78, 0.30), color(1.0, 0.60, 0.13),
+                   color(1.0, 0.48, 0.07), color(1.0, 0.42, 0.06), color(1.0, 0.38, 0.05) };
+    color col = ramp7(r, K, C);
+
+    Out = (mode == 0) ? col : color(A);
+}

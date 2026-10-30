@@ -1,0 +1,83 @@
+{
+ "Web-Cage": {
+  "overlap_tri_pairs": 16,
+  "min_dist": 0.0121,
+  "at": [
+   -0.003,
+   -3.425,
+   15.425
+  ]
+ },
+ "Web-Pumpkin": {
+  "overlap_tri_pairs": 0,
+  "min_dist": 0.6309,
+  "at": [
+   0.078,
+   -2.145,
+   14.232
+  ]
+ },
+ "WebSilk-Cage": {
+  "overlap_tri_pairs": 0,
+  "min_dist": 1.0752,
+  "at": [
+   0.107,
+   -2.176,
+   15.247
+  ]
+ },
+ "Cage-Post": {
+  "overlap_tri_pairs": 12,
+  "min_dist": 0.003,
+  "at": [
+   0.0,
+   -3.538,
+   15.971
+  ]
+ },
+ "Pumpkin-Post": {
+  "overlap_tri_pairs": 0,
+  "min_dist": 1.603,
+  "at": [
+   -0.035,
+   -3.553,
+   14.179
+  ]
+ },
+ "Pumpkin-Cage": {
+  "overlap_tri_pairs": 0,
+  "min_dist": 0.0024,
+  "at": [
+   -0.0,
+   -3.79,
+   12.278
+  ]
+ },
+ "Web-Post": {
+  "overlap_tri_pairs": 110,
+  "min_dist": 0.0004,
+  "at": [
+   0.044,
+   -3.031,
+   16.308
+  ]
+ },
+ "WebSilk-Post": {
+  "overlap_tri_pairs": 0,
+  "min_dist": 0.0154,
+  "at": [
+   0.047,
+   -0.232,
+   15.139
+  ]
+ },
+ "Cage_minz": 11.866,
+ "Cage_maxz": 16.047,
+ "Pumpkin_minz": 12.278,
+ "Pumpkin_maxz": 14.179,
+ "Web_minz": 12.9,
+ "Web_maxz": 17.407,
+ "WebSilk_minz": 13.067,
+ "WebSilk_maxz": 16.109,
+ "cage_points_above_14_7_near_axis_maxz": 15.6
+}

@@ -1,0 +1,20 @@
+00:04.782  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\review_day_25studs.png'
+00:05.282  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\review_day_34.png'
+00:05.766  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\review_back.png'
+00:06.172  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\close_A.png'
+00:06.579  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\close_B.png'
+00:06.969  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\close_C.png'
+00:07.516  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\close_candles.png'
+00:07.969  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\close_plain.png'
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:1378: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  em.use_nodes = True
+00:08.579  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\review_night_lit.png'
+00:09.047  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\review_close_A_lit.png'
+00:09.485  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\close_B_lit.png'
+00:09.938  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\close_C_lit.png'
+00:10.532  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\close_candles_lit.png'
+Info: Saved as "review.blend"
+EGGS_REPORT {"review": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\review_day_25studs.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\review_day_34.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\review_back.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\close_A.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\close_B.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\close_C.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\close_candles.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\close_plain.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\review_night_lit.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\review_close_A_lit.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\close_B_lit.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\close_C_lit.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\close_candles_lit.png"]}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

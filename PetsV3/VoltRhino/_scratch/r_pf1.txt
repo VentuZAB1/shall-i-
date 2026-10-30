@@ -1,0 +1,4 @@
+PROBE {"30": {"bones": {"Horn_Tip": [-0.0, -1.917, 0.008]}, "low": {"Foot_FL": 0.0, "Foot_BL": 0.0, "Foot_FR": -0.0, "Foot_BR": 0.0}}, "42": {"bones": {"Horn_Tip": [-0.0, -1.924, 0.008]}, "low": {"Foot_FL": 0.0, "Foot_BL": 0.0, "Foot_FR": -0.0, "Foot_BR": 0.0}}, "54": {"bones": {"Horn_Tip": [-0.0, -1.93, 0.004]}, "low": {"Foot_FL": 0.0, "Foot_BL": 0.0, "Foot_FR": -0.0, "Foot_BR": 0.0}}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,30 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.UpgradeClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "local SIZE, PHONE_SIZE = UDim2.fromScale(0.62, 0.62), UDim2.fromScale(0.8, 0.82)",
+   "new_string": "local SIZE, PHONE_SIZE = UDim2.fromScale(0.82, 0.82), UDim2.fromScale(0.8, 0.82) -- (2026-10-22 UI polish, M5: PC 0.62 -> 0.82, every label >= 16 px)"
+  },
+  {
+   "old_string": "local headIcon = B.image(head, \"Icon\", BOOST_ICON, UDim2.fromScale(0.09, 0.8), UDim2.fromScale(0.06, 0.5))",
+   "new_string": "local headIcon = B.image(head, \"Icon\", BOOST_ICON, UDim2.fromScale(0.08, 0.68), UDim2.fromScale(0.06, 0.5)) -- (M1: 0.8 tall touched the header top)"
+  },
+  {
+   "old_string": "local foot = B.text(win, \"Foot\", B.FRED, Color3.fromRGB(190, 195, 210), UDim2.fromScale(0.9, 0.045), UDim2.fromScale(0.5, 0.955), 0.05)",
+   "new_string": "local foot = B.text(win, \"Foot\", B.FRED, Color3.fromRGB(222, 226, 236), UDim2.fromScale(0.9, 0.045), UDim2.fromScale(0.5, 0.955), 0.05) -- (M6: 190,195,210 = 4.3:1)"
+  },
+  {
+   "old_string": "\tlocal lvl = B.text(f, \"Level\", B.LUCKY, r.color, UDim2.fromScale(0.24, 0.26), UDim2.fromScale(0.43, 0.24), 0.07, Vector2.new(0, 0.5))",
+   "new_string": "\tlocal lvl = B.text(f, \"Level\", B.LUCKY, r.color:Lerp(WHITE, 0.3), UDim2.fromScale(0.24, 0.26), UDim2.fromScale(0.43, 0.24), 0.07, Vector2.new(0, 0.5)) -- (M6: lighter, the purple was 4.4:1)"
+  },
+  {
+   "old_string": "\tlocal price = B.text(btn, \"Price\", B.LUCKY, WHITE, UDim2.fromScale(0.66, 0.55), UDim2.fromScale(0.62, 0.52), 0.08)",
+   "new_string": "\tlocal price = B.text(btn, \"Price\", B.LUCKY, WHITE, UDim2.fromScale(0.68, 0.55), UDim2.fromScale(0.64, 0.52), 0.08)"
+  },
+  {
+   "old_string": "\t\trow.price.Position = row.cash.Visible and UDim2.fromScale(0.62, 0.52) or UDim2.fromScale(0.5, 0.52) -- no icon: centred",
+   "new_string": "\t\trow.price.Position = row.cash.Visible and UDim2.fromScale(0.64, 0.52) or UDim2.fromScale(0.5, 0.52) -- no icon: centred"
+  }
+ ]
+}

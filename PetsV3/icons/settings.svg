@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-16 -16 288 288" width="512" height="512">
+<defs>
+<filter id="outline" x="-20%" y="-20%" width="140%" height="140%">
+  <feMorphology in="SourceAlpha" operator="dilate" radius="9" result="d"/>
+  <feFlood flood-color="#27233a"/><feComposite in2="d" operator="in" result="o"/>
+  <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+  <feMorphology in="SourceAlpha" operator="dilate" radius="9" result="d"/>
+  <feFlood flood-color="#000" flood-opacity="0.22"/><feComposite in2="d" operator="in"/>
+</filter>
+<clipPath id="c1"><path d="M128.0 48.0 L141.6 24.9 L154.9 27.5 L167.8 31.9 L168.0 58.7 L176.7 64.5 L184.6 71.4 L210.5 64.7 L218.1 76.0 L224.1 88.2 L205.3 107.3 L207.3 117.6 L208.0 128.0 L231.1 141.6 L228.5 154.9 L224.1 167.8 L197.3 168.0 L191.5 176.7 L184.6 184.6 L191.3 210.5 L180.0 218.1 L167.8 224.1 L148.7 205.3 L138.4 207.3 L128.0 208.0 L114.4 231.1 L101.1 228.5 L88.2 224.1 L88.0 197.3 L79.3 191.5 L71.4 184.6 L45.5 191.3 L37.9 180.0 L31.9 167.8 L50.7 148.7 L48.7 138.4 L48.0 128.0 L24.9 114.4 L27.5 101.1 L31.9 88.2 L58.7 88.0 L64.5 79.3 L71.4 71.4 L64.7 45.5 L76.0 37.9 L88.2 31.9 L107.3 50.7 L117.6 48.7 Z"/></clipPath><clipPath id="c2"><circle cx="128" cy="128" r="32"/></clipPath>
+<g id="art"><path d="M128.0 48.0 L141.6 24.9 L154.9 27.5 L167.8 31.9 L168.0 58.7 L176.7 64.5 L184.6 71.4 L210.5 64.7 L218.1 76.0 L224.1 88.2 L205.3 107.3 L207.3 117.6 L208.0 128.0 L231.1 141.6 L228.5 154.9 L224.1 167.8 L197.3 168.0 L191.5 176.7 L184.6 184.6 L191.3 210.5 L180.0 218.1 L167.8 224.1 L148.7 205.3 L138.4 207.3 L128.0 208.0 L114.4 231.1 L101.1 228.5 L88.2 224.1 L88.0 197.3 L79.3 191.5 L71.4 184.6 L45.5 191.3 L37.9 180.0 L31.9 167.8 L50.7 148.7 L48.7 138.4 L48.0 128.0 L24.9 114.4 L27.5 101.1 L31.9 88.2 L58.7 88.0 L64.5 79.3 L71.4 71.4 L64.7 45.5 L76.0 37.9 L88.2 31.9 L107.3 50.7 L117.6 48.7 Z" fill="#b3bccd"/><g clip-path="url(#c1)"><rect x="-50" y="158" width="400" height="400" fill="#838fa8"/></g><path d="M128.0 48.0 L141.6 24.9 L154.9 27.5 L167.8 31.9 L168.0 58.7 L176.7 64.5 L184.6 71.4 L210.5 64.7 L218.1 76.0 L224.1 88.2 L205.3 107.3 L207.3 117.6 L208.0 128.0 L231.1 141.6 L228.5 154.9 L224.1 167.8 L197.3 168.0 L191.5 176.7 L184.6 184.6 L191.3 210.5 L180.0 218.1 L167.8 224.1 L148.7 205.3 L138.4 207.3 L128.0 208.0 L114.4 231.1 L101.1 228.5 L88.2 224.1 L88.0 197.3 L79.3 191.5 L71.4 184.6 L45.5 191.3 L37.9 180.0 L31.9 167.8 L50.7 148.7 L48.7 138.4 L48.0 128.0 L24.9 114.4 L27.5 101.1 L31.9 88.2 L58.7 88.0 L64.5 79.3 L71.4 71.4 L64.7 45.5 L76.0 37.9 L88.2 31.9 L107.3 50.7 L117.6 48.7 Z" fill="none" stroke="#27233a" stroke-width="6" stroke-linejoin="round"/><circle cx="128" cy="128" r="32" fill="#5d6682"/><g clip-path="url(#c2)"><rect x="-50" y="136" width="400" height="400" fill="#454d66"/></g><circle cx="128" cy="128" r="32" fill="none" stroke="#27233a" stroke-width="6" stroke-linejoin="round"/><path d="M72 112 A60 60 0 0 1 112 72" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.85"/></g>
+</defs>
+<use xlink:href="#art" filter="url(#shadow)" transform="translate(0 12)"/>
+<use xlink:href="#art" filter="url(#outline)"/>
+</svg>

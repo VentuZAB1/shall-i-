@@ -1,0 +1,73 @@
+{
+ "Halloween_DeadGrass_A": {
+  "components": 220,
+  "comp_face_sizes_hist": {
+   "3": 20,
+   "4": 8,
+   "5": 48,
+   "6": 70,
+   "7": 52,
+   "8": 10,
+   "9": 1,
+   "11": 6,
+   "13": 5
+  },
+  "big_components": [],
+  "bend_deg_pcts(50,75,90,95,99)": [
+   12.9,
+   16.4,
+   20.8,
+   24.1,
+   104.6
+  ],
+  "frac_adjacent_faces_bend_gt_20": 0.12365591397849462,
+  "frac_blades_with_max_bend_gt_30": 0.11818181818181818,
+  "blade_strips": 220
+ },
+ "Halloween_DeadGrass_B": {
+  "components": 225,
+  "comp_face_sizes_hist": {
+   "3": 20,
+   "4": 34,
+   "5": 70,
+   "6": 58,
+   "7": 28,
+   "9": 9,
+   "11": 5,
+   "13": 1
+  },
+  "big_components": [],
+  "bend_deg_pcts(50,75,90,95,99)": [
+   13.1,
+   17.9,
+   25.5,
+   90.6,
+   134.8
+  ],
+  "frac_adjacent_faces_bend_gt_20": 0.1834319526627219,
+  "frac_blades_with_max_bend_gt_30": 0.2088888888888889,
+  "blade_strips": 225
+ },
+ "Halloween_Grave_A": {
+  "components": 90,
+  "comp_face_sizes_hist": {
+   "3": 30,
+   "4": 42,
+   "5": 16
+  },
+  "big_components": [
+   220,
+   2271
+  ],
+  "bend_deg_pcts(50,75,90,95,99)": [
+   14.2,
+   18.6,
+   25.0,
+   87.9,
+   115.4
+  ],
+  "frac_adjacent_faces_bend_gt_20": 0.196,
+  "frac_blades_with_max_bend_gt_30": 0.20454545454545456,
+  "blade_strips": 88
+ }
+}

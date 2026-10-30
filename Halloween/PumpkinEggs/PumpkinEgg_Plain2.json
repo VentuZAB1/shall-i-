@@ -1,0 +1,29 @@
+{
+ "name": "PumpkinEgg_Plain2",
+ "tris": 3804,
+ "texture": 512,
+ "size_blender_xyz": [
+  2.764,
+  2.837,
+  3.616
+ ],
+ "bottom_offset_z": -1.808,
+ "bake": {
+  "LoAll": {
+   "texels": 143792,
+   "miss": 0.0
+  }
+ },
+ "blender_shift": [
+  0.0258,
+  -0.0151,
+  -0.3111
+ ],
+ "export": {
+  "fbx": "C:\\cdimp\\Halloween_PumpkinEgg_Plain2.fbx",
+  "kb": 688.4,
+  "tris": {
+   "PumpkinEgg_Plain2": 3804
+  }
+ }
+}

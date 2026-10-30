@@ -1,0 +1,58 @@
+{
+ "roll": {
+  "centre": [
+   0.437,
+   -3.109,
+   0.545
+  ],
+  "axis": [
+   0.797,
+   -0.601,
+   0.06
+  ],
+  "radius_from_axis": 3.14
+ },
+ "tp": {
+  "ribbons": 5,
+  "length": 34.2,
+  "px_per_stud": 66,
+  "tris": 2572,
+  "hi_tris": 87482,
+  "atlas_rows": 5,
+  "atlas_bottom_px": 431,
+  "spacing": 0.3,
+  "turn": 13.0
+ },
+ "tris": {
+  "Canopy": 7299,
+  "TP": 2572,
+  "total": 9871
+ },
+ "hi_tris": {
+  "CanopyHi": 160872,
+  "LeavesHi": 68382,
+  "TPHi": 87482
+ },
+ "bbox": {
+  "min": [
+   -2.7,
+   -3.692,
+   -0.05
+  ],
+  "max": [
+   2.806,
+   2.801,
+   4.7
+  ],
+  "size_blender": [
+   5.506,
+   6.493,
+   4.75
+  ],
+  "size_roblox_XYZ": [
+   5.51,
+   4.75,
+   6.49
+  ]
+ }
+}

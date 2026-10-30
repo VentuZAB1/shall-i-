@@ -1,0 +1,20 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\render.py:41: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if not m.use_nodes:
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\render.py:52: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  gm.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\render.py:65: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  sm.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\render.py:79: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  rm.use_nodes = True
+00:13.641  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_web_top.png'
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_web_top.png
+00:14.438  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_web_side.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_web_side.png
+00:15.250  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_web_nosilk.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_web_nosilk.png
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

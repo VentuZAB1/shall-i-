@@ -1,0 +1,23 @@
+[grave    0.1s] Grave_A_hi remeshed verts 42796
+[grave    0.8s] stone hi tris 85588
+[grave    0.8s] Grave_A_StoneLo remeshed verts 29244
+[grave    1.0s] stone lo tris 2219
+[grave    1.3s] mound lo tris 424 mound hi faces 12600
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\graveyard.py:852: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Saved as "Grave_A.blend"
+[grave    6.3s] done {'name': 'Grave_A', 'tris': 3105, 'parts_tris': {'stone': 2219, 'mound': 424, 'blades': 462}, 'texture': 512, 'uv_cover': 0.599, 'bbox_min': [-2.322, -1.81, -0.214], 'bbox_max': [2.322, 1.17, 4.024], 'size_blender_xyz': [4.644, 2.981, 4.239]}
+GRAVE_REPORT {"grave_A": {"name": "Grave_A", "tris": 3105, "parts_tris": {"stone": 2219, "mound": 424, "blades": 462}, "texture": 512, "uv_cover": 0.599, "bbox_min": [-2.322, -1.81, -0.214], "bbox_max": [2.322, 1.17, 4.024], "size_blender_xyz": [4.644, 2.981, 4.239]}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

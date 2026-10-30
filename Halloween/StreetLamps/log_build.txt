@@ -1,0 +1,23 @@
+[lamp     0.1s] crook {'a2': 2.461, 'zs': np.float64(15.7737), 'apex': [0.0, np.float64(-1.873), np.float64(17.58)], 'cradle': [0.0, np.float64(-3.55), np.float64(15.872)], 'outermost_y': np.float64(-4.055), 'Rmax': 3.934, 'Rmin': 0.29, 'length': 7.697, 'curl_across': 0.95, 'curl_wrap_deg': 285.0}
+[lamp     0.1s] volute {'C': [1.075, 16.124], 'rho0': 0.8, 'gaps': (0.0031, 0.0086, 0.1614)}
+[lamp     0.1s] stack {'cradle': 15.8724, 'rc': 0.097, 'ring_c': 15.8194, 'ring_ib': 15.6694, 'l1_it': 15.6694, 'l1_ib': 15.3994, 'l2_it': 15.3994, 'l2_ib': 15.1294, 'hole_top': 15.1294, 'hole_c': 15.0744, 'neck': 14.9894, 'rim': 14.3294, 'ring_z': 14.3244, 'chain_top': 15.9694}
+[lamp     3.1s] rind band source {'edge_pts': 3825, 'band_verts': 2297}
+[lamp     3.1s] pumpkin hi carved, repaired (fixed, left): (1889, 0)
+[lamp     3.2s] pumpkin holes {'lo': 4.0, 'cut': 4, 'hi': 4.0}
+[lamp     4.9s] pumpkin {'zc': 13.0987, 'bottom': 12.2778, 'top_skin': 13.9486, 'rmax': 1.3926, 'holes': {'lo': 4.0, 'cut': 4, 'hi': 4.0}, 'repair': (1889, 0)}
+[lamp     4.9s] post tris {'column': 3160, 'feet': 784, 'crook': 1000, 'volute': 384, 'bat': 472}
+[lamp     4.9s] cage {'sauc_top': 12.2758, 'collar': [12.0758, 12.2058], 'drop_tip': 11.8658}
+[lamp     4.9s] building hi parts ...
+[lamp     9.4s]   column hi 471338 verts
+[lamp    10.8s]   hi built
+Warning: Unwrap failed to solve 2 of 12 island(s), edge seams may need to be added
+[lamp    47.1s] pumpkin smooth shell normals {'Skin': {'corners': 5520, 'max_dist': 0.0042}, 'Inner': {'corners': 1845, 'max_dist': 0.0044}}
+[lamp    47.1s] tris {'Post': 5800, 'Cage': 3136, 'Pumpkin': 3500}
+[lamp    47.4s] texel {'Post': 119.0, 'Cage': 95.6, 'Pumpkin': 140.9}
+[lamp    47.8s] clearance {'pumpkin_skin_vs_cage_rot0': (0.327, [-1.005, -2.588, 13.129]), 'stem_vs_cage_rot0': (0.338, [-0.037, -3.635, 14.151]), 'pumpkin_skin_vs_cage_rot90': (0.327, [-0.962, -4.555, 13.129]), 'stem_vs_cage_rot90': (0.338, [0.085, -3.587, 14.151]), 'pumpkin_skin_vs_cage_rot180': (0.327, [1.005, -4.512, 13.129]), 'stem_vs_cage_rot180': (0.338, [0.037, -3.465, 14.151]), 'pumpkin_skin_vs_cage_rot270': (0.327, [0.962, -2.545, 13.129]), 'stem_vs_cage_rot270': (0.338, [-0.085, -3.513, 14.151]), 'cage_vs_post': (0.4772, [0.025, -3.468, 15.304]), 'link1_vs_post': (0.0284, [0.014, -3.564, 15.757]), 'bat_wings_vs_crook': (0.0491, [0.06, -2.527, 17.709])}
+[lamp    47.8s] attach {'wick_tip': [0.017, -3.516, 12.795], 'wick_top': [0.011, -3.528, 12.8], 'flame_centre': [0.011, -3.528, 12.85], 'cavity_centre': [0.0, -3.55, 13.081], 'cavity_floor': [0.0, -3.55, 12.408], 'suggested_pointlight': [0.011, -3.528, 12.86], 'ground_light': [0.0, -3.55, 12.046], 'chain_top': [0.0, -3.55, 15.969], 'pumpkin_pivot': [0.0, -3.55, 13.099], 'bat_perch': [0.0, -1.873, 17.752]}
+Info: Saved as "lamp_src.blend"
+[lamp    48.0s] done build
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

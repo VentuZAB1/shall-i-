@@ -1,0 +1,12 @@
+00:21.656  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\IceMammoth\IceMammoth_portrait_raw.png'
+Info: Saved as "IceMammoth_rigged.blend"
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+
+FBX export starting... 'C:\\cdimp\\IceMammoth.fbx'
+export finished in 0.0416 sec.
+Info: Saved as "IceMammoth_rigged.blend"
+HEADLESS_RESULT {"audit": {"idle": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "idle_foot_drift": 0.0}, "walk": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "slide": 0.0, "foot_z_var": 0.0}, "roar": {"linear": 0}, "act_dustover": {"linear": 0}}, "stride": 0.3194, "lua_bytes": 45777, "clips": {"idle": [120, true], "walk": [40, true], "roar": [66, false], "act_dustover": [100, false]}, "events": {"idle": {"exhale": 0.667}, "walk": {"stomp": 0.25}, "roar": {"trumpet": 0.394}, "act_dustover": {"scoop1": 0.2, "dust1": 0.56, "scoop2": 0.66, "dust2": 0.74, "scoop3": 0.8, "dust3": 0.86}}, "tris_body": 14688, "tris_glow": {}, "bones": ["Root", "Spine", "Chest", "Neck", "Head", "Jaw", "Breath", "FX_BreathCloud", "Trunk1", "Trunk2", "Trunk3", "Trunk4", "Trunk_Tip", "FX_SnowSpray", "Tusk_L", "FX_TuskSparkle_L", "Ear_L", "Tusk_R", "FX_TuskSparkle_R", "Ear_R", "Back", "FX_FrostPuff", "Leg_FL", "Shin_FL", "Foot_FL", "FX_IceCrack", "Leg_FR", "Shin_FR", "Foot_FR", "Leg_BL", "Shin_BL", "Foot_BL", "Leg_BR", "Shin_BR", "Foot_BR", "Tail1", "Tail2", "Tail3"], "ground_min_z": {"idle": [0.018, 119], "walk": [0.018, 40], "roar": [0.018, 63], "act_dustover": [-0.016, 24]}, "collisions": {}, "collision_free": true, "export": {"meta": {"name": "IceMammoth", "display": "Ice Mammoth", "motion": "Walk", "rig": "quad", "height": 9.0, "stride": 0.3194444444444445, "walk_len": 1.3333333333333333, "glow": [], "lights": {}}, "portrait": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\IceMammoth\\IceMammoth_portrait_raw.png"}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

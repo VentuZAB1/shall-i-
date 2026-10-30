@@ -1,0 +1,26 @@
+[eggs    3.6s] PumpkinEgg_Plain1 game mesh tris 4200
+[eggs    3.6s]   uv smart done
+Warning: Unwrap failed to solve 1 of 4 island(s), edge seams may need to be added
+[eggs    3.7s]   uv unwrap+average done, packing
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:791: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  bmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:795: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  cmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:819: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs   23.2s]   baked LoAll {'texels': 142489, 'miss': 0.0}
+Info: Saved as "plain_P1.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_PumpkinEgg_Plain1.fbx'
+export finished in 0.0097 sec.
+[eggs   24.0s] PumpkinEgg_Plain1 done {"name": "PumpkinEgg_Plain1", "tris": 4200, "texture": 512, "size_blender_xyz": [2.967, 3.103, 3.951], "bottom_offset_z": -1.976, "bake": {"LoAll": {"texels": 142489, "miss": 0.0}}, "blender_shift": [0.0043, 0.0041, -0.3292], "export": {"fbx": "C:\\cdimp\\Halloween_PumpkinEgg_Plain1.fbx", "kb": 729.5, "tris": {"PumpkinEgg_Plain1": 4200}}}
+EGGS_REPORT {"plain_P1": {"name": "PumpkinEgg_Plain1", "tris": 4200, "texture": 512, "size_blender_xyz": [2.967, 3.103, 3.951], "bottom_offset_z": -1.976, "bake": {"LoAll": {"texels": 142489, "miss": 0.0}}, "blender_shift": [0.0043, 0.0041, -0.3292], "export": {"fbx": "C:\\cdimp\\Halloween_PumpkinEgg_Plain1.fbx", "kb": 729.5, "tris": {"PumpkinEgg_Plain1": 4200}}}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

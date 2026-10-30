@@ -1,0 +1,8 @@
+00:01.734  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\tptree.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_TPTree.fbx'
+export finished in 0.0422 sec.
+[tp     0.2s] HW_REPORT {"fbx": "C:\\cdimp\\Halloween_TPTree.fbx", "kb": 13030.2, "tris": {"Trunk": 5200, "CanopyA": 8257, "CanopyB": 8341, "TP": 7880}, "bbox": {"min": [-7.378, -6.935, -0.156], "max": [6.875, 7.268, 15.791], "size_blender": [14.253, 14.203, 15.946], "size_roblox_XYZ": [14.25, 15.95, 14.2]}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

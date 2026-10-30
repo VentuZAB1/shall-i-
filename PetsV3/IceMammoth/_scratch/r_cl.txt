@@ -1,0 +1,8 @@
+00:03.219  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\IceMammoth\renders\model_tq.png'
+00:03.532  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\IceMammoth\renders\close_tq.png'
+00:03.735  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\IceMammoth\renders\close_side.png'
+00:03.922  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\IceMammoth\renders\close_front.png'
+HEADLESS_RESULT ok
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

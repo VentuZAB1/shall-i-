@@ -1,0 +1,36 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\rv_render.py:45: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+FBX version: 7400
+[rv] asset bbox [-7.49807119 -6.92455769 -0.15268728] [ 6.84370518  7.21348953 15.93819141]
+00:03.625  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_front_25.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_front_25.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_front_25_crop.png 540 497
+00:04.031  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_front_45.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_front_45.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_front_45_crop.png 340 295
+00:04.390  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_back_25.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_back_25.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_back_25_crop.png 522 501
+00:04.765  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_back_45.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_back_45.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_back_45_crop.png 332 297
+00:05.125  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_side_25.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_side_25.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_side_25_crop.png 523 499
+00:05.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_side_45.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_side_45.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_side_45_crop.png 333 297
+00:05.890  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_under_lookup.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_under_lookup.png
+00:06.219  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_close_fork.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_close_fork.png
+00:06.531  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_close_rollB.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_close_rollB.png
+00:06.859  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_close_canopy.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_close_canopy.png
+00:07.172  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_tree_back_close_lookup.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_tree_back_close_lookup.png
+[rv] DONE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

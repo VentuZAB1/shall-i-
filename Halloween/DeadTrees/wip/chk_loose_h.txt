@@ -1,0 +1,9 @@
+FBX version: 7400
+LOOSE HauntedTree_Limbs parts 4 sizes [2577, 987, 386, 225]
+LOOSE    faces 987 area 9.3685 centre blender (-2.13, 1.58, 8.97) extent (2.99, 2.52, 3.72) roblox (-2.13, 8.97, -1.58)
+LOOSE    faces 386 area 3.3346 centre blender (-4.00, -1.29, 7.75) extent (2.89, 1.13, 0.87) roblox (-4.00, 7.75, 1.29)
+LOOSE    faces 225 area 1.9443 centre blender (4.52, -1.01, 7.57) extent (2.38, 1.03, 0.53) roblox (4.52, 7.57, 1.01)
+LOOSE HauntedTree_Trunk parts 1 sizes [9049]
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

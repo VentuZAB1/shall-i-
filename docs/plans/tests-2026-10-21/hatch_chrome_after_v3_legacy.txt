@@ -1,0 +1,12 @@
+viewport (1519,753) | Menu right 173.88 | SpeedUI.Holder (14.28,537.93 263.89x145.46)
+# hatch_chrome_snapshot.lua v3, AFTER (RIS run A), own session with workspace TestSettingsLegacy = true (Index / Rebirth are
+# still Check-UI in run A, so their legacy switches do not exist yet). Per-section FNV of the line-hash lists:
+#   Shop 22c4ae18 (BEFORE 225c112d): lines 37 / 38 / 40 / 41 differ = the HIDDEN Check-UI Face.Header under the HATCH Shop
+#     (Size 0.22 instead of 0.23 + its Damier / dividers): MenuController sets that header's size only on Check-UI opens,
+#     and this session had opened the Check-UI Settings page (the legacy test) before the dump. History, not a change:
+#     see the normal-mode AFTER file (fresh session) for the Shop.
+#   Rebirth d9c86590 = BEFORE; Index d45e6ce0 = BEFORE.
+#   Settings acd787f0 (BEFORE 890e9b10): exactly 1 line differs, line 44 Window.Face.Icon (973e331c -> 7122d338): the gear
+#     image in the Check-UI header (owner's call 2), as the plan expects.
+=== Settings (line hashes)
+bd1ae2d0 db1fdc68 60520ed0 e9406fb8 903f38f4 7e024040 6dacf638 871940e0 f2f2236c 236b91b0 20ea65d0 78739ca8 45d84ed8 f7ea21ac af53119b be6b9088 c84724a8 ae1134a8 03445b04 12bd5998 0493f6cc 50d1dd68 15a9a454 d8bf1870 6f457e07 96a4ff80 0edf2cc0 54080bcc dc42d400 031387b0 029daa88 2e48483c 9782aca0 d7f59fa8 99324618 1e654548 77bef270 e0418518 3610bbf0 c2fe0150 4c51a9e0 7f560930 dd0c8b30 7122d338 97bb4f40 18aa7d68 9e2a9368 ca413183 8e3db4ab c33b94a8 56496e80

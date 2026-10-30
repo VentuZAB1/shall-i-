@@ -1,0 +1,9 @@
+{
+ "note": "Build review 1 round (2026-10-29). Apply each edit (exact old -> new) to the script as it was after the FIRST v8 build (the version saved to Roblox; backups in ServerStorage._Backup_GlacierS2.IndexBuild2). IndexClientLegacy: use the full file IndexClientLegacy.lua in this folder instead (hash-checked against Studio: 41313 chars).",
+ "StarterGui.MainMenu.MenuController": [
+  {
+   "old_string": "\t-- (2026-10-28 owner, Index v8 phone \"size B\": ONE layout on every device) phones: the same Index window, ~88 % of the\n\t-- SCREEN height and below Roblox's top bar (this gui starts under the bar and fitScale keeps 6 px clear); the 58 % width\n\t-- cap would shrink it to ~80 %, so the Index gets a 92 % cap there\n\tlocal widthCap\n\tif name == \"Index\" and B.viewportSize().Y < 520 then\n\t\tlocal gy = gui.AbsoluteSize.Y\n\t\tif gy > 0 and size.Y.Scale > 0 then size = mul(size, 0.88 * B.viewportSize().Y / gy / size.Y.Scale) end\n\t\twidthCap = 0.92\n\tend\n\tsize = mul(size, fitScale(size, widthCap))",
+   "new_string": "\t-- (2026-10-28 owner, Index v8 phone \"size B\": ONE layout on every device) phones: the same Index window, as tall as the\n\t-- screen allows, below Roblox's top bar; the 58 % width cap would shrink it, so the Index gets a 92 % cap there.\n\t-- (2026-10-29 build review 1 M2) top = 6 px under the top bar, bottom = 18 px above the screen edge: height = screen -\n\t-- (bar + 6) - 18 (this gui starts under the bar): 308 px with a 58 px bar, 330 px with a 36 px bar\n\tlocal widthCap, phoneTop\n\tif name == \"Index\" and B.viewportSize().Y < 520 then\n\t\tlocal gy = gui.AbsoluteSize.Y\n\t\tif gy > 24 and size.Y.Scale > 0 then size = mul(size, (gy - 24) / gy / size.Y.Scale) end\n\t\twidthCap = 0.92\n\t\tphoneTop = 6\n\tend\n\tsize = mul(size, fitScale(size, widthCap))\n\tif phoneTop then win.Position = UDim2.new(basePos.X.Scale, basePos.X.Offset, 0, phoneTop + size.Y.Scale * gui.AbsoluteSize.Y / 2) end"
+  }
+ ]
+}

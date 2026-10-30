@@ -1,0 +1,9 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\inspect.py:30: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m.use_nodes:
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\inspect_report_r2.json
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

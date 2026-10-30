@@ -1,0 +1,21 @@
+FBX version: 7400
+TOPO HauntedTree_Branches faces 7160 boundary_edges 1038 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    signed volume 4.743
+TOPO HauntedTree_Leaves faces 5852 boundary_edges 2926 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    signed volume -0.047
+TOPO HauntedTree_Limbs faces 4175 boundary_edges 175 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    z 7.0-7.5: 173 boundary edges, centre (0.09, -0.17, 7.39)
+TOPO    z 7.5-8.0: 2 boundary edges, centre (0.25, 1.19, 7.52)
+TOPO    signed volume 20.447
+TOPO HauntedTree_Trunk faces 9049 boundary_edges 375 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    z -0.5-0.0: 200 boundary edges, centre (0.13, -0.00, -0.23)
+TOPO    z 7.0-7.5: 173 boundary edges, centre (0.09, -0.17, 7.39)
+TOPO    z 7.5-8.0: 2 boundary edges, centre (0.25, 1.19, 7.52)
+TOPO    signed volume 38.761
+TOPO HauntedTree_Web faces 988 boundary_edges 698 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    signed volume 0.143
+TOPO HauntedTree_WebSilk faces 220 boundary_edges 160 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    signed volume -0.0
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,67 @@
+hatch_ris_perf.lua results - RIS run A (Settings), 2026-10-22, Studio 1519x753 (unfocused: frames throttled to ~60 fps / 16.7 ms)
+Index / Rebirth are still Check-UI in run A: their sections say "skipped"; runs B / C add theirs.
+
+== session 1 (before the gloss fix)
+idle (3 s, every window closed): SettingsRefreshN 45 -> 45, HatchPerfSettings frozen (ok)
+canvasguard: Settings x3 / Shop x3 / Gift x3: 0 hidden-page CanvasScale writes (ok)
+cost: 20 Settings refreshes, avg 0.1857 ms, max 0.4763 ms
+counts: SettingsPage 131 GuiObjects / 262 instances / 41 UIStrokes; (Check-UI) IndexPage 210 / 566 / 139, RebirthPage 78 / 211 / 47
+leaks 30 cycles: SettingsPage 131 -> 131 / 262 -> 262, Window 3707 -> 3707 instances, LuaHeap 1030.5 -> 944.8 MB (-85.6)
+
+== session 2 (after the gloss fix; the 0.3 ms target judged on the average, the max reported)
+idle (3 s, every window closed):
+  Settings HatchPerfSettings 18 1.3846 0.3385 -> 18 1.3846 0.3385 (ok)
+  Settings SettingsRefreshN 18 -> 18 (ok)
+canvasguard:
+  Settings x3: hidden-page CanvasScale writes Gift 0, Shop 0 (ok)
+  Shop x3: hidden-page CanvasScale writes Gift 0, Settings 0 (ok)
+  Gift x3: hidden-page CanvasScale writes Settings 0, Shop 0 (ok)
+cost:
+  frame time, all closed: avg 16.66 ms, max 18.65 ms (150 frames)
+  Settings: 20 refreshes; refresh cost (last 30) avg 0.1923 ms (target <= 0.3 ms) ok, max 0.3385 ms; frame time open avg 16.66 ms, max 18.33 ms
+counts: SettingsPage 131 GuiObjects / 262 instances / 41 UIStrokes
+leaks: 30 cycles 131 -> 131 / 262 -> 262, Window 3707 -> 3707, LuaHeap 987.4 -> 990.8 MB (+3.4, over the +3 line); 60 more cycles:
+  LuaHeap every 10 cycles 979.0 -> 980.8 -> 980.6 -> 983.2; after 90 cycles 987.4 -> 983.2 MB (-4.3): no trend = GC noise,
+  instance counts flat the whole time.
+No loops: SettingsClient has no RenderStepped / while loop; a Settings change while closed only marks it dirty.
+
+== RIS run B (Index), 2026-10-22, fresh TestFreshSave session (after the containment matrix: the last-30 ring holds data-change refreshes)
+idle (3 s, every window closed): Settings SettingsRefreshN 1 -> 1, HatchPerfSettings frozen; Index IndexRefreshN 106 -> 106,
+  HatchPerfIndex frozen (ok); Rebirth skipped (Check-UI)
+canvasguard: Settings / Index / Shop / Gift x3 each: 0 hidden-page CanvasScale writes (ok)
+cost: frame time all closed avg 16.66 ms (Studio unfocused throttle); Settings refresh avg 0.2081 ms (ok); Index 12 refreshes
+  (tab sweep x6 + 5 cards), refresh cost (last 30) avg 0.9050 ms (target <= 2 ms) ok, max 1.9865 ms; frame time open avg 16.65 ms
+counts: SettingsPage 131 / 262 / 41; IndexPage 268 GuiObjects / 493 instances / 99 UIStrokes; RebirthPage (Check-UI) 78 / 211 / 47
+leaks (open / close Settings + Index with 6 tab + 5 card presses each cycle): 10 / 20 / 30 cycles: IndexPage 268 -> 268 /
+  493 -> 493, SettingsPage 131 -> 131, Window 3634 -> 3634; LuaHeap 1013.5 -> 1018.3 -> 1003.3 -> 1004.3 MB (-9.2 after 30: GC noise)
+closed-state work (index_client lifecycle): a hatch (PetIndex.record) + an IndexData change while closed = 0 refreshes,
+  IndexLoop false (no RenderStepped); reopen = exactly 1 refresh
+
+# RIS run C (Rebirth), 2026-10-22, fresh TestFreshSave session (Studio 1519x753), every HATCH page built
+idle (3 s, every window closed):
+  Settings HatchPerfSettings 1 0.1037 0.1037 -> 1 0.1037 0.1037 (ok)
+  Settings SettingsRefreshN 1 -> 1 (ok)
+  Index HatchPerfIndex 1 0.3361 0.3361 -> 1 0.3361 0.3361 (ok)
+  Index IndexRefreshN 1 -> 1 (ok)
+  Rebirth RebirthRefreshN 3 -> 3 (ok)
+  Rebirth HatchPerfRebirthRefresh 3 1.7713 1.6450 -> 3 1.7713 1.6450 (ok)
+  Rebirth RebirthLoop false -> false (ok)
+  Rebirth HatchPerfRebirth 90 0.0879 0.0049 -> 90 0.0879 0.0049 (ok)
+canvasguard:
+  Settings x3: hidden-page CanvasScale writes Gift 0, Index 0, Rebirth 0, Shop 0 (ok)
+  Index x3: hidden-page CanvasScale writes Gift 0, Rebirth 0, Settings 0, Shop 0 (ok)
+  Rebirth x3: hidden-page CanvasScale writes Gift 0, Index 0, Settings 0, Shop 0 (ok)
+  Shop x3: hidden-page CanvasScale writes Gift 0, Index 0, Rebirth 0, Settings 0 (ok)
+  Gift x3: hidden-page CanvasScale writes Index 0, Rebirth 0, Settings 0, Shop 0 (ok)
+cost:
+  frame time, all closed: avg 16.66 ms, max 18.72 ms (150 frames; the Studio unfocused throttle shows here)
+  Settings: 21 refreshes; refresh cost (last 22) avg 0.2025 ms (target <= 0.3 ms) ok, max 0.3049 ms; frame time open avg 16.66 ms, max 18.43 ms
+  Index: 12 refreshes; refresh cost (last 13) avg 0.5588 ms (target <= 2 ms) ok, max 0.9862 ms; frame time open avg 16.66 ms, max 18.70 ms
+  Rebirth (ready): 300 frames; RenderStepped cost (last 30) avg 0.0087 ms (target <= 0.05 ms) ok, max 0.0279 ms; 20 refreshes; refresh cost (last 27) avg 0.1249 ms (target <= 0.3 ms) ok, max 1.6450 ms; frame time open avg 16.68 ms, max 18.63 ms
+  (the 1.645 ms max is the page's FIRST refresh at load: every label's first text measure; steady refreshes are ~0.07 ms)
+counts:
+  SettingsPage: 131 GuiObjects / 262 instances / 41 UIStrokes
+  IndexPage: 263 GuiObjects / 482 instances / 99 UIStrokes
+  RebirthPage: 152 GuiObjects / 265 instances / 48 UIStrokes (plan estimate ~230 GuiObjects; the old Check-UI page kept 3 forever loops)
+leaks 10 / 20 / 30 cycles (open / close each HATCH page): every page's GuiObjects + instances flat (131 / 263 / 152), Window 3677 -> 3677;
+  LuaHeap 1011.0 -> 1017.7 -> 1019.4 -> 995.5 MB (-15.5 after 30 cycles: GC noise, no growth)

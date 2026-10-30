@@ -1,0 +1,31 @@
+00:06.359  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_day_25.png'
+00:06.937  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_day_25_side.png'
+00:07.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_day_50.png'
+00:08.047  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv_day_40_front.png'
+00:08.640  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv_day_40_side.png'
+00:09.203  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv_day_25_back.png'
+00:09.719  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_close_head.png'
+00:10.125  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv_head_below12.png'
+00:10.734  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv_base_5.png'
+00:11.250  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv_crook_8.png'
+00:11.765  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv_twist_4.png'
+00:12.265  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_day_25_side_face.png'
+00:12.781  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv_day_head_side_face.png'
+00:13.281  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_day_path_3lamps.png'
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\lamp.py:2450: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+00:14.297  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_night_25.png'
+00:14.828  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\review_night_25_side.png'
+00:15.344  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_night_close.png'
+00:15.765  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_night_25_side_face.png'
+00:16.219  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv_night_head_side_face.png'
+00:16.719  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_night_path_3lamps.png'
+00:17.453  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv_night_dark_variant_25.png'
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+[lamp    14.0s] review ['C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\review_day_25.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\review_day_25_side.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\review_day_50.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\rv_day_40_front.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\rv_day_40_side.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\rv_day_25_back.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\review_close_head.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\rv_head_below12.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\rv_base_5.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\rv_crook_8.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\rv_twist_4.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\review_day_25_side_face.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\rv_day_head_side_face.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\review_day_path_3lamps.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\review_night_25.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\review_night_25_side.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\review_night_close.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\review_night_25_side_face.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\rv_night_head_side_face.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\review_night_path_3lamps.png', 'C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\StreetLamps\\wip\\rv_night_dark_variant_25.png']
+[lamp    14.0s] done review
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

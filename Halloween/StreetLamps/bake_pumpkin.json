@@ -1,0 +1,36 @@
+{
+ "part": "Pumpkin",
+ "size": 1024,
+ "stats": {
+  "LoSkin": {
+   "texels": 479605,
+   "miss": 0.0022,
+   "ao": 0.5
+  },
+  "LoWall": {
+   "texels": 46888,
+   "miss": 0.0942,
+   "ao": 0.15
+  },
+  "LoInner": {
+   "texels": 102897,
+   "miss": 0.0047,
+   "ao": 0.08
+  },
+  "LoWax": {
+   "texels": 6447,
+   "miss": 0.0109,
+   "ao": 0.3
+  },
+  "LoWick": {
+   "texels": 179,
+   "miss": 0.0056,
+   "ao": 0.3
+  }
+ },
+ "albedo_mean_srgb": [
+  211.2,
+  131.4,
+  48.3
+ ]
+}

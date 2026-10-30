@@ -1,0 +1,9 @@
+00:02.781  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\IceMammoth\renders\model_tq.png'
+00:03.000  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\IceMammoth\renders\model_front.png'
+00:03.172  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\IceMammoth\renders\model_side.png'
+00:03.328  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\IceMammoth\renders\model_back.png'
+00:03.484  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\IceMammoth\renders\model_game.png'
+HEADLESS_RESULT {"files": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\IceMammoth\\renders\\model_tq.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\IceMammoth\\renders\\model_front.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\IceMammoth\\renders\\model_side.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\IceMammoth\\renders\\model_back.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\IceMammoth\\renders\\model_game.png"], "tris": 14688, "size": [1.05, 2.77, 1.76], "TH": 0.94, "PITCH": 0.0439}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

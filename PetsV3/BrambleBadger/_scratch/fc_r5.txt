@@ -1,0 +1,5 @@
+audit {"idle": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "idle_foot_drift": 0.0}, "walk": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "slide": 0.0, "foot_z_var": 0.0}, "roar": {"linear": 0}, "act_burrow": {"linear": 0}}
+clips {'idle': [120, True], 'walk': [30, True], 'roar': [60, False], 'act_burrow': [100, False]} events {'roar': {'growl': 0.5}, 'act_burrow': {'dig1': 0.16, 'dig2': 0.26, 'dig3': 0.36, 'kick1': 0.44, 'kick2': 0.53}}
+ground {'idle': [-0.002, 120], 'walk': [-0.002, 30], 'roar': [-0.002, 60], 'act_burrow': [-0.002, 100]}
+collision_free True {}
+tris 6544 stride 0.3

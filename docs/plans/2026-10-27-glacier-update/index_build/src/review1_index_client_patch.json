@@ -1,0 +1,21 @@
+{
+ "note": "Build review 1 round (2026-10-29): exact old -> new edits for ServerStorage.HatchRISTests.index_client as saved after the first v8 build (38954 chars).",
+ "ServerStorage.HatchRISTests.index_client": [
+  {
+   "old_string": "\tr.check(\"Card6 not found: ???, ?, black silhouette\", v8text(c6.Face.PetName) == \"???\" and c6.Face.Q.Visible and same(c6.Face.View.ImageColor3, Color3.new(0, 0, 0)))",
+   "new_string": "\tr.check(\"Card6 not found: ??? plate, no centre ? (review 1 N5), black silhouette\", v8text(c6.Face.PetName) == \"???\" and not c6.Face.Q.Visible and same(c6.Face.View.ImageColor3, Color3.new(0, 0, 0)))"
+  },
+  {
+   "old_string": "\tr.check(\"inspect pill GLACIER · MYTHIC · $x..\", v8text(i.Rarity.Text):match(\"^GLACIER · MYTHIC · %$x%d\") ~= nil, v8text(i.Rarity.Text))",
+   "new_string": "\tr.check(\"inspect pill of an unfound mythic = GLACIER only (review 1 N4)\", v8text(i.Rarity.Text) == \"GLACIER\" and i.RarityEdge.Visible, v8text(i.Rarity.Text))\n\tpress(\"Card_5\")\n\tr.check(\"found secret pill GLACIER · SECRET · $x..\", v8text(i.Rarity.Text):match(\"^GLACIER · SECRET · %$x%d\") ~= nil, v8text(i.Rarity.Text))"
+  },
+  {
+   "old_string": "\tr.check(\"unknown: big portrait black\", same(i.View.ImageColor3, Color3.new(0, 0, 0)))",
+   "new_string": "\tr.check(\"unknown: big portrait black, pill GRASS only (no bonus)\", same(i.View.ImageColor3, Color3.new(0, 0, 0)) and v8text(i.Rarity.Text) == \"GRASS\", v8text(i.Rarity.Text))"
+  },
+  {
+   "old_string": "-- v8 6: a real claim through Index.Claim",
+   "new_string": "-- v8 7 (build review 1 M1): the phone text floor on a 308 px window (the phone size with a 58 px top bar), on PC\nfunction S.v8phone()\n\tlocal r = report()\n\tv8open()\n\tlocal pp = page()\n\tpress(\"Tab_7\") press(\"Card_6\")\n\tlocal zones = {\"Tab1\", \"Tab7\", \"Header\", \"Card1\", \"Card6\", \"Reward\", \"Total\", \"Inspect\"}\n\tlocal before = {}\n\tfor _, n in zones do before[n] = pp[n].Position end\n\tlocal base = win.Size\n\twin.Size = UDim2.fromScale(0.95, 308 / mm.AbsoluteSize.Y)\n\ttask.wait(0.7)\n\tr.check(\"308 px window: PhoneText on\", pp:GetAttribute(\"PhoneText\") == true, (\"h %d scale %.3f\"):format(win.AbsoluteSize.Y, pp.CanvasScale.Scale))\n\tlocal moved = {}\n\tfor _, n in zones do if pp[n].Position ~= before[n] then table.insert(moved, n) end end\n\tr.check(\"phone: no zone moved (one layout)\", #moved == 0, table.concat(moved, \",\"))\n\tlocal clash = {}\n\tfor k = 1, 4 do\n\t\tlocal L, V = pp.Inspect[\"Stat\" .. k].L, pp.Inspect[\"Stat\" .. k].V\n\t\tlocal lr = L.AbsolutePosition.X + L.TextBounds.X\n\t\tlocal vl = V.AbsolutePosition.X + V.AbsoluteSize.X - V.TextBounds.X\n\t\tif lr > vl - 2 then table.insert(clash, \"Stat\" .. k) end\n\tend\n\tr.check(\"stat label text ends before its value text\", #clash == 0, table.concat(clash, \",\"))\n\tlocal grew = 0\n\tfor _, t in {pp.Inspect.Stat3.L, pp.Total.Bar.Text, pp.Reward.Title} do if t.UITextSizeConstraint.MaxTextSize > 20 then grew += 1 end end\n\tr.check(\"phone caps raised (13 px on screen)\", grew == 3, grew)\n\twin.Size = base\n\ttask.wait(0.7)\n\tr.check(\"PC size again: PhoneText off, v8 rects + caps back\", pp:GetAttribute(\"PhoneText\") == false and pp.Header.Face.Area.Size == UDim2.fromScale(0.47, 0.47)\n\t\tand pp.Inspect.Stat1.L.Size == UDim2.fromScale(0.5, 0.48) and pp.Inspect.Stat1.L.UITextSizeConstraint.MaxTextSize == 13)\n\treturn r.text(\"v8phone\")\nend\n\n-- v8 6: a real claim through Index.Claim"
+  }
+ ]
+}

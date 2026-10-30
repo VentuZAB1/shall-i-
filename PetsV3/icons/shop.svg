@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-16 -16 288 288" width="512" height="512">
+<defs>
+<filter id="outline" x="-20%" y="-20%" width="140%" height="140%">
+  <feMorphology in="SourceAlpha" operator="dilate" radius="9" result="d"/>
+  <feFlood flood-color="#27233a"/><feComposite in2="d" operator="in" result="o"/>
+  <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+  <feMorphology in="SourceAlpha" operator="dilate" radius="9" result="d"/>
+  <feFlood flood-color="#000" flood-opacity="0.22"/><feComposite in2="d" operator="in"/>
+</filter>
+<clipPath id="c1"><path d="M50 90 H206 L218 206 Q220 224 202 224 H54 Q36 224 38 206 Z"/></clipPath>
+<g id="art"><path d="M92 100 V76 Q92 38 128 38 Q164 38 164 76 V100" fill="none" stroke="#27233a" stroke-width="26" stroke-linecap="round"/><path d="M92 100 V76 Q92 38 128 38 Q164 38 164 76 V100" fill="none" stroke="#ffd75e" stroke-width="11" stroke-linecap="round"/><path d="M50 90 H206 L218 206 Q220 224 202 224 H54 Q36 224 38 206 Z" fill="#ff7b47"/><g clip-path="url(#c1)"><rect x="-50" y="184" width="400" height="400" fill="#e0531f"/></g><path d="M50 90 H206 L218 206 Q220 224 202 224 H54 Q36 224 38 206 Z" fill="none" stroke="#27233a" stroke-width="6" stroke-linejoin="round"/><rect x="50" y="90" width="156" height="24" rx="4" fill="#ff9d70"/><rect x="50" y="90" width="156" height="24" rx="4" fill="none" stroke="#27233a" stroke-width="6" stroke-linejoin="round"/><circle cx="92" cy="132" r="8" fill="#27233a"/><circle cx="164" cy="132" r="8" fill="#27233a"/><rect x="56" y="124" width="12" height="58" rx="6.0" fill="#fff" opacity="0.85" transform="rotate(-4 62.0 153.0)"/></g>
+</defs>
+<use xlink:href="#art" filter="url(#shadow)" transform="translate(0 12)"/>
+<use xlink:href="#art" filter="url(#outline)"/>
+</svg>

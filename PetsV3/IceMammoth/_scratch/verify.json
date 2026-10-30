@@ -1,0 +1,225 @@
+{
+ "clips": {
+  "idle": {
+   "frames": 120,
+   "loop": true,
+   "chest_vs_spine": [
+    4.5,
+    20
+   ],
+   "neck_max": [
+    4.0,
+    80
+   ],
+   "jaw_max": [
+    1.5,
+    80
+   ],
+   "head_pitch_up": [
+    11.67,
+    80
+   ],
+   "max_swing": [
+    6.2,
+    "Ear_L",
+    38
+   ],
+   "end_vs_start": [
+    0.0,
+    ""
+   ],
+   "track": {
+    "FX_SnowSpray": {
+     "min": [
+      0.1105,
+      62
+     ],
+     "at": {
+      "70": 0.1629,
+      "80": 0.5661
+     }
+    }
+   }
+  },
+  "walk": {
+   "frames": 40,
+   "loop": true,
+   "chest_vs_spine": [
+    1.68,
+    0
+   ],
+   "neck_max": [
+    0.8,
+    32
+   ],
+   "jaw_max": [
+    1.0,
+    0
+   ],
+   "head_pitch_up": [
+    0.47,
+    14
+   ],
+   "max_swing": [
+    11.3,
+    "Shin_FL",
+    40
+   ],
+   "end_vs_start": [
+    0.0,
+    ""
+   ],
+   "track": {
+    "FX_SnowSpray": {
+     "min": [
+      0.1108,
+      2
+     ],
+     "at": {
+      "10": 0.2019,
+      "20": 0.1241
+     }
+    }
+   }
+  },
+  "roar": {
+   "frames": 66,
+   "loop": false,
+   "chest_vs_spine": [
+    1.0,
+    50
+   ],
+   "neck_max": [
+    2.0,
+    16
+   ],
+   "jaw_max": [
+    22.0,
+    34
+   ],
+   "head_pitch_up": [
+    16.0,
+    22
+   ],
+   "max_swing": [
+    20.8,
+    "FX_SnowSpray",
+    14
+   ],
+   "end_vs_start": [
+    0.0,
+    ""
+   ],
+   "end_vs_rest": [
+    0.0,
+    ""
+   ],
+   "start_vs_rest": [
+    0.0,
+    ""
+   ],
+   "track": {
+    "FX_SnowSpray": {
+     "min": [
+      0.0858,
+      8
+     ],
+     "at": {}
+    }
+   }
+  },
+  "act_dustover": {
+   "frames": 100,
+   "loop": false,
+   "chest_vs_spine": [
+    0,
+    -1
+   ],
+   "neck_max": [
+    3.0,
+    18
+   ],
+   "jaw_max": [
+    2.0,
+    44
+   ],
+   "head_pitch_up": [
+    17.0,
+    48
+   ],
+   "max_swing": [
+    53.7,
+    "FX_SnowSpray",
+    76
+   ],
+   "end_vs_start": [
+    0.0,
+    ""
+   ],
+   "end_vs_rest": [
+    0.0,
+    ""
+   ],
+   "start_vs_rest": [
+    0.0,
+    ""
+   ],
+   "track": {
+    "FX_SnowSpray": {
+     "min": [
+      0.0087,
+      23
+     ],
+     "at": {
+      "56": 1.7304,
+      "66": 0.0111,
+      "80": 0.0111
+     }
+    }
+   }
+  }
+ },
+ "collisions_with_hinges": {},
+ "collisions_raw_no_hinges": {
+  "idle": {
+   "Head|Chest": [
+    6,
+    10
+   ]
+  },
+  "walk": {
+   "Head|Chest": [
+    15,
+    20
+   ]
+  },
+  "roar": {
+   "Head|Chest": [
+    6,
+    3
+   ]
+  },
+  "act_dustover": {
+   "Head|Chest": [
+    7,
+    70
+   ]
+  }
+ },
+ "hinges": [
+  [
+   [
+    -0.24,
+    -0.88,
+    1.03
+   ],
+   [
+    0.24,
+    -0.88,
+    1.03
+   ],
+   0.09,
+   "Head"
+  ]
+ ]
+}

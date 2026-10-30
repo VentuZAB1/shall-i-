@@ -1,0 +1,487 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\verify_fbx.py:25: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+FBX version: 7400
+FBX version: 7400
+VERIFY {
+ "C:/cdimp/Halloween_TPTree.fbx": {
+  "objects": {
+   "CanopyA": {
+    "tris": 8257,
+    "verts": 4235,
+    "uv_layers": 1,
+    "location": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "bbox_min": [
+     -0.003,
+     -0.069,
+     0.064
+    ],
+    "bbox_max": [
+     0.069,
+     0.073,
+     0.155
+    ],
+    "materials": [
+     {
+      "name": "CanopyA_PBR",
+      "textures": [
+       {
+        "image": "TPTree_CanopyA_albedo",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Base Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_CanopyA_albedo.png"
+       },
+       {
+        "image": "TPTree_CanopyA_normal",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_CanopyA_normal.png"
+       },
+       {
+        "image": "TPTree_CanopyA_rough",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Roughness"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_CanopyA_rough.png"
+       }
+      ]
+     }
+    ]
+   },
+   "CanopyB": {
+    "tris": 8341,
+    "verts": 4277,
+    "uv_layers": 1,
+    "location": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "bbox_min": [
+     -0.074,
+     -0.069,
+     0.064
+    ],
+    "bbox_max": [
+     0.003,
+     0.071,
+     0.156
+    ],
+    "materials": [
+     {
+      "name": "CanopyB_PBR",
+      "textures": [
+       {
+        "image": "TPTree_CanopyB_albedo",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Base Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_CanopyB_albedo.png"
+       },
+       {
+        "image": "TPTree_CanopyB_normal",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_CanopyB_normal.png"
+       },
+       {
+        "image": "TPTree_CanopyB_rough",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Roughness"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_CanopyB_rough.png"
+       }
+      ]
+     }
+    ]
+   },
+   "TP": {
+    "tris": 7880,
+    "verts": 7808,
+    "uv_layers": 1,
+    "location": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "bbox_min": [
+     -0.068,
+     -0.06,
+     -0.0
+    ],
+    "bbox_max": [
+     0.065,
+     0.066,
+     0.158
+    ],
+    "materials": [
+     {
+      "name": "TP_PBR",
+      "textures": [
+       {
+        "image": "TPTree_TP_albedo",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Base Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_TP_albedo.png"
+       },
+       {
+        "image": "TPTree_TP_normal",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_TP_normal.png"
+       },
+       {
+        "image": "TPTree_TP_rough",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Roughness"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_TP_rough.png"
+       }
+      ]
+     }
+    ]
+   },
+   "Trunk": {
+    "tris": 5200,
+    "verts": 3231,
+    "uv_layers": 1,
+    "location": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "bbox_min": [
+     -0.041,
+     -0.057,
+     -0.002
+    ],
+    "bbox_max": [
+     0.034,
+     0.062,
+     0.107
+    ],
+    "materials": [
+     {
+      "name": "Trunk_PBR",
+      "textures": [
+       {
+        "image": "TPTree_Trunk_albedo",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Base Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_Trunk_albedo.png"
+       },
+       {
+        "image": "TPTree_Trunk_normal",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_Trunk_normal.png"
+       },
+       {
+        "image": "TPTree_Trunk_rough",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Roughness"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPTree.fbm\\TPTree_Trunk_rough.png"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "total_tris": 29678,
+  "bbox_blender_min": [
+   -0.074,
+   -0.069,
+   -0.002
+  ],
+  "bbox_blender_max": [
+   0.069,
+   0.073,
+   0.158
+  ],
+  "size_roblox_XYZ": [
+   0.14,
+   0.16,
+   0.14
+  ]
+ },
+ "C:/cdimp/Halloween_TPBush.fbx": {
+  "objects": {
+   "Canopy": {
+    "tris": 7299,
+    "verts": 3686,
+    "uv_layers": 1,
+    "location": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "bbox_min": [
+     -0.027,
+     -0.028,
+     0.001
+    ],
+    "bbox_max": [
+     0.028,
+     0.027,
+     0.047
+    ],
+    "materials": [
+     {
+      "name": "Canopy_PBR",
+      "textures": [
+       {
+        "image": "TPBush_Canopy_albedo",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Base Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPBush.fbm\\TPBush_Canopy_albedo.png"
+       },
+       {
+        "image": "TPBush_Canopy_normal",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPBush.fbm\\TPBush_Canopy_normal.png"
+       },
+       {
+        "image": "TPBush_Canopy_rough",
+        "size": [
+         1024,
+         1024
+        ],
+        "to": [
+         "Roughness"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPBush.fbm\\TPBush_Canopy_rough.png"
+       }
+      ]
+     }
+    ]
+   },
+   "TP": {
+    "tris": 2572,
+    "verts": 2536,
+    "uv_layers": 1,
+    "location": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "bbox_min": [
+     -0.027,
+     -0.037,
+     -0.001
+    ],
+    "bbox_max": [
+     0.025,
+     0.028,
+     0.047
+    ],
+    "materials": [
+     {
+      "name": "TP_PBR",
+      "textures": [
+       {
+        "image": "TPBush_TP_albedo",
+        "size": [
+         512,
+         512
+        ],
+        "to": [
+         "Base Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPBush.fbm\\TPBush_TP_albedo.png"
+       },
+       {
+        "image": "TPBush_TP_normal",
+        "size": [
+         512,
+         512
+        ],
+        "to": [
+         "Color"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPBush.fbm\\TPBush_TP_normal.png"
+       },
+       {
+        "image": "TPBush_TP_rough",
+        "size": [
+         512,
+         512
+        ],
+        "to": [
+         "Roughness"
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_TPBush.fbm\\TPBush_TP_rough.png"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "total_tris": 9871,
+  "bbox_blender_min": [
+   -0.027,
+   -0.037,
+   -0.001
+  ],
+  "bbox_blender_max": [
+   0.028,
+   0.028,
+   0.047
+  ],
+  "size_roblox_XYZ": [
+   0.06,
+   0.05,
+   0.06
+  ]
+ }
+}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

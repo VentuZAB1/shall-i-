@@ -1,0 +1,848 @@
+{
+ "fbx": "src/Halloween_DeadTree.fbx",
+ "kb": 11756.9,
+ "raw_import_size_blender": [
+  0.1329,
+  0.1308,
+  0.1624
+ ],
+ "raw_object_scales": {
+  "DeadTree_Branches": [
+   0.01,
+   0.01,
+   0.01
+  ],
+  "DeadTree_Limbs": [
+   0.01,
+   0.01,
+   0.01
+  ],
+  "DeadTree_Trunk": [
+   0.01,
+   0.01,
+   0.01
+  ],
+  "DeadTree_Web": [
+   0.01,
+   0.01,
+   0.01
+  ],
+  "DeadTree_WebSilk": [
+   0.01,
+   0.01,
+   0.01
+  ]
+ },
+ "applied_scale": 100.0,
+ "objects": [
+  {
+   "name": "DeadTree_Branches",
+   "tris": 6418,
+   "verts": 3926,
+   "bbox_roblox_size": [
+    13.285,
+    11.504,
+    13.078
+   ],
+   "min_blender": [
+    -6.142,
+    -6.942,
+    4.487
+   ],
+   "max_blender": [
+    7.143,
+    6.136,
+    15.991
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.0968,
+   "uv_aniso_area_gt3": 0.004,
+   "uv_flipped_area": 0.0,
+   "images": [
+    {
+     "name": "DeadTree_Branches_albedo",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "DeadTree_Branches_PBR",
+     "surface_mean_srgb255": [
+      88,
+      80,
+      65
+     ],
+     "surface_mean_sat": 0.268,
+     "surface_lum_p5_p50_p95": [
+      0.185,
+      0.315,
+      0.454
+     ],
+     "surface_area_lum_lt_0.06": 0.0,
+     "surface_alpha_lt_0.99_area": 0.0,
+     "surface_alpha_mean": 1.0,
+     "px_per_stud_p5_p50_p95": [
+      102.4,
+      120.5,
+      151.9
+     ]
+    },
+    {
+     "name": "DeadTree_Branches_normal",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Color@NORMAL_MAP"
+     ],
+     "material": "DeadTree_Branches_PBR"
+    },
+    {
+     "name": "DeadTree_Branches_rough",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Roughness@BSDF_PRINCIPLED"
+     ],
+     "material": "DeadTree_Branches_PBR"
+    }
+   ]
+  },
+  {
+   "name": "DeadTree_Limbs",
+   "tris": 6167,
+   "verts": 3162,
+   "bbox_roblox_size": [
+    11.287,
+    6.205,
+    10.515
+   ],
+   "min_blender": [
+    -5.356,
+    -4.719,
+    6.181
+   ],
+   "max_blender": [
+    5.931,
+    5.796,
+    12.386
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.0115,
+   "uv_aniso_area_gt3": 0.0011,
+   "uv_flipped_area": 0.0,
+   "images": [
+    {
+     "name": "DeadTree_Limbs_albedo",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "DeadTree_Limbs_PBR",
+     "surface_mean_srgb255": [
+      95,
+      88,
+      72
+     ],
+     "surface_mean_sat": 0.25,
+     "surface_lum_p5_p50_p95": [
+      0.188,
+      0.348,
+      0.515
+     ],
+     "surface_area_lum_lt_0.06": 0.0,
+     "surface_alpha_lt_0.99_area": 0.0,
+     "surface_alpha_mean": 1.0,
+     "px_per_stud_p5_p50_p95": [
+      92.9,
+      108.2,
+      122.1
+     ]
+    },
+    {
+     "name": "DeadTree_Limbs_normal",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Color@NORMAL_MAP"
+     ],
+     "material": "DeadTree_Limbs_PBR"
+    },
+    {
+     "name": "DeadTree_Limbs_rough",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Roughness@BSDF_PRINCIPLED"
+     ],
+     "material": "DeadTree_Limbs_PBR"
+    }
+   ]
+  },
+  {
+   "name": "DeadTree_Trunk",
+   "tris": 7630,
+   "verts": 3889,
+   "bbox_roblox_size": [
+    6.728,
+    7.022,
+    9.638
+   ],
+   "min_blender": [
+    -2.584,
+    -6.571,
+    -0.25
+   ],
+   "max_blender": [
+    4.144,
+    3.067,
+    6.772
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.0,
+   "uv_aniso_area_gt3": 0.0,
+   "uv_flipped_area": 0.0,
+   "images": [
+    {
+     "name": "DeadTree_Trunk_albedo",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "DeadTree_Trunk_PBR",
+     "surface_mean_srgb255": [
+      85,
+      78,
+      63
+     ],
+     "surface_mean_sat": 0.279,
+     "surface_lum_p5_p50_p95": [
+      0.157,
+      0.303,
+      0.473
+     ],
+     "surface_area_lum_lt_0.06": 0.034,
+     "surface_alpha_lt_0.99_area": 0.0,
+     "surface_alpha_mean": 1.0,
+     "px_per_stud_p5_p50_p95": [
+      4.4,
+      72.1,
+      78.4
+     ]
+    },
+    {
+     "name": "DeadTree_Trunk_normal",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Color@NORMAL_MAP"
+     ],
+     "material": "DeadTree_Trunk_PBR"
+    },
+    {
+     "name": "DeadTree_Trunk_rough",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Roughness@BSDF_PRINCIPLED"
+     ],
+     "material": "DeadTree_Trunk_PBR"
+    }
+   ]
+  },
+  {
+   "name": "DeadTree_Web",
+   "tris": 2972,
+   "verts": 2000,
+   "bbox_roblox_size": [
+    2.639,
+    7.292,
+    5.627
+   ],
+   "min_blender": [
+    -1.292,
+    -1.706,
+    6.354
+   ],
+   "max_blender": [
+    1.347,
+    3.921,
+    13.647
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.5407,
+   "uv_aniso_area_gt3": 0.3196,
+   "uv_flipped_area": 0.5035,
+   "images": [
+    {
+     "name": "DeadTree_Web_albedo",
+     "size": [
+      256,
+      256
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "DeadTree_WebMat",
+     "surface_mean_srgb255": [
+      220,
+      219,
+      219
+     ],
+     "surface_mean_sat": 0.034,
+     "surface_lum_p5_p50_p95": [
+      0.755,
+      0.897,
+      0.945
+     ],
+     "surface_area_lum_lt_0.06": 0.0,
+     "surface_alpha_lt_0.99_area": 0.0,
+     "surface_alpha_mean": 1.0,
+     "px_per_stud_p5_p50_p95": [
+      10.6,
+      31.6,
+      43.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "DeadTree_WebSilk",
+   "tris": 564,
+   "verts": 406,
+   "bbox_roblox_size": [
+    2.251,
+    6.968,
+    4.912
+   ],
+   "min_blender": [
+    -1.148,
+    -1.373,
+    6.537
+   ],
+   "max_blender": [
+    1.103,
+    3.539,
+    13.505
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.9801,
+   "uv_aniso_area_gt3": 0.5877,
+   "uv_flipped_area": 0.4998,
+   "images": [
+    {
+     "name": "DeadTree_WebSilk_albedo",
+     "size": [
+      512,
+      512
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 0.0,
+     "alpha_mean": 0.345,
+     "alpha_lt099": 0.8752,
+     "alpha_lt05": 0.7404,
+     "alpha_unique_levels": 256,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "DeadTree_SilkMat",
+     "surface_mean_srgb255": [
+      226,
+      222,
+      215
+     ],
+     "surface_mean_sat": 0.047,
+     "surface_lum_p5_p50_p95": [
+      0.79,
+      0.883,
+      0.93
+     ],
+     "surface_area_lum_lt_0.06": 0.0,
+     "surface_alpha_lt_0.99_area": 0.8385,
+     "surface_alpha_mean": 0.416,
+     "px_per_stud_p5_p50_p95": [
+      145.3,
+      161.8,
+      468.8
+     ]
+    },
+    {
+     "name": "DeadTree_WebSilk_albedo.002",
+     "size": [
+      512,
+      512
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 0.0,
+     "alpha_mean": 0.345,
+     "alpha_lt099": 0.8752,
+     "alpha_lt05": 0.7404,
+     "alpha_unique_levels": 256,
+     "to": [
+      "Alpha@BSDF_PRINCIPLED"
+     ],
+     "material": "DeadTree_SilkMat"
+    }
+   ]
+  }
+ ],
+ "total_tris": 23751,
+ "bbox_blender_min": [
+  -6.142,
+  -6.942,
+  -0.25
+ ],
+ "bbox_blender_max": [
+  7.143,
+  6.136,
+  15.991
+ ],
+ "size_roblox_XYZ": [
+  13.29,
+  16.24,
+  13.08
+ ],
+ "lowest_z": -0.25,
+ "verts_below_-0.3": 0,
+ "trunk_base_centroid_xy": [
+  0.135,
+  -0.012
+ ],
+ "trunk_z1.5_centroid_xy": [
+  0.095,
+  -0.212
+ ],
+ "trunk_z3_centroid_xy": [
+  -0.592,
+  -0.705
+ ],
+ "trunk_profile_note": "az 270 = Blender -Y = Roblox +Z (front); az 90 = back; 0 = +X",
+ "trunk_profile": {
+  "1.6": {
+   "centre": [
+    0.15,
+    -0.26
+   ],
+   "median_r": 1.07,
+   "min_r": 0.01,
+   "min_az_deg": 298,
+   "deep_az_deg": [
+    284,
+    286,
+    288,
+    290,
+    292,
+    294,
+    296,
+    298,
+    300,
+    302,
+    304,
+    306,
+    308,
+    310
+   ]
+  },
+  "1.97": {
+   "centre": [
+    0.17,
+    -0.34
+   ],
+   "median_r": 0.95,
+   "min_r": -0.08,
+   "min_az_deg": 320,
+   "deep_az_deg": [
+    278,
+    280,
+    282,
+    284,
+    286,
+    288,
+    290,
+    292,
+    294,
+    296,
+    298,
+    300,
+    302,
+    304,
+    306,
+    308,
+    310,
+    312,
+    314,
+    316,
+    318,
+    320
+   ]
+  },
+  "2.5": {
+   "centre": [
+    0.32,
+    -0.68
+   ],
+   "median_r": 0.86,
+   "min_r": -0.46,
+   "min_az_deg": 280,
+   "deep_az_deg": [
+    280,
+    282,
+    284,
+    286,
+    288,
+    290,
+    292,
+    294,
+    296,
+    298,
+    300,
+    302,
+    304,
+    306,
+    308,
+    310,
+    312,
+    314,
+    316,
+    318
+   ]
+  },
+  "3.0": {
+   "centre": [
+    -0.48,
+    -0.73
+   ],
+   "median_r": 0.63,
+   "min_r": 0.25,
+   "min_az_deg": 250,
+   "deep_az_deg": [
+    234,
+    236,
+    238,
+    240,
+    242,
+    244,
+    246,
+    248,
+    250,
+    252,
+    254,
+    256,
+    258,
+    260,
+    262,
+    264,
+    266,
+    268
+   ]
+  },
+  "3.51": {
+   "centre": [
+    0.26,
+    -0.91
+   ],
+   "median_r": 0.84,
+   "min_r": 0.45,
+   "min_az_deg": 252,
+   "deep_az_deg": [
+    232,
+    234,
+    236,
+    238,
+    240,
+    242,
+    244,
+    246,
+    248,
+    250,
+    252,
+    254,
+    256,
+    258,
+    260,
+    262,
+    264,
+    266,
+    268,
+    270,
+    272,
+    274
+   ]
+  },
+  "4.35": {
+   "centre": [
+    0.87,
+    -1.56
+   ],
+   "median_r": 0.22,
+   "min_r": 0.08,
+   "min_az_deg": 62,
+   "deep_az_deg": []
+  },
+  "4.95": {
+   "centre": [
+    1.58,
+    -2.41
+   ],
+   "median_r": 1.75,
+   "min_r": -1.62,
+   "min_az_deg": 148,
+   "deep_az_deg": [
+    88,
+    90,
+    92,
+    94,
+    96,
+    98,
+    100,
+    102,
+    104,
+    106,
+    108,
+    148,
+    268,
+    270,
+    272,
+    274,
+    276,
+    278,
+    280,
+    282,
+    284,
+    286,
+    288
+   ]
+  },
+  "5.6": {
+   "centre": [
+    0.52,
+    -1.02
+   ],
+   "median_r": 1.36,
+   "min_r": -0.95,
+   "min_az_deg": 230,
+   "deep_az_deg": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    196,
+    230,
+    232,
+    234,
+    236,
+    238,
+    240,
+    242,
+    244,
+    246,
+    248,
+    250,
+    252,
+    254,
+    256,
+    258,
+    260,
+    262,
+    264,
+    266,
+    268,
+    270,
+    272,
+    274,
+    276,
+    278,
+    280,
+    282,
+    284,
+    286,
+    288,
+    290,
+    292,
+    294,
+    296,
+    308,
+    310,
+    312,
+    314,
+    316,
+    318,
+    320,
+    322,
+    324,
+    326,
+    328,
+    330,
+    332,
+    334,
+    336,
+    338,
+    340,
+    342,
+    344,
+    346,
+    348,
+    350,
+    352,
+    354,
+    356,
+    358
+   ]
+  }
+ },
+ "spider_points_check": [
+  {
+   "roblox": [
+    -5.46,
+    8.91,
+    -5.65
+   ],
+   "branch_above_dist": 0.001,
+   "free_drop": "clear to ground (8.91)",
+   "ring_rays_blocked_of_12": 0
+  },
+  {
+   "roblox": [
+    5.95,
+    10.14,
+    -1.77
+   ],
+   "branch_above_dist": 0.017,
+   "free_drop": "clear to ground (10.14)",
+   "ring_rays_blocked_of_12": 0
+  },
+  {
+   "roblox": [
+    -3.53,
+    11.22,
+    4.58
+   ],
+   "branch_above_dist": 0.015,
+   "free_drop": "clear to ground (11.22)",
+   "ring_rays_blocked_of_12": 1
+  }
+ ]
+}

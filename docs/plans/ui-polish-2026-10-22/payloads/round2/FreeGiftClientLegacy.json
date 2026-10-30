@@ -1,0 +1,14 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.FreeGiftClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "new(\"ImageLabel\", {Name = \"Icon\", Image = GIFT_ICON, ScaleType = Enum.ScaleType.Fit, BackgroundTransparency = 1, Size = UDim2.fromOffset(46, 46),\n\tPosition = UDim2.fromOffset(42, 29), AnchorPoint = Vector2.new(0.5, 0.5), ZIndex = 6}, header)",
+   "new_string": "new(\"ImageLabel\", {Name = \"Icon\", Image = GIFT_ICON, ScaleType = Enum.ScaleType.Fit, BackgroundTransparency = 1, Size = UDim2.fromOffset(42, 42),\n\tPosition = UDim2.fromOffset(40, 30), AnchorPoint = Vector2.new(0.5, 0.5), ZIndex = 6}, header) -- (2026-10-22 UI polish, M1: 9 px inside, was 6)"
+  },
+  {
+   "old_string": "grad(tag, seq(Color3.fromRGB(255, 110, 110), Color3.fromRGB(230, 25, 45)))",
+   "new_string": "grad(tag, seq(Color3.fromRGB(255, 235, 240), Color3.fromRGB(255, 190, 205))) -- (2026-10-22 UI polish, M6: the red was 1.6:1 on the slate)"
+  }
+ ]
+}

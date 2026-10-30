@@ -1,0 +1,4 @@
+PermafrostTitan {'gold_px_portrait_64': 37, 'gold_px_game_64': 24, 'gold_px_brief_counter': [59, 27]}
+{"side": {"MAUVE": 64.4, "PLUM": 12.1, "ICE_W": 11.7, "JOINT_D": 7.7, "GOLD": 1.8, "GOLD_D": 0.1, "BLACK": 2.2, "_edge_px_skipped_pct": 3.4}, "tq": {"MAUVE": 63.0, "PLUM": 14.3, "ICE_W": 9.2, "JOINT_D": 7.5, "GOLD": 3.7, "GOLD_D": 0.6, "BLACK": 1.6, "_edge_px_skipped_pct": 2.8}, "game": {"MAUVE": 58.9, "PLUM": 18.0, "ICE_W": 11.5, "JOINT_D": 7.9, "GOLD": 1.8, "GOLD_D": 0.4, "BLACK": 1.6, "_edge_px_skipped_pct": 2.8}}
+
+HEADLESS_RESULT {"tris": 7552, "size": [1.716, 0.835, 2.029], "TH": 0.652, "PITCH": 0.0455, "H": 2.029, "lowest": 0.0, "CORE": [-0.0, -0.254, 1.398], "HERO": [-0.0, -0.309, 1.634], "BACK": [0.0, 0.368, 1.691]}

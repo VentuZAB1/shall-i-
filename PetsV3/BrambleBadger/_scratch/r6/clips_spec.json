@@ -1,0 +1,6 @@
+{"picks": [["walk", 0], ["walk", 3], ["walk", 6], ["walk", 9], ["walk", 12], ["walk", 15], ["walk", 18], ["walk", 21], ["walk", 24], ["walk", 27],
+           ["act_burrow", 5], ["act_burrow", 20], ["act_burrow", 44], ["act_burrow", 64], ["act_burrow", 68], ["act_burrow", 80],
+           ["roar", 12], ["roar", 30], ["roar", 59],
+           ["idle", 0], ["idle", 36], ["idle", 50], ["idle", 70], ["idle", 114]],
+ "target": [0, -0.27, 0.30], "res": 360, "prefix": "cl",
+ "views": {"game": [[0.45, 1.0, 0.85], 3.3], "side": [[1, 0, 0.1], 3.4], "tq": [[0.8, -1, 0.35], 3.3]}, "out": "C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/PetsV3/BrambleBadger/_scratch/r6/cl"}

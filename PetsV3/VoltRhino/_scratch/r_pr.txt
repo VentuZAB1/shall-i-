@@ -1,0 +1,4 @@
+PROBE {"54": {"bones": {"Horn_Tip": [-0.0, -1.93, 0.004]}, "low": {"Head": -0.006, "Head_noHorn": 0.048, "Jaw": 0.18, "Chest": 0.528}}, "55": {"bones": {"Horn_Tip": [-0.0, -1.93, 0.004]}, "low": {"Head": -0.006, "Head_noHorn": 0.048, "Jaw": 0.18, "Chest": 0.528}}, "57": {"bones": {"Horn_Tip": [-0.0, -2.055, 0.241]}, "low": {"Head_noHorn": 0.119, "Head": 0.194, "Jaw": 0.252, "Chest": 0.607}}, "58": {"bones": {"Horn_Tip": [-0.0, -2.142, 0.435]}, "low": {"Head_noHorn": 0.142, "Jaw": 0.266, "Head": 0.308, "Chest": 0.605}}, "60": {"bones": {"Horn_Tip": [-0.0, -2.19, 1.14]}, "low": {"Head_noHorn": 0.45, "Jaw": 0.51, "Chest": 0.605, "Spine": 0.677}}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

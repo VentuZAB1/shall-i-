@@ -1,0 +1,273 @@
+{
+ "idle": {
+  "frames": 120,
+  "loop": true,
+  "swing_max_all": [
+   6.59,
+   "Ear_L",
+   40
+  ],
+  "swing_max_limb": [
+   0.44,
+   "Leg_FL",
+   2
+  ],
+  "swing_local_max": [
+   6.5,
+   "Ear_L",
+   40
+  ],
+  "swing_local_max_limb": [
+   0.82,
+   "Shin_FL",
+   2
+  ],
+  "quat_flips_keys": 0,
+  "quat_flips_sampled": 0,
+  "chest_vs_spine_max": 0.6,
+  "neck_max": 3.5,
+  "head_pitch_up_world_max": 8.0,
+  "head_yaw_rate_max": [
+   0.0,
+   53
+  ],
+  "end": {
+   "f119_vs_f0": [
+    0.793,
+    0.0005,
+    "Shin_FR"
+   ],
+   "f119_vs_idle_f0": [
+    0.793,
+    0.0005,
+    "Shin_FR"
+   ],
+   "f119_vs_bind": {
+    "max_rot_deg": 1.5,
+    "max_loc": 0.0005,
+    "worst_bone": "Jaw"
+   },
+   "f120_vs_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f120_vs_idle_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f120_vs_bind": {
+    "max_rot_deg": 1.5,
+    "max_loc": 0.0,
+    "worst_bone": "Jaw"
+   }
+  }
+ },
+ "walk": {
+  "frames": 30,
+  "loop": true,
+  "swing_max_all": [
+   6.35,
+   "Leg_FL",
+   26
+  ],
+  "swing_max_limb": [
+   6.35,
+   "Leg_FL",
+   26
+  ],
+  "swing_local_max": [
+   8.82,
+   "Foot_FL",
+   19
+  ],
+  "swing_local_max_limb": [
+   8.82,
+   "Foot_FL",
+   19
+  ],
+  "quat_flips_keys": 0,
+  "quat_flips_sampled": 0,
+  "chest_vs_spine_max": 2.92,
+  "neck_max": 3.98,
+  "head_pitch_up_world_max": 0.0,
+  "head_yaw_rate_max": [
+   0.98,
+   21
+  ],
+  "end": {
+   "f29_vs_f0": [
+    3.512,
+    0.0006,
+    "Foot_FR"
+   ],
+   "f29_vs_idle_f0": [
+    11.473,
+    0.0206,
+    "Leg_FL"
+   ],
+   "f29_vs_bind": {
+    "max_rot_deg": 21.29,
+    "max_loc": 0.0206,
+    "worst_bone": "Leg_BR"
+   },
+   "f30_vs_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f30_vs_idle_f0": [
+    12.446,
+    0.02,
+    "Leg_FL"
+   ],
+   "f30_vs_bind": {
+    "max_rot_deg": 20.974,
+    "max_loc": 0.02,
+    "worst_bone": "Leg_BR"
+   }
+  }
+ },
+ "roar": {
+  "frames": 60,
+  "loop": false,
+  "swing_max_all": [
+   5.15,
+   "Jaw",
+   50
+  ],
+  "swing_max_limb": [
+   2.49,
+   "Leg_FL",
+   19
+  ],
+  "swing_local_max": [
+   3.56,
+   "Ear_L",
+   54
+  ],
+  "swing_local_max_limb": [
+   3.19,
+   "Shin_FL",
+   19
+  ],
+  "quat_flips_keys": 0,
+  "quat_flips_sampled": 0,
+  "chest_vs_spine_max": 1.5,
+  "neck_max": 4.0,
+  "head_pitch_up_world_max": 0.0,
+  "head_yaw_rate_max": [
+   0.0,
+   17
+  ],
+  "end": {
+   "f59_vs_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f59_vs_idle_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f59_vs_bind": {
+    "max_rot_deg": 1.5,
+    "max_loc": 0.0,
+    "worst_bone": "Jaw"
+   },
+   "f60_vs_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f60_vs_idle_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f60_vs_bind": {
+    "max_rot_deg": 1.5,
+    "max_loc": 0.0,
+    "worst_bone": "Jaw"
+   }
+  }
+ },
+ "act_smokecloak": {
+  "frames": 100,
+  "loop": false,
+  "swing_max_all": [
+   6.42,
+   "Mane1_L",
+   26
+  ],
+  "swing_max_limb": [
+   2.98,
+   "Leg_FL",
+   84
+  ],
+  "swing_local_max": [
+   6.38,
+   "Mane1_L",
+   25
+  ],
+  "swing_local_max_limb": [
+   5.54,
+   "Shin_FL",
+   84
+  ],
+  "quat_flips_keys": 0,
+  "quat_flips_sampled": 0,
+  "chest_vs_spine_max": 1.5,
+  "neck_max": 5.0,
+  "head_pitch_up_world_max": 3.5,
+  "head_yaw_rate_max": [
+   0.0,
+   13
+  ],
+  "end": {
+   "f99_vs_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f99_vs_idle_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f99_vs_bind": {
+    "max_rot_deg": 1.5,
+    "max_loc": 0.0,
+    "worst_bone": "Jaw"
+   },
+   "f100_vs_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f100_vs_idle_f0": [
+    0.0,
+    0.0,
+    "Tail4"
+   ],
+   "f100_vs_bind": {
+    "max_rot_deg": 1.5,
+    "max_loc": 0.0,
+    "worst_bone": "Jaw"
+   }
+  }
+ },
+ "_definitions": {
+  "swing_max_all / swing_max_limb": "[deg, bone, frame]: the largest change between two adjacent frames (f-1 -> f, step 1) of a bone's ARMATURE-SPACE orientation (pose_bone.matrix rotation, so it includes the parents' motion = the limb as seen in the world), over every bone / over Leg_*, Shin_*, Foot_*, Claw* bones. Limit ~60 deg.",
+  "swing_local_max": "[deg, bone, frame]: the same, but of the bone's LOCAL rotation (pose_bone.rotation_quaternion, relative to its parent) - comparable to decoding the raw keyed / exported bone quaternions.",
+  "quat_flips_keys": "consecutive rotation_quaternion keys of one bone with a 4D dot product < 0 (a sign flip), all bones",
+  "quat_flips_sampled": "the same test on the evaluated local quaternion at every frame",
+  "chest_vs_spine_max": "largest rotation angle of the Chest bone's local rotation (= the bend between chest and spine)",
+  "neck_max": "largest rotation angle of the Neck bone's local rotation",
+  "head_pitch_up_world_max": "largest rise (deg) of the Head bone's direction above its rest elevation, world space",
+  "head_yaw_rate_max": "[deg, frame]: largest change of the Head bone's world heading between adjacent frames",
+  "end": "fN_vs_f0 / fN_vs_idle_f0 = [max local rotation diff deg, max location diff, bone] of the last frames vs the clip's own frame 0 / vs the idle's frame 0; fN_vs_bind = vs the bind pose (the planted-leg solve sits ~4.6 deg off bind)"
+ }
+}

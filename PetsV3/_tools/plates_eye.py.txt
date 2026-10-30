@@ -1,0 +1,86 @@
+    def _studs_for(self, blk, bm, L):
+        """Steal-an-Egg surface plates: a staggered mix of 1x1 / 2x1 / 1x2 / 2x2 raised plates with narrow grooves,
+        coverage STYLE plate_cov (x blk.density / 0.5), each plate a touch lighter or darker than its block"""
+        keys = blk.studs if blk.studs is not None else ["+x", "-x", "+y", "-y", "+z"]
+        others = [o for o in self.items if o is not blk and not o.glow]
+        cell = self.cell
+        cov = min(0.95, STYLE["plate_cov"] * blk.density / 0.5)
+        gap = STYLE["plate_gap"] * cell
+        for key in keys:
+            P = blk.face_corners(key)       # p0 (u-,v-), p1 (u+,v-), p2 (u+,v+), p3 (u-,v+)
+            n = (P[1] - P[0]).cross(P[3] - P[0])
+            if n.length < 1e-9:
+                continue
+            n.normalize()
+            ctr = sum(P, Vector()) / 4
+            if (ctr - blk.c).dot(n) < 0:
+                n = -n
+            lu = ((P[1] - P[0]).length + (P[2] - P[3]).length) / 2
+            lv = ((P[3] - P[0]).length + (P[2] - P[1]).length) / 2
+            mn = min(blk.h.x, blk.h.y, blk.h.z)
+            rr = STYLE["round"] if blk.rnd is None else blk.rnd
+            margin = max(blk.bevel, min(mn * rr, mn * 0.45)) + cell * 0.08
+            nu, nv = int((lu - 2 * margin) / cell), int((lv - 2 * margin) / cell)
+            if nu < 1 or nv < 1:
+                continue
+            used = set()
+            cells = [(i, j) for i in range(nu) for j in range(nv)]
+            self.rnd.shuffle(cells)
+            for i, j in cells:
+                if (i, j) in used or self.rnd.random() > cov:
+                    continue
+                r = self.rnd.random()
+                w, hgt = (2, 2) if r < 0.14 else (2, 1) if r < 0.40 else (1, 2) if r < 0.56 else (1, 1)
+                if i + w > nu or j + hgt > nv or any((i + di, j + dj) in used for di in range(w) for dj in range(hgt)):
+                    w, hgt = 1, 1
+                for di in range(w):
+                    for dj in range(hgt):
+                        used.add((i + di, j + dj))
+                s0 = (margin + (i + w / 2) * cell + (lu - 2 * margin - nu * cell) / 2) / lu
+                t0 = (margin + (j + hgt / 2) * cell + (lv - 2 * margin - nv * cell) / 2) / lv
+                p = (P[0].lerp(P[1], s0)).lerp(P[3].lerp(P[2], s0), t0)
+                u = (P[1] - P[0]).lerp(P[2] - P[3], t0).normalized()
+                v = n.cross(u).normalized()
+                a = (cell * w - gap) / 2
+                b = (cell * hgt - gap) / 2
+                if any(o.contains(p + n * 0.02 + u * su * a + v * sv * b, pad=0.01) for o in others
+                       for su, sv in ((0, 0), (1, 1), (-1, -1), (1, -1), (-1, 1))):
+                    continue
+                jit = 1.0 + (self.rnd.random() * 2 - 1) * STYLE["plate_jit"]
+                col = tuple(min(1.0, ch * jit) for ch in blk.color[:3]) + tuple(blk.color[3:])
+                _stud(bm, L, p, u, v, n, a, b, self.stud_h * STYLE["plate_h"] * (1.0 + 0.2 * (w + hgt - 2)), col)
+                self.stud_count += 1
+
+    def eye(self, c, normal, hw, hh, iris, bone="Head", up=(0, 0, 1), pupil=(14, 14, 26), outline=(14, 14, 26),
+            shine=(255, 255, 255), look=(0.0, 0.0), pupil_frac=0.56, slit=False, border=0.16, t=None, white=None):
+        """glossy cartoon eye on a surface: dark outline plate, (optional white sclera) iris, pupil, two highlight
+        squares. c = centre on the surface, normal = outward, hw / hh = iris half width / height, look = pupil shift"""
+        n = Vector(normal).normalized()
+        z = Vector(up)
+        z = (z - n * z.dot(n)).normalized()
+        y = z.cross(n)
+        R = Matrix((n, y, z)).transposed()
+        c = Vector(c)
+        t = t or max(0.006, min(hw, hh) * 0.09)
+        kw = dict(studs=[], R=R, rnd=0.0)
+        out = [self.add(c, (t, hw * (1 + border), hh * (1 + border)), outline, bone, bevel=min(hw, hh) * 0.18, **kw)]
+        lay = c + n * t * 1.1
+        if white is not None:      # white sclera with a smaller coloured iris
+            out.append(self.add(lay, (t, hw, hh), white, bone, bevel=min(hw, hh) * 0.15, **kw))
+            lay = lay + n * t * 1.1 + y * look[0] * hw * 0.25 + z * look[1] * hh * 0.2
+            hw2, hh2 = hw * 0.7, hh * 0.78
+            out.append(self.add(lay, (t, hw2, hh2), iris, bone, bevel=min(hw2, hh2) * 0.2, **kw))
+        else:
+            hw2, hh2 = hw, hh
+            out.append(self.add(lay, (t, hw2, hh2), iris, bone, bevel=min(hw2, hh2) * 0.15, **kw))
+        lay = lay + n * t * 1.1
+        pc = lay + y * look[0] * hw2 * 0.3 + z * look[1] * hh2 * 0.25
+        pw = hw2 * (0.2 if slit else pupil_frac)
+        ph = hh2 * (0.9 if slit else pupil_frac * 1.08)
+        out.append(self.add(pc, (t, pw, ph), pupil, bone, bevel=min(pw, ph) * 0.2, **kw))
+        lay = lay + n * t * 1.1
+        s1 = min(hw2, hh2) * 0.26
+        out.append(self.add(lay + y * hw2 * 0.38 + z * hh2 * 0.4, (t * 0.7, s1, s1), shine, bone, bevel=s1 * 0.2, **kw))
+        s2 = s1 * 0.5
+        out.append(self.add(lay - y * hw2 * 0.3 - z * hh2 * 0.42, (t * 0.7, s2, s2), shine, bone, bevel=s2 * 0.2, **kw))
+        return out

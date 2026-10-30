@@ -1,0 +1,158 @@
+{
+ "written": "2026-10-27 23:05",
+ "palette": {
+  "PLUM_OBS": [
+   166,
+   66,
+   50
+  ],
+  "PALE_S": [
+   222,
+   194,
+   158
+  ],
+  "ROSE (accent)": [
+   20,
+   92,
+   250
+  ],
+  "CROWN_IN": [
+   20,
+   92,
+   250
+  ],
+  "LAVA (cores)": [
+   226,
+   240,
+   255
+  ],
+  "OBS_D": [
+   62,
+   50,
+   64
+  ],
+  "GOLD": [
+   255,
+   196,
+   50
+  ]
+ },
+ "step1": {
+  "collision_free": true,
+  "ground_min_z": {
+   "idle": [
+    -0.006,
+    120
+   ],
+   "walk": [
+    -0.006,
+    48
+   ],
+   "roar": [
+    -0.006,
+    66
+   ],
+   "act_molt": [
+    -0.006,
+    110
+   ]
+  },
+  "audit": {
+   "idle": {
+    "linear": 0,
+    "loop_pos": 0.0,
+    "loop_rot": 0.0
+   },
+   "walk": {
+    "linear": 0,
+    "loop_pos": 0.0,
+    "loop_rot": 0.0
+   },
+   "roar": {
+    "linear": 0
+   },
+   "act_molt": {
+    "linear": 0
+   }
+  },
+  "tris": 10852
+ },
+ "gold_px_64_kit_counter": {
+  "method": "_tools/game_icon.py, H 29-58, s>0.5, v>0.45",
+  "portrait": 26,
+  "game": 20
+ },
+ "gold_px_64_other_windows": {
+  "portrait": {
+   "kit_29-58_s.5_v.45": [
+    28,
+    13
+   ],
+   "review_38-48_s.6": [
+    6,
+    1
+   ],
+   "rendered_40-62_s.6_v.55": [
+    22,
+    7
+   ]
+  },
+  "game": {
+   "kit_29-58_s.5_v.45": [
+    20,
+    14
+   ],
+   "review_38-48_s.6": [
+    8,
+    1
+   ],
+   "rendered_40-62_s.6_v.55": [
+    8,
+    1
+   ]
+  }
+ },
+ "shares_method": "flat palette ID renders renders/flat_<view>.png (idle f0); every figure pixel (background max<6 excluded) -> nearest palette colour (the accent counts under CROWN_IN, same RGB as ROSE)",
+ "shares_pct": {
+  "side": {
+   "PLUM_OBS": 48.7,
+   "OBS_D": 22.6,
+   "PALE_S": 10.7,
+   "CROWN_IN": 6.2,
+   "LAVA": 3.8,
+   "GOLD": 2.0,
+   "GOLD_D": 0.5,
+   "BLACK": 3.9,
+   "IVORY": 0.3,
+   "MOUTH": 1.3,
+   "_edge_px_skipped_pct": 0.0
+  },
+  "tq": {
+   "PLUM_OBS": 40.3,
+   "OBS_D": 26.2,
+   "PALE_S": 12.2,
+   "CROWN_IN": 5.5,
+   "LAVA": 2.4,
+   "GOLD": 6.6,
+   "GOLD_D": 0.9,
+   "BLACK": 3.7,
+   "IVORY": 0.5,
+   "MOUTH": 1.7,
+   "_edge_px_skipped_pct": 0.0
+  },
+  "game": {
+   "PLUM_OBS": 41.9,
+   "OBS_D": 33.6,
+   "PALE_S": 2.1,
+   "CROWN_IN": 6.7,
+   "LAVA": 3.3,
+   "GOLD": 5.1,
+   "GOLD_D": 0.9,
+   "BLACK": 3.8,
+   "IVORY": 0.1,
+   "MOUTH": 2.4,
+   "_edge_px_skipped_pct": 0.0
+  }
+ },
+ "model": "HEADLESS_RESULT {\"tris\": 10852, \"size\": [1.017, 3.634, 2.26], \"TH\": 0.42, \"pitch\": 0.0482, \"H\": 2.254, \"lowest\": -0.006}"
+}

@@ -1,0 +1,9 @@
+FBX version: 7400
+LOOSE DeadTree_Limbs parts 4 sizes [1776, 1729, 1344, 1291]
+LOOSE    faces 1729 area 16.7966 centre blender (-2.12, -3.03, 8.98) extent (3.21, 4.02, 5.43) roblox (-2.12, 8.98, 3.03)
+LOOSE    faces 1344 area 12.6180 centre blender (-3.32, 3.91, 8.08) extent (4.11, 4.38, 2.92) roblox (-3.32, 8.08, -3.91)
+LOOSE    faces 1291 area 13.8843 centre blender (0.27, 1.20, 9.53) extent (1.62, 3.20, 6.08) roblox (0.27, 9.53, -1.20)
+LOOSE DeadTree_Trunk parts 1 sizes [7256]
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

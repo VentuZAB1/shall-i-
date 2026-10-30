@@ -1,0 +1,67 @@
+{
+ "written": "2026-10-27 22:38",
+ "palette": {
+  "PLUM_OBS": [
+   166,
+   66,
+   50
+  ],
+  "PALE_S": [
+   222,
+   194,
+   158
+  ],
+  "ROSE": [
+   255,
+   84,
+   48
+  ]
+ },
+ "method_gold": "_tools/game_icon.py (kit counter, 64 px icons): portrait = Index portrait raw, game = game-camera raw (idle f0)",
+ "gold_px_64": {
+  "portrait": 35,
+  "game": 20
+ },
+ "method_shares": "flat palette ID renders renders/flat_<view>.png (idle f0); every figure pixel (background max<6 excluded) -> nearest palette colour (PermafrostTitan/_scratch/shares_all.py)",
+ "shares_pct": {
+  "side": {
+   "PLUM_OBS": 48.9,
+   "OBS_D": 22.5,
+   "PALE_S": 10.3,
+   "ROSE": 6.4,
+   "LAVA": 3.4,
+   "GOLD": 1.9,
+   "GOLD_D": 0.6,
+   "BLACK": 3.8,
+   "IVORY": 0.3,
+   "MOUTH": 1.9,
+   "_edge_px_skipped_pct": 0.0
+  },
+  "tq": {
+   "PLUM_OBS": 41.4,
+   "OBS_D": 25.8,
+   "PALE_S": 11.6,
+   "ROSE": 5.3,
+   "LAVA": 2.4,
+   "GOLD": 6.1,
+   "GOLD_D": 1.1,
+   "BLACK": 3.8,
+   "IVORY": 0.4,
+   "MOUTH": 2.0,
+   "_edge_px_skipped_pct": 0.0
+  },
+  "game": {
+   "PLUM_OBS": 42.4,
+   "OBS_D": 34.1,
+   "PALE_S": 1.6,
+   "ROSE": 6.8,
+   "LAVA": 2.8,
+   "GOLD": 4.8,
+   "GOLD_D": 0.9,
+   "BLACK": 3.5,
+   "MOUTH": 3.0,
+   "_edge_px_skipped_pct": 0.0
+  }
+ },
+ "model": "HEADLESS_RESULT {\"tris\": 10852, \"size\": [1.015, 3.634, 2.239], \"TH\": 0.42, \"pitch\": 0.0477, \"H\": 2.232, \"lowest\": -0.006}"
+}

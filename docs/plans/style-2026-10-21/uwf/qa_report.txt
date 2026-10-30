@@ -1,0 +1,122 @@
+--- QA freegift pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 83% "ONE-TIME GIFT!"@16, 75% "x2 MONEY"@16, 75% "30 MIN EACH • USE ANYTIME!"@16, 75% "THE GAME PAGE!"@16, 72% "x2 HATCH"@16
+fill <= 83% everywhere
+view freegift dev pc: logical 560x460 scale 1.1800  window 661x543 at gui (cx 960.00, cy 511.00) left 629.6 (HUD clear 412.1)  right 1290.4 (tiles clear 1794.0)  min text 18.9 px ("ONE-TIME GIFT!")
+state join
+--- QA freegift_joined pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 83% "ONE-TIME GIFT!"@16, 75% "x2 MONEY"@16, 75% "30 MIN EACH • USE ANYTIME!"@16, 75% "THE GAME PAGE!"@16, 72% "x2 HATCH"@16
+fill <= 83% everywhere
+view freegift_joined dev pc: logical 560x460 scale 1.1800  window 661x543 at gui (cx 960.00, cy 511.00) left 629.6 (HUD clear 412.1)  right 1290.4 (tiles clear 1794.0)  min text 18.9 px ("ONE-TIME GIFT!")
+state joined
+--- QA freegift_claimed pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 83% "ONE-TIME GIFT!"@16, 75% "x2 MONEY"@16, 75% "30 MIN EACH • USE ANYTIME!"@16, 75% "THE GAME PAGE!"@16, 72% "x2 HATCH"@16
+fill <= 83% everywhere
+view freegift_claimed dev pc: logical 560x460 scale 1.1800  window 661x543 at gui (cx 960.00, cy 511.00) left 629.6 (HUD clear 412.1)  right 1290.4 (tiles clear 1794.0)  min text 18.9 px ("ONE-TIME GIFT!")
+state claimed
+--- QA freegift_refusal pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 83% "ONE-TIME GIFT!"@16, 81% "JOIN THE GROUP FIRST!"@17, 75% "x2 MONEY"@16, 75% "30 MIN EACH • USE ANYTIME!"@16, 75% "THE GAME PAGE!"@16
+fill <= 83% everywhere
+view freegift_refusal dev pc: logical 560x460 scale 1.1800  window 661x543 at gui (cx 960.00, cy 511.00) left 629.6 (HUD clear 412.1)  right 1290.4 (tiles clear 1794.0)  min text 18.9 px ("ONE-TIME GIFT!")
+state refusal
+--- QA welcome pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 55% "WELCOME BACK!"@26, 55% "WELCOME BACK!"@26, 52% "CLAIM!"@30, 49% "X"@21, 47% "OFFLINE EARNINGS"@26
+fill <= 83% everywhere
+view welcome dev pc: logical 540x430 scale 1.1800  window 637x507 at gui (cx 960.00, cy 511.00) left 641.4 (HUD clear 412.1)  right 1278.6 (tiles clear 1794.0)  min text 24.8 px ("X")
+state normal
+--- QA welcome_big pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 55% "WELCOME BACK!"@26, 55% "WELCOME BACK!"@26, 52% "CLAIM!"@30, 49% "X"@21, 47% "OFFLINE EARNINGS"@26
+fill <= 83% everywhere
+view welcome_big dev pc: logical 540x430 scale 1.1800  window 637x507 at gui (cx 960.00, cy 511.00) left 641.4 (HUD clear 412.1)  right 1278.6 (tiles clear 1794.0)  min text 24.8 px ("X")
+state big
+--- QA welcome_x5 pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 55% "WELCOME BACK!"@26, 55% "WELCOME BACK!"@26, 52% "CLAIM!"@30, 49% "X"@21, 47% "OFFLINE EARNINGS"@26
+fill <= 83% everywhere
+view welcome_x5 dev pc: logical 540x430 scale 1.1800  window 637x507 at gui (cx 960.00, cy 511.00) left 641.4 (HUD clear 412.1)  right 1278.6 (tiles clear 1794.0)  min text 24.8 px ("X")
+state x5
+--- QA welcome_refusal pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 82% "TEST SAVE ONLY"@26, 55% "WELCOME BACK!"@26, 55% "WELCOME BACK!"@26, 52% "CLAIM!"@30, 49% "X"@21
+fill <= 83% everywhere
+view welcome_refusal dev pc: logical 540x430 scale 1.1800  window 637x507 at gui (cx 960.00, cy 511.00) left 641.4 (HUD clear 412.1)  right 1278.6 (tiles clear 1794.0)  min text 24.8 px ("X")
+state refusal
+--- QA upgrades pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 76% "SURVIVE 1 WAVE HIT"@16, 72% "GRAB EGGS FASTER"@16, 70% "THUNDER"@16, 67% "LAUNCH FURTHER"@16, 64% "SLINGSHOT POWER"@22
+fill <= 83% everywhere
+view upgrades dev pc: logical 740x470 scale 1.4608  window 1081x687 at gui (cx 960.00, cy 511.00) left 419.5 (HUD clear 412.1)  right 1500.5 (tiles clear 1794.0)  min text 23.4 px ("LAUNCH FURTHER")
+state mid
+--- QA upgrades_free pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 76% "SURVIVE 1 WAVE HIT"@16, 72% "GRAB EGGS FASTER"@16, 67% "LAUNCH FURTHER"@16, 64% "SLINGSHOT POWER"@22, 64% "UPGRADES ARE YOURS FOREVER - EVEN AFTER A REBIRTH!"@16
+fill <= 83% everywhere
+view upgrades_free dev pc: logical 740x470 scale 1.4608  window 1081x687 at gui (cx 960.00, cy 511.00) left 419.5 (HUD clear 412.1)  right 1500.5 (tiles clear 1794.0)  min text 23.4 px ("LAUNCH FURTHER")
+guide bottom (screen) 205.5  window top (screen) 225.7  clear 20.2
+state free
+--- QA upgrades_step10 pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 76% "SURVIVE 1 WAVE HIT"@16, 72% "GRAB EGGS FASTER"@16, 67% "LAUNCH FURTHER"@16, 64% "SLINGSHOT POWER"@22, 64% "UPGRADES ARE YOURS FOREVER - EVEN AFTER A REBIRTH!"@16
+fill <= 83% everywhere
+view upgrades_step10 dev pc: logical 740x470 scale 1.4608  window 1081x687 at gui (cx 960.00, cy 511.00) left 419.5 (HUD clear 412.1)  right 1500.5 (tiles clear 1794.0)  min text 23.4 px ("LAUNCH FURTHER")
+guide bottom (screen) 205.5  window top (screen) 225.7  clear 20.2
+state step10
+--- QA upgrades_max pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 77% "CELESTIAL"@16, 76% "SURVIVE 1 WAVE HIT"@16, 72% "GRAB EGGS FASTER"@16, 67% "LAUNCH FURTHER"@16, 65% "REBIRTH 20"@18
+fill <= 83% everywhere
+view upgrades_max dev pc: logical 740x470 scale 1.4608  window 1081x687 at gui (cx 960.00, cy 511.00) left 419.5 (HUD clear 412.1)  right 1500.5 (tiles clear 1794.0)  min text 23.4 px ("LAUNCH FURTHER")
+state max
+--- QA upgrades_refusal pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 82% "NEED MORE $!"@16, 77% "CELESTIAL"@16, 76% "SURVIVE 1 WAVE HIT"@16, 72% "GRAB EGGS FASTER"@16, 67% "LAUNCH FURTHER"@16
+fill <= 83% everywhere
+view upgrades_refusal dev pc: logical 740x470 scale 1.4608  window 1081x687 at gui (cx 960.00, cy 511.00) left 419.5 (HUD clear 412.1)  right 1500.5 (tiles clear 1794.0)  min text 23.4 px ("LAUNCH FURTHER")
+state refusal
+--- QA sheet pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 82% "NEED MORE $!"@16, 76% "WELCOME BACK x5 (OWNER CALL)"@16, 62% "RAINBOW (X5_STYLE)"@16, 54% "TEST!"@20, 52% "FREE!"@26
+fill <= 83% everywhere
+view sheet dev pc: logical 740x470 scale 1.1800  window 873x555 at gui (cx 960.00, cy 511.00) left 523.4 (HUD clear 412.1)  right 1396.6 (tiles clear 1794.0)  min text 18.9 px ("UPGRADES $ BUY")
+--- QA freegift_joined phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 83% "ONE-TIME GIFT!"@16, 75% "x2 MONEY"@16, 75% "30 MIN EACH • USE ANYTIME!"@16, 75% "THE GAME PAGE!"@16, 72% "x2 HATCH"@16
+fill <= 83% everywhere
+view freegift_joined dev phone: logical 560x460 scale 0.7261  window 407x334 at gui (cx 366.00, cy 173.00) left 162.7 (HUD clear 144.3)  right 569.3 (tiles clear 674.7)  min text 11.6 px ("ONE-TIME GIFT!")
+state joined
+--- QA welcome phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 55% "WELCOME BACK!"@26, 55% "WELCOME BACK!"@26, 52% "CLAIM!"@30, 49% "X"@21, 47% "OFFLINE EARNINGS"@26
+fill <= 83% everywhere
+view welcome dev phone: logical 540x430 scale 0.7767  window 419x334 at gui (cx 366.00, cy 173.00) left 156.3 (HUD clear 144.3)  right 575.7 (tiles clear 674.7)  min text 16.3 px ("X")
+state normal
+--- QA upgrades phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 76% "SURVIVE 1 WAVE HIT"@16, 72% "GRAB EGGS FASTER"@16, 70% "THUNDER"@16, 67% "LAUNCH FURTHER"@16, 64% "SLINGSHOT POWER"@22
+fill <= 83% everywhere
+view upgrades dev phone: logical 740x470 scale 0.7106  window 526x334 at gui (cx 407.24, cy 173.00) left 144.3 (HUD clear 144.3)  right 670.2 (tiles clear 674.7)  min text 11.4 px ("LAUNCH FURTHER")
+state mid
+--- QA upgrades_free phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 76% "SURVIVE 1 WAVE HIT"@16, 72% "GRAB EGGS FASTER"@16, 67% "LAUNCH FURTHER"@16, 64% "SLINGSHOT POWER"@22, 64% "UPGRADES ARE YOURS FOREVER - EVEN AFTER A REBIRTH!"@16
+fill <= 83% everywhere
+view upgrades_free dev phone: logical 740x470 scale 0.5797  window 429x272 at gui (cx 407.24, cy 203.77) left 192.8 (HUD clear 144.3)  right 621.7 (tiles clear 674.7)  min text 9.3 px ("LAUNCH FURTHER")
+guide bottom (screen) 105.5  window top (screen) 111.5  clear 6.0
+state free
+--- QA freegift 1050
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 83% "ONE-TIME GIFT!"@16, 75% "x2 MONEY"@16, 75% "30 MIN EACH • USE ANYTIME!"@16, 75% "THE GAME PAGE!"@16, 72% "x2 HATCH"@16
+fill <= 83% everywhere
+view freegift dev pc1050: logical 560x460 scale 1.1800  window 661x543 at gui (cx 559.70, cy 281.00) left 229.3 (HUD clear 229.3)  right 890.1 (tiles clear 977.7)  min text 18.9 px ("ONE-TIME GIFT!")
+state join
+--- QA welcome 1050
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 55% "WELCOME BACK!"@26, 55% "WELCOME BACK!"@26, 52% "CLAIM!"@30, 49% "X"@21, 47% "OFFLINE EARNINGS"@26
+fill <= 83% everywhere
+view welcome dev pc1050: logical 540x430 scale 1.1800  window 637x507 at gui (cx 547.90, cy 281.00) left 229.3 (HUD clear 229.3)  right 866.5 (tiles clear 977.7)  min text 24.8 px ("X")
+state normal
+--- QA upgrades 1050
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 76% "SURVIVE 1 WAVE HIT"@16, 72% "GRAB EGGS FASTER"@16, 70% "THUNDER"@16, 67% "LAUNCH FURTHER"@16, 64% "SLINGSHOT POWER"@22
+fill <= 83% everywhere
+view upgrades dev pc1050: logical 740x470 scale 1.0114  window 748x475 at gui (cx 603.50, cy 281.00) left 229.3 (HUD clear 229.3)  right 977.7 (tiles clear 977.7)  min text 16.2 px ("LAUNCH FURTHER")
+state mid
+--- QA freegift 667
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 83% "ONE-TIME GIFT!"@16, 75% "x2 MONEY"@16, 75% "30 MIN EACH • USE ANYTIME!"@16, 75% "THE GAME PAGE!"@16, 72% "x2 HATCH"@16
+fill <= 83% everywhere
+view freegift dev phone667: logical 560x460 scale 0.6935  window 388x319 at gui (cx 333.50, cy 165.50) left 139.3 (HUD clear 137.9)  right 527.7 (tiles clear 612.0)  min text 11.1 px ("ONE-TIME GIFT!")
+state join
+--- QA welcome 667
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 55% "WELCOME BACK!"@26, 55% "WELCOME BACK!"@26, 52% "CLAIM!"@30, 49% "X"@21, 47% "OFFLINE EARNINGS"@26
+fill <= 83% everywhere
+view welcome dev phone667: logical 540x430 scale 0.7419  window 401x319 at gui (cx 338.20, cy 165.50) left 137.9 (HUD clear 137.9)  right 538.5 (tiles clear 612.0)  min text 15.6 px ("X")
+state normal
+--- QA upgrades 667
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 76% "SURVIVE 1 WAVE HIT"@16, 72% "GRAB EGGS FASTER"@16, 70% "THUNDER"@16, 67% "LAUNCH FURTHER"@16, 64% "SLINGSHOT POWER"@22
+fill <= 83% everywhere
+view upgrades dev phone667: logical 740x470 scale 0.6407  window 474x301 at gui (cx 374.95, cy 165.50) left 137.9 (HUD clear 137.9)  right 612.0 (tiles clear 612.0)  min text 10.3 px ("LAUNCH FURTHER")
+state mid

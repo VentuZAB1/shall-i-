@@ -1,0 +1,1 @@
+FOOTFALLS {"n": 48, "touchdown": {"Leg_L": [0], "Arm_L": [36], "Leg_R": [24], "Arm_R": [12]}, "order": ["Leg_L", "Arm_R", "Leg_R", "Arm_L"]}

@@ -1,0 +1,41 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx.py:92: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+00:11.188  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\CandleFlame_8x8_col.exr'
+00:19.609  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\CandleFlame_8x8_alpha.exr'
+VFX_DONE candle {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.11, "step_mean": 0.0012, "step_max": 0.00688, "seam_last_to_first": 0.0009, "seconds": 17.5, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\CandleFlame_8x8.png"}
+00:38.188  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\FireTongue_8x8_col.exr'
+00:55.719  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\FireTongue_8x8_alpha.exr'
+VFX_DONE tongue {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.125, "step_mean": 0.00483, "step_max": 0.00723, "seam_last_to_first": 0.00931, "seconds": 36.1, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\FireTongue_8x8.png"}
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx.py:177: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx.py:210: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+01:06.922  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f00.exr'
+01:17.813  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f01.exr'
+01:33.359  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f02.exr'
+01:50.641  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f03.exr'
+02:05.219  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f04.exr'
+02:21.250  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f05.exr'
+02:41.391  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f06.exr'
+02:57.578  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f07.exr'
+03:13.453  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f08.exr'
+03:32.813  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f09.exr'
+03:54.000  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f10.exr'
+04:11.453  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f11.exr'
+04:24.656  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f12.exr'
+04:39.688  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f13.exr'
+04:51.359  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f14.exr'
+05:00.313  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f15.exr'
+VFX_DONE smoke {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.162, "step_mean": 0.00811, "step_max": 0.01759, "seam_last_to_first": 0.04077, "seconds": 244.8, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\SmokeWisp_4x4.png"}
+05:01.391  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\Glow_col.exr'
+05:02.031  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\Glow_alpha.exr'
+VFX_DONE glow {"max_border_alpha": 0.0, "max_alpha": 0.999, "coverage": 0.331, "seconds": 1.4, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\Glow.png"}
+05:02.422  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\Ember_col.exr'
+05:02.625  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\Ember_alpha.exr'
+VFX_DONE ember {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.345, "seconds": 0.6, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\Ember.png"}
+05:18.219  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\Mist_f00.exr'
+VFX_DONE mistvol {"max_border_alpha": 0.0, "max_alpha": 0.774, "coverage": 0.115, "seconds": 15.8, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\Mist.png"}
+VFX_REPORT {"candle": {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.11, "step_mean": 0.0012, "step_max": 0.00688, "seam_last_to_first": 0.0009, "seconds": 17.5, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\CandleFlame_8x8.png"}, "tongue": {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.125, "step_mean": 0.00483, "step_max": 0.00723, "seam_last_to_first": 0.00931, "seconds": 36.1, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\FireTongue_8x8.png"}, "smoke": {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.162, "step_mean": 0.00811, "step_max": 0.01759, "seam_last_to_first": 0.04077, "seconds": 244.8, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\SmokeWisp_4x4.png"}, "glow": {"max_border_alpha": 0.0, "max_alpha": 0.999, "coverage": 0.331, "seconds": 1.4, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\Glow.png"}, "ember": {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.345, "seconds": 0.6, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\Ember.png"}, "mistvol": {"max_border_alpha": 0.0, "max_alpha": 0.774, "coverage": 0.115, "seconds": 15.8, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\Mist.png"}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

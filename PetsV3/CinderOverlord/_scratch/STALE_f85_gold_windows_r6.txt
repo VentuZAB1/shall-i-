@@ -1,0 +1,1 @@
+CinderOverlord {"portrait": {"kit_29-58_s.5_v.45": [28, 13], "review_38-48_s.6": [6, 1], "rendered_40-62_s.6_v.55": [22, 7]}, "game": {"kit_29-58_s.5_v.45": [20, 14], "review_38-48_s.6": [8, 1], "rendered_40-62_s.6_v.55": [8, 1]}}

@@ -1,0 +1,10 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\rv_render.py:45: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+FBX version: 7400
+[rv] asset bbox [-3.04054356 -3.19382262 -0.07897721] [3.17586994 2.66767788 4.83264685]
+00:03.907  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_bush_diag_top.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_bush_diag_top.png
+00:04.297  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders\rv_bush_diag_end_right.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders\rv_bush_diag_end_right.png
+[rv] DONE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)

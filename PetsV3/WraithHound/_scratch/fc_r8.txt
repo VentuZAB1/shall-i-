@@ -1,0 +1,5 @@
+audit {"idle": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "idle_foot_drift": 0.0}, "walk": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "slide": 0.0, "foot_z_var": 0.0}, "roar": {"linear": 0}, "act_smokecloak": {"linear": 0}}
+clips {'idle': [120, True], 'walk': [36, True], 'roar': [60, False], 'act_smokecloak': [100, False]} events {'roar': {'fog': 0.233, 'snarl': 0.433}, 'act_smokecloak': {'smoke_puff': 0.16, 'cloak': 0.28, 'drift': 0.54}}
+ground {'idle': [0.004, 120], 'walk': [0.004, 36], 'roar': [0.004, 60], 'act_smokecloak': [0.004, 100]}
+collision_free True {}
+tris 6820 stride 0.6

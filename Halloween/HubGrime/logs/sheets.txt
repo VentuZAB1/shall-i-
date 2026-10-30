@@ -1,0 +1,47 @@
+{
+ "band_px": 48,
+ "band_identity_max_255": {
+  "A_vs_B_left": 0.09,
+  "A_vs_B_right": 0.06,
+  "EndL_vs_A_right": 2.0,
+  "EndR_vs_A_left": 2.0
+ },
+ "inner_neighbour": {
+  "mean": 0.009,
+  "p99": 0.1373,
+  "p999": 0.4353
+ },
+ "A|A": {
+  "mean": 0.0131,
+  "max": 0.4
+ },
+ "A|B": {
+  "mean": 0.0131,
+  "max": 0.4
+ },
+ "B|A": {
+  "mean": 0.0131,
+  "max": 0.4
+ },
+ "B|B": {
+  "mean": 0.0131,
+  "max": 0.4
+ },
+ "EndL|A": {
+  "mean": 0.013,
+  "max": 0.3961
+ },
+ "EndL|B": {
+  "mean": 0.013,
+  "max": 0.3961
+ },
+ "A|EndR": {
+  "mean": 0.0131,
+  "max": 0.4039
+ },
+ "B|EndR": {
+  "mean": 0.0131,
+  "max": 0.4039
+ },
+ "seamless_ok": true
+}

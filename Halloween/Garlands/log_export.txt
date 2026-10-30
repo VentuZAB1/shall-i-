@@ -1,0 +1,14 @@
+00:04.390  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Garlands\garlands.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Garland_Long.fbx'
+export finished in 0.0170 sec.
+
+FBX export starting... 'C:\\cdimp\\Halloween_Garland_Short.fbx'
+export finished in 0.0124 sec.
+
+FBX export starting... 'C:\\cdimp\\Halloween_Garland_Hook.fbx'
+export finished in 0.0054 sec.
+GARLAND_REPORT {"export": {"Garland_Long": {"fbx": "C:\\cdimp\\Halloween_Garland_Long.fbx", "kb": 2454.2, "tris": {"Garland_Long": 5296}}, "Garland_Short": {"fbx": "C:\\cdimp\\Halloween_Garland_Short.fbx", "kb": 2424.0, "tris": {"Garland_Short": 4306}}, "Garland_Hook": {"fbx": "C:\\cdimp\\Halloween_Garland_Hook.fbx", "kb": 167.5, "tris": {"Garland_Hook": 310}}}, "export_s": 0.1}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

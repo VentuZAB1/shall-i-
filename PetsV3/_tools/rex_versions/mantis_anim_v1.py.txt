@@ -1,0 +1,242 @@
+
+
+# ------------------------------------------------------------------ animation (review 2 section 4 brief)
+# References (owner rule; notes in _review/ANIM_REFERENCES_1014.md #3, #5-7):
+# - "Attack" (combat study set): body coils f6-11, the hand is COCKED and held 3 f (f12-14), the 2 f SNAP (smear f15,
+#   full reach f16), then a 5 f follow-through hold -> our 4 f tell, 2 f snap, hard stop.
+# - Monsters University scare pop: crouch 5 f -> explode into the arms-wide spread in 5-7 f -> hold (roar display).
+# - How to Train Your Dragon forest approach: step / freeze / scan with the head moving while the body is still (the
+#   predator head-lock in idle + lock-on).
+# - Sea Beasts heavy-head roar: the jaw lags the head lift.
+# The helpers take SEMANTIC values (up / tuck / open / curl / back) and convert them to kit signs: kit pitch + = nose
+# down for -Y bones, LIFTS +Y bones (abdomen, tegmina), swings a down-pointing bone's tip BACK, tips a +Z bone FORWARD.
+# ARM RULE (review 2): whenever the arm is raised (up) more than 5 deg it must already be yawed OUT >= 12 deg (else the
+# gold knee spine drives into the eye dome) - every raise below leads with the yaw by >= 2 f.
+# No head shakes: every head roll is one tilt, a hold and a return.
+import petkit as pk
+import _common as cm
+
+
+def body(k, f, z=0.0, x=0.0, y=0.0, pitch=0.0, yaw=0.0, roll=0.0, chest=0.0, chest_yaw=0.0):
+    """Spine: pitch + = nose down (kit). chest + = the prothorax REARS up (lower = negative), -10 .. +12"""
+    k.key("Spine", f, rot=(pitch, yaw, roll), loc=(x, y, z))
+    k.key("Chest", f, rot=(-chest, chest_yaw, 0))
+
+
+def head(k, f, up=0.0, yaw=0.0, roll=0.0, jaw=None):
+    """up + = head raised (Neck takes a third, <= 8), yaw split Neck 30 / Head 70, ONE-sided rolls only; jaw + = open"""
+    nk = max(-8.0, min(8.0, up / 3.0))
+    k.key("Neck", f, rot=(-nk, yaw * 0.3, 0))
+    k.key("Head", f, rot=(-(up - nk), yaw * 0.7, roll))
+    if jaw is not None:
+        k.key("Jaw", f, rot=(jaw, 0, 0))
+
+
+def arm(k, f, side, up=0.0, out=0.0, fore=0.0, blade=0.0):
+    """up + = raised (- = swung forward-down), out + = yawed outward, fore + = femur tucked back (- = extends),
+    blade + = tibia OPEN (- = folded tighter)"""
+    s = 1 if side == "L" else -1
+    k.key("Arm_" + side, f, rot=(-up, s * out, 0))
+    k.key("Fore_" + side, f, rot=(-fore, 0, 0))
+    k.key("Blade_" + side, f, rot=(-blade, 0, 0))
+
+
+def arms(k, f, **kw):
+    arm(k, f, "L", **kw)
+    arm(k, f, "R", **kw)
+
+
+def wings(k, f, el=0.0, el_roll=0.0, wi=0.0, wi_roll=0.0):
+    """el / wi + = tegmina / hindwings RAISED (kit + lifts a +Y bone); *_roll + = rolled outward (mirrored)"""
+    for s, sd in ((1, "L"), (-1, "R")):
+        k.key("Elytra_" + sd, f, rot=(el, 0, s * el_roll))
+        k.key("Wing_" + sd, f, rot=(wi, 0, s * wi_roll))
+
+
+def abdomen(k, f, curl=(0.0, 0.0, 0.0), yaw=(0.0, 0.0, 0.0)):
+    """curl + = the abdomen curls UP"""
+    for b, c, yw in zip(TAIL, curl, yaw):
+        k.key(b, f, rot=(c, yw, 0))
+
+
+def antennae(k, f, back=0.0, l=0.0, r=0.0):
+    """back + = swept back (kit + tips a +Z bone forward); l / r = per-side flicks (+ = forward)"""
+    k.key("Antenna_L", f, rot=(-back + l, 0, 0))
+    k.key("Antenna_R", f, rot=(-back + r, 0, 0))
+
+
+def rest(k, f):
+    body(k, f)
+    head(k, f, jaw=0.0)
+    arms(k, f)
+    wings(k, f)
+    abdomen(k, f)
+    antennae(k, f)
+
+
+def plant_all(k, n, frames=None):
+    cm.plant(k, n, LEGS4, frames)
+    k.meta["planted"] = LEGS4
+
+
+def ease(a, b, f0, f1, f):
+    if f <= f0:
+        return a
+    if f >= f1:
+        return b
+    u = (f - f0) / float(f1 - f0)
+    return a + (b - a) * u * u * (3 - 2 * u)
+
+
+def idle(k):
+    """STILL HUNTER: leaf-sway (Spine roll +-3, x +-0.015, 40 f) with the head counter-rolling (gaze level); ONE
+    predatory tilt (12 in 5 f, hold 25, back in 8); a left-blade groom with 2 chomps; alternating antenna flicks."""
+    n = 120
+    k.new_action("idle", n, True)
+    for f in range(0, n + 1, 2):
+        w = pk.wave(f, n, 0.0, 3)
+        body(k, f, x=0.015 * w, roll=3.0 * w)
+        abdomen(k, f, yaw=(-1.0 * pk.wave(f, n, -0.05, 3), -1.5 * pk.wave(f, n, -0.08, 3),
+                           -2.0 * pk.wave(f, n, -0.11, 3)))
+        wings(k, f)
+        tilt = ease(0, 12, 18, 23, f) if f <= 48 else ease(12, 0, 48, 56, f)
+        dn = 8.0 * math.sin(math.pi * (f - 66) / 34.0) if 66 <= f <= 100 else 0.0
+        head(k, f, up=-dn, roll=-3.0 * w + tilt)
+    for f, jw in ((0, 0), (76, 0), (78, 10), (80, 0), (84, 0), (86, 10), (88, 0), (120, 0)):     # 2 chomps
+        k.key("Jaw", f, rot=(jw, 0, 0))
+    # groom: the LEFT blade rises to the mouth (no raise = no arm-rule risk: yaw IN + tibia open + femur tuck)
+    for f, a in ((0, 0.0), (62, 0.0), (72, 1.0), (92, 1.0), (102, 0.0), (120, 0.0)):
+        arm(k, f, "L", up=0.0, out=-12.0 * a, fore=6.0 * a, blade=55.0 * a)
+        arm(k, f, "R")
+    for f, l, r in ((0, 0, 0), (30, 0, 0), (33, 12, 0), (36, 0, 0), (40, 0, 12), (43, 0, 0), (104, 0, 0), (107, 12, 0),
+                    (110, 0, 0), (120, 0, 0)):                                            # antenna flicks (3 f)
+        antennae(k, f, l=l, r=r)
+    plant_all(k, n)
+    k.finish()
+    k.events["idle"] = {"groom": round(78 / n, 3)}
+
+
+def walk(k):
+    """JERKY STALK: diagonal pairs (FL+BR / FR+BL), duty 0.6; a low leaf-rock layer (Spine roll +-1.5, 2 per cycle);
+    Chest counter-yaws the Spine; the head is world-stable with a small lag; blades folded with a 2 deg counter-swing;
+    the abdomen lags 2-3 f."""
+    n = 32
+
+    def bk(f):
+        sy = 2.0 * pk.wave(f, n, 0.0)
+        sr = 1.5 * pk.wave(f, n, 0.1, 2)
+        body(k, f, z=0.006 * pk.wave(f, n, 0.15, 2), yaw=sy, roll=sr, chest_yaw=-0.8 * sy)
+        head(k, f, yaw=-0.2 * sy - 1.0 * pk.wave(f, n, -0.08), roll=-0.6 * sr, jaw=0.0)
+        for side, sgn in (("L", 1), ("R", -1)):
+            arm(k, f, side, up=-2.0 * sgn * pk.wave(f, n, 0.25))
+        abdomen(k, f, yaw=(-2.0 * pk.wave(f, n, -0.07), -2.5 * pk.wave(f, n, -0.1), -3.0 * pk.wave(f, n, -0.13)))
+        wings(k, f)
+        antennae(k, f, l=4.0 * pk.wave(f, n, 0.3), r=4.0 * pk.wave(f, n, 0.8))
+    return cm.quad_walk(k, n, 0.07, 0.045, bk, gait="trot", duty=0.6)
+
+
+def roar(k):
+    """DEIMATIC DISPLAY (90 f): crouch -> rear -> tegmina V + hindwing eye-spot fan + arms spread with the gold tibiae
+    open (`display` f24) -> hold with wing shiver, 2 mandible clacks, 2 blade pumps -> hindwings fold FIRST, then the
+    tegmina close over them -> settle."""
+    n = 90
+    k.new_action("roar", n, False)
+    for f in range(0, n + 1, 2):
+        if f <= 10:
+            u = f / 10.0
+            z, p, ch, hu = -0.04 * u, 4.0 * u, -6.0 * u, -6.0 * u
+        elif f <= 20:
+            z, p, ch, hu = ease(-0.04, 0.035, 10, 20, f), ease(4, -10, 10, 20, f), ease(-6, 12, 10, 20, f), \
+                ease(-6, 18, 10, 20, f)
+        elif f <= 60:
+            z, p, ch, hu = 0.035, -10.0, 12.0, 18.0
+        elif f <= 76:
+            z, p, ch, hu = ease(0.035, 0.0, 60, 76, f), ease(-10, 0, 60, 76, f), ease(12, 0, 60, 76, f), \
+                ease(18, 0, 60, 76, f)
+        else:
+            z, p, ch, hu = -0.01 * math.sin(math.pi * (f - 76) / 14.0), 0.0, 0.0, 0.0
+        rock = 2.0 * math.sin(2 * math.pi * (f - 26) / 17.0) if 26 <= f <= 60 else 0.0
+        body(k, f, z=z, pitch=p, roll=rock, chest=ch)
+        head(k, f, up=hu)
+        el = ease(0, 65, 14, 24, f) if f <= 60 else ease(65, 0, 64, 74, f)
+        er = ease(0, 40, 14, 24, f) if f <= 60 else ease(40, 0, 64, 74, f)
+        wi = ease(0, 80, 16, 26, f) if f <= 60 else ease(80, 0, 60, 70, f)
+        shiver = (3.0 if (f // 3) % 2 == 0 else -3.0) if 26 <= f <= 58 else 0.0
+        wr = (ease(0, 15, 16, 26, f) if f <= 60 else ease(15, 0, 60, 70, f)) + shiver
+        wings(k, f, el=el, el_roll=er, wi=wi, wi_roll=wr)
+        cu = ease(0, 1, 14, 24, f) if f <= 60 else ease(1, 0, 60, 74, f)
+        abdomen(k, f, curl=(8 * cu, 12 * cu, 16 * cu))
+        # arms: tuck in the crouch, OUT 30 from f16, UP 20 only from f18 (arm rule), tibiae open 75 by f24, pumps,
+        # then lower FIRST (up 0 by f66) and un-yaw after (out 0 by f70), blades folded by f72
+        tuck = ease(0, 8, 0, 10, f) if f <= 16 else ease(8, 0, 16, 24, f)
+        out = ease(0, 30, 16, 20, f) if f <= 60 else ease(30, 0, 64, 70, f)
+        up = ease(0, 20, 18, 24, f) if f <= 60 else ease(20, 0, 60, 66, f)
+        bl = ease(0, 75, 18, 24, f) if f <= 60 else ease(75, 0, 60, 72, f)
+        if 38 <= f <= 42:
+            bl = 75 - 15 * math.sin(math.pi * (f - 38) / 4.0)
+        if 50 <= f <= 54:
+            bl = 75 - 15 * math.sin(math.pi * (f - 50) / 4.0)
+        arms(k, f, up=up, out=out, fore=tuck, blade=bl)
+        antennae(k, f, back=ease(0, 25, 0, 10, f) if f <= 60 else ease(25, 0, 60, 76, f),
+                 l=(6.0 if f in (40, 52) else 0.0), r=(6.0 if f == 46 else 0.0))
+    for f, jw in ((0, 0), (20, 0), (24, 18), (33, 18), (34, 4), (36, 18), (43, 18), (44, 4), (46, 18), (60, 18),
+                  (70, 0), (90, 0)):                         # jaw opens a beat after the head lift, clacks f34 / f44
+        k.key("Jaw", f, rot=(jw, 0, 0))
+    plant_all(k, n)
+    k.finish(loop=False)
+    k.events["roar"] = {"display": round(24 / n, 3), "clack1": round(34 / n, 3), "clack2": round(44 / n, 3)}
+
+
+def act_thornstrike(k):
+    """THORN STRIKE (100 f): lock-on peering (head locked) -> cock + 4 f TELL (f20-24) -> STRIKE 1 (tibiae snap open
+    f25 / shut f27) -> recoil -> STRIKE 2 X-cross (L leads 1 f, passes higher) -> executioner hold with ONE head tilt
+    -> back to the prayer pose -> groom -> settle."""
+    n = 100
+    k.new_action("act_thornstrike", n, False)
+    rest(k, 0)
+    Bd = [  # f, z, x, y, pitch, chest, head_up
+        (4, 0.0, 0.025, 0.0, 0, -8, -8), (9, 0.0, -0.025, 0.0, 0, -8, -8), (14, 0.0, 0.0, 0.0, 0, -8, -8),
+        (20, -0.03, 0.0, 0.02, 0, -10, -8), (24, -0.03, 0.0, 0.02, 0, -10, -8),
+        (25, -0.02, 0.0, -0.07, 6, -10, -8), (27, -0.02, 0.0, -0.07, 6, -10, -8), (31, -0.02, 0.0, -0.03, 3, -9, -8),
+        (33, -0.02, 0.0, -0.03, 3, -9, -8), (34, -0.025, 0.0, -0.09, 7, -10, -10),
+        (36, -0.025, 0.0, -0.09, 7, -10, -10), (40, -0.025, 0.0, -0.09, 7, -10, -10),
+        (50, -0.02, 0.0, -0.08, 6, -10, -10), (60, 0.0, 0.0, 0.0, 0, -4, -8), (72, 0.0, 0.0, 0.0, 0, -4, -8),
+        (80, 0.0, 0.0, 0.0, 0, -2, -4), (86, -0.008, 0.0, 0.0, 0, 0, 0), (92, 0.0, 0.0, 0.0, 0, 0, 0),
+        (100, 0.0, 0.0, 0.0, 0, 0, 0)]
+    for f, z, x, y, p, ch, hu in Bd:
+        body(k, f, z=z, x=x, y=y, pitch=p, chest=ch)
+        head(k, f, up=hu, roll=ease(0, 12, 36, 40, f) if f <= 60 else ease(12, 0, 72, 80, f))
+    A = [  # f, upL, upR, out, fore, bladeL, bladeR  (cock: OUT 12 from f14, UP 8 from f16 = arm rule; HOLD f20-24)
+        (14, 0, 0, 0, 0, 0, 0), (16, 0, 0, 12, 4, -4, -4), (18, 8, 8, 12, 10, -10, -10),
+        (20, 8, 8, 12, 10, -10, -10), (24, 8, 8, 12, 10, -10, -10),
+        (25, -45, -45, 0, -50, 85, 85), (27, -45, -45, 0, -50, 10, 10),                 # STRIKE 1: snap open / shut
+        (29, -14, -14, 4, -8, 6, 6), (31, -10, -10, 6, -4, 4, 4), (33, -10, -10, 6, -4, 4, 4),     # recoil
+        (34, -44, -50, -18, -45, 60, 0), (35, -50, -50, -18, -45, 5, 60), (36, -50, -56, -18, -45, -5, -5),   # X-cross
+        (50, -48, -54, -18, -42, -5, -5),                                                 # executioner hold (clutch)
+        (60, 0, 0, 0, 0, 0, 0)]
+    arms(k, 0)
+    for f, ul, ur, out, fo, bl, br in A:
+        arm(k, f, "L", up=ul, out=out, fore=fo, blade=bl)
+        arm(k, f, "R", up=ur, out=out, fore=fo, blade=br)
+    for f, a in ((64, 1.0), (72, 1.0), (78, 0.0), (100, 0.0)):                             # groom (left blade)
+        arm(k, f, "L", up=0.0, out=-12.0 * a, fore=6.0 * a, blade=55.0 * a)
+        arm(k, f, "R")
+    for f, jw in ((0, 0), (34, 0), (36, 15), (50, 15), (58, 0), (63, 0), (64, 10), (66, 0), (68, 0), (69, 10),
+                  (71, 0), (100, 0)):
+        k.key("Jaw", f, rot=(jw, 0, 0))
+    for f, bk_, l, r in ((0, 0, 0, 0), (6, -12, 0, 0), (60, -12, 0, 0), (72, 0, 0, 0), (80, 0, 10, 0), (83, 0, 0, 0),
+                         (100, 0, 0, 0)):
+        antennae(k, f, back=bk_, l=l, r=r)
+    rest(k, n)
+    plant_all(k, n)
+    k.finish(loop=False)
+    k.events["act_thornstrike"] = {"lockon": round(6 / n, 3), "strike1": round(25 / n, 3), "strike2": round(34 / n, 3),
+                                   "finish": round(36 / n, 3), "groom": round(64 / n, 3)}
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    roar(k)
+    act_thornstrike(k)
+    return stride

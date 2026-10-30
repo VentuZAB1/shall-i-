@@ -1,0 +1,36 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\render.py:25: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m = bpy.data.materials.new("Grass"); m.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\render.py:63: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m = bpy.data.materials.new("Ref"); m.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\render.py:71: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  tm.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\render.py:154: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mm = bpy.data.materials.new(nm); mm.use_nodes = True
+00:04.047  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\scale_front_ortho.png'
+00:04.234  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\side_ortho_Grave_A.png'
+00:04.375  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\side_ortho_Grave_B.png'
+00:04.516  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\side_ortho_Grave_C.png'
+00:05.016  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\mid12_DeadGrass_A_34.png'
+00:05.453  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\mid12_DeadGrass_B_34.png'
+00:05.875  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\mid12_Grave_C_34.png'
+00:06.297  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\mid12_Grave_B_34.png'
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\scale_front_ortho.png
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\side_ortho_Grave_A.png
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\side_ortho_Grave_B.png
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\side_ortho_Grave_C.png
+FBX version: 7400
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\mid12_DeadGrass_A_34.png
+FBX version: 7400
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\mid12_DeadGrass_B_34.png
+FBX version: 7400
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\mid12_Grave_C_34.png
+FBX version: 7400
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\mid12_Grave_B_34.png
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

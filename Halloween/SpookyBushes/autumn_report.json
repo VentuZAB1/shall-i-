@@ -1,0 +1,68 @@
+{
+ "tris": {
+  "Bush": 8088,
+  "Gourds": 1520
+ },
+ "texture": {
+  "Bush": 1024,
+  "Gourds": 512
+ },
+ "bake": {
+  "G_Body": {
+   "texels": 372080,
+   "miss": 0.0,
+   "s": 9.1
+  },
+  "G_Leaf": {
+   "texels": 170708,
+   "miss": 0.0015,
+   "s": 4.4
+  },
+  "G_Wood": {
+   "texels": 22971,
+   "miss": 0.0013,
+   "s": 1.9
+  }
+ },
+ "bake_gourds": {
+  "G_Gourds": {
+   "texels": 139023,
+   "miss": 0.0,
+   "s": 1.8
+  }
+ },
+ "atlas_coverage": 0.54,
+ "hi_leaves": 3100,
+ "protruding_leaves": 143,
+ "hanging_leaves": 18,
+ "fallen_leaves": 8,
+ "gourd_stem_tops_roblox": [
+  [
+   -0.658,
+   0.686,
+   1.292
+  ],
+  [
+   0.379,
+   1.032,
+   1.629
+  ]
+ ],
+ "bbox_blender": [
+  [
+   -3.044,
+   -3.169,
+   -0.179
+  ],
+  [
+   3.144,
+   2.905,
+   5.03
+  ]
+ ],
+ "size_roblox_XYZ": [
+  6.188,
+  5.208,
+  6.074
+ ]
+}

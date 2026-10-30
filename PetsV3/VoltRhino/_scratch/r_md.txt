@@ -1,0 +1,9 @@
+00:02.641  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\VoltRhino\renders\model_tq.png'
+00:02.828  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\VoltRhino\renders\model_front.png'
+00:02.984  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\VoltRhino\renders\model_side.png'
+00:03.141  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\VoltRhino\renders\model_back.png'
+00:03.297  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\VoltRhino\renders\model_game.png'
+HEADLESS_RESULT {"files": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\VoltRhino\\renders\\model_tq.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\VoltRhino\\renders\\model_front.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\VoltRhino\\renders\\model_side.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\VoltRhino\\renders\\model_back.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\VoltRhino\\renders\\model_game.png"], "tris": 14532, "size": [0.88, 3.15, 1.61], "TH": 0.86, "PITCH": 0.0414}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

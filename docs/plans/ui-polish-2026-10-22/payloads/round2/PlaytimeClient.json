@@ -1,0 +1,10 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.PlaytimeClient",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "\t\t\tc.top.Text = potion.name\n\t\t\tc.top.TextColor3 = potion.color",
+   "new_string": "\t\t\tc.top.Text = potion.name\n\t\t\tc.top.TextColor3 = potion.color:Lerp(WHITE, 0.35) -- (2026-10-22 UI polish, M6: 3.8:1 on the navy cell)"
+  }
+ ]
+}

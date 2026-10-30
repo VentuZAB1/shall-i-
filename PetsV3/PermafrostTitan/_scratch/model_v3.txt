@@ -1,0 +1,158 @@
+def model(k):
+    import blockkit as bk
+    global CORE, CORE_N, HERO, CAP
+    B = bk.Blocks(k, seed=2501, tier=4, plates=False)
+    up = Vector((0, 0, 1))
+    # ================= pelvis + waist (Spine): heavy hips, plum side plates, dark belt joint, tapered waist
+    B.add((0, 0.04, 0.90), (0.30, 0.21, 0.13), MAUVE, "Spine", bot=(0.80, 0.82), top=(1.0, 1.0), rnd=0.36)
+    B.mirror((0.272, 0.045, 0.885), (0.058, 0.17, 0.12), PLUM, "Spine", rot=(0, 10, 0), bot=(0.8, 0.85), rnd=0.38)
+    B.add((0, 0.03, 1.03), (0.268, 0.19, 0.04), JOINT_D, "Spine", rnd=0.4)                           # belt joint
+    B.add((0, 0.02, 1.10), (0.262, 0.19, 0.08), MAUVE, "Spine", bot=(0.95, 0.95), top=(1.08, 1.06), rnd=0.36)
+    # ================= chest (Chest): deep stone ribcage leaning forward (inverted triangle), plum back hump
+    rib = B.add((0, 0.0, 1.42), (0.38, 0.28, 0.29), MAUVE, "Chest", rot=(10, 0, 0), bot=(0.70, 0.74),
+                top=(1.0, 0.92), rnd=0.32)
+    B.add((0, 0.05, 1.165), (0.28, 0.20, 0.035), JOINT_D, "Chest", rnd=0.4)                          # chest/waist gap
+    hump = B.add((0, 0.175, 1.675), (0.30, 0.19, 0.13), PLUM, "Chest", rot=(-14, 0, 0), top=(0.60, 0.66),
+                 rnd=0.42)                                                                          # back hump
+    # back: two dark-gapped plum stone slabs (the game camera sees the back)
+    for z0, z1, w in ((1.58, 1.40, 0.27), (1.36, 1.20, 0.23)):
+        a, na = surf_hit(B, [rib], (0, 1.0, z0), (0, -1, 0))
+        b, nb = surf_hit(B, [rib], (0, 1.0, z1), (0, -1, 0))
+        n = (na + nb).normalized()
+        B.add((a + b) / 2 + n * 0.014, (0.034, w, (a - b).length / 2), PLUM, "Chest",
+              R=bk.frame_from(b, a, n), top=(1, 0.9), rnd=0.40)
+        g = b - (a - b).normalized() * 0.022 + n * 0.006
+        B.add(g, (0.012, w * 0.80, 0.022), JOINT_D, "Chest", R=bk.frame_from(b, a, n), studs=[], role="detail",
+              bevel=0.004)
+    # glacier crust breaking out of the back hump (blunt, flat-topped ice blocks - never spikes)
+    for x, y, L, w, lean in ((0.0, 0.10, 0.15, 0.065, (0, 0.45, 1)), (0.12, 0.05, 0.11, 0.055, (0.5, 0.35, 1)),
+                             (-0.13, 0.07, 0.12, 0.055, (-0.5, 0.4, 1)), (0.05, 0.22, 0.08, 0.045, (0.2, 0.9, 1))):
+        bp, bn = surf_hit(B, [hump], (x, y + 0.17, 2.5), (0, 0, -1))
+        ice_chunk(B, bp - bn * 0.03, Vector(lean), L + 0.03, w, "Chest")
+    # ================= THE HERO: gold chest bezel (12 facets, tilted 10 deg up) around a faceted ice core
+    cp, cn = surf_hit(B, [rib], (0, -1.0, 1.40), (0, 1, 0))
+    rn = (cn + up * math.tan(math.radians(10))).normalized()           # ring normal: the chest face tilted 10 up
+    u = Vector((1, 0, 0))
+    v = rn.cross(u).normalized()
+    if v.z < 0:
+        v = -v
+    R_OUT, R_IN, DEPTH, PROUD = 0.225, 0.150, 0.10, 0.045
+    rc = cp + rn * (PROUD - DEPTH / 2)                                 # ring centre plane (half sunk in the chest)
+    CORE, CORE_N = tuple(cp + rn * 0.02), tuple(rn)
+    rm = (R_OUT + R_IN) / 2
+    for i in range(12):
+        a0, a1 = 2 * math.pi * (i + 0.5) / 12, 2 * math.pi * (i + 1.5) / 12
+        p0 = rc + (u * math.cos(a0) + v * math.sin(a0)) * rm
+        p1 = rc + (u * math.cos(a1) + v * math.sin(a1)) * rm
+        am = (a0 + a1) / 2
+        rad = u * math.cos(am) + v * math.sin(am)
+        B.seg(p0, p1, (R_OUT - R_IN) / 2, DEPTH / 2, GOLD, "Chest", side=rad, ext=0.013, ext1=0.013,
+              studs=[], nostud=True, role="limb", rnd=0.22)
+        q0 = rc + (u * math.cos(a0) + v * math.sin(a0)) * (R_IN - 0.012) + rn * 0.004
+        q1 = rc + (u * math.cos(a1) + v * math.sin(a1)) * (R_IN - 0.012) + rn * 0.004
+        B.seg(q0, q1, 0.018, DEPTH / 2 - 0.014, GOLD_D, "Chest", side=rad, ext=0.006, ext1=0.006, studs=[],
+              nostud=True, role="detail", bevel=0.004)
+    # four gold settings clamping the ring to the chest (diagonals), low and blunt (no spikes)
+    for ang in (45, 135, 225, 315):
+        a = math.radians(ang)
+        rad = u * math.cos(a) + v * math.sin(a)
+        p0 = rc + rad * (R_OUT - 0.012) + rn * 0.012
+        p1 = rc + rad * (R_OUT + 0.06) - rn * 0.012
+        B.seg(p0, p1, 0.032, 0.022, GOLD, "Chest", side=rn.cross(rad), studs=[], nostud=True, role="limb",
+              top=(0.8, 0.6), rnd=0.3)
+    HERO = tuple(rc + v * R_OUT + rn * 0.06)
+    # the faceted ice core: octagon disc -> raised diamond -> raised centre facet (all ice-white, smooth)
+    Rc = face_R(rn, up=v)
+    for rot, hs, dz in ((0, 0.095, 0.000), (45, 0.095, 0.000), (45, 0.066, 0.016), (0, 0.036, 0.028)):
+        Rr = Rc @ Euler((0, math.radians(rot), 0), "XYZ").to_matrix()
+        B.add(rc + rn * (DEPTH / 2 - 0.012 + dz), (hs, 0.016, hs), ICE_W, "Chest", R=Rr, studs=[], nostud=True,
+              role="limb", rnd=0.16)
+    # pecs: two rounded stone masses above-outside the ring
+    for s in (1, -1):
+        pp, pn = surf_hit(B, [rib], (s * 0.27, -1.0, 1.585), (0, 1, 0))
+        B.add(pp + pn * 0.035, (0.11, 0.045, 0.092), MAUVE, "Chest", R=face_R(pn) @ Euler(
+            (0, math.radians(-s * 14), 0), "XYZ").to_matrix(), rnd=0.44, top=(0.9, 1.0))
+    # ================= neck + head (throat pivot): dark neck joint, small skull sunk low and forward
+    B.seg((0, 0.0, 1.56), (0, -0.14, 1.74), 0.12, 0.10, JOINT_D, "Head", ext=0.02, rnd=0.4)            # neck joint
+    skull = B.add((0, -0.235, 1.84), (0.145, 0.150, 0.128), MAUVE, "Head", top=(0.84, 0.86), rnd=0.30)
+    B.add((0, -0.20, 1.962), (0.112, 0.112, 0.032), PLUM, "Head", top=(0.8, 0.8), rnd=0.42)            # crown cap
+    for s in (1, -1):
+        B.add((s * 0.132, -0.30, 1.795), (0.045, 0.085, 0.065), MAUVE, "Head", rot=(0, 0, s * 8), rnd=0.42)  # cheek
+    fp, fn = surf_hit(B, [skull], (0, -1.0, 1.87), (0, 1, 0))
+    # slate brow ridge: two chunky halves (20 deg inner-down) meeting over the nose, set into the forehead
+    for s in (1, -1):
+        Rb = face_R(fn) @ Euler((0, math.radians(-s * 20), 0), "XYZ").to_matrix()
+        B.add(fp + fn * 0.012 + Vector((s * 0.072, 0, 0.018)), (0.084, 0.034, 0.034), JOINT_D, "Head", R=Rb,
+              role="limb", rnd=0.16, studs=[], nostud=True)
+    B.seg(fp + fn * 0.010 + Vector((0, 0, -0.025)), fp + fn * 0.040 + Vector((0, 0, -0.095)), 0.028, 0.024,
+          MAUVE, "Head", top=(1.25, 1.0), rnd=0.4)                                                   # nasal ridge
+    for s in (1, -1):                                                                               # deep-set eyes
+        ep, en = surf_hit(B, [skull], (s * 0.072, -1.0, 1.838), (0, 1, 0))
+        ice_eye(B, ep + en * 0.003, s, en, tilt=20, sc=0.95)
+    # jaw: heavy square chin (Jaw bone) jutting forward; the mouth is the dark seam between skull and jaw
+    B.add((0, -0.29, 1.722), (0.122, 0.115, 0.052), MAUVE, "Jaw", top=(1.0, 0.95), bot=(0.86, 0.90), rnd=0.34)
+    B.add((0, -0.398, 1.758), (0.088, 0.008, 0.007), MOUTH, "Head", studs=[], role="detail", bevel=0.003)
+    # ================= arms: shoulder boulder, upper arm, slate elbow, flared forearm under a plum bracer,
+    # boulder fist with curled fingers and ice knuckle crusts; two ice-capped pauldrons per shoulder
+    for s, side in ((1, "L"), (-1, "R")):
+        arm, fore, hand = "Arm_" + side, "Fore_" + side, "Hand_" + side
+        Sv, Ev, Wv, Fv = X(SHOULDER, s), X(ELBOW, s), X(WRIST, s), X(FIST, s)
+        B.add(Sv + Vector((s * 0.03, 0.0, -0.01)), (0.155, 0.165, 0.150), MAUVE, arm, rnd=0.45)        # deltoid
+        B.seg(Sv, Ev, 0.128, 0.138, MAUVE, arm, ext=0.0, ext1=0.03, top=(0.88, 0.88), rnd=0.40)       # upper arm
+        de = (Wv - Ev).normalized()
+        B.seg(Ev - de * 0.025, Ev + de * 0.05, 0.120, 0.130, JOINT_D, fore, rnd=0.36)                 # elbow joint
+        B.seg(Ev, Wv, 0.130, 0.140, MAUVE, fore, ext=0.02, ext1=0.0, top=(1.12, 1.10), rnd=0.38)      # forearm
+        B.seg(Ev + de * 0.09, Wv - de * 0.05, 0.158, 0.166, PLUM, fore, top=(1.08, 1.06), rnd=0.36)   # bracer
+        B.seg(Wv - de * 0.05, Wv + de * 0.035, 0.130, 0.138, JOINT_D, fore, rnd=0.36)                 # wrist joint
+        fist = B.add(Fv, (0.162, 0.162, 0.142), MAUVE, hand, rot=(-14, 0, 0), rnd=0.36)               # fist
+        B.add(fist.world((0, -0.135, -0.04)), (0.142, 0.03, 0.062), JOINT_D, hand, R=fist.R, rnd=0.3,
+              role="detail")                                                                       # finger gaps
+        for gx in (-0.090, -0.030, 0.030, 0.090):                                                     # curled fingers
+            B.add(fist.world((gx * s, -0.155, -0.042)), (0.027, 0.032, 0.058), MAUVE, hand, R=fist.R, rnd=0.45)
+        B.add(fist.world((-s * 0.11, -0.10, 0.035)), (0.048, 0.055, 0.065), PLUM, hand, R=fist.R, rnd=0.42)  # thumb
+        for gx, L, tw in ((-0.080, 0.090, 0.040), (0.0, 0.112, 0.044), (0.080, 0.090, 0.040)):        # ice knuckles
+            base = fist.world((gx * s, -0.112, 0.112))
+            ice_chunk(B, base, fist.R @ Vector((gx * s * 0.8, -0.75, 0.7)), L, tw, hand)
+        # ---- pauldron 1 (upper, over the shoulder) + its glacier crust (one slab + 3 broken blocks)
+        p1 = B.add(Sv + Vector((s * 0.04, 0.005, 0.17)), (0.188, 0.208, 0.088), MAUVE, arm,
+                   rot=(0, s * 18, 0), top=(0.84, 0.86), rnd=0.45)
+        c1 = B.add(p1.world((0, 0, 0.09)), (0.148, 0.165, 0.036), ICE_W, arm, R=p1.R, top=(0.82, 0.84),
+                   nostud=True, role="limb", rnd=0.22)
+        for dx, dy, L, w, lean in ((0.05, -0.06, 0.13, 0.062, 0.45), (0.085, 0.085, 0.095, 0.052, 0.75),
+                                   (-0.05, 0.05, 0.075, 0.048, -0.15)):
+            ice_chunk(B, p1.world((s * dx, dy, 0.10)), p1.R @ Vector((s * lean, dy * 0.8, 1.0)), L, w, arm)
+        # ---- pauldron 2 (lower, outer, on the upper arm) + its crust
+        p2 = B.add(Sv + Vector((s * 0.19, 0.02, -0.03)), (0.090, 0.170, 0.115), MAUVE, arm,
+                   rot=(0, s * 42, 0), top=(0.80, 0.84), rnd=0.45)
+        B.add(p2.world((0, 0, 0.110)), (0.068, 0.135, 0.032), ICE_W, arm, R=p2.R, top=(0.80, 0.82), nostud=True,
+              role="limb", rnd=0.22)
+        ice_chunk(B, p2.world((0.0, -0.04, 0.12)), p2.R @ Vector((s * 0.35, -0.2, 1.0)), 0.085, 0.048, arm)
+        if s > 0:
+            CAP = tuple(c1.world((0, 0, 0.06)))
+    # ================= legs: pillar thighs (plum outer plates) + shins (plum guards), slate knee/ankle joints,
+    # blocky feet with 3 slate toes
+    for s, side in ((1, "L"), (-1, "R")):
+        leg, shin, foot = "Leg_" + side, "Shin_" + side, "Foot_" + side
+        H, K, A = X(HIP, s), X(KNEE, s), X(ANKLE, s)
+        B.seg(H + Vector((0, 0.0, 0.07)), K, 0.165, 0.180, MAUVE, leg, ext=0.0, ext1=0.02, top=(0.86, 0.84),
+              rnd=0.40)                                                                                # thigh
+        B.seg(H + Vector((s * 0.12, 0.01, 0.0)), K + Vector((s * 0.095, 0.0, 0.10)), 0.046, 0.155, PLUM, leg,
+              top=(0.75, 0.70), rnd=0.42)                                                              # thigh plate
+        dk = (A - K).normalized()
+        B.seg(K - dk * 0.035, K + dk * 0.05, 0.138, 0.150, JOINT_D, shin, rnd=0.38)                    # knee joint
+        B.add(K + Vector((0, -0.15, 0.0)), (0.10, 0.05, 0.088), PLUM, shin, rnd=0.44)                  # knee cap
+        B.seg(K, A, 0.143, 0.152, MAUVE, shin, ext=0.0, ext1=0.0, top=(1.14, 1.12), rnd=0.38)          # pillar shin
+        B.seg(K + Vector((0, -0.128, -0.085)), A + Vector((0, -0.152, 0.07)), 0.116, 0.034, PLUM, shin,
+              top=(1.15, 1.0), rnd=0.40)                                                               # shin guard
+        B.seg(A - Vector((0, 0, 0.005)), A + Vector((0, 0, 0.045)), 0.155, 0.164, JOINT_D, foot, rnd=0.35)  # ankle
+        F = Vector((A.x, A.y - 0.06, 0.08))
+        B.add(F, (0.178, 0.222, 0.08), MAUVE, foot, top=(0.86, 0.84), rnd=0.36)                        # foot
+        for gx in (-0.11, 0.0, 0.11):                                                                   # 3 toes
+            B.add(Vector((A.x + gx, A.y - 0.295, 0.05)), (0.048, 0.056, 0.05), JOINT_D, foot, rnd=0.40)
+            B.spike(Vector((A.x + gx, A.y - 0.345, 0.03)), (0, -1, -0.45), 0.04, 0.02, BLACK, foot)
+    B.build()
+    bk.stud_skin(k, PITCH)
+    mn, mx = k.bounds()
+    return {"TH": round(B.th, 3), "PITCH": PITCH, "H": round(mx.z, 3), "lowest": round(mn.z, 3),
+            "size": [round(v, 3) for v in (mx - mn)], "CORE": [round(v, 3) for v in CORE],
+            "HERO": [round(v, 3) for v in HERO]}

@@ -1,0 +1,44 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\render.py:41: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if not m.use_nodes:
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\render.py:52: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  gm.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\render.py:65: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  sm.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\render.py:79: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  rm.use_nodes = True
+00:05.328  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_25_front_truepx.png'
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_25_front_truepx.png
+00:05.515  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_25_backL_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_25_backL_truepx.png
+00:05.609  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_40_front_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_40_front_truepx.png
+00:05.687  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_40_backL_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_40_backL_truepx.png
+00:06.000  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_40_front_zoom.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Thorn_40_front_zoom.png
+00:06.140  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Autumn_25_front_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Autumn_25_front_truepx.png
+00:06.234  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Autumn_25_backL_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Autumn_25_backL_truepx.png
+00:06.312  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Autumn_40_front_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Autumn_40_front_truepx.png
+00:06.390  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Autumn_40_backL_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Autumn_40_backL_truepx.png
+00:06.687  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Autumn_40_front_zoom.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Autumn_40_front_zoom.png
+00:06.796  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Bramble_25_front_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Bramble_25_front_truepx.png
+00:06.875  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Bramble_25_backL_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Bramble_25_backL_truepx.png
+00:06.953  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Bramble_40_front_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Bramble_40_front_truepx.png
+00:07.015  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Bramble_40_backL_truepx.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Bramble_40_backL_truepx.png
+00:07.281  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Bramble_40_front_zoom.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review\renders\Bramble_40_front_zoom.png
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

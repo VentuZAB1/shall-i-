@@ -1,0 +1,12 @@
+00:24.031  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\VoltRhino\VoltRhino_portrait_raw.png'
+Info: Saved as "VoltRhino_rigged.blend"
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+
+FBX export starting... 'C:\\cdimp\\VoltRhino.fbx'
+export finished in 0.0471 sec.
+Info: Saved as "VoltRhino_rigged.blend"
+HEADLESS_RESULT {"audit": {"idle": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "idle_foot_drift": 0.0}, "walk": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "slide": 0.0, "foot_z_var": 0.0}, "roar": {"linear": 0}, "act_horntap": {"linear": 0}}, "stride": 0.3429, "lua_bytes": 45525, "clips": {"idle": [120, true], "walk": [40, true], "roar": [60, false], "act_horntap": [100, false]}, "events": {"idle": {"stamp": 0.383, "flick": 0.75}, "roar": {"bellow1": 0.333, "bellow2": 0.467, "bellow3": 0.6}, "act_horntap": {"tap1": 0.3, "tap2": 0.42, "tap3": 0.54, "snap": 0.6, "charge": 0.7}}, "tris_body": 14532, "tris_glow": {}, "bones": ["Root", "Spine", "Chest", "Neck", "Head", "Jaw", "Mouth", "FX_BellowRing", "Horn_Base", "Horn_Tip", "FX_BoltTrail", "FX_ChargeGlow", "Ear_L", "Ear_R", "Shoulder_L", "FX_BoltSpark_L", "Leg_FL", "Shin_FL", "Foot_FL", "FX_DustTap", "Shoulder_R", "FX_BoltSpark_R", "Leg_FR", "Shin_FR", "Foot_FR", "Leg_BL", "Shin_BL", "Foot_BL", "Leg_BR", "Shin_BR", "Foot_BR", "Tail1", "Tail2", "Tail3"], "ground_min_z": {"idle": [-0.0, 120], "walk": [-0.002, 9], "roar": [-0.0, 60], "act_horntap": [-0.008, 42]}, "collisions": {}, "collision_free": true, "export": {"meta": {"name": "VoltRhino", "display": "Volt Rhino", "motion": "Walk", "rig": "quad", "height": 8.69, "stride": 0.34285714285714286, "walk_len": 1.3333333333333333, "glow": [], "lights": {}}, "portrait": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\VoltRhino\\VoltRhino_portrait_raw.png"}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

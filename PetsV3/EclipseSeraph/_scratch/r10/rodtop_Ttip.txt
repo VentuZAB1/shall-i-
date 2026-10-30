@@ -1,0 +1,1 @@
+ROD {"takeoff:6": {"L": {"vis": 491, "major": 50.0, "minor": 7.3}, "R": {"vis": 512, "major": 47.5, "minor": 12.5}}, "takeoff:8": {"L": {"vis": 492, "major": 52.2, "minor": 7.4}, "R": {"vis": 497, "major": 47.9, "minor": 14.0}}, "takeoff:10": {"L": {"vis": 497, "major": 53.4, "minor": 8.7}, "R": {"vis": 490, "major": 48.5, "minor": 14.9}}}

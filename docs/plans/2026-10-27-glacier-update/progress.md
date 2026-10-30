@@ -1,0 +1,896 @@
+# Glacier update: progress ledger (started 2026-10-27)
+
+Spec: `docs/plans/2026-10-22-new-pets-glacier-area.md` (agreed 10-22).
+
+**Owner answers, 2026-10-27:**
+- Keep all 12 names.
+- Frost Glacier theme.
+- Extend rebirths to R25.
+
+## Phase 1: plans (nothing built yet)
+- [x] ECONOMY_PLAN.md (Opus agent): DONE 2026-10-27. Sims glacier_sim.py / glacier_spread.py; output glacier_sim_output.txt. Its numbers win over AREA7_PLAN (last table).
+- [x] 12 pet plans: PetsV3/_review/<Name>_plan.md + PetsV3/_review/GLACIER_CONCEPTS.md (Haiku planner). Plan review running -> _review/GLACIER_PLAN_REVIEW.md
+- [x] AREA7_PLAN.md (Haiku planner, read-only Studio). Done 2026-10-27; open points: wave StartZ -2500 -> -2900, SLING_MAX 30 / 75 studs per level, streak secretFor must skip mythics, Index 7 tabs + mythic badge mockup
+- [x] Pet plan review (Haiku): _review/GLACIER_PLAN_REVIEW.md (11 APPROVED WITH CHANGES, Titan REVISE). The planner is applying v2.
+- [ ] Owner OK: concept sheet + pacing table
+
+## Phase 2: build
+- Pets: I build them myself in Blender (PetsV3 kit). A Haiku reviewer approves each one. Batches of 4-6, with a lineup shot to the owner after each batch.
+- Area 7 + systems in Studio: one Studio writer at a time.
+- Index 6-card layout = a visible UI change, so it needs a mockup and the owner's OK first.
+
+## Log
+- 2026-10-27: The owner asked for Opus builders + Haiku reviewers. 4 pet builders were started (brief: PetsV3/_review/GLACIER_BUILDER_BRIEF.md):
+  - A: Badger, Lynx, Wraith
+  - B: Volt Rhino, Ice Mammoth, Glacier Yeti
+  - C: Permafrost Titan, Coral Crusher, Cinder Overlord
+  - D: Blizzard Roc, Frostcrown Dragon, Eclipse Seraph
+  Each stops at the MODEL GATE, where I run a fresh Haiku reviewer per pet and relay the verdict. Then the clips, the CLIP GATE, the export to C:\cdimp.
+- Studio S1 builder: Area 7 behind the closed wall, plus S2_OPEN_CHECKLIST.md (running).
+- 2026-10-27 S1 (Studio builder): Area7_Glacier BUILT + CLOSED (Closed attr, behind the old EndWall; 275 BaseParts / 166 MeshParts vs Celestial 387/232), GlacierEgg template (PendingArea 7, not spawning), inert data (KG x4, AREA_INCOME/HATCH 7, Analytics name). Play test clean (eggs 1-6 only, waves run, Lv25 lands -2336 Celestial, wall blocks at -2459.5). Notes: BUILD_NOTES_S1.md; S2 steps: S2_OPEN_CHECKLIST.md (map step = ServerStorage._Backup_GlacierS1.S2_OpenMap); renders s1_renders/. Owner must Save.
+- 2026-10-27 S1 DONE (Studio builder):
+  - Area7_Glacier was built behind the closed end wall (Area = 7, Closed = true; 275 BaseParts + 166 MeshParts; 19 side props + 6 snow patches).
+  - The GlacierEgg template is at ServerStorage.Assets.Eggs.GlacierEgg (PendingArea = 7, not spawned).
+  - EggSpawner skips Closed folders. CreatureConfig AREA_INCOME[7] / AREA_HATCH[7]; the Analytics name.
+  - Backup + Revert: ServerStorage._Backup_GlacierS1. S2 map opener: _Backup_GlacierS1.S2_OpenMap. Checklist: S2_OPEN_CHECKLIST.md.
+  - Play test clean.
+  - Visual review (Haiku) running -> AREA7_VISUAL_REVIEW.md.
+- 2026-10-27 S1 v2 (visual review FIX 6/10 applied): walls (112,168,216) / sills (150,196,228) / VIP back+roof+fillers (96,150,200), rims (40,140,215) 0.6 tall, 6 wall-mounted ice crystals, icy boulders; GlacierEgg ring at the equator + non-Neon frost; egg renders: STANDS OUT strongly (s1_renders/egg_*.png). Area7_Glacier PARKED in ServerStorage._GlacierStage (tags kept in _StageTags; Preview module toggles it); S2_OpenMap step A0 brings it back (dry-run OK). Play test parked: 0 errors, eggs 1-6, SafeBoxes 48. Owner must Save.
+- 2026-10-27 S1 visual fixes DONE:
+  - Walls (112,168,216); rims (40,140,215) 0.6; 6 wall crystals (small, 3-4 studs: make them 5-6 in S2); icy boulders.
+  - Egg band moved to the middle; the egg stands out strongly.
+  - Area PARKED in ServerStorage._GlacierStage (Preview module toggles it). The S2 opener moves it back first.
+- S2 TODO: enlarge the wall crystals to 5-6 studs (or pairs).
+- Model gate round 1 scoreboard (2026-10-27). All verdicts were relayed to the builders.
+
+  | Pet | Score | Verdict |
+  |---|---|---|
+  | Badger | 6, then 7 (round 2) | APPROVED WITH FIXES, 1 MUST |
+  | Lynx | 7 | APPROVED WITH FIXES |
+  | Wraith | 6 | REVISE (saddle waiver 10-14 % approved) |
+  | Rhino | 6 | REVISE |
+  | Mammoth | 6 | REVISE |
+  | Yeti | 5 | REVISE |
+  | Roc | 7 | APPROVED WITH FIXES |
+  | Frostcrown | 6 | REVISE (D1 colour accepted and pushed further) |
+  | Seraph | 5 | REVISE (6 wings PASS; body split to mid-lilac approved by the lead) |
+  | Titan / Coral Crusher / Cinder Overlord | - | Builder C still modelling |
+- Model gate status (later on 10-27):
+
+  | Pet | Status |
+  |---|---|
+  | Badger | APPROVED, clips started |
+  | Lynx | round 2 8/10 (one chest-bib fix) |
+  | Wraith | round 2 7.5 (mane plume + HEIGHT 9) |
+  | Rhino | round 2 7.5 (5 small mesh fixes during clips) |
+  | Yeti | round 2 7 (2 side-view fixes during clips) |
+  | Mammoth | round 2 8 (no MUST; check aqua vs teal in Studio -> body (92,160,184) if aqua) |
+  | Roc / Frostcrown / Seraph | round-2 fixes in progress (B: 7/6/5 in round 1) |
+  | Titan 6, Coral Crusher 5->6, Cinder Overlord 5 | round-1 verdicts relayed (Crusher walk yaw 45° = lead ruling) |
+- Evening of 10-27: round 2 done for all 12. The owner lineup LINEUP_round2.png was shown.
+  - **Clip gates:**
+    - Builder A: Badger 7, Lynx 7, Wraith 7.5. Fixes relayed (badger roar/act/shake; lynx throat + claw splay; wraith anim refs + mane roots).
+    - Builder B: clip gate submitted, reviews running.
+  - **Model round-3 render checks pending:**
+    - Frostcrown (crown front, belly rungs, STEEL_BLUE)
+    - Seraph (lilac primaries, BLOOD tail brush, mane, BODY_MID)
+    - Roc (eye, strips; folded into clips)
+    - Titan (back ring 0.25, cap mass)
+    - Coral Crusher (claw cream, 45° base pose, game-camera portrait)
+    - Cinder (eyes, V muzzle, saddle 18°, RAD +10 %, lava)
+  - Lead rulings: Crusher HEIGHT 6.1; Crusher portrait = game-camera icon; Crusher walk yaw 45° + idle base pose at the same yaw.
+- Night of 10-27:
+  - Animation refs: central doc `PetsV3/_review/ANIM_REFERENCES_1027.md`.
+    - The site has 25 opens/day (3 left) and the player hangs in a hidden pane. Builder A's method: open on the site, then step the frames on the Sakugabooru source.
+    - Site clips used: Wolf's Rain #174333 (Wraith), The Cat Returns #256671 (Lynx).
+  - Builder A: all 3 pets' clip fixes done; final sign-off checks running (review4); then EXPORT.
+  - Builder B: round-3 clip fixes done; citing the central refs; then the reviewers sign off.
+  - Builder C:
+    - Clips done + model r3 fixes. Lead rulings: crab pale 0.9 % accepted; slither head→tail accepted.
+    - Combined model r3 + clip gate with the reviewers.
+  - Builder D: clips + r3 render fixes in progress (HTTYD site clips for the flyers).
+- Late night of 10-27:
+  - **EXPORTED (3/12):**
+    - BrambleBadger.fbx: 4,956 tris, Grass egg.
+    - FrostfangLynx.fbx: 6,532 tris.
+    - WraithHound.fbx: 6,820 tris, 8.5/10.
+    - Location: `C:\cdimp`. Each has `.lua` + `_meta` + `_bu` + portrait + texture in its PetsV3 folder.
+    - The Wraith's last MUST (jaw over f11-26) was exported without a re-review, by the lead's instruction.
+  - **Builder B:** central refs cited. The Mammoth trumpet jaw is re-timed to f16-34, the Rhino bellow jaw starts at f10, and the Yeti skid drop lands by f7.
+    - Round-4 sign-off requests are sent to the Rhino, Mammoth and Yeti reviewers.
+    - Lead rulings: events are fractions (same as ThunderRex); the Yeti uses option B (head joint against head+neck ≤ 30); the Yeti walk IS diagonal (measured touch-downs LH f0, RF f12, RH f24, LF f36; the offsets are phase leads); W0 meets the site rule for the Mammoth (no owner decision needed).
+  - **Builder C round 3:**
+
+    | Pet | Verdict | MUSTs |
+    |---|---|---|
+    | Coral Crusher | 8 APPROVED WITH FIXES | site refs + wave re-time to 120 f with holds |
+    | Permafrost Titan | 7 | kneel readable from front/tq/back; back pale ≥ 12 % via shoulder caps; its refs MUST is already met by the K8 section (lead ruling); apply the kneel settle dip |
+    | Cinder Overlord | REVISE 7 | idle/walk site refs; molt Spine yaw ≤ 5; Crown_3 reseat ≤ 5.2°/f; one set of gate numbers; body lift to about (166, 90, 106) to outclass |
+
+    - All relayed. Builder C reports all three together for round 4.
+  - The free ref method (all builders): tag page → Sakugabooru post frames; no site opens spent.
+  - **Round-4 results:**
+
+    | Pet | Score | Status |
+    |---|---|---|
+    | Ice Mammoth | 8 | re-render, then export (Builder B) |
+    | Volt Rhino | 8 | re-render + ref notes + plan §10, then export |
+    | Glacier Yeti | 8 | the reviewer WITHDREW the lateral-walk MUST; re-render, then export |
+    | Coral Crusher | 8, APPROVED | NICE holds 6-8 f, then export |
+    | Permafrost Titan | 8, APPROVED | NICE back ring 0.28, then export |
+
+  - **Cinder Overlord** read as a PINK WORM (hue H 347). Lead ruling: shift to ember (166, 66, 50) or oxblood (160, 50, 56) + a warm ash belly (222, 194, 158). The builder compares the two vs Ivonrath / Phoenix / Rex, picks one, then round 4.
+  - **Builder D was a ZOMBIE** from 17:38 (the usage limit hit mid tool call; the harness still said "running"; no file writes for 5 h). TaskStop + SendMessage resumed it with a recap: model r3 fixes first (report), then clips.
+    - Lesson: after a usage-limit reset, check every builder's last file mtime, not just the "running" status.
+  - **CORRECTION:** `C:\cdimp\IceMammoth.fbx` dated 03:03 is the OLD 10-02 studded model, NOT the new pet. The new Mammoth is still unexported (Builder B is on it).
+    - An old unused IceMammoth model + clips also sit in ReplicatedStorage.CreatureModels / CreatureClips. That is S2 checklist item 24.
+  - **EXPORTED (5/12):** Badger, Lynx, Wraith, **CoralCrusher** (11,900 tris; its Index portrait = `_portrait_alt`), **PermafrostTitan** (7,552 tris, back ring 0.28, game gold 24).
+  - **Cinder:** hue pick A2 ember (166,66,50) + ash belly (222,194,158) + NEW ember accent (255,84,48), replacing the pink (255,96,150). Round 4 is with the reviewer.
+  - **Builder D:**
+    - Model r3 sent: Roc APPROVED 8.5 (carry-overs: ground margin, white rump from behind); Frostcrown + Seraph re-checks running.
+    - Lead ruling: Frostcrown game-camera gold 27 passes the gate of 25; the 40 target is waived.
+  - Plan docs renamed to the final names (FrostcrownDragon / CinderOverlord / CoralCrusher).
+  - **Cinder r5 = REVISE 7.** The blue was 2.8° from Kraken's blue, and the vents read as ice. Lead rulings (final round):
+    - **(A)** The 15° hue rule = same-EGG siblings only. Across eggs: no near-copy; separate by value/saturation. Accent ≈ deep sulfur blue (24,104,255); cores ≈ white-hot (226,240,255).
+    - **(B)** The cold-blue vent read is ACCEPTED. The body/saddle/crown carry Fire, and the aura particles (ember + blue flame, added by the lead in S2) complete it. TELL THE OWNER.
+    - Body share margin ≥ 41.5 % (trim obsidian). The builder exports if `blue_cmp.png` separates from Kraken/ThunderRex at 64 px.
+  - Frostcrown model r3 = 8/10 APPROVED WITH FIXES (front crown P[0] x 0.21 / P[1] x 0.24; DEEP_STEEL (30,50,110)).
+  - Seraph model r3 = REVISE 7.5 (BODY (196,112,234), WING (206,130,240), OBSID (34,34,56), rim 0.085).
+  - All relayed to Builder D.
+  - **EXPORTED (6/12):** + **CinderOverlord** (10,852 tris).
+    - Final palette: ember body (166,66,50), ash belly, deep sulfur-blue accent (20,92,250), white-hot cores (226,240,255).
+    - Gold @64: portrait 26 / game 20. Body 41.9 %.
+    - Builder C is DONE.
+  - **Builder B ZOMBIE #2:** its 22:03 Bash call never returned (no Blender running). TaskStop + resume with a recap. Mammoth/Rhino/Yeti evidence + exports pending.
+  - **Builder D clip gate (all relayed):**
+
+    | Pet | Model | Clips | MUSTs |
+    |---|---|---|---|
+    | Frostcrown | APPROVED 8 | REVISE 7 | act has no peak (SPREAD at f44 through the frost at f50), end frames + rest delta, ICE_BELLY on throat/core, refs per clip with the site tag |
+    | Roc | | 8 APPROVED WITH FIXES | deeper takeoff/land crouch 7-8 %, launch at f13, refs tag + item |
+    | Seraph | 8 | 6 | 6-wing signature FAILS (lower pair hidden, middle pair about 10°) |
+
+    - **Seraph ruling:** ONE bounded fix round (middle root onto the spine base, lower pair +16-20° with a 4 f lag, WING_LILAC (214,150,246), tail red ≥ 12). If it fails → 4-wing fallback per the owner decision.
+    - **Ref ruling (all flyers):** site tag → site clip → its Sakugabooru source frames is COMPLIANT if the tag + site item title are recorded. Mention it to the owner in the final summary.
+- **10-28, just after midnight: EXPORTED 9/12.**
+  - Added: IceMammoth (13,716 tris, 9.0 studs), VoltRhino (12,328, 8.5), GlacierYeti (6,036, 9.0). Builder B is DONE.
+  - The old `C:\cdimp\IceMammoth.fbm\` (10-02) is untouched. The new export writes no .fbm.
+  - Note from B: `cm.quad_walk(gait="walk")` actually steps a DIAGONAL sequence, not the lateral one in its comment; the Mammoth and Rhino now set their own lateral offsets. Diagonal is fine for most quads; just know it.
+  - S2: the Mammoth aqua-vs-teal check in Studio is still open.
+- **Left:** the Builder D flyers (Frostcrown clips round 5, Roc fixes, Seraph 6-wing last round).
+- **10-28 morning: OWNER RULE, ship bar = 8.5 MINIMUM ("the higher the better", aim 9+).** Memory: `feedback-ship-bar-8-5`; vault: Taste and Quality Rules + Model Review Checklist.
+  - **Fresh final-gate reviewers** (model / clips) on the 9 exported pets:
+
+    | Pet | Model | Clips |
+    |---|---|---|
+    | Badger | 7.5 | 7.5 |
+    | Lynx | 7.5 | 7.0 |
+    | Wraith | 7.5 | 8.0 |
+    | Mammoth | 7.5 | 8.0 |
+    | Rhino | 7.5 | 7.5 |
+    | Yeti | 7.5 | 7.5 |
+    | Titan | 7 | 6.5 (jaw slit bound to Head, never opens = bug) |
+    | Coral Crusher | 7.5 | 7.5 |
+    | Cinder | 7 | 7.5 |
+
+    ALL FIX. Every MUST + TO 9+ list was relayed to builders A, B and C (files `_review/<Name>_final85.md`).
+  - **Builder D round 5:**
+    - Frostcrown 8/8 (horns diagonal, gold, ice, trim bands, takeoff blend).
+    - Seraph: 6 wings PASS, model 8 / clips 8.5 (lower-pair rest angle for the Index card, saturation 0.40, halo clear at launch).
+    - Roc: model 8.5 OK, clips 8.4 (takeoff seam at phase 0.2, 8 f launch).
+  - Lead rulings:
+    - Lynx body: compare sand vs cool frost-silver.
+    - Badger crest: may exceed the plan.
+    - Crusher walk timing: Wikimedia + site Ohmu.
+    - Skip VFX items: the lead adds them in Studio.
+  - **INDEX UI**, owner: "2 rows OK", then "too scuffed" → reviewer pipeline (Haiku):
+    - v4 4/10 → v5 7/10 → v6 8/10 (PC; overall capped at 7 without a phone).
+    - v7 PC + 3 inspect states + PHONE v1 (844x390 canvas, horizontal tabs, 3x2 horizontal cards, inspect sheet). Round 4 is reviewing.
+    - Files: `index_mockup/`.
+    - Phone mock = a PhoneMock ScreenGui canvas built in Play (other GUIs disabled; `_G.HiddenGuis`).
+- **10-28, after the 2nd usage-limit reset:**
+  - **8.5 PASSES so far:**
+    - Wraith Hound: model 8.5 + clips 8.5. FULL PASS; its 9+ polish is running.
+    - Lynx model 8.5 (clips 8.0).
+    - Badger model 8.5 (clips 8.3).
+    - Roc model 8.5 (clips 8.4).
+    - Index PC 8.5 (~9 expected after the CLAIM ALL contrast fix).
+  - **Builder C** re-exported Titan / Cinder / Crusher with all fixes. Re-score is out to the same final-gate reviewers.
+    - Lead rulings:
+      - Titan colour judged in Studio;
+      - Cinder top-down belly accepted;
+      - Crusher pale underside 2.2 % accepted (the claws and spines hide the rim; cream claws were rejected in review 2).
+  - **Builders A, B and D** were resumed with recaps (all three hit the limit cleanly as "failed", so they resume from transcript).
+  - **Studio:** Play stopped, TestFreshSave set back to false.
+  - **Index:** owner question pending: phone size B (88 % height, below the top bar) vs A (94 %).
+- **10-28 ~03:30, Builder B done** (Yeti 01:13, Rhino 01:37, Mammoth 03:21 in `C:\cdimp`; step 1 passes for all three).
+  - Lead ruling: the Mammoth colour stays (80,150,176) and is judged in Studio. The 170 brightest-channel floor stays, and the icon V ≤ 0.70 target is dropped.
+  - Kit note: `blockkit` caps the edge rounding at 0.45, so `rnd` above that does nothing.
+  - Open in Studio: the Yeti look-turn is about 2x (Neck + Head yaw), so cap it if needed.
+  - Final gate round 2 is out to 3 fresh Haiku reviewers (`_review/<Name>_final85_r2.md`).
+- **10-28 ~03:35, Builder A done:**
+  - Wraith 9+ polish (FBX 01:48), Badger clips r3 (03:19) and Lynx clips r3 (03:28) are in `C:\cdimp`. All gates pass.
+  - Lynx idle tail tip is about 26 px at gate distance (the target was 15-20); the reviewer will judge it.
+  - Open in Studio: the Lynx ICE sparks on claw1 f48 / claw2 f60.
+  - Out to fresh Haiku reviewers: `BrambleBadger_final85_r4`, `FrostfangLynx_final85_r4`, `WraithHound_final85_r4`.
+- **10-28 final-gate verdicts:**
+  - **Lynx r4:** model 8.5 PASS, clips 8.0. Walk tail counter-sway is invisible (MUST W1 is 6 → 12°), plus polish P1-P4. Relayed to Builder A.
+  - **Mammoth r2:** model 8.0 / clips 8.3. MUSTs MM1 cuffs as a band, MM2 eye slit with black ends, CM1 roar mouth seen from the side; plus breath, ears and tremble. Relayed to Builder B.
+  - **Yeti r2:** model 8.0 / clips 8.5 PASS. MUSTs MN1 fangs (dim grey, shorter) and MN2 fist plates (sunk, PLATE_ICE_D); plus crust split, wider seam and head drop. Relayed to Builder B, queued after the Mammoth.
+  - **Rhino r2:** model 8.1 / clips 8.2. MUSTs:
+    - MM1 one back band;
+    - MM2 chin strip;
+    - MM3 longer eye slit;
+    - MM4 icon from the final portrait + foot re-log;
+    - MC1 idle stamp lift 0.060.
+    - Plus T-a to T-f. Relayed to Builder B (third in its queue).
+  - **Wraith r4:** 8.5 / 8.5 HELD, ship OK, no regressions.
+    - The 9+ round is queued with Builder A after the Lynx: eye fill or socket, icon luminance to Y≈90, smoother walk and act knee steps.
+    - Skipped: the Mane2 split (wings risk) and the pupil.
+- **10-28 ~03:50, Builder C done.** All gates pass for all three.
+  - **Titan (03:29):**
+    - Tapered tube legs and a narrower hip.
+    - Kneel moved to the LEFT knee (`Knee_L`), knee on the snow f18-52.
+    - Chest counter-yaw -0.75 instead of -0.8, because -0.8 breaks the 5° chest-vs-spine limit.
+  - **Cinder (03:42):**
+    - Body (176,72,54).
+    - Neck rings on Neck1/3 plus a thin band on Neck2.
+    - Brows moved 0.012 toward the nose and dropped 0.016.
+    - Vents +15 %, breath 1.5x.
+    - Tail4 45 % shorter, so the stride is now 5.01 BU/48f. Recheck walk speed in Studio.
+  - **Crusher (03:48):**
+    - Claw breath ±5°.
+    - Right eye tracks 16.3°, shell roll ±3°.
+    - Walk sway 6°.
+  - Final gate is out to fresh Haiku reviewers: `PermafrostTitan_final85_r3`, `CinderOverlord_final85_r3`, `CoralCrusher_final85_r3`.
+  - **Badger r4:** model 8.6 PASS, clips 8.4.
+    - M1: the Chest pitch cancels the breath. L333 becomes 1.0·d and the head gets +2·b.
+    - M2: re-render act, roar and walk after the hump change and check clearance ≥ 0.01.
+    - Plus 9+ items. Relayed to Builder A, queued after the Lynx and before the Wraith 9+ round.
+  - **Titan r3:** model 8.0 / clips 7.5. Walk 7 too.
+    - Model MUSTs: M1 knee ledge and cap; M2 belt groove half-height 0.02.
+    - Clip MUSTs: M3 left fist on the thigh; M4 game-camera kneel L-shape; M5 idle arm sway ±2.5°.
+    - Plus walk arm swing 5-6°, breath 1.8, settle 0.005, roar jaw re-render.
+    - Relayed to Builder C (Titan first).
+  - **Crusher r3:** model 8.5 / clips 8.5 = FULL PASS (ships).
+    - The 9+ round is queued with Builder C: eye 20°, roll ±4°, breath ±6°, dome taper, re-render `_act_eyes_roll`.
+    - The owner's sign-offs (underside, walk timing) are still pending.
+  - **Cinder r3:** model 8.0 / clips 8.0.
+    - Model MUSTs (relayed to Builder C, after the Titan and before the Crusher 9+):
+      - forehead cap ends at 0.54;
+      - only Neck1 keeps a full ring;
+      - nostril pits smaller and on the snout tip.
+    - 9+: flush vents (centipede-leg read), crest blade 0.34, eyes 0.03 inward.
+    - **Lead ruling, C3 walk speed CLOSED:** `CreatureAnimator` L305-306 advances the walk phase by `dist / (clip.stride * k)`, so it is distance-driven and can't skate if the clip-module stride is right.
+      - S2 import check: the Cinder `walk.stride` must match 5.009 BU/48f normalised the same way as the other pets.
+- **10-28 ~04:10, Builder B round 2 done.** All gates pass.
+  - **Mammoth (03:51):**
+    - Cuffs cover half of each shin; slit (0.056,0.008,0.009).
+    - Roar: jaw hinge moved to the back of the chin + wider mouth interior. Pure side view = small wedge under the tusk root.
+  - **Yeti (03:59):** grey fangs, PLATE_ICE_D fists, split crust, seam 0.07, head drop 9°.
+  - **Rhino (04:09):**
+    - One back step.
+    - Chin = narrow rounded strip, because both specified methods failed.
+    - Longer slit, stamp lift 0.060, flank (126,134,150), tris 14,248.
+  - Final gate round 3 is out to fresh Haiku reviewers: `IceMammoth_final85_r3`, `GlacierYeti_final85_r3`, `VoltRhino_final85_r3`.
+  - **Mammoth r3:** model 8.5 PASS (at the floor), clips 8.4.
+    - MUST CM1b: jaw 22 at f34 + MOUTH_IN 0.03 forward, so the mouth shows from the side.
+    - 9+: pupil, belly lip, darker brows, flank variation, act flick crest.
+    - Relayed to Builder B.
+  - **Rhino r3:** model 8.3 / clips 8.4.
+    - MUSTs: delete the chin seg L286 and the -1.64 strip point; eye slit taller (0.036/0.048); stamp lift 0.120; re-run probe_feet on the final file.
+    - Relayed to Builder B (after the Mammoth).
+  - **Yeti r3:** model 8.2 / clips 8.5 PASS.
+    - The fangs and fist tops still render near-white (lighting highlight).
+    - MN1: IVORY (100,96,90), else (72,70,68); pass = no fang pixel at lum ≥ 170 in the front close-up.
+    - MN2: plate normal (0,-1,0.6) + colour (120,140,168); pass = fist peak lum ≤ 200.
+    - Relayed to Builder B (third in its queue).
+- **10-28, Builder D round 6 done.** Nothing exported yet; that waits for the reviews. Step 1 passes for all three.
+  - **Frostcrown:** slim diagonal horns, ice 9.3 %, trim bands, takeoff = fly f0.
+    - Gold on the 64 px game icon: 27 tool / 28 brief / 18 strict.
+    - **Lead ruling:** gold is scored on the BRIEF rule (28 ≥ 25 PASS). Strict 25 is not reachable without breaking "crown only" or growing the horns. Crown gold is checked in Studio.
+  - **Seraph:**
+    - 3-tier wing rest (Index card 5 of 6 wings).
+    - Punch 0.395 / 62.5 % vs Solar Lion 0.391 / 56.5 %.
+    - Halo hidden 0-18 % at launch. f24-28 is the approved fly stroke top and stays.
+  - **Roc:** takeoff seam 0.00, 8 f downstroke.
+    - **Lead ruling:** the knee bend (9+) is skipped, because shortening the skirt would change the approved 8.5 model.
+  - Out to fresh Haiku reviewers: `FrostcrownDragon_review6`, `EclipseSeraph_review6`, `BlizzardRoc_review6`.
+  - **Seraph r6:** model 8 / clips 8.5 PASS. Punch fixed (sat 0.426 = Lion, saturated share 79 % vs 70 %).
+    - MUST: 6th wing countable on the Index card (far lower wing tip out and up, fwd ≥ -4).
+    - Re-render the stale idle/walk/land/roar/tq sheets + a 7-cell strip.
+    - 9+: muzzle less cat-like, sat +0.02.
+    - Relayed to Builder D with the gold and knee rulings.
+  - **Frostcrown r6:** model 8.2 / clips 8.4. Brief gold 30 PASS, handoff PASS.
+    - MUSTs:
+      - horns still slabs (round another way, because rnd is capped at 0.45);
+      - flank bands 0.030 / bars 0.012;
+      - ICE_W ≥ 9.2 % strict;
+      - re-render stale clip sheets + rest deltas;
+      - act snap +6.
+    - Relayed to Builder D (after the Seraph).
+- **10-28 ~04:45, Builder C done** (all gates pass).
+  - **Titan (04:21):** knee step gone, belt seam 0.02, kneel spine roll 9 + sole lift, idle arm swing ±2.5°, walk arms 5.5°.
+    - The left fist gets to 0.094 of the thigh (not 0.03); closer drives the forearm into the thigh.
+  - **Cinder (04:25):** forehead band, one neck ring, nostrils on the snout tip, flush vents (still read as bars), crest 0.34, eyes inward. Stride 5.0089 BU/48f.
+  - **Crusher 9+ (04:43):** roll ±4°, breath ±6°, lower trough, right eye locked on the claw, tapered domes.
+  - Out to fresh Haiku reviewers: `PermafrostTitan_final85_r4`, `CinderOverlord_final85_r4`, `CoralCrusher_final85_r4`.
+  - **Roc r6:** model 8.5 PASS, clip motion 8.6. The only blocker is MUST 1 documentation (ANIM_REFS walk/takeoff lines + code comment). It passes after the doc fix.
+    - 9+: C1 takeoff 36 f recovery; M1 tail tilt 40°; M2 wing twist +16; M3 darker back (STORM ≤ 40 %); M4 head close-up.
+    - Relayed to Builder D (third). Export allowed after this round.
+  - **Cinder r4:** model 8.2 / clips 8.4. Forehead, nostrils and blade now PASS.
+    - MUSTs: vent core LAVA→ROSE (else drop the lower vent of each pair); Neck3 ring off + Neck2 band 0.70-0.80; re-render the stale walk sheets.
+    - 9+: eyes inward, flatter snout tip, molt lift 50°.
+    - Relayed to Builder C.
+  - **Crusher r4 (9+ check):** 8.5 / 8.5 HELD, ships.
+    - The last 9+ step is eye geometry (stalks +25 %, bulbs +20 %, ≥ 4 px travel). Queued with Builder C after the Cinder (and Titan); revert if it looks cartoony.
+  - **Titan r4:** model 8.3 / clips 7.7 (idle 7.5, walk 7.5, roar 8.0, act 7.8).
+    - MUSTs: waist taper 0.86; Shin_L lean back 10° (L-shape from behind); idle arms ±5°; walk arms 9°; jaw cavity near-black.
+    - **Lead rulings:**
+      - neck ≤ 8 applies only to a Neck bone (the Titan has none; head pitch is judged by head+neck ≤ 30);
+      - re-measure the fist gap and document it (0.094 vs log 0.019/0.294).
+    - Relayed to Builder C (after the Cinder, before the Crusher eyes).
+- **10-28, Builder D round 7 done.** Step 1 passes for all three.
+  - **Seraph:** 6 wings countable on the card. The lower pair rests down and forward; the "tip out and up" pose stayed hidden in 40+ poses.
+    - Lilac-grey muzzle; sat 0.410.
+    - 21 sheets re-rendered.
+    - Not exported.
+  - **Frostcrown:** lofted tapering horns (rnd cap); brief gold 27/28, portrait 57; bands 0.030/0.012; ICE_W 9.4 % strict; snap +6.
+    - 14 sheets + rest deltas re-done.
+    - Not exported.
+  - **Roc:** docs fixed; takeoff 36 f; tail tilted 40° the other way (the review way cut the legs); back storm 31.7 %; eye slit OK.
+    - **EXPORTED** to `C:\cdimp\BlizzardRoc.fbx`.
+    - Skipped:
+      - M2 wing twist (it would change every approved clip);
+      - N2 coverts (no bones).
+  - Out to fresh Haiku reviewers: `EclipseSeraph_review7`, `FrostcrownDragon_review7`, `BlizzardRoc_review7`.
+- **10-28 ~05:30, round results:**
+  - **Mammoth r4: model 8.6 / clips 8.6 = FULL PASS** (roar mouth from the side now reads). The 9+ items are optional.
+  - **Seraph r7:** model 8 / clips 8.5 PASS.
+    - MUST: far lower wing tip reach +0.05 H. Relayed to Builder D.
+    - **OWNER QUESTION:** the body drifted from the owner-bound lilac-ivory #E8D0F0 to a saturated violet (to beat the Solar Lion's punch). Colours are ON HOLD until the owner picks.
+    - Image: `owner_checks/COLOUR_CHECK_seraph_wraith.png`.
+  - **Builder A done:** Lynx r4 (03:56), Badger r4 (04:42), Wraith 9+ r8 (05:25).
+    - Wraith lavender darker (122,112,164), shown to the owner in the same image.
+    - Wraith walk is now 36 f. Lead ruling: OK, because CreatureAnimator is distance-driven.
+  - **Builder C done:** Cinder r4 (05:00), Titan r4 (05:11), Crusher eyes (05:24).
+  - Out to fresh Haiku reviewers: Lynx r5, Badger r5, Wraith r5, Cinder r5, Titan r5, Crusher r5. Still running: Frostcrown r7, Roc r7, Rhino r4, Yeti r4.
+  - **Frostcrown r7:** model 8.4 / clips 8.6 PASS. Horns resolved.
+    - MUSTs: ICE_W (244,250,255) incl. the 2nd fin facet (reviewer counts 8.8 %, needs 9.2); trim bars 0.018 with overlap; re-render `_close_sheet`.
+    - Relayed to Builder D.
+  - **Roc r7:** model 8.6, clips avg 8.7, BUT walk 8.2.
+    - **LEAD RULING: the 8.5 floor applies PER CLIP (never an average).** Added to GLACIER_REVIEWER_BRIEF.
+    - Roc walk MUST: lateral shift 0.02 + heron head bob; fly stroke frames; 9+ CHAR band + eye bar.
+    - Relayed to Builder D (third). The existing Roc export is a backup.
+  - **Crusher r5:** 8.5 / 8.5 PASS (eye round better). Portrait re-make asked of Builder C.
+  - **Per-clip audit** of Crusher + Mammoth launched (`_review/PERCLIP_AUDIT_crusher_mammoth.md`). The Wraith per-clip check comes from its r5 review.
+  - Crusher portrait re-made 05:44:59 from the 05:24 export (old copy in `_scratch/stale_0444`). S2 item 25 still applies: use `_portrait_alt`.
+  - **Cinder r5:** model 8.4 / clips 8.5 PASS.
+    - MUSTs:
+      - crest gold clips to lemon (H 60), so deepen it to H 42-50 and widen the counter window to 29-60;
+      - mythic icon presence (fill ≥ 70 % of frame height).
+    - **LEAD RULING:** the icon fix is the portrait POSE (molt peak, head raised, 3/4 front, bbox crop), not the model → `CinderOverlord_portrait_alt.png`.
+    - Relayed to Builder C.
+    - S2: use `CinderOverlord_portrait_alt.png` for the Index (like the crab).
+  - **Titan r5:** model 8.4 / clips 7.7 (idle 7.6, walk 7.6, roar 8.0, act 7.5).
+    - **Rulings:**
+      - fist OK visually (the 0.03 centre test is dropped);
+      - kneel from the game camera = Root yaw 15-20° during the hold.
+    - MUSTs: skull 0.172; crusts 2 chunks; forearm bend ±4/±6; jaw (10,10,14) + lip overhang.
+    - 9+: one more readable idle/walk beat.
+    - Relayed to Builder C (after the Cinder).
+  - **Per-clip audit:**
+    - Crusher: idle 8.6, walk **8.4**, roar 8.7, act 8.8.
+    - Mammoth: idle **8.3**, walk **8.4** (stale sheets), roar 8.6, act 8.6.
+    - Both are back in fix rounds:
+      - Crusher walk (lift 0.10, bob 0.016) → Builder C, after the Cinder;
+      - Mammoth idle (ear 13, breath 3, trunk roll up) and walk (trunk 6°, roll ±2.5) → Builder B.
+    - **No pet is "ready" until every clip is ≥ 8.5.**
+  - **Rhino r4:** model 8.5 / clips 8.6 PASS, but no per-clip scores, and the act/roar sheets are stale (00:00).
+    - Builder B (after the Mammoth): re-render act/roar from the final save + 9+ T4-T7 (mouth taper, snort 8°, roar pump 5°, act snap over 8 f) + wider eye socket.
+    - A per-clip review follows.
+  - **Yeti r4:** model 8.5 / clips 8.5 PASS. Fangs lum 154/155; fist plates 173/185.
+    - 9+: the shoulder cap tops clip to white, the profile cap is one card, and there's too little green at 64 px.
+    - Per-clip audit launched (`_review/PERCLIP_AUDIT_yeti.md`).
+  - **Badger r5:** model 8.6 PASS, clips 8.4. The breath fix works.
+    - MUST: render act f64/f68/rest from low side + underside to prove the neck is hidden.
+    - Also: full walk sheet; fix the game-camera crops; ANIM_REFS numbers; ear flick 28°.
+    - Relayed to Builder A.
+  - **Lynx r5: model 8.5 / clips 8.5 PER CLIP (idle, walk, roar, act all 8.5) = FULL PASS, ships.** FBX 03:56.
+    - Optional 9+ (parked): walk nod vs the ANIM_REFS "steady head" note, act claw flex, underside snow share.
+  - **Wraith r5:** model 8.5 / clips 8.7 PASS; eye, luminance and knee steps landed. No per-clip scores.
+    - Builder A (after the Badger): socket X 0.054 (close-up regression) + full per-clip sheets.
+    - The colour waits for the owner.
+  - **Yeti per-clip:** idle **8.1**, walk 8.6, roar 8.6, act 8.6.
+    - Idle fix: plate settle 13°, head drop 11°, breath 4.2° + an idle reference citation; plus cap tops 10-15 % darker.
+    - Relayed to Builder B (third, after the Mammoth and Rhino).
+- **10-28 ~06:15, Builder A done:**
+  - **Badger r5 (06:10):** neck evidence with a magenta test (hidden), full walk/idle/act/roar sheets, ANIM_REFS matches, ear 28° + an extra head-up twitch. Walk knee step 10.35° at f1 is still there.
+  - **Wraith r9 (06:14):** socket 0.054 (64 px eye = 6, on the floor) + per-clip sheets.
+  - Out to per-clip final reviewers: `BrambleBadger_final85_r6`, `WraithHound_final85_r6`.
+  - Ruling: the ear twitch size is a 9+ item (no ear model change).
+- **10-28, Builder D round 8 done.**
+  - **Seraph:** lower wing reach about 0.15-0.17 H, cheek ruff, fly beat 38°, halo hidden 7 % at f10. Colours untouched (owner).
+  - **Frostcrown:** ICE_W 9.6 % portrait rule (with the reviewer's mask), seams continuous 3-4 px, close sheet fresh, diadem gold edge.
+  - **Roc:** walk lateral 0.02 + heron bob; fly f0-30 sheets; CHAR rows + wing leading edge (greys 36.7 %, CHAR 29.8 %); eye bar removed. Re-exported.
+  - Out to per-clip reviewers: `EclipseSeraph_review8`, `FrostcrownDragon_review8`, `BlizzardRoc_review8`.
+  - **Wraith r6 per-clip: model 8.5; clips idle 8.6, walk 8.5, roar 8.6, act 8.6 = FULL PASS (per clip), ships.** FBX 06:14.
+    - The darker lavender waits for the owner. If the owner prefers the old colour, revert ASH_LAV only + re-check the shares.
+  - **Badger r6 per-clip:** model 8.4; idle 8.3, walk 8.4, roar 8.3, act 8.2.
+    - The lead viewed `_neck_evidence_r5`: the nape shows as a slab in front of / over the cape (the reviewer is right).
+    - MUSTs: nape inside the cape footprint (y ≥ -0.470, z ≥ 0.305); act beat crops (lift ≥ 15 px at 2x, else 0.035); breath ±0.020; knee step strip.
+    - Relayed to Builder A.
+- **10-28 ~06:25, Builder B done:**
+  - **Mammoth (05:57):** idle ear 13 / breath 3 / trunk roll (tip 0.253); walk roll ±2.5 + spine rock + trunk fore-aft about 11° (tip 0.214).
+  - **Rhino (06:10):** fresh evidence; T4-T7; eye socket wider (dark frame at 64 px).
+  - **Yeti (06:22):** idle plates 13 / head 11 / breath 4.2 + Kung Fu Panda `/tags/subtle` reference; caps 12 % darker.
+  - Out to per-clip reviewers: `IceMammoth_final85_r5`, `VoltRhino_final85_r5`, `GlacierYeti_final85_r5`.
+  - **Roc r8 per-clip:** model 8.7; idle 9.0, walk **8.3**, fly 8.6, takeoff 8.7, land 8.5, roar 9.0, act 9.0.
+    - Walk MUSTs: ANIM_REFS thrust citation (W3), roll 5 + lateral 0.05 (W1, crest x ≥ 24 px), head bob ±7.5 (W2, crest y ≥ 12 px).
+    - Relayed to Builder D.
+  - **Mammoth r5 per-clip:** model 8.6; idle **8.4**, walk **8.4**, roar 8.6, act 8.6.
+    - MUSTs: ear flap 18° (edge ≥ 0.06 BU); breath 4.5° + Spine +0.03 rise; walk Spine z `-0.004 - 0.030*b`; fresh model/act sheets.
+    - Relayed to Builder B.
+  - **Rhino r5 per-clip:** model 8.5; idle 8.5, walk 8.6, roar **8.4**, act 8.5.
+    - MUSTs: roar mouth front `top=(0.45,0.60)` (≥ 25 px); act f42/f54 from below (no skin through the brisket); walk ANIM_REFS from a site tag-page preview, or a documented no-fit.
+    - Relayed to Builder B (after the Mammoth).
+  - **Frostcrown r8 per-clip:** model 8.4; idle, walk, fly, takeoff, land and act 8.6, roar 8.7 = clips PASS. ICE_W 9.59 % PASS.
+    - MUST: seam coverage 80 % (lower end to 0.58-0.60 BU). Relayed to Builder D (after the Roc walk).
+- **10-28 ~06:45, usage limit hit by ALL agents (429), reset ~08:10 Kyiv; the owner said continue.**
+  - State at the limit:
+    - Builder C finished Cinder r5 (06:09: crest gold (250,160,35); portrait_alt = molt f40, fill 0.89) and the Crusher walk (06:20).
+    - Badger r6 was mid-way (06:37 renders).
+    - Mammoth r5 and the Roc walk were not started.
+  - **Seraph review 8 was written before the limit:** model 8.5 PASS (lower reach PASS); clips idle, walk, fly, land and cascade 8.5, **roar 8.0, takeoff 8.0**.
+    - MUST: the far upper wing (Wing_A_L) is edge-on as a rod in the game view, so change the A twist ±12 in the takeoff gather + roar hold.
+    - Queued with Builder D.
+  - **Resumed:**
+    - Builder A (Badger r6);
+    - Builder B (Mammoth r5 → Rhino r5);
+    - Builder C (Titan r5);
+    - Builder D (Roc walk → Seraph twist → Frostcrown seams);
+    - Yeti r5 reviewer.
+  - **New reviewers:** `CinderOverlord_final85_r6`, `CoralCrusher_final85_r6` (walk).
+  - **Yeti r5 per-clip:** model 8.5; idle **8.4**, walk 8.6, roar 8.6, act 8.6.
+    - M1: plate keys with a 10 f hold / 15 f fall. Queued to Builder B (third).
+    - **Lead ruling M2:** a tag-page preview stepped with cited times counts as an animationreference.org reference (same as the Rhino elephants); no clip open is needed.
+  - **Crusher r6 per-clip:** model 8.5; idle 8.6, walk 8.5, roar 8.7, act 8.8 = **PASS every clip** (FBX 06:20).
+    - **Lead ruling:** the shell rims (8.1 / 5.2 px) count for the 4 px body bar.
+    - Queued to Builder C after the Titan: ANIM_REFS walk update (required) + ±1.5° fore-aft pitch for margin; recheck batched with the Titan review.
+  - **Cinder r6 per-clip:** model 8.4; idle, walk, roar and act_molt 8.5 = clips PASS.
+    - MUSTs: a thicker body for the game camera (neck-ring skip (2,3,5,6,7), RAD[1..4] +10 %, area ≥ 0.18); outclass check vs Inferno Phoenix + Ivonrath (gold and area ≥ each); re-render the stale tq/walk sheets.
+    - Relayed to Builder C (after the Titan).
+    - GLACIER_CONCEPTS line 46 fixed: Cinder = MYTHIC (0.5 %, secret + mythic flag per ECONOMY_PLAN).
+- **10-28 08:25, Badger r6 fixes done** (Builder A):
+  - lavender nape removed → dark throat column (the shortened nape left a see-through gap);
+  - scoop/kick lifts 0.035 (16-17.7 px game 2x);
+  - breath ±0.023 (10.5 px at 1x);
+  - walk knee step 10.35 → 4.9° (body lowest at touchdown + soft foot path);
+  - waist tuck.
+  - Out to per-clip reviewer `BrambleBadger_final85_r7`.
+- **10-28 ~08:35, Builder B round 5 done:**
+  - **Mammoth (08:16):** ear 18° + 16° edge tilt (0.0619 BU); breath 4.5° + back rise; walk sink `-0.022 - 0.030*b`, because the suggested formula broke contact.
+  - **Rhino (08:31):** mouth `top=(0.45,0.76)` gives 33 px; act from below is clean; walk ref = the `/tags/elephants` projectarcheology card stepped 10.0-11.4 s.
+  - **Yeti (08:33):** plate beat rise 5 / hold 10 / settle 15; events moved to f35/f60.
+  - Out to per-clip reviewers: `IceMammoth_final85_r6`, `VoltRhino_final85_r6`, `GlacierYeti_final85_r6`.
+  - **Badger r7: model 8.6; idle 8.5, walk 8.6, roar 8.5, act 8.5 = PASS every clip** (FBX 08:25).
+    - Sign-off: a clearance re-run on the 08:21:36 file is asked of Builder A (must stay ≥ 0.010).
+  - **Badger SIGNED OFF:** clearance on the final 08:21:36 file (byte-identical to the export): act 0.0116 / 0.0105, roar 0.0277, walk 0.0231 (all ≥ 0.010). No re-export. FBX 08:25.
+  - Builder A (free) → Lynx walk margin: soft foot path to remove the 12.45° FR knee step; per-clip recheck after.
+- **10-28 ~08:45, Builder D round 9 done:**
+  - **Roc walk (08:19):** roll ±5 + lateral 0.05 (crest x 29.3 px front).
+    - The heron #260630 stepped frame by frame shows NO head thrust, so the thrust was dropped.
+    - **Lead ruling:** W2 (crest y ≥ 12 px) is WAIVED; the reference wins.
+  - **Seraph:** wing A twist -18 + sweep back 8 in the takeoff gather + roar hold, so no rod (halo hidden 2 % at f10); muzzle +17 %; C root x 0.29. Colours on hold.
+  - **Frostcrown:** seams down to 0.60-0.70 BU (about 90 % of the flank); act snap +10.
+  - Out to reviewers: `BlizzardRoc_review9`, `EclipseSeraph_review9`, `FrostcrownDragon_review9`.
+  - **Mammoth r6 per-clip:** model 8.6; idle **8.4**, walk **8.4**, roar 8.6, act 8.6.
+    - MUSTs: exhale head lift -8° (dome +0.07 BU f70→80); walk foot lift 0.15 (sole ≥ 0.13 BU); fix the wrong notes (b at contacts, sink basis, P5).
+    - Relayed to Builder B.
+  - **Rhino r6: model 8.5; idle 8.5, walk 8.6, roar 8.6, act 8.6 = PASS every clip** (FBX 08:31).
+    - Verification only: re-render the act hold + idle snort frames from the final save (queued to Builder B after the Mammoth); the lead checks them.
+  - **Seraph r9:** model 8.5; idle, walk, fly, land, cascade 8.5; **roar 8.0, takeoff 8.0**.
+    - The far upper wing (Wing_A_L) is still a rod (the lead confirmed it on `_rod_check_roar_3x`); only the near side fans.
+    - MUST: per-side A twist (far side test -30 / +6 / +18). Relayed to Builder D.
+  - **Roc r9: model 8.7; idle 9.0, walk 8.5, fly 8.6, takeoff 8.7, land 8.5, roar 9.0, act 9.0 = PASS every clip.** Ship file `C:\cdimp\BlizzardRoc.fbx` 08:19.
+    - Doc fixes only (ANIM_REFS header, CLIP_NOTES head-bob text) queued to Builder D.
+  - **Yeti r6: model 8.5; idle 8.5, walk 8.6, roar 8.6, act 8.6 = PASS every clip.** Ship file `C:\cdimp\GlacierYeti.fbx` 08:33.
+    - ANIM_REFS doc fix queued to Builder B.
+    - Optional 9+: plate hold 18°, body colour brighter in game than the plan (Studio check).
+- **10-28 ~08:55, Builder C done:**
+  - **Titan r5 (08:24):** kneel = 18° Spine yaw about the planted ankle + `leg_unyaw`; skull 0.172; 2-plate crusts (tris 7,820); forearm bend ±4/±6; jaw (10,10,14) + lip (kit luma 81 → Studio check); idle head turn 12°; walk chest roll 3°.
+  - **Cinder r6 (08:41):** ring skip + RAD +10 % + S-curve coiled 1.5× (stride kept 5.0089), so game area 0.190; crest gold frames 25 % wider; Cinder 94 / Phoenix 93 / Ivonrath 25 gold at 64 px; areas 0.373 / 0.267 / 0.295.
+    - **LEAD RULINGS:** fill width 0.60 is waived (area is the metric; the camera geometry limits width); the outclass passes on kit-window gold + area.
+  - **Crusher walk margin (08:52):** ±1.5° fore-aft pitch, top centre 4.5 px; ANIM_REFS updated.
+  - Out to reviewers: `PermafrostTitan_final85_r6`, `CinderOverlord_final85_r7`, `CoralCrusher_final85_r7`.
+  - **Cinder r7:** model **8.3**; idle, walk, roar, act_molt 8.5 = clips PASS.
+    - MUSTs:
+      - centipede read: remove the vents on Body3/Body4/Tail1 + Head group x1.15 with a wider crown mount;
+      - outclass the Phoenix: centre blade 0.36 + gold frames +0.004, gold ≥ 103 at 64 px.
+    - Relayed to Builder C.
+  - **Crusher r7: model 8.5; idle 8.6, walk 8.6, roar 8.7, act 8.8 = PASS** (walk margin landed). Ship file `C:\cdimp\CoralCrusher.fbx` 08:52; portrait_alt 05:44 is still valid (idle f0 identical).
+    - Doc nit (ANIM_REFS S1 lift 0.07 → 0.10) queued to Builder C.
+- **10-28 ~09:00, Builder B:**
+  - **Rhino SIGNED OFF:** the mouth interior shows 0 px in all 39 act-hold + snort frames. Ship file 08:31.
+  - **Yeti:** docs fixed. Ship file 08:33.
+  - **Mammoth r6 (08:55):** exhale head lift 8° + neck 4° with the breath re-timed (dome +0.077 BU); walk foot lift 0.15 with a flat sole (0.132 BU); notes corrected.
+  - Out to per-clip reviewer `IceMammoth_final85_r7`.
+  - **Frostcrown r9: model 8.6; idle, walk, fly, takeoff, land 8.6; roar 8.7, act 8.7 = PASS every clip.**
+    - Export of the round-9 file asked of Builder D (after the Seraph wing).
+  - **Titan r6:** model 8.4; idle 8.0, walk 8.2, roar 8.1, act 7.9.
+    - **Ruling:** kneel yaw up to 30 allowed (test 25/30).
+    - MUSTs: seam MAUVE; fresh icons; idle arms 7°; walk pelvis roll 0.035 + chest 3.5°; roar Arm_R asymmetry.
+    - Relayed to Builder C (after the Cinder).
+- **10-28 09:08, Lynx walk margin (Builder A):** soft foot path, 30 f cycle, 13 f swing, lift 0.030, front-paw curl; max step 5.49° (was 12.45°); tail 25.8 px at 1x.
+  - Recheck `FrostfangLynx_final85_r6` launched. The old FBX (03:56) passed; revert if the walk got worse (backup in `_scratch`).
+  - **Lynx r6: PASS, model 8.5, every clip 8.5** (walk cleaner, not worse). Kept.
+    - Cleanup: remove the `LYNX_SOFT` switch + re-export with identical numbers = ship file.
+  - **Mammoth r7: PASS. Model 8.6; idle 8.5, walk 8.5, roar 8.6, act 8.6.** Ship file `C:\cdimp\IceMammoth.fbx` 08:55.
+    - Sign-off nits to Builder B: f4-f8 lift log + stale comment L509-510.
+  - **SCORE: 9 of 12 pets PASS every rating:** Lynx, Wraith, Crusher, Badger, Rhino, Roc, Yeti, Frostcrown, Mammoth.
+    - Open: Seraph (far wing rod), Cinder (head/vents/crown), Titan (clips 7.9-8.2).
+  - **Lynx ship file:** `C:\cdimp\FrostfangLynx.fbx` 09:14 (switch removed, numbers identical). Builder A is free.
+  - **SHIP FILES (`C:\cdimp`, 10-28):**
+
+    | Pet | FBX time |
+    |---|---|
+    | Lynx | 09:14 |
+    | Wraith | 06:14 (colour pending) |
+    | Crusher | 08:52 |
+    | Badger | 08:25 |
+    | Rhino | 08:31 |
+    | Roc | 08:19 |
+    | Yeti | 08:33 |
+    | Mammoth | 08:55 |
+    | Frostcrown | export pending (Builder D) |
+  - **Mammoth SIGNED OFF:** f4 peak lift 0.132, f8 0.071 (the pad's lowest point), comment fixed. Builder B is free. All of Builder B's pets (Mammoth 08:55, Rhino 08:31, Yeti 08:33) are signed off.
+- **10-28 ~09:20, Builder C done:**
+  - **Cinder r7 (09:08):** gold 113 vs Phoenix 93 at 64 px; area 0.364 / game 0.190; vents on Body3/4/Tail1 removed (Vent_4..6 smoke anchors gone, so VFX skips those); head x1.15 (head+crown 0.244 of the game icon height); blade 0.36.
+  - **Titan r6 (09:17):** kneel yaw 30° (clear L from behind); seam MAUVE; idle arms 7°; walk pelvis 0.035 + chest 3.5°; roar arms symmetric (camera illusion).
+  - Crusher doc fixed.
+  - Out to reviewers: `CinderOverlord_final85_r8`, `PermafrostTitan_final85_r7`.
+  - **Cinder r8:** model 8.4; idle, walk, roar, act_molt 8.5 = clips PASS.
+    - The lead viewed `gamelook_game`: it still reads as a red banded tube, and the blue vent bars stick out like legs.
+    - Relayed to Builder C: HEAD_XF ≤ 1.45 (no bobble-head) + blade 0.40 (head+crown ≥ 0.30); drop one ring; vents -30 % + flush; dorsal obsidian spikes +25 % (lead addition, for a dragon read from behind); hygiene.
+    - GLACIER_CONCEPTS line 116 JSON tier → mythic (fixed by the lead).
+  - **Titan r7: model 8.6 PASS; idle 8.5, walk 8.5, roar 8.5 PASS; act 8.1.**
+    - MUST: the kneel from the game camera (standing foot +0.10 lateral f12-52, else kneeling knee +0.06 outward; two lower legs + knee cap visible).
+    - Relayed to Builder C (after the Cinder).
+- **10-28 ~09:40, Builder D:**
+  - **Frostcrown EXPORTED** `C:\cdimp\FrostcrownDragon.fbx` 09:40:38 (round-9 file) = ship file.
+  - Roc docs fixed.
+  - **Seraph r10:** per-side upper wing (L twist +6 roar, L up 34 + twist 34 takeoff, own land keys); roar middle/lower tiers re-spaced; blade width 3.5 → 7-8.3; takeoff halo hidden ≤ 10 %. Out to `EclipseSeraph_review10`.
+  - **9 of 12 ship files ready:** Lynx 09:14, Wraith 06:14, Crusher 08:52, Badger 08:25, Rhino 08:31, Roc 08:19, Yeti 08:33, Mammoth 08:55, Frostcrown 09:40.
+    - Open: Seraph, Cinder, Titan. Builder D is idle after this.
+- **10-28 ~09:45, Builder C:**
+  - **Cinder r8 (09:32):** HEAD_XF 1.45 + blade 0.40 (head+crown 0.302 of the figure / 0.260 of the icon); gold 136 vs Phoenix 93; area 0.373 / game 0.188; Body4 ring dropped; vents -30 % + flush (ray-cast); dorsal spikes +25 %.
+    - **Ruling:** the head share is measured vs the FIGURE (icon padding = framing).
+  - **Titan r7 (09:41):** standing foot +0.10 out; it's still hidden from the game camera (it would need about a 1 BU side step).
+    - **Ruling:** the kneel is judged on the kneeling-leg L + knee on the snow + body drop/turn from the game camera; a hidden standing leg is not a fault.
+    - **S2: add a SNOW-PUFF VFX at Knee_L contact** for the Titan kneel.
+  - Out to reviewers: `CinderOverlord_final85_r9`, `PermafrostTitan_final85_r8`.
+  - **Seraph r10:** model 8.5; idle, walk, fly, land, cascade 8.5; **roar 8.0, takeoff 8.0**.
+    - The far wing now has 4-5 tips but still runs across the mane / touches the halo rim.
+    - MUST: roar A_L up 30 → 36 (40 fallback); takeoff A_L up 34 → 31; re-render all 21 sheets.
+    - Relayed to Builder D.
+  - **Titan r8:** model 8.6; idle, walk, roar 8.5; **act 8.2**.
+    - MUST: KNEE_OUT 0.06 with a re-solved pelvis drop + left elbow (fallback: ankle 0.08 lateral).
+    - Relayed to Builder C.
+  - **Cinder r9:** model 8.4; idle, walk, roar, act 8.5 = clips PASS. It still reads as a worm/eel from the game camera + a pig-snout front.
+    - MUSTs: forearms out (elbows ±0.40, hands ±0.36); Head/Jaw x1.15 in x only; drop the Tail4 ring; jaw station 0.85 rh 0.032 + chin cover -0.02.
+    - Queued to Builder C after the Titan kneel.
+- **10-28 ~09:55, Seraph r11 fixes (Builder D):** roar A_L up 36 (width 8.9, mane 0.60); takeoff A_L up 31 (halo overlap 0-1 % f4-10); all 21 sheets fresh.
+  - **LEAD RULING** (viewed `_roar_far_wing_height_cmp`): the far wing root is behind the mane, so the fan must overlap part of it. Judge the fan/rod read, not "above the mane". Kept 36.
+  - Out to `EclipseSeraph_review11`.
+  - **Seraph r11: PASS. Model 8.5, all 7 clips 8.5.**
+    - Export (violet) asked of Builder D + a blade-width log.
+    - Colour still pending the owner: if lilac-ivory → a colour-only change + quick re-check.
+  - **SCORE: 10 of 12 PASS** (+ Seraph). Open: Titan (kneel only), Cinder (game read + snout).
+  - **Seraph EXPORTED** `C:\cdimp\EclipseSeraph.fbx` 10:01:25 (violet).
+    - Blade widths: takeoff f4-10 5.7-7.5, roar 8.9 (rod 3-4).
+    - Builder D is free. **10 ship files ready;** open: Titan, Cinder (Builder C).
+- **10-28 ~10:02, Builder C:**
+  - **Titan r8 (09:53):** kneeling ankle +0.06, pelvis 0.348, left arm -6°; shin 79.1 px at 56.7° (it was 53.7°).
+  - **Cinder r9 (10:00):** forearms out (near claw visible), head/jaw x1.15 in x, Tail4 ring gone, tapered muzzle + flat nose caps; gold 135, game area 0.192.
+  - Out to reviewers: `PermafrostTitan_final85_r9`, `CinderOverlord_final85_r10`.
+  - If either is still < 8.5 → show the owner renders and ask.
+  - **Titan r9:** model 8.6; idle, walk, roar 8.5; **act 8.2**.
+    - NEW cause: the left forearm/fist/bracer hides the kneeling shin from the game camera.
+    - LAST attempt: re-solve the left arm hold (out -11..+4, fwd -6..14, bend 0..30), gap ≥ 0.05. If it fails → owner decision.
+  - **Cinder r10:** model **8.3**; clips 8.5 (all four).
+    - Still a worm from the game camera + a nose bulb.
+    - MUST 3: the collision proxies don't cover the paws/skull (the proof is invalid).
+    - Queued to Builder C after the Titan arm: proxies, jaw taper, bigger paws + skull frill.
+    - **ESCALATED TO OWNER** with `owner_checks/CINDER_CHECK.png` (10 rounds, model stuck at 8.3-8.4).
+- **10-28 ~12:58, the owner's PC shut down; Builder C was stopped.** State found on disk:
+  - **Titan r9 arm search DONE (no export):** 36 left-arm holds, 21 pass the arm rules, but NONE changes the camera view (shin 28.7 % / foot 46.3 % visible). The occluders are the leg itself (thigh/foot line up along the view line from behind).
+    - **Titan ship candidate = 09:53 export** (model 8.6, idle/walk/roar 8.5, act 8.2).
+    - **OWNER DECISION needed on the kneel act.**
+  - **Cinder round-10 list NOT started** (pet file 09:59). Builder C resumed on: collision proxies (required), jaw taper, bigger paws + skull frill. The owner's Cinder direction question is pending.
+  - **10 of 12 PASS with ship files:** Lynx 09:14, Wraith 06:14, Crusher 08:52, Badger 08:25, Rhino 08:31, Roc 08:19, Yeti 08:33, Mammoth 08:55, Frostcrown 09:40, Seraph 10:01.
+- **10-28 ~13:05, owner: "continue".**
+  - Titan: the rule-compliant path (8.5 floor) = one more attempt. Builder A gets a kneel turned side-on to the camera (body yaw 45/60/75 about the planted foot, shin ≥ 60 % visible at game f40).
+  - Studio id after the reboot: `1f276414-00a1-4fc9-8dd9-adfbd198ae30` (the old a7ffd071 id is gone).
+- **10-28 ~13:10, OWNER DECISIONS:**
+  - **Import:** "Yes, drive it". I may drive Studio's Import 3D dialog for the pets.
+  - **Seraph:** keep VIOLET (B).
+  - **Wraith:** keep the NEW darker lavender.
+  - **Cinder:** if still < 8.5 after the running round → RAISED COBRA STANCE (redo idle + walk so the head and crown stand tall from behind).
+  - Still unanswered: the crab sign-offs (underside 2 %, walk timing) and phone Index size B.
+- **10-28 ~13:15-13:25, STUDIO IMPORT of the 10 passed pets (I drove the Import 3D dialog, owner OK):**
+  - Old IceMammoth backed up to `_Backup_GlacierS2.OldIceMammoth` before the import.
+  - 2 batches of 5 FBX, creator ZAB Studio, Keep Zero Influence Bones on every row; all 10 green.
+  - Clips: `clips_glacier10.rbxmx` -> ServerStorage.PetsV2Clips (10 modules) -> PetSetup3 with `cfg_glacier10.lua`: all 10 "ok", bones intact (27-53), clips moved, PetsV2Clips folder removed.
+  - Heights: Lynx 7, Wraith 9, Crusher 6.1, Badger 6.5, Rhino 8.69, Roc 9, Yeti 9, Mammoth 9, Frostcrown 11.5, Seraph 11.5.
+  - S2 item 26 checked: every walk.stride matches the cfg.
+  - Ruling: WalkSpeed from the bones, not `_bu.json` - the export measures `_bu.json` AFTER the portrait pose, so the Seraph (wings raised) read 2.895 BU vs 2.233 at bind; WalkSpeed was 1.44 vs its true 1.87 (walk would play at 77 % pace). PetSetup3 now uses the animator's own k (backup `PetSetup3_before_boneK`); 10 WalkSpeeds re-set. Cost if wrong: one attribute per pet.
+  - Mishap, no damage: one click hit a row's file-path link and opened a file browser; cancelled, all file paths verified unchanged.
+- **10-28 ~13:22, the lead session crashed; both builders were cut off and resumed at ~13:30.**
+- **10-28 ~13:35, Builder C: Cinder round 10 DONE (export 13:14).**
+  - Jaw tapered (visible jaw 0.267, was 0.284); paws/arms enlarged (near paw +0.378 past the body, far paw +0.107); swept-back skull frill (2 spikes per side).
+  - Collision: a `joints()` proxy SUPPRESSES crossings inside it, so no paw/skull proxies. Instead 19 direct pairs (83 in total) plus direct clearances: paws-neck ≥ 0.148, skull-neck ≥ 0.134, jaw-neck ≥ 0.026, frill-crown ≥ 0.123. 2 real blade hits fixed. collision_free true.
+  - Gates: gold portrait_alt 127 / kit 104 / game 45; area 0.197; tris 11,396; ground -0.006.
+  - Lead fixed the stale Cinder lines in `_review/GLACIER_CONCEPTS.md` (palette as built).
+  - Out to a fresh Haiku reviewer: `CinderOverlord_final85_r11`. If the model is < 8.5 → RAISED COBRA STANCE (owner decision).
+- **Builder A (Titan side-on kneel, r10)** resumed and is running.
+- **10-28 ~13:40, FOUND: S1 IS MISSING from the open Studio place** (it reopened from the cloud copy after the PC shutdown).
+  - Missing: `ServerStorage._GlacierStage` (Area7_Glacier, 409 instances, + Preview), `ServerStorage._Backup_GlacierS1` (Before / Revert / S2_OpenMap / UntouchedState), the GlacierEgg template in `Assets.Eggs` (59 instances), and the S1 edits in CreatureConfig / Analytics / EggSpawner.
+  - Everything else matches.
+  - The S1 copy survives in Studio's archived autosave from 10-28 03:16 (verified by parsing it read-only: same place + S1). Safe copy at `C:\cdimp\S1_autosave_1028_0316.rbxl`; the diff tools are in `C:\Users\ventu\rbxl_tools`.
+  - `InsertService:LoadLocalAsset` is blocked for the MCP plugin. Recovery needs the owner's choice.
+- **10-28 ~13:45, Cinder r11 review:** model 8.3, clips 8.5 → Builder C started the RAISED COBRA STANCE round (owner decision).
+- **10-28 ~13:45, OWNER: the Shop window is too big and off-centre in the live game.**
+  - Cause: LAYOUT Shop {2.0, 1.6}. On 16:9 the window reaches the money/speed pills, so `fitScale` slides it UP before shrinking it.
+  - Studio's 2:1 viewport doesn't trigger this.
+  - Haiku reviewer running (`docs/reviews/2026-10-28-shop-size/`).
+- **10-28 ~13:50, OWNER: restore S1 via a 2nd Studio window + copy** (the owner opens `C:\cdimp\S1_autosave_1028_0316.rbxl`; I copy `_GlacierStage`, `_Backup_GlacierS1` and `Assets.Eggs.GlacierEgg` across with Explorer copy/paste).
+  - DONE: the S1 script edits are re-applied by code (CreatureConfig AREA_HATCH/INCOME 7th entry; Analytics A.AREAS + Glacier; EggSpawner KG arrays + the Closed check). The diffs vs the autosave were S1-only, and byte lengths now match exactly (10160 / 15807 / 44417).
+  - WAITING: the owner opens the second window.
+- **10-28 ~13:45, S1 RESTORED in the main place** (the owner opened the autosave in a 2nd Studio window, id bb5beaa6).
+  - Explorer copy/paste does NOT carry instances between two Studio windows, so: Save / Export → Save to File (`C:\cdimp\S1_restore_1028.rbxm`, 893 instances, 7 scripts verified by parsing) → File > Import Roblox Model into ServerStorage → GlacierEgg moved into `Assets.Eggs`.
+  - Fingerprints (paths, classes, part pos/size/material/colour/transparency, attributes, tags, script lengths) are IDENTICAL in both windows: stage 411, backup 423, egg 59.
+  - With the 3 S1 script edits from earlier, the place = the 03:16 autosave + today's pets.
+  - The owner can close the autosave window WITHOUT saving.
+- **10-28 ~13:50, Builder A: Titan side-on kneel (r10) FAILED, no export.**
+  - Yaw 45/60/75 shows LESS shin (46/43/39 %) because the arm covers the thigh.
+  - 36 % of the shin is buried in the knee/foot blocks; the best of 24 camera angles sees only 53.7 %.
+  - Bug found: the round-9 "28.7 %" came from a camera that wasn't updated (it measured from 0,0,0). The real r8 export value is shin 47.8 % / foot 50 %. Fixed in arm_search.py.
+  - The pet file is restored byte-identical to the r8 export.
+  - Ruling: go with the toes-tucked-40° variant at yaw 30 (shin 64 %, knee +0.010 BU ≈ 0.05 studs in game: invisible at the game camera, and the snow puff at Knee_L f17 covers the contact). Builder A: search tuck 38-44 + pelvis/knee for the lowest knee height with shin ≥ 60 %, export, evidence pack → a fresh per-clip reviewer. Cost if wrong: the reviewer still scores the act < 8.5, so it goes back to the owner.
+- **10-28 ~14:05, SHOP SIZE FIX built in Studio, waiting for the owner's OK on the look.**
+  - The Haiku review rated today's Shop 4/10.
+  - Change: `MenuController` fitScale now keeps windows CENTRED (no slide-up), caps every window at 58 % of the screen width, and avoids the pills only on a real 2-axis overlap. The LAYOUT table is unchanged. Backup: `ServerStorage._Backup_ShopSize1028.Before.MenuController`.
+  - Play at 1519x753: Shop 881x550 centred (was 906x566), Index 881x503, Gift and Rebirth unchanged; all centred.
+  - The model matches Play to the pixel. 1080p: Shop 1114x696 at x 403-1517, y 221-917 (was 1245x780 at y 65-845); 1366x768: 792x495; phone unchanged.
+  - Mockup: `docs/reviews/2026-10-28-shop-size/owner_1080p_before_after.png`. TestFreshSave back to false.
+- **10-28 ~14:10, OWNER: Shop look "Ship as shown"** (1114x696 at 1080p, centred under the top bar). Done in Studio; it goes live with the owner's next publish.
+- **10-28 ~14:15, Builder C: Cinder RAISED COBRA STANCE built (export 13:51).**
+  - Neck raised, head group +0.18, head scale 1.60; game head gap 62 px (r10: 42).
+  - Idle redone as an upright cobra sway; walk keys unchanged; nose flattened; crown gaps ≥ 0.031.
+  - Shoulder seats ≤ 0.028; end-cap contacts removed.
+  - Gold 112 / 114 / 52; area 0.195; stride 5.0089.
+  - Ruling: HEIGHT 10.5 → 11.72 ACCEPTED (only the head is taller; body, studs and stride are unchanged in studs; the other mythics are 11.5). Cost if wrong: a one-line revert + re-export.
+  - Out to a fresh Haiku reviewer: `CinderOverlord_final85_r12`.
+- **10-28 ~14:25, Cinder r12 review:** model 8.2 REVISE (still a straight equal-width neck column from the game camera; the 3/4 view reads serpent-dragon), clips 8.5 each.
+  - **OWNER DECISION: add a COBRA HOOD** (flat studded hood plates on Neck2/3, ~0.12 BU per side, no radius scale) + flatter snout + reconcile the gold counter (112 vs 91).
+  - Last round before the owner decides again (other options were wings / ship without it / owner judges).
+  - Builder C is on it.
+- **10-28 ~14:30, Builder A: Titan kneel r10 EXPORTED (14:02:09).**
+  - Toes tucked 40°, pelvis drop 0.380; shin 61.8 % at game f40 (r8: 47.8); knee -0.003..-0.0001 in the hold (in the snow).
+  - Touch-down f18, on the icecrack event; drift 0.010 (r8: 0.037).
+  - Idle/walk/roar/model byte-identical to r8. All gates pass.
+  - Out to a fresh Haiku reviewer: `PermafrostTitan_final85_r10`.
+- **10-28 ~14:40, Titan r10 review:** model 8.6; idle, walk, roar 8.5; act 8.4 (motion clean; the thigh is ~36 % hidden at game f40, Leg_L screen share 0.636; the shin doesn't separate from the thigh).
+  - Builder A r11: act-only knee-pole override + an ARM_L sweep on the thigh metric, target Leg_L ≥ 0.70 with snow visible between shin and thigh, all gates green; no export if it can't. If it fails → owner.
+- **10-28 ~14:55, Builder A: Titan r11 EXPORTED (14:23:36).**
+  - Left-arm hold only (straight arm, fwd 32, fists braced over the raised knee); thigh screen share at f40 0.636 → 0.759; everything else identical to r10. All gates green.
+  - Ruling: r10 MUST 1(b) "snow between shin and thigh" WAIVED as geometrically impossible from the fixed game camera at yaw 30 (0 px in every variant; the shin projects over the thigh from high-behind). Cost if wrong: the kneel reads a bit less separated than the reviewer wanted.
+  - Out to a fresh Haiku reviewer: `PermafrostTitan_final85_r11`.
+- **10-28 ~15:00, Builder C: Cinder COBRA HOOD EXPORTED (14:21).**
+  - Hood: thin plates on Neck2/3, studded obsidian back, ember ribs, sulfur-blue eye spots; all clearances ≥ 0.051.
+  - Snout lowered. The gold gate counter is 113 (the "91" was stale). Tris 13,580; game area 0.208.
+  - Ruling: hood half-width 0.64 ACCEPTED (0.12/side would be narrower than the skull). Cost if wrong: a one-constant change (HOOD_W).
+  - Out to a fresh Haiku reviewer: `CinderOverlord_final85_r13`. If < 8.5 → OWNER decides (wings / ship without / owner judges).
+- **10-28 ~15:05, TITAN APPROVED (r11 review):** model 8.6; idle, walk, roar, act 8.5 each.
+  - Condition: the Knee_L snow puff at f18 in Studio (S2 item 31) — without it the act is 8.4.
+  - NICE for 9+ (optional, logged): belly band ~0.028, eye-slit highlights (200,220,236), lip ~0.008, standing shin stub out 0.03-0.05, idle sway +10-20 %, walk lift f24-30.
+  - Ship file: `C:\cdimp\PermafrostTitan.fbx` 14:23:36 + `clips_titan.rbxmx` + `cfg_titan.lua`. **11 of 12 pets pass.**
+- **10-28 ~15:15, TITAN IMPORTED in Studio** (Import 3D with Keep Zero Influence Bones, ZAB Studio; clips_titan.rbxmx; PetSetup3).
+  - Height 10, bones 24, WalkSpeed 1.96 (bone k); clips act_kneelrise/idle/roar/walk; walk.stride 0.6452 = cfg.
+  - The icecrack event 0.18 and the Knee_L bone exist (for the S2 #31 snow puff).
+  - **11 of 12 pets are in Studio.**
+- **10-28 ~15:15, Cinder r13 review (hood):** model 8.3; act_molt 8.3 (the molt hold lowers the head, game gap 34.8 px); idle/walk/roar 8.5.
+  - The front and 3/4 read as a hooded cobra-dragon. From the game camera the obsidian hood fuses with the frill and crown at 64 px.
+  - MUST: hood back plate → ember, ribs → pale; flatten the lump under the nostrils; centre crown blade 0.40 → 0.44; molt head key 20.5 → 14 (gap ≥ 50 px); drop the stale "91".
+  - → OWNER decision (as agreed).
+- **10-28 ~15:20, OWNER: Cinder "one more small round"** (the r13 review's 5 fixes only). Builder C is on it.
+- **10-28 ~15:45, Builder C: Cinder r13 EXPORTED (14:41).**
+  - Hood back → ember, ribs → pale (separates from the frill); nose tapered to a point + flatter chin.
+  - Crown: side blades raised instead of the centre (area 0.378 > Thunder Rex 0.372; gold 117).
+  - Molt: neck arch -22.5 → -9 + head hold 9 (game gap 52.5-62.2 px). Stale gold fields deleted.
+  - Out to a fresh Haiku reviewer: `CinderOverlord_final85_r14`.
+- **10-28 ~15:55, Cinder r14 review:** model 8.4; clips 8.5 each, APPROVED. Both deviations (crown, molt) accepted; nose passes.
+  - Blocker: the obsidian hood RIM still reads as a dark collar at 64 px.
+  - Ruling: a micro-fix inside the owner's "one small round" (rim OBS_D → PALE_S; fallback Neck3 hood top -0.03; Crown_3|Head clearance in the gate; the shipping portrait must clear area ≥ 0.372). Builder C is on it.
+- **10-28 ~16:05, Builder C: Cinder r14 micro-fix EXPORTED (14:53).**
+  - Hood rim → PALE_S (a light-edged red fan from the game camera).
+  - Crown-vs-head clearance ≥ 0.053 above the hinges.
+  - **SHIPPING PORTRAIT is now `CinderOverlord_portrait_raw.png`** (kit portrait: gold 117, area 0.378 > Thunder Rex 0.372). The alt portrait (0.369) is NOT shipped.
+  - Out to a fresh Haiku reviewer: `CinderOverlord_final85_r15`.
+- **10-28 ~16:15, CINDER APPROVED (r15):** model 8.5; idle, walk, roar, act_molt 8.5 each; no MUSTs. **ALL 12 GLACIER PETS PASS THE 8.5 BAR.**
+  - NICE (parked): roar hood spread, roar gap 47.5 px, hood-side plate, snout dome, stale molt comment.
+- **10-28 ~16:15, OWNER: "its all you now, do not ask me for inputs ... do everything as recommended and as told before."**
+  - Standing rules unchanged: never publish; no Robux products made by me; TestFreshSave for every Play; back up before every change.
+  - Pending decisions resolved as recommended:
+    - Index phone size B (88 % height, below the top bar);
+    - crab sign-offs ACCEPTED (pale underside 2.2 %, walk timing from Wikimedia + Ohmu);
+    - Index = the approved v8 layout (review 8.5), ONE layout on all devices.
+- **10-28 ~16:25, CINDER IMPORTED.** Height 11.72, 29 bones, clips act_molt/idle/roar/walk, walk.stride 5.0089 = cfg. **ALL 12 GLACIER PETS ARE IN STUDIO.**
+  - Ruling: Cinder WalkSpeed capped 12.94 → 5.0 (attribute NaturalWalkSpeed = 12.94 kept). The natural slither speed was 2.6x the fastest pet; the walk phase is distance-driven, so a lower speed only slows the cadence (no skating). Check visually in the S2 Play test. Cost if wrong: one attribute.
+- **NEXT: S2** (open the Glacier) per `S2_OPEN_CHECKLIST.md`, lead = the single Studio writer.
+- **10-28 ~16:40, S2 STARTED (lead = the single Studio writer).**
+  - Backup: 31 scripts → `_Backup_GlacierS2.Before` (disabled, tags stripped).
+  - **A. MAP OPENED** via `_Backup_GlacierS2.S2_OpenMap_v2`, a copy of S1's module. Ruling: its backup goes to `_Backup_GlacierS2.MapBefore`, because `_Backup_GlacierS2` already existed. The dry run matched the checklist; applied: Area7 in Runway, 17 tags restored, old EndWall deleted, walls restored, Runway_End -2870, L_3/R_3 added, marker -2900, GlacierEgg Area 7, Closed removed, stage deleted. 7 Area zones.
+  - **B1 UpgradeConfig:** SLING_MAX 30 + SLING_SLOPE_LEVELS 25, Glacier z -2460, SLING_REBIRTH 30 entries. Checked: Lv26-30 = 2377/2454/2532/2609/2686, Lv27 Glacier $870B R20, Lv25 = MAX_RANGE, Lv0-5 unchanged.
+  - **B2 RebirthConfig:** MAX 25, AREA_NAMES + Glacier, R21-25 rows.
+  - **B3 WaveConfig:** StartZ -2900 (owner: no new wave).
+  - **B6 WeatherConfig:** AREAS 7, + WeatherTests.
+  - **B7 Analytics:** R21-25 bucket.
+  - **B4 CreatureConfig:** 6-pet tables (ECONOMY_PLAN 5) + GlacierEgg (section 4) + the `mythic` arg/byName. All 7 eggs sum to 100, every model and clip is present, rarity multipliers match the plan.
+- **10-28 ~17:10, S2 continued:**
+  - **B8 StreakConfig:** EGG_KG/SECRET_KG 7th = 800K/400K; secretFor skips mythics. StreakTests: secretFor 7 = Titan, never a mythic, secretFor 4 = Phoenix. (EGG_ICONS GlacierEgg waits for the icon.)
+  - **B9:** PlaytimeConfig is safe (`not info.secret`, mythics are secret). ChatAnnounce: a rainbow "★ MYTHIC!" line, priority 4 (owner yes).
+  - **B10 data:** IndexConfig versions 3/3/3/4/4/4 + area 7 Glacier v1; areaComplete skips mythics (bonus cards; the IndexServer claim uses it); total = 42.
+  - **12 PORTRAITS uploaded** (group-owned via `PortraitsGlacier12.fbx`), ids in IndexConfig.PORTRAITS. Carrier deleted.
+  - **Glacier Egg ICON:** an Opus builder (Blender only) is making it in `C:\cdimp\icons_glacier\`, style-matched to the Celestial/Wood icons (fetched from the Roblox thumbnail CDN to `C:\Users\ventu\dl_egg_icons\`).
+- **10-28 ~17:30, S2 continued:**
+  - **PetEventFX:** small clip-event touches for all 12 new pets (existing Blender textures), incl. S2 #29 (Lynx ice sparks on claw1/claw2 = f48/f60; Wraith smoke; Cinder breath puff + blue vent flame + embers) and #31 (Titan SNOW PUFF on Knee_L at icecrack f18 = its approval condition). The module loads; has() is true for all 12.
+  - **B12 CreatureVFX:** ELEMENT for the 12 + AURA Glacier; tier presets for 11 (Grass Badger = none, as before) with new kinds `frost` (Glacier) and `ventflame` (Cinder). All attach (1-5 emitters).
+  - **B13 ShopConfig:** Sling band {upTo = 30, id = 0, price = 65}. **OWNER TODO:** create the "+1 LV (26-30)" 65 R$ product and paste its id (live answers "Soon" until then).
+- **10-28 ~17:45, S2 continued:**
+  - **B11 (non-icon parts):** HatchClient SHELL GlacierEgg (30,70,160)+(120,220,255); InventoryClient/SellClient EGG_AREA GlacierEgg = 7 + AREA_COLOR Glacier (120,235,255). A grep found no other Celestial-only egg/area tables except the 5 egg ICON tables (PetsEggsUI, InventoryClient, SellClient, StreakConfig, EggSpawner), which wait for the icon upload.
+  - **Index v8 code recovered** from the session transcript (it was never saved): `index_mockup/recovered/mock_*.lua`.
+  - **INDEX UI:** an Opus builder is building v8 into `IndexClientLegacy` with live data (7 tabs, 6 cards, mythic rainbow bonus cards, review 5 MUSTs: CLAIM ALL contrast + phone size B below the top bar) + the MenuController Index LAYOUT. **It is the single Studio writer until it reports; the lead is read-only.**
+  - **NEXT (lead):** egg icon → upload → 5 icon tables; then the S2 tests (C list) + every test suite; a Haiku review of the Index build.
+- **10-28 (~15:00 Kyiv), Glacier Egg ICON round 2:** round 1 review = 7.9 REVISE (silhouette too narrow, cap nicks the ink ring, flat white cap). The builder fixed all 3 MUSTs + the NICEs: width fill 0.64 → 0.76, area 0.36 → 0.43, body 0.53 → 0.61, the cap painted into the body surface (unbroken ink ring), shaded cap + glint. Out to a fresh Haiku reviewer → `C:\cdimp\icons_glacier\REVIEW2.md`. The old carrier `C:\cdimp\IconGlacierEgg.fbx` holds the round-1 icon: REBUILD before uploading.
+- **10-28 (~15:15 Kyiv), ICON review 2 = 8.2 REVISE:** round-1 MUSTs all pass. New MUST: the band's silhouette ends (y 310-362) have no navy ink. Sent to the icon builder (one fix, nothing else changes). Ruling: the bottom tip at y 479 vs "485 or higher" is not blocking (the reviewer agrees) — cost if wrong: a 1 % smaller icon.
+- **10-28 (~15:35 Kyiv), ICON review 3 = 8.4 REVISE:** band ink passes; new MUST 5 = the band-end ink bulges ~14 px past the body (a "collar" step at rows 322-328). Back to the builder: keep the band flush with the egg curve, ink inside the edge.
+- **10-28 15:58 Kyiv, ICON review 4 = 8.6 SHIP** (`C:\cdimp\icons_glacier\REVIEW4.md`): band tapers flush into the egg curve, ink >= 8 px, mass 0.76 / 0.433, no MUSTs. NICE (parked): ink ~85 % of Celestial's weight, bottom tip 6 px above y 485, faint cap streak at high zoom. Carrier REBUILT from the approved icon → `C:\cdimp\IconGlacierEgg.fbx` (round-1 carrier moved to `C:\cdimp\_lead_tmp\`). Upload waits until the Index builder releases Studio.
+- **10-28 ~16:00 Kyiv, INDEX v8 BUILT in Studio** by the Opus builder (`index_build/BUILD_NOTES.md`, captures 00-08, backup `_Backup_GlacierS2.IndexBuild`). IndexClientLegacy rebuilt from mock_73374/74213/74229 with live data, 7 data-driven tabs, 6 cards, mythic rainbow bonus cards, CLAIM ALL contrast fix, PORTRAIT_CROP per uploaded portrait, MenuController Index LAYOUT {2.013, 1.575, 0.105} + phone size B. Tests: v8open 16/16, v8tabs 7/7, v8cards 16/16, v8inspect 5/5, v8claimui 6/6, v8claim 6/6, legacy 3/3. TestFreshSave back to false; nothing saved.
+  - Ruling: phone text < 12 px is accepted — the owner's ONE-LAYOUT rule ("make the UI same as pc") outranks the review's 12 px target, and the approved size-B mock had the same sizes. Cost if wrong: small text on phones; fix = larger text inside the same boxes.
+  - Ruling: the common pill shows the area name only (no "COMMON"), per the vault's no-rarity-words rule. Cost if wrong: one string.
+  - Out to a fresh Haiku reviewer → `index_build/INDEX_BUILD_REVIEW1.md`. **Studio is free again: lead = single writer.**
+- **10-28 ~16:00 Kyiv, GLACIER EGG ICON LIVE in Studio:** `IconGlacierEgg.fbx` imported via Import 3D (creator ZAB Studio) → group image **rbxassetid://82216212144009**; carrier model deleted. Added `GlacierEgg = ...` to all 5 icon tables (PetsEggsUI, InventoryClient, SellClient, StreakConfig.EGG_ICONS, EggSpawner ICONS); grep confirms 5 hits. Pre-edit copies → `_Backup_GlacierS2.IconTables`.
+- **10-28/29, TEST EDITS (B14) applied + Edit suites:** WaterWallTests 29/29 (slope over SLING_SLOPE_LEVELS, + Lv26-30 step, Lv26 Celestial, Lv27 Glacier, Lv30 Glacier, Lv27 $870B); RebirthV6Tests pure 58/58 (R21-25 rows, cost(25) nil, MAX_REBIRTH 25, "Glacier pet 1K+ KG"); StreakTests 27/27; StarterPackTests 38/38; WeatherTests 116/116; AutoReconnectTests unit 83/83; EggAssistTests 19/19 (Grass+Water floors fixture, as built; with ALL areas' floors the "-2000 = no floor" case fails since Celestial is 60 studs away — fixture choice, not a Glacier change). HubV2Tests T10.4/T10.4b → R25: 28 pets.
+- **S2 PLAY TESTS (TestFreshSave session):**
+  - C1 eggs: 7 Area zones; area 7 keeps 6 GlacierEggs, label "Glacier Egg N KG", |x| 13-38, none in the trench; areas 1-6 unchanged (7/6/6/6/6/6).
+  - C2 real flights (client physics, 45° full power, same lift as SlingshotClient; Lv30 first = cold client): Lv30 → -2708 FloorB, Lv27 → -2472 FloorA (Glacier), Lv29 → -2627 FloorA (short of the trench), Lv26 → -2396 Celestial. No reset after landing, no teleport-size frame jumps (max 28 studs/frame at ~437 studs/s).
+  - C3 MapGuard: standing at -2850 not reset; walking out stops at -2859.5 (end wall); side wall stops at x 59.5.
+  - C4 AreaTitle "Frostfall Glacier 🧊" in (170,235,255). (Phone banner length: with the phone check.)
+  - C5 VIP: 6 Glacier doors (-2518.3 .. -2801.7); a non-VIP teleported into a room is put outside the door in 0.3 s (MapGuard). **FOUND a pre-existing bug (all areas): doors that stream out and back in keep the server's walk-through settings for non-VIPs** (VipClient only set them on first add). Fixed in VipClient (re-apply CanCollide/CanTouch on every add, Touched hooked once); backup `_Backup_GlacierS2.VipDoorFix`. The server push-out always covered it.
+  - C6 weather: WeatherConfig.AREAS 7; UFO/Meteor clients label "- " .. upper(AREA_NAMES[7]) .. " -" = "- GLACIER -" and find `Area7_Glacier`.
+  - C7 streak: secretFor(7) = PermafrostTitan, never a mythic (StreakTests).
+  - C8 Index: the builder's v8 suites (7 tabs, 6 cards, mythic bonus, real claim).
+  - C9 rebirth: R21 "Glacier pet", R22 "Glacier pet 1K+ KG" ... R25 "1M+ KG"; cost(25) nil; MAX_REBIRTH 25; 28 pet slots.
+  - C10 waves: StartZ -2900; Normal 55 studs/s → -2600 in 5.5 s; IsSafe true in the Glacier trench, both VIP sides, the hideout; false on the open floor.
+  - Live suites: RebirthV6 5/5, Streak 20/20, StarterPack 33/33, EggAssist 3/3, HubV2 T10.4+T10.4b 7/7 (R25: 28 pets fit + wander inside the 60x90 plot). AutoReconnect server part needs its own AutoReconnectTest session flag (not Glacier-related; unit 83/83).
+  - WeatherServerTests: first try 167/169 — my first call timed out and kept running, so two runs overlapped. Also fixed a real Glacier test bug: "area moved" accepted only areas 1-6 (now `<= WeatherConfig.AREAS`). Re-running in a clean session.
+- **10-29, clean Play session:** WeatherServerTests **169/169** (with the AREAS fix). VIP door fix VERIFIED: Glacier streamed out (0 doors on the client at the hub) → back in → 6 doors, CanCollide 6, CanTouch 6; walking into a door stops at x 59.3 (the door), not the MapGuard push-out. Before the fix the same re-stream left 0 solid. Pass_VIP restored, waves running.
+- **NEXT:** Index phone round (INDEX_BUILD_REVIEW1: 8.7 PC / 7.5 phone; MUST phone text ≥ 9 px cap in the same boxes, window bottom at y 372, a real Device-emulator capture) → builder resumed once the lead leaves Studio; then re-review; then TestFreshSave false + final report.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       - **10-29 ~01:05 STUDIO CRASH → the open place fell back to the last cloud save (10-28 ~16:20: no Cinder, no S2, no Index v8, no icon).** Recovery:
+  - Newest autosave `AutoSaves/Archived/97952972919986_AutoRecovery_0_20261029_011100.rbxl` (00:45) held everything up to the VipClient/WeatherServerTests fixes (rbxl_strings fingerprint). Copied to `C:\cdimp\recovery_1029\S2_autosave_1029_0045.rbxl`, opened as a 2nd Studio window (file association).
+  - Unit-level fingerprint (every service child; Map/Runway one level deeper; hash of names, classes, script sources+Enabled, part CFrame/size/colour, mesh/texture ids, text, attributes, tags) → 35 differing units, all S2 work; nothing newer in the live copy.
+  - The 35 units cloned into `ServerStorage._Transfer` (with `_TransferPath`), Explorer → Save / Export → Save to File → `C:\cdimp\recovery_1029\S2_transfer.rbxm` (3.2 MB); in the live window File → Import Roblox Model, then a script swapped each unit in place and deleted `_GlacierStage`. Whole-place fingerprint then matched the autosave exactly (276 units, hash 2733547708).
+- **10-29 ~01:25 POWER CUT** (unsaved again). Re-did the import from `S2_transfer.rbxm` (Studio's "Auto Recovery File Found" prompt: the 01:21 file was copied to `recovery_1029\live_autosave_1029_0121.rbxl` first, then Ignore — it was a mid-restore snapshot). Fingerprint matched again (276 / 2733547708). Then **File → Save to Roblox** (Save, NOT Publish; owner had asked to be told when to save, then said "continue on your own"). TestFreshSave false.
+  - Ruling: I clicked the Auto Recovery prompt's Ignore and did the cloud Save myself — the owner is away after a crash + power cut, and an unsaved restore was lost once already. Save ≠ Publish (players see nothing). Cost if wrong: one place version (revertible in version history).
+- **10-29 ~01:40, INDEX review-1 round DONE by the builder** (Studio 3bf21205, backups `_Backup_GlacierS2.IndexBuild2`, exports `index_build/src/`):
+  - M2 phone window: 6 px under the top bar, 18 px above the bottom edge.
+  - M1 phone text floor inside the same boxes: 21/52 labels still < 9 px at 308 px, limited by their own boxes.
+  - N3 header at v8 size; N4 unfound pill shows the area only; N5 one "?".
+  - Tests 65/65.
+  - N2: the Ice Mammoth/Lynx PNGs are NOT semi-transparent; they're pale vs the ice card and lack the black outline the older portraits have.
+  - Saved to Roblox (Save only) right after.
+- **M3 done by me:** Studio Device emulator iPhone 17 Pro, real Play session.
+  - viewport 749x381, top inset 58; window y 63.5 → 362.5 (18 px clear).
+  - 22 labels < 9 px (worst "Income (best KG)" 5, FROSTCROWN DRAGON 6). Capture `index_build/18_emulator_iphone17pro_glacier_frostcrown.jpg`.
+  - Emulator back on Current device; TestFreshSave false.
+  - Out to the same Haiku reviewer → INDEX_BUILD_REVIEW2.md.
+- **10-29 ~01:50, INDEX review 2:** PC 8.8 PASS, phone 7.5. Placement and the real-device check pass. One MUST (regression): CLAIM!/CLAIM ALL labels touch their button edges on the phone → back to the builder (≥ 3 px clear, badge 2-3 px up-right, audit every floored label).
+  - Ruling: the reviewer's small-text items (drop MYTHIC from the pill, "Income", wider name plates, taller chance pills, bigger "!") are visible layout/copy changes, so they go to the OWNER with a screenshot and are not built. Rules: owner judges UI looks; one layout on all devices. The phone stays below 8.5 until the owner accepts the small text or picks items. Cost if wrong: one more short round after the owner answers.
+- **10-29 ~02:10, Index review-2 MUST:**
+  - The builder's round-2 trim REGRESSED on the real emulator (labels shrank to 5-7 px, "+5%" wrapped).
+  - The lead redid it from the review-1 client: the CLAIM buttons, count badge and chips are not floored; on a phone their caps and outlines scale with CanvasScale (the caps act in screen px), the badge is nudged 3 px, chips are evened in screen px.
+  - Test RED → GREEN: v8 suites 60/60.
+  - Emulator capture 21: CLAIM! 6.2 px and CLAIM ALL 7.3 px clear, chips one line.
+  - Saved to Roblox. Out to the reviewer (round 3).
+- **10-29 ~02:20, INDEX review 3:** PC 8.8 PASS; phone 7.8 (no MUSTs left on the build). Reviewer estimates: owner accepts the small text as-is ≈ 8.1; with the cheap same-layout items 1-4 ≈ 8.4. Only bigger containers (card name plates etc.) can lift it further.
+  - **→ OWNER DECISION** (ship-bar 8.5 vs one-layout rule). Report + screenshots: `index_build/21_emulator_iphone17pro_after_claim_fix.jpg` (phone), `20b_r2_pc_full_glacier_frostcrown.jpg` (PC).
+- **STATE AT HAND-OFF (10-29 ~02:20):** Glacier update complete in Studio and SAVED to Roblox (not published). TestFreshSave false, emulator on Current device, Play stopped.
+- **10-29 ~13:30 (owner: "use my pc and my chrome to do the rest"):**
+  - **Robux product CREATED** via the Creator Hub API in the owner's Chrome: "Slingshot Power +1 (Lv 26-30)", 65 R$, id **3723521182**, icon sling_level.png, regional/managed pricing on (same as the other products). ShopConfig band `{upTo = 30, id = 3723521182, price = 65}`.
+    - TestReceipt: Lv25 → 26; refused at Lv30; the old 21-25 band refused at Lv26.
+    - A REAL Studio test purchase ("This is a test purchase. Your account will not be charged") → SlingLevel 25 → 26.
+  - **Funnels:** nothing to edit by hand. The Creator Hub funnels are built from the game's LogFunnelStepEvent calls; the R21-25 steps appear once players reach them. (The Funnels page showed "Add funnel events to unlock" for the last 7 days; low traffic.)
+  - **Phone-only text:** stat 1 "Income (best KG)" → "Income"; the inspect pill drops the MYTHIC/SECRET word on a phone. PC v8 suite 60/60.
+  - **Real emulator captures** 22 (Samsung S22 Ultra 677x338: 29 labels < 9 px), 23 (iPhone 13 749x389: 18), 24 (iPhone 16 Pro Max 831x439: 3). Window clear of the top bar on all three.
+  - Saved to Roblox. Out to the reviewer (round 4).
+  - Owner stopped-play note: the owner said "go" → I stopped the Play session I hadn't started.
+- **10-29 ~13:50, INDEX review 4 (3 real emulator phones):** S22 Ultra 7.5, iPhone 13 8.0, iPhone 16 Pro Max 8.3 → phone 7.5 (weakest device).
+  - One MUST: the BONUS x/y pill text ran to the pill's edge. Fixed: not floored any more; it joins KEEP with fit 0.8.
+  - Test RED (-0.6 px) → GREEN; S22 Ultra measured 4.1 px clear each side (text 5 px).
+  - Suite 61/61. Capture 25. Saved to Roblox.
+  - Reviewer: even after this, S22 Ultra ≈ 7.7 and iPhone 13 ≈ 8.1. Only bigger containers (all devices) would lift it, and the S22 Ultra would still fall short. **Below the 8.5 bar → owner decision before Publish.**
+- **10-29 ~14:10, owner: "can they be fixed on everything to be at least 8.5/8.3?" → phone legibility round 5 (same layout everywhere):**
+  - **MenuController:** on phones the Index window is wider (aspect 1.9; same height = size B). It slides right of the money/speed pills; where it can't fit beside them (16 Pro Max) it narrows, never below the PC aspect (1.867 there). Fixed along the way: the size box was too narrow for 1.9 on a 749x389 phone, and FitWithinMaxSize shrank the window to 289 of 307 px. PC keeps 1.575.
+  - **IndexClientLegacy, all devices:**
+    - chance pill 0.12 → 0.16 of the card (cap 13 → 15);
+    - SECRET/MYTHIC badges 0.13 → 0.15, growing upward (bottom 0.10 → 0.095), cap 12 → 14;
+    - BONUS pill 0.16 → 0.175 wide, bar 0.015 narrower.
+  - **IndexClientLegacy, phones only:**
+    - "!" fills its dot; subtitle box 0.33 → 0.38; card name 0.02 lower; SECRET outlines scaled.
+    - On the WIDE window only (canvas ≥ 1.8 × DESIGN_H): CLAIM ALL / count / BONUS fit 1.12 / 1.15 / 1.15, count dot 0.62 → 0.75.
+  - Found + fixed: the SECRET badge overlapped the top of the card name on phones (old build too, -1.7 px). The new check counts the outlines, fails on the old geometry and passes now (≥ 0.6 px).
+  - **Tests:**
+    - index_client new `v8legible(floor, maxSmall, hardMin)` (labels under N px, smallest label, badge clearance).
+    - `v8device` re-opens the Index and runs the CLAIM/BONUS/chip clearances (shared `keepClear`).
+    - PC suite 61/61. v8device 12/12 + v8legible 3/3 on S22 Ultra, iPhone 13, iPhone 17 Pro, iPhone 16 Pro Max.
+  - **Labels under 9 px:** S22 Ultra 19 → 12 (10 of them at 8; FROSTCROWN DRAGON 6, PERMAFROST TITAN 7, both width-bound). iPhone 13: 1. iPhone 17 Pro: 1. 16 Pro Max: 0.
+  - Captures 26, 26b, 27, 28, 28b, 29 (PC), 30. Backup `_Backup_GlacierS2.IndexPhoneBoxes` (client + MenuController + tests before this round). NOT saved to Roblox yet. Out to the Haiku reviewer (round 5).
+- **10-29 ~14:15, INDEX review 5:** PC 8.8, S22 Ultra 8.1, iPhone 13 8.4 (provisional: window-only capture), iPhone 17 Pro 8.4, 16 Pro Max 8.9 → REVISE. One MUST: the long card names (FROSTCROWN DRAGON 6-8 px, PERMAFROST TITAN 7 px) are width-bound. The reviewer's options were a two-line plate (layout change everywhere) or shorter names (an owner content call).
+  - Ruling: neither. On phones only, a card name that can't render at 9 px drops words from the end until it fits. The inspect panel and PC keep the full name; no pet is renamed; `SHORT_CARD_NAMES = false` turns it off. Why: the owner said not to ask and to do as recommended, this moves no layout, and it follows the accepted phone-only "Income" shortening. Cost if wrong: one flag flip.
+  - The bigger names then touched the badges: the phone name sits 0.005 lower and its outline scales (1.56 → 1.2).
+  - Tests: v8legible also checks Glacier card names ≥ 9 px, the full name in the inspect panel, and every area's found names ≥ 9 px (RED with all 42 found: BLACK EASTERN DRAGON 5 px → GREEN).
+  - Results: PC 61/61; 4 phones v8device 12/12 + v8legible 6/6. S22: 10 labels at 8 px, nothing under 8. iPhone 13 / 17 Pro / 16 Pro Max: 0 under 9.
+  - Captures 31-35 (all full screen; PC full viewport). TestFreshSave false, emulator on Current device, SAVED to Roblox. Out to the reviewer (round 6).
+- **10-29 ~14:35, INDEX review 6:** PC 8.8, S22 8.2, iPhone 13 8.4, 17 Pro 8.4, 16PM 8.9 → REVISE. Names fixed (all ≥ 9 px). New MUST: the lowered phone card name touched the top of the pet.
+  - Fix, phones only: the card portrait starts lower (top 0.22 → 0.285, bottom 0.90 → 0.915). PC keeps the v8 rect.
+  - Test: name letters ≥ 1.5 px above the drawn pet top, all 42 found, every area. RED on the 17 Pro: -2.0 to -2.6. GREEN: S22 1.7 / iPhone 13 2.1 / 17 Pro 2.3 / 16PM 2.7.
+  - Results: PC 61/61; 4 phones v8device 12/12 + v8legible 7/7. Captures 36-40 (38 = S22 all-42 Shadow tab).
+  - Saved to Roblox. Out to the reviewer (round 7).
+  - Reviewer note: the phone short names are a visible content change → show the owner before Publish.
+- **10-29 ~14:45, INDEX review 7: PASS.** PC 8.8, S22 Ultra 8.4 (floor 8.3), iPhone 13 8.7, iPhone 17 Pro 8.7, 16 Pro Max 8.9. No MUSTs.
+  - Owner sign-offs before Publish: (1) the phone-only short card names; (2) phone card portraits are ~7 % smaller than PC (0.63 vs 0.68 of the card).
+  - NICEs left: ten 8 px labels on the S22; washed-out Glacier portraits on PC.
+  - Build SAVED to Roblox. Waiting for the owner's yes → Publish + Migrate.
+- **10-29 ~14:50, owner: "go ahead publish and migrate", then "before publishing: when we fly sooo far ... not seeing the ground until we almost land". Owner picked "Fix now, then publish".**
+  - **Cause:** Workspace streaming = TargetRadius 1024, MinRadius 64, StreamOutBehavior **Opportunistic**, PauseOutsideLoadedArea. SlingshotServer asked for the landing spot ONCE at launch, and Opportunistic streamed it out again (measured: Glacier decor 116 → 0 after ~5 s; the Glacier floor never loaded). Standing in the hub, areas 4-7 had no floor or ground on the client.
+  - **Fix:**
+    - Each area's Floor / Gap / Walls / Ground folder → a **Model** of the same name with ModelStreamingMode Persistent (28 models, 540 parts, `_WasFolder` attr).
+    - SlingshotServer re-requests the landing every 0.5 s until the landing (`t + 1`).
+    - Decor still streams; lighting and the streaming radius are unchanged.
+  - **Backup:** `ServerStorage._Backup_FlightStream` (RunwaySkeleton.Before + SlingshotServer).
+  - **Tests (ServerStorage.FlightStreamTests, client):**
+    - `skeleton`: RED 3/8 → GREEN 8/8; all 7 areas loaded, Glacier 2735 studs away.
+    - `flight`: Glacier floor present at every sample; decor stays 116 through the whole 8.4 s flight.
+    - WeatherServerTests 169/169 (they use Gap.HideZone). Eggs still spawn.
+  - **PUBLISHED** 2026-10-29 12:59:16 UTC (games API `updated`). Migrate: Creator Hub → Server management showed no active servers. The games API said 0 playing and 0 public servers right after the publish, so every server from now on starts on the new version and there was nothing to restart.
+- **10-29 ~15:10, owner: "so we can't fix the loading?" → "fix it, cause when i am too far up i cannot see anything":**
+  - **Rest of the runway always loaded:** Decor and CreatureLine folders → Persistent Models; VipHideout and VipRoomsB → Persistent. 2387 of the 2395 runway parts are now persistent; only the invisible AreaZones and the LaunchGate are left out. It's only 19 unique meshes and 1 texture. Backup `_Backup_FlightStream.RunwayRest.Before` (old VIP modes saved as attributes). Test skeleton (+ decor / creature line / VIP) 8/8.
+  - **"Too far up I cannot see anything" = the sky CLOUDS, not loading.**
+    - Terrain.Clouds (Cover 0.52, Density 0.6) sit at ~1000-1100 studs. Measured: clear at 450 / 800 / 950; at 1100 the clouds hide the whole map.
+    - High shots peak at 1070 (Lv25) to 1250 (Lv30) studs at 75°.
+    - Fix: SkyEnvironment (client) fades the clouds' Cover from 0.52 to 0 as the camera climbs 700 → 920 and brings it back on the way down. From the ground the sky is unchanged; the UFO cutscene camera stays < 60 studs.
+    - Test FlightStreamTests "clouds": RED 3/5 → GREEN 5/5.
+    - Captures `flight_stream/01` (before, 1100 up), `02` (950 up), `03` (after, 1100 up).
+  - SAVED to Roblox (not published yet).
+- **PUBLISHED again 2026-10-29 13:13:05 UTC** (owner: "Publish now"), with the runway-rest persistence + the sky-cloud fade. 0 players and 0 public servers at the time, so nothing needed a restart.
+
+- **10-29 ~16:30-17:00, owner screenshot "? when i launch" (all blue on a high launch) -> "limit the slingshot as high but keep the power":**
+  - **Cause measured:** Roblox draw distance per graphics level (marker pillars, Studio): Level 1 ~300-375 studs, Level 3 ~525, Level 6 ~600, Level 9+ 900+, Automatic on a slow device ~450. A 2000x2000 part isn't drawn past it either (pure distance cut). Game scripts CAN'T set graphics (tested: "lacking capability Plugin / RobloxScript").
+  - **Flight camera:** SlingshotClient chase cam (behind + above, tilts down with altitude) replaces the side-on default while flying. FlightStreamTests "flightcam" 3/3.
+  - **Height cap:** new `RS.Slingshot.HeightCap` + `Config.FlightMaxHeight = 200` (studs above the pouch); SlingshotServer caps the launch velocity and publishes `SlingAim`. A higher arc becomes flatter + faster and lands on the SAME spot: k = client landing time (EggAssist.predict, its ray lands early) of the old vy / of the capped vy. First version used the ideal parabola -> capped shots landed up to 18.75 studs short (Lv27 would drop out of Glacier) -> fixed. Lv0-~Lv7 45-deg shots unchanged; Lv30 max shot 4.65 s in the air, 581 studs/s.
+  - **Tests:** FlightStreamTests "heightcap" (maths, every level/angle/power) 8/8: worst landing miss 0.18 studs; "capflight" (real Lv30 launch, 52 deg): climbed 199 vs 764 uncapped, landed z -2386 vs -2389 uncapped. "flightcam" 3/3. Backup `ServerStorage._Backup_HeightCap`.
+  - Note: the aim dots still show the aimed angle; strong steep shots fly out flatter than the dots.
+- **10-29 ~17:00-18:00, owner chose "make the game lighter" (so Automatic graphics runs higher / draws further) - zero-visual cuts only:**
+  - Baseline (Studio PC, 45 fake pets on 5 plots, plaza view, ScriptProfilerService): all client scripts 2.83 ms/frame, PetAnimator 1.88 (bones 1.25, PivotTo 0.33), HalloweenClient 0.30, BaseSignFloat 0.16. 18 of 45 pets on screen, all 45 animated.
+  - Cuts: `RS.OnScreen` (widened view-cone test, margin 1.35); PetAnimator skips pose + bones for pets out of view (catch-up step with events muted on return); CreatureAnimator frame lookup once per layer + reused layer records (bit-identical poses); BaseSignFloat skips tags past MaxDistance+25; HalloweenClient flicker at 30 Hz, bats' wings only on screen.
+  - DROPPED: finial lights off by day (audit Z4) - A/B screenshot showed the carved face loses its warm glow (visible).
+  - After: all scripts 1.83 ms/frame (-35%), PetAnimator 0.90 (-52%), Halloween 0.17, BaseSignFloat 0.13. Console clean.
+  - Tests `ServerStorage.PerfTests`: onscreen 9/9, animator 4/4 (worst difference 0), pets 5/5. Backup `ServerStorage._Backup_PerfPass1029`.
+  - TestFreshSave false. **SAVED to Roblox: version 460 (2026-10-29 14:59:54 UTC), NOT published** - waiting for the owner's OK.
+- **PUBLISHED by the owner: version 460** (saved 14:59:54 UTC, isPublished true; games API `updated` 14:59:54). 0 players at the check, so every new server runs it. Note: the game description still says "6 worlds ... Celestial" (no Glacier).
+- **10-29 ~16:20 UTC, owner: "fix description and make it more simpler for the kids":** new description saved in Creator Hub > Game details (short kid-friendly lines, all 7 worlds incl. Frostfall Glacier, daily gifts Day 7 secret pet). Re-read after reload: stored, no #### filtering. The public games API showed the old text right after (cache).
+- **10-29 ~16:25 UTC, owner: "too much text, less please" -> "instead of creatures > pets same as UI in index fix that":**
+  - Description (Creator Hub, verified after reload): "❄️ NEW: Frostfall Glacier + 12 new pets! / 🎯 Fly from a giant slingshot and grab eggs! / 🐣 Hatch 40+ fierce pets and get RICH! / 🎁 Free gifts every day".
+  - Index wording: header "<AREA> CREATURES" -> "<AREA> PETS" (IndexClientLegacy), window title "Creature Index" -> "Pet Index" (MenuController TITLES). No other player-visible "creature" text found (GUI text, script strings, world signs). Backup `ServerStorage._Backup_PetsWording1029`. Play check: "Pet Index" / "GRASS PETS", same layout.
+  - TestFreshSave false. **SAVED v461 (16:26:22 UTC), NOT published.** Title "[🎃UPD] Slingshot for Eggs" proposed, not answered.

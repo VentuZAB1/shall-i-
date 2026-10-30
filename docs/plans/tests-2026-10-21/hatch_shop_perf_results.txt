@@ -1,0 +1,43 @@
+hatch_shop_perf.lua results (popup/Shop plan 7.7), 2026-10-21, Studio Play (TestFreshSave), viewport 1519x753, Starter Pack
+offer running (Rebirths 1, reset + seen). Studio was not the focused window: the client ran throttled at ~15 fps (66.7 ms
+frames) the whole time, so the frame-time lines show the throttle, not our cost; the probes time our own work.
+
+idle (3 s, Shop + popup closed), checked at the start and again after the 30 cycles:
+  Shop refresh counter 72 -> 72 (ok); after the cycles 329 -> 329 (ok)
+  popup frame counter 210 -> 210 (ok); after the cycles 1680 -> 1680 (ok)
+  ShopFunnelSent 16:false -> 16:false (ok); after the cycles 78:false -> 78:false (ok)
+  ShopLoop false, RaysLoop false, StarterTicker false (ok)
+
+cost:
+  frame time, all closed: avg 66.66 ms, max 70.29 ms (300 frames; throttled)
+  Shop open + a tab press every 0.5 s: avg 66.66 ms, max 71.46 ms; 65 refreshes in 20.0 s (one per 0.3 s)
+    refresh cost (last 30): avg 0.1008 ms, max 0.1581 ms (target <= 0.3 ms): PASS
+  popup open: avg 66.66 ms, max 70.37 ms
+    its RenderStepped work (rays + BUY breathing + the card pulse, last 30 frames): avg 0.0122 ms, max 0.0491 ms (target avg <= 0.05 ms): PASS
+
+instances (built once, never rebuilt except picker rows):
+  ShopPage 599 GuiObjects / 1096 instances; StarterPackUI 154 / 225 before its first open (175 / 254 once the odds strip
+  is built); GiftToast 2 / 6; H.buttons 49 (Shop closed)
+
+leaks, 30 cycles (open Shop, 5 tab presses, open the gift picker, close the Shop (closes the picker), TestOpen the popup, close it):
+  after 10: ShopPage 599 -> 599 / 1096 -> 1096; StarterPackUI 175 -> 175 / 254 -> 254; HatchButtons 49 -> 49; PickerConns 0; LuaHeap 932.9 -> 930.7 MB (-2.3)
+  after 20: same counts; LuaHeap 932.9 -> 932.1 MB (-0.8)
+  after 30: same counts; LuaHeap 932.9 -> 933.2 MB (+0.3, limit +3): PASS
+  (review MUST 6, picker rows: 10 TestPickerRows 8 / nil rebuilds -> HatchButtons 50 -> 50, the deferred probe)
+
+==== FIX ROUND (2026-10-21, session B, after I-1 / I-2 / I-4 + the cardInView fix) ====
+idle (3 s, Shop + popup closed): Shop refresh counter 64 -> 64 ok; popup frame counter 480 -> 480 ok; ShopFunnelSent 14:false -> 14:false ok;
+  ShopLoop false, RaysLoop false, StarterTicker false ok. Re-run after 30 cycles: 324 -> 324, 1410 -> 1410, 76:false -> 76:false, all false: ok.
+cost: frame time all closed avg 66.66 ms (Studio unfocused 15 fps throttle, as before); Shop open + a tab press every 0.5 s: 64 refreshes
+  in 20.0 s, refresh cost (last 30) avg 0.0910 ms, max 0.1340 ms (target <= 0.3); popup open RenderStepped work avg 0.0117 ms, max 0.0154 ms
+  (target avg <= 0.05).
+counts: ShopPage 609 GuiObjects / 1117 instances (599 / 1096 before: + the MoneyWide button); StarterPackUI 175 / 254; GiftToast 2 / 6;
+  HatchButtons 50.
+leaks, 30 cycles (Shop + 5 tabs + picker + popup): ShopPage 609 -> 609 / 1117 -> 1117; StarterPackUI 175 -> 175 / 254 -> 254;
+  HatchButtons 50 -> 50; PickerConns 0; LuaHeap 969.5 -> 951.7 MB (-17.8, limit +3). Flat.
+I-1 (Starter card pulse only in view), cardpulse 11/11: Shop at the top RaysLoop true + frames counted (0 -> 30); scrolled to POTIONS
+  RaysLoop false and 0 frames (30 -> 30 over 2.5 s), card BUY scale 1; manual y 150 -> false, y 100 -> true; reopen after EGGS -> true at once.
+I-4 (hidden pages do not rescale), canvasguard 2/2: hidden ShopPage CanvasScale 0 writes over 3 Rebirth open / close; Shop reopened =
+  Body px / 740.
+I-2 (a section error guard each), breaksection 7/7: part 1 broken -> passes frozen, the treadmill + packs still refresh; part 5 broken
+  -> passes refresh, the treadmill frozen; unbroken catches up; exactly 1 warning per broken part.

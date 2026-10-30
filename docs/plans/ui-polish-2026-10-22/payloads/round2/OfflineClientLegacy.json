@@ -1,0 +1,10 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.OfflineClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "new(\"ImageLabel\", {Name = \"Icon\", Image = CASH, ScaleType = Enum.ScaleType.Fit, BackgroundTransparency = 1, Size = UDim2.fromOffset(44, 44),\n\tPosition = UDim2.new(0, 37, 0.5, -2), AnchorPoint = Vector2.new(0.5, 0.5), ZIndex = 4}, header)",
+   "new_string": "new(\"ImageLabel\", {Name = \"Icon\", Image = CASH, ScaleType = Enum.ScaleType.Fit, BackgroundTransparency = 1, Size = UDim2.fromOffset(40, 40),\n\tPosition = UDim2.new(0, 37, 0.5, 0), AnchorPoint = Vector2.new(0.5, 0.5), ZIndex = 4}, header) -- (2026-10-22 UI polish, M1: 10 px inside, was 6)"
+  }
+ ]
+}

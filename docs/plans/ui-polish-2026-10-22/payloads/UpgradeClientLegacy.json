@@ -1,0 +1,38 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.UpgradeClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "\t{kind = \"Sling\", icon = \"rbxassetid://84334196742101\", name = \"Slingshot Power\", desc = \"Launch further down the runway\", color = Color3.fromRGB(255, 150, 40)},\n\t{kind = \"Grab\", icon = \"rbxassetid://104553006398763\", name = \"Fast Grab\", desc = \"Pick up eggs quicker\", color = Color3.fromRGB(80, 200, 255)},\n\t{kind = \"Shield\", icon = \"rbxassetid://131653504755402\", name = \"Wave Shield\", desc = \"Survive 1 wave hit on every trip\", color = Color3.fromRGB(170, 110, 255)},",
+   "new_string": "\t-- (2026-10-22 UI polish, M5) shorter descriptions so they read at >= 16 px base in their 0.28-wide box\n\t{kind = \"Sling\", icon = \"rbxassetid://84334196742101\", name = \"Slingshot Power\", desc = \"Launch further\", color = Color3.fromRGB(255, 150, 40)},\n\t{kind = \"Grab\", icon = \"rbxassetid://104553006398763\", name = \"Fast Grab\", desc = \"Grab eggs faster\", color = Color3.fromRGB(80, 200, 255)},\n\t{kind = \"Shield\", icon = \"rbxassetid://131653504755402\", name = \"Wave Shield\", desc = \"Block 1 wave hit\", color = Color3.fromRGB(170, 110, 255)},"
+  },
+  {
+   "old_string": "\tlocal _, btn = B.brick(f, \"Buy\", UDim2.fromScale(0.17, 0.62), UDim2.fromScale(0.77, 0.5), GREEN, nil, {button = true, radius = 0.18, stroke = 0.04})",
+   "new_string": "\tlocal _, btn = B.brick(f, \"Buy\", UDim2.fromScale(0.2, 0.66), UDim2.fromScale(0.765, 0.5), GREEN, nil, {button = true, radius = 0.18, stroke = 0.04}) -- (M5 / M7: 0.17 x 0.62)"
+  },
+  {
+   "old_string": "\tlocal price = B.text(btn, \"Price\", B.LUCKY, WHITE, UDim2.fromScale(0.62, 0.55), UDim2.fromScale(0.62, 0.52), 0.08)",
+   "new_string": "\tlocal price = B.text(btn, \"Price\", B.LUCKY, WHITE, UDim2.fromScale(0.66, 0.55), UDim2.fromScale(0.62, 0.52), 0.08)"
+  },
+  {
+   "old_string": "\t\tif level >= max then return (\"Range %d studs (%s)\"):format(now, U.areaAt(now)) end\n\t\treturn (\"Range %d → <font color='#7dff5a'>%d</font> studs (%s)\"):format(now, new, U.areaAt(new))\n\telseif kind == \"Grab\" then\n\t\tif level >= max then return (\"Grab time %.1fs\"):format(U.grabTime(level)) end\n\t\treturn (\"Grab time %.1fs → <font color='#7dff5a'>%.1fs</font>\"):format(U.grabTime(level), U.grabTime(nxt))\n\telse\n\t\tlocal function hits(n) return n == 1 and \"1 hit\" or (n .. \" hits\") end\n\t\tif level >= max then return \"Survive \" .. hits(level) .. \" per trip\" end\n\t\treturn (\"Survive %s → <font color='#7dff5a'>%s</font> per trip\"):format(hits(level), hits(nxt))",
+   "new_string": "\t\t-- (2026-10-22 UI polish, M5) short stat lines (>= 16 px base in a 0.25-wide box): the numbers only\n\t\tif level >= max then return (\"%d studs\"):format(now) end\n\t\treturn (\"%d → <font color='#7dff5a'>%d</font> studs\"):format(now, new)\n\telseif kind == \"Grab\" then\n\t\tif level >= max then return (\"%.1fs grab\"):format(U.grabTime(level)) end\n\t\treturn (\"%.1fs → <font color='#7dff5a'>%.1fs</font>\"):format(U.grabTime(level), U.grabTime(nxt))\n\telse\n\t\tlocal function hits(n) return n == 1 and \"1 hit\" or (n .. \" hits\") end\n\t\tif level >= max then return hits(level) .. \" blocked\" end\n\t\treturn (\"%s → <font color='#7dff5a'>%s</font>\"):format(tostring(level), hits(nxt))"
+  },
+  {
+   "old_string": "for kind, row in rows do\n\trow.btn.Activated:Connect(function()\n\t\tlocal ok, r = Buy:InvokeServer(kind)\n",
+   "new_string": "for kind, row in rows do\n\tlocal function buy()\n\t\tlocal ok, r = Buy:InvokeServer(kind)\n"
+  },
+  {
+   "old_string": "\t\trefresh()\n\tend)\nend\nfor kind, row in rows do\n\trow.rbtn.Activated:Connect(function()\n\t\tlocal ok, r = Buy:InvokeServer(kind, \"robux\")\n",
+   "new_string": "\t\trefresh()\n\tend\n\trow.btn.Activated:Connect(buy)\n\tB.tapArea(row.btn, buy) -- (2026-10-22 UI polish, M7)\nend\nfor kind, row in rows do\n\tlocal function buyLevel()\n\t\tlocal ok, r = Buy:InvokeServer(kind, \"robux\")\n"
+  },
+  {
+   "old_string": "\t\t\ttask.delay(1.25, refresh)\n\t\tend\n\tend)\nend\nfor _, attr in {\"Money\", \"Rebirths\", \"SlingLevel\", \"GrabLevel\", \"ShieldLevel\", \"FreeSling\"} do",
+   "new_string": "\t\t\ttask.delay(1.25, refresh)\n\t\tend\n\tend\n\trow.rbtn.Activated:Connect(buyLevel)\n\tB.tapArea(row.rbtn, buyLevel)\nend\nfor _, attr in {\"Money\", \"Rebirths\", \"SlingLevel\", \"GrabLevel\", \"ShieldLevel\", \"FreeSling\"} do"
+  },
+  {
+   "old_string": "closeF.Activated:Connect(function() setOpen(false) end)",
+   "new_string": "closeF.Activated:Connect(function() setOpen(false) end)\nB.tapArea(closeF, function() setOpen(false) end) -- (2026-10-22 UI polish, M7)"
+  }
+ ]
+}

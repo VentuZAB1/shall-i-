@@ -1,0 +1,62 @@
+// SLINGSHOT Halloween - SmokeWisp 4x4 flipbook: a 16-frame one-shot (vfx.py prepends common.h).
+// A soft dark-grey smoke puff that rises a little in the frame, curls (vortex-ring roll on both flanks + a slow
+// domain warp) and dissipates (it thins, tears into wisps and fades). The particle's own Speed/Rotation/Size do most of
+// the rising, so the puff stays near the middle of each frame and the 16 steps change gradually.
+// Noise is sampled relative to the puff radius, so its features expand with the puff (coherent between frames).
+// Shading: density sampled again towards the light (up-left) -> lit tops/rims, darker dense undersides.
+
+float puff_density(float x, float y, float tt, float seed)
+{
+    float R = 0.40 + 0.34 * pow(tt, 0.8);
+    float cy = -0.16 + 0.16 * tt;
+    float px = x, py = y - cy;
+    // vortex-ring roll: the flanks curl outward and down as the puff rises
+    float roll = 0.35 + 1.25 * tt;
+    for (int side = -1; side <= 1; side += 2) {
+        float vx = side * 0.62 * R, vy = 0.30 * R;
+        float dx = px - vx, dy = py - vy;
+        float ang = -side * roll * exp(-(dx * dx + dy * dy) / sq(0.55 * R));
+        float c = cos(ang), s = sin(ang);
+        px = vx + c * dx - s * dy;
+        py = vy + s * dx + c * dy;
+    }
+    // slow domain warp (features in puff-relative units)
+    point q = point(px / R, py / R, seed + 0.35 * tt);
+    float wx = fbm(q * 0.9 + point(0.0, 0.0, 3.0), 4, 0.5);
+    float wy = fbm(q * 0.9 + point(0.0, 0.0, 9.0), 4, 0.5);
+    float qx = px / R + 0.55 * wx, qy = py / R + 0.45 * wy;
+    // body: a soft blob, a little wider at the top (cap) and flatter underneath
+    float rx = qx / (0.92 + 0.14 * smoothstep(-0.5, 0.6, qy));
+    float ry = qy * (qy < 0.0 ? 1.15 : 0.95);
+    float r = hypot(rx, ry);
+    float body = 1.0 - smoothstep(0.30, 1.05, r);
+    float b = billow(point(qx * 1.7, qy * 1.7, seed * 1.7 + 0.25 * tt), 6, 0.55);
+    float D = body * (0.35 + 0.95 * b) - 0.18 - 0.55 * pow(tt, 1.4) * (1.0 - 0.5 * b);
+    return D;
+}
+
+shader smoke_wisp(int mode = 0, int cols = 4, float seed = 4.2, output color Out = 0)
+{
+    float x, y, T, frame;
+    tile(transform("object", P), cols, x, y, T, frame);
+    float tt = frame / (cols * cols - 1.0);          // 0 .. 1 over the 16 frames
+
+    float D = puff_density(x, y, tt, seed);
+    float Dl = puff_density(x - 0.035, y + 0.06, tt, seed);    // towards the light (up-left)
+    float dens = clamp(D * 1.6, 0.0, 1.0);
+
+    // colour: dark grey, lit rims a little lighter, dense cores darker
+    float lit = clamp(0.55 + 3.0 * (D - Dl), 0.0, 1.0);
+    color dark = color(0.13, 0.125, 0.135);
+    color light = color(0.40, 0.39, 0.41);
+    color col = mix(dark, light, lit);
+    col *= 1.0 - 0.25 * smoothstep(0.4, 1.0, dens);
+
+    // alpha: soft, max ~0.85, fades out at the end
+    float A = 0.85 * pow(dens, 0.9);
+    A *= mix(1.0, 0.0, smoothstep(0.62, 1.0, tt));
+    A *= smoothstep(0.0, 0.12, tt + 0.06);           // first frame already visible but soft
+    A *= border(x, y, 0.10);
+
+    Out = (mode == 0) ? col : color(A);
+}

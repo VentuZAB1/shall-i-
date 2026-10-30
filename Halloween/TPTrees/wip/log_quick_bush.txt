@@ -1,0 +1,12 @@
+[tp     2.0s]   lobes 101 on CanopyBase
+[tp     2.2s] bush base 35678 area 89.8 leaves 897
+[tp     2.9s]   ribbon BRoll      len 14.58  sections  108  contact 0.92  zmin 0.03  lift 0.000
+[tp     3.5s]   ribbon BShoulder  len 11.01  sections  102  contact 0.88  zmin 0.45  lift 0.344
+[tp     3.9s]   ribbon BLoop      len  3.26  sections   29  contact 1.00  zmin 1.44  lift 0.272
+[tp     3.9s]   TP section spacing <= 0.26, turn <= 12 deg -> ~2318 tris (budget 2650)
+[tp     4.0s] TP {'ribbons': 3, 'length': 28.8, 'px_per_stud': 78, 'tris': 2308, 'hi_tris': 77738, 'atlas_rows': 5, 'atlas_bottom_px': 504, 'spacing': 0.26, 'turn': 12.0}
+Info: Saved as "bush_wip.blend"
+[tp     4.1s] HW_REPORT {"roll": {"centre": [0.423, -3.01, 0.545], "axis": [0.988, -0.139, 0.06], "radius_from_axis": 3.04}, "tp": {"ribbons": 3, "length": 28.8, "px_per_stud": 78, "tris": 2308, "hi_tris": 77738, "atlas_rows": 5, "atlas_bottom_px": 504, "spacing": 0.26, "turn": 12.0}, "tris": {"Canopy": 7300, "TP": 2308, "total": 9608}, "hi_tris": {"CanopyHi": 71356, "LeavesHi": 16146, "TPHi": 77738}, "bbox": {"min": [-2.808, -3.605, -0.077], "max": [2.756, 2.655, 4.768], "size_blender": [5.564, 6.26, 4.844], "size_roblox_XYZ": [5.56, 4.84, 6.26]}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

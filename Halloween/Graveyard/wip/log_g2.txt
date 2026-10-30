@@ -1,0 +1,24 @@
+Info: Saved as "DeadGrass_A.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_DeadGrass_A.fbx'
+export finished in 0.0107 sec.
+[grave    0.9s] done {'name': 'DeadGrass_A', 'blades': 103, 'tris': 2478, 'texture': 512, 'scale': [0.908, 1.008], 'bbox_min': [-1.991, -1.786, -0.151], 'bbox_max': [2.135, 1.811, 3.0], 'size_blender_xyz': [4.126, 3.597, 3.151], 'export': {'fbx': 'C:\\cdimp\\Halloween_DeadGrass_A.fbx', 'kb': 292.4, 'tris': {'DeadGrass_A': 1335}}}
+Info: Saved as "DeadGrass_B.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_DeadGrass_B.fbx'
+export finished in 0.0096 sec.
+[grave    1.4s] done {'name': 'DeadGrass_B', 'blades': 93, 'tris': 1966, 'texture': 512, 'scale': [0.947, 1.052], 'bbox_min': [-1.261, -1.414, -0.158], 'bbox_max': [1.585, 1.398, 2.5], 'size_blender_xyz': [2.847, 2.812, 2.658], 'export': {'fbx': 'C:\\cdimp\\Halloween_DeadGrass_B.fbx', 'kb': 271.8, 'tris': {'DeadGrass_B': 1067}}}
+00:07.328  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_A_front25.png'
+00:07.859  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_A_close.png'
+00:08.344  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_A_34.png'
+00:08.766  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_A_back.png'
+00:09.234  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_A_side.png'
+00:09.828  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_B_front25.png'
+00:10.234  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_B_close.png'
+00:10.688  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_B_34.png'
+00:11.172  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_B_back.png'
+00:11.625  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_B_side.png'
+GRAVE_REPORT {"grass_A": {"name": "DeadGrass_A", "blades": 103, "tris": 2478, "texture": 512, "scale": [0.908, 1.008], "bbox_min": [-1.991, -1.786, -0.151], "bbox_max": [2.135, 1.811, 3.0], "size_blender_xyz": [4.126, 3.597, 3.151], "export": {"fbx": "C:\\cdimp\\Halloween_DeadGrass_A.fbx", "kb": 292.4, "tris": {"DeadGrass_A": 1335}}}, "grass_B": {"name": "DeadGrass_B", "blades": 93, "tris": 1966, "texture": 512, "scale": [0.947, 1.052], "bbox_min": [-1.261, -1.414, -0.158], "bbox_max": [1.585, 1.398, 2.5], "size_blender_xyz": [2.847, 2.812, 2.658], "export": {"fbx": "C:\\cdimp\\Halloween_DeadGrass_B.fbx", "kb": 271.8, "tris": {"DeadGrass_B": 1067}}}, "preview": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\pv_DeadGrass_B_front25.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\pv_DeadGrass_B_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\pv_DeadGrass_B_34.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\pv_DeadGrass_B_back.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\pv_DeadGrass_B_side.png"]}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,375 @@
+FBX version: 7400
+RV_TPDARK {
+"area_total": 47.07,
+"dark_area_frac(luma<0.65)": 0.422,
+"hanging_area_frac": 0.011,
+"dark_frac_in_hanging": 0.246,
+"dark_frac_in_draped": 0.424,
+"dark_frac_downfacing(nz<-0.3)": 0.713,
+"dark_frac_upfacing(nz>0.3)": 0.163,
+"islands": [
+{
+"isl": 1952,
+"tris": 194,
+"area": 7.51,
+"mean_luma": 0.845,
+"dark_frac": 0.09,
+"mean_nz": 0.31,
+"zmin": 0.0,
+"zmax": 4.41,
+"centre": [
+0.11,
+-0.6,
+2.55
+]
+},
+{
+"isl": 1956,
+"tris": 194,
+"area": 7.48,
+"mean_luma": 0.602,
+"dark_frac": 0.701,
+"mean_nz": -0.32,
+"zmin": 0.0,
+"zmax": 4.37,
+"centre": [
+0.11,
+-0.59,
+2.53
+]
+},
+{
+"isl": 696,
+"tris": 174,
+"area": 7.05,
+"mean_luma": 0.818,
+"dark_frac": 0.144,
+"mean_nz": 0.43,
+"zmin": 0.04,
+"zmax": 4.62,
+"centre": [
+-0.59,
+-0.17,
+2.07
+]
+},
+{
+"isl": 700,
+"tris": 174,
+"area": 7.02,
+"mean_luma": 0.558,
+"dark_frac": 0.779,
+"mean_nz": -0.43,
+"zmin": -0.01,
+"zmax": 4.58,
+"centre": [
+-0.6,
+-0.16,
+2.03
+]
+},
+{
+"isl": 1160,
+"tris": 112,
+"area": 5.37,
+"mean_luma": 0.858,
+"dark_frac": 0.077,
+"mean_nz": 0.43,
+"zmin": 0.59,
+"zmax": 4.82,
+"centre": [
+0.16,
+-0.34,
+2.97
+]
+},
+{
+"isl": 1164,
+"tris": 112,
+"area": 5.28,
+"mean_luma": 0.504,
+"dark_frac": 0.993,
+"mean_nz": -0.43,
+"zmin": 0.59,
+"zmax": 4.76,
+"centre": [
+0.17,
+-0.33,
+2.94
+]
+},
+{
+"isl": 1954,
+"tris": 194,
+"area": 1.03,
+"mean_luma": 0.753,
+"dark_frac": 0.174,
+"mean_nz": -0.3,
+"zmin": 0.01,
+"zmax": 4.14,
+"centre": [
+0.04,
+-0.72,
+2.45
+]
+},
+{
+"isl": 2008,
+"tris": 40,
+"area": 0.96,
+"mean_luma": 0.811,
+"dark_frac": 0.175,
+"mean_nz": 0.0,
+"zmin": 0.01,
+"zmax": 0.68,
+"centre": [
+0.4,
+-2.85,
+0.35
+]
+},
+{
+"isl": 702,
+"tris": 174,
+"area": 0.95,
+"mean_luma": 0.75,
+"dark_frac": 0.179,
+"mean_nz": -0.05,
+"zmin": -0.05,
+"zmax": 4.58,
+"centre": [
+-0.55,
+-0.32,
+2.03
+]
+},
+{
+"isl": 1958,
+"tris": 194,
+"area": 0.95,
+"mean_luma": 0.733,
+"dark_frac": 0.234,
+"mean_nz": 0.35,
+"zmin": 0.02,
+"zmax": 4.53,
+"centre": [
+0.18,
+-0.47,
+2.63
+]
+},
+{
+"isl": 698,
+"tris": 174,
+"area": 0.92,
+"mean_luma": 0.712,
+"dark_frac": 0.296,
+"mean_nz": 0.04,
+"zmin": 0.01,
+"zmax": 4.64,
+"centre": [
+-0.64,
+-0.01,
+2.06
+]
+},
+{
+"isl": 1166,
+"tris": 112,
+"area": 0.72,
+"mean_luma": 0.693,
+"dark_frac": 0.303,
+"mean_nz": -0.05,
+"zmin": 0.44,
+"zmax": 4.8,
+"centre": [
+-0.03,
+-0.34,
+2.94
+]
+},
+{
+"isl": 1162,
+"tris": 112,
+"area": 0.67,
+"mean_luma": 0.734,
+"dark_frac": 0.224,
+"mean_nz": -0.02,
+"zmin": 0.74,
+"zmax": 4.81,
+"centre": [
+0.36,
+-0.33,
+2.97
+]
+},
+{
+"isl": 2218,
+"tris": 40,
+"area": 0.35,
+"mean_luma": 0.234,
+"dark_frac": 1.0,
+"mean_nz": 0.0,
+"zmin": 0.22,
+"zmax": 0.47,
+"centre": [
+0.4,
+-2.84,
+0.34
+]
+},
+{
+"isl": 2050,
+"tris": 40,
+"area": 0.29,
+"mean_luma": 0.785,
+"dark_frac": 0.0,
+"mean_nz": 0.0,
+"zmin": 0.07,
+"zmax": 0.62,
+"centre": [
+0.62,
+-2.87,
+0.35
+]
+},
+{
+"isl": 2134,
+"tris": 40,
+"area": 0.29,
+"mean_luma": 0.81,
+"dark_frac": 0.0,
+"mean_nz": 0.0,
+"zmin": 0.07,
+"zmax": 0.62,
+"centre": [
+0.17,
+-2.82,
+0.35
+]
+},
+{
+"isl": 705,
+"tris": 2,
+"area": 0.03,
+"mean_luma": 0.893,
+"dark_frac": 0.0,
+"mean_nz": -0.18,
+"zmin": 0.02,
+"zmax": 0.05,
+"centre": [
+2.67,
+1.02,
+0.04
+]
+},
+{
+"isl": 711,
+"tris": 2,
+"area": 0.03,
+"mean_luma": 0.83,
+"dark_frac": 0.0,
+"mean_nz": 0.0,
+"zmin": 0.01,
+"zmax": 0.03,
+"centre": [
+-2.77,
+-0.91,
+0.02
+]
+},
+{
+"isl": 1169,
+"tris": 2,
+"area": 0.03,
+"mean_luma": 0.615,
+"dark_frac": 1.0,
+"mean_nz": 0.71,
+"zmin": 0.67,
+"zmax": 0.78,
+"centre": [
+0.39,
+-2.84,
+0.72
+]
+},
+{
+"isl": 1175,
+"tris": 2,
+"area": 0.03,
+"mean_luma": 0.776,
+"dark_frac": 0.0,
+"mean_nz": -1.0,
+"zmin": 0.72,
+"zmax": 0.72,
+"centre": [
+-0.1,
+2.5,
+0.72
+]
+},
+{
+"isl": 1961,
+"tris": 2,
+"area": 0.03,
+"mean_luma": 0.873,
+"dark_frac": 0.0,
+"mean_nz": 0.0,
+"zmin": 0.04,
+"zmax": 0.05,
+"centre": [
+-2.37,
+1.44,
+0.04
+]
+},
+{
+"isl": 1967,
+"tris": 2,
+"area": 0.03,
+"mean_luma": 0.733,
+"dark_frac": 0.0,
+"mean_nz": -0.0,
+"zmin": 0.02,
+"zmax": 0.04,
+"centre": [
+2.93,
+0.32,
+0.03
+]
+},
+{
+"isl": 2092,
+"tris": 40,
+"area": 0.02,
+"mean_luma": 0.551,
+"dark_frac": 1.0,
+"mean_nz": 0.0,
+"zmin": 0.21,
+"zmax": 0.48,
+"centre": [
+0.62,
+-2.86,
+0.34
+]
+},
+{
+"isl": 2176,
+"tris": 40,
+"area": 0.02,
+"mean_luma": 0.571,
+"dark_frac": 1.0,
+"mean_nz": 0.0,
+"zmin": 0.21,
+"zmax": 0.48,
+"centre": [
+0.17,
+-2.82,
+0.34
+]
+}
+]
+}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

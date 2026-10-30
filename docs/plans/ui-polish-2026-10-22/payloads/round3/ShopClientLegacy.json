@@ -1,0 +1,14 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.ShopClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "tl.Padding = UDim.new(0.008, 0)",
+   "new_string": "tl.Padding = UDim.new(0.002, 0)"
+  },
+  {
+   "old_string": "\t\tslot.Size = UDim2.fromScale(1, 0.192)\n\t\tslot.LayoutOrder = i\n\t\tslot.Parent = tabs",
+   "new_string": "\t\tslot.Size = UDim2.fromScale(1, 0.198) -- (round 3: 44+ px tap slots at the phone scale)\n\t\tslot.LayoutOrder = i\n\t\tslot.Parent = tabs"
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+audit {"idle": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "idle_foot_drift": 0.0}, "walk": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "slide": 0.0, "foot_z_var": 0.0}, "fly": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0}, "takeoff": {"linear": 0}, "land": {"linear": 0}, "roar": {"linear": 0}, "act_stillfreeze": {"linear": 0}}
+clips {"idle": [120, true], "walk": [40, true], "fly": [28, true], "takeoff": [28, false], "land": [28, false], "roar": [66, false], "act_stillfreeze": [110, false]}
+events {"idle": {"frostpuff": 0.667}, "takeoff": {"launch": 0.393}, "land": {"touch": 0.571}, "roar": {"roar": 0.364}, "act_stillfreeze": {"click": 0.145, "frost": 0.455}}
+tris_body 10460
+ground_min_z {"idle": [-0.005, 119, "Foot_BR"], "walk": [-0.01, 37, "Foot_BL"], "fly": [0.089, 26, "Foot_FL"], "takeoff": [-0.005, 13, "Foot_FL"], "land": [-0.005, 27, "Foot_FL"], "roar": [-0.005, 63, "Foot_FL"], "act_stillfreeze": [-0.005, 79, "Foot_BR"]}
+collisions {}
+collision_free true
+stride 0.4839

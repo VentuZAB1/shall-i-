@@ -1,0 +1,80 @@
+viewport (1519,753) | stable after 2 dumps: true
+# hatch_shop_snapshot.lua groups. BASELINE (re-captured 2026-10-22 with the pre-RIS Hatch in an A/B session, and equal in the
+# RIS-helper session): ALL 985d5a8c (146 groups); changed groups vs the Task 0 list below: ShopPage.GiftPicker.Box b4f519d8,
+# Rail.Label1 cf76f9e8, Label2 bb4fd908, Label3 aac75248, Label4 99ecae90, Label5 2ec163d0, Scroll.List 23b74c8c.
+# The Task 0 list (session state, see the ledger ruling) follows for history:
+ALL d31e8fb0 (146 groups)
+SHOP:Window.HatchBack 1 95b10d34
+SHOP:Window.HatchBack.Depth 1 cf5986d4
+SHOP:Window.HatchBack.Depth.UICorner 1 2a05dbd8
+SHOP:Window.HatchBack.Depth.UIStroke 1 957f1768
+SHOP:Window.HatchBack.Face 1 a82e9828
+SHOP:Window.HatchBack.Face.Rim 3 355c4150
+SHOP:Window.HatchBack.Face.Sheen 1 2715de68
+SHOP:Window.HatchBack.Face.UICorner 1 a8857370
+SHOP:Window.HatchBack.Face.UIGradient 1 f0242037
+SHOP:Window.HatchBack.Face.UIStroke 1 7d975dd8
+SHOP:Window.HatchBack.SkinScale 1 ef9e59e8
+SHOP:Window.HatchFront 1 d4451f84
+SHOP:Window.HatchFront.Band 1 5eb1ab9c
+SHOP:Window.HatchFront.Band.UICorner 1 3e93cba0
+SHOP:Window.HatchFront.Band.UIGradient 1 ed1f2be8
+SHOP:Window.HatchFront.BandFill 1 79b48344
+SHOP:Window.HatchFront.BandFill.UIGradient 1 2aa6f1e0
+SHOP:Window.HatchFront.Bats 1 fa7c4c18
+SHOP:Window.HatchFront.Bats.Bat1 16 4b2a4b10
+SHOP:Window.HatchFront.Bats.Bat2 16 844e9bf4
+SHOP:Window.HatchFront.Close 1 acf08248
+SHOP:Window.HatchFront.Close.ButtonScale 1 ec788d28
+SHOP:Window.HatchFront.Close.Face 12 d86ada50
+SHOP:Window.HatchFront.Close.Side 3 9c002b70
+SHOP:Window.HatchFront.CloseHit 1 896b4bb0
+SHOP:Window.HatchFront.Crack 1 67e9f428
+SHOP:Window.HatchFront.Crack.Ink1..Ink37, Tooth1..Tooth37: 74 groups (1 line each), all inside ALL
+SHOP:Window.HatchFront.Crack.Tooth1 1 b1aa20ec
+SHOP:Window.HatchFront.Gloss 1 1ea1d118
+SHOP:Window.HatchFront.Gloss.UICorner 1 9c1106d8
+SHOP:Window.HatchFront.Gloss.UIGradient 1 753ae110
+SHOP:Window.HatchFront.Icon 1 16de5ef8
+SHOP:Window.HatchFront.IconShadow 1 11e58eac
+SHOP:Window.HatchFront.SkinScale 1 5e1e23e0
+SHOP:Window.HatchFront.Title 1 5ed56d80
+SHOP:Window.HatchFront.Title.UIStroke 1 8ac5bc50
+SHOP:Window.HatchFront.TitleShadow 1 e163f6c8
+SHOP:Window.HatchFront.TitleShadow.UIStroke 1 845acb50
+SHOP:Window.ShopPage 1 c38304b8
+SHOP:Window.ShopPage.CanvasScale 1 a1532576
+SHOP:Window.ShopPage.GiftPicker 1 a7cc2a70
+SHOP:Window.ShopPage.GiftPicker.Box 44 e82aa4d0
+SHOP:Window.ShopPage.GiftPicker.UICorner 1 3e5706d8
+SHOP:Window.ShopPage.Rail 1 893f4e4c
+SHOP:Window.ShopPage.Rail.BottomLine 1 1e37bc7c
+SHOP:Window.ShopPage.Rail.Hit1 1 37d96860
+SHOP:Window.ShopPage.Rail.Hit2 1 25700030
+SHOP:Window.ShopPage.Rail.Hit3 1 99001848
+SHOP:Window.ShopPage.Rail.Hit4 1 f5fdf87f
+SHOP:Window.ShopPage.Rail.Hit5 1 66b2b2bf
+SHOP:Window.ShopPage.Rail.Icon1 1 ff588618
+SHOP:Window.ShopPage.Rail.Icon1Shadow 1 0b6f8380
+SHOP:Window.ShopPage.Rail.Icon2 1 0beb0580
+SHOP:Window.ShopPage.Rail.Icon2Shadow 1 00efab60
+SHOP:Window.ShopPage.Rail.Icon3 1 fb69e790
+SHOP:Window.ShopPage.Rail.Icon3Shadow 1 dd166028
+SHOP:Window.ShopPage.Rail.Icon4 1 2c6fa788
+SHOP:Window.ShopPage.Rail.Icon4Shadow 1 269be0d8
+SHOP:Window.ShopPage.Rail.Icon5 1 5ba0ff08
+SHOP:Window.ShopPage.Rail.Icon5Shadow 1 7c0e9688
+SHOP:Window.ShopPage.Rail.Label1 2 a22ad8b5
+SHOP:Window.ShopPage.Rail.Label2 2 17a59348
+SHOP:Window.ShopPage.Rail.Label3 2 9f6df3b8
+SHOP:Window.ShopPage.Rail.Label4 2 0265d310
+SHOP:Window.ShopPage.Rail.Label5 2 a0d46098
+SHOP:Window.ShopPage.Rail.Pill 15 924a5040
+SHOP:Window.ShopPage.Rail.TopShade 1 f2179490
+SHOP:Window.ShopPage.Rail.UICorner 1 7a0918f0
+SHOP:Window.ShopPage.Rail.UIGradient 1 add768f0
+SHOP:Window.ShopPage.Rail.UIStroke 1 8785a8a0
+SHOP:Window.ShopPage.Scroll 1 09ccf8c4
+SHOP:Window.ShopPage.Scroll.List 1021 fb3afd2c
+SHOP:Window.ShopPage.TestGiftRow 1 26769040
+SHOP:Window.ShopPage.TestPress 1 bf005bd4

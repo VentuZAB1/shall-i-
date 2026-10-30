@@ -1,0 +1,27 @@
+[eggs    4.6s] PumpkinEgg_Plain1 game mesh tris 4200
+[eggs    4.7s]   uv smart done
+Warning: Unwrap failed to solve 1 of 4 island(s), edge seams may need to be added
+[eggs    5.0s]   uv unwrap+average done, packing
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:791: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  bmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:795: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  cmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:819: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs   65.5s]   baked LoAll {'texels': 35603, 'miss': 0.0}
+Info: Saved as "plain_P1_fast.blend"
+[eggs   66.7s] PumpkinEgg_Plain1 done {"name": "PumpkinEgg_Plain1", "tris": 4200, "texture": 256, "size_blender_xyz": [2.967, 3.103, 3.951], "bottom_offset_z": -1.976, "bake": {"LoAll": {"texels": 35603, "miss": 0.0}}, "blender_shift": [0.0043, 0.0041, -0.3292]}
+01:37.312  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\fP1_25.png'
+01:38.234  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\fP1_close.png'
+01:39.266  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\fP1_34.png'
+01:40.109  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\fP1_back.png'
+EGGS_REPORT {"plain_P1": {"name": "PumpkinEgg_Plain1", "tris": 4200, "texture": 256, "size_blender_xyz": [2.967, 3.103, 3.951], "bottom_offset_z": -1.976, "bake": {"LoAll": {"texels": 35603, "miss": 0.0}}, "blender_shift": [0.0043, 0.0041, -0.3292]}, "preview": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\fP1_25.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\fP1_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\fP1_34.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\fP1_back.png"]}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

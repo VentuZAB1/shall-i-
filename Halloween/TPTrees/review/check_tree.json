@@ -1,0 +1,796 @@
+{
+ "file": "C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/fbx/Halloween_TPTree.fbx",
+ "unit_scale": {
+  "UnitScaleFactor": 1.0,
+  "OriginalUnitScaleFactor": 1.0
+ },
+ "objects": {
+  "CanopyA": {
+   "tris": 7270,
+   "verts": 3736,
+   "islands": 2,
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_deg": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.01,
+    0.01,
+    0.01
+   ],
+   "uv_layers": 1,
+   "bbox_min": [
+    -0.267,
+    -6.826,
+    6.472
+   ],
+   "bbox_max": [
+    6.844,
+    7.213,
+    15.54
+   ],
+   "verts_below_minus0_3": 0,
+   "signed_volume": 350.05,
+   "has_custom_normals": true,
+   "materials": [
+    {
+     "name": "CanopyA_PBR",
+     "textures": [
+      {
+       "image": "TPTree_CanopyA_albedo",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "sRGB",
+       "links": [
+        "BSDF_PRINCIPLED.Base Color<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPTree_CanopyA_normal",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "NORMAL_MAP.Normal(via NormalMap)<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPTree_CanopyA_rough",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "BSDF_PRINCIPLED.Roughness<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      }
+     ],
+     "backface_culling": false,
+     "emission_strength": 0.0,
+     "emission_color": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "emission_linked": false,
+     "metallic": 0.0,
+     "metallic_linked": false,
+     "alpha_linked": false,
+     "alpha": 1.0
+    }
+   ],
+   "texel_px_per_stud": {
+    "p5": 39.2,
+    "median": 44.0,
+    "p95": 47.3,
+    "area_frac_below_half_median": 0.0,
+    "area_frac_below_quarter_median": 0.0
+   },
+   "uv_outside_0_1": 0,
+   "uv_total_area": 0.517,
+   "texture_on_surface": {
+    "albedo_mean_srgb255": [
+     117,
+     43,
+     15
+    ],
+    "albedo_luma_pcts(5,25,50,75,95)": [
+     0.069,
+     0.117,
+     0.191,
+     0.294,
+     0.489
+    ],
+    "frac_near_black(luma<0.05)": 0.0102,
+    "frac_very_dark(luma<0.10)": 0.1951,
+    "sat_mean": 0.862,
+    "alpha_min_on_surface": 1.0,
+    "alpha_frac_below_0.99_on_surface": 0.0,
+    "alpha_min_whole_image": 1.0,
+    "hue_buckets_of_bright(red<15|orange15-40|amber/yellow40-65|green65-170|other)": [
+     0.557,
+     0.396,
+     0.046,
+     0.0,
+     0.0
+    ],
+    "frac_muddy(sat<0.4 & 0.12<v<0.45)": 0.0,
+    "frac_darker_than_60pct_median": 0.2429,
+    "normal_frac_z<0.35": 0.0164,
+    "normal_frac_z<0": 0.0152,
+    "normal_mean_z": 0.862,
+    "rough_mean": 0.651,
+    "rough_p5_p95": [
+     0.514,
+     0.898
+    ]
+   }
+  },
+  "CanopyB": {
+   "tris": 7328,
+   "verts": 3762,
+   "islands": 1,
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_deg": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.01,
+    0.01,
+    0.01
+   ],
+   "uv_layers": 1,
+   "bbox_min": [
+    -7.416,
+    -6.838,
+    6.422
+   ],
+   "bbox_max": [
+    0.26,
+    7.213,
+    15.556
+   ],
+   "verts_below_minus0_3": 0,
+   "signed_volume": 327.58,
+   "has_custom_normals": true,
+   "materials": [
+    {
+     "name": "CanopyB_PBR",
+     "textures": [
+      {
+       "image": "TPTree_CanopyB_albedo",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "sRGB",
+       "links": [
+        "BSDF_PRINCIPLED.Base Color<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPTree_CanopyB_normal",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "NORMAL_MAP.Normal(via NormalMap)<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPTree_CanopyB_rough",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "BSDF_PRINCIPLED.Roughness<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      }
+     ],
+     "backface_culling": false,
+     "emission_strength": 0.0,
+     "emission_color": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "emission_linked": false,
+     "metallic": 0.0,
+     "metallic_linked": false,
+     "alpha_linked": false,
+     "alpha": 1.0
+    }
+   ],
+   "texel_px_per_stud": {
+    "p5": 38.1,
+    "median": 42.5,
+    "p95": 46.0,
+    "area_frac_below_half_median": 0.0,
+    "area_frac_below_quarter_median": 0.0
+   },
+   "uv_outside_0_1": 0,
+   "uv_total_area": 0.483,
+   "texture_on_surface": {
+    "albedo_mean_srgb255": [
+     121,
+     51,
+     16
+    ],
+    "albedo_luma_pcts(5,25,50,75,95)": [
+     0.069,
+     0.124,
+     0.233,
+     0.347,
+     0.498
+    ],
+    "frac_near_black(luma<0.05)": 0.0111,
+    "frac_very_dark(luma<0.10)": 0.1867,
+    "sat_mean": 0.859,
+    "alpha_min_on_surface": 1.0,
+    "alpha_frac_below_0.99_on_surface": 0.0,
+    "alpha_min_whole_image": 1.0,
+    "hue_buckets_of_bright(red<15|orange15-40|amber/yellow40-65|green65-170|other)": [
+     0.367,
+     0.579,
+     0.054,
+     0.0,
+     0.0
+    ],
+    "frac_muddy(sat<0.4 & 0.12<v<0.45)": 0.0,
+    "frac_darker_than_60pct_median": 0.2929,
+    "normal_frac_z<0.35": 0.017,
+    "normal_frac_z<0": 0.0155,
+    "normal_mean_z": 0.863,
+    "rough_mean": 0.655,
+    "rough_p5_p95": [
+     0.514,
+     0.898
+    ]
+   }
+  },
+  "TP": {
+   "tris": 7340,
+   "verts": 7520,
+   "islands": 90,
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_deg": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.01,
+    0.01,
+    0.01
+   ],
+   "uv_layers": 1,
+   "bbox_min": [
+    -7.498,
+    -6.925,
+    1.335
+   ],
+   "bbox_max": [
+    6.589,
+    6.814,
+    15.938
+   ],
+   "verts_below_minus0_3": 0,
+   "signed_volume": 4.13,
+   "has_custom_normals": true,
+   "materials": [
+    {
+     "name": "TP_PBR",
+     "textures": [
+      {
+       "image": "TPTree_TP_albedo",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "sRGB",
+       "links": [
+        "BSDF_PRINCIPLED.Base Color<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPTree_TP_normal",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "NORMAL_MAP.Normal(via NormalMap)<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPTree_TP_rough",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "BSDF_PRINCIPLED.Roughness<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      }
+     ],
+     "backface_culling": false,
+     "emission_strength": 0.0,
+     "emission_color": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "emission_linked": false,
+     "metallic": 0.0,
+     "metallic_linked": false,
+     "alpha_linked": false,
+     "alpha": 1.0
+    }
+   ],
+   "texel_px_per_stud": {
+    "p5": 59.9,
+    "median": 73.5,
+    "p95": 77.4,
+    "area_frac_below_half_median": 0.0203,
+    "area_frac_below_quarter_median": 0.0041
+   },
+   "uv_outside_0_1": 0,
+   "uv_total_area": 0.852,
+   "texture_on_surface": {
+    "albedo_mean_srgb255": [
+     197,
+     193,
+     183
+    ],
+    "albedo_luma_pcts(5,25,50,75,95)": [
+     0.463,
+     0.554,
+     0.882,
+     0.898,
+     0.906
+    ],
+    "frac_near_black(luma<0.05)": 0.0,
+    "frac_very_dark(luma<0.10)": 0.0,
+    "sat_mean": 0.07,
+    "alpha_min_on_surface": 1.0,
+    "alpha_frac_below_0.99_on_surface": 0.0,
+    "alpha_min_whole_image": 1.0,
+    "hue_buckets_of_bright(red<15|orange15-40|amber/yellow40-65|green65-170|other)": [
+     0.0,
+     0.006,
+     0.994,
+     0.0,
+     0.0
+    ],
+    "frac_muddy(sat<0.4 & 0.12<v<0.45)": 0.0004,
+    "frac_darker_than_60pct_median": 0.2309,
+    "normal_frac_z<0.35": 0.0,
+    "normal_frac_z<0": 0.0,
+    "normal_mean_z": 0.961,
+    "rough_mean": 0.858,
+    "rough_p5_p95": [
+     0.859,
+     0.859
+    ]
+   }
+  },
+  "Trunk": {
+   "tris": 7199,
+   "verts": 4280,
+   "islands": 1,
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_deg": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.01,
+    0.01,
+    0.01
+   ],
+   "uv_layers": 1,
+   "bbox_min": [
+    -4.127,
+    -5.356,
+    -0.153
+   ],
+   "bbox_max": [
+    3.234,
+    6.22,
+    10.578
+   ],
+   "verts_below_minus0_3": 0,
+   "signed_volume": 20.78,
+   "has_custom_normals": true,
+   "materials": [
+    {
+     "name": "Trunk_PBR",
+     "textures": [
+      {
+       "image": "TPTree_Trunk_albedo",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "sRGB",
+       "links": [
+        "BSDF_PRINCIPLED.Base Color<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPTree_Trunk_normal",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "NORMAL_MAP.Normal(via NormalMap)<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPTree_Trunk_rough",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "BSDF_PRINCIPLED.Roughness<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      }
+     ],
+     "backface_culling": false,
+     "emission_strength": 0.0,
+     "emission_color": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "emission_linked": false,
+     "metallic": 0.0,
+     "metallic_linked": false,
+     "alpha_linked": false,
+     "alpha": 1.0
+    }
+   ],
+   "texel_px_per_stud": {
+    "p5": 48.1,
+    "median": 54.2,
+    "p95": 58.9,
+    "area_frac_below_half_median": 0.0,
+    "area_frac_below_quarter_median": 0.0
+   },
+   "uv_outside_0_1": 0,
+   "uv_total_area": 0.293,
+   "texture_on_surface": {
+    "albedo_mean_srgb255": [
+     101,
+     81,
+     62
+    ],
+    "albedo_luma_pcts(5,25,50,75,95)": [
+     0.174,
+     0.247,
+     0.35,
+     0.418,
+     0.434
+    ],
+    "frac_near_black(luma<0.05)": 0.0,
+    "frac_very_dark(luma<0.10)": 0.0022,
+    "sat_mean": 0.39,
+    "alpha_min_on_surface": 1.0,
+    "alpha_frac_below_0.99_on_surface": 0.0,
+    "alpha_min_whole_image": 1.0,
+    "hue_buckets_of_bright(red<15|orange15-40|amber/yellow40-65|green65-170|other)": [
+     0.0,
+     0.919,
+     0.075,
+     0.006,
+     0.0
+    ],
+    "frac_muddy(sat<0.4 & 0.12<v<0.45)": 0.2694,
+    "frac_darker_than_60pct_median": 0.1563,
+    "normal_frac_z<0.35": 0.0,
+    "normal_frac_z<0": 0.0,
+    "normal_mean_z": 0.954,
+    "rough_mean": 0.831,
+    "rough_p5_p95": [
+     0.8,
+     0.91
+    ]
+   }
+  }
+ },
+ "total_tris": 29137,
+ "bbox_local_min": [
+  -7.498,
+  -6.925,
+  -0.153
+ ],
+ "bbox_local_max": [
+  6.844,
+  7.213,
+  15.938
+ ],
+ "size_roblox_XYZ(studs)": [
+  14.34,
+  16.09,
+  14.14
+ ],
+ "min_z": -0.153,
+ "base_centroid_xy(lowest 0.6)": [
+  0.011,
+  0.069
+ ],
+ "canopy_bbox_min": [
+  -7.42,
+  -6.84,
+  6.42
+ ],
+ "canopy_bbox_max": [
+  6.84,
+  7.21,
+  15.56
+ ],
+ "TP": {
+  "verts": 7520,
+  "strips_islands": 90,
+  "island_sizes": [
+   392,
+   392,
+   392,
+   392,
+   352,
+   352,
+   352,
+   352,
+   266,
+   266,
+   266,
+   266,
+   96,
+   96,
+   96,
+   96,
+   94,
+   94,
+   94,
+   94
+  ],
+  "frac_inside_gt0_04": 0.0316,
+  "frac_inside_gt0_12": 0.0069,
+  "max_penetration": 0.286,
+  "frac_resting_over_surface": 0.2878,
+  "frac_hover_gap_gt0_22": 0.0152,
+  "frac_hover_gap_gt0_4": 0.0005,
+  "dist_pcts_resting": [
+   0.063,
+   0.101,
+   0.134,
+   0.177,
+   0.338
+  ],
+  "hover_clusters": [
+   {
+    "n": 34,
+    "centre_blender": [
+     0.05,
+     0.24,
+     15.84
+    ]
+   },
+   {
+    "n": 22,
+    "centre_blender": [
+     -2.77,
+     5.9,
+     10.71
+    ]
+   },
+   {
+    "n": 14,
+    "centre_blender": [
+     -0.7,
+     -2.76,
+     14.23
+    ]
+   },
+   {
+    "n": 8,
+    "centre_blender": [
+     -1.0,
+     -6.06,
+     10.74
+    ]
+   },
+   {
+    "n": 6,
+    "centre_blender": [
+     -0.19,
+     0.41,
+     15.87
+    ]
+   },
+   {
+    "n": 6,
+    "centre_blender": [
+     -0.06,
+     -0.52,
+     15.71
+    ]
+   },
+   {
+    "n": 4,
+    "centre_blender": [
+     -1.46,
+     -5.99,
+     10.76
+    ]
+   },
+   {
+    "n": 4,
+    "centre_blender": [
+     -2.66,
+     5.81,
+     10.95
+    ]
+   }
+  ],
+  "inside_clusters": [
+   {
+    "n": 38,
+    "centre_blender": [
+     -0.61,
+     -3.0,
+     13.48
+    ]
+   },
+   {
+    "n": 22,
+    "centre_blender": [
+     -1.65,
+     -2.13,
+     13.72
+    ]
+   },
+   {
+    "n": 22,
+    "centre_blender": [
+     -2.94,
+     5.46,
+     10.63
+    ]
+   },
+   {
+    "n": 20,
+    "centre_blender": [
+     0.2,
+     -0.62,
+     6.17
+    ]
+   },
+   {
+    "n": 14,
+    "centre_blender": [
+     -2.19,
+     -2.07,
+     13.48
+    ]
+   },
+   {
+    "n": 12,
+    "centre_blender": [
+     -2.22,
+     -1.74,
+     13.52
+    ]
+   },
+   {
+    "n": 12,
+    "centre_blender": [
+     0.42,
+     -0.4,
+     6.34
+    ]
+   },
+   {
+    "n": 10,
+    "centre_blender": [
+     0.51,
+     -0.41,
+     6.43
+    ]
+   }
+  ],
+  "frac_tp_verts_below_canopy_bottom": 0.269,
+  "canopy_bottom_z": 6.42
+ },
+ "reference_fbx": {
+  "file": "C:/cdimp/HalloweenHead.fbx",
+  "unit_scale": {
+   "UnitScaleFactor": 1.0,
+   "OriginalUnitScaleFactor": 1.0
+  },
+  "scales": [
+   [
+    0.01,
+    0.01,
+    0.01
+   ]
+  ],
+  "size_local": [
+   107.84,
+   109.25,
+   72.97
+  ]
+ }
+}

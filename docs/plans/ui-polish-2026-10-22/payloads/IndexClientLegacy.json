@@ -1,0 +1,34 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.IndexClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "\tlocal name = B.text(face, \"Name\", B.LUCKY, WHITE, UDim2.fromScale(0.86, 0.46), UDim2.fromScale(0.5, 0.36), 0.09)\n\tname.Text = string.upper(a.name)\n\tlocal prog = B.text(face, \"Prog\", B.FRED, WHITE, UDim2.fromScale(0.6, 0.32), UDim2.fromScale(0.5, 0.76), 0.08)\n\tlocal star = B.image(face, \"Star\", STAR_ICON, UDim2.fromScale(0.34, 0.6), UDim2.fromScale(0.95, 0.12))\n\tlocal sr = Instance.new(\"UIAspectRatioConstraint\") sr.Parent = star\n\tlocal bang = B.frame(face, \"Ready\", UDim2.fromScale(0.26, 0.48), UDim2.fromScale(0.95, 0.12), Color3.fromRGB(235, 45, 45))",
+   "new_string": "\t-- (2026-10-22 UI polish) M5: the name gets the full width + 0.42 of the height; M1: the star / \"!\" badges sit INSIDE the\n\t-- tab's bottom-right (they stuck half out of the top-right corner), the progress text moves left of them\n\tlocal name = B.text(face, \"Name\", B.LUCKY, WHITE, UDim2.fromScale(0.92, 0.42), UDim2.fromScale(0.5, 0.3), 0.09)\n\tname.Text = string.upper(a.name)\n\tlocal prog = B.text(face, \"Prog\", B.FRED, WHITE, UDim2.fromScale(0.5, 0.34), UDim2.fromScale(0.4, 0.73), 0.08)\n\tlocal star = B.image(face, \"Star\", STAR_ICON, UDim2.fromScale(0.4, 0.4), UDim2.fromScale(0.86, 0.71))\n\tlocal sr = Instance.new(\"UIAspectRatioConstraint\") sr.Parent = star\n\tlocal bang = B.frame(face, \"Ready\", UDim2.fromScale(0.4, 0.4), UDim2.fromScale(0.86, 0.71), Color3.fromRGB(235, 45, 45))"
+  },
+  {
+   "old_string": "\tface.Activated:Connect(function() areaSel = i creatureSel = nil refresh() end)\nend",
+   "new_string": "\tlocal function pick() areaSel = i creatureSel = nil refresh() end\n\tface.Activated:Connect(pick)\n\tB.tapArea(face, pick) -- (2026-10-22 UI polish, M7)\nend"
+  },
+  {
+   "old_string": "\tlocal name = B.text(face, \"Name\", B.LUCKY, WHITE, UDim2.fromScale(0.92, 0.12), UDim2.fromScale(0.5, 0.1), 0.08)",
+   "new_string": "\tlocal name = B.text(face, \"Name\", B.LUCKY, WHITE, UDim2.fromScale(0.94, 0.13), UDim2.fromScale(0.5, 0.1), 0.08) -- (M5: 0.12)"
+  },
+  {
+   "old_string": "\tlocal pillText = B.text(pill, \"T\", B.LUCKY, WHITE, UDim2.fromScale(0.86, 0.72), UDim2.fromScale(0.5, 0.52), 0.1)",
+   "new_string": "\tlocal pillText = B.text(pill, \"T\", B.LUCKY, WHITE, UDim2.fromScale(0.9, 0.8), UDim2.fromScale(0.5, 0.52), 0.1) -- (M5: 0.72)"
+  },
+  {
+   "old_string": "local tBg = B.frame(bookBar, \"Bar\", UDim2.fromScale(0.62, 0.62), UDim2.fromScale(0.42, 0.5), Color3.fromRGB(20, 24, 44))",
+   "new_string": "-- (2026-10-22 UI polish, M4) the count sits BESIDE the trough (it was printed on the moving fill): trough 0.12-0.42,\n-- \"n / 30 FOUND\" 0.44-0.73 (CLAIM ALL starts at 0.75)\nlocal tBg = B.frame(bookBar, \"Bar\", UDim2.fromScale(0.3, 0.62), UDim2.fromScale(0.27, 0.5), Color3.fromRGB(20, 24, 44))"
+  },
+  {
+   "old_string": "local tText = B.text(tBg, \"Text\", B.LUCKY, WHITE, UDim2.fromScale(0.9, 0.82), UDim2.fromScale(0.5, 0.52), 0.08)\ntText.ZIndex = 3",
+   "new_string": "local tText = B.text(bookBar, \"Text\", B.LUCKY, WHITE, UDim2.fromScale(0.29, 0.8), UDim2.fromScale(0.44, 0.5), 0.08, Vector2.new(0, 0.5))\ntText.TextXAlignment = Enum.TextXAlignment.Left\ntText.ZIndex = 3"
+  },
+  {
+   "old_string": "\ttText.Text = \"DISCOVERED \" .. total .. \" / \" .. all",
+   "new_string": "\ttText.Text = total .. \" / \" .. all .. \" FOUND\" -- (2026-10-22 UI polish, M4 / M5: was \"DISCOVERED n / 30\" on the fill)"
+  }
+ ]
+}

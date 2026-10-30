@@ -1,0 +1,370 @@
+
+
+# ------------------------------------------------------------------ animation (v2, review 1 section 4 + review 2 section 3)
+# Reference (owner rule 2026-10-10, notes in _review/ANIM_REFERENCES_1014.md): animationreference.org "Bird Flight
+# Animation Tutorial - Flapping": the leading edge (arm) leads and the tips trail; the primaries spread and the wing
+# half-folds on the upstroke; the body RISES on the downstroke; the tail fans to brake and turn (landing flare);
+# "Dragon Walk Cycle" (C. Sophocleous): the head settles a few frames after each contact, the tail wave lags.
+# Rules: every ground clip starts and ends at FOLD and every fold <-> open change runs LIFT1 -> LIFT4 in order; the head
+# is gyro-stabilised in walk and fly; no yaw reversal faster than 6 f (no head shakes).
+import petkit as pk
+import _common as cm
+
+LEGS = ["Leg_L", "Leg_R"]
+
+
+def ease(u):
+    u = max(0.0, min(1.0, u))
+    return 0.5 - 0.5 * math.cos(math.pi * u)
+
+
+def wp(k, f, P, side=None):
+    wings(k, f, *P, side=side)
+
+
+def folded(k, f, du=0.0, dfwd=0.0, dtw=0.0, dtip=0.0, side=None):
+    wings(k, f, FOLD[0] + du, FOLD[1] + dfwd, FOLD[2] + dtw, FOLD[3] + dtip, side)
+
+
+def blend(a, b, t):
+    return tuple(x + (y - x) * t for x, y in zip(a, b))
+
+
+def tail(k, f, pitch=0.0, yaw=0.0):
+    """kit pitch + LIFTS the fan (flare)"""
+    k.key("Tail1", f, rot=(pitch * 0.6, yaw * 0.5, 0))
+    k.key("Tail2", f, rot=(pitch * 0.4, yaw * 0.5, 0))
+
+
+def rest_keys(k, f, z=0.0, pitch=0.0):
+    k.key("Spine", f, rot=(pitch, 0, 0), loc=(0, 0, z))
+    for b in ("Chest", "Neck", "Head"):
+        k.key(b, f, rot=(0, 0, 0))
+    k.key("Jaw", f, rot=(0, 0, 0))
+    folded(k, f)
+    tail(k, f, 0, 0)
+
+
+def plant_frames(k, frames, dy=0.0, regrip=None):
+    """feet on their rest spots (+dy); regrip = {leg: (f0, f1)}: that foot lifts 0.03 and curls its toes (+20)"""
+    import bpy
+    k.bake_bezier_now()
+    for f in frames:
+        bpy.context.scene.frame_set(f)
+        for leg in LEGS:
+            z, toe = 0.0, 0.0
+            if regrip and leg in regrip and regrip[leg][0] <= f <= regrip[leg][1]:
+                u = (f - regrip[leg][0]) / float(regrip[leg][1] - regrip[leg][0])
+                z, toe = 0.03 * math.sin(math.pi * u), 20 * math.sin(math.pi * u)
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y + dy, z)), toe=toe)
+
+
+def lift_air_frames(k, frames, target=0.02):
+    """airborne frames: raise the Spine just enough that no vertex goes below `target` (keeps its x/y and rotation)"""
+    import bpy
+    sc = bpy.context.scene
+    pb = k.arm.pose.bones["Spine"]
+    R0 = k.arm.data.bones["Spine"].matrix_local.to_quaternion()
+    k.bake_bezier_now()
+    rows = []
+    for f in frames:
+        sc.frame_set(f)
+        dg = bpy.context.evaluated_depsgraph_get()
+        ev = k.main.evaluated_get(dg)
+        me = ev.to_mesh()
+        mw = ev.matrix_world
+        mz = min((mw @ v.co).z for v in me.vertices)
+        ev.to_mesh_clear()
+        rows.append((f, mz, pb.rotation_quaternion.copy(), (R0 @ pb.location).copy()))
+    for f, mz, q, loc in rows:
+        if mz < target:
+            pb.rotation_quaternion = q
+            pb.keyframe_insert("rotation_quaternion", frame=f, group="Spine")
+            k.key("Spine", f, loc=(loc.x, loc.y, loc.z + target - mz))
+
+
+def legs_fk(k, f, thigh, shin, foot):
+    for side in ("L", "R"):
+        k.key("Leg_" + side, f, rot=(thigh, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_" + side, f, rot=(shin, 0, 0))
+        k.key("Foot_" + side, f, rot=(foot, 0, 0))
+
+
+# ---- ground
+def idle(k):
+    """STORM WATCH: a breath swell; bird head turns L -> hold -> centre -> R -> hold (at most 28 deg in 4 f, no whip);
+    the HUNTING STARE (head down at the ground in front, dead still 20 f); a sky glance with a tail flick; a WING
+    BREATH through the tested waypoints; a talon re-grip, one foot then the other."""
+    n = 132
+    k.new_action("idle", n, True)
+    for f in range(0, n + 1, 2):
+        b = pk.wave(f, n, 0, 3)
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0.008 * b))
+        k.key("Chest", f, rot=(-1.5 * b, 0, 0))
+        k.key("Jaw", f, rot=(0, 0, 0))
+    look = [(0, 0, 0, 0), (12, 0, 0, 0), (16, 0, 0, 28), (26, 0, 0, 28), (32, 0, 0, 0), (36, 0, 0, -28),
+            (46, 0, 0, -28), (52, 0, 0, 0), (54, 0, 0, 0), (58, 10, 12, 0), (78, 10, 12, 0), (84, 0, 0, 0),
+            (86, 0, 0, 0), (90, -4, -12, 0), (96, -4, -12, 0), (102, 0, 0, 0), (132, 0, 0, 0)]
+    for f, nk, hd, y in look:                              # (frame, neck pitch, head pitch, total yaw)
+        k.key("Neck", f, rot=(nk, y * 0.3, 0))
+        k.key("Head", f, rot=(hd, y * 0.7, 0))
+    for f, P in ((0, FOLD), (102, FOLD), (108, LIFT1), (114, BREATH), (120, LIFT1), (126, FOLD), (132, FOLD)):
+        wp(k, f, P)
+    for f, p, y in ((0, 0, 0), (86, 0, 0), (89, 10, 8), (92, -4, -6), (95, 0, 0), (132, 0, 0)):
+        tail(k, f, p, y)
+    plant_frames(k, range(0, n + 1), regrip={"Leg_L": (18, 24), "Leg_R": (38, 44)})
+    k.finish()
+    k.meta["planted"] = LEGS
+
+
+def walk(k):
+    """ROLLING STRUT: the body rolls over the stance leg (+-5) and yaws +-3, an asymmetric contact dip (-0.04 within
+    3 f, slow rise), the head GYRO-stabilised (cancels 75 pct of the body's pitch / roll / yaw), toes curled in the
+    swing and spread before contact, wings folded with a 0-15 pct blend toward LIFT1 on each contact."""
+    n = 28
+
+    def dip(f):
+        t = f % (n // 2)
+        if t <= 3:
+            u = t / 3.0
+            return -0.04 * (u * u * (3 - 2 * u))
+        u = (t - 3) / (n / 2 - 3)
+        return -0.04 * (1 - u * u * (3 - 2 * u))
+
+    def body(f):
+        sp = 1.2 * pk.wave(f, n, 0.1, 2)
+        sy = 3 * pk.wave(f, n, 0.0)
+        sr = 5 * pk.wave(f, n, 0.05)
+        cp, cy, cr = 0.0, -1.5 * pk.wave(f, n, 0.05), -1.5 * pk.wave(f, n, 0.05)
+        k.key("Spine", f, rot=(sp, sy, sr), loc=(0, 0, dip(f)))
+        k.key("Chest", f, rot=(cp, cy, cr))
+        k.key("Neck", f, rot=(-0.3 * (sp + cp), -0.3 * (sy + cy), -0.3 * (sr + cr)))
+        k.key("Head", f, rot=(-0.45 * (sp + cp), -0.45 * (sy + cy), -0.45 * (sr + cr)))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        c = max(0.0, math.cos(2 * math.pi * (2 * f / n)))  # contact pulse (2 per cycle)
+        wp(k, f, blend(FOLD, LIFT1, 0.15 * c ** 3))
+        tail(k, f, 2 * pk.wave(f, n, 0.2, 2), 5 * pk.wave(f, n, 0.15))
+    orig = k.solve_leg
+
+    def strut(leg, f, T, foot_z=0.0, toe=None):
+        lift = max(0.0, T.z)
+        return orig(leg, f, T, foot_z, toe=22.0 * min(1.0, lift / 0.08) - (6.0 if 0 < lift < 0.02 else 0.0))
+    k.solve_leg = strut
+    try:
+        return cm.biped_walk(k, n, 0.15, 0.12, body, legs=(("Leg_L", 0.0), ("Leg_R", 0.5)), duty=0.6)
+    finally:
+        del k.solve_leg
+
+
+def roar(k):
+    """SKY SCREECH: gathers (head in, wings LIFT1 -> LIFT2), rears up with the wings through LIFT3 into the RAISED V
+    (upper wing + lightning edges to the camera), head up, beak 34-38 with a buzz, TWO THUNDER BEATS of the V (the body
+    lifts on each downbeat, the fan flares; bolts from the WingBolt anchors), folds back through LIFT3-1, settles."""
+    n = 70
+    k.new_action("roar", n, False)
+    rest_keys(k, 0)
+    K = [  # f, spine pitch, z, chest, neck, head, jaw, wings, tail
+        (4, 3, -0.02, 2, 6, 4, 0, LIFT1, 0), (8, 4, -0.04, 3, 8, 6, 2, LIFT2, 2),
+        (11, -4, 0.0, -2, 0, -4, 10, LIFT3, 6), (14, -10, 0.02, -4, -6, -12, 34, RAISED_V, 8),
+        (20, -10, 0.02, -4, -6, -12, 36, RAISED_V, 8), (23, -10, 0.05, -4, -6, -12, 38, (4, 4, 4, -6), 14),
+        (26, -10, 0.02, -4, -6, -12, 34, RAISED_V, 8), (32, -10, 0.02, -4, -6, -12, 36, RAISED_V, 8),
+        (35, -10, 0.05, -4, -6, -12, 38, (4, 4, 4, -6), 14), (38, -10, 0.02, -4, -6, -12, 34, RAISED_V, 8),
+        (48, -8, 0.01, -3, -5, -10, 30, RAISED_V, 6), (52, -4, 0.0, -1, -2, -4, 8, LIFT3, 3),
+        (56, 0, 0.0, 0, 0, 0, 0, LIFT2, 1), (60, 0, 0.0, 0, 0, 0, 0, LIFT1, 0), (64, 0, 0.0, 0, 0, 0, 0, FOLD, 0)]
+    for f, p, z, ch, nk, hd, jw, w, tp in K:
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(ch, 0, 0))
+        k.key("Neck", f, rot=(nk, 0, 0))
+        k.key("Head", f, rot=(hd, 0, 0))
+        k.key("Jaw", f, rot=(jw, 0, 0))
+        wp(k, f, w)
+        tail(k, f, tp, 0)
+    for f in (16, 18, 28, 30, 41, 44):                    # jaw buzz (the head stays still)
+        k.key("Jaw", f, rot=(36 + (2 if (f // 2) % 2 else -2), 0, 0))
+    rest_keys(k, n)
+    plant_frames(k, range(0, n + 1))
+    k.finish(loop=False)
+    k.events["roar"] = {"screech": round(14 / n, 3), "beat1": round(23 / n, 3), "beat2": round(35 / n, 3)}
+
+
+# ---- flight (eagle: deep full-arm downstroke, outer wing tucks on the upstroke, talons balled under the fan)
+FPITCH, FNECK, FHEAD = 40.0, -10.0, -30.0
+THI, SHI, FOO = 70.0, -40.0, 76.0
+
+
+def fly_legs(k, f, ph, amt=1.0):
+    for s, side in ((1, "L"), (-1, "R")):
+        p = ph + 0.03 * s
+        k.key("Leg_" + side, f, rot=((THI + 3 * math.sin(2 * math.pi * (p - 0.15))) * amt, 0, -s * 3 * amt),
+              loc=(0, 0, 0))
+        k.key("Shin_" + side, f, rot=((SHI - 4 * math.sin(2 * math.pi * (p - 0.30))) * amt, 0, 0))
+        k.key("Foot_" + side, f, rot=((FOO + 6 * math.sin(2 * math.pi * (p - 0.42))) * amt, 0, 0))
+
+
+def fly_pose(k, f, ph, legs=True):
+    w = wing3.stroke(ph, top=34, bot=-40, down=0.45, sweep=10, twist=10, fold=36)
+    wings(k, f, w["up"], w["fwd"], w["twist"], w["tip"])
+    rise = math.cos(2 * math.pi * (ph - 0.45))            # the body rises on the downstroke
+    sp = FPITCH - 3 * math.sin(2 * math.pi * (ph - 0.1))
+    k.key("Spine", f, rot=(sp, 0, 0), loc=(0, 0, 0.10 + 0.07 * rise))
+    k.key("Chest", f, rot=(-2 * math.sin(2 * math.pi * (ph - 0.2)), 0, 0))
+    k.key("Neck", f, rot=(FNECK + 1.5 * math.sin(2 * math.pi * (ph - 0.1)), 0, 0))
+    k.key("Head", f, rot=(FHEAD - 1.5 * math.sin(2 * math.pi * (ph - 0.1)) + 2 * math.sin(2 * math.pi * (ph - 0.2)),
+                          0, 0))
+    k.key("Jaw", f, rot=(0, 0, 0))
+    tail(k, f, -6 + 4 * math.sin(2 * math.pi * (ph - 0.3)), 3 * math.sin(2 * math.pi * ph))
+    if legs:
+        fly_legs(k, f, ph)
+
+
+def fly(k):
+    n = 28
+    k.new_action("fly", n, True)
+    for f in range(0, n + 1):
+        fly_pose(k, f, f / n)
+    k.finish()
+
+
+def takeoff(k):
+    """crouch with the wings opening through FOLD -> LIFT1 -> LIFT2 (f0-6) -> LIFT3 -> LIFT4 (f6-9) -> stroke top by
+    f10; LAUNCH on the big downstroke at f11 (event), the legs push then tuck, into the flight cycle"""
+    n = 30
+    k.new_action("takeoff", n, False)
+    rest_keys(k, 0)
+    for f, z, p, ch, hd, w in ((3, -0.05, 4, 2, -2, LIFT1), (6, -0.10, 8, 4, -6, LIFT2), (8, -0.13, 9, 5, -9, LIFT3),
+                               (9, -0.15, 10, 6, -11, LIFT4), (10, -0.16, 10, 6, -12, (30, 0, 0, 0)),
+                               (13, 0.08, 20, 0, -20, (-14, 8, 8, -6)), (16, 0.14, 30, -2, -26, (-38, 8, 6, 4))):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(ch, 0, 0))
+        k.key("Neck", f, rot=(-p * 0.25, 0, 0))
+        k.key("Head", f, rot=(hd, 0, 0))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        wp(k, f, w)
+        tail(k, f, 6 + p * 0.2, 0)
+    fly_pose(k, 23, 0.0)
+    fly_pose(k, n, 0.45)
+    plant_frames(k, range(0, 13))
+    legs_fk(k, 15, 24, -10, 40)
+    legs_fk(k, 19, 50, -30, 66)
+    fly_legs(k, 23, 0.0)
+    fly_legs(k, n, 0.45)
+    lift_air_frames(k, range(13, n + 1))
+    k.finish(loop=False)
+    k.events["takeoff"] = {"launch": round(11 / n, 3)}
+
+
+def land(k):
+    """(ref: bird flight - the tail fans to brake) flares upright, brakes with the wings swept forward, the legs reach
+    and the open talons are THROWN forward, TOUCH (event), absorbs in a crouch holding the RAISED V, then folds through
+    LIFT4 -> LIFT1 -> FOLD"""
+    n = 32
+    k.new_action("land", n, False)
+    fly_pose(k, 0, 0.0)
+    for f, p, z, nk, hd, w, lg in (
+            (6, 16, 0.10, -4, -18, (24, 16, -10, -4), (40, -20, 50)),
+            (10, -4, 0.10, 0, -8, (-24, 22, -10, 8), (-24, 4, -8)),
+            (13, -6, 0.08, 0, -6, (22, 18, -8, -6), (-24, 10, -20)),
+            (15, -4, 0.04, 0, -4, (30, 10, -6, -8), (-14, 6, -20))):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(-3, 0, 0))
+        k.key("Neck", f, rot=(nk, 0, 0))
+        k.key("Head", f, rot=(hd, 0, 0))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        wp(k, f, w)
+        tail(k, f, 14, 0)
+        legs_fk(k, f, *lg)
+    for f, z, p, w in ((17, -0.12, 8, RAISED_V), (22, -0.07, 4, RAISED_V), (24, -0.05, 3, LIFT4),
+                       (26, -0.03, 2, LIFT3), (28, -0.015, 1, LIFT2), (30, -0.005, 0, LIFT1)):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(2, 0, 0))
+        k.key("Neck", f, rot=(p * 0.5, 0, 0))
+        k.key("Head", f, rot=(-p * 0.4, 0, 0))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        wp(k, f, w)
+        tail(k, f, 8 if f < 24 else 2, 0)
+    rest_keys(k, n)
+    lift_air_frames(k, range(0, 17))
+    plant_frames(k, range(17, n + 1))
+    k.finish(loop=False)
+    k.events["land"] = {"touch": round(17 / n, 3)}
+
+
+def stoop(k):
+    """SIGNATURE (Thunderbird only) - STOOP STRIKE: locks on in a crouch, LAUNCHES on one huge downbeat, hangs at the
+    apex nose-down on the target, then STOOPS (the wings snap back to the fold and it drops like a teardrop), throws
+    both feet forward with the talons open as the wings flare into the raised V, STRIKES 0.18 in front (lightning
+    impact), grips with a chest shudder, then screams to the sky with the talons clenched; folds and hops back."""
+    import bpy
+    n = 84
+    k.new_action("act_stoop", n, False)
+    rest_keys(k, 0)
+    K = [  # f, spine z, pitch, chest, neck, head, jaw, wings, tail
+        (4, -0.04, 4, 2, 6, 6, 0, LIFT1, 2), (8, -0.08, 8, 3, 10, 10, 0, LIFT2, 4),
+        (10, -0.08, 8, 3, 10, 10, 0, LIFT3, 4), (11, -0.06, 6, 2, 8, 8, 0, LIFT4, 4),
+        (12, -0.02, 2, 0, 4, 6, 0, (30, 0, 0, 0), 4), (14, 0.12, 6, 0, 0, 4, 0, (-34, 8, 6, 4), -6),
+        (18, 0.30, 10, 0, -2, 10, 0, (20, 4, 4, -4), -14), (21, 0.31, 10, 0, -2, 10, 0, (-20, 6, 4, 2), -14),
+        (24, 0.30, 12, 0, -2, 10, 0, LIFT4, -14), (25, 0.28, 15, 0, -2, 10, 0, LIFT3, -12),
+        (26, 0.25, 19, 0, -2, 10, 0, LIFT2, -10), (27, 0.21, 22, 0, -2, 10, 0, LIFT1, -8),
+        (28, 0.16, 25, 0, -2, 10, 0, FOLD, -6), (30, 0.10, 25, 0, -2, 10, 0, FOLD, -6),
+        (31, 0.07, 12, 0, 0, 8, 0, LIFT1, 0), (32, 0.04, 0, 0, 2, 8, 0, LIFT2, 6),
+        (33, 0.0, -12, 0, 4, 8, 0, LIFT3, 10), (34, -0.06, -10, 2, 6, 10, 0, RAISED_V, 14),
+        (36, -0.05, -8, 2, 6, 10, 0, RAISED_V, 12), (42, -0.05, -8, 2, 6, 10, 0, RAISED_V, 10),
+        (46, -0.05, -10, -2, -6, -12, 36, RAISED_V, 10), (58, -0.05, -10, -2, -6, -12, 36, RAISED_V, 10),
+        (62, -0.03, -4, 0, -2, -4, 6, LIFT3, 4), (65, -0.02, 0, 0, 0, 0, 0, LIFT2, 2),
+        (68, -0.01, 0, 0, 0, 0, 0, LIFT1, 0), (72, 0.0, 0, 0, 0, 0, 0, FOLD, 0)]
+    for f, z, p, ch, nk, hd, jw, w, tp in K:
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(ch, 0, 0))
+        k.key("Neck", f, rot=(nk, 0, 0))
+        k.key("Head", f, rot=(hd, 0, 0))
+        k.key("Jaw", f, rot=(jw, 0, 0))
+        wp(k, f, w)
+        tail(k, f, tp, 0)
+    for f, d in ((38, 2), (39, -2), (40, 2), (41, 0)):              # chest shudder in the grip (not the head)
+        k.key("Chest", f, rot=(2 + d, 0, 0))
+    for f in (48, 50, 52, 54, 56):                                   # scream buzz
+        k.key("Jaw", f, rot=(36 + (2 if (f // 2) % 2 else -2), 0, 0))
+    rest_keys(k, n)
+    k.bake_bezier_now()
+    sc = bpy.context.scene
+    for f in range(0, 13):                                           # crouch: planted
+        sc.frame_set(f)
+        for leg in LEGS:
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y, 0.0)), toe=0.0)
+    legs_fk(k, 16, 50, -30, 66)                                      # launch: push then tuck
+    legs_fk(k, 20, THI, SHI, FOO)                                    # balled talons under the fan
+    legs_fk(k, 29, THI, SHI, FOO)
+    legs_fk(k, 31, -20, 30, -10)                                     # THROW: feet swing forward, talons open
+    legs_fk(k, 32, -40, 50, -20)
+    reach = Vector((0, -0.18, 0))
+    for f in range(33, 61):                                          # STRIKE + grip + scream: planted 0.18 ahead
+        sc.frame_set(f)
+        for leg in LEGS:
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y, 0.0)) + reach,
+                        toe=-10.0 if f < 35 else 18.0)               # open, then clenched by f36
+    for f in range(61, n + 1):                                       # two hop-steps back to the rest spots
+        sc.frame_set(f)
+        for leg in LEGS:
+            if f <= 66:
+                u = (f - 61) / 5.0
+                T = Vector((k.J[leg].x, k.J[leg].y - 0.18 + 0.09 * ease(u), 0.04 * math.sin(math.pi * u)))
+            elif f <= 72:
+                u = (f - 66) / 6.0
+                T = Vector((k.J[leg].x, k.J[leg].y - 0.09 + 0.09 * ease(u), 0.04 * math.sin(math.pi * u)))
+            else:
+                T = Vector((k.J[leg].x, k.J[leg].y, 0.0))
+            k.solve_leg(leg, f, T, toe=0.0)
+    lift_air_frames(k, range(13, 33))
+    k.finish(loop=False)
+    k.events["act_stoop"] = {"launch": round(14 / n, 3), "strike": round(33 / n, 3), "scream": round(46 / n, 3)}
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    fly(k)
+    takeoff(k)
+    land(k)
+    roar(k)
+    stoop(k)
+    return stride

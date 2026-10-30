@@ -1,0 +1,258 @@
+[
+ {
+  "f": 11,
+  "leg": "Leg_FL",
+  "label": "scoop 1 lift peak",
+  "ankle_lift": 0.035,
+  "visible": {
+   "side2x": false,
+   "game2x": false
+  },
+  "side2x": {
+   "paw": [
+    204.8,
+    364.9
+   ],
+   "ground": [
+    205.1,
+    393.2
+   ],
+   "lift_px": 28.3
+  },
+  "game2x": {
+   "paw": [
+    124.2,
+    222.1
+   ],
+   "ground": [
+    126.0,
+    238.0
+   ],
+   "lift_px": 16.0
+  }
+ },
+ {
+  "f": 16,
+  "leg": "Leg_FL",
+  "label": "dig1 sweep",
+  "ankle_lift": 0.0,
+  "visible": {
+   "side2x": false,
+   "game2x": false
+  },
+  "side2x": {
+   "paw": [
+    277.1,
+    393.2
+   ],
+   "ground": [
+    277.1,
+    393.2
+   ],
+   "lift_px": 0.0
+  },
+  "game2x": {
+   "paw": [
+    141.0,
+    263.7
+   ],
+   "ground": [
+    141.0,
+    263.7
+   ],
+   "lift_px": 0.0
+  }
+ },
+ {
+  "f": 21,
+  "leg": "Leg_FR",
+  "label": "scoop 2 lift peak",
+  "ankle_lift": 0.035,
+  "visible": {
+   "side2x": false,
+   "game2x": false
+  },
+  "side2x": {
+   "paw": [
+    395.2,
+    364.9
+   ],
+   "ground": [
+    394.9,
+    393.2
+   ],
+   "lift_px": 28.3
+  },
+  "game2x": {
+   "paw": [
+    309.7,
+    177.7
+   ],
+   "ground": [
+    309.6,
+    193.2
+   ],
+   "lift_px": 15.5
+  }
+ },
+ {
+  "f": 26,
+  "leg": "Leg_FR",
+  "label": "dig2 sweep",
+  "ankle_lift": 0.0,
+  "visible": {
+   "side2x": false,
+   "game2x": false
+  },
+  "side2x": {
+   "paw": [
+    322.9,
+    393.2
+   ],
+   "ground": [
+    322.9,
+    393.2
+   ],
+   "lift_px": 0.0
+  },
+  "game2x": {
+   "paw": [
+    329.0,
+    216.2
+   ],
+   "ground": [
+    329.0,
+    216.2
+   ],
+   "lift_px": 0.0
+  }
+ },
+ {
+  "f": 31,
+  "leg": "Leg_FL",
+  "label": "scoop 3 lift peak",
+  "ankle_lift": 0.035,
+  "visible": {
+   "side2x": false,
+   "game2x": false
+  },
+  "side2x": {
+   "paw": [
+    204.8,
+    364.9
+   ],
+   "ground": [
+    205.1,
+    393.2
+   ],
+   "lift_px": 28.3
+  },
+  "game2x": {
+   "paw": [
+    124.2,
+    222.1
+   ],
+   "ground": [
+    126.0,
+    238.0
+   ],
+   "lift_px": 16.0
+  }
+ },
+ {
+  "f": 36,
+  "leg": "Leg_FL",
+  "label": "dig3 sweep",
+  "ankle_lift": 0.0,
+  "visible": {
+   "side2x": false,
+   "game2x": false
+  },
+  "side2x": {
+   "paw": [
+    277.1,
+    393.2
+   ],
+   "ground": [
+    277.1,
+    393.2
+   ],
+   "lift_px": 0.0
+  },
+  "game2x": {
+   "paw": [
+    141.0,
+    263.7
+   ],
+   "ground": [
+    141.0,
+    263.7
+   ],
+   "lift_px": 0.0
+  }
+ },
+ {
+  "f": 44,
+  "leg": "Leg_BL",
+  "label": "kick 1 peak",
+  "ankle_lift": 0.035,
+  "visible": {
+   "side2x": false,
+   "game2x": false
+  },
+  "side2x": {
+   "paw": [
+    381.8,
+    356.2
+   ],
+   "ground": [
+    381.6,
+    384.5
+   ],
+   "lift_px": 28.3
+  },
+  "game2x": {
+   "paw": [
+    315.7,
+    533.8
+   ],
+   "ground": [
+    315.5,
+    551.4
+   ],
+   "lift_px": 17.6
+  }
+ },
+ {
+  "f": 53,
+  "leg": "Leg_BR",
+  "label": "kick 2 peak",
+  "ankle_lift": 0.035,
+  "visible": {
+   "side2x": false,
+   "game2x": false
+  },
+  "side2x": {
+   "paw": [
+    218.2,
+    356.2
+   ],
+   "ground": [
+    218.4,
+    384.5
+   ],
+   "lift_px": 28.3
+  },
+  "game2x": {
+   "paw": [
+    548.0,
+    452.8
+   ],
+   "ground": [
+    544.8,
+    470.2
+   ],
+   "lift_px": 17.7
+  }
+ }
+]

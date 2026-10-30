@@ -1,0 +1,1 @@
+L1rest=Spine:0,0,0|L4cast=Spine:2,0,0,0,0.03,0.06;Pedicel:2,0,0;Abd:10,0,0;Fang_{s}:-35,0,0|L5yaw=Spine:0,10,0|L6head=Head:8,10,0

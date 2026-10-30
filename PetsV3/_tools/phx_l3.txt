@@ -1,0 +1,1 @@
+L3pyre=WINGS:-60,-22,10,-6;Spine:9,0,0,0,0,-0.13;Neck:12,0,0;Neck2:12,0,0;Head:20,0,0;Crest:-10,0,0;StreamerC1:-6,0,0;StreamerC2:-4,0,0;StreamerC3:-2,0,0;StreamerL1:-6,-0,0;StreamerL2:-4,0,0;StreamerL3:-2,0,0;StreamerR1:-6,0,0;StreamerR2:-4,0,0;StreamerR3:-2,0,0

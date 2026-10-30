@@ -1,0 +1,20 @@
+00:08.062  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Garlands\garlands.blend"
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Saved as "garlands.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Garland_Long.fbx'
+export finished in 0.0714 sec.
+
+FBX export starting... 'C:\\cdimp\\Halloween_Garland_Short.fbx'
+export finished in 0.0373 sec.
+
+FBX export starting... 'C:\\cdimp\\Halloween_Garland_Hook.fbx'
+export finished in 0.0137 sec.
+GARLAND_REPORT {"build": {"Garland_Long": {"tris": 5296, "arc_len": 27.217, "c": 24.705, "extras_to_flags_min": 0.176, "flags_min_y": -0.124, "extras_tie": {"bat": [-4.122, 0.0, -3.155], "pumpkin": [4.142, 0.0, -3.152]}, "flag_designs": ["O_Bat", "B_Jack", "P_Skull", "O_Spider", "B_Moon", "P_Bat", "O_Face", "B_SkullBones", "P_Spider"], "flag_centres_s": [2.808, 5.508, 8.208, 10.908, 13.608, 16.308, 19.008, 21.708, 24.408], "flag_centres_xyz": [[-10.483, 0.0, -1.242], [-7.961, 0.0, -2.206], [-5.358, 0.0, -2.917], [-2.695, 0.0, -3.353], [0.0, 0.0, -3.5], [2.695, 0.0, -3.353], [5.358, 0.0, -2.917], [7.961, 0.0, -2.206], [10.483, 0.0, -1.242]], "bbox_min": [-13.216, -0.293, -6.072], "bbox_max": [13.216, 0.42, 0.078]}, "Garland_Short": {"tris": 4306, "arc_len": 19.918, "c": 17.773, "extras_to_flags_min": 0.182, "flags_min_y": -0.124, "extras_tie": {"bat": [-4.019, 0.0, -2.144], "pumpkin": [4.02, 0.0, -2.143]}, "flag_designs": ["O_Bat", "B_Jack", "P_Spider", "O_Face", "B_Moon", "P_Skull", "O_Spider"], "flag_centres_s": [2.159, 4.759, 7.359, 9.959, 12.559, 15.159, 17.759], "flag_centres_xyz": [[-7.569, 0.0, -0.964], [-5.129, 0.0, -1.855], [-2.591, 0.0, -2.411], [0.0, 0.0, -2.6], [2.591, 0.0, -2.411], [5.129, 0.0, -1.855], [7.569, 0.0, -0.964]], "bbox_min": [-9.716, -0.297, -5.196], "bbox_max": [9.716, 0.42, 0.078]}, "Garland_Hook": {"tris": 310, "miss": 0.3062, "bbox_min": [-0.16, -0.6, -0.4], "bbox_max": [0.16, 0.553, 0.14]}}, "build_s": 3.8, "export": {"Garland_Long": {"fbx": "C:\\cdimp\\Halloween_Garland_Long.fbx", "kb": 2454.2, "tris": {"Garland_Long": 5296}}, "Garland_Short": {"fbx": "C:\\cdimp\\Halloween_Garland_Short.fbx", "kb": 2424.0, "tris": {"Garland_Short": 4306}}, "Garland_Hook": {"fbx": "C:\\cdimp\\Halloween_Garland_Hook.fbx", "kb": 167.5, "tris": {"Garland_Hook": 310}}}, "export_s": 0.3}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

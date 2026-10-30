@@ -1,0 +1,36 @@
+00:02.156  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\bat.blend"
+00:03.828  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\review_bat_34.png'
+00:04.171  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\review_bat_below.png'
+00:04.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\review_bat_face.png'
+00:04.796  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\review_bat_top.png'
+00:05.140  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\review_flock_45studs.png'
+00:05.468  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\review_flock_below.png'
+00:05.609  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\strip_f00.png'
+00:05.734  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\strip_f02.png'
+00:05.859  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\strip_f04.png'
+00:05.968  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\strip_f05.png'
+00:06.093  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\strip_f07.png'
+00:06.187  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\strip_f08.png'
+00:06.312  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\strip_f09.png'
+00:06.406  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\strip_f11.png'
+00:07.375  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\stripF_f00.png'
+00:07.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\stripF_f02.png'
+00:07.609  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\stripF_f04.png'
+00:07.718  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\stripF_f05.png'
+00:07.828  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\stripF_f07.png'
+00:07.953  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\stripF_f08.png'
+00:08.062  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\stripF_f09.png'
+00:08.187  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\stripF_f11.png'
+00:09.187  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\glide_f00.png'
+00:09.312  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\glide_f18.png'
+00:09.437  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\glide_f36.png'
+00:09.562  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\glide_f54.png'
+00:10.328  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\renders\review_wing_close.png'
+00:10.328  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\bat.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Bat.fbx'
+export finished in 0.0327 sec.
+BAT_REPORT {"render": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Bats\\review_bat_34.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Bats\\review_bat_below.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Bats\\review_bat_face.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Bats\\review_bat_top.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Bats\\review_flock_45studs.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Bats\\review_flock_below.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Bats\\review_flap_strip.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Bats\\renders\\flap_strip_front.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Bats\\renders\\glide_strip.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Bats\\renders\\review_wing_close.png"], "export": {"fbx": "C:\\cdimp\\Halloween_Bat.fbx", "kb": 2070.3, "tris": 5740, "bones": ["Root", "Body", "Head", "Ear_L", "Ear_R", "Wing_L", "WingTip_L", "Leg_L", "Wing_R", "WingTip_R", "Leg_R"]}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

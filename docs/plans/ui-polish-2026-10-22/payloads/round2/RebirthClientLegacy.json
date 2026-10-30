@@ -1,0 +1,10 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.RebirthClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "\tlocal name = B.text(face, \"Name\", B.LUCKY, Color3.fromRGB(255, 250, 225), UDim2.fromScale(0.52, 0.24), UDim2.fromScale(0.72, 0.5), 0.08)",
+   "new_string": "\tlocal name = B.text(face, \"Name\", B.LUCKY, Color3.fromRGB(255, 250, 225), UDim2.fromScale(0.56, 0.24), UDim2.fromScale(0.7, 0.5), 0.08)"
+  }
+ ]
+}

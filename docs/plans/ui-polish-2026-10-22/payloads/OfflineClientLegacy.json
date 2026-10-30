@@ -1,0 +1,22 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.OfflineClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "local OfflineConfig = require(RS:WaitForChild(\"OfflineConfig\"))",
+   "new_string": "local OfflineConfig = require(RS:WaitForChild(\"OfflineConfig\"))\nlocal B = require(RS:WaitForChild(\"BrickUI\")) -- (2026-10-22 UI polish: B.tapArea)"
+  },
+  {
+   "old_string": "-- buttons: CLAIM x5! (rainbow, live price on its corner) + CLAIM!\nlocal x5Btn, x5Label = standardButton(win, \"ClaimX5\", UDim2.fromOffset(240, 64), UDim2.fromOffset(160, 364), \"CLAIM x5!\", RAINBOW, 36, 20)\n-- (2026-10-22 UI revert) the x5 price sits just above the button, no longer over its corner (was y 330)\nlocal priceTag = new(\"Frame\", {Name = \"Price\", Size = UDim2.fromOffset(92, 28), Position = UDim2.fromOffset(50, 308), AnchorPoint = Vector2.new(0.5, 0.5),\n\tBackgroundTransparency = 1, ZIndex = 10}, win)\nlocal priceText = text(priceTag, {Name = \"Amount\", Text = tostring(OfflineConfig.PRICE), Size = UDim2.fromOffset(50, 28), Position = UDim2.fromOffset(0, 14),\n\tAnchorPoint = Vector2.new(0, 0.5), TextXAlignment = Enum.TextXAlignment.Right, ZIndex = 10, Stroke = 2.6})\ngrad(priceText, MONEY_GRAD)\nnew(\"ImageLabel\", {Name = \"Robux\", Image = ROBUX, ImageColor3 = Color3.fromRGB(120, 255, 60), ScaleType = Enum.ScaleType.Fit, BackgroundTransparency = 1,\n\tSize = UDim2.fromOffset(26, 26), Position = UDim2.fromOffset(56, 14), AnchorPoint = Vector2.new(0, 0.5), ZIndex = 10}, priceTag)\nlocal claimBtn, claimLabel = standardButton(win, \"Claim\", UDim2.fromOffset(200, 64), UDim2.fromOffset(400, 364), \"CLAIM!\", CLAIM_GRAD, 36)",
+   "new_string": "-- buttons (2026-10-22 UI polish, M9): the FREE claim is the loudest - CLAIM! lime, 270 x 68, on the right; CLAIM x5 gold\n-- (the Check-UI Skip amber), 230 x 68, on the left, its price INSIDE (M1: the Robux icon + price 8 px from its right\n-- edge). No rainbow on the paid button. (Was: CLAIM x5! rainbow 240 x 64 with the price above it, CLAIM! 200 x 64.)\nlocal GOLD_GRAD = seq(Color3.fromRGB(255, 208, 0), Color3.fromRGB(255, 140, 0))\nlocal x5Btn, x5Label = standardButton(win, \"ClaimX5\", UDim2.fromOffset(230, 68), UDim2.fromOffset(132, 364), \"CLAIM x5\", GOLD_GRAD, 24)\nx5Label.Size = UDim2.new(1, -88, 1, 0)\nx5Label.Position = UDim2.new(0, 10, 0.5, -1)\nx5Label.AnchorPoint = Vector2.new(0, 0.5)\nx5Label.TextXAlignment = Enum.TextXAlignment.Left\nlocal priceTag = new(\"Frame\", {Name = \"Price\", Size = UDim2.fromOffset(70, 30), Position = UDim2.new(1, -8, 0.5, -1), AnchorPoint = Vector2.new(1, 0.5),\n\tBackgroundTransparency = 1, ZIndex = 9}, x5Btn)\nnew(\"ImageLabel\", {Name = \"RobuxOutline\", Image = ROBUX, ImageColor3 = BLACK, ScaleType = Enum.ScaleType.Fit, BackgroundTransparency = 1,\n\tSize = UDim2.fromOffset(28, 28), Position = UDim2.fromOffset(14, 15), AnchorPoint = Vector2.new(0.5, 0.5), ZIndex = 9}, priceTag)\nnew(\"ImageLabel\", {Name = \"Robux\", Image = ROBUX, ImageColor3 = WHITE, ScaleType = Enum.ScaleType.Fit, BackgroundTransparency = 1,\n\tSize = UDim2.fromOffset(22, 22), Position = UDim2.fromOffset(14, 15), AnchorPoint = Vector2.new(0.5, 0.5), ZIndex = 10}, priceTag)\nlocal priceText = text(priceTag, {Name = \"Amount\", Text = tostring(OfflineConfig.PRICE), Size = UDim2.fromOffset(40, 28), Position = UDim2.new(1, 0, 0.5, 0),\n\tAnchorPoint = Vector2.new(1, 0.5), TextXAlignment = Enum.TextXAlignment.Right, ZIndex = 10, Stroke = 2.6})\nlocal claimBtn, claimLabel = standardButton(win, \"Claim\", UDim2.fromOffset(270, 68), UDim2.fromOffset(392, 364), \"CLAIM!\", CLAIM_GRAD, 38)"
+  },
+  {
+   "old_string": "\treturn math.clamp(math.min(vp.X / 1050, vp.Y / 620), 0.52, 1.18)\nend",
+   "new_string": "\treturn math.clamp(math.min(vp.X / 1050, vp.Y / 620), 0.7, 1.18) -- (2026-10-22 UI polish, M5: phone floor 0.7, was 0.52)\nend"
+  },
+  {
+   "old_string": "claimBtn.Activated:Connect(claimNormal)\nclose.Activated:Connect(claimNormal) -- X claims the x1 too: nothing is ever lost",
+   "new_string": "claimBtn.Activated:Connect(claimNormal)\nclose.Activated:Connect(claimNormal) -- X claims the x1 too: nothing is ever lost\nB.tapArea(close, claimNormal) -- (2026-10-22 UI polish, M7: the [X] was 27 pt on a phone)"
+  }
+ ]
+}

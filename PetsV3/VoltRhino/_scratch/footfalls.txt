@@ -1,0 +1,1 @@
+FOOTFALLS {"n": 40, "touchdown": {"Leg_BL": [0], "Leg_FL": [10], "Leg_BR": [20], "Leg_FR": [30]}, "order": ["Leg_BL", "Leg_FL", "Leg_BR", "Leg_FR"]}

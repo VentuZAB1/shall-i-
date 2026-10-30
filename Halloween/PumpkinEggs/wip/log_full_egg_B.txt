@@ -1,0 +1,44 @@
+[eggs    3.2s] PumpkinEgg_B hi sculpt 115200
+[eggs    6.4s] PumpkinEgg_B repaired cut-vertex attributes (fixed, left): (1687, 0)
+[eggs    6.7s] PumpkinEgg_B carved 114392 hi faces; holes {'hi': 4.0, 'lo': 4.0, 'cut': 4}
+[eggs    6.8s] PumpkinEgg_B game mesh tris 7840
+[eggs    6.9s]   uv smart done
+Warning: Unwrap failed to solve 2 of 12 island(s), edge seams may need to be added
+[eggs    7.1s]   uv unwrap+average done, packing
+[eggs  218.7s] PumpkinEgg_B uv seams at [30.0, 150.0, 270.0] edges 168
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:791: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  bmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:795: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  cmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:819: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs  248.9s]   baked LoSkin {'texels': 396321, 'miss': 0.0002}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs  252.7s]   baked LoWall {'texels': 20862, 'miss': 0.0457}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs  259.6s]   baked LoInner {'texels': 91538, 'miss': 0.0002}
+Info: Saved as "egg_B.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_PumpkinEgg_B.fbx'
+export finished in 0.0176 sec.
+[eggs  262.2s] PumpkinEgg_B done {"name": "PumpkinEgg_B", "tris": 7840, "texture": 1024, "size_blender_xyz": [5.305, 5.28, 7.299], "bottom_offset_z": -3.649, "cavity_centre": [-0.034, -0.005, -0.541], "cavity_floor": [-0.034, -0.005, -3.461], "shell": 0.3, "holes": {"hi": 4.0, "lo": 4.0, "cut": 4}, "bake": {"LoSkin": {"texels": 396321, "miss": 0.0002}, "LoWall": {"texels": 20862, "miss": 0.0457}, "LoInner": {"texels": 91538, "miss": 0.0002}}, "blender_shift": [-0.0343, -0.0047, -0.5768], "export": {"fbx": "C:\\cdimp\\Halloween_PumpkinEgg_B.fbx", "kb": 2128.5, "tris": {"PumpkinEgg_B": 7840}}}
+EGGS_REPORT {"egg_B": {"name": "PumpkinEgg_B", "tris": 7840, "texture": 1024, "size_blender_xyz": [5.305, 5.28, 7.299], "bottom_offset_z": -3.649, "cavity_centre": [-0.034, -0.005, -0.541], "cavity_floor": [-0.034, -0.005, -3.461], "shell": 0.3, "holes": {"hi": 4.0, "lo": 4.0, "cut": 4}, "bake": {"LoSkin": {"texels": 396321, "miss": 0.0002}, "LoWall": {"texels": 20862, "miss": 0.0457}, "LoInner": {"texels": 91538, "miss": 0.0002}}, "blender_shift": [-0.0343, -0.0047, -0.5768], "export": {"fbx": "C:\\cdimp\\Halloween_PumpkinEgg_B.fbx", "kb": 2128.5, "tris": {"PumpkinEgg_B": 7840}}}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,50 @@
+
+
+def surf_hit(B, blks, origin, direction):
+    """exact hit point + normal on the bevelled meshes of `blks` (seats inlays ON tapered / rounded faces)"""
+    import blockkit as bk
+    from mathutils.bvhtree import BVHTree
+    B._resolve()
+    best = None
+    d = Vector(direction).normalized()
+    for blk in blks:
+        bm = bk._box_bm(blk)
+        t = BVHTree.FromBMesh(bm)
+        bm.free()
+        loc, nrm, _, dist = t.ray_cast(Vector(origin), d)
+        if loc is not None and (best is None or dist < best[2]):
+            best = (loc, nrm.normalized(), dist)
+    if best is None:
+        raise RuntimeError("surf_hit: no surface from %s" % (tuple(origin),))
+    return best[0], best[1]
+
+
+def seat_plate(B, blks, origin, direction, half, color, bone, proud=0.010, **kw):
+    """plate whose local -y face lies on the surface hit from origin along direction, <= proud above it"""
+    p, n = surf_hit(B, blks, origin, direction)
+    y = -n
+    x = Vector((1, 0, 0)) - n * n.x
+    x = x.normalized() if x.length > 1e-4 else Vector((0, 0, 1))
+    z = x.cross(y).normalized()
+    R = Matrix((x, y, z)).transposed()
+    kw.setdefault("studs", [])
+    return B.add(p + n * (proud - half[1]), half, color, bone, R=R, **kw)
+
+
+def surf_strip(B, blks, origins, direction, width, thick, color, bone, proud=0.009, tip0=False, tip1=False, **kw):
+    """flush strip of bars along a surface: ray-cast every origin along direction, bars between the hits"""
+    hits = [surf_hit(B, blks, o, direction) for o in origins]
+    kw.setdefault("studs", [])
+    kw.setdefault("bevel", 0.004)
+    out = []
+    for i in range(len(hits) - 1):
+        (a, na), (b, nb) = hits[i], hits[i + 1]
+        n = (na + nb).normalized()
+        a2, b2 = a + n * (proud - thick), b + n * (proud - thick)
+        if tip0 and i == 0:
+            out.append(B.bar(b2, a2, n, width, thick, color, bone, top=(1, 0.15), **kw))
+        elif tip1 and i == len(hits) - 2:
+            out.append(B.bar(a2, b2, n, width, thick, color, bone, top=(1, 0.15), **kw))
+        else:
+            out.append(B.bar(a2, b2, n, width, thick, color, bone, **kw))
+    return out

@@ -1,0 +1,334 @@
+[Ember Hound] preview IN_PROGRESS 1%
+[Storm Wyvern] preview IN_PROGRESS 1%
+[Magma Salamander] preview IN_PROGRESS 1%
+[Ember Hound] preview IN_PROGRESS 25%
+[Storm Wyvern] preview IN_PROGRESS 25%
+[Magma Salamander] preview IN_PROGRESS 30%
+[Ember Hound] preview IN_PROGRESS 67%
+[Storm Wyvern] preview IN_PROGRESS 67%
+[Magma Salamander] preview IN_PROGRESS 72%
+[Ember Hound] preview IN_PROGRESS 99%
+[Storm Wyvern] preview IN_PROGRESS 99%
+[Magma Salamander] preview IN_PROGRESS 99%
+[Ember Hound] preview SUCCEEDED 100%
+[Ember Hound] refine IN_PROGRESS 0%
+[Ember Hound] refine IN_PROGRESS 34%
+[Ember Hound] refine IN_PROGRESS 69%
+[Storm Wyvern] preview SUCCEEDED 100%
+[Ember Hound] refine SUCCEEDED 100%
+[Storm Wyvern] refine IN_PROGRESS 0%
+[Ember Hound] DONE -> Downloads/Meshy/Ember Hound.glb/.fbx/.png
+[Cinder Scorpion] preview IN_PROGRESS 1%
+[Magma Salamander] preview SUCCEEDED 100%
+[Storm Wyvern] refine IN_PROGRESS 34%
+[Magma Salamander] refine IN_PROGRESS 0%
+[Cinder Scorpion] preview IN_PROGRESS 25%
+[Storm Wyvern] refine IN_PROGRESS 99%
+[Magma Salamander] refine IN_PROGRESS 34%
+[Cinder Scorpion] preview IN_PROGRESS 67%
+[Storm Wyvern] refine SUCCEEDED 100%
+[Magma Salamander] refine IN_PROGRESS 69%
+[Storm Wyvern] DONE -> Downloads/Meshy/Storm Wyvern.glb/.fbx/.png
+[Cinder Scorpion] preview IN_PROGRESS 99%
+[Molten Boar] preview IN_PROGRESS 1%
+[Magma Salamander] refine SUCCEEDED 100%
+[Magma Salamander] DONE -> Downloads/Meshy/Magma Salamander.glb/.fbx/.png
+[Cinder Scorpion] preview SUCCEEDED 100%
+[Flame Lynx] preview IN_PROGRESS 1%
+[Molten Boar] preview IN_PROGRESS 25%
+[Cinder Scorpion] refine IN_PROGRESS 0%
+[Flame Lynx] preview IN_PROGRESS 35%
+[Molten Boar] preview IN_PROGRESS 67%
+[Cinder Scorpion] refine IN_PROGRESS 19%
+[Flame Lynx] preview IN_PROGRESS 77%
+[Molten Boar] preview IN_PROGRESS 99%
+[Cinder Scorpion] refine IN_PROGRESS 69%
+[Flame Lynx] preview IN_PROGRESS 99%
+[Molten Boar] preview SUCCEEDED 100%
+[Cinder Scorpion] refine SUCCEEDED 100%
+[Molten Boar] refine IN_PROGRESS 0%
+[Cinder Scorpion] DONE -> Downloads/Meshy/Cinder Scorpion.glb/.fbx/.png
+[Lava Golem] preview IN_PROGRESS 1%
+[Flame Lynx] preview SUCCEEDED 100%
+[Flame Lynx] refine IN_PROGRESS 0%
+[Molten Boar] refine IN_PROGRESS 34%
+[Lava Golem] preview IN_PROGRESS 35%
+[Flame Lynx] refine IN_PROGRESS 34%
+[Molten Boar] refine IN_PROGRESS 87%
+[Lava Golem] preview IN_PROGRESS 77%
+[Flame Lynx] refine IN_PROGRESS 69%
+[Molten Boar] refine SUCCEEDED 100%
+[Molten Boar] DONE -> Downloads/Meshy/Molten Boar.glb/.fbx/.png
+[Lava Golem] preview IN_PROGRESS 99%
+[Phoenix] preview IN_PROGRESS 1%
+[Flame Lynx] refine SUCCEEDED 100%
+[Flame Lynx] DONE -> Downloads/Meshy/Flame Lynx.glb/.fbx/.png
+[Inferno Drake] preview IN_PROGRESS 1%
+[Phoenix] preview IN_PROGRESS 30%
+[Lava Golem] preview SUCCEEDED 100%
+[Inferno Drake] preview IN_PROGRESS 35%
+[Phoenix] preview IN_PROGRESS 67%
+[Lava Golem] refine IN_PROGRESS 0%
+[Inferno Drake] preview IN_PROGRESS 77%
+[Phoenix] preview IN_PROGRESS 99%
+[Lava Golem] refine IN_PROGRESS 19%
+[Inferno Drake] preview IN_PROGRESS 99%
+[Lava Golem] refine IN_PROGRESS 49%
+[Inferno Drake] preview SUCCEEDED 100%
+[Phoenix] preview SUCCEEDED 100%
+[Inferno Drake] refine IN_PROGRESS 0%
+[Phoenix] refine IN_PROGRESS 0%
+[Lava Golem] refine IN_PROGRESS 69%
+[Inferno Drake] refine IN_PROGRESS 19%
+[Phoenix] refine IN_PROGRESS 19%
+[Lava Golem] refine SUCCEEDED 100%
+[Lava Golem] DONE -> Downloads/Meshy/Lava Golem.glb/.fbx/.png
+[Nightwing Bat] preview IN_PROGRESS 1%
+[Inferno Drake] refine IN_PROGRESS 69%
+[Phoenix] refine IN_PROGRESS 69%
+[Nightwing Bat] preview IN_PROGRESS 35%
+[Inferno Drake] refine SUCCEEDED 100%
+[Phoenix] refine SUCCEEDED 100%
+[Inferno Drake] DONE -> Downloads/Meshy/Inferno Drake.glb/.fbx/.png
+[Phoenix] DONE -> Downloads/Meshy/Phoenix.glb/.fbx/.png
+[Gloom Spider] preview IN_PROGRESS 1%
+[Shade Panther] preview IN_PROGRESS 1%
+[Nightwing Bat] preview IN_PROGRESS 77%
+[Gloom Spider] preview IN_PROGRESS 20%
+[Shade Panther] preview IN_PROGRESS 25%
+[Nightwing Bat] preview IN_PROGRESS 99%
+[Gloom Spider] preview IN_PROGRESS 62%
+[Shade Panther] preview IN_PROGRESS 67%
+[Gloom Spider] preview IN_PROGRESS 99%
+[Shade Panther] preview IN_PROGRESS 99%
+[Nightwing Bat] preview SUCCEEDED 100%
+[Nightwing Bat] refine IN_PROGRESS 0%
+[Shade Panther] preview SUCCEEDED 100%
+[Nightwing Bat] refine IN_PROGRESS 34%
+[Shade Panther] refine IN_PROGRESS 0%
+[Nightwing Bat] refine IN_PROGRESS 69%
+[Shade Panther] refine IN_PROGRESS 19%
+[Shade Panther] refine IN_PROGRESS 49%
+[Nightwing Bat] refine SUCCEEDED 100%
+[Nightwing Bat] DONE -> Downloads/Meshy/Nightwing Bat.glb/.fbx/.png
+[Bone Raven] preview IN_PROGRESS 1%
+[Gloom Spider] preview SUCCEEDED 100%
+[Gloom Spider] refine IN_PROGRESS 0%
+[Shade Panther] refine IN_PROGRESS 99%
+[Bone Raven] preview IN_PROGRESS 35%
+[Gloom Spider] refine IN_PROGRESS 34%
+[Shade Panther] refine SUCCEEDED 100%
+[Shade Panther] DONE -> Downloads/Meshy/Shade Panther.glb/.fbx/.png
+[Bone Raven] preview IN_PROGRESS 72%
+[Wraith Hound] preview IN_PROGRESS 1%
+[Gloom Spider] refine IN_PROGRESS 49%
+[Bone Raven] preview IN_PROGRESS 99%
+[Wraith Hound] preview IN_PROGRESS 25%
+[Gloom Spider] refine IN_PROGRESS 99%
+[Wraith Hound] preview IN_PROGRESS 67%
+[Gloom Spider] refine SUCCEEDED 100%
+[Gloom Spider] DONE -> Downloads/Meshy/Gloom Spider.glb/.fbx/.png
+[Nightmare Stallion] preview IN_PROGRESS 1%
+[Wraith Hound] preview IN_PROGRESS 99%
+[Nightmare Stallion] preview IN_PROGRESS 9%
+[Bone Raven] preview SUCCEEDED 100%
+[Bone Raven] refine IN_PROGRESS 0%
+[Nightmare Stallion] preview IN_PROGRESS 41%
+[Nightmare Stallion] preview IN_PROGRESS 77%
+[Bone Raven] refine IN_PROGRESS 69%
+[Nightmare Stallion] preview IN_PROGRESS 99%
+[Wraith Hound] preview SUCCEEDED 100%
+[Bone Raven] refine SUCCEEDED 100%
+[Wraith Hound] refine IN_PROGRESS 0%
+[Bone Raven] DONE -> Downloads/Meshy/Bone Raven.glb/.fbx/.png
+[Void Serpent] preview IN_PROGRESS 1%
+[Nightmare Stallion] preview SUCCEEDED 100%
+[Wraith Hound] refine IN_PROGRESS 34%
+[Nightmare Stallion] refine IN_PROGRESS 0%
+[Void Serpent] preview IN_PROGRESS 30%
+[Wraith Hound] refine IN_PROGRESS 69%
+[Void Serpent] preview IN_PROGRESS 72%
+[Wraith Hound] refine SUCCEEDED 100%
+[Nightmare Stallion] refine IN_PROGRESS 49%
+[Wraith Hound] DONE -> Downloads/Meshy/Wraith Hound.glb/.fbx/.png
+[Void Serpent] preview IN_PROGRESS 99%
+[Shadow Mantis] preview IN_PROGRESS 1%
+[Nightmare Stallion] refine IN_PROGRESS 99%
+[Shadow Mantis] preview IN_PROGRESS 30%
+[Nightmare Stallion] refine SUCCEEDED 100%
+[Nightmare Stallion] DONE -> Downloads/Meshy/Nightmare Stallion.glb/.fbx/.png
+[Abyss Behemoth] preview IN_PROGRESS 1%
+[Shadow Mantis] preview IN_PROGRESS 72%
+[Void Serpent] preview SUCCEEDED 100%
+[Abyss Behemoth] preview IN_PROGRESS 35%
+[Shadow Mantis] preview IN_PROGRESS 99%
+[Void Serpent] refine IN_PROGRESS 0%
+[Abyss Behemoth] preview IN_PROGRESS 77%
+[Shadow Mantis] preview SUCCEEDED 100%
+[Void Serpent] refine IN_PROGRESS 19%
+[Shadow Mantis] refine IN_PROGRESS 0%
+[Abyss Behemoth] preview IN_PROGRESS 99%
+[Void Serpent] refine IN_PROGRESS 49%
+[Shadow Mantis] refine IN_PROGRESS 19%
+[Void Serpent] refine IN_PROGRESS 69%
+[Shadow Mantis] refine IN_PROGRESS 49%
+[Abyss Behemoth] preview SUCCEEDED 100%
+[Void Serpent] refine SUCCEEDED 100%
+[Abyss Behemoth] refine IN_PROGRESS 0%
+[Void Serpent] DONE -> Downloads/Meshy/Void Serpent.glb/.fbx/.png
+[Shadow Mantis] refine IN_PROGRESS 69%
+[Void Dragon] preview IN_PROGRESS 1%
+[Shadow Mantis] refine SUCCEEDED 100%
+[Shadow Mantis] DONE -> Downloads/Meshy/Shadow Mantis.glb/.fbx/.png
+[Void Dragon] preview IN_PROGRESS 30%
+[Star Moth] preview IN_PROGRESS 1%
+[Abyss Behemoth] refine IN_PROGRESS 34%
+[Void Dragon] preview IN_PROGRESS 72%
+[Star Moth] preview IN_PROGRESS 20%
+[Abyss Behemoth] refine IN_PROGRESS 49%
+[Void Dragon] preview IN_PROGRESS 99%
+[Star Moth] preview IN_PROGRESS 62%
+[Abyss Behemoth] refine IN_PROGRESS 69%
+[Void Dragon] preview SUCCEEDED 100%
+[Star Moth] preview IN_PROGRESS 99%
+[Void Dragon] refine IN_PROGRESS 0%
+[Abyss Behemoth] refine SUCCEEDED 100%
+[Abyss Behemoth] DONE -> Downloads/Meshy/Abyss Behemoth.glb/.fbx/.png
+[Lunar Jackal] preview IN_PROGRESS 1%
+[Void Dragon] refine IN_PROGRESS 34%
+[Lunar Jackal] preview IN_PROGRESS 35%
+[Star Moth] preview SUCCEEDED 100%
+[Void Dragon] refine IN_PROGRESS 49%
+[Star Moth] refine IN_PROGRESS 0%
+[Lunar Jackal] preview IN_PROGRESS 72%
+[Void Dragon] refine IN_PROGRESS 69%
+[Star Moth] refine IN_PROGRESS 34%
+[Lunar Jackal] preview IN_PROGRESS 99%
+[Void Dragon] refine SUCCEEDED 100%
+[Void Dragon] DONE -> Downloads/Meshy/Void Dragon.glb/.fbx/.png
+[Star Moth] refine IN_PROGRESS 49%
+[Solar Lion] preview IN_PROGRESS 1%
+[Star Moth] refine IN_PROGRESS 69%
+[Solar Lion] preview IN_PROGRESS 35%
+[Lunar Jackal] preview SUCCEEDED 100%
+[Lunar Jackal] refine IN_PROGRESS 0%
+[Star Moth] refine SUCCEEDED 100%
+[Star Moth] DONE -> Downloads/Meshy/Star Moth.glb/.fbx/.png
+[Solar Lion] preview IN_PROGRESS 77%
+[Nebula Jelly] preview IN_PROGRESS 1%
+[Solar Lion] preview IN_PROGRESS 99%
+[Nebula Jelly] preview IN_PROGRESS 25%
+[Lunar Jackal] refine IN_PROGRESS 49%
+[Solar Lion] preview SUCCEEDED 100%
+[Solar Lion] refine IN_PROGRESS 0%
+[Nebula Jelly] preview IN_PROGRESS 62%
+[Lunar Jackal] refine IN_PROGRESS 69%
+[Solar Lion] refine IN_PROGRESS 19%
+[Nebula Jelly] preview IN_PROGRESS 99%
+[Lunar Jackal] refine SUCCEEDED 100%
+[Lunar Jackal] DONE -> Downloads/Meshy/Lunar Jackal.glb/.fbx/.png
+[Griffin] preview IN_PROGRESS 1%
+[Solar Lion] refine IN_PROGRESS 34%
+[Griffin] preview IN_PROGRESS 30%
+[Solar Lion] refine IN_PROGRESS 49%
+[Griffin] preview IN_PROGRESS 72%
+[Solar Lion] refine IN_PROGRESS 99%
+[Nebula Jelly] preview SUCCEEDED 100%
+[Nebula Jelly] refine IN_PROGRESS 0%
+[Griffin] preview IN_PROGRESS 99%
+[Solar Lion] refine SUCCEEDED 100%
+[Solar Lion] DONE -> Downloads/Meshy/Solar Lion.glb/.fbx/.png
+[Nebula Jelly] refine IN_PROGRESS 19%
+[Star Pegasus] preview IN_PROGRESS 1%
+[Nebula Jelly] refine IN_PROGRESS 49%
+[Star Pegasus] preview IN_PROGRESS 30%
+[Nebula Jelly] refine IN_PROGRESS 69%
+[Star Pegasus] preview IN_PROGRESS 72%
+[Nebula Jelly] refine SUCCEEDED 100%
+[Star Pegasus] preview IN_PROGRESS 99%
+[Nebula Jelly] DONE -> Downloads/Meshy/Nebula Jelly.glb/.fbx/.png
+[Celestial Tiger] preview IN_PROGRESS 1%
+[Griffin] preview SUCCEEDED 100%
+[Griffin] refine IN_PROGRESS 0%
+[Celestial Tiger] preview IN_PROGRESS 30%
+[Griffin] refine IN_PROGRESS 19%
+[Celestial Tiger] preview IN_PROGRESS 67%
+[Griffin] refine IN_PROGRESS 34%
+[Celestial Tiger] preview IN_PROGRESS 99%
+[Griffin] refine IN_PROGRESS 69%
+[Star Pegasus] preview SUCCEEDED 100%
+[Star Pegasus] refine IN_PROGRESS 0%
+[Star Pegasus] refine IN_PROGRESS 19%
+[Griffin] refine SUCCEEDED 100%
+[Griffin] DONE -> Downloads/Meshy/Griffin.glb/.fbx/.png
+[Seraph Owl] preview IN_PROGRESS 1%
+[Star Pegasus] refine IN_PROGRESS 34%
+[Celestial Tiger] preview SUCCEEDED 100%
+[Celestial Tiger] refine IN_PROGRESS 0%
+[Seraph Owl] preview IN_PROGRESS 30%
+[Star Pegasus] refine IN_PROGRESS 69%
+[Seraph Owl] preview IN_PROGRESS 72%
+[Star Pegasus] refine IN_PROGRESS 99%
+[Celestial Tiger] refine IN_PROGRESS 19%
+[Seraph Owl] preview IN_PROGRESS 99%
+[Star Pegasus] refine SUCCEEDED 100%
+[Star Pegasus] DONE -> Downloads/Meshy/Star Pegasus.glb/.fbx/.png
+[Qilin] preview IN_PROGRESS 1%
+[Qilin] preview IN_PROGRESS 30%
+[Celestial Tiger] refine IN_PROGRESS 69%
+[Qilin] preview IN_PROGRESS 72%
+[Qilin] preview IN_PROGRESS 99%
+[Celestial Tiger] refine SUCCEEDED 100%
+[Celestial Tiger] DONE -> Downloads/Meshy/Celestial Tiger.glb/.fbx/.png
+[Celestial Dragon] preview IN_PROGRESS 1%
+[Seraph Owl] preview SUCCEEDED 100%
+[Seraph Owl] refine IN_PROGRESS 0%
+[Celestial Dragon] preview IN_PROGRESS 35%
+[Seraph Owl] refine IN_PROGRESS 19%
+[Qilin] preview SUCCEEDED 100%
+[Qilin] refine IN_PROGRESS 0%
+[Celestial Dragon] preview IN_PROGRESS 77%
+[Qilin] refine IN_PROGRESS 19%
+[Celestial Dragon] preview IN_PROGRESS 99%
+[Seraph Owl] refine IN_PROGRESS 49%
+[Celestial Dragon] preview SUCCEEDED 100%
+[Seraph Owl] refine IN_PROGRESS 69%
+[Celestial Dragon] ERROR HTTP 402 POST /v2/text-to-3d: {"message":"Insufficient funds"}
+[Qilin] refine IN_PROGRESS 49%
+[Qilin] refine IN_PROGRESS 69%
+[Seraph Owl] refine IN_PROGRESS 99%
+[Seraph Owl] refine SUCCEEDED 100%
+[Seraph Owl] DONE -> Downloads/Meshy/Seraph Owl.glb/.fbx/.png
+[Qilin] refine SUCCEEDED 100%
+[Qilin] DONE -> Downloads/Meshy/Qilin.glb/.fbx/.png
+
+SUMMARY
+  Storm Wyvern: done
+  Ember Hound: done
+  Magma Salamander: done
+  Cinder Scorpion: done
+  Molten Boar: done
+  Flame Lynx: done
+  Lava Golem: done
+  Phoenix: done
+  Inferno Drake: done
+  Nightwing Bat: done
+  Gloom Spider: done
+  Shade Panther: done
+  Bone Raven: done
+  Wraith Hound: done
+  Nightmare Stallion: done
+  Void Serpent: done
+  Shadow Mantis: done
+  Abyss Behemoth: done
+  Void Dragon: done
+  Star Moth: done
+  Lunar Jackal: done
+  Solar Lion: done
+  Nebula Jelly: done
+  Griffin: done
+  Star Pegasus: done
+  Celestial Tiger: done
+  Seraph Owl: done
+  Qilin: done
+  Celestial Dragon: error: HTTP 402 POST /v2/text-to-3d: {"message":"Insufficient funds"}

@@ -1,0 +1,5 @@
+Info: Saved as "GlacierYeti_rigged.blend"
+HEADLESS_RESULT {"audit": {"idle": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "idle_foot_drift": 0.0}, "walk": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "slide": 0.0, "foot_z_var": 0.0}, "roar": {"linear": 0}, "act_skid": {"linear": 0}}, "stride": 0.3871, "lua_bytes": 38170, "clips": {"idle": [120, true], "walk": [48, true], "roar": [60, false], "act_skid": [100, false]}, "events": {"idle": {"settle1": 0.333, "settle2": 0.417}, "walk": {"stomp": 0.5}, "roar": {"roar": 0.4}, "act_skid": {"skid1": 0.22, "skid2": 0.42, "brake": 0.58}}, "tris_body": 7728, "tris_glow": {}, "bones": ["Root", "Spine", "Chest", "Neck", "Head", "Jaw", "Mouth", "FX_BreathCloud", "Arm_L", "Fore_L", "Hand_L", "FX_ShardBurst_L", "Plate_L", "FX_AuroraDust_L", "Arm_R", "Fore_R", "Hand_R", "FX_ShardBurst_R", "Plate_R", "FX_AuroraDust_R", "FX_SnowPuff", "Leg_L", "Shin_L", "Foot_L", "Leg_R", "Shin_R", "Foot_R"], "ground_min_z": {"idle": [0.002, 120], "walk": [0.002, 47], "roar": [0.002, 60], "act_skid": [0.002, 100]}, "collisions": {}, "collision_free": true}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

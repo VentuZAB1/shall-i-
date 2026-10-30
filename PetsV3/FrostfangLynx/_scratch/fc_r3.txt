@@ -1,0 +1,5 @@
+audit {"idle": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "idle_foot_drift": 0.0}, "walk": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "slide": 0.0, "foot_z_var": 0.0}, "roar": {"linear": 0}, "act_clawflex": {"linear": 0}}
+clips {'idle': [120, True], 'walk': [24, True], 'roar': [60, False], 'act_clawflex': [96, False]} events {'roar': {'ruff_flare': 0.217, 'hiss': 0.5}, 'act_clawflex': {'claw1': 0.5, 'claw2': 0.625, 'snow_flick': 0.802}}
+ground {'idle': [-0.0, 107], 'walk': [-0.0, 20], 'roar': [-0.0, 57], 'act_clawflex': [-0.002, 44]}
+collision_free True {}
+tris 8396 stride 0.3548

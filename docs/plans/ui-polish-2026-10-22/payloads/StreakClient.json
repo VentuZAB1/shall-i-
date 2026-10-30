@@ -1,0 +1,50 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.StreakClient",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "\tlocal dayLabel = text(face, \"Day\", UDim2.fromScale(big and 0.5 or 0.9, 0.14), UDim2.fromScale(0.5, 0.1), 0.09)",
+   "new_string": "\t-- (2026-10-22 UI polish, M5) DAY n 0.15 tall; Day 7's sits over its portrait column (left)\n\tlocal dayLabel = text(face, \"Day\", UDim2.fromScale(big and 0.4 or 0.9, 0.15), UDim2.fromScale(big and 0.24 or 0.5, 0.1), 0.09)"
+  },
+  {
+   "old_string": "\t\tsunburst = square(B.image(face, \"Sunburst\", B.SUNBURST, UDim2.fromScale(0.5, 0.86), UDim2.fromScale(0.24, 0.53))) -- (2026-10-22 UI revert) 0.86: stays inside the card (was 0.95)\n\t\tsunburst.ImageTransparency = 0.15\n\t\tc.icon = square(B.image(face, \"Icon\", \"\", UDim2.fromScale(0.38, 0.66), UDim2.fromScale(0.24, 0.54)))\n\t\tc.icon.ZIndex = 3\n\t\tlocal title = text(face, \"Secret\", UDim2.fromScale(0.54, 0.16), UDim2.fromScale(0.71, 0.27), 0.1)",
+   "new_string": "\t\t-- (2026-10-22 UI polish, M5 / M1) Day 7 re-flow: DAY 7 + portrait + CLAIM in the LEFT column, the SECRET! ribbon\n\t\t-- (bigger, 6+ px inside the top-right corner), SECRET PET! and 3 lines (0.14 tall each) in the RIGHT column\n\t\tsunburst = square(B.image(face, \"Sunburst\", B.SUNBURST, UDim2.fromScale(0.5, 0.6), UDim2.fromScale(0.24, 0.47)))\n\t\tsunburst.ImageTransparency = 0.15\n\t\tc.icon = square(B.image(face, \"Icon\", \"\", UDim2.fromScale(0.3, 0.44), UDim2.fromScale(0.24, 0.47)))\n\t\tc.icon.ZIndex = 3\n\t\tlocal title = text(face, \"Secret\", UDim2.fromScale(0.48, 0.15), UDim2.fromScale(0.73, 0.37), 0.1)"
+  },
+  {
+   "old_string": "\t\tc.lines[1] = text(face, \"Line1\", UDim2.fromScale(0.54, 0.11), UDim2.fromScale(0.71, 0.41))\n\t\tc.lines[2] = text(face, \"Line2\", UDim2.fromScale(0.54, 0.1), UDim2.fromScale(0.71, 0.52))\n\t\tc.lines[3] = text(face, \"Line3\", UDim2.fromScale(0.54, 0.1), UDim2.fromScale(0.71, 0.62))\n\t\tlocal rh, rf = B.brick(face, \"Ribbon\", UDim2.fromScale(0.2, 0.13), UDim2.fromScale(0.87, 0.115), C(255, 32, 80)) -- (2026-10-22 UI revert) inside the card corner (was 0.22 x 0.15 at 0.9, 0.1, 10 deg)\n\t\trh.Rotation = 4\n\t\trh.ZIndex = 7\n\t\tlocal rl = text(rf, \"Label\", UDim2.fromScale(0.86, 0.66), UDim2.fromScale(0.5, 0.5), 0.1)",
+   "new_string": "\t\tc.lines[1] = text(face, \"Line1\", UDim2.fromScale(0.48, 0.14), UDim2.fromScale(0.73, 0.53))\n\t\tc.lines[2] = text(face, \"Line2\", UDim2.fromScale(0.48, 0.14), UDim2.fromScale(0.73, 0.68))\n\t\tc.lines[3] = text(face, \"Line3\", UDim2.fromScale(0.48, 0.14), UDim2.fromScale(0.73, 0.83))\n\t\tlocal rh, rf = B.brick(face, \"Ribbon\", UDim2.fromScale(0.32, 0.19), UDim2.fromScale(0.81, 0.17), C(255, 32, 80)) -- (M1 / M5: 0.2 x 0.13 at 0.87, 0.115; its label was 11 px)\n\t\trh.Rotation = 4\n\t\trh.ZIndex = 7\n\t\tlocal rl = text(rf, \"Label\", UDim2.fromScale(0.9, 0.72), UDim2.fromScale(0.5, 0.5), 0.1)"
+  },
+  {
+   "old_string": "\t\tc.icon = square(B.image(face, \"Icon\", \"\", UDim2.fromScale(0.6, 0.3), UDim2.fromScale(0.5, 0.34)))\n\t\tc.icon.ZIndex = 3\n\t\tc.lines[1] = text(face, \"Line1\", UDim2.fromScale(0.94, 0.13), UDim2.fromScale(0.5, 0.565))\n\t\tc.lines[2] = text(face, \"Line2\", UDim2.fromScale(0.94, 0.1), UDim2.fromScale(0.5, 0.685))",
+   "new_string": "\t\t-- (2026-10-22 UI polish, M5) DAY 0.15 / icon 0.2 / value 0.17 / 2nd line 0.15 / button 0.24 (were icon 0.3, lines 0.13 / 0.1)\n\t\tc.icon = square(B.image(face, \"Icon\", \"\", UDim2.fromScale(0.6, 0.2), UDim2.fromScale(0.5, 0.29)))\n\t\tc.icon.ZIndex = 3\n\t\tc.lines[1] = text(face, \"Line1\", UDim2.fromScale(0.96, 0.17), UDim2.fromScale(0.5, 0.485))\n\t\tc.lines[2] = text(face, \"Line2\", UDim2.fromScale(0.96, 0.15), UDim2.fromScale(0.5, 0.64))"
+  },
+  {
+   "old_string": "\tlocal bh, bf = B.brick(face, \"Claim\", UDim2.fromScale(big and 0.48 or 0.86, 0.19), UDim2.fromScale(big and 0.71 or 0.5, 0.865), OFF, nil, {button = true})\n\tbh.ZIndex = 6\n\tlocal state = text(bf, \"State\", UDim2.fromScale(0.7, 0.62), UDim2.fromScale(0.55, 0.5), 0.1)",
+   "new_string": "\t-- (2026-10-22 UI polish, M5 / M7) 0.24 tall (was 0.19), 6+ px above the card's bottom; Day 7's under its portrait\n\tlocal bh, bf = B.brick(face, \"Claim\", UDim2.fromScale(big and 0.42 or 0.86, 0.24), UDim2.fromScale(big and 0.24 or 0.5, 0.83), OFF, nil, {button = true})\n\tbh.ZIndex = 6\n\tlocal state = text(bf, \"State\", UDim2.fromScale(0.7, 0.66), UDim2.fromScale(0.55, 0.5), 0.1)"
+  },
+  {
+   "old_string": "\tif d == 1 then return {money(cashOf(15)), \"+1 Money Potion\"}\n\telseif d == 2 then return {\"+1 Hatch & Speed Potion\", \"+\" .. SpeedStat.Format(speedOf(0.2)) .. \" Speed\"}\n\telseif d == 3 then return {money(cashOf(30)), \"+2 Money Potions\"}\n\telseif d == 4 then return {\"BIG EGG\", (eggKind():gsub(\"Egg$\", \" Egg\")) .. \" \" .. SpeedStat.Format(S.EGG_KG[area()]) .. \" KG\"}",
+   "new_string": "\t-- (2026-10-22 UI polish, M5) 2nd lines <= 14 characters so they stay >= 16 px (the potion / egg kind is the icon)\n\tif d == 1 then return {money(cashOf(15)), \"+1 Potion\"}\n\telseif d == 2 then return {\"+\" .. SpeedStat.Format(speedOf(0.2)) .. \" Speed\", \"+2 Potions\"}\n\telseif d == 3 then return {money(cashOf(30)), \"+2 Potions\"}\n\telseif d == 4 then return {\"BIG EGG\", SpeedStat.Format(S.EGG_KG[area()]) .. \" KG\"}"
+  },
+  {
+   "old_string": "\treturn {petDisplay(petName()) .. \" \" .. SpeedStat.Format(S.SECRET_KG[area()]) .. \" KG\", \"+5 of EVERY Potion\", money(cashOf(120))}",
+   "new_string": "\treturn {petDisplay(petName()), SpeedStat.Format(S.SECRET_KG[area()]) .. \" KG + \" .. money(cashOf(120)), \"+5 ALL Potions\"} -- (M5)"
+  },
+  {
+   "old_string": "\t\t\tcelebrate(pet, lines[1] .. \" + 5 of every potion + \" .. lines[3])",
+   "new_string": "\t\t\tcelebrate(pet, lines[1] .. \" \" .. lines[2] .. \" + 5 of every potion\")"
+  },
+  {
+   "old_string": "\tc.button.Activated:Connect(press)",
+   "new_string": "\tc.button.Activated:Connect(press)\n\tB.tapArea(c.face, press) -- (2026-10-22 UI polish, M7) the whole card claims (a card is >= 44 pt on a phone)"
+  },
+  {
+   "old_string": "tabDaily.Activated:Connect(function() page:SetAttribute(\"Tab\", \"Daily\") end)\ntabPlay.Activated:Connect(function() page:SetAttribute(\"Tab\", \"Playtime\") end)",
+   "new_string": "local function toDaily() page:SetAttribute(\"Tab\", \"Daily\") end\nlocal function toPlay() page:SetAttribute(\"Tab\", \"Playtime\") end\ntabDaily.Activated:Connect(toDaily)\ntabPlay.Activated:Connect(toPlay)\nB.tapArea(tabDaily, toDaily) B.tapArea(tabPlay, toPlay) -- (2026-10-22 UI polish, M7)"
+  },
+  {
+   "old_string": "RunService.RenderStepped:Connect(function(dt)\n\tlocal t = os.clock()\n\tdot.Visible = player:GetAttribute(\"StreakClaimable\") == true\n",
+   "new_string": "-- (2026-10-22 UI polish) the \"!\" dot follows its attribute (it was written every frame, window closed or not)\nlocal function dotState() dot.Visible = player:GetAttribute(\"StreakClaimable\") == true end\nplayer:GetAttributeChangedSignal(\"StreakClaimable\"):Connect(dotState)\ndotState()\nRunService.RenderStepped:Connect(function(dt)\n\tlocal t = os.clock()\n"
+  }
+ ]
+}

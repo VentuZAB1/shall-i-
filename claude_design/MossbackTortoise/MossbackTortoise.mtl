@@ -1,0 +1,9 @@
+# Exported by three-d-stage
+# texture: MossbackPalette.png
+newmtl MossbackPalette
+Kd 1.0000 1.0000 1.0000
+Ks 0.2000 0.2000 0.2000
+Ns 56
+d 1.0000
+map_Kd MossbackPalette.png
+

@@ -1,0 +1,19 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\gen\mock_preview.py:172: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\gen\mock_preview.py:202: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\gen\mock_preview.py:385: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+00:02.719  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\calib4_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\calib4_day.png
+00:03.078  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\calib4_night.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\calib4_night.png
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\gen\mock_preview.py:211: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+00:03.672  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\calib4m_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\calib4m_day.png
+00:04.047  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\calib4m_night.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\calib4m_night.png
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

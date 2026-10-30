@@ -1,0 +1,14 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\rv_render.py:69: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+FBX version: 7400
+[rv] asset bbox [-7.37763739 -6.93534565 -0.15553853] [ 6.87538385  7.26787472 15.79064465]
+00:03.578  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_tree_gap_frontleft.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_tree_gap_frontleft.png
+00:03.906  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_tree_gap_frontleft_b.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_tree_gap_frontleft_b.png
+00:04.187  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_tree_gap_backleft.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_tree_gap_backleft.png
+00:04.484  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_tree_left_12.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_tree_left_12.png
+[rv] DONE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)

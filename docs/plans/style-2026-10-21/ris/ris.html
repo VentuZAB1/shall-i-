@@ -1,0 +1,64 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>HATCH NIGHT - Rebirth / Index / Settings (planner mockups 2026-10-21)</title>
+<style>
+@font-face{font-family:GB;src:url("../assets/fonts/Montserrat-Black.ttf")}   /* stand-in for GothamBlack (engine is ~14% narrower) */
+:root{
+  --ink:#0D0B1C;
+  --night-top:#2E2566; --night-bot:#1B1642; --night-side:#0F0B28;
+  --card-top:#3A3082; --card-bot:#29215F; --card-side:#151032; --card-hl:#7062D8;
+  --lav:#D2CAFF; --lav-dim:#A79FE0; --lime:#B8FF6A; --gold:#FFD23A; --red:#FF6E78;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#000;overflow:hidden}
+.stage{position:relative;overflow:hidden;background-size:cover;background-position:left top}
+.stage-dim{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(8,6,25,.34),rgba(8,6,25,.14) 70%)}
+.stage-modal{position:absolute;inset:0;background:rgba(8,6,25,.55)}
+.guide-safe{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,rgba(0,0,0,.28) 0 6px,rgba(0,0,0,.12) 6px 12px)}
+.win{position:absolute;transform-origin:50% 50%}
+.abs{position:absolute}
+.txt{position:absolute;white-space:nowrap;color:#fff;text-align:center;line-height:1;font-family:GB}
+.s15{-webkit-text-stroke:3px var(--ink);paint-order:stroke fill}
+.s2{-webkit-text-stroke:4px var(--ink);paint-order:stroke fill}
+.s25{-webkit-text-stroke:5px var(--ink);paint-order:stroke fill}
+.s3{-webkit-text-stroke:6px var(--ink);paint-order:stroke fill}
+.gfill{-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.win>.side{position:absolute;left:0;right:0;top:7px;bottom:0;border-radius:18px;background:var(--night-side);box-shadow:0 0 0 3.5px var(--ink)}
+.win>.face{position:absolute;left:0;right:0;top:0;height:463px;border-radius:18px;overflow:hidden;
+  background:radial-gradient(ellipse 60% 50% at 18% 0%,rgba(140,120,255,.22),transparent 70%),linear-gradient(180deg,var(--night-top),var(--night-bot));
+  box-shadow:0 0 0 3.5px var(--ink),inset 0 0 0 1.5px rgba(97,83,194,.55)}
+.hdr{position:absolute;left:0;top:0;width:740px;height:46px}
+.hdr-gloss{position:absolute;left:0;top:0;width:740px;height:20px;background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0))}
+.tooth{position:absolute;transform:rotate(45deg)}
+.gb{position:absolute}
+.gb>.side{position:absolute;left:0;right:0;bottom:0;top:var(--d);border-radius:var(--r);background:var(--cs);box-shadow:0 0 0 var(--ol) var(--ink)}
+.gb>.face{position:absolute;left:0;right:0;top:0;bottom:var(--d);border-radius:var(--r);overflow:hidden;
+  background:linear-gradient(180deg,var(--ct),var(--c));box-shadow:0 0 0 var(--ol) var(--ink),inset 0 1.5px 0 var(--hl)}
+.gb>.face::after{content:"";position:absolute;left:3px;right:3px;top:2px;height:42%;border-radius:calc(var(--r) - 2px) calc(var(--r) - 2px) 40% 40%/calc(var(--r) - 2px) calc(var(--r) - 2px) 6px 6px;
+  background:linear-gradient(180deg,rgba(255,255,255,.42),rgba(255,255,255,.08))}
+.p-lime{--c:#4FCB10;--ct:#B4FF4A;--cs:#2A7608;--hl:#E8FFB4}
+.p-red{--c:#E01A34;--ct:#FF5A6E;--cs:#7A0816;--hl:#FFB8C2}
+.p-silver{--c:#9F98C8;--ct:#DEDAF4;--cs:#575184;--hl:#FFFFFF}
+.p-off{--c:#352D6C;--ct:#463E88;--cs:#1B1640;--hl:#6A60B8}
+.p-gold{--c:#F59A00;--ct:#FFE070;--cs:#8E5600;--hl:#FFF3B0}
+.p-dusk{--c:#2C2560;--ct:#3A3280;--cs:#161236;--hl:#6A60B8}
+.p-violet{--c:#9632DC;--ct:#D680FF;--cs:#501482;--hl:#F0C8FF}
+.recess{position:absolute;background:linear-gradient(180deg,#120E30,#1C1746);box-shadow:0 0 0 2px var(--ink),inset 0 3px 0 rgba(0,0,0,.4),inset 0 -1.5px 0 rgba(140,125,255,.35)}
+.chip{position:absolute;border-radius:14px;background:rgba(8,6,24,.6);box-shadow:0 0 0 2px var(--ink),inset 0 1.5px 0 rgba(255,255,255,.14)}
+.tag{position:absolute;border-radius:8px;background:linear-gradient(180deg,#FF5A6E,#D9142E);box-shadow:0 0 0 2px var(--ink),inset 0 1.5px 0 #FFB8C2}
+.card{position:absolute}
+.card>.side{position:absolute;left:0;right:0;bottom:0;top:5px;border-radius:14px;background:var(--card-side);box-shadow:0 0 0 2.5px var(--ink)}
+.card>.face{position:absolute;left:0;right:0;top:0;bottom:5px;border-radius:14px;overflow:hidden;
+  background:linear-gradient(180deg,var(--card-top),var(--card-bot));box-shadow:0 0 0 2.5px var(--ink),inset 0 1.5px 0 var(--card-hl)}
+.clip{position:absolute;overflow:hidden}
+.note{position:absolute;font-family:'Segoe UI',sans-serif;font-weight:600;font-size:12px;color:#c9cde0;line-height:1.25}
+#qa{position:absolute;left:8px;top:8px;background:#000c;color:#0f0;font:12px monospace;padding:6px;z-index:99;white-space:pre}
+.sel-ring{position:absolute;border-radius:11px;box-shadow:inset 0 0 0 3px #B8FF6A}
+.dot{position:absolute;border-radius:50%;background:linear-gradient(180deg,#FF6A74,#E0102A);box-shadow:0 0 0 2px var(--ink)}
+.coin-ring{position:absolute;border-radius:50%;box-shadow:inset 0 0 0 2px rgba(200,120,0,.7)}
+.ring{position:absolute;border-radius:50%;box-shadow:0 0 0 2px var(--ink)}
+.ped{position:absolute;border-radius:50%;background:rgba(13,11,28,.45)}
+</style></head>
+<body>
+<script src="engine.js"></script>
+<script src="ris.js"></script>
+</body></html>

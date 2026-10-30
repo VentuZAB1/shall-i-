@@ -1,0 +1,36 @@
+{
+ "part": "Cage",
+ "size": 512,
+ "stats": {
+  "Lo_straps": {
+   "texels": 59264,
+   "miss": 0.0009,
+   "ao": 0.5
+  },
+  "Lo_body": {
+   "texels": 58652,
+   "miss": 0.0065,
+   "ao": 0.5
+  },
+  "Lo_ring_l2": {
+   "texels": 3682,
+   "miss": 0.0,
+   "ao": 0.5
+  },
+  "Lo_link1": {
+   "texels": 1782,
+   "miss": 0.0,
+   "ao": 0.5
+  },
+  "Lo_seat": {
+   "texels": 12167,
+   "miss": 0.0,
+   "ao": 0.5
+  }
+ },
+ "albedo_mean_srgb": [
+  43.1,
+  45.7,
+  51.8
+ ]
+}

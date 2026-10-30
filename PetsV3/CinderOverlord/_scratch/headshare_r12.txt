@@ -1,0 +1,1 @@
+HEADSHARE {"view": "game", "clip": "idle", "f": 0, "fig_w": 249.2, "fig_h": 440.3, "head_h": 140.9, "head_of_figure_h": 0.32, "head_of_icon_h": 0.276}

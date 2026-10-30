@@ -1,0 +1,41 @@
+Info: Saved as "DeadGrass_A.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_DeadGrass_A.fbx'
+export finished in 0.0185 sec.
+[grave    1.6s] done {'name': 'DeadGrass_A', 'blades': 116, 'tris': 2464, 'texture': 512, 'scale': [0.925, 1.028], 'bbox_min': [-2.08, -2.092, -0.154], 'bbox_max': [1.989, 2.173, 3.0], 'size_blender_xyz': [4.07, 4.265, 3.154], 'export': {'fbx': 'C:\\cdimp\\Halloween_DeadGrass_A.fbx', 'kb': 388.1, 'tris': {'DeadGrass_A': 1336}}}
+Info: Saved as "DeadGrass_B.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_DeadGrass_B.fbx'
+export finished in 0.0493 sec.
+[grave    2.4s] done {'name': 'DeadGrass_B', 'blades': 120, 'tris': 2268, 'texture': 512, 'scale': [0.914, 1.015], 'bbox_min': [-1.398, -1.545, -0.152], 'bbox_max': [1.567, 1.643, 2.5], 'size_blender_xyz': [2.965, 3.188, 2.652], 'export': {'fbx': 'C:\\cdimp\\Halloween_DeadGrass_B.fbx', 'kb': 387.9, 'tris': {'DeadGrass_B': 1239}}}
+[grave    3.0s] Grave_C_hi remeshed verts 248634
+[grave   15.7s] stone hi tris 497256
+[grave   15.9s] Grave_C_StoneLo remeshed verts 27558
+[grave   17.2s] stone lo tris 2322
+[grave   20.0s] mound lo tris 462 mound hi faces 54000
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\graveyard.py:877: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Saved as "Grave_C.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Grave_C.fbx'
+export finished in 0.0480 sec.
+[grave   35.3s] done {'name': 'Grave_C', 'tris': 3308, 'parts_tris': {'stone': 2322, 'mound': 462, 'blades': 524}, 'texture': 512, 'uv_cover': 0.694, 'bbox_min': [-2.33, -1.914, -0.238], 'bbox_max': [2.426, 1.997, 3.695], 'size_blender_xyz': [4.756, 3.91, 3.933], 'export': {'fbx': 'C:\\cdimp\\Halloween_Grave_C.fbx', 'kb': 1005.5, 'tris': {'Grave_C': 2877}}}
+00:41.890  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_A_front25.png'
+00:42.484  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_A_close.png'
+00:43.031  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_A_34.png'
+00:43.750  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_A_back.png'
+00:44.328  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\pv_DeadGrass_A_side.png'
+GRAVE_REPORT {"grass_A": {"name": "DeadGrass_A", "blades": 116, "tris": 2464, "texture": 512, "scale": [0.925, 1.028], "bbox_min": [-2.08, -2.092, -0.154], "bbox_max": [1.989, 2.173, 3.0], "size_blender_xyz": [4.07, 4.265, 3.154], "export": {"fbx": "C:\\cdimp\\Halloween_DeadGrass_A.fbx", "kb": 388.1, "tris": {"DeadGrass_A": 1336}}}, "grass_B": {"name": "DeadGrass_B", "blades": 120, "tris": 2268, "texture": 512, "scale": [0.914, 1.015], "bbox_min": [-1.398, -1.545, -0.152], "bbox_max": [1.567, 1.643, 2.5], "size_blender_xyz": [2.965, 3.188, 2.652], "export": {"fbx": "C:\\cdimp\\Halloween_DeadGrass_B.fbx", "kb": 387.9, "tris": {"DeadGrass_B": 1239}}}, "grave_C": {"name": "Grave_C", "tris": 3308, "parts_tris": {"stone": 2322, "mound": 462, "blades": 524}, "texture": 512, "uv_cover": 0.694, "bbox_min": [-2.33, -1.914, -0.238], "bbox_max": [2.426, 1.997, 3.695], "size_blender_xyz": [4.756, 3.91, 3.933], "export": {"fbx": "C:\\cdimp\\Halloween_Grave_C.fbx", "kb": 1005.5, "tris": {"Grave_C": 2877}}}, "preview": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\pv_DeadGrass_A_front25.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\pv_DeadGrass_A_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\pv_DeadGrass_A_34.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\pv_DeadGrass_A_back.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\pv_DeadGrass_A_side.png"]}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

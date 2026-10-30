@@ -1,0 +1,33 @@
+{
+ "name": "Grave_A",
+ "tris": 3279,
+ "parts_tris": {
+  "stone": 2271,
+  "mound": 420,
+  "blades": 588
+ },
+ "texture": 512,
+ "uv_cover": 0.645,
+ "bbox_min": [
+  -2.359,
+  -1.81,
+  -0.214
+ ],
+ "bbox_max": [
+  2.424,
+  1.662,
+  4.029
+ ],
+ "size_blender_xyz": [
+  4.783,
+  3.473,
+  4.243
+ ],
+ "export": {
+  "fbx": "C:\\cdimp\\Halloween_Grave_A.fbx",
+  "kb": 934.9,
+  "tris": {
+   "Grave_A": 2829
+  }
+ }
+}

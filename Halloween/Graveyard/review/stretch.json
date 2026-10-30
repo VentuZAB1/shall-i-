@@ -1,0 +1,68 @@
+{
+ "Grave_A": [
+  {
+   "faces": 2271,
+   "area": 30.78,
+   "aniso_gt2.5_area_frac": 0.0,
+   "px_per_stud_pcts(5,50,95)": [
+    56.3,
+    57.4,
+    89.1
+   ]
+  },
+  {
+   "faces": 220,
+   "area": 9.52,
+   "aniso_gt2.5_area_frac": 0.0,
+   "px_per_stud_pcts(5,50,95)": [
+    41.0,
+    43.3,
+    44.2
+   ]
+  }
+ ],
+ "Grave_B": [
+  {
+   "faces": 2274,
+   "area": 17.9,
+   "aniso_gt2.5_area_frac": 0.0,
+   "px_per_stud_pcts(5,50,95)": [
+    66.1,
+    68.0,
+    105.5
+   ]
+  },
+  {
+   "faces": 234,
+   "area": 8.02,
+   "aniso_gt2.5_area_frac": 0.0,
+   "px_per_stud_pcts(5,50,95)": [
+    49.2,
+    51.1,
+    51.7
+   ]
+  }
+ ],
+ "Grave_C": [
+  {
+   "faces": 2322,
+   "area": 30.31,
+   "aniso_gt2.5_area_frac": 0.0,
+   "px_per_stud_pcts(5,50,95)": [
+    55.9,
+    56.8,
+    88.2
+   ]
+  },
+  {
+   "faces": 251,
+   "area": 11.13,
+   "aniso_gt2.5_area_frac": 0.0,
+   "px_per_stud_pcts(5,50,95)": [
+    40.9,
+    42.7,
+    43.4
+   ]
+  }
+ ]
+}

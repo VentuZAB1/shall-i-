@@ -1,0 +1,1003 @@
+FBX version: 7400
+RVSTATS {
+ "fbx": "src/Halloween_HauntedTree.fbx",
+ "kb": 12906.9,
+ "raw_import_size_blender": [
+  0.1281,
+  0.1069,
+  0.1524
+ ],
+ "raw_object_scales": {
+  "HauntedTree_Branches": [
+   0.01,
+   0.01,
+   0.01
+  ],
+  "HauntedTree_Leaves": [
+   0.01,
+   0.01,
+   0.01
+  ],
+  "HauntedTree_Limbs": [
+   0.01,
+   0.01,
+   0.01
+  ],
+  "HauntedTree_Trunk": [
+   0.01,
+   0.01,
+   0.01
+  ],
+  "HauntedTree_Web": [
+   0.01,
+   0.01,
+   0.01
+  ],
+  "HauntedTree_WebSilk": [
+   0.01,
+   0.01,
+   0.01
+  ]
+ },
+ "applied_scale": 100.0,
+ "objects": [
+  {
+   "name": "HauntedTree_Branches",
+   "tris": 6004,
+   "verts": 3685,
+   "bbox_roblox_size": [
+    12.812,
+    8.244,
+    10.692
+   ],
+   "min_blender": [
+    -6.491,
+    -5.509,
+    6.747
+   ],
+   "max_blender": [
+    6.321,
+    5.183,
+    14.992
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.1074,
+   "uv_aniso_area_gt3": 0.0078,
+   "uv_flipped_area": 0.0,
+   "images": [
+    {
+     "name": "HauntedTree_Branches_albedo",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_Branches_PBR",
+     "surface_mean_srgb255": [
+      89,
+      81,
+      66
+     ],
+     "surface_mean_sat": 0.266,
+     "surface_lum_p5_p50_p95": [
+      0.186,
+      0.32,
+      0.473
+     ],
+     "surface_area_lum_lt_0.06": 0.0,
+     "surface_alpha_lt_0.99_area": 0.0,
+     "surface_alpha_mean": 1.0,
+     "px_per_stud_p5_p50_p95": [
+      107.5,
+      128.1,
+      167.5
+     ]
+    },
+    {
+     "name": "HauntedTree_Branches_normal",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Color@NORMAL_MAP"
+     ],
+     "material": "HauntedTree_Branches_PBR"
+    },
+    {
+     "name": "HauntedTree_Branches_rough",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Roughness@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_Branches_PBR"
+    }
+   ]
+  },
+  {
+   "name": "HauntedTree_Leaves",
+   "tris": 4620,
+   "verts": 3773,
+   "bbox_roblox_size": [
+    12.267,
+    7.555,
+    8.441
+   ],
+   "min_blender": [
+    -6.245,
+    -5.379,
+    6.638
+   ],
+   "max_blender": [
+    6.022,
+    3.062,
+    14.193
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.0,
+   "uv_aniso_area_gt3": 0.0,
+   "uv_flipped_area": 0.4913,
+   "images": [
+    {
+     "name": "HauntedTree_Leaves_albedo",
+     "size": [
+      512,
+      512
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_Leaves_PBR",
+     "surface_mean_srgb255": [
+      124,
+      56,
+      32
+     ],
+     "surface_mean_sat": 0.742,
+     "surface_lum_p5_p50_p95": [
+      0.157,
+      0.272,
+      0.411
+     ],
+     "surface_area_lum_lt_0.06": 0.0,
+     "surface_alpha_lt_0.99_area": 0.0,
+     "surface_alpha_mean": 1.0,
+     "px_per_stud_p5_p50_p95": [
+      324.9,
+      396.9,
+      500.2
+     ]
+    },
+    {
+     "name": "HauntedTree_Leaves_normal",
+     "size": [
+      512,
+      512
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Color@NORMAL_MAP"
+     ],
+     "material": "HauntedTree_Leaves_PBR"
+    },
+    {
+     "name": "HauntedTree_Leaves_rough",
+     "size": [
+      512,
+      512
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Roughness@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_Leaves_PBR"
+    }
+   ]
+  },
+  {
+   "name": "HauntedTree_Limbs",
+   "tris": 5014,
+   "verts": 2608,
+   "bbox_roblox_size": [
+    10.245,
+    4.745,
+    6.58
+   ],
+   "min_blender": [
+    -5.01,
+    -3.401,
+    7.133
+   ],
+   "max_blender": [
+    5.235,
+    3.179,
+    11.878
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.0129,
+   "uv_aniso_area_gt3": 0.0024,
+   "uv_flipped_area": 0.0,
+   "images": [
+    {
+     "name": "HauntedTree_Limbs_albedo",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_Limbs_PBR",
+     "surface_mean_srgb255": [
+      90,
+      83,
+      68
+     ],
+     "surface_mean_sat": 0.256,
+     "surface_lum_p5_p50_p95": [
+      0.181,
+      0.328,
+      0.481
+     ],
+     "surface_area_lum_lt_0.06": 0.0,
+     "surface_alpha_lt_0.99_area": 0.0,
+     "surface_alpha_mean": 1.0,
+     "px_per_stud_p5_p50_p95": [
+      110.2,
+      127.0,
+      142.5
+     ]
+    },
+    {
+     "name": "HauntedTree_Limbs_normal",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Color@NORMAL_MAP"
+     ],
+     "material": "HauntedTree_Limbs_PBR"
+    },
+    {
+     "name": "HauntedTree_Limbs_rough",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Roughness@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_Limbs_PBR"
+    }
+   ]
+  },
+  {
+   "name": "HauntedTree_Trunk",
+   "tris": 8476,
+   "verts": 4350,
+   "bbox_roblox_size": [
+    9.087,
+    7.692,
+    5.749
+   ],
+   "min_blender": [
+    -3.949,
+    -2.987,
+    -0.25
+   ],
+   "max_blender": [
+    5.138,
+    2.762,
+    7.442
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.0,
+   "uv_aniso_area_gt3": 0.0,
+   "uv_flipped_area": 0.0,
+   "images": [
+    {
+     "name": "HauntedTree_Trunk_albedo",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_Trunk_PBR",
+     "surface_mean_srgb255": [
+      78,
+      71,
+      57
+     ],
+     "surface_mean_sat": 0.293,
+     "surface_lum_p5_p50_p95": [
+      0.035,
+      0.281,
+      0.461
+     ],
+     "surface_area_lum_lt_0.06": 0.0654,
+     "surface_alpha_lt_0.99_area": 0.0,
+     "surface_alpha_mean": 1.0,
+     "px_per_stud_p5_p50_p95": [
+      4.4,
+      72.9,
+      78.4
+     ]
+    },
+    {
+     "name": "HauntedTree_Trunk_normal",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Color@NORMAL_MAP"
+     ],
+     "material": "HauntedTree_Trunk_PBR"
+    },
+    {
+     "name": "HauntedTree_Trunk_rough",
+     "size": [
+      1024,
+      1024
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Roughness@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_Trunk_PBR"
+    }
+   ]
+  },
+  {
+   "name": "HauntedTree_Web",
+   "tris": 1518,
+   "verts": 1034,
+   "bbox_roblox_size": [
+    1.369,
+    3.6,
+    1.688
+   ],
+   "min_blender": [
+    -1.824,
+    -1.982,
+    5.555
+   ],
+   "max_blender": [
+    -0.455,
+    -0.294,
+    9.155
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.6033,
+   "uv_aniso_area_gt3": 0.2399,
+   "uv_flipped_area": 0.4688,
+   "images": [
+    {
+     "name": "HauntedTree_Web_albedo",
+     "size": [
+      256,
+      256
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 1.0,
+     "alpha_mean": 1.0,
+     "alpha_lt099": 0.0,
+     "alpha_lt05": 0.0,
+     "alpha_unique_levels": 1,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_WebMat",
+     "surface_mean_srgb255": [
+      230,
+      230,
+      232
+     ],
+     "surface_mean_sat": 0.019,
+     "surface_lum_p5_p50_p95": [
+      0.812,
+      0.922,
+      0.941
+     ],
+     "surface_area_lum_lt_0.06": 0.0,
+     "surface_alpha_lt_0.99_area": 0.0,
+     "surface_alpha_mean": 1.0,
+     "px_per_stud_p5_p50_p95": [
+      22.7,
+      78.5,
+      95.9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "HauntedTree_WebSilk",
+   "tris": 288,
+   "verts": 202,
+   "bbox_roblox_size": [
+    0.976,
+    2.462,
+    1.321
+   ],
+   "min_blender": [
+    -1.621,
+    -1.722,
+    6.316
+   ],
+   "max_blender": [
+    -0.645,
+    -0.401,
+    8.778
+   ],
+   "smooth_frac": 1.0,
+   "sharp_edges": 0,
+   "custom_normals": true,
+   "uv_outside_01": 0.0,
+   "uv_aniso_area_gt2": 0.9761,
+   "uv_aniso_area_gt3": 0.8242,
+   "uv_flipped_area": 0.4997,
+   "images": [
+    {
+     "name": "HauntedTree_WebSilk_albedo",
+     "size": [
+      512,
+      512
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "sRGB",
+     "alpha_min": 0.0,
+     "alpha_mean": 0.345,
+     "alpha_lt099": 0.8752,
+     "alpha_lt05": 0.7404,
+     "alpha_unique_levels": 256,
+     "to": [
+      "Base Color@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_SilkMat",
+     "surface_mean_srgb255": [
+      225,
+      222,
+      215
+     ],
+     "surface_mean_sat": 0.047,
+     "surface_lum_p5_p50_p95": [
+      0.785,
+      0.883,
+      0.93
+     ],
+     "surface_area_lum_lt_0.06": 0.0,
+     "surface_alpha_lt_0.99_area": 0.8617,
+     "surface_alpha_mean": 0.379,
+     "px_per_stud_p5_p50_p95": [
+      139.3,
+      225.5,
+      406.6
+     ]
+    },
+    {
+     "name": "HauntedTree_WebSilk_albedo.002",
+     "size": [
+      512,
+      512
+     ],
+     "channels": 4,
+     "packed": true,
+     "colorspace": "Non-Color",
+     "alpha_min": 0.0,
+     "alpha_mean": 0.345,
+     "alpha_lt099": 0.8752,
+     "alpha_lt05": 0.7404,
+     "alpha_unique_levels": 256,
+     "to": [
+      "Alpha@BSDF_PRINCIPLED"
+     ],
+     "material": "HauntedTree_SilkMat"
+    }
+   ]
+  }
+ ],
+ "total_tris": 25920,
+ "bbox_blender_min": [
+  -6.491,
+  -5.509,
+  -0.25
+ ],
+ "bbox_blender_max": [
+  6.321,
+  5.183,
+  14.992
+ ],
+ "size_roblox_XYZ": [
+  12.81,
+  15.24,
+  10.69
+ ],
+ "lowest_z": -0.25,
+ "verts_below_-0.3": 0,
+ "trunk_base_centroid_xy": [
+  0.209,
+  -0.002
+ ],
+ "trunk_z1.5_centroid_xy": [
+  0.253,
+  0.011
+ ],
+ "trunk_z3_centroid_xy": [
+  0.07,
+  -0.857
+ ],
+ "trunk_profile_note": "az 270 = Blender -Y = Roblox +Z (front); az 90 = back; 0 = +X",
+ "trunk_profile": {
+  "1.6": {
+   "centre": [
+    0.18,
+    0.06
+   ],
+   "median_r": 1.11,
+   "min_r": 0.97,
+   "min_az_deg": 4,
+   "deep_az_deg": []
+  },
+  "1.97": {
+   "centre": [
+    -0.26,
+    0.39
+   ],
+   "median_r": 0.97,
+   "min_r": 0.58,
+   "min_az_deg": 124,
+   "deep_az_deg": [
+    100,
+    102,
+    104,
+    106,
+    108,
+    110,
+    112,
+    114,
+    116,
+    118,
+    120,
+    122,
+    124,
+    126,
+    128,
+    130,
+    132,
+    134,
+    136,
+    138,
+    140,
+    142,
+    144,
+    146,
+    148,
+    150,
+    152,
+    154,
+    156
+   ]
+  },
+  "2.5": {
+   "centre": [
+    -0.48,
+    0.23
+   ],
+   "median_r": 1.01,
+   "min_r": 0.53,
+   "min_az_deg": 156,
+   "deep_az_deg": [
+    136,
+    138,
+    140,
+    142,
+    144,
+    146,
+    148,
+    150,
+    152,
+    154,
+    156,
+    158,
+    160,
+    162,
+    164,
+    166,
+    168,
+    170,
+    172,
+    174,
+    176,
+    178,
+    180,
+    182,
+    184,
+    186,
+    188,
+    190,
+    192,
+    194,
+    196,
+    198,
+    200,
+    202,
+    204,
+    206,
+    208
+   ]
+  },
+  "3.0": {
+   "centre": [
+    0.08,
+    -0.8
+   ],
+   "median_r": 0.94,
+   "min_r": 0.21,
+   "min_az_deg": 288,
+   "deep_az_deg": [
+    240,
+    242,
+    244,
+    246,
+    248,
+    250,
+    252,
+    254,
+    256,
+    258,
+    260,
+    262,
+    264,
+    266,
+    268,
+    270,
+    272,
+    274,
+    276,
+    278,
+    280,
+    282,
+    284,
+    286,
+    288,
+    290,
+    292,
+    294,
+    296,
+    298,
+    300,
+    302
+   ]
+  },
+  "3.51": {
+   "centre": [
+    -0.14,
+    -0.08
+   ],
+   "median_r": 1.1,
+   "min_r": -0.69,
+   "min_az_deg": 318,
+   "deep_az_deg": [
+    238,
+    240,
+    242,
+    244,
+    246,
+    248,
+    250,
+    252,
+    254,
+    256,
+    258,
+    260,
+    262,
+    264,
+    266,
+    268,
+    270,
+    272,
+    274,
+    276,
+    278,
+    280,
+    282,
+    284,
+    286,
+    288,
+    290,
+    292,
+    294,
+    296,
+    298,
+    300,
+    302,
+    304,
+    306,
+    308,
+    310,
+    312,
+    314,
+    316,
+    318
+   ]
+  },
+  "4.35": {
+   "centre": [
+    0.2,
+    -0.79
+   ],
+   "median_r": 1.13,
+   "min_r": 0.65,
+   "min_az_deg": 294,
+   "deep_az_deg": [
+    228,
+    230,
+    232,
+    234,
+    236,
+    238,
+    240,
+    242,
+    244,
+    246,
+    274,
+    276,
+    278,
+    280,
+    282,
+    284,
+    286,
+    288,
+    290,
+    292,
+    294,
+    296,
+    298,
+    300,
+    302,
+    304,
+    306,
+    308,
+    310,
+    312,
+    314,
+    316,
+    318,
+    320,
+    322,
+    324,
+    326,
+    328,
+    330
+   ]
+  },
+  "4.95": {
+   "centre": [
+    0.08,
+    -0.13
+   ],
+   "median_r": 1.29,
+   "min_r": -0.87,
+   "min_az_deg": 304,
+   "deep_az_deg": [
+    214,
+    216,
+    218,
+    220,
+    222,
+    224,
+    226,
+    228,
+    230,
+    232,
+    234,
+    236,
+    238,
+    240,
+    242,
+    244,
+    246,
+    248,
+    250,
+    252,
+    254,
+    256,
+    282,
+    284,
+    286,
+    288,
+    290,
+    292,
+    294,
+    296,
+    298,
+    300,
+    302,
+    304,
+    306,
+    308,
+    310,
+    312,
+    314,
+    316,
+    318,
+    320,
+    322,
+    324,
+    326
+   ]
+  },
+  "5.6": {
+   "centre": [
+    0.09,
+    -0.43
+   ],
+   "median_r": 1.24,
+   "min_r": 0.88,
+   "min_az_deg": 288,
+   "deep_az_deg": [
+    266,
+    268,
+    270,
+    272,
+    274,
+    276,
+    278,
+    280,
+    282,
+    284,
+    286,
+    288,
+    290,
+    292,
+    294,
+    296,
+    298
+   ]
+  }
+ },
+ "spider_points_check": [
+  {
+   "roblox": [
+    -5.98,
+    7.6,
+    1.59
+   ],
+   "branch_above_dist": 0.016,
+   "free_drop": "clear to ground (7.60)",
+   "ring_rays_blocked_of_12": 0
+  },
+  {
+   "roblox": [
+    5.51,
+    7.64,
+    1.98
+   ],
+   "branch_above_dist": 0.005,
+   "free_drop": "clear to ground (7.64)",
+   "ring_rays_blocked_of_12": 0
+  }
+ ]
+}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

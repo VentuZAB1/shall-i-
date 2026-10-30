@@ -1,0 +1,38 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.StarterPackClient",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "local function updateTimer()\n\tlocal left = timeLeft()\n\ttagText.Text = \"ENDS IN \" .. P.clockText(left)\n\ttagGrad.Color = left < 3600 and RED_TIMER or GOLD_TIMER\nend",
+   "new_string": "local function updateTimer()\n\tlocal left = timeLeft()\n\ttagText.Text = \"ENDS IN \" .. P.clockText(left)\n\ttagGrad.Color = GOLD_TIMER -- (2026-10-22 UI polish: no red last-hour escalation, Roblox: no pushy urgency with minors)\nend"
+  },
+  {
+   "old_string": "local noBtn = standardButton(win, \"NoThanks\", UDim2.fromOffset(170, 56), UDim2.fromOffset(115, 382), \"NO THANKS\", SILVER_GRAD, 22)",
+   "new_string": "local noBtn = standardButton(win, \"NoThanks\", UDim2.fromOffset(170, 64), UDim2.fromOffset(115, 382), \"NO THANKS\", SILVER_GRAD, 22) -- (M7: 56 tall)"
+  },
+  {
+   "old_string": "\tbuyWord.Size = UDim2.fromOffset(270, 38)\nend",
+   "new_string": "\tbuyWord.Size = UDim2.fromOffset(270, 38)\n\ttagText.Visible = word ~= \"OFFER ENDED\" -- (2026-10-22 UI polish) the timer hides while OFFER ENDED shows\nend"
+  },
+  {
+   "old_string": "\ttitle.Text = \"STARTER PACK!\"\n\tif os.clock() > flashUntil then\n\t\tbuyWord.Text = \"BUY\"",
+   "new_string": "\ttitle.Text = \"STARTER PACK!\"\n\tif os.clock() > flashUntil then\n\t\ttagText.Visible = true\n\t\tbuyWord.Text = \"BUY\""
+  },
+  {
+   "old_string": "\t\t\tcard.tag.BackgroundColor3 = left < 3600 and C(230, 30, 60) or C(255, 170, 0)",
+   "new_string": "\t\t\tcard.tag.BackgroundColor3 = C(255, 170, 0) -- (2026-10-22 UI polish: no red last hour)"
+  },
+  {
+   "old_string": "\t\tif card and card.row.Visible then",
+   "new_string": "\t\tif card and card.row.Visible and menuWin.Visible then -- (2026-10-22 UI polish: nothing runs while the Shop is closed)"
+  },
+  {
+   "old_string": "\treturn math.clamp(math.min(vp.X / 1050, vp.Y / 620), 0.52, 1.18)\nend\nworkspace.CurrentCamera:GetPropertyChangedSignal(\"ViewportSize\"):Connect(function() windowScale.Scale = deviceScale() end)",
+   "new_string": "\treturn math.clamp(math.min(vp.X / 1050, vp.Y / 620), 0.7, 1.18) -- (2026-10-22 UI polish, M5: phone floor 0.7, was 0.52)\nend\nworkspace.CurrentCamera:GetPropertyChangedSignal(\"ViewportSize\"):Connect(function() windowScale.Scale = deviceScale() end)"
+  },
+  {
+   "old_string": "close.Activated:Connect(closePopup)\nnoBtn.Activated:Connect(closePopup)\nbackdrop.Activated:Connect(closePopup)",
+   "new_string": "close.Activated:Connect(closePopup)\nnoBtn.Activated:Connect(closePopup)\nbackdrop.Activated:Connect(closePopup)\nB.tapArea(close, closePopup) B.tapArea(noBtn, closePopup) -- (2026-10-22 UI polish, M7)"
+  }
+ ]
+}

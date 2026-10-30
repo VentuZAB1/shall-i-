@@ -1,0 +1,83 @@
+{
+ "tag": "r10b_ay0.33_d0.375",
+ "vis": {
+  "30": {
+   "Leg_L": 0.5,
+   "Shin_L": 0.618,
+   "Foot_L": 0.487
+  },
+  "40": {
+   "Leg_L": 0.5,
+   "Shin_L": 0.618,
+   "Foot_L": 0.487
+  },
+  "50": {
+   "Leg_L": 0.487,
+   "Shin_L": 0.596,
+   "Foot_L": 0.481
+  }
+ },
+ "occ": {
+  "30_Leg_L": {
+   "Shin_L": 15,
+   "Arm_L": 15,
+   "Spine": 10
+  },
+  "30_Shin_L": {
+   "Foot_L": 35,
+   "Leg_L": 17
+  },
+  "30_Foot_L": {
+   "Shin_L": 82
+  },
+  "40_Leg_L": {
+   "Shin_L": 15,
+   "Arm_L": 15,
+   "Spine": 10
+  },
+  "40_Shin_L": {
+   "Foot_L": 35,
+   "Leg_L": 17
+  },
+  "40_Foot_L": {
+   "Shin_L": 82
+  },
+  "50_Leg_L": {
+   "Shin_L": 16,
+   "Arm_L": 15,
+   "Spine": 10
+  },
+  "50_Shin_L": {
+   "Foot_L": 37,
+   "Leg_L": 18
+  },
+  "50_Foot_L": {
+   "Shin_L": 83
+  }
+ },
+ "knee_band_f18_52": [
+  -0.0033,
+  -0.0005
+ ],
+ "knee_lands_f": 16,
+ "foot_r_drift_f18_52": 0.0,
+ "foot_r_minz_f18_52": 0.0,
+ "arm_leg_overlap_frames": {
+  "L": [],
+  "R": []
+ },
+ "ground_min": [
+  -0.0172,
+  52
+ ],
+ "ang": {
+  "Chest": [
+   4.68,
+   57
+  ],
+  "Head": [
+   14.11,
+   20
+  ]
+ }
+}

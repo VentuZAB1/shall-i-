@@ -1,0 +1,6 @@
+FBX version: 7400
+[rv2] {"twist_srgb": [47.1, 49.6, 56.1], "twist_Y": 0.03143, "pole_srgb": [47.5, 49.3, 55.8], "pole_Y": 0.03126, "twist_vs_pole_Y": 1.005, "twist_vs_pole_srgb_mean": 1.001, "chroma_twist_R_minus_B": -9.0, "chroma_pole_R_minus_B": -8.3}
+[rv2] done twist
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

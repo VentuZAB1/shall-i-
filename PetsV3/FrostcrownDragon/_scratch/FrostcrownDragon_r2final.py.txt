@@ -1,0 +1,489 @@
+# Frostcrown Dragon (Glacier egg, MYTHIC 0.1 %, 2026-10-27) - plan _review/FrostcrownDragon_plan.md (v2, written as
+# "Absolute Zero Dragon"). The rarest pet in the game: a colossal steel-blue western ice dragon (wing-quad, flies) built
+# from tapered blocks under a Roblox stud skin. Deep keeled chest with pale ice scute plates, tucked waist, muscular
+# shoulders + digitigrade hind legs with crystal claws, a long S-neck, a wedge head with long ice-white slit eyes under
+# dark brow spines, ice teeth and a dark-violet mouth. HERO: the GOLD HORN CROWN - two long back-swept gold horns from
+# the brow (GOLD_D ridges + tips) and a gold diadem with five points. Signature: SEVEN flat ICE-WHITE frost fins
+# (crystal blades, hard edges, an ice-belly inner facet) down the neck and back on their own bones Fin_1..5, a dark
+# back line of small ridge scales between them, bat-like pale frost membrane wings on 4 fingers, and a long tail ending
+# in an ice crystal spike cluster. No glow (frost breath / ice trails / sparkles = Studio VFX anchors FX_*).
+import math
+from mathutils import Vector, Matrix, Euler
+import wing3
+
+DISPLAY = "Frostcrown Dragon"
+MOTION = "Fly"
+RIG = "wingquad"
+HEIGHT = 11.5                # top of the horn crown (tied tallest pet in the game with the Eclipse Seraph)
+
+# Blender colours (Roblox renders ~0.6x darker) - plan section 4
+STEEL_BLUE = (70, 118, 190)   # body, neck, legs, tail, head (studded) - plan hue 216, richer (review 1 MUST 4)
+ICE_BELLY = (210, 226, 246)   # throat, belly + keel scute plates, jaw underside, fin inner facets
+ICE_W = (236, 246, 252)       # dorsal frost fins, tail crystal tip, claws, teeth (smooth)
+MEMBRANE = (100, 130, 196)    # wing membranes (smooth), frost blue (review 1 MUST 4, one step darker: round 2)
+DEEP_STEEL = (38, 64, 130)    # dark top band (neck top, back, tail top, skull cap) + wing arms, shins, feet
+DARK = (66, 72, 108)          # brow spines, back line, wing fingers + trim, claw / fin sockets, scute gaps
+GOLD = (255, 196, 50)         # THE hero: horn crown (horns, diadem, points)
+GOLD_D = (214, 150, 30)       # horn ridge bands, horn tips, diadem inner
+EYE_HOT = (244, 250, 255)     # eye slit
+MOUTH = (46, 40, 80)          # mouth cavity (cold dark violet)
+BLACK = (14, 14, 22)          # pupils, eye sockets, nostrils
+
+# leg joints (left side): H shoulder / hip, K elbow / knee, A wrist / hock, P paw centre
+LEGS = {"F": ((0.20, -0.46, 0.86), (0.28, -0.36, 0.48), (0.245, -0.50, 0.12), (0.245, -0.55, 0.045)),
+        "B": ((0.21, 0.50, 0.86), (0.25, 0.30, 0.52), (0.245, 0.60, 0.22), (0.245, 0.52, 0.045))}
+NECKP = [(0, -0.56, 1.06), (0, -0.84, 1.36), (0, -0.88, 1.66)]          # Neck, Neck2, Head (throat pivot)
+HC = Vector((0, -1.00, 1.80))                                           # skull centre
+TAILP = [(0, 0.66, 0.94), (0, 1.12, 0.80), (0, 1.58, 0.64), (0, 2.02, 0.54), (0, 2.40, 0.52)]
+# wing: shoulder S, wrist W, hinge finger end H (= finger 4), body attachment BB; fingers 1-3 on the tip bone
+WING = wing3.Wing(S=(0.20, -0.18, 1.15), W=(1.05, 0.0, 1.66), H=(1.00, 1.10, 1.06), BB=(0.15, 0.42, 1.10))
+F1, F2, F3 = (2.40, 0.30, 1.88), (2.18, 0.90, 1.50), (1.66, 1.20, 1.20)
+FIN_BONES = ["Fin_%d" % i for i in range(1, 8)]
+FIN_PARENTS = ("Neck2", "Neck", "Chest", "Spine", "Spine", "Tail1", "Tail2")
+ANCH = {}
+
+
+def X(p, s):
+    return Vector((s * p[0], p[1], p[2]))
+
+
+def frame(z, n):
+    z = Vector(z).normalized()
+    x = Vector(n)
+    x = (x - z * x.dot(z)).normalized()
+    return Matrix((x, z.cross(x), z)).transposed()
+
+
+def surf_hit(B, blks, origin, direction):
+    """exact hit point + normal on the bevelled meshes of blks (CelestialDragon / ThunderRex)"""
+    import blockkit as bk
+    from mathutils.bvhtree import BVHTree
+    B._resolve()
+    best = None
+    d = Vector(direction).normalized()
+    for blk in blks:
+        bm = bk._box_bm(blk)
+        t = BVHTree.FromBMesh(bm)
+        bm.free()
+        loc, nrm, _, dist = t.ray_cast(Vector(origin), d)
+        if loc is not None and (best is None or dist < best[2]):
+            best = (loc, nrm.normalized(), dist)
+    if best is None:
+        raise RuntimeError("surf_hit: no surface from %s" % (tuple(origin),))
+    return best[0], best[1]
+
+
+def seat_plate(B, blks, origin, direction, half, color, bone, proud=0.010, **kw):
+    """plate whose local -y face lies on the surface hit from origin along direction, <= proud above it"""
+    p, n = surf_hit(B, blks, origin, direction)
+    y = -n
+    x = Vector((1, 0, 0)) - n * n.x
+    x = x.normalized() if x.length > 1e-4 else Vector((0, 0, 1))
+    z = x.cross(y).normalized()
+    R = Matrix((x, y, z)).transposed()
+    kw.setdefault("studs", [])
+    return B.add(p + n * (proud - half[1]), half, color, bone, R=R, **kw)
+
+
+def prof(b, lz):
+    t = (lz / b.h.z + 1) / 2
+    fx = b.bot[0] + (b.top[0] - b.bot[0]) * t
+    fy = b.bot[1] + (b.top[1] - b.bot[1]) * t
+    return b.h.x * fx, b.h.y * fy, b.ts[1] * t
+
+
+def shell(B, b, y0, y1, za, color, pad=0.022, bone=None, rnd=0.34, **kw):
+    """saddle shell over body block b: local y range [y0, y1], local z from za up over the top (ThunderRex)"""
+    xa, ya, oa = prof(b, za)
+    xb, yb, ob = prof(b, b.h.z)
+    zb = b.h.z + pad
+    lo_a, hi_a = max(y0 + oa, oa - ya - pad), min(y1 + oa, oa + ya + pad)
+    lo_b, hi_b = max(y0 + ob, ob - yb - pad), min(y1 + ob, ob + yb + pad)
+    cy, hy = (lo_a + hi_a) / 2, (hi_a - lo_a) / 2
+    hx = xa + pad
+    c = b.world(Vector((0, cy, (za + zb) / 2)))
+    return B.add(c, (hx, hy, (zb - za) / 2), color, bone or b.bone, R=b.R,
+                 top=((xb + pad) / hx, (hi_b - lo_b) / 2 / hy), top_shift=(0, (lo_b + hi_b) / 2 - cy), rnd=rnd, **kw)
+
+
+def fierce_eye(B, c, s, bone="Head", yaw=22.0, tilt=20.0, sc=1.0):
+    """long ice-white slit (inner corner low, 20 deg) in a black socket, black slit pupil, heavy DARK brow block; no
+    glint, no round pupil"""
+    R = Euler((0, math.radians(-s * tilt), math.radians(s * yaw)), "XYZ").to_matrix()
+    n = R @ Vector((0, -1, 0))
+    c = Vector(c)
+    B.add(c, (0.062 * sc, 0.008, 0.024 * sc), BLACK, bone, R=R, studs=[], role="detail", bevel=0.004)
+    B.add(c + n * 0.006, (0.054 * sc, 0.006, 0.0125 * sc), EYE_HOT, bone, R=R, studs=[], role="detail", bevel=0.003)
+    B.add(c + n * 0.011 + R @ Vector((-s * 0.006 * sc, 0, 0)), (0.0055 * sc, 0.004, 0.0125 * sc), BLACK, bone, R=R,
+          studs=[], role="detail", bevel=0.002)                                                   # slit pupil
+    Rb = Euler((0, math.radians(-s * 22), math.radians(s * yaw)), "XYZ").to_matrix()
+    B.add(c + Vector((0, 0, 0.034 * sc)) + n * 0.018 + Rb @ Vector((s * 0.008, 0, 0)), (0.066 * sc, 0.028, 0.017 * sc),
+          DARK, bone, R=Rb, role="detail", bevel=0.008)                                          # heavy brow
+
+
+def frost_fin(B, base, h, chord, thick, bone, rake=0.62):
+    """a FLAT crystal fin in the y-z plane (thin across x): hard-edged ICE_W pentagon blade swept back (rake = tip
+    offset back / height), an ICE_BELLY inner facet on both faces, a DARK socket at the root. Returns the tip."""
+    import blockkit as bk
+    b = Vector(base)
+    y0, z0 = b.y, b.z - 0.05
+    tip = Vector((0, y0 + rake * h, z0 + h + 0.05))
+    pts = [Vector((0, y0 - 0.5 * chord, z0)), Vector((0, y0 - 0.30 * chord + 0.18 * h, z0 + 0.50 * h)), tip,
+           Vector((0, y0 + 0.5 * chord + 0.22 * h, z0 + 0.42 * h)), Vector((0, y0 + 0.5 * chord, z0))]
+    B.poly(pts, thick, ICE_W, bone)
+    for sx in (1, -1):                                       # inner facet: a smaller ice-belly blade on each face
+        c = sum(pts, Vector()) / len(pts)
+        q = [c.lerp(p, 0.62) + Vector((sx * (thick / 2 + 0.004), 0, 0.02)) for p in pts]
+        B.poly(q, 0.008, ICE_BELLY, bone)
+    B.add(Vector((0, y0, b.z - 0.01)), (thick * 0.95, chord * 0.48, 0.05), DARK, bone, top=(0.8, 0.8),
+          role="limb", nostud=True, studs=[])
+    return tip
+
+
+def horn(B, P, w0, bone):
+    """3-segment back-swept GOLD horn with GOLD_D ridge bands and a GOLD_D point"""
+    for i in range(len(P) - 2):
+        a, b = P[i], P[i + 1]
+        w = w0 * (1.0 - 0.18 * i)
+        B.seg(a, b, w, w * 1.05, GOLD, bone, side=(1, 0, 0), ext=0.05 if i == 0 else 0.02, top=(0.84, 0.84),
+              role="limb", nostud=True, studs=[], rnd=0.35)
+        d = (b - a).normalized()
+        B.seg(b - d * 0.018, b + d * 0.018, w * 0.90, w * 0.95, GOLD_D, bone, side=(1, 0, 0), role="limb",
+              nostud=True, studs=[], rnd=0.3)                                                     # ridge band
+    a, b = P[-2], P[-1]
+    d = (b - a).normalized()
+    B.spike(a - d * 0.02, d, (b - a).length + 0.02, w0 * 0.62, GOLD_D, bone, top=(0.12, 0.12), nostud=True)
+    return b
+
+
+def membrane_wing(B, s, side):
+    """bat wing on 4 fingers: DEEP_STEEL arm + wrist knuckle + an ice thumb claw, DARK fingers, MEMBRANE
+    panels (inner on the arm bone, 3 outer on the tip bone), scalloped STEEL_BLUE trailing-edge trim"""
+    S, W, f4, bb = (X(p, s) for p in (WING.S, WING.W, WING.H, WING.BB))
+    f1, f2, f3 = X(F1, s), X(F2, s), X(F3, s)
+    wb, tb = "Wing_" + side, "WingTip_" + side
+    B.seg(S, W, 0.07, 0.075, DEEP_STEEL, wb, side=(0, 0, 1), ext=0.10, role="limb", top=(0.8, 0.8))
+    B.add(W, (0.08, 0.08, 0.08), DEEP_STEEL, wb, role="limb")
+    B.spike(W + Vector((s * 0.02, -0.04, 0.05)), (s * 0.4, -0.6, 0.7), 0.17, 0.034, ICE_W, wb, top=(0.12, 0.12))
+    B.seg(W, f4, 0.042, 0.046, DARK, wb, side=(0, 0, 1), top=(0.45, 0.45), role="limb")
+    for f, w in ((f1, 0.062), (f2, 0.056), (f3, 0.052)):
+        B.seg(W, f, w, w + 0.004, DARK, tb, side=(0, 0, 1), top=(0.38, 0.38), role="limb")
+    e12 = f1.lerp(f2, 0.5).lerp(W, 0.16)
+    e23 = f2.lerp(f3, 0.5).lerp(W, 0.16)
+    e34 = f3.lerp(f4, 0.5).lerp(W, 0.14)
+    q = f4.lerp(bb, 0.5).lerp(S, 0.14)
+    B.poly([S, W, f4, q, bb], 0.028, MEMBRANE, wb)
+    B.poly([W, f1, e12, f2], 0.028, MEMBRANE, tb)
+    B.poly([W, f2, e23, f3], 0.028, MEMBRANE, tb)
+    B.poly([W, f3, e34, f4], 0.028, MEMBRANE, tb)
+    nrm = (f1 - W).cross(f4 - W).normalized()
+    for a, b, bone in ((f1, e12, tb), (e12, f2, tb), (f2, e23, tb), (e23, f3, tb), (f3, e34, tb), (e34, f4, tb),
+                       (f4, q, wb), (q, bb, wb)):
+        B.bar(a, b, nrm, 0.06 if bone == tb else 0.042, 0.022, DARK, bone, studs=[], bevel=0.007, nostud=True)
+    ANCH["FX_FrostTrail_" + side] = tuple(f1)
+
+
+def model(k):
+    import blockkit as bk
+    B = bk.Blocks(k, seed=1150, tier=6, plates=False)
+    up = Vector((0, 0, 1))
+    # ================= torso: deep keeled ribcage (front raised), shoulder hump, sloped tuck, waist, hips
+    rib = B.add((0, -0.30, 0.88), (0.30, 0.40, 0.32), STEEL_BLUE, "Chest", rot=(-6, 0, 0), bot=(0.62, 0.56),
+                top=(0.88, 0.92), rnd=0.32)
+    withers = B.add((0, -0.38, 1.20), (0.22, 0.26, 0.07), DEEP_STEEL, "Chest", top=(0.70, 0.80))
+    B.seg((0, -0.06, 0.66), (0, 0.42, 0.78), 0.155, 0.085, STEEL_BLUE, "Spine", top=(0.82, 0.75))     # tuck
+    waist = B.add((0, 0.14, 0.92), (0.215, 0.24, 0.19), STEEL_BLUE, "Spine", bot=(0.72, 0.70), top=(0.95, 1),
+                  rnd=0.30)
+    hips = B.add((0, 0.50, 0.90), (0.235, 0.22, 0.21), STEEL_BLUE, "Spine", rot=(-8, 0, 0), top=(0.84, 0.90),
+                 bot=(0.85, 0.9), rnd=0.32)
+    # the dark top band: DEEP_STEEL saddle shells over the ribcage, waist and hips
+    sh_rib = shell(B, rib, -0.40, 0.40, 0.08, DEEP_STEEL)
+    sh_waist = shell(B, waist, -0.26, 0.26, 0.02, DEEP_STEEL)
+    sh_hips = shell(B, hips, -0.24, 0.24, 0.0, DEEP_STEEL)
+    # pale ice scute underside: brisket plate, belly strip up the tuck, keel plate on the chest front, scute gaps
+    B.add((0, -0.36, 0.595), (0.14, 0.21, 0.026), ICE_BELLY, "Chest", rot=(-6, 0, 0), bot=(0.8, 0.9), studs=[])
+    B.seg((0, -0.14, 0.592), (0, 0.32, 0.712), 0.11, 0.024, ICE_BELLY, "Spine", top=(0.8, 1), ext=0.03)
+    for t, w in ((0.40, 0.10), (0.80, 0.09)):
+        p = Vector((0, -0.14, 0.566)).lerp(Vector((0, 0.32, 0.686)), t)
+        B.bar(p + Vector((-w, 0, 0)), p + Vector((w, 0, 0)), Vector((0, 0, -1)), 0.02, 0.008, DARK, "Spine",
+              studs=[], bevel=0.003, nostud=True)
+    # the FROST CORE: one faceted ICE_W crystal on the chest front (0.20 wide x 0.26 tall, 0.012 proud) in a DARK
+    # setting, with an ICE_BELLY inner facet - the crystal focal point against the studded hide
+    cp, cn = surf_hit(B, [rib], (0, -2, 0.76), (0, 1, 0))
+    cu = Vector((1, 0, 0))
+    cv = cn.cross(cu).normalized()
+    if cv.z < 0:
+        cv = -cv
+    hexa = [(0, 0.13), (0.10, 0.052), (0.10, -0.052), (0, -0.13), (-0.10, -0.052), (-0.10, 0.052)]
+    B.poly([cp - cn * 0.004 + cu * (x * 1.16) + cv * (y * 1.12) for x, y in hexa], 0.03, DARK, "Chest")   # setting
+    B.poly([cp + cu * x + cv * y for x, y in hexa], 0.044, ICE_W, "Chest")                  # crystal, face at +0.022
+    B.poly([cp + cn * 0.024 + cu * (x * 0.52) + cv * (y * 0.56) for x, y in hexa], 0.006, ICE_BELLY, "Chest")
+    for x0, y0, x1, y1 in ((0, 0.13, 0, -0.13), (-0.10, 0.052, 0.10, -0.052), (0.10, 0.052, -0.10, -0.052)):
+        B.bar(cp + cn * 0.024 + cu * x0 + cv * y0, cp + cn * 0.024 + cu * x1 + cv * y1, cn, 0.012, 0.004, ICE_BELLY,
+              "Chest", studs=[], role="detail", bevel=0.002)                                     # facet edges
+    ANCH["Core"] = tuple(cp + cn * 0.03)
+    # ================= S-neck: lower part leans forward, upper part rises; ice scute throat with dark gaps
+    N0, N1, N2 = (Vector(p) for p in NECKP)
+    B.seg(N0 + Vector((0, 0.03, -0.05)), N1, 0.165, 0.17, STEEL_BLUE, "Neck", ext=0.06, ext1=0.04, top=(0.92, 0.92))
+    B.seg(N1, N2 + Vector((0, 0.0, 0.04)), 0.14, 0.145, STEEL_BLUE, "Neck2", ext=0.06, ext1=0.02, top=(0.92, 0.9))
+    for a, b, bone, hw, off in ((N0 + Vector((0, 0.03, -0.05)), N1, "Neck", 0.12, 0.17), (N1, N2, "Neck2", 0.10, 0.145)):
+        d = (b - a).normalized()
+        fn = Vector((0, d.z, -d.y)) if d.z > 0 else Vector((0, -d.z, d.y))
+        if fn.y > 0:
+            fn = -fn
+        B.seg(a + fn * (off - 0.035), b + fn * (off - 0.035), hw, 0.05, ICE_BELLY, bone, ext=0.02, ext1=0.0)
+        B.seg(a - fn * (off - 0.05), b - fn * (off - 0.05), hw * 1.5, 0.06, DEEP_STEEL, bone, ext=0.04, ext1=0.0,
+              rnd=0.4)                                                                             # neck saddle
+    # ================= head (throat pivot): wedge skull, snout, jaw, ice teeth, long slit eyes, brow spines
+    B.add(HC, (0.17, 0.175, 0.135), STEEL_BLUE, "Head", top=(0.80, 0.85), rnd=0.25)                   # skull
+    B.add(HC + Vector((0, 0.03, 0.10)), (0.125, 0.13, 0.04), DEEP_STEEL, "Head", top=(0.8, 0.8), rnd=0.3)  # skull cap
+    for s in (1, -1):                                                                              # jaw muscles
+        B.add(HC + Vector((s * 0.12, 0.06, -0.09)), (0.05, 0.10, 0.10), STEEL_BLUE, "Head", top=(0.7, 0.8),
+              rnd=0.4)
+    B.seg(HC + Vector((0, -0.11, -0.03)), HC + Vector((0, -0.44, -0.085)), 0.098, 0.07, STEEL_BLUE, "Head",
+          top=(0.68, 0.72), ext=0.02)                                                              # snout
+    B.seg(HC + Vector((0, -0.30, 0.0)), HC + Vector((0, -0.42, -0.036)), 0.03, 0.014, DARK, "Head",
+          top=(0.5, 0.6))                                                                          # nose ridge
+    for s in (1, -1):
+        B.add(HC + Vector((s * 0.036, -0.415, -0.05)), (0.013, 0.026, 0.008), BLACK, "Head", rot=(-9, 0, s * 20),
+              role="detail", bevel=0.003)                                                          # nostril slits
+    B.seg(HC + Vector((0, -0.13, -0.135)), HC + Vector((0, -0.43, -0.14)), 0.084, 0.02, ICE_BELLY, "Head",
+          top=(0.75, 0.9))                                                                         # pale upper lip
+    for s in (1, -1):
+        B.spike(HC + Vector((s * 0.052, -0.41, -0.145)), (0, -0.1, -1), 0.08, 0.016, ICE_W, "Head")    # fang
+        for y in (-0.345, -0.285, -0.225, -0.165):
+            B.spike(HC + Vector((s * 0.066, y, -0.145)), (0, 0, -1), 0.04, 0.012, ICE_W, "Head")
+    B.seg(HC + Vector((0, -0.07, -0.175)), HC + Vector((0, -0.42, -0.18)), 0.075, 0.028, STEEL_BLUE, "Jaw",
+          top=(0.8, 1), ext=0.02)                                                                  # lower jaw
+    B.seg(HC + Vector((0, -0.08, -0.20)), HC + Vector((0, -0.40, -0.205)), 0.06, 0.012, ICE_BELLY, "Jaw",
+          top=(0.8, 1), ext=0.01)                                                                  # jaw underside
+    B.add(HC + Vector((0, -0.26, -0.147)), (0.058, 0.13, 0.008), MOUTH, "Jaw", studs=[], role="detail", bevel=0.004)
+    for s in (1, -1):
+        B.spike(HC + Vector((s * 0.044, -0.39, -0.16)), (0, 0, 1), 0.05, 0.013, ICE_W, "Jaw")
+    for s in (1, -1):
+        B.add(HC + Vector((s * 0.10, -0.125, 0.006)), (0.036, 0.03, 0.05), STEEL_BLUE, "Head", rot=(0, 0, s * 26),
+              role="detail", bevel=0.01)                                                          # cheek corner
+        fierce_eye(B, HC + Vector((s * 0.088, -0.160, 0.030)), s, yaw=24, sc=1.25)
+        for z, dz, L, w in ((-0.10, -0.30, 0.15, 0.04), (-0.02, 0.0, 0.17, 0.045)):               # cheek blades
+            B.spike(HC + Vector((s * 0.12, 0.02, z)), (s * 0.40, 0.92, dz), L, w, DARK, "Head", top=(0.12, 0.4))
+        B.spike(HC + Vector((s * 0.135, -0.10, 0.06)), (s * 0.45, 0.85, 0.30), 0.16, 0.03, DARK, "Head",
+                top=(0.12, 0.3))                                                                   # brow spine
+    # ================= HERO: the GOLD HORN CROWN - two long back-swept horns from the brow + a diadem, 5 points
+    for s, side in ((1, "L"), (-1, "R")):
+        P = [HC + Vector((s * 0.09, -0.06, 0.12)), HC + Vector((s * 0.17, 0.11, 0.27)),
+             HC + Vector((s * 0.25, 0.36, 0.36)), HC + Vector((s * 0.31, 0.74, 0.40))]
+        tip = horn(B, P, 0.080, "Horn_" + side)
+        ANCH["FX_IceTrail_" + side] = tuple(tip)
+    zb = HC.z + 0.098
+    B.add(HC + Vector((0, -0.152, 0.11)), (0.15, 0.030, 0.040), GOLD, "Head", top=(0.92, 1), role="limb",
+          bevel=0.008, studs=[], nostud=True)                                                     # diadem front
+    for s in (1, -1):
+        B.seg(HC + Vector((s * 0.146, -0.15, 0.106)), HC + Vector((s * 0.142, 0.15, 0.10)), 0.022, 0.040, GOLD,
+              "Head", side=(1, 0, 0), studs=[], nostud=True, role="limb")                         # diadem sides
+    B.add(HC + Vector((0, 0.158, 0.10)), (0.13, 0.016, 0.04), GOLD_D, "Head", studs=[], nostud=True, role="limb",
+          bevel=0.006)                                                                             # diadem back
+    for x, h, w in ((-0.10, 0.06, 0.020), (-0.05, 0.09, 0.024), (0.0, 0.13, 0.030), (0.05, 0.09, 0.024),
+                    (0.10, 0.06, 0.020)):                                                       # five points
+        base = HC + Vector((x, -0.160, 0.13))
+        B.spike(base, (x * 0.8, -0.16, 1), h, w, GOLD, "Head", top=(0.12, 0.12), nostud=True)
+    # ================= the FIVE frost fins (Fin_1..5): neck, neck, withers (tallest), back, hips; one bone each
+    # bases spaced so the swept blades never overlap (spacing >= ~0.8 chord): neck bases are explicit points on
+    # the neck back, body bases are ray hits on the saddle shells, tail bases sit on the tail's dorsal band
+    TA = [Vector(p) for p in TAILP]
+    fin_spec = (("Fin_1", Vector((0, -0.83, 1.52)), 0.40, 0.26, "Neck2", (0, 0, 0)),
+                ("Fin_2", Vector((0, -0.56, 1.18)), 0.55, 0.31, "Neck", (0, 0, 0)),
+                ("Fin_3", Vector((0, -0.15, 1.0)), 0.60, 0.38, "Chest", None),
+                ("Fin_4", Vector((0, 0.24, 1.0)), 0.52, 0.35, "Spine", None),
+                ("Fin_5", Vector((0, 0.60, 1.0)), 0.42, 0.29, "Spine", None),
+                ("Fin_6", TA[0].lerp(TA[1], 0.45), 0.30, 0.20, "Tail1", (0, 0, 0.165)),
+                ("Fin_7", TA[1].lerp(TA[2], 0.45), 0.24, 0.17, "Tail2", (0, 0, 0.125)))
+    tops = [sh_rib, withers, sh_waist, sh_hips]
+    for nm, p, h, ch, par, off in fin_spec:
+        if off is None:
+            base, _ = surf_hit(B, tops, (0, p.y, 3.0), (0, 0, -1))
+        else:
+            base = Vector(p) + Vector(off)
+        ANCH["FIN_BASE_" + nm] = tuple(base)
+        ANCH["FX_FinSpark_" + nm[-1]] = tuple(frost_fin(B, base, h, ch, 0.085, nm))
+    # dark dorsal stripe (the back line): a DARK band along the neck back, the body top and the tail top
+    for a, b, bone, off, hw in ((N0 + Vector((0, 0.03, -0.05)), N1, "Neck", 0.215, 0.085), (N1, N2, "Neck2", 0.19, 0.07)):
+        d = (b - a).normalized()
+        bn = Vector((0, -d.z, d.y)) if d.z > 0 else Vector((0, d.z, -d.y))
+        if bn.y < 0:
+            bn = -bn
+        B.seg(a + bn * (off - 0.03), b + bn * (off - 0.03), hw, 0.042, DARK, bone, ext=0.03, ext1=0.0, rnd=0.4)
+    prev = None
+    for y in (-0.62, -0.42, -0.20, 0.0, 0.20, 0.40, 0.60):
+        p, n = surf_hit(B, tops, (0, y, 3.0), (0, 0, -1))
+        if prev is not None:
+            a, b = prev[0] + prev[1] * 0.004, p + n * 0.004
+            B.bar(a, b, (prev[1] + n).normalized(), 0.15, 0.012, DARK, "Chest" if y <= -0.20 else "Spine",
+                  studs=[], bevel=0.004)
+        prev = (p, n)
+    # ================= legs: muscular shoulders + upper arms, DEEP_STEEL shins + feet, ice claws on dark bases
+    for s, side in ((1, "L"), (-1, "R")):
+        for fb in ("F", "B"):
+            H, K, A, P = (Vector(X(p, s)) for p in LEGS[fb])
+            leg, shin, foot = "Leg_" + fb + side, "Shin_" + fb + side, "Foot_" + fb + side
+            if fb == "F":
+                B.add(H + Vector((s * 0.03, 0.0, 0.04)), (0.125, 0.17, 0.17), STEEL_BLUE, leg, rnd=0.40,
+                      top=(0.80, 0.85))                                                           # shoulder muscle
+                B.seg(H + Vector((0, 0, 0.06)), K, 0.12, 0.14, STEEL_BLUE, leg, ext1=0.03, top=(0.82, 0.72))
+                B.seg(K, A, 0.082, 0.088, DEEP_STEEL, shin, top=(0.84, 0.84), ext=0.035, ext1=0.02)
+                B.spike(K + Vector((s * 0.04, 0.05, 0.0)), (s * 0.5, 0.85, 0.1), 0.11, 0.03, DARK, shin)  # elbow spur
+            else:
+                B.seg(H + Vector((0, 0.03, 0.08)), K, 0.125, 0.185, STEEL_BLUE, leg, bot=(0.85, 1),
+                      top=(0.75, 0.62), ext1=0.03, rnd=0.36)                                     # thigh
+                B.seg(K, A, 0.078, 0.088, DEEP_STEEL, shin, top=(0.80, 0.80), ext=0.035, ext1=0.02)
+                B.seg(A, P + Vector((0, 0.03, 0.03)), 0.064, 0.068, DEEP_STEEL, foot, ext=0.03)
+                B.spike(A + Vector((0, 0.06, 0.02)), (0, 1, -0.1), 0.09, 0.026, DARK, foot, top=(0.12, 0.3))  # spur
+            B.add(P, (0.095, 0.11, 0.05), DEEP_STEEL, foot, top=(0.85, 0.80))
+            for gx in (-0.060, -0.020, 0.020, 0.060):
+                B.add(Vector((P.x + gx, P.y - 0.085, 0.045)), (0.017, 0.02, 0.02), DARK, foot, role="detail",
+                      bevel=0.005)                                                                # claw base
+                B.spike((P.x + gx, P.y - 0.095, 0.045), (0, -1, -0.62), 0.08, 0.016, ICE_W, foot)
+    # ================= long tail (4 bones): ice-belly underside, dark back-line scales, an ice crystal spike tip
+    T = [Vector(p) for p in TAILP]
+    dims = ((0.15, 0.15), (0.115, 0.115), (0.085, 0.087), (0.06, 0.062))
+    for i, ((a, b), (w, d)) in enumerate(zip(zip(T, T[1:]), dims)):
+        bone = "Tail%d" % (i + 1)
+        B.seg(a, b, w, d, STEEL_BLUE, bone, ext=0.08 if i == 0 else 0.03, ext1=0.02, top=(0.82, 0.82))
+        B.seg(a + Vector((0, 0, -d + 0.014)), b + Vector((0, 0, -dims[min(i + 1, 3)][1] * 0.8 + 0.014)), w * 0.70,
+              0.016, ICE_BELLY, bone, ext=0.02)
+        B.seg(a + Vector((0, 0, d * 0.55)), b + Vector((0, 0, dims[min(i + 1, 3)][1] * 0.82 * 0.55)), w * 0.96,
+              d * 0.55, DEEP_STEEL, bone, ext=0.04 if i else -0.02, top=(0.82, 0.82), rnd=0.4)     # tail saddle
+        B.seg(a + Vector((0, 0, d * 1.08 - 0.01)), b + Vector((0, 0, dims[min(i + 1, 3)][1] * 0.82 * 1.08 - 0.01)),
+              w * 0.45, 0.02, DARK, bone, ext=0.02 if i else -0.04, top=(0.8, 1), rnd=0.4)        # dorsal band
+        for t in ((0.30, 0.75) if i >= 2 else ()):
+            p = a.lerp(b, t)
+            dd = (b - a).normalized()
+            hgt = d * (1 - 0.18 * t)
+            B.spike(p + Vector((0, 0, hgt + 0.01)), (0, 0.6, 0.8) if i < 2 else (0, 0.7, 0.7), 0.09 - 0.015 * i,
+                    0.036 - 0.005 * i, DARK, bone, top=(0.15, 0.25))
+    tipd = (T[4] - T[3]).normalized()
+    side = Vector((1, 0, 0))
+    B.add(T[4], (0.07, 0.07, 0.05), DARK, "Tail_Tip", R=frame(tipd, side), role="limb", nostud=True)  # socket
+    main = T[4] + tipd * 0.02
+    ANCH["FX_IceDust"] = tuple(main + (tipd + Vector((0, 0, 0.18))).normalized() * 0.42)
+    B.spike(main, tipd + Vector((0, 0, 0.18)), 0.44, 0.085, ICE_W, "Tail_Tip", side=side, top=(0.10, 0.10))
+    for sx in (1, -1):
+        B.spike(main - tipd * 0.02, Vector((sx * 0.55, 0.7, 0.42)), 0.26, 0.05, ICE_W, "Tail_Tip",
+                side=Vector((0, 0, 1)), top=(0.10, 0.10))
+    B.spike(main - tipd * 0.02, Vector((0, 0.45, 0.9)), 0.17, 0.04, ICE_BELLY, "Tail_Tip", top=(0.10, 0.10))
+    # ================= wings
+    for s, side_ in ((1, "L"), (-1, "R")):
+        membrane_wing(B, s, side_)
+    B.build()
+    mn, mx = k.bounds()
+    pitch = round(0.2243 * (mx.z - mn.z) / HEIGHT, 4)
+    bk.stud_skin(k, pitch)
+    return {"TH": round(B.th, 3), "pitch": pitch, "H": round(mx.z - mn.z, 3), "top": round(mx.z, 3),
+            "horn_tip": [round(v, 3) for v in ANCH.get("FX_IceTrail_L", (0, 0, 0))],
+            "span": round(mx.x - mn.x, 3), "length": round(mx.y - mn.y, 3)}
+
+
+# ------------------------------------------------------------------ rig
+def rig(k):
+    k.joint("Spine", (0, 0.20, 0.86), "Root", tail=(0, -0.4, 0))
+    k.joint("Chest", (0, -0.12, 0.86), "Spine", tail=(0, -0.4, 0))
+    k.joint("Core", ANCH.get("Core", (0, -0.70, 0.86)), "Chest", tail=(0, -0.1, 0))      # FX_ColdLight anchor
+    k.joint("FX_ColdLight", ANCH.get("Core", (0, -0.70, 0.86)), "Core", tail=(0, -0.08, 0))
+    k.joint("Neck", NECKP[0], "Chest", tail=(0, -0.2, 0.28))
+    k.joint("Neck2", NECKP[1], "Neck", tail=(0, -0.03, 0.28))
+    k.joint("Head", NECKP[2], "Neck2", tail=(0, -0.35, 0.05))                            # throat pivot
+    k.joint("Jaw", tuple(HC + Vector((0, -0.06, -0.15))), "Head", tail=(0, -0.3, 0))
+    k.joint("Mouth", tuple(HC + Vector((0, -0.50, -0.14))), "Head", tail=(0, -0.2, 0))
+    k.joint("FX_FrostBreath", tuple(HC + Vector((0, -0.52, -0.14))), "Mouth", tail=(0, -0.2, 0))
+    for s, side in ((1, "L"), (-1, "R")):
+        k.joint("Horn_" + side, tuple(HC + Vector((s * 0.085, -0.06, 0.11))), "Head", tail=(s * 0.05, 0.2, 0.15))
+        k.joint("FX_IceTrail_" + side, ANCH.get("FX_IceTrail_" + side, (s * 0.25, -0.46, 2.13)), "Horn_" + side,
+                tail=(0, 0.1, 0))
+        for fb, parent, knee in (("F", "Chest", (s * 0.35, 1, 0)), ("B", "Spine", (0, -1, 0))):
+            H, K, A, P = (X(p, s) for p in LEGS[fb])
+            k.joint("Leg_" + fb + side, H, parent)
+            k.joint("Shin_" + fb + side, K, "Leg_" + fb + side)
+            k.joint("Foot_" + fb + side, A, "Shin_" + fb + side, tail=(0, -0.15, 0))
+            k.add_leg2("Leg_" + fb + side, "Shin_" + fb + side, "Foot_" + fb + side, knee=knee)
+        k.joint("Wing_" + side, X(WING.S, s), "Chest")
+        k.joint("WingTip_" + side, X(WING.W, s), "Wing_" + side, tail=(s * 0.6, 0.2, 0.1))
+        k.joint("FX_FrostTrail_" + side, ANCH.get("FX_FrostTrail_" + side, X(F1, s)), "WingTip_" + side,
+                tail=(s * 0.15, 0, 0))
+    assert len(FIN_PARENTS) == len(FIN_BONES)
+    for i, (nm, parent) in enumerate(zip(FIN_BONES, FIN_PARENTS)):
+        b = ANCH.get("FIN_BASE_" + nm, (0, -0.3 + 0.3 * i, 1.1))
+        k.joint(nm, b, parent, tail=(0, 0.05, 0.15))
+        k.joint("FX_FinSpark_%d" % (i + 1), ANCH.get("FX_FinSpark_%d" % (i + 1), (0, b[1], b[2] + 0.3)), nm,
+                tail=(0, 0.03, 0.06))
+    k.joint("Tail1", TAILP[0], "Spine")
+    k.joint("Tail2", TAILP[1], "Tail1")
+    k.joint("Tail3", TAILP[2], "Tail2")
+    k.joint("Tail4", TAILP[3], "Tail3")
+    k.joint("Tail_Tip", TAILP[4], "Tail4", tail=(0, 0.2, 0.04))
+    k.joint("FX_IceDust", ANCH.get("FX_IceDust", (0, 2.62, 0.56)), "Tail_Tip", tail=(0, 0.1, 0))
+
+
+HEAD_XF = []
+
+
+LEGS4 = ["Leg_FL", "Leg_FR", "Leg_BL", "Leg_BR"]
+TAIL = ["Tail1", "Tail2", "Tail3", "Tail4", "Tail_Tip"]
+
+
+def check_pairs():
+    W = ["Wing_L", "WingTip_L", "Wing_R", "WingTip_R"]
+    P = [("Wing_L", "WingTip_L"), ("Wing_R", "WingTip_R"), ("WingTip_L", "WingTip_R"), ("Wing_L", "Wing_R"),
+         ("WingTip_L", "Wing_R"), ("Wing_L", "WingTip_R")]
+    for w in W:
+        for b in ["Head", "Neck", "Neck2", "Chest", "Spine", "Tail1", "Tail2", "Tail3", "Tail4", "Leg_FL", "Leg_FR",
+                  "Leg_BL", "Leg_BR", "Horn_L", "Horn_R"] + FIN_BONES:
+            P.append((w, b))
+    for s in ("L", "R"):
+        P += [("Leg_F" + s, "Leg_B" + s), ("Shin_F" + s, "Shin_B" + s), ("Foot_F" + s, "Foot_B" + s)]
+    P += [("Shin_FL", "Shin_FR"), ("Shin_BL", "Shin_BR"), ("Foot_FL", "Foot_FR"), ("Foot_BL", "Foot_BR")]
+    for a in ("Head", "Jaw", "Horn_L", "Horn_R"):
+        for b in ("Chest", "Shin_FL", "Shin_FR", "Foot_FL", "Foot_FR", "Leg_FL", "Leg_FR", "Fin_1", "Fin_2", "Fin_3"):
+            P.append((a, b))
+    P += [("Jaw", "Neck"), ("Head", "Neck"), ("Horn_L", "Neck2"), ("Horn_R", "Neck2"), ("Horn_L", "Neck"),
+          ("Horn_R", "Neck"), ("Fin_1", "Fin_2"), ("Fin_2", "Fin_3"), ("Fin_1", "Neck"), ("Fin_2", "Chest"),
+          ("Fin_3", "Neck"), ("Fin_4", "Fin_3"), ("Fin_4", "Fin_5"), ("Fin_5", "Fin_6"), ("Fin_6", "Fin_7"),
+          ("Fin_6", "Spine"), ("Fin_7", "Tail1"), ("Fin_1", "Head"), ("Fin_1", "Horn_L"), ("Fin_1", "Horn_R"),
+          ("Fin_2", "Horn_L"), ("Fin_2", "Horn_R")]
+    for t in ("Tail2", "Tail3", "Tail4", "Tail_Tip"):
+        for b in ("Head", "Jaw", "Neck", "Neck2", "Shin_BL", "Shin_BR", "Foot_BL", "Foot_BR"):
+            P.append((t, b))
+    return P
+
+
+def joints():
+    out = WING.joints()
+    for s, sd in ((1, "L"), (-1, "R")):
+        out.append((X(WING.S, s), X(WING.BB, s), 0.13, "Wing_" + sd))
+        out.append((tuple(HC + Vector((s * 0.09, -0.06, 0.12))), tuple(HC + Vector((s * 0.12, 0.02, 0.18))), 0.08,
+                    "Horn_" + sd))
+    out.append((NECKP[2], tuple(HC + Vector((0, 0.10, -0.08))), 0.20, "Head"))
+    out.append((NECKP[1], NECKP[1], 0.17, "Neck2"))
+    out.append((NECKP[0], NECKP[0], 0.21, "Neck"))
+    for nm in FIN_BONES:
+        b = ANCH.get("FIN_BASE_" + nm)
+        if b:
+            out.append((tuple(Vector(b) + Vector((0, -0.12, -0.02))), tuple(Vector(b) + Vector((0, 0.12, -0.02))), 0.07,
+                        nm))
+    return out
+
+
+def wings(k, f, up, fwd=0.0, twist=0.0, tip=0.0, side=None):
+    WING.key(k, f, up, fwd, twist, tip, side=side)
+
+
+FOLD = (32.0, -6.0, 0.0, 120.0)      # placeholder ground fold (CelestialDragon's); re-searched at the clip stage
+
+
+def anim(k):
+    """MODEL-GATE placeholder: a held idle at the ground FOLD (portrait / 64 px icon = the pose players see)"""
+    n = 40
+    k.new_action("idle", n, True)
+    for f in (0, n):
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0))
+        wings(k, f, *FOLD)
+    k.finish()
+    return 0.5

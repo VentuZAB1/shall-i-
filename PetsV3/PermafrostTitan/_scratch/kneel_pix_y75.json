@@ -1,0 +1,68 @@
+{
+ "tag": "y75",
+ "res": 300,
+ "40": {
+  "Leg_L": {
+   "alone_px": 12108,
+   "visible_px": 457,
+   "share": 0.038,
+   "occluders": {
+    "Fore_L": 1013,
+    "Arm_L": 910,
+    "Spine": 115
+   }
+  },
+  "Shin_L": {
+   "alone_px": 8335,
+   "visible_px": 4524,
+   "share": 0.543,
+   "occluders": {
+    "Fore_L": 378,
+    "Foot_L": 166,
+    "Arm_L": 100
+   }
+  },
+  "Foot_L": {
+   "alone_px": 10579,
+   "visible_px": 5537,
+   "share": 0.523,
+   "occluders": {
+    "Shin_L": 678,
+    "Fore_L": 203,
+    "Leg_L": 37
+   }
+  }
+ },
+ "50": {
+  "Leg_L": {
+   "alone_px": 12070,
+   "visible_px": 506,
+   "share": 0.042,
+   "occluders": {
+    "Fore_L": 1143,
+    "Arm_L": 825,
+    "Spine": 143
+   }
+  },
+  "Shin_L": {
+   "alone_px": 8259,
+   "visible_px": 3321,
+   "share": 0.402,
+   "occluders": {
+    "Fore_L": 592,
+    "Foot_L": 165,
+    "Arm_L": 150
+   }
+  },
+  "Foot_L": {
+   "alone_px": 10579,
+   "visible_px": 5521,
+   "share": 0.522,
+   "occluders": {
+    "Shin_L": 506,
+    "Fore_L": 362,
+    "Arm_L": 61
+   }
+  }
+ }
+}

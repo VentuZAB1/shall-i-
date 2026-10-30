@@ -1,0 +1,35 @@
+00:03.813  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D01_front25.png'
+FBX version: 7400
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D01_front25.png
+00:04.297  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D02_front40.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D02_front40.png
+00:04.735  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D03_side25_default.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D03_side25_default.png
+00:05.188  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D04_side40_default.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D04_side40_default.png
+00:05.610  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D05_34_30.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D05_34_30.png
+00:06.078  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D06_back34_30.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D06_back34_30.png
+00:06.469  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D07_head8_front.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D07_head8_front.png
+00:06.891  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D08_head8_34below.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D08_head8_34below.png
+00:07.235  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D09_walker_under.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D09_walker_under.png
+00:07.641  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D10_crook10.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D10_crook10.png
+00:08.078  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D11_base6.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D11_base6.png
+00:08.485  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D12_side25_faceturned.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D12_side25_faceturned.png
+00:08.922  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D13_side40_faceturned.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D13_side40_faceturned.png
+00:09.328  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D14_head8_side_faceturned.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D14_head8_side_faceturned.png
+00:09.688  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D15_head8_front_lightoff.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\D15_head8_front_lightoff.png
+[rv] done day
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

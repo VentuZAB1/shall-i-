@@ -1,0 +1,7 @@
+side {'GREY': 30.4, 'MANTLE': 14.5, 'BELLY_D': 23.0, 'GREY_D': 6.4, 'FACE': 9.0, 'AMBER': 8.3, 'AMBER_HOT': 0.1, 'THORN_D': 1.4, 'BLACK': 6.1, 'IVORY': 0.6, 'MOUTH': 0.3}
+tq {'GREY': 17.0, 'MANTLE': 18.4, 'BELLY_D': 19.5, 'GREY_D': 3.7, 'FACE': 17.5, 'AMBER': 9.6, 'AMBER_HOT': 0.2, 'THORN_D': 1.7, 'BLACK': 10.8, 'IVORY': 1.1, 'MOUTH': 0.4}
+game {'GREY': 47.6, 'MANTLE': 10.4, 'BELLY_D': 14.4, 'GREY_D': 2.8, 'FACE': 3.2, 'AMBER': 17.1, 'AMBER_HOT': 0.4, 'THORN_D': 0.7, 'BLACK': 2.8, 'IVORY': 0.3, 'MOUTH': 0.2}
+HEADLESS_RESULT {"tris": 6544, "size": [0.52, 1.54, 0.62], "TH": 0.289}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,17 @@
+START haunted build 14:37:50
+END haunted build rc=0 14:40:05
+START haunted bake 14:40:05
+END haunted bake rc=0 14:42:53
+START haunted render 14:42:54
+END haunted render rc=0 14:43:03
+START haunted export 14:43:04
+END haunted export rc=0 14:43:07
+START dead build 14:43:07
+END dead build rc=0 14:44:35
+START dead bake 14:44:35
+END dead bake rc=0 14:47:15
+START dead render 14:47:16
+END dead render rc=0 14:47:26
+START dead export 14:47:26
+END dead export rc=0 14:47:30
+CHAIN_END

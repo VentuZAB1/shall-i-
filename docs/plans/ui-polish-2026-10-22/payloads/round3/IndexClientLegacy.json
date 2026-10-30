@@ -1,0 +1,62 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.IndexClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "\tlocal holder, face = B.brick(page, \"Tab\" .. i, UDim2.fromScale(0.125, 0.128), UDim2.fromScale(0.0625, 0.07 + (i - 1) * 0.142),",
+   "new_string": "\tlocal holder, face = B.brick(page, \"Tab\" .. i, UDim2.fromScale(0.125, 0.138), UDim2.fromScale(0.0625, 0.07 + (i - 1) * 0.142), -- (round 3: 0.128)"
+  },
+  {
+   "old_string": "\tlocal name = B.text(face, \"Name\", B.LUCKY, WHITE, UDim2.fromScale(0.96, 0.44), UDim2.fromScale(0.5, 0.27), 0.09)\n\tname.Text = string.upper(a.name)\n\tlocal prog = B.text(face, \"Prog\", B.FRED, WHITE, UDim2.fromScale(0.5, 0.36), UDim2.fromScale(0.36, 0.72), 0.08)\n\tlocal star = B.image(face, \"Star\", STAR_ICON, UDim2.fromScale(0.3, 0.3), UDim2.fromScale(0.83, 0.72))\n\tlocal sr = Instance.new(\"UIAspectRatioConstraint\") sr.Parent = star\n\tlocal bang = B.frame(face, \"Ready\", UDim2.fromScale(0.3, 0.3), UDim2.fromScale(0.83, 0.72), Color3.fromRGB(235, 45, 45))",
+   "new_string": "\tlocal name = B.text(face, \"Name\", B.LUCKY, WHITE, UDim2.fromScale(0.96, 0.42), UDim2.fromScale(0.5, 0.26), 0.09)\n\tname.Text = string.upper(a.name)\n\tlocal prog = B.text(face, \"Prog\", B.FRED, WHITE, UDim2.fromScale(0.46, 0.42), UDim2.fromScale(0.3, 0.73), 0.08)\n\tlocal star = B.image(face, \"Star\", STAR_ICON, UDim2.fromScale(0.26, 0.26), UDim2.fromScale(0.8, 0.7))\n\tlocal sr = Instance.new(\"UIAspectRatioConstraint\") sr.Parent = star\n\tlocal bang = B.frame(face, \"Ready\", UDim2.fromScale(0.26, 0.26), UDim2.fromScale(0.8, 0.7), Color3.fromRGB(235, 45, 45))"
+  },
+  {
+   "old_string": "\tB.tapArea(face, pick) -- (2026-10-22 UI polish, M7)\nend",
+   "new_string": "\t-- (2026-10-22 UI polish, M7) the tap area fills the tab's whole slot in the column (6 stacked tabs: on a phone the slot\n\t-- is ~31 pt tall, 44+ pt wide; neighbouring areas never overlap)\n\tlocal slot = B.frame(page, \"TabSlot\" .. i, UDim2.fromScale(0.125, 0.142), UDim2.fromScale(0.0625, 0.07 + (i - 1) * 0.142))\n\tB.tapArea(face, pick, nil, slot)\nend"
+  },
+  {
+   "old_string": "local hSub = B.text(header, \"Sub\", B.FRED, WHITE, UDim2.fromScale(0.5, 0.26), UDim2.fromScale(0.04, 0.76), 0.06, Vector2.new(0, 0.5))",
+   "new_string": "local hSub = B.text(header, \"Sub\", B.FRED, WHITE, UDim2.fromScale(0.5, 0.3), UDim2.fromScale(0.04, 0.78), 0.06, Vector2.new(0, 0.5)) -- (round 3, M5: 0.26 at 0.76)"
+  },
+  {
+   "old_string": "\tlocal _, pill = B.brick(face, \"Chance\", UDim2.fromScale(0.62, 0.13), UDim2.fromScale(0.5, 0.86), WHITE, NAVY, {radius = 0.5, stroke = 0.08})",
+   "new_string": "\tlocal _, pill = B.brick(face, \"Chance\", UDim2.fromScale(0.62, 0.15), UDim2.fromScale(0.5, 0.865), WHITE, NAVY, {radius = 0.5, stroke = 0.08}) -- (round 3: 0.13)"
+  },
+  {
+   "old_string": "\tlocal q = B.text(face, \"Q\", B.LUCKY, Color3.fromRGB(255, 255, 255), UDim2.fromScale(0.5, 0.3), UDim2.fromScale(0.5, 0.45), 0.06)",
+   "new_string": "\tlocal q = B.text(face, \"Q\", B.LUCKY, Color3.fromRGB(255, 255, 255), UDim2.fromScale(0.5, 0.26), UDim2.fromScale(0.5, 0.5), 0.06) -- (round 3: clear of the SECRET tag)"
+  },
+  {
+   "old_string": "\tlocal badge = B.frame(face, \"Secret\", UDim2.fromScale(0.66, 0.085), UDim2.fromScale(0.5, 0.29), Color3.fromRGB(255, 70, 150)) -- (under the 2-line name)",
+   "new_string": "\tlocal badge = B.frame(face, \"Secret\", UDim2.fromScale(0.9, 0.11), UDim2.fromScale(0.5, 0.29), Color3.fromRGB(255, 70, 150)) -- (under the 2-line name; round 3: 0.66 x 0.085)"
+  },
+  {
+   "old_string": "\tlocal bt = B.text(badge, \"T\", B.LUCKY, WHITE, UDim2.fromScale(0.9, 0.78), UDim2.fromScale(0.5, 0.52), 0.1)\n\tbt.Text = \"SECRET\" bt.ZIndex = 4",
+   "new_string": "\tlocal bt = B.text(badge, \"T\", B.LUCKY, WHITE, UDim2.fromScale(0.92, 0.84), UDim2.fromScale(0.5, 0.52), 0.1)\n\tbt.Text = \"SECRET\" bt.ZIndex = 4"
+  },
+  {
+   "old_string": "\tlocal rowF = B.frame(insp, \"Stat\" .. k, UDim2.fromScale(0.86, 0.062), UDim2.fromScale(0.5, y), Color3.fromRGB(22, 26, 50))",
+   "new_string": "\tlocal rowF = B.frame(insp, \"Stat\" .. k, UDim2.fromScale(0.86, 0.068), UDim2.fromScale(0.5, y), Color3.fromRGB(22, 26, 50)) -- (round 3, M5: 0.062)"
+  },
+  {
+   "old_string": "\tlocal l = B.text(rowF, \"L\", B.FRED, Color3.fromRGB(190, 205, 255), UDim2.fromScale(0.5, 0.75), UDim2.fromScale(0.05, 0.52), 0.08, Vector2.new(0, 0.5))",
+   "new_string": "\tlocal l = B.text(rowF, \"L\", B.FRED, Color3.fromRGB(190, 205, 255), UDim2.fromScale(0.5, 0.8), UDim2.fromScale(0.05, 0.52), 0.08, Vector2.new(0, 0.5))"
+  },
+  {
+   "old_string": "\tlocal v = B.text(rowF, \"V\", B.LUCKY, WHITE, UDim2.fromScale(0.44, 0.75), UDim2.fromScale(0.95, 0.52), 0.08, Vector2.new(1, 0.5))",
+   "new_string": "\tlocal v = B.text(rowF, \"V\", B.LUCKY, WHITE, UDim2.fromScale(0.44, 0.8), UDim2.fromScale(0.95, 0.52), 0.08, Vector2.new(1, 0.5))"
+  },
+  {
+   "old_string": "\t\t\t{\"Income (best KG)\", known and",
+   "new_string": "\t\t\t-- (2026-10-22 UI polish, M5: short stat names, were \"Income (best KG)\" / \"Best weight\" / \"Hatch chance\")\n\t\t\t{\"Income\", known and"
+  },
+  {
+   "old_string": "\t\t\t{\"Best weight\", known and",
+   "new_string": "\t\t\t{\"Best KG\", known and"
+  },
+  {
+   "old_string": "\t\t\t{\"Hatch chance\", pctText(odds) .. bonus},",
+   "new_string": "\t\t\t{\"Chance\", pctText(odds) .. bonus},"
+  }
+ ]
+}

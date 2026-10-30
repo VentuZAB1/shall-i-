@@ -1,0 +1,16 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\lamp.py:2450: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+00:04.125  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\calib_0.png'
+[lamp     1.3s] calib 0 {'E': [0.6, 0.6, 0.7], 'measured': {'green': [96.0, 159.0, 92.0], 'cream': [184.0, 177.0, 184.0]}}
+00:04.219  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\calib_1.png'
+[lamp     1.4s] calib 1 {'E': [0.5804, 0.6, 0.6725], 'measured': {'green': [94.0, 159.0, 90.0], 'cream': [182.0, 177.0, 181.0]}}
+00:04.281  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\calib_2.png'
+[lamp     1.5s] calib 2 {'E': [0.581, 0.6, 0.6732], 'measured': {'green': [94.0, 159.0, 90.0], 'cream': [182.0, 177.0, 181.0]}}
+00:04.344  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\calib_3.png'
+[lamp     1.6s] calib 3 {'E': [0.5816, 0.6, 0.6739], 'measured': {'green': [94.0, 159.0, 90.0], 'cream': [182.0, 177.0, 181.0]}}
+00:04.406  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\calib_4.png'
+[lamp     1.6s] calib 4 {'E': [0.5822, 0.6, 0.6746], 'measured': {'green': [94.6, 159.0, 90.0], 'cream': [182.0, 177.0, 181.0]}}
+[lamp     1.6s] done calib
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

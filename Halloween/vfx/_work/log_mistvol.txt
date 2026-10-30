@@ -1,0 +1,10 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx.py:177: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx.py:210: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+00:09.860  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\Mist_f00.exr'
+VFX_DONE mistvol {"max_border_alpha": 0.0, "max_alpha": 0.774, "coverage": 0.115, "seconds": 8.2, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\Mist.png"}
+VFX_REPORT {"mistvol": {"max_border_alpha": 0.0, "max_alpha": 0.774, "coverage": 0.115, "seconds": 8.2, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\Mist.png"}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

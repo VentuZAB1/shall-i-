@@ -1,0 +1,41 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\rv_render.py:69: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+FBX version: 7400
+[rv] asset bbox [-2.70023966 -3.69237733 -0.05013948] [2.80587101 2.80051565 4.70020199]
+00:03.375  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_front_25.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_front_25.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_front_25_crop.png 315 209
+00:03.766  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_front_45.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_front_45.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_front_45_crop.png 217 140
+00:04.094  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_back_25.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_back_25.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_back_25_crop.png 317 194
+00:04.438  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_back_45.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_back_45.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_back_45_crop.png 219 134
+00:04.766  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_side_25.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_side_25.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_side_25_crop.png 339 196
+00:05.110  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_side_45.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_side_45.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_side_45_crop.png 231 137
+00:05.438  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_left_25.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_left_25.png
+[rv] crop C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_left_25_crop.png 316 195
+00:05.829  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_close.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_close.png
+00:06.157  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_close_back.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_close_back.png
+00:06.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_close_right.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_close_right.png
+00:06.844  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_close_left.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_close_left.png
+00:07.188  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_close_roll.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_close_roll.png
+00:07.532  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_close_roll_34.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_close_roll_34.png
+00:07.875  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\TPTrees\review\renders_r2\rv_bush_diag_top.png'
+[rv] wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/renders_r2\rv_bush_diag_top.png
+[rv] DONE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)

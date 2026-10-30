@@ -1,0 +1,1 @@
+MINZ {"takeoff:26": [0.0894, "Foot_FL"], "takeoff:27": [0.0899, "Foot_FL"], "takeoff:28": [0.094, "Foot_FL"], "fly:0": [0.094, "Foot_FL"], "fly:1": [0.1012, "Foot_FL"], "fly:27": [0.0899, "Foot_FL"]}

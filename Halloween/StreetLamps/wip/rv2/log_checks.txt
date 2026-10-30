@@ -1,0 +1,17 @@
+00:04.063  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C07_clay_head_34_8.png'
+FBX version: 7400
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C07_clay_head_34_8.png
+00:04.547  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C08_clay_crook12.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C08_clay_crook12.png
+00:05.000  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C10_clay_full25_side.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C10_clay_full25_side.png
+00:05.625  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C11_nrm_head_front.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C11_nrm_head_front.png
+00:06.141  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C13_nrm_base.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C13_nrm_base.png
+00:06.579  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C14_nrm_mid_pole.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\rv2\C14_nrm_mid_pole.png
+[rv2] done checks
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

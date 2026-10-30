@@ -1,0 +1,49 @@
+[bush    1.4s] thorn body hi 145892
+[bush    2.0s] thorn body lo 2600
+[bush    3.4s] thorn hi leaves 3238 area 131.7
+[bush    3.4s] thorn leaves: outline 81 inner 1 base 18 cane 8
+[bush    4.0s] thorn game mesh by material {'_Body': 2600, '_Wood': 2470, '_LeafTop': 1656, '_LeafBot': 1656, '_Berry': 480}
+[bush    4.1s] thorn game mesh tris 8862 hi: 181328 6048 53980 39480
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:775: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  bmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:779: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  cmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:805: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   28.0s]   baked G_Body {'texels': 363550, 'miss': 0.0002, 's': 9.6}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   30.8s]   baked G_Leaf {'texels': 74534, 'miss': 0.0013, 's': 2.7}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   33.3s]   baked G_Wood {'texels': 71875, 'miss': 0.0021, 's': 2.6}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   35.3s]   baked G_Berry {'texels': 14774, 'miss': 0.0, 's': 2.0}
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:673: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+Info: Saved as "thorn.blend"
+[bush   39.2s] thorn done {"tris": {"Bush": 8862, "Web": 672, "WebSilk": 336}, "texture": 1024, "bake": {"G_Body": {"texels": 363550, "miss": 0.0002, "s": 9.6}, "G_Leaf": {"texels": 74534, "miss": 0.0013, "s": 2.7}, "G_Wood": {"texels": 71875, "miss": 0.0021, "s": 2.6}, "G_Berry": {"texels": 14774, "miss": 0.0, "s": 2.0}}, "atlas_coverage": 0.5, "hi_leaves": 3238, "game_leaves": {"outline": 81, "inner": 1, "base": 18, "cane": 8}, "berries": 10, "spider_point_blender": [2.57, -1.733, 3.79], "spider_point_roblox": [2.57, 3.79, 1.733], "spider_free_drop": 3.79, "web_lines": 20, "webs": {"front": {"size_studs": [2.91, 2.55], "hub_roblox": [-0.135, 3.518, 2.803], "corners_roblox": {"BL": [-1.55, 2.05, 2.95], "BR": [1.45, 2.15, 3.0], "TL": [-1.449, 4.502, 2.451], "TR": [1.356, 4.689, 2.512]}}, "left": {"size_studs": [2.53, 2.66], "hub_roblox": [-2.643, 3.002, -0.014], "corners_roblox": {"BL": [-2.85, 1.65, -1.15], "BR": [-2.95, 1.55, 1.15], "TL": [-2.087, 4.268, -1.488], "TR": [-2.355, 4.043, 1.251]}}}, "bbox_blender": [[-3.227, -3.429, -0.126], [3.462, 3.52, 5.81]], "size_roblox_XYZ": [6.689, 5.936, 6.95]}
+BUSH_REPORT {"thorn": {"tris": {"Bush": 8862, "Web": 672, "WebSilk": 336}, "texture": 1024, "bake": {"G_Body": {"texels": 363550, "miss": 0.0002, "s": 9.6}, "G_Leaf": {"texels": 74534, "miss": 0.0013, "s": 2.7}, "G_Wood": {"texels": 71875, "miss": 0.0021, "s": 2.6}, "G_Berry": {"texels": 14774, "miss": 0.0, "s": 2.0}}, "atlas_coverage": 0.5, "hi_leaves": 3238, "game_leaves": {"outline": 81, "inner": 1, "base": 18, "cane": 8}, "berries": 10, "spider_point_blender": [2.57, -1.733, 3.79], "spider_point_roblox": [2.57, 3.79, 1.733], "spider_free_drop": 3.79, "web_lines": 20, "webs": {"front": {"size_studs": [2.91, 2.55], "hub_roblox": [-0.135, 3.518, 2.803], "corners_roblox": {"BL": [-1.55, 2.05, 2.95], "BR": [1.45, 2.15, 3.0], "TL": [-1.449, 4.502, 2.451], "TR": [1.356, 4.689, 2.512]}}, "left": {"size_studs": [2.53, 2.66], "hub_roblox": [-2.643, 3.002, -0.014], "corners_roblox": {"BL": [-2.85, 1.65, -1.15], "BR": [-2.95, 1.55, 1.15], "TL": [-2.087, 4.268, -1.488], "TR": [-2.355, 4.043, 1.251]}}}, "bbox_blender": [[-3.227, -3.429, -0.126], [3.462, 3.52, 5.81]], "size_roblox_XYZ": [6.689, 5.936, 6.95]}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
+EXIT 0

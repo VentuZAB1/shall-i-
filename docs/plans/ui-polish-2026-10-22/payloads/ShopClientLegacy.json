@@ -1,0 +1,22 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.ShopClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "page.Size = UDim2.fromScale(0.97, 0.95)\npage.AnchorPoint = Vector2.new(0.5, 0.5)\npage.Position = UDim2.fromScale(0.5, 0.5)",
+   "new_string": "-- (2026-10-22 UI polish, M3) the page leaves the body's right side to the section tabs (they hung outside the window)\npage.Size = UDim2.fromScale(0.86, 0.95)\npage.AnchorPoint = Vector2.new(0.5, 0.5)\npage.Position = UDim2.fromScale(0.44, 0.5)"
+  },
+  {
+   "old_string": "local tabs = Instance.new(\"Frame\")\ntabs.Name = \"ShopTabs\"\ntabs.BackgroundTransparency = 1\ntabs.Position = UDim2.fromScale(1.022, 0.2)\ntabs.Size = UDim2.fromScale(0.09, 0.78)\ntabs.ZIndex = 5\ntabs.Visible = false\ntabs.Parent = win",
+   "new_string": "local tabs = Instance.new(\"Frame\")\ntabs.Name = \"ShopTabs\"\ntabs.BackgroundTransparency = 1\n-- (2026-10-22 UI polish, M3) INSIDE the window: the body's right strip, an 8+ px gutter to the page (was x 1.022 of the window)\ntabs.AnchorPoint = Vector2.new(0.5, 0.5)\ntabs.Position = UDim2.fromScale(0.947, 0.5)\ntabs.Size = UDim2.fromScale(0.095, 0.96)\ntabs.ZIndex = 5\ntabs.Visible = false\ntabs.Parent = body"
+  },
+  {
+   "old_string": "\t\tlabel = B.text(b, \"Label\", B.LUCKY, WHITE, UDim2.fromScale(0.96, 0.27), UDim2.fromScale(0.5, 0.81), 0.1)",
+   "new_string": "\t\tlabel = B.text(b, \"Label\", B.LUCKY, WHITE, UDim2.fromScale(0.98, 0.3), UDim2.fromScale(0.5, 0.8), 0.1) -- (M5: 0.27)"
+  },
+  {
+   "old_string": "\tb.Activated:Connect(function()\n\t\tSFX.play(\"Click\")\n\t\tscrollTo(s.name, true)\n\tend)",
+   "new_string": "\tlocal function go()\n\t\tSFX.play(\"Click\")\n\t\tscrollTo(s.name, true)\n\tend\n\tb.Activated:Connect(go)\n\tB.tapArea(b, go) -- (2026-10-22 UI polish, M7)"
+  }
+ ]
+}

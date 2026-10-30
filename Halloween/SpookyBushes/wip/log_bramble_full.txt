@@ -1,0 +1,38 @@
+[bush    0.1s] bramble seed 4422 centring score 0.061
+[bush    0.4s] bramble branches 108 game tris 4515 hi 36424 728
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:775: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  bmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:779: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  cmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:805: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush    9.1s]   baked G_Wood {'texels': 143005, 'miss': 0.0034, 's': 1.5}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush    9.7s]   baked G_Leaf {'texels': 16455, 'miss': 0.0016, 's': 0.6}
+Info: Saved as "bramble.blend"
+[bush   10.3s] bramble done {"tris": {"Bramble": 4515}, "texture": 512, "bake": {"G_Wood": {"texels": 143005, "miss": 0.0034, "s": 1.5}, "G_Leaf": {"texels": 16455, "miss": 0.0016, "s": 0.6}}, "atlas_coverage": 0.608, "branches": 108, "dead_leaves": 13, "bbox_blender": [[-1.916, -1.895, -0.157], [1.965, 1.951, 2.908]], "size_roblox_XYZ": [3.881, 3.064, 3.846]}
+00:13.297  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bramble.blend"
+00:15.062  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_bramble_40_front.png'
+00:15.468  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_bramble_40_back.png'
+00:15.859  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_bramble_40_left.png'
+00:16.328  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_bramble_25_frame.png'
+00:16.672  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_bramble_close_low.png'
+00:16.765  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_bramble_sil_0.png'
+00:16.828  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_bramble_sil_90.png'
+00:16.890  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_bramble_sil_200.png'
+BUSH_REPORT {"bramble": {"tris": {"Bramble": 4515}, "texture": 512, "bake": {"G_Wood": {"texels": 143005, "miss": 0.0034, "s": 1.5}, "G_Leaf": {"texels": 16455, "miss": 0.0016, "s": 0.6}}, "atlas_coverage": 0.608, "branches": 108, "dead_leaves": 13, "bbox_blender": [[-1.916, -1.895, -0.157], [1.965, 1.951, 2.908]], "size_roblox_XYZ": [3.881, 3.064, 3.846]}, "eye": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_bramble_40_front.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_bramble_40_back.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_bramble_40_left.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_bramble_25_frame.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_bramble_close_low.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_bramble_sil_0.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_bramble_sil_90.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_bramble_sil_200.png"]}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
+EXIT 0

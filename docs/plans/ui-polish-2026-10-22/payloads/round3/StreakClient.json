@@ -1,0 +1,10 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.StreakClient",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "\t\tlocal title = text(face, \"Secret\", UDim2.fromScale(0.48, 0.15), UDim2.fromScale(0.73, 0.405), 0.1)",
+   "new_string": "\t\tlocal title = text(face, \"Secret\", UDim2.fromScale(0.48, 0.17), UDim2.fromScale(0.73, 0.4), 0.1) -- (round 3: large text, 3:1 on the rainbow's purple)"
+  }
+ ]
+}

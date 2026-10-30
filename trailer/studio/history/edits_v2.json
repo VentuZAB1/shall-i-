@@ -1,0 +1,78 @@
+[
+ {
+  "old_string": "local LAND = V(-4, 0, -318) -- beyond the Grass trench (z -266..-254, bottom y -6)\nlocal EGG = V(-5, 0, -306)",
+  "new_string": "local LAND = V(18, 0, -318) -- beyond the Grass trench (z -266..-254, bottom y -6); x 18 = a lane with no ground decor\nlocal EGG = V(17, 0, -306)"
+ },
+ {
+  "old_string": "pull0 = 0.25, release = 2.0, cut1 = 2.6,",
+  "new_string": "pull0 = 0.25, release = 2.0, cut1 = 2.45,"
+ },
+ {
+  "old_string": "\tlocal hookCam = flyAt(0.6) - V(0, 4.5, 0) + V(2.6, 0, 0)",
+  "new_string": "\tlocal hookCam = V(3.2, 24, -51) -- in front of the fork, on the flight line: the launch goes right over the lens"
+ },
+ {
+  "old_string": "\t\t\tlocal at = POUCH0 + V(0, 2.4, 3)\n\t\t\tif t > T.release then at = at:Lerp(root, ramp(t, T.release, T.release + 0.25)) end\n\t\t\tlocal fov = lerp(48, 40, ramp(t, 0, T.release)) + 22 * ramp(t, T.release, T.release + 0.2)",
+  "new_string": "\t\t\tlocal at = POUCH0 + PULL * 0.8 + V(0, SEAT_UP + 0.6, 0)\n\t\t\tif t > T.release then at = at:Lerp(root, 0.35 * ramp(t, T.release, T.release + 0.3)) end\n\t\t\tlocal fov = lerp(46, 36, ramp(t, 0, T.release)) + 26 * ramp(t, T.release, T.release + 0.18)"
+ },
+ {
+  "old_string": "\t\t\tlocal p = V(30, 44, -236) + V(0, 3 * ramp(w, W.front - 0.6, W.out1), 5 * ramp(w, W.front, W.out1 + 0.5))\n\t\t\tlocal at = V(GRAB.X, -3, -262)\n\t\t\treturn look(p, at, -0.05), 52, at",
+  "new_string": "\t\t\tlocal u = ramp(w, W.rim - 0.2, W.out1 + 0.4)\n\t\t\tlocal p = V(46, 40, -206) + V(0, 2 * u, 3 * u)\n\t\t\tlocal at = V(GRAB.X, -1, -264)\n\t\t\treturn look(p, at, -0.04), lerp(50, 42, u), at"
+ },
+ {
+  "old_string": "\t\tlocal bc = workspace:FindFirstChild(\"BaseContent\")\n\t\tif on and bc then\n\t\t\tfor _, d in bc:GetDescendants() do",
+  "new_string": "\t\tlocal bc = workspace:FindFirstChild(\"BaseContent\")\n\t\tlocal cards = workspace.Map.Hub:FindFirstChild(\"Bases\")\n\t\tif on and bc then\n\t\t\tif cards then\n\t\t\t\tfor _, d in cards:GetDescendants() do\n\t\t\t\t\tif (d:IsA(\"BillboardGui\") or d:IsA(\"SurfaceGui\")) and d.Enabled and d:IsA(\"BillboardGui\") then baseHidden[d] = true d.Enabled = false end\n\t\t\t\tend\n\t\t\tend\n\t\t\tfor _, d in bc:GetDescendants() do"
+ },
+ {
+  "old_string": "\tlocal rex = makePet(\"ThunderRex\", 1.35)\n\tfor _, s in PET_SPOTS do makePet(s.name, 1.2) end",
+  "new_string": "\t-- real size: ScaleTo after import breaks CreatureAnimator's bone rest pose (the mesh explodes to 400 studs)\n\tlocal rex = makePet(\"ThunderRex\")\n\tfor _, s in PET_SPOTS do makePet(s.name) end"
+ },
+ {
+  "old_string": "\t\t\t\treturn look(p, hatchPos + V(0, 7.5, 0)), 60, center",
+  "new_string": "\t\t\t\treturn look(p, hatchPos + V(0, 5.5, 0)), 58, center"
+ },
+ {
+  "old_string": "\t\t\tlocal p = c + treadCF:VectorToWorldSpace(V(9 - 2 * u, -1.5, -6 + 6 * u))\n\t\t\treturn look(p, c + V(0, 1, 0)), 60, c",
+  "new_string": "\t\t\tlocal p = c + treadCF:VectorToWorldSpace(V(18 - 2 * u, 1.2, -6 + 3 * u))\n\t\t\treturn look(p, c + V(0, 0.4, 0)), 50, c"
+ },
+ {
+  "old_string": "\tlocal CLOUD_AT = CFrame.new(0, 92, -250)",
+  "new_string": "\tlocal CLOUD_AT = CFrame.new(0, 96, -430)"
+ },
+ {
+  "old_string": "for _, e in mHead:GetChildren() do if e:IsA(\"ParticleEmitter\") then e.Enabled = false e.Size = scaleNS(e.Size, 1.4) end end",
+  "new_string": "for _, e in mHead:GetChildren() do if e:IsA(\"ParticleEmitter\") then e.Enabled = false e.Size = scaleNS(e.Size, 2.4) end end\n\t\tlocal ml = Instance.new(\"PointLight\") ml.Color = Color3.fromRGB(255, 150, 60) ml.Range = 34 ml.Brightness = 4 ml.Parent = meteor"
+ },
+ {
+  "old_string": "\t\t\tlocal from, to = V(-34, 82, -230), V(-4, 0.5, -182)",
+  "new_string": "\t\t\tlocal from, to = V(-30, 62, -262), V(-4, 0.5, -182)"
+ },
+ {
+  "old_string": "\t\t\tlocal p = V(14, 2.5, -138 + 4 * u)\n\t\t\tlocal at = V(-4, 16 - 10 * ramp(t, T.strike - 0.6, T.strike), -182)\n\t\t\treturn look(p, at, 0.02), 64, at",
+  "new_string": "\t\t\tlocal p = V(30, 5, -128 + 4 * u)\n\t\t\tlocal at = V(-4, 20 - 14 * ramp(t, T.strike - 0.7, T.strike), -195)\n\t\t\treturn look(p, at, 0.02), 62, at"
+ },
+ {
+  "old_string": "elseif t >= T.cut10 and fired.impact and not fired.stormOff then",
+  "new_string": "elseif t >= T.cut10 and fired.thunder and not fired.stormOff then"
+ },
+ {
+  "old_string": "\tlocal bigEgg = strip(Assets.CelestialEgg:Clone())\n\tbigEgg:ScaleTo(1.9)",
+  "new_string": "\tlocal bigEgg = strip(Assets.CelestialEgg:Clone())\n\tbigEgg:ScaleTo(1.4)"
+ },
+ {
+  "old_string": "\tbeLabel.StudsOffsetWorldSpace = V(0, beSize.Y / 2 + 3.2, 0)",
+  "new_string": "\tbeLabel.StudsOffsetWorldSpace = V(0, beSize.Y / 2 + 2.6, 0)"
+ },
+ {
+  "old_string": "\t\t\tlocal r = 15 - 3 * u\n\t\t\tlocal p = c + V(-math.sin(a) * r, 1 + 2 * u, -math.cos(a) * r)\n\t\t\treturn look(p, c + V(0, 1.5, 0)), 56, c",
+  "new_string": "\t\t\tlocal r = 21 - 3 * u\n\t\t\tlocal p = c + V(-math.sin(a) * r, 1.5 + 1.5 * u, -math.cos(a) * r)\n\t\t\treturn look(p, c + V(0, 2.2, 0)), 50, c"
+ },
+ {
+  "old_string": "\t\t\tlocal u = smooth(ramp(t, T.title, T.fade1))\n\t\t\tlocal p = V(5.5 - 3 * u, 3.2 + 13 * u, -58.5)\n\t\t\tlocal at = V(0.5, lerp(5, 21, u), lerp(-49, -36, u))\n\t\t\treturn look(p, at), lerp(64, 70, u), V(0.5, 4, -50)",
+  "new_string": "\t\t\tlocal u = smooth(ramp(t, T.title, T.fade1))\n\t\t\tlocal p = V(16, 11, -70):Lerp(V(24, 30, -104), u)\n\t\t\tlocal at = V(0, 13, -12):Lerp(V(0, 24, 26), u)\n\t\t\treturn look(p, at), 62, V(0.5, 4, -50)"
+ },
+ {
+  "old_string": "\t\tif gate then gate.LocalTransparencyModifier = (t >= T.cut5 and t < T.cut6) and 1 or gateWas end",
+  "new_string": "\t\tif gate then gate.LocalTransparencyModifier = ((t >= T.cut5 and t < T.cut6) or t >= T.title) and 1 or gateWas end"
+ }
+]

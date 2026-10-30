@@ -1,0 +1,9 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx.py:85: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+00:09.562  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\CandleFlame_8x8_col.exr'
+00:16.609  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\CandleFlame_8x8_alpha.exr'
+VFX_DONE candle {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.11, "step_mean": 0.0012, "step_max": 0.00688, "seam_last_to_first": 0.0009, "seconds": 14.8, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\CandleFlame_8x8.png"}
+VFX_REPORT {"candle": {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.11, "step_mean": 0.0012, "step_max": 0.00688, "seam_last_to_first": 0.0009, "seconds": 14.8, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\CandleFlame_8x8.png"}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

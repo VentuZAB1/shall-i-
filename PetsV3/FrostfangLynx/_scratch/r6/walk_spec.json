@@ -1,0 +1,3 @@
+{"name": "FrostfangLynx", "picks": [["walk", 0], ["walk", 3], ["walk", 6], ["walk", 9], ["walk", 12], ["walk", 15], ["walk", 18], ["walk", 21], ["walk", 24], ["walk", 27]],
+ "target": [0, -0.18, 0.55], "res": 360, "prefix": "ws",
+ "views": {"game": [[0.45, 1.0, 0.85], 3.6], "side": [[1, 0, 0.1], 3.8], "tq": [[0.8, -1, 0.35], 3.6]}, "out": "C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/PetsV3/FrostfangLynx/_scratch/r6/ws"}

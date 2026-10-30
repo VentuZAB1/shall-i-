@@ -1,0 +1,26 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\build_hq.py:219: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\build_hq.py:225: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  hm.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\build_hq.py:276: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Saved as "meteor_hq.blend"
+HQ_REPORT {"rocks": {"Meteor": {"sculpt_tris": 327680, "game_tris": 7000, "size": [6.93, 7.96, 6.11], "maps": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\Meteor_albedo.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\Meteor_normal.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\Meteor_rough.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\Meteor_ao.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\Meteor_hot.png"]}, "MeteorBig": {"sculpt_tris": 1310720, "game_tris": 19500, "size": [66.11, 69.71, 56.62], "maps": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\MeteorBig_albedo.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\MeteorBig_normal.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\MeteorBig_rough.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\MeteorBig_ao.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\MeteorBig_hot.png"]}, "MeteorChunk": {"sculpt_tris": 81920, "game_tris": 1500, "size": [2.28, 2.47, 1.64], "maps": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\MeteorChunk_albedo.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\MeteorChunk_normal.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\MeteorChunk_rough.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\MeteorChunk_ao.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\MeteorChunk_hot.png"]}}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

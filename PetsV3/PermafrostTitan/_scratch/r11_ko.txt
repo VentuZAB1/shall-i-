@@ -1,0 +1,7 @@
+KO -0.06: L {'gap_px': 0, 'tri_px': 1991, 'knee_angle_2d': 99.6} thigh 0.596 0.65 shin 0.391 0.287 foot 0.846 knee {'band': [-0.0646, -0.0541], 'land': 16, 'toes': -0.0172} ovl 0 occT {"Spine":3630,"Shin_L":1372,"Foot_L":125}
+KO 0.0: L {'gap_px': 0, 'tri_px': 3191, 'knee_angle_2d': 72.7} thigh 0.649 0.637 shin 0.518 0.485 foot 0.797 knee {'band': [-0.0555, -0.0476], 'land': 16, 'toes': -0.0172} ovl 0 occT {"Spine":2619,"Shin_L":2132}
+KO 0.06: L {'gap_px': 0, 'tri_px': 3842, 'knee_angle_2d': 65.4} thigh 0.756 0.613 shin 0.639 0.618 foot 0.772 knee {'band': [-0.003, -0.0001], 'land': 18, 'toes': -0.0172} ovl 0 occT {"Shin_L":1905,"Spine":1231,"Arm_L":47}
+KO 0.12: L {'gap_px': 0, 'tri_px': 4108, 'knee_angle_2d': 65.6} thigh 0.805 0.625 shin 0.719 0.713 foot 0.802 knee {'band': [0.0543, 0.0613], 'land': None, 'toes': -0.0172} ovl 0 occT {"Shin_L":1866,"Spine":510,"Arm_L":86}
+KO 0.18: L {'gap_px': 8, 'tri_px': 4210, 'knee_angle_2d': 69.1} thigh 0.801 0.625 shin 0.77 0.75 foot 0.824 knee {'band': [0.1061, 0.1134], 'land': None, 'toes': -0.0172} ovl 0 occT {"Shin_L":1968,"Spine":478,"Arm_L":102}
+KO 0.24: L {'gap_px': 31, 'tri_px': 4320, 'knee_angle_2d': 74.6} thigh 0.782 0.637 shin 0.814 0.765 foot 0.843 knee {'band': [0.1401, 0.1441], 'land': None, 'toes': -0.0172} ovl 0 occT {"Shin_L":2140,"Spine":612,"Arm_L":71}
+KO 0.30: L {'gap_px': 24, 'tri_px': 4296, 'knee_angle_2d': 81.9} thigh 0.768 0.6 shin 0.828 0.772 foot 0.862 knee {'band': [0.1677, 0.1714], 'land': None, 'toes': -0.0172} ovl 0 occT {"Shin_L":2148,"Spine":815,"Arm_L":55}

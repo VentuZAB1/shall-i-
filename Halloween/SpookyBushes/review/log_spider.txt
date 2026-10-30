@@ -1,0 +1,7 @@
+FBX version: 7400
+NEAREST_SURFACE (0.014062306737596222, 'Bush')
+DROP_HIT False None None
+FROM_ABOVE_HIT True (1.525, -2.641, 3.889) Bush
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,716 @@
+# Eclipse Seraph (Celestial egg, MYTHIC 0.1 %, 2026-10-27) - plan _review/EclipseSeraph_plan.md (v2). A six-winged
+# lion-angel (wing-quad, flies) built from tapered blocks under a Roblox stud skin: a lilac-ivory lion (Solar Lion
+# anatomy x1.18: heavy forequarters, deep chest, rising belly line, big clawed paws), a fierce lion head with blood-red
+# slit eyes under an obsidian brow, fangs, and THREE stacked OBSIDIAN MANE RINGS framing the face. HERO: a SOLID
+# OBSIDIAN ECLIPSE HALO (filled disc, tilted 20 deg, floating above the head on the Halo bone) with a GOLD rim band and
+# a BLOOD corona ring just inside the rim on both faces. SIX feathered wings in three pairs (upper main pair = 3 rows,
+# middle pair = 2 rows, small lower pair tucked at the flank), every flight feather tipped obsidian. Long tail with an
+# obsidian tuft. No glow (corona pulse / sparkles = Studio VFX anchors FX_*).
+import math
+from mathutils import Vector, Euler, Matrix, Quaternion
+import wing3
+import _common as cm
+
+DISPLAY = "Eclipse Seraph"
+MOTION = "Fly"
+RIG = "wingquad"
+HEIGHT = 11.5                # top of the halo rim (tied tallest pet with the Frostcrown Dragon)
+
+# Blender colours (Roblox renders ~0.6x darker) - plan section 4
+MOON_IVORY = (230, 196, 244)  # face, head, neck, shoulders, wing arms + coverts (studded; lilac ivory)
+BODY_MID = (196, 112, 234)    # rich lilac (H 280, S 0.47): chest, tuck, waist, hips, legs, paws, tail, B + C coverts
+WING_LILAC = (204, 120, 242)  # all flight feathers + the upper pair's coverts (WING_IN = 3 hand coverts only)
+IVORY_D = (190, 184, 206)     # shading: underside strip, nose bridge, ear insides, paw pads
+OBSID = (26, 26, 66)          # mane, flight-feather tips, the solid halo disc, brows (r3: darker, r4: richer)
+WING_IN = (238, 236, 250)     # the 3 upper hand coverts (the one pale wing highlight), muzzle pads, chin
+BLOOD = (255, 84, 88)         # THE accent: eye slits, the corona ring on the halo disc, the tail brush
+GOLD = (255, 196, 50)         # THE hero: the halo rim (house gold, crown only)
+GOLD_D = (214, 150, 30)       # the halo rim inner band (review 1 NICE 3)
+BLACK = (14, 14, 22)          # claws, pupils, nose
+IVORY = (238, 234, 220)       # fangs
+MOUTH = (96, 26, 30)
+
+SC = 1.18                                         # Solar Lion anatomy scale
+LEGS = {"F": ((0.183, -0.566, 0.826), (0.183, -0.46, 0.496), (0.183, -0.555, 0.136), (0.183, -0.614, 0.059)),
+        "B": ((0.153, 0.566, 0.897), (0.153, 0.40, 0.555), (0.153, 0.684, 0.26), (0.153, 0.60, 0.059))}
+HC = Vector((0, -1.097, 1.227))                   # cranium centre
+TAILP = [(0, 0.78, 0.98), (0, 1.08, 0.90), (0, 1.36, 0.71), (0, 1.57, 0.47), (0, 1.66, 0.26)]
+HALO_C = HC + Vector((0, 0.22, 0.614))             # halo disc centre; raised so the rim clears the head >= 0.05
+HALO_R = 0.48                                     # 0.44 H across (plan 0.50 H: MODEL_NOTES)
+HALO_T = 0.08                                     # 0.04 H thick
+HALO_TILT = 40.0                                  # the disc faces forward-up by 40 deg (review 1 MUST 4)
+HALO_LIP = 0.066                                  # the gold rim stands this far proud of each disc face (axial)
+HALO_BAND = 0.0                                   # GOLD_D inner band width on both faces (review 1 NICE 3), 0 = none
+ANCH = {}
+
+
+def X(p, s):
+    return Vector((s * p[0], p[1], p[2]))
+
+
+def frame(z, n):
+    z = Vector(z).normalized()
+    x = Vector(n)
+    x = (x - z * x.dot(z)).normalized()
+    return Matrix((x, z.cross(x), z)).transposed()
+
+
+class PWing(wing3.Wing):
+    """wing3.Wing with a pair prefix: bones Wing_<P>_<side> (arm + inner rows) and WingTip_<P>_<side> (hand)"""
+
+    def __init__(self, P, S, W, H, BB):
+        super().__init__(S, W, H, BB)
+        self.P = P
+
+    def key(self, k, f, up, fwd=0.0, twist=0.0, tip=0.0, side=None):
+        for sd, sx in (("L", 1), ("R", -1)):
+            if side and sd != side:
+                continue
+            extra = Quaternion((0, 0, 1), math.radians(-sx * fwd)) @ Quaternion(self.arm_axis(sd), math.radians(sx * twist))
+            cm.key_axis(k, "Wing_%s_%s" % (self.P, sd), f, self.root_axis(sd), -sx * up, extra=extra)
+            cm.key_axis(k, "WingTip_%s_%s" % (self.P, sd), f, self.hinge_axis(sd), sx * tip)
+
+    def joints(self):
+        out = []
+        for s, sd in ((1, "L"), (-1, "R")):
+            W, H = X(self.W, s), X(self.H, s)
+            out += [(W, H, 0.10, "Wing_%s_%s" % (self.P, sd)), (W, W, 0.18, "Wing_%s_%s" % (self.P, sd))]
+        return out
+
+
+def make_wing(P, S0, BB0, W, H2, T, elev):
+    S0, BB0 = Vector(S0), Vector(BB0)
+    R = Matrix.Rotation(math.radians(-elev), 3, (BB0 - S0).normalized())
+    rz = lambda p: S0 + R @ (Vector(p) - S0)
+    W, H2, T = rz(W), rz(H2), rz(T)
+    N = (T - W).cross(H2 - W).normalized()
+    if N.z < 0:
+        N = -N
+    return PWing(P, tuple(S0), tuple(W), tuple(W + N * 0.30), tuple(BB0)), tuple(H2), tuple(T)
+
+
+# the three pairs (left side; bind pose = spread near level, the upper pair a little raised)
+WA, H2A, TA = make_wing("A", (0.23, -0.42, 1.18), (0.19, -0.08, 1.13), (1.00, -0.36, 1.36), (0.86, 0.30, 1.20),
+                        (2.05, -0.02, 1.52), 12.0)
+WB, H2B, TB = make_wing("B", (0.235, -0.20, 1.10), (0.205, 0.12, 1.06), (0.82, -0.10, 1.16), (0.64, 0.42, 1.02),
+                        (1.56, 0.28, 1.10), -4.0)
+WC, H2C, TC = make_wing("C", (0.26, 0.06, 1.05), (0.245, 0.32, 1.04), (0.47, 0.22, 1.05), (0.44, 0.62, 1.07),
+                        (0.76, 1.12, 1.05), -2.0)
+WINGS = {"A": (WA, H2A, TA), "B": (WB, H2B, TB), "C": (WC, H2C, TC)}
+
+
+def feather(B, root, tip, nrm, width, thick, color, bone, taper=0.24, tipc=None, tipf=0.30, studs=False, bev=0.004):
+    """flat tapered feather in the wing plane; tipc = a coloured pointed tip over the last tipf of the length.
+    bev <= 0.004 = an unbevelled 12-tri blade (dense six-wing budget), > 0.004 = a bevelled one"""
+    root, tip = Vector(root), Vector(tip)
+    R = frame(tip - root, nrm)
+    L = (tip - root).length
+    kw = dict(role="limb", bevel=max(bev, 0.007)) if studs else dict(role="limb", bevel=bev, nostud=True, studs=[])
+    if not tipc:
+        return B.add((root + tip) / 2, (thick / 2, width / 2, L / 2), color, bone, R=R, top=(1.0, taper), **kw)
+    m = root.lerp(tip, 1 - tipf)
+    w1 = 1.0 - (1.0 - taper) * (1 - tipf)
+    B.add((root + m) / 2, (thick / 2, width / 2, (m - root).length / 2 + 0.004), color, bone, R=R, top=(1.0, w1), **kw)
+    d = (tip - root).normalized()
+    B.add((m + tip) / 2 - d * 0.004, (thick / 2 + 0.0015, width * w1 / 2, (tip - m).length / 2 + 0.004), tipc, bone,
+          R=R, top=(1.0, taper / w1), role="limb", bevel=bev, nostud=True, studs=[])
+    return tip
+
+
+WSPEC = {   # pair: (size, coverts, secondaries, primaries, flight-feather width, bevel)
+    "A": (1.0, 6, 8, 7, 0.30, 0.006),
+    "B": (0.82, 5, 6, 6, 0.27, 0.004),
+    "C": (0.62, 4, 4, 4, 0.21, 0.004)}
+
+
+def angel_wing(B, P, s, side, rows3):
+    """dense feather wing: MOON_IVORY arm bar (studded) + wrist + hand bar; a covert row (WING_LILAC studded on the
+    upper pair, BODY_MID on the others); WING_LILAC secondaries hanging back to the hinge line; primaries fanned densely
+    from the wrist on the hand bone (WING_IN on the upper pair = the one pale highlight, WING_LILAC on the others);
+    every flight feather tipped OBSID"""
+    wg, h2, tp = WINGS[P]
+    S0, W, H, bb, T = X(wg.S, s), X(wg.W, s), X(h2, s), X(wg.BB, s), X(tp, s)
+    wb, tb = "Wing_%s_%s" % (P, side), "WingTip_%s_%s" % (P, side)
+    nrm = (T - W).cross(H - W).normalized()
+    if nrm.z < 0:
+        nrm = -nrm
+    pl = lambda p: Vector(p) - nrm * (Vector(p) - W).dot(nrm)
+    S, H, bb = pl(S0), pl(H), pl(bb)
+    sz, n_cov, n_sec, n_pri, fw, bev = WSPEC[P]
+    aw = 0.062 * sz + 0.01
+    B.seg(S0, W, aw, aw * 1.4, MOON_IVORY, wb, side=nrm, ext=0.05, role="limb", top=(0.82, 0.8))
+    B.add(W, (aw * 0.9, aw * 1.1, aw * 1.1), MOON_IVORY, wb, R=frame(W - S, nrm), role="limb")
+    B.seg(W + nrm * 0.03, W.lerp(T, 0.25) + nrm * 0.03, aw * 0.5, aw * 0.75, MOON_IVORY, tb, side=nrm, role="limb",
+          top=(0.7, 0.7))
+    for i in range(n_sec):                                   # secondaries: arm -> hinge line, OBSID tips
+        t = (i + 0.5) / n_sec
+        a = S.lerp(W, 0.04 + 0.92 * t)
+        end = bb.lerp(H, t)
+        end = end + (end - a).normalized() * (0.06 + 0.03 * ((i % 2) * 2 - 1)) * sz
+        feather(B, a - nrm * 0.016, end - nrm * 0.016, nrm, fw, 0.03, WING_LILAC, wb,
+                taper=0.35, tipc=OBSID, tipf=0.12, bev=bev)
+    for i in range(n_cov):                                   # coverts
+        t = (i + 0.5) / n_cov
+        a = S.lerp(W, 0.03 + 0.94 * t)
+        end = a.lerp(bb.lerp(H, t), 0.52)
+        feather(B, a + nrm * 0.018, end + nrm * 0.018, nrm, fw * 0.80, 0.032, WING_LILAC if rows3 else BODY_MID, wb,
+                taper=0.5, studs=rows3, bev=bev)
+    for i in range(n_pri):                                   # primaries (hand): WING_IN, OBSID tips
+        t = i / (n_pri - 1)
+        dv = (H - W).normalized().lerp((T - W).normalized(), 0.12 + 0.88 * t).normalized()
+        ln = (T - W).length * (0.66 + 0.36 * t) * (1.0 + 0.03 * ((i % 2) * 2 - 1))
+        o = nrm * (0.03 + 0.004 * (n_pri - 1 - i))
+        tipp = feather(B, W + dv * 0.04 + o, W + dv * ln + o, nrm, fw * 0.90, 0.03, WING_LILAC,
+                       tb, taper=0.22, tipc=OBSID, tipf=0.15, bev=bev)
+        if i == n_pri // 2:
+            ANCH["FX_FeatherSparkle_%s_%s" % (P, side)] = tuple(tipp)
+    if rows3:
+        for i in range(3):                                   # hand coverts
+            t = (i + 0.5) / 3
+            dv = (H - W).normalized().lerp((T - W).normalized(), 0.40 + 0.60 * t).normalized()
+            feather(B, W + dv * 0.03 + nrm * 0.065, W + dv * 0.36 + nrm * 0.065, nrm, 0.20, 0.03, WING_IN, tb,
+                    taper=0.5, bev=bev)
+
+
+def eye(B, c, s, yaw=20, bone="Head", sc=1.0):
+    """black socket -> BLOOD slit -> black slit pupil, heavy OBSID brow (20 deg, inner end down); no glint"""
+    R = Euler((0, math.radians(-s * 20), math.radians(s * yaw)), "XYZ").to_matrix()
+    Rb = Euler((0, math.radians(-s * 20), math.radians(s * yaw)), "XYZ").to_matrix()
+    c = Vector(c)
+    B.add(c + Rb @ Vector((-s * 0.006, 0.026, 0.046 * sc)), (0.074 * sc, 0.032, 0.026 * sc), OBSID, bone, R=Rb,
+          role="detail", bevel=0.01)
+    B.add(c, (0.058 * sc, 0.008, 0.024 * sc), BLACK, bone, R=R, studs=[], role="detail", bevel=0.004)
+    B.add(c + R @ Vector((0.002 * s, -0.007, 0.0)), (0.048 * sc, 0.006, 0.0125 * sc), BLOOD, bone, R=R, studs=[],
+          role="detail", bevel=0.003)
+    B.add(c + R @ Vector((-s * 0.004, -0.010, 0.0)), (0.006 * sc, 0.004, 0.012 * sc), BLACK, bone, R=R, studs=[],
+          role="detail", bevel=0.002)                                                              # slit pupil
+
+
+def tuft(B, root, d, L, w, color, bone, thick=None):
+    d = Vector(d).normalized()
+    if thick is None:
+        return B.spike(root, d, L, w, color, bone, top=(0.12, 0.38))
+    side = Vector((0, 0, 1)).cross(d)
+    if side.length < 1e-3:
+        side = Vector((1, 0, 0))
+    return B.add(Vector(root) + d * L / 2, (w, thick, L / 2), color, bone, R=frame(d, side.normalized()),
+                 top=(0.14, 0.45))
+
+
+def ring_pts(R, n=32):
+    return [Vector((R * math.cos(2 * math.pi * i / n), R * math.sin(2 * math.pi * i / n), 0)) for i in range(n)]
+
+
+def halo(B):
+    """the SOLID eclipse: an OBSID disc (filled), a GOLD rim band on the outer edge, a BLOOD corona ring just inside
+    the rim on both faces; built flat in the halo frame, tilted HALO_TILT deg forward-up, on the Halo bone"""
+    Rt = Matrix.Rotation(math.radians(HALO_TILT), 3, "X")
+    c = HALO_C
+    xf = lambda p: c + Rt @ p
+    t = HALO_T
+    disc = [[xf(p + Vector((0, 0, z))) for p in ring_pts(HALO_R - 0.04)] for z in (-t / 2, t / 2)]
+    B.tube(disc, OBSID, "Halo", nostud=True)
+    rim_o, rim_i = HALO_R, HALO_R - 0.085                  # gold rim band 0.085 (review 3)
+    n = 32
+
+    def arc(R, z):
+        return [xf(Vector((R * math.cos(2 * math.pi * i / n), R * math.sin(2 * math.pi * i / n), z))) for i in range(n + 1)]
+    L = HALO_LIP
+    B.tube([(arc(rim_o, -t / 2 - L), arc(rim_i, -t / 2 - L)), (arc(rim_o, t / 2 + L), arc(rim_i, t / 2 + L))],
+           GOLD, "Halo", closed=False, nostud=True)
+    cor_o = rim_i
+    if HALO_BAND > 0:                                        # darker gold inner band on each face (review 1 NICE 3)
+        for zs in (1, -1):
+            z0, z1 = zs * (t / 2 - 0.002), zs * (t / 2 + 0.008)
+            lo, hi = (z0, z1) if zs > 0 else (z1, z0)
+            B.tube([(arc(rim_i, lo), arc(rim_i - HALO_BAND, lo)), (arc(rim_i, hi), arc(rim_i - HALO_BAND, hi))],
+                   GOLD_D, "Halo", closed=False, nostud=True)
+        cor_o = rim_i - HALO_BAND
+    for zs in (1, -1):                                       # corona ring on each face
+        z0, z1 = zs * (t / 2 - 0.002), zs * (t / 2 + 0.005)
+        lo, hi = (z0, z1) if zs > 0 else (z1, z0)
+        B.tube([(arc(cor_o, lo), arc(cor_o - 0.10, lo)), (arc(cor_o, hi), arc(cor_o - 0.10, hi))], BLOOD, "Halo",
+               closed=False, nostud=True)
+    ANCH["FX_CoronaSparkle"] = tuple(xf(Vector((0, -HALO_R, t / 2))))
+
+
+def model(k):
+    import blockkit as bk
+    B = bk.Blocks(k, seed=1151, tier=6, plates=False)
+    # ================= torso (Solar Lion x1.18): deep ribcage, sloped tuck, waist, hips; IVORY_D underside strip
+    B.add((0, -0.354, 0.838), (0.26, 0.425, 0.319), BODY_MID, "Chest", bot=(0.66, 0.56), top=(0.90, 0.95), rnd=0.30)
+    B.add((0, -0.472, 1.127), (0.212, 0.248, 0.071), MOON_IVORY, "Chest", top=(0.72, 0.80))           # shoulders
+    B.seg((0, -0.059, 0.566), (0, 0.472, 0.679), 0.177, 0.094, BODY_MID, "Spine", top=(0.82, 0.75))  # tuck
+    B.add((0, 0.189, 0.861), (0.195, 0.283, 0.195), BODY_MID, "Spine", bot=(0.72, 0.70), top=(0.95, 1), rnd=0.30)
+    B.add((0, 0.543, 0.873), (0.218, 0.248, 0.212), BODY_MID, "Spine", rot=(-14, 0, 0), top=(0.84, 0.78),
+          bot=(0.85, 0.9), rnd=0.32)                                                                  # hips
+    B.add((0, -0.378, 0.525), (0.153, 0.224, 0.025), IVORY_D, "Chest", bot=(0.8, 0.9), studs=[])
+    B.seg((0, -0.059, 0.478), (0, 0.448, 0.608), 0.118, 0.026, IVORY_D, "Spine", top=(0.8, 1), ext=0.035)
+    # ================= neck (under the mane)
+    B.seg((0, -0.661, 0.944), (0, -0.968, 1.156), 0.20, 0.20, MOON_IVORY, "Neck", ext=0.07)
+    # ================= lion head (throat pivot): broad cranium, heavy muzzle, pads, nose, fangs, blood slit eyes
+    B.add(HC, (0.20, 0.14, 0.145), MOON_IVORY, "Head", top=(0.84, 0.85))                              # cranium
+    B.seg(HC + Vector((0, -0.083, -0.006)), HC + Vector((0, -0.29, -0.029)), 0.12, 0.08, MOON_IVORY, "Head",
+          top=(0.78, 0.85), ext=0.024)                                                                 # nose bridge
+    for s in (1, -1):
+        B.add(HC + Vector((s * 0.078, -0.208, -0.092)), (0.085, 0.095, 0.066), WING_IN, "Head", rnd=0.4)  # pads
+    B.add(HC + Vector((0, -0.312, -0.018)), (0.066, 0.034, 0.04), BLACK, "Head", role="detail", bevel=0.009,
+          bot=(0.45, 1))                                                                               # nose
+    B.seg(HC + Vector((0, -0.10, 0.075)), HC + Vector((0, -0.295, 0.035)), 0.04, 0.012, IVORY_D, "Head",
+          role="detail", bevel=0.004, top=(0.7, 1))                                                    # nose bridge
+    for s in (1, -1):
+        B.spike(HC + Vector((s * 0.08, -0.258, -0.136)), (0, -0.1, -1), 0.11, 0.022, IVORY, "Head")       # canines
+        for y in (-0.195, -0.145):
+            B.spike(HC + Vector((s * 0.095, y, -0.136)), (0, 0, -1), 0.045, 0.015, IVORY, "Head")
+    B.add(HC + Vector((0, -0.183, -0.142)), (0.10, 0.092, 0.007), MOUTH, "Head", studs=[], role="detail", bevel=0.004)
+    B.seg(HC + Vector((0, -0.048, -0.177)), HC + Vector((0, -0.268, -0.189)), 0.11, 0.035, WING_IN, "Jaw",
+          top=(0.8, 1), ext=0.024)                                                                     # lower jaw
+    B.add(HC + Vector((0, -0.170, -0.147)), (0.088, 0.09, 0.007), MOUTH, "Jaw", studs=[], role="detail", bevel=0.004)
+    for s in (1, -1):
+        B.spike(HC + Vector((s * 0.066, -0.248, -0.161)), (0, 0, 1), 0.065, 0.017, IVORY, "Jaw")
+    for s in (1, -1):
+        eye(B, HC + Vector((s * 0.104, -0.134, 0.044)), s, sc=1.6)
+    for s, side in ((1, "L"), (-1, "R")):                                                           # ears
+        ear = B.add(HC + Vector((s * 0.16, 0.06, 0.17)), (0.05, 0.024, 0.055), OBSID, "Head",
+                    rot=(-10, s * 8, -s * 18), top=(0.55, 0.7))
+        B.add(ear.world((0, -0.024, -0.008)), (0.032, 0.005, 0.036), IVORY_D, "Head", R=ear.R, top=(0.6, 1),
+              studs=[], role="detail", bevel=0.004)
+    # ================= THREE OBSIDIAN MANE RINGS framing the face (inner 0.06 H, middle 0.12 H, outer 0.18 H), a
+    # bulk behind the head over the neck + shoulders, a chest bib between the front legs
+    MC = HC + Vector((0, 0.02, -0.03))
+    for ring, (r0, L, w, n, y, bone, skip) in enumerate(((0.185, 0.14, 0.07, 22, 0.04, "Head", 0.88),
+                                                       (0.235, 0.26, 0.085, 22, 0.11, "Head", 0.94),
+                                                       (0.31, 0.36, 0.10, 26, 0.19, "Mane", 1.1))):
+        for i in range(n):
+            a = 2 * math.pi * (i + 0.5 * (ring % 2)) / n
+            d = Vector((math.sin(a), 0, math.cos(a)))
+            if d.z < -skip:
+                continue
+            root = MC + Vector((d.x * r0, y, d.z * r0 * 0.92))
+            Li = L * (1.0 if i % 2 == 0 else 0.84) * (0.85 if d.z < -0.5 else 1.0)
+            tuft(B, root, d + Vector((0, 0.9 + 0.12 * ring, 0)), Li, w, OBSID,
+                 "Neck" if ring == 2 and d.z < 0.6 else bone)      # clips: the ruff's low + side tufts ride the neck
+    B.add(HC + Vector((0, 0.36, -0.12)), (0.30, 0.24, 0.30), OBSID, "Neck", rnd=0.36, top=(0.80, 0.8),
+          bot=(0.8, 0.85))                                                                             # bulk
+    B.add(HC + Vector((0, 0.30, 0.12)), (0.21, 0.19, 0.10), OBSID, "Neck", rnd=0.36, top=(0.6, 0.7))  # crest
+    B.add((0, -0.56, 0.96), (0.30, 0.21, 0.31), OBSID, "Chest", rnd=0.36, top=(0.72, 0.8), bot=(0.80, 0.9))  # cape
+    for s in (1, -1):
+        for y, z, L, d in ((-0.43, 1.16, 0.24, (s * 0.45, 0.85, 0.15)), (-0.43, 0.94, 0.25, (s * 0.55, 0.8, -0.35)),
+                           (-0.52, 0.78, 0.21, (s * 0.35, 0.5, -0.85))):
+            tuft(B, Vector((s * 0.24, y, z)), d, L, 0.085, OBSID, "Chest")
+    for x, L in ((0.0, 0.36), (0.09, 0.31), (-0.09, 0.31), (0.17, 0.25), (-0.17, 0.25)):         # chest bib
+        tuft(B, Vector((x, -0.99, 0.92)), (x * 0.5, 0.15, -1), L, 0.09, OBSID, "Neck")
+    ANCH["Mane_Top"] = tuple(HC + Vector((0, 0.20, 0.30)))
+    # ================= HERO: the solid eclipse halo
+    halo(B)
+    # ================= legs: heavy forearms, big paws with 4 black claws
+    for s, side in ((1, "L"), (-1, "R")):
+        for fb in ("F", "B"):
+            H, K, A, P = (Vector(X(p, s)) for p in LEGS[fb])
+            leg, shin, foot = "Leg_" + fb + side, "Shin_" + fb + side, "Foot_" + fb + side
+            if fb == "F":
+                B.seg(H + Vector((0, 0, 0.094)), K, 0.13, 0.165, BODY_MID, leg, ext1=0.035, top=(0.85, 0.75))
+                B.seg(K, A, 0.11, 0.108, BODY_MID, shin, top=(0.85, 0.88), ext=0.035, ext1=0.024)
+            else:
+                B.seg(H + Vector((0, 0.035, 0.094)), K, 0.092, 0.177, BODY_MID, leg, bot=(0.85, 1), top=(0.75, 0.62),
+                      ext1=0.035)
+                B.seg(K, A, 0.077, 0.089, BODY_MID, shin, top=(0.80, 0.80), ext=0.035, ext1=0.024)
+                B.seg(A, P + Vector((0, 0.035, 0.041)), 0.065, 0.068, BODY_MID, foot, ext=0.035)
+            B.add(P, (0.12, 0.13, 0.062), BODY_MID, foot, top=(0.85, 0.80))                            # paw
+            B.add(P + Vector((0, -0.02, -0.05)), (0.114, 0.112, 0.012), IVORY_D, foot, studs=[], role="detail",
+                  bevel=0.004)                                                                         # pad line
+            for gx in (-0.072, -0.024, 0.024, 0.072):
+                B.spike((P.x + gx, P.y - 0.116, 0.05), (0, -1, -0.55), 0.084, 0.018, BLACK, foot)
+    # ================= long tail (4 bones) with an obsidian tuft
+    T = [Vector(p) for p in TAILP]
+    for i, ((a, b), w) in enumerate(zip(zip(T, T[1:]), (0.062, 0.054, 0.047, 0.042))):
+        B.seg(a, b, w, w * 1.08, BODY_MID, "Tail%d" % (i + 1), ext=0.05 if i == 0 else 0.03, ext1=0.02,
+              top=(0.88, 0.88))
+    tip = T[4]
+    B.add(tip + Vector((0, 0.02, -0.01)), (0.11, 0.12, 0.10), BLOOD, "Tail4", rnd=0.4)         # blood brush (r3 NICE 1)
+    for d, L in (((0, 0.5, -0.8), 0.23), ((0.5, 0.4, -0.7), 0.19), ((-0.5, 0.4, -0.7), 0.19), ((0, 0.9, -0.2), 0.20),
+                 ((0, 0.1, -1.0), 0.20), ((0, 0.8, 0.5), 0.18)):
+        tuft(B, tip + Vector((0, 0.02, -0.01)), d, L, 0.07, BLOOD, "Tail4")
+    ANCH["FX_StarSparkle"] = tuple(tip + Vector((0, 0.06, -0.14)))
+    # ================= SIX wings: upper (A, 3 rows), middle (B, 2 rows), lower tucked (C, 2 rows)
+    for s, side in ((1, "L"), (-1, "R")):
+        angel_wing(B, "A", s, side, True)
+        angel_wing(B, "B", s, side, False)
+        angel_wing(B, "C", s, side, False)
+    B.build()
+    mn, mx = k.bounds()
+    pitch = round(0.2243 * (mx.z - mn.z) / HEIGHT, 4)
+    bk.stud_skin(k, pitch)
+    return {"TH": round(B.th, 3), "pitch": pitch, "H": round(mx.z - mn.z, 3), "top": round(mx.z, 3),
+            "halo_top": round(HALO_C.z + HALO_R * math.sin(math.radians(HALO_TILT)) + (HALO_T / 2 + HALO_LIP) * math.cos(math.radians(HALO_TILT)), 3),
+            "span": round(mx.x - mn.x, 3), "length": round(mx.y - mn.y, 3)}
+
+
+# ------------------------------------------------------------------ rig
+def rig(k):
+    k.joint("Spine", (0, 0.519, 0.897), "Root", tail=(0, -0.4, 0))           # at the hips
+    k.joint("Chest", (0, -0.047, 0.897), "Spine", tail=(0, -0.4, 0))
+    k.joint("Neck", (0, -0.661, 1.015), "Chest", tail=(0, -0.3, 0.15))
+    k.joint("Head", (0, -1.003, 1.109), "Neck", tail=(0, -0.35, 0))           # throat pivot
+    k.joint("Jaw", tuple(HC + Vector((0, -0.04, -0.15))), "Head", tail=(0, -0.2, 0))
+    k.joint("Mouth", tuple(HC + Vector((0, -0.32, -0.12))), "Head", tail=(0, -0.15, 0))
+    k.joint("FX_CoronaRing", tuple(HC + Vector((0, -0.34, -0.12))), "Mouth", tail=(0, -0.1, 0))
+    k.joint("Mane", tuple(HC + Vector((0, 0.15, -0.03))), "Head", tail=(0, 0.2, 0))
+    k.joint("Mane_Top", ANCH.get("Mane_Top", tuple(HC + Vector((0, 0.2, 0.3)))), "Neck", tail=(0, 0, 0.1))
+    k.joint("FX_HaloDust", ANCH.get("Mane_Top", tuple(HC + Vector((0, 0.2, 0.3)))), "Mane_Top", tail=(0, 0, 0.08))
+    k.joint("Halo", tuple(HALO_C), "Head", tail=(0, 0, 0.15))
+    k.joint("FX_CoronaSparkle", ANCH.get("FX_CoronaSparkle", tuple(HALO_C)), "Halo", tail=(0, -0.08, 0))
+    for s, side in ((1, "L"), (-1, "R")):
+        for fb, parent, knee in (("F", "Chest", (0, 1, 0)), ("B", "Spine", (0, -1, 0))):
+            H, K, A, P = (X(p, s) for p in LEGS[fb])
+            k.joint("Leg_" + fb + side, H, parent)
+            k.joint("Shin_" + fb + side, K, "Leg_" + fb + side)
+            k.joint("Foot_" + fb + side, A, "Shin_" + fb + side, tail=(0, -0.15, 0))
+            k.add_leg2("Leg_" + fb + side, "Shin_" + fb + side, "Foot_" + fb + side, knee=knee)
+        for P, (wg, h2, tp) in WINGS.items():
+            k.joint("Wing_%s_%s" % (P, side), X(wg.S, s), "Chest" if P != "C" else "Spine")
+            k.joint("WingTip_%s_%s" % (P, side), X(wg.W, s), "Wing_%s_%s" % (P, side), tail=(s * 0.5, 0.2, 0.05))
+            k.joint("FX_FeatherSparkle_%s_%s" % (P, side), ANCH.get("FX_FeatherSparkle_%s_%s" % (P, side), X(tp, s)),
+                    "WingTip_%s_%s" % (P, side), tail=(s * 0.12, 0, 0))
+    for i in range(4):
+        k.joint("Tail%d" % (i + 1), TAILP[i], "Spine" if i == 0 else "Tail%d" % i,
+                tail=tuple(Vector(TAILP[i + 1]) - Vector(TAILP[i])))
+    k.joint("Tail_Tip", TAILP[4], "Tail4", tail=(0, 0.05, -0.12))
+    k.joint("FX_StarSparkle", ANCH.get("FX_StarSparkle", TAILP[4]), "Tail_Tip", tail=(0, 0, -0.08))
+
+
+HEAD_XF = []
+
+
+# ------------------------------------------------------------------ wings
+def wings(k, f, P, up, fwd=0.0, twist=0.0, tip=0.0, side=None):
+    WINGS[P][0].key(k, f, up, fwd, twist, tip, side)
+
+
+DISPLAY_POSE = {"A": (44.0, -4.0, 22.0, 0.0), "B": (4.0, -8.0, 20.0, 0.0), "C": (10.0, -4.0, 0.0, -6.0)}   # clips: C fwd -10 -> -4
+
+
+# ------------------------------------------------------------------ animation (clip round 1, 2026-10-27)
+# References (owner rule; EclipseSeraph/ANIM_REFS.md): The Boy and the Heron (Sakugabooru #260711 takeoff, #260630
+# threat display), The Cat Returns (#256671, cat walk), ANIM_REFERENCES_1014 #8 (banshee stroke) + #3 (Sea Beasts
+# roar: the jaw lags the head lift), ANIM_REFERENCES_1027 W0 (Wolf's Rain: mouth opens ~15 f, then holds).
+# Rest pose on the ground = DISPLAY_POSE (the model-gate pose). Tested wing ranges (`_scratch/path6.py`, wing pairs +
+# body, every frame): A up <= 54 (higher: the hand meets the halo), A down >= ~18 at twist 24 (lower: the root rows
+# press into the shoulders); B up <= 10 (higher: the arm root cuts the chest top); C fwd >= -10 (further back: the
+# root rows meet the thigh); B and C move IN PHASE with C = B + 6 (C - B > 15 or C twist < 0 = a cut).
+# Rules: Neck <= 8 deg, head + neck pitch-up <= 30, no head shakes, no spins, acts end exactly in the rest pose.
+import petkit as pk
+
+TOP = {"A": (46.0, -4.0, 24.0, 0.0), "B": (10.0, -8.0, 20.0, 0.0), "C": (16.0, -10.0, 4.0, -6.0)}    # stroke top
+LOW = {"A": (18.0, -4.0, 24.0, 4.0), "B": (0.0, -8.0, 20.0, 0.0), "C": (6.0, -10.0, 4.0, -6.0)}      # stroke bottom
+ROAR_W = {"A": (30.0, 0.0, 20.0, 0.0), "B": (8.0, -2.0, 20.0, 0.0), "C": (14.0, -6.0, 4.0, -6.0)}   # open to half
+FAN = {"A": (54.0, -4.0, 24.0, -24.0), "B": (10.0, -18.0, 22.0, -36.0), "C": (16.0, -8.0, 4.0, -36.0)}  # full fan:
+# the hands stand up (tip -24 / -36) so all six wings show as a fan
+BRAKE = {"A": (36.0, 6.0, 26.0, 0.0), "B": (8.0, -6.0, 20.0, 0.0), "C": (14.0, -8.0, 4.0, -6.0)}     # landing flare
+FLY_N = 28
+FPITCH = 4.0
+FLY_LIFT = 0.30
+
+
+def wset(k, f, poses):
+    for P, w in poses.items():
+        wings(k, f, P, *w)
+
+
+def mix(a, b, t):
+    return {P: tuple(x + (y - x) * t for x, y in zip(a[P], b[P])) for P in a}
+
+
+def head(k, f, pitch=0.0, yaw=0.0):
+    """neck chain: Neck 0.4 / Head 0.6 of the total (pitch + = nose down); Neck <= 8 for |total| <= 20"""
+    k.key("Neck", f, rot=(pitch * 0.4, yaw * 0.4, 0))
+    k.key("Head", f, rot=(pitch * 0.6, yaw * 0.6, 0))
+
+
+def halo_key(k, f, pitch=0.0, roll=0.0, z=0.0):
+    k.key("Halo", f, rot=(pitch, 0, roll), loc=(0, 0, z))
+
+
+def tail_keys(k, f, pitch=0.0, yaw=0.0):
+    for i, b in enumerate(TAIL):
+        k.key(b, f, rot=(pitch * (1 - 0.15 * i), yaw * (0.6 + 0.2 * i), 0))
+
+
+def rest_keys(k, f, z=0.0, pitch=0.0):
+    k.key("Spine", f, rot=(pitch, 0, 0), loc=(0, 0, z))
+    k.key("Chest", f, rot=(0, 0, 0))
+    head(k, f)
+    k.key("Jaw", f, rot=(0, 0, 0))
+    k.key("Mane", f, rot=(0, 0, 0))
+    halo_key(k, f)
+    wset(k, f, DISPLAY_POSE)
+    tail_keys(k, f)
+
+
+def plant_frames(k, frames):
+    cm.plant(k, 0, legs=LEGS4, frames=list(frames))
+
+
+# ---- ground
+def idle(k):
+    """HALO DRIFT (120 f): slow breath; the halo tilts +-5 side to side; the six wings breathe (the upper pair lifts
+    44 -> 50 and falls, f10-60; middle + lower pairs 4 f behind, in phase); the head turns slowly (yaw +-10, quick
+    turn then a long hold); the blood corona pulses (event `corona` f80, VFX); settles."""
+    n = 120
+    k.new_action("idle", n, True)
+    for f in range(0, n + 1, 3):
+        b = pk.wave(f, n, 0, 2)
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0.006 * b))
+        k.key("Chest", f, rot=(0.8 * b, 0, 0))
+        halo_key(k, f, 0, 5 * pk.wave(f, n, 0.1, 1))
+        cm.chain(k, f, n, TAIL, sway=4, pitch=0, cycles=1, lag=0.2, grow=0.5)
+    for f, y in ((0, 0), (14, 0), (24, 8), (50, 8), (60, 0), (74, 0), (84, -8), (108, -8), (120, 0)):
+        head(k, f, 0, y)
+    for f, t in ((0, 0), (10, 0), (35, 1), (60, 0), (120, 0)):
+        A = DISPLAY_POSE["A"]
+        wings(k, f, "A", A[0] + 4 * t, *A[1:])
+    for f, t in ((0, 0), (14, 0), (39, 1), (64, 0), (120, 0)):
+        for P in ("B", "C"):
+            W = DISPLAY_POSE[P]
+            wings(k, f, P, W[0] + 4 * t, *W[1:])
+    for f in (0, n):
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Mane", f, rot=(0, 0, 0))
+    plant_frames(k, range(0, n + 1))
+    k.finish()
+    k.meta["planted"] = LEGS4
+    k.events["idle"] = {"corona": round(80 / n, 3)}
+
+
+def walk(k):
+    """lateral-sequence lion walk (The Cat Returns): the back and head stay level, the wings stay in the display
+    fan (the upper pair 4 lower), the halo trails the head by 3 f (a small counter-roll), the tail sways"""
+    n = 40
+
+    def body(f):
+        b = 0.5 - 0.5 * math.cos(4 * math.pi * f / n)
+        k.key("Spine", f, rot=(0.6 * pk.wave(f, n, 0.1, 2), 1.5 * pk.wave(f, n, 0.1), 1.6 * pk.wave(f, n)),
+              loc=(0, 0, 0.012 * b))
+        k.key("Chest", f, rot=(0.5, 1.0 * pk.wave(f, n, 0.25), -0.6 * pk.wave(f, n)))
+        head(k, f, -1.0 * pk.wave(f, n, 0.2, 2), -2.5 * pk.wave(f, n, 0.25))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Mane", f, rot=(0, 0, 0))
+        halo_key(k, f, 0, -2.0 * pk.wave(f, n, 3.0 / n))
+        A = DISPLAY_POSE["A"]
+        wings(k, f, "A", A[0] - 4 + 2 * pk.wave(f, n, 0.1, 2), *A[1:])
+        for P in ("B", "C"):
+            wings(k, f, P, *DISPLAY_POSE[P])
+        cm.chain(k, f, n, TAIL, sway=6, pitch=0, cycles=1, lag=0.15, grow=0.5)
+    return cm.quad_walk(k, n, 0.15, 0.08, body, gait="walk")
+
+
+# ---- flight (banshee #8: ~0.9 s stroke, the head level, the tail streams; the upper pair flaps, the middle and lower
+# pairs flap 4 f behind in phase, a smaller echo of the upper stroke)
+def stroke6(ph):
+    out = {}
+    wa = wing3.stroke(ph, top=46.0, bot=18.0, down=0.45, sweep=6.0, twist=6.0, fold=20.0)
+    out["A"] = (wa["up"], wa["fwd"] - 2.0, wa["twist"] + 24.0, 0.5 * wa["tip"])
+    wb = wing3.stroke(ph - 4.0 / FLY_N, top=10.0, bot=0.0, down=0.45, sweep=0.0, twist=0.0, fold=0.0)
+    out["B"] = (wb["up"], -8.0, 20.0, 0.0)
+    out["C"] = (wb["up"] + 6.0, -10.0, 4.0, -6.0)
+    return out
+
+
+def fly_legs(k, f, ph, amt=1.0):
+    """front paws tucked like a cat's, hind legs trailing with a small pump"""
+    w = math.sin(2 * math.pi * (ph - 0.25))
+    for s in ("L", "R"):
+        k.key("Leg_F" + s, f, rot=(-40 * amt, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_F" + s, f, rot=((100 + 4 * w) * amt, 0, 0))
+        k.key("Foot_F" + s, f, rot=(30 * amt, 0, 0))
+        k.key("Leg_B" + s, f, rot=((16 + 6 * w) * amt, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_B" + s, f, rot=((10 - 8 * w) * amt, 0, 0))
+        k.key("Foot_B" + s, f, rot=((40 + 6 * w) * amt, 0, 0))
+
+
+def fly_pose(k, f, ph, legs=True):
+    wset(k, f, stroke6(ph))
+    rise = math.cos(2 * math.pi * (ph - 0.45))
+    k.key("Spine", f, rot=(FPITCH - 2 * math.sin(2 * math.pi * ph), 0, 0), loc=(0, 0, FLY_LIFT + 0.04 * rise))
+    k.key("Chest", f, rot=(0, 0, 0))
+    head(k, f, -FPITCH + 1.5 * math.sin(2 * math.pi * (ph - 0.25)))          # the head stays level (gyro)
+    k.key("Jaw", f, rot=(0, 0, 0))
+    k.key("Mane", f, rot=(0, 0, 0))
+    halo_key(k, f, 2 * math.sin(2 * math.pi * (ph - 0.3)), 0)               # the halo trails the body bob
+    for i, b in enumerate(TAIL):                                           # streams back, a small lagging wave
+        k.key(b, f, rot=(14 - 2 * i + 3 * math.sin(2 * math.pi * (ph - 0.12 * (i + 1))),
+                         2 * math.sin(2 * math.pi * (ph - 0.2 * i)), 0))
+    if legs:
+        fly_legs(k, f, ph)
+
+
+def fly(k):
+    k.new_action("fly", FLY_N, True)
+    for f in range(0, FLY_N + 1):
+        fly_pose(k, f, f / FLY_N)
+    k.finish()
+
+
+def takeoff(k):
+    """(heron #260711) a short crouch while all six wings rise to the stroke top (f0-10); LAUNCH f11 on the first
+    downstroke + the hind-leg push; the legs tuck; into the flight cycle"""
+    n = 28
+    k.new_action("takeoff", n, False)
+    rest_keys(k, 0)
+    for f, z, p, w in ((6, -0.05, -3, mix(DISPLAY_POSE, TOP, 0.6)), (10, -0.07, -5, TOP), (13, 0.18, 4, LOW),
+                       (17, 0.30, 6, TOP)):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(0, 0, 0))
+        head(k, f, -p)
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Mane", f, rot=(0, 0, 0))
+        halo_key(k, f, 0, 0)
+        wset(k, f, w)
+        tail_keys(k, f, 16 + p, 0)                               # the brush stays clear of the floor in the crouch
+    fly_pose(k, 22, 0.0, legs=False)
+    fly_pose(k, n, 0.2, legs=False)
+    plant_frames(k, range(0, 12))
+    for f, a in ((14, 0.45), (18, 0.85)):
+        fly_legs(k, f, 0.0, a)
+    fly_legs(k, 22, 0.0)
+    fly_legs(k, n, 0.2)
+    k.finish(loop=False)
+    k.events["takeoff"] = {"launch": round(11 / n, 3)}
+
+
+def land(k):
+    """flare (the chest lifts, the wings brake forward), the legs reach, TOUCH f16, absorb, back to the display fan"""
+    n = 28
+    k.new_action("land", n, False)
+    fly_pose(k, 0, 0.0)
+    for f, z, p, w in ((7, 0.12, -8, BRAKE), (12, 0.06, -5, LOW), (16, -0.05, 2, TOP),
+                       (21, 0.01, -1, mix(TOP, DISPLAY_POSE, 0.6))):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(0, 0, 0))
+        head(k, f, -p)
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Mane", f, rot=(0, 0, 0))
+        halo_key(k, f, 0, 0)
+        wset(k, f, w)
+        tail_keys(k, f, 6 + p * 0.5, 0)
+    rest_keys(k, n)
+    for s in ("L", "R"):                                       # the legs reach for the ground
+        k.key("Leg_F" + s, 7, rot=(-24, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_F" + s, 7, rot=(10, 0, 0))
+        k.key("Foot_F" + s, 7, rot=(20, 0, 0))
+        k.key("Leg_B" + s, 7, rot=(-8, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_B" + s, 7, rot=(0, 0, 0))
+        k.key("Foot_B" + s, 7, rot=(20, 0, 0))
+    plant_frames(k, range(16, n + 1))
+    k.finish(loop=False)
+    k.events["land"] = {"touch": round(16 / n, 3)}
+
+
+def roar(k):
+    """HALO LIFT (66 f; Sea Beasts #3 + W0): f0-14 the halo lifts 0.20 on its bone and tilts forward 15, the head
+    rises 15 (Neck -6 / Head -9); f14-26 the jaw opens (lags the head), the outer mane ring flares 6; event `roar` f24
+    (corona ring at the Mouth); f26-50 hold, the wings open to half (the span to the front), the jaw rumbles; f50-66
+    the halo settles, the head returns, the jaw closes, the wings back to the display fan."""
+    n = 66
+    k.new_action("roar", n, False)
+    rest_keys(k, 0)
+    for f, hp, jw, mn, hz, ht, w in ((8, -6, 0, 0, 0.10, 6, mix(DISPLAY_POSE, ROAR_W, 0.6)),
+                                     (14, -15, 4, 0, 0.20, 15, ROAR_W), (22, -15, 24, 5, 0.20, 15, ROAR_W),
+                                     (26, -15, 32, 6, 0.20, 15, ROAR_W),
+                                     (30, -15, 32, 6, 0.20, 15, ROAR_W), (50, -15, 32, 6, 0.20, 15, ROAR_W),
+                                     (58, -6, 10, 2, 0.08, 6, mix(DISPLAY_POSE, ROAR_W, 0.4)),
+                                     (64, 0, 0, 0, 0.0, 0, DISPLAY_POSE)):
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0))
+        k.key("Chest", f, rot=(-2 if 14 <= f <= 50 else 0, 0, 0))
+        head(k, f, hp)
+        k.key("Jaw", f, rot=(jw, 0, 0))
+        k.key("Mane", f, rot=(mn, 0, 0))
+        halo_key(k, f, ht, 0, hz)
+        wset(k, f, w)
+        tail_keys(k, f, 4 if 14 <= f <= 50 else 0, 0)
+    for f in range(30, 50, 2):                                 # the jaw rumble while the roar holds
+        k.key("Jaw", f, rot=(32 + (1.5 if (f // 2) % 2 else -1.5), 0, 0))
+    rest_keys(k, n)
+    plant_frames(k, range(0, n + 1))
+    k.finish(loop=False)
+    k.events["roar"] = {"roar": round(24 / n, 3)}
+
+
+def wingcascade(k):
+    """SIGNATURE - SIX-WING CASCADE (110 f, in place): f0-14 the Seraph bows its crown (head down 6, the halo tilts
+    with it); each pair then lifts with a TIP-TO-ROOT ripple (the hand rises first, the arm follows 6 f later): upper
+    pair f14-28 (event `ripple1` f22), middle pair f30-44 (`ripple2` f40), lower pair f44-58 (`ripple3` f54); the six
+    wings hold the full fan f58-64; f64-94 the reverse ripple (lower pair folds first, then the middle, then the
+    upper); the head lifts, the halo levels; the exact rest pose from f100."""
+    n = 110
+    k.new_action("act_wingcascade", n, False)
+    rest_keys(k, 0)
+    sched = {"A": (14, 22, 28, 78, 86, 94), "B": (30, 38, 44, 70, 78, 86), "C": (44, 52, 58, 64, 72, 80)}
+    for P, (t0, t1, t2, r0, r1, r2) in sched.items():
+        d, fa = DISPLAY_POSE[P], FAN[P]
+        for f, w in ((0, d), (t0, d), (t1, (d[0], d[1], d[2], fa[3])), (t2, fa), (r0, fa),
+                     (r1, (d[0] + (fa[0] - d[0]) * 0.5, fa[1], fa[2], fa[3])), (r2, d), (n, d)):
+            wings(k, f, P, *w)
+    for f, hp, hz, ch in ((14, 6, -0.02, 0), (28, 6, -0.02, -1.5), (58, 6, -0.02, -2.5), (64, 6, -0.02, -2.5),
+                          (90, 0, 0.0, -1), (100, 0, 0.0, 0)):
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0))
+        k.key("Chest", f, rot=(ch, 0, 0))
+        head(k, f, hp)
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Mane", f, rot=(0, 0, 0))
+        halo_key(k, f, 0, 0, hz)
+        tail_keys(k, f, 3 if 28 <= f <= 64 else 0, 0)
+    rest_keys(k, n)
+    plant_frames(k, range(0, n + 1))
+    k.finish(loop=False)
+    k.events["act_wingcascade"] = {"ripple1": round(22 / n, 3), "ripple2": round(40 / n, 3),
+                                   "ripple3": round(54 / n, 3)}
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    fly(k)
+    takeoff(k)
+    land(k)
+    roar(k)
+    wingcascade(k)
+    return stride
+
+
+LEGS4 = ["Leg_FL", "Leg_FR", "Leg_BL", "Leg_BR"]
+TAIL = ["Tail1", "Tail2", "Tail3", "Tail4"]
+WBONES = ["%s_%s_%s" % (b, P, s) for P in "ABC" for s in "LR" for b in ("Wing", "WingTip")]
+
+
+def check_pairs():
+    P = []
+    for i, a in enumerate(WBONES):
+        for b in WBONES[i + 1:]:
+            if a.split("_")[1:] == b.split("_")[1:]:
+                continue                                  # arm vs its own hand (hinge) is checked by joints()
+            P.append((a, b))
+        for b in ["Head", "Neck", "Chest", "Spine", "Mane", "Halo", "Tail1", "Tail2"] + LEGS4:
+            P.append((a, b))
+    for s in ("L", "R"):
+        P += [("Leg_F" + s, "Leg_B" + s), ("Shin_F" + s, "Shin_B" + s), ("Foot_F" + s, "Foot_B" + s)]
+    P += [("Shin_FL", "Shin_FR"), ("Shin_BL", "Shin_BR"), ("Foot_FL", "Foot_FR"), ("Foot_BL", "Foot_BR")]
+    for a in ("Head", "Jaw", "Mane"):
+        for b in ("Chest", "Leg_FL", "Leg_FR", "Shin_FL", "Shin_FR", "Foot_FL", "Foot_FR"):
+            P.append((a, b))
+    P += [("Halo", "Head"), ("Halo", "Neck"), ("Halo", "Mane"), ("Jaw", "Neck")]
+    for t in ("Tail2", "Tail3", "Tail4"):
+        for b in ("Leg_BL", "Leg_BR", "Shin_BL", "Shin_BR", "Foot_BL", "Foot_BR"):
+            P.append((t, b))
+    return P
+
+
+def joints():
+    out = []
+    for P, (wg, h2, tp) in WINGS.items():
+        out += wg.joints()
+        for s, sd in ((1, "L"), (-1, "R")):
+            out.append((X(wg.S, s), X(wg.BB, s), 0.15, "Wing_%s_%s" % (P, sd)))
+    out.append(((0, -1.003, 1.109), tuple(HC + Vector((0, 0.10, -0.05))), 0.20, "Head"))
+    out.append(((0, -0.661, 1.015), (0, -0.661, 1.015), 0.22, "Neck"))
+    return out

@@ -1,0 +1,26 @@
+import bpy, bmesh, numpy as np, time
+from mathutils.bvhtree import BVHTree
+bpy.ops.wm.read_factory_settings(use_empty=True)
+bm = bmesh.new()
+r = bmesh.ops.create_icosphere(bm, subdivisions=3, radius=2.0)
+print("ico keys", list(r.keys()), len(r["verts"]))
+me = bpy.data.meshes.new("t"); bm.to_mesh(me); bm.free()
+ob = bpy.data.objects.new("t", me); bpy.context.scene.collection.objects.link(ob)
+m = ob.modifiers.new("R", "REMESH"); m.mode = "VOXEL"; m.voxel_size = 0.1
+dg = bpy.context.evaluated_depsgraph_get()
+me2 = bpy.data.meshes.new_from_object(ob.evaluated_get(dg))
+print("remesh polys", len(me2.polygons))
+# numpy mesh build
+t=time.time()
+V = np.random.rand(300000,3).astype(np.float32)
+F = np.random.randint(0,300000,(200000,3)).astype(np.int32)
+me3 = bpy.data.meshes.new("n")
+me3.vertices.add(len(V)); me3.vertices.foreach_set("co", V.ravel())
+me3.loops.add(F.size); me3.loops.foreach_set("vertex_index", F.ravel())
+me3.polygons.add(len(F)); me3.polygons.foreach_set("loop_start", np.arange(0, F.size, 3, dtype=np.int32))
+me3.update(calc_edges=True)
+print("numpy mesh", len(me3.polygons), round(time.time()-t,2), me3.validate(verbose=False))
+ob2 = bpy.data.objects.new("t2", me2); bpy.context.scene.collection.objects.link(ob2)
+bvh = BVHTree.FromObject(ob2, dg)
+print(bvh.find_nearest((0,0,3)), bvh.ray_cast((0,0,5),(0,0,-1)))
+print(bpy.app.version_string, [e.identifier for e in bpy.types.RenderSettings.bl_rna.properties['engine'].enum_items])

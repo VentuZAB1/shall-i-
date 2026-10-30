@@ -1,0 +1,1 @@
+PermafrostTitan {"portrait": {"kit_29-58_s.5_v.45": [54, 40], "review_38-48_s.6": [14, 2], "rendered_40-62_s.6_v.55": [47, 39]}, "game": {"kit_29-58_s.5_v.45": [27, 22], "review_38-48_s.6": [20, 13], "rendered_40-62_s.6_v.55": [20, 13]}}

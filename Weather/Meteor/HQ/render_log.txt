@@ -1,0 +1,13 @@
+00:02.062  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\meteor_hq.blend"
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\build_hq.py:325: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+00:03.797  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\review_Meteor_front.png'
+00:04.109  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\review_Meteor_side.png'
+00:04.437  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\review_MeteorBig_front.png'
+00:04.734  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\review_MeteorBig_side.png'
+00:05.047  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\review_MeteorChunk_front.png'
+00:05.312  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\review_MeteorChunk_side.png'
+HQ_REPORT {"render": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\review_Meteor_front.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\review_Meteor_side.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\review_MeteorBig_front.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\review_MeteorBig_side.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\review_MeteorChunk_front.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\review_MeteorChunk_side.png"]}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

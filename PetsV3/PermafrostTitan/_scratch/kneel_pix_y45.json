@@ -1,0 +1,64 @@
+{
+ "tag": "y45",
+ "res": 300,
+ "40": {
+  "Leg_L": {
+   "alone_px": 12767,
+   "visible_px": 6163,
+   "share": 0.483,
+   "occluders": {
+    "Arm_L": 677,
+    "Spine": 255,
+    "Shin_L": 193
+   }
+  },
+  "Shin_L": {
+   "alone_px": 8325,
+   "visible_px": 4889,
+   "share": 0.587,
+   "occluders": {
+    "Leg_L": 338,
+    "Foot_L": 293
+   }
+  },
+  "Foot_L": {
+   "alone_px": 10742,
+   "visible_px": 7051,
+   "share": 0.656,
+   "occluders": {
+    "Shin_L": 615,
+    "Leg_L": 63
+   }
+  }
+ },
+ "50": {
+  "Leg_L": {
+   "alone_px": 12762,
+   "visible_px": 5564,
+   "share": 0.436,
+   "occluders": {
+    "Arm_L": 781,
+    "Spine": 241,
+    "Shin_L": 198
+   }
+  },
+  "Shin_L": {
+   "alone_px": 8363,
+   "visible_px": 4900,
+   "share": 0.586,
+   "occluders": {
+    "Leg_L": 338,
+    "Foot_L": 298
+   }
+  },
+  "Foot_L": {
+   "alone_px": 10742,
+   "visible_px": 7034,
+   "share": 0.655,
+   "occluders": {
+    "Shin_L": 617,
+    "Leg_L": 64
+   }
+  }
+ }
+}

@@ -1,0 +1,115 @@
+def model(k):
+    import blockkit as bk
+    B = bk.Blocks(k, seed=1515, tier=3, plates=False, th=0.36)
+    # ================= carapace (Spine): domed bronze loft, flatter underside, slate rim band
+    car = B.tube([ring(y, hw, zc, ht, hb) for y, hw, zc, ht, hb in CAR], BRONZE, "Spine")
+    B.tube([ring(y, hw + 0.016, zc + 0.004, 0.026, 0.026, seg=28) for y, hw, zc, ht, hb in CAR[1:-1]], SHELL_D,
+           "Spine", nostud=True)                                                                   # rim band
+    B.tube([ring(y, hw * 0.80, zc - hb * 0.72, 0.03, 0.035, n=2.2, seg=20) for y, hw, zc, ht, hb in CAR[1:-1]],
+           BELLY_PALE, "Spine", nostud=True)                                                       # sternum
+    # slate H-groove ridges on the dome: midline (front half), the cervical V, two branchial arcs
+
+    def bar_on(pts, w, bone="Spine", color=SHELL_D, thick=0.014):
+        hits = [surf_hit(B, [car], (x, y, 2.0), (0, 0, -1)) for x, y in pts]
+        for (a, na), (b, nb) in zip(hits, hits[1:]):
+            n = (na + nb).normalized()
+            B.bar(a + na * 0.003, b + nb * 0.003, n, w, thick, color, bone, studs=[], nostud=True, role="limb",
+                  rnd=0.3, ext=0.0)
+    bar_on([(0, -0.46), (0, -0.37), (0, -0.28), (0, -0.19), (0, -0.11)], 0.055)
+    bar_on([(-0.44, 0.08), (-0.32, -0.01), (-0.17, -0.075), (0, -0.10), (0.17, -0.075), (0.32, -0.01),
+            (0.44, 0.08)], 0.048)
+    for s in (1, -1):
+        bar_on([(s * 0.13, -0.07), (s * 0.19, 0.05), (s * 0.20, 0.18), (s * 0.17, 0.30), (s * 0.11, 0.40)], 0.042)
+    # rose-coral teeth along the front-side (anterolateral) margins + two small frontal teeth
+    for s in (1, -1):
+        for y, L, w in ((-0.47, 0.095, 0.032), (-0.39, 0.12, 0.038), (-0.30, 0.13, 0.040), (-0.20, 0.125, 0.040),
+                        (-0.10, 0.11, 0.036), (0.0, 0.09, 0.032)):
+            hw, zc, ht, hb = car_at(y)
+            p = Vector((s * (hw + 0.008), y, zc + 0.012))
+            rose_spike(B, p, (s * 1.0, -0.45, 0.25), L, w, "Spine")
+        rose_spike(B, Vector((s * 0.075, -0.538, 0.53)), (s * 0.15, -1.0, 0.35), 0.07, 0.026, "Spine")
+    # ================= front: orbits + short thick eyestalks, rose slit eyes, slate V brow plate
+    for s, side in ((1, "L"), (-1, "R")):
+        eb = "Eye_" + side
+        base = Vector((s * 0.20, -0.49, 0.50))
+        top = base + Vector((s * 0.02, -0.06, 0.075))
+        B.add(Vector((s * 0.20, -0.505, 0.50)), (0.068, 0.03, 0.05), BLACK, "Spine", role="detail", bevel=0.012,
+              studs=[])                                                                             # orbit
+        B.seg(base, top, 0.042, 0.042, BRONZE, eb, ext=0.03, rnd=0.42, role="limb")              # stalk (0.07H)
+        bulb = B.add(top + Vector((0, -0.012, 0.012)), (0.060, 0.046, 0.052), BRONZE, eb, rnd=0.45, role="limb")
+        ep, en = surf_hit(B, [bulb], (s * 0.225, -1.0, 0.585), (0, 1, 0))
+        crab_eye(B, ep + en * 0.002, s, en, eb, tilt=15, sc=1.15)
+        ANCH["Eye_" + side] = tuple(base)
+    for s in (1, -1):                                                                              # brow plate
+        Rb = Euler((math.radians(-12), math.radians(-s * 15), 0), "XYZ").to_matrix()
+        B.add(Vector((s * 0.135, -0.565, 0.638)), (0.13, 0.045, 0.024), SHELL_D, "Spine", R=Rb, rnd=0.3,
+              role="limb", top=(0.92, 0.85))
+    # ================= mandibles (Mouth): flat pale plates over a dark mouth, small ivory teeth on the inner edges
+    B.add(Vector((0, -0.528, 0.405)), (0.10, 0.012, 0.048), MOUTH, "Spine", role="detail", bevel=0.004, studs=[])
+    for s in (1, -1):
+        B.add(Vector((s * 0.058, -0.548, 0.405)), (0.046, 0.016, 0.062), BELLY_PALE, "Mouth", rot=(6, 0, -s * 8),
+              rnd=0.35, role="limb", nostud=True, bot=(0.8, 1.0))
+        for z in (0.44, 0.405, 0.37):
+            B.spike(Vector((s * 0.014, -0.56, z)), (-s * 1.0, -0.2, -0.1), 0.026, 0.010, IVORY, "Mouth")
+    ANCH["Mouth"] = (0, -0.58, 0.41)
+    # ================= claws: merus (Arm), carpus (Fore), oval palm + fixed finger (Claw), movable finger (Pincer)
+    for s, side in ((1, "L"), (-1, "R")):
+        c = CSIZE[side]
+        S, E, W, F, a, o, out = claw_frame(side)
+        arm, fore, claw, pin = "Arm_" + side, "Fore_" + side, "Claw_" + side, "Pincer_" + side
+        B.seg(S, E, 0.072 * c, 0.090 * c, BRONZE, arm, side=(0, 0, 1), ext=0.04, ext1=0.03, top=(0.95, 0.95),
+              rnd=0.40)                                                                              # merus
+        for t in (0.40, 0.75):                                                                       # merus spikes
+            p = S.lerp(E, t) + Vector((0, 0, 0.085 * c))
+            rose_spike(B, p, (s * 0.35, -0.25, 1.0), 0.075 * c, 0.026 * c, arm)
+        B.add(E, (0.088 * c, 0.088 * c, 0.088 * c), SHELL_D, fore, rnd=0.42)                          # knuckle
+        B.seg(E, W, 0.085 * c, 0.092 * c, BRONZE, fore, ext=0.02, ext1=0.03, top=(1.1, 1.1), rnd=0.42)  # carpus
+        rose_spike(B, E.lerp(W, 0.55) + out * 0.08 * c, out + Vector((0, -0.3, 0.4)), 0.08 * c, 0.028 * c, fore)
+        B.add(W, (0.095 * c, 0.095 * c, 0.095 * c), SHELL_D, claw, rnd=0.42)                          # wrist knuckle
+        # palm: a big oval bronze block, thin across (out), tall in the finger plane (o)
+        P0 = W - a * 0.03
+        palm = B.seg(P0, F, 0.118 * c, 0.170 * c, BRONZE, claw, side=out, top=(0.92, 0.86), rnd=0.45)
+        for t, L in ((0.18, 0.08), (0.42, 0.095), (0.66, 0.10), (0.88, 0.09)):                     # outer spikes
+            p = P0.lerp(F, t) + out * 0.114 * c + o * 0.05 * c
+            rose_spike(B, p, out * 1.0 + a * 0.35 + o * 0.2, L * c, 0.030 * c, claw)
+        # fixed finger (pollex, -o side) on Claw; movable finger (dactyl, +o side) on Pincer; tips curve inward
+        for bone, sgn, Lf, w0 in ((claw, -1, 0.28, 0.080), (pin, 1, 0.30, 0.074)):
+            r0 = F + o * sgn * 0.085 * c - a * 0.05
+            dirf = (a - o * sgn * 0.22).normalized()
+            tip = r0 + dirf * Lf * c
+            B.seg(r0, r0.lerp(tip, 0.66), w0 * c, 0.062 * c, BRONZE, bone, side=out, top=(0.82, 0.74),
+                  rnd=0.40)
+            m = r0.lerp(tip, 0.60)
+            B.seg(m, m.lerp(tip, 0.78), w0 * 0.70 * c, 0.046 * c, SHELL_D, bone, side=out, top=(0.70, 0.70),
+                  rnd=0.35, role="limb")
+            B.spike(m.lerp(tip, 0.66), dirf, (tip - m).length * 0.50, w0 * 0.42 * c, BLACK, bone, side=out)
+            for t in (0.28, 0.52):                                                                  # crusher molars
+                q = r0.lerp(tip, t) - o * sgn * 0.058 * c
+                B.add(q, (0.026 * c, 0.020 * c, 0.018 * c), SHELL_D, bone, R=bk.frame_from(r0, tip, out),
+                      role="detail", bevel=0.005, studs=[])
+            if bone == pin:
+                ANCH["Claw_Tip_" + side] = tuple(tip)
+                ANCH["Hinge_" + side] = tuple(r0)
+                rose_spike(B, r0.lerp(tip, 0.30) + o * 0.06 * c, o + a * 0.7, 0.07 * c, 0.024 * c, pin)
+    # ================= six walking legs: slate coxa + flat merus, bronze knee, slate propodus, black dactyl tip
+    for s, side in ((1, "L"), (-1, "R")):
+        for i in (1, 2, 3):
+            j = leg_name(i, side)
+            H, K, A, T = leg_pts(i, s)
+            leg, shin, foot = "Leg_%d" % j, "Shin_%d" % j, "Foot_%d" % j
+            B.add(H, (0.066, 0.066, 0.055), SHELL_D, leg, rnd=0.42)                                  # coxa
+            B.seg(H, K, 0.056, 0.078, SHELL_D, leg, side=(0, 0, 1), ext=0.05, ext1=0.025, top=(0.90, 0.85),
+                  rnd=0.40)                                                                         # merus (flat)
+            B.add(K, (0.058, 0.058, 0.058), BRONZE, shin, rnd=0.42)                                   # knee
+            B.seg(K, A, 0.046, 0.056, SHELL_D, shin, ext=0.02, ext1=0.01, top=(0.80, 0.80), rnd=0.38)  # propodus
+            B.seg(A, T, 0.034, 0.036, SHELL_D, foot, ext=0.02, top=(0.7, 0.7), rnd=0.3)              # dactyl
+            B.spike(T - (T - A).normalized() * 0.012, T - A, 0.045, 0.022, BLACK, foot)              # black tip
+            ANCH["Foot_%d" % j] = tuple(T)
+    B.build()
+    global H_MODEL
+    mn, mx = k.bounds()
+    H_MODEL = mx.z
+    pitch = round(0.042 * (H_MODEL / HEIGHT) / (1.498 / 8.0), 4)
+    bk.stud_skin(k, pitch)
+    return {"TH": round(B.th, 3), "pitch": pitch, "H": round(mx.z, 3), "lowest": round(mn.z, 3),
+            "size": [round(v, 3) for v in (mx - mn)]}

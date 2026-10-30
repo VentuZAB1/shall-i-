@@ -1,0 +1,1 @@
+FIST {"30": {"fist_to_thigh_min_gap": 0.094, "fist_centre_to_thigh_surface": 0.372, "fist_centre_z": 0.51, "chest_line_z": 0.832}, "40": {"fist_to_thigh_min_gap": 0.094, "fist_centre_to_thigh_surface": 0.372, "fist_centre_z": 0.51, "chest_line_z": 0.832}, "46": {"fist_to_thigh_min_gap": 0.094, "fist_centre_to_thigh_surface": 0.372, "fist_centre_z": 0.507, "chest_line_z": 0.829}}

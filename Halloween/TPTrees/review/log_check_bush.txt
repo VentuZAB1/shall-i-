@@ -1,0 +1,499 @@
+FBX version: 7400
+RV_REPORT {
+ "file": "C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/TPTrees/review/fbx/Halloween_TPBush.fbx",
+ "unit_scale": {
+  "UnitScaleFactor": 1.0,
+  "OriginalUnitScaleFactor": 1.0
+ },
+ "objects": {
+  "Canopy": {
+   "tris": 7600,
+   "verts": 3802,
+   "islands": 1,
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_deg": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.01,
+    0.01,
+    0.01
+   ],
+   "uv_layers": 1,
+   "bbox_min": [
+    -2.813,
+    -2.807,
+    -0.008
+   ],
+   "bbox_max": [
+    2.839,
+    2.634,
+    4.744
+   ],
+   "verts_below_minus0_3": 0,
+   "signed_volume": 69.44,
+   "has_custom_normals": true,
+   "materials": [
+    {
+     "name": "Canopy_PBR",
+     "textures": [
+      {
+       "image": "TPBush_Canopy_albedo",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "sRGB",
+       "links": [
+        "BSDF_PRINCIPLED.Base Color<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPBush_Canopy_normal",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "NORMAL_MAP.Normal(via NormalMap)<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPBush_Canopy_rough",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "BSDF_PRINCIPLED.Roughness<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      }
+     ],
+     "backface_culling": false,
+     "emission_strength": 0.0,
+     "emission_color": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "emission_linked": false,
+     "metallic": 0.0,
+     "metallic_linked": false,
+     "alpha_linked": false,
+     "alpha": 1.0
+    }
+   ],
+   "texel_px_per_stud": {
+    "p5": 64.6,
+    "median": 73.1,
+    "p95": 78.4,
+    "area_frac_below_half_median": 0.0,
+    "area_frac_below_quarter_median": 0.0
+   },
+   "uv_outside_0_1": 0,
+   "uv_total_area": 0.472,
+   "texture_on_surface": {
+    "albedo_mean_srgb255": [
+     75,
+     65,
+     21
+    ],
+    "albedo_luma_pcts(5,25,50,75,95)": [
+     0.079,
+     0.127,
+     0.263,
+     0.331,
+     0.451
+    ],
+    "frac_near_black(luma<0.05)": 0.0003,
+    "frac_very_dark(luma<0.10)": 0.1762,
+    "sat_mean": 0.698,
+    "alpha_min_on_surface": 1.0,
+    "alpha_frac_below_0.99_on_surface": 0.0,
+    "alpha_min_whole_image": 1.0,
+    "hue_buckets_of_bright(red<15|orange15-40|amber/yellow40-65|green65-170|other)": [
+     0.063,
+     0.245,
+     0.325,
+     0.368,
+     0.0
+    ],
+    "frac_muddy(sat<0.4 & 0.12<v<0.45)": 0.0,
+    "frac_darker_than_60pct_median": 0.2698,
+    "normal_frac_z<0.35": 0.0004,
+    "normal_frac_z<0": 0.0003,
+    "normal_mean_z": 0.897,
+    "rough_mean": 0.666,
+    "rough_p5_p95": [
+     0.514,
+     0.898
+    ]
+   }
+  },
+  "TP": {
+   "tris": 2172,
+   "verts": 2220,
+   "islands": 24,
+   "location": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_deg": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    0.01,
+    0.01,
+    0.01
+   ],
+   "uv_layers": 1,
+   "bbox_min": [
+    -3.041,
+    -3.194,
+    -0.079
+   ],
+   "bbox_max": [
+    3.176,
+    2.668,
+    4.833
+   ],
+   "verts_below_minus0_3": 0,
+   "signed_volume": 1.19,
+   "has_custom_normals": true,
+   "materials": [
+    {
+     "name": "TP_PBR",
+     "textures": [
+      {
+       "image": "TPBush_TP_albedo",
+       "size": [
+        512,
+        512
+       ],
+       "packed": true,
+       "colorspace": "sRGB",
+       "links": [
+        "BSDF_PRINCIPLED.Base Color<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPBush_TP_normal",
+       "size": [
+        512,
+        512
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "NORMAL_MAP.Normal(via NormalMap)<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      },
+      {
+       "image": "TPBush_TP_rough",
+       "size": [
+        512,
+        512
+       ],
+       "packed": true,
+       "colorspace": "Non-Color",
+       "links": [
+        "BSDF_PRINCIPLED.Roughness<-Color"
+       ],
+       "channels": 4,
+       "depth": 24
+      }
+     ],
+     "backface_culling": false,
+     "emission_strength": 0.0,
+     "emission_color": [
+      1.0,
+      1.0,
+      1.0
+     ],
+     "emission_linked": false,
+     "metallic": 0.0,
+     "metallic_linked": false,
+     "alpha_linked": false,
+     "alpha": 1.0
+    }
+   ],
+   "texel_px_per_stud": {
+    "p5": 30.9,
+    "median": 67.3,
+    "p95": 73.8,
+    "area_frac_below_half_median": 0.067,
+    "area_frac_below_quarter_median": 0.0034
+   },
+   "uv_outside_0_1": 0,
+   "uv_total_area": 0.74,
+   "texture_on_surface": {
+    "albedo_mean_srgb255": [
+     183,
+     180,
+     170
+    ],
+    "albedo_luma_pcts(5,25,50,75,95)": [
+     0.451,
+     0.498,
+     0.776,
+     0.894,
+     0.902
+    ],
+    "frac_near_black(luma<0.05)": 0.0,
+    "frac_very_dark(luma<0.10)": 0.0,
+    "sat_mean": 0.072,
+    "alpha_min_on_surface": 1.0,
+    "alpha_frac_below_0.99_on_surface": 0.0,
+    "alpha_min_whole_image": 1.0,
+    "hue_buckets_of_bright(red<15|orange15-40|amber/yellow40-65|green65-170|other)": [
+     0.0,
+     0.01,
+     0.99,
+     0.0,
+     0.0
+    ],
+    "frac_muddy(sat<0.4 & 0.12<v<0.45)": 0.0011,
+    "frac_darker_than_60pct_median": 0.1129,
+    "normal_frac_z<0.35": 0.0,
+    "normal_frac_z<0": 0.0,
+    "normal_mean_z": 0.96,
+    "rough_mean": 0.858,
+    "rough_p5_p95": [
+     0.859,
+     0.859
+    ]
+   }
+  }
+ },
+ "total_tris": 9772,
+ "bbox_local_min": [
+  -3.041,
+  -3.194,
+  -0.079
+ ],
+ "bbox_local_max": [
+  3.176,
+  2.668,
+  4.833
+ ],
+ "size_roblox_XYZ(studs)": [
+  6.22,
+  4.91,
+  5.86
+ ],
+ "min_z": -0.079,
+ "base_centroid_xy(lowest 0.6)": [
+  0.07,
+  -0.222
+ ],
+ "canopy_bbox_min": [
+  -2.81,
+  -2.81,
+  -0.01
+ ],
+ "canopy_bbox_max": [
+  2.84,
+  2.63,
+  4.74
+ ],
+ "TP": {
+  "verts": 2220,
+  "strips_islands": 24,
+  "island_sizes": [
+   196,
+   196,
+   196,
+   196,
+   176,
+   176,
+   176,
+   176,
+   114,
+   114,
+   114,
+   114,
+   42,
+   42,
+   42,
+   42,
+   42,
+   42,
+   4,
+   4
+  ],
+  "frac_inside_gt0_04": 0.0577,
+  "frac_inside_gt0_12": 0.0207,
+  "max_penetration": 0.239,
+  "frac_resting_over_surface": 0.3351,
+  "frac_hover_gap_gt0_22": 0.0324,
+  "frac_hover_gap_gt0_4": 0.0,
+  "dist_pcts_resting": [
+   0.064,
+   0.102,
+   0.15,
+   0.213,
+   0.334
+  ],
+  "hover_clusters": [
+   {
+    "n": 14,
+    "centre_blender": [
+     0.04,
+     0.25,
+     4.78
+    ]
+   },
+   {
+    "n": 8,
+    "centre_blender": [
+     0.34,
+     0.42,
+     4.74
+    ]
+   },
+   {
+    "n": 8,
+    "centre_blender": [
+     -0.07,
+     -1.91,
+     4.52
+    ]
+   },
+   {
+    "n": 6,
+    "centre_blender": [
+     2.41,
+     0.75,
+     2.28
+    ]
+   },
+   {
+    "n": 4,
+    "centre_blender": [
+     0.38,
+     0.1,
+     4.78
+    ]
+   },
+   {
+    "n": 4,
+    "centre_blender": [
+     -1.78,
+     -0.25,
+     4.45
+    ]
+   },
+   {
+    "n": 4,
+    "centre_blender": [
+     -2.01,
+     -0.4,
+     4.14
+    ]
+   },
+   {
+    "n": 4,
+    "centre_blender": [
+     2.14,
+     -1.22,
+     2.66
+    ]
+   }
+  ],
+  "inside_clusters": [
+   {
+    "n": 34,
+    "centre_blender": [
+     -1.53,
+     -0.77,
+     3.74
+    ]
+   },
+   {
+    "n": 24,
+    "centre_blender": [
+     0.63,
+     -1.64,
+     3.87
+    ]
+   },
+   {
+    "n": 22,
+    "centre_blender": [
+     -1.81,
+     -0.12,
+     3.72
+    ]
+   },
+   {
+    "n": 8,
+    "centre_blender": [
+     -0.99,
+     -0.68,
+     4.16
+    ]
+   },
+   {
+    "n": 8,
+    "centre_blender": [
+     -1.09,
+     -0.67,
+     4.1
+    ]
+   },
+   {
+    "n": 8,
+    "centre_blender": [
+     -0.06,
+     1.63,
+     3.89
+    ]
+   },
+   {
+    "n": 6,
+    "centre_blender": [
+     -2.35,
+     0.56,
+     1.28
+    ]
+   },
+   {
+    "n": 6,
+    "centre_blender": [
+     -2.03,
+     -0.45,
+     3.34
+    ]
+   }
+  ],
+  "frac_tp_verts_below_canopy_bottom": 0.013,
+  "canopy_bottom_z": -0.01
+ }
+}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

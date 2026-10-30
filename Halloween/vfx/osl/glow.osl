@@ -1,0 +1,23 @@
+// SLINGSHOT Halloween - Glow (256 px): a warm radial glow (vfx.py prepends common.h).
+// Hot white-yellow centre -> amber -> orange rim, smooth Gaussian + soft tail, exactly 0 before the image edge (no
+// square clipping). Used behind the giant head's eye sockets, inside the pumpkin eggs and around candle flames.
+
+shader glow(int mode = 0, int cols = 1, output color Out = 0)
+{
+    float x, y, T, frame;
+    tile(transform("object", P), cols, x, y, T, frame);
+    float r = hypot(x, y);
+
+    float core = exp(-sq(r / 0.16));
+    float mid = 0.38 * exp(-sq(r / 0.34));
+    float tail = 0.16 * pow(max(1.0 - r / 0.95, 0.0), 2.4);
+    float A = 1.0 - (1.0 - core) * (1.0 - mid) * (1.0 - tail);
+    A *= 1.0 - smoothstep(0.78, 0.95, r);
+
+    float K[7] = { 0.0, 0.10, 0.22, 0.38, 0.56, 0.76, 1.0 };
+    color C[7] = { color(1.0, 0.97, 0.84), color(1.0, 0.90, 0.62), color(1.0, 0.76, 0.36), color(1.0, 0.60, 0.17),
+                   color(1.0, 0.50, 0.10), color(1.0, 0.44, 0.08), color(1.0, 0.40, 0.07) };
+    color col = ramp7(r, K, C);
+
+    Out = (mode == 0) ? col : color(A);
+}

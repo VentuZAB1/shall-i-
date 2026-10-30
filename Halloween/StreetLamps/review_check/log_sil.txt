@@ -1,0 +1,15 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\rv.py:431: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\rv.py:436: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  blk.use_nodes = True
+00:03.187  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\S01_sil_side40.png'
+FBX version: 7400
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\S01_sil_side40.png
+00:03.484  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\S02_sil_front40.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\S02_sil_front40.png
+00:03.750  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\S03_sil_34_40.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\S03_sil_34_40.png
+[rv] done sil
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

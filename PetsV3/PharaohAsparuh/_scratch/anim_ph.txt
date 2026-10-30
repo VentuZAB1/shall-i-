@@ -1,0 +1,181 @@
+# ------------------------------------------------------------------ animation
+import petkit as pk
+import _common as cm
+from mathutils import Quaternion
+
+LID_N = {s: Vector((s * math.sin(math.radians(20)), -math.cos(math.radians(20)), 0.0)) for s in (1, -1)}
+
+
+def key_q(k, bone, f, q):
+    pb = k.arm.pose.bones[bone]
+    R0 = k.arm.data.bones[bone].matrix_local.to_quaternion()
+    pb.rotation_quaternion = R0.inverted() @ q @ R0
+    pb.keyframe_insert("rotation_quaternion", frame=f, group=bone)
+
+
+def lids(k, f, amt):
+    """0 = open (lid plates hidden in the head), 0.5 = heavy half lid (upper half of the eye), 1 = shut"""
+    for s, side in ((1, "L"), (-1, "R")):
+        out = 0.0 if amt <= 0 else 0.061
+        up = 0.0 if amt <= 0 else 0.018 * (1 - amt) / 0.5 if amt < 1 else 0.0
+        v = LID_N[s] * out + Vector((0, 0, min(up, 0.018)))
+        k.key("Lid_" + side, f, rot=(0, 0, 0), loc=tuple(v))
+
+
+def ears(k, f, l=0.0, r=None, back=0.0, splay=0.0):
+    r = l if r is None else r
+    k.key("Ear_L", f, rot=(back, 0, l + splay))
+    k.key("Ear_R", f, rot=(back, 0, -r - splay))
+
+
+def tail_rest(k, f, flick=0.0, curl=0.0):
+    """lying tail: stays on the ground along his right side, only the tip flicks (yaw) or curls up (curl)"""
+    k.key("Tail1", f, rot=(0, 0, 0))
+    k.key("Tail2", f, rot=(0, 0, 0))
+    k.key("Tail3", f, rot=(-curl, flick, 0))
+
+
+def tail_up(k, f, sway=0.0, curl=0.0):
+    """walking tail: Tail1 swung back and up behind the rump, Tail2 up, Tail3 curling forward at the tip"""
+    T = [Vector(p) for p in TAILP]
+    dr = [(T[1] - T[0]).normalized(), (T[2] - T[1]).normalized(), (T[4] - T[2]).normalized()]
+    sw = math.radians(sway)
+    dt = [Vector((0.12 + 0.4 * math.sin(sw), 0.55, 0.85)).normalized(),
+          Vector((0.6 * math.sin(sw), 0.10, 1.0)).normalized(),
+          Vector((0.8 * math.sin(sw), -0.55 - 0.3 * curl, 0.80)).normalized()]
+    qw = [dr[i].rotation_difference(dt[i]) for i in range(3)]
+    key_q(k, "Tail1", f, qw[0])
+    key_q(k, "Tail2", f, qw[0].inverted() @ qw[1])
+    key_q(k, "Tail3", f, qw[1].inverted() @ qw[2])
+
+
+def idle(k):
+    """ROYAL GAZE: chin up, he looks down his nose to one side, then the other; the ears twitch independently;
+    the tail tip flicks lazily on the ground."""
+    n = 120
+    k.new_action("idle", n, True)
+    for f in range(0, n + 1, 3):
+        b = pk.wave(f, n, 0, 2)
+        k.key("Spine", f, rot=(-0.6 * b, 0, 0), loc=(0, 0, 0.006 * (1 + b) / 2))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        tail_rest(k, f, flick=5 * pk.wave(f, n, 0.1, 3))
+        lids(k, f, 0)
+    for f, nk, hd, yaw, roll in ((0, 0, 0, 0, 0), (10, -3, -6, 0, 0), (24, -3, -2, 18, 3), (48, -3, -2, 18, 3),
+                                 (60, -3, -6, 0, 0), (72, -3, -2, -18, -3), (96, -3, -2, -18, -3),
+                                 (108, -3, -6, 0, 0), (120, 0, 0, 0, 0)):
+        k.key("Neck", f, rot=(nk, yaw * 0.35, 0))
+        k.key("Head", f, rot=(hd, yaw * 0.65, roll))
+    for f, l, r in ((0, 0, 0), (30, 0, 0), (32, -18, 0), (35, 4, 0), (38, 0, 0), (78, 0, 0), (80, 0, -20),
+                    (83, 0, 5), (86, 0, -14), (89, 0, 0), (120, 0, 0)):
+        ears(k, f, l, r)
+    cm.plant(k, n)
+    k.finish()
+    k.meta["planted"] = LEGS4
+
+
+RAISE = 0.31          # he gets up for the walk: the sphinx pose unfolds into a standing strut
+STAND_DY = {"F": -0.04, "B": 0.0}
+
+
+def walk(k):
+    """dainty proud strut: up on his legs, lateral-sequence cat walk, head held level and high, tail up in a curl."""
+    import bpy
+    n = 28
+    SH, LIFT, duty = 0.13, 0.09, 0.62
+    legs = [("Leg_BL", 0.0), ("Leg_FL", 0.25), ("Leg_BR", 0.5), ("Leg_FR", 0.75)]
+    k.new_action("walk", n, True)
+    for f in range(0, n + 1, 2):
+        b = 0.5 - 0.5 * math.cos(4 * math.pi * f / n)
+        k.key("Spine", f, rot=(1.0 * pk.wave(f, n, 0.1, 2), 2.0 * pk.wave(f, n, 0.1), 2.5 * pk.wave(f, n)),
+              loc=(0, 0, RAISE + 0.022 * b))
+        k.key("Neck", f, rot=(-1.0 * pk.wave(f, n, 0.15, 2), -2.0 * pk.wave(f, n, 0.1), 0))
+        k.key("Head", f, rot=(-3 + 1.5 * pk.wave(f, n, 0.2, 2), -1.5 * pk.wave(f, n, 0.1), -2.0 * pk.wave(f, n)))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        tail_up(k, f, sway=8 * pk.wave(f, n, 0.2), curl=0.5 + 0.5 * pk.wave(f, n, 0.3, 2))
+        lids(k, f, 0)
+        ears(k, f, 0, 0)
+    k.bake_bezier_now()
+    sc = bpy.context.scene
+    for f in range(0, n + 1):
+        sc.frame_set(f)
+        for leg, off in legs:
+            g = pk.gait_target(k, leg, f, n, off, SH, LIFT, duty)
+            hip = k.J[leg]
+            ank = k.J[k.legs2[leg]["foot"]]
+            ty = 2 * hip.y - ank.y + (g.y - hip.y) + STAND_DY[leg[4]]
+            k.solve_leg(leg, f, Vector((hip.x, ty, g.z)))
+    k.finish()
+    k.meta["legs"] = legs
+    k.meta["duty"] = duty
+    k.meta["walk_cycle"] = n
+    return (2 * SH) / duty
+
+
+def roar(k):
+    """YAWN-SNARL: a huge yawn (eyes shut, chin up, jaw wide, every fang showing, ears back) that turns into a
+    snarl at its peak (head forward, eyes open and glaring, ears flat), then the jaw closes slowly."""
+    n = 60
+    k.new_action("roar", n, False)
+    P = [(0, 0, 0, 0, 0, 0, 0, 0), (12, -2, -4, -8, 8, 0.5, -8, 0), (22, -3, -8, -22, 34, 1.0, -22, 0),
+         (28, -3, -8, -20, 34, 1.0, -24, 0), (33, 1, 4, 8, 24, 0.0, -34, 14), (44, 1, 4, 8, 26, 0.0, -34, 14),
+         (54, 0, 1, 2, 3, 0.0, -6, 2), (60, 0, 0, 0, 0, 0.0, 0, 0)]
+    for f, sp, nk, hd, jw, lid, eb, spl in P:
+        k.key("Spine", f, rot=(sp, 0, 0), loc=(0, 0, 0))
+        k.key("Neck", f, rot=(nk, 0, 0))
+        k.key("Head", f, rot=(hd, 0, 0))
+        k.key("Jaw", f, rot=(jw, 0, 0))
+        lids(k, f, lid)
+        ears(k, f, 0, 0, back=eb, splay=spl)
+        tail_rest(k, f, flick=0)
+    for f in range(34, 44, 2):                               # the snarl trembles in the tail tip (no head shake)
+        tail_rest(k, f, flick=5 * (1 if (f // 2) % 2 else -1))
+    cm.plant(k, n)
+    k.finish(loop=False)
+
+
+def knead(k):
+    """SIGNATURE (Pharaoh only) - ROYAL BISCUITS: lids half close, chin lifts, then he KNEADS - the front paws
+    alternately lift high and press down L-R-L-R-L-R, claws splaying on each press, shoulders rolling, a tiny purr
+    vibration, the tail tip curling up - then gives the viewer a SLOW BLINK and settles."""
+    import bpy
+    n = 90
+    k.new_action("act_knead", n, False)
+    for f, nk, hd, lid in ((0, 0, 0, 0), (10, -3, -8, 0.5), (70, -3, -8, 0.5), (73, -3, -8, 1.0), (79, -3, -8, 1.0),
+                           (84, -1, -3, 0), (90, 0, 0, 0)):
+        k.key("Neck", f, rot=(nk, 0, 0))
+        k.key("Head", f, rot=(hd, 0, 0))
+        lids(k, f, lid)
+        k.key("Jaw", f, rot=(0, 0, 0))
+    for f in range(0, n + 1, 2):
+        knead_on = 10 <= f <= 70
+        roll = 4 * math.sin(math.pi * (f - 10) / 10) if knead_on else 0.0
+        purr = 0.003 * (1 if (f // 2) % 2 else -1) if knead_on else 0.0
+        k.key("Spine", f, rot=(0, 0, roll), loc=(0, 0, purr))
+        curl = 22 * min(1.0, max(0.0, (f - 10) / 12)) * (1 - min(1.0, max(0.0, (f - 72) / 14)))
+        tail_rest(k, f, flick=0, curl=curl)
+        ears(k, f, 0, 0, back=-4 if knead_on else 0)
+    k.bake_bezier_now()
+    sc = bpy.context.scene
+    for f in range(0, n + 1):
+        sc.frame_set(f)
+        for leg in ("Leg_BL", "Leg_BR"):
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y, 0.0)))
+        for leg, ph0 in (("Leg_FL", 0), ("Leg_FR", 10)):
+            lift, toe = 0.0, None
+            t = f - 10 - ph0
+            if 0 <= t < 60 and (t // 10) % 2 == 0 and f <= 70:
+                u = (t % 10) / 10.0
+                lift = 0.15 * math.sin(math.pi * u)
+                toe = 30 * math.sin(math.pi * u) - 10 * max(0.0, math.sin(math.pi * (u - 0.6) / 0.4))
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y, lift)), toe=toe if toe is not None else 0.0)
+    k.finish(loop=False)
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    roar(k)
+    knead(k)
+    return stride
+
+

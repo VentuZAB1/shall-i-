@@ -1,0 +1,47 @@
+00:01.922  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\lamp_src.blend"
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[lamp     9.0s]   baked Lo_straps {'texels': 59264, 'miss': 0.0009, 'ao': 0.5}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[lamp    18.4s]   baked Lo_body {'texels': 58652, 'miss': 0.0065, 'ao': 0.5}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[lamp    23.0s]   baked Lo_ring_l2 {'texels': 3682, 'miss': 0.0, 'ao': 0.5}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[lamp    27.5s]   baked Lo_link1 {'texels': 1782, 'miss': 0.0, 'ao': 0.5}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[lamp    33.1s]   baked Lo_seat {'texels': 12167, 'miss': 0.0, 'ao': 0.5}
+[lamp    38.1s] bake {'part': 'Cage', 'size': 512, 'stats': {'Lo_straps': {'texels': 59264, 'miss': 0.0009, 'ao': 0.5}, 'Lo_body': {'texels': 58652, 'miss': 0.0065, 'ao': 0.5}, 'Lo_ring_l2': {'texels': 3682, 'miss': 0.0, 'ao': 0.5}, 'Lo_link1': {'texels': 1782, 'miss': 0.0, 'ao': 0.5}, 'Lo_seat': {'texels': 12167, 'miss': 0.0, 'ao': 0.5}}, 'albedo_mean_srgb': [43.1, 45.7, 51.8]}
+Info: Saved as "lamp_src.blend"
+[lamp    38.2s] done bake
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,269 @@
+# ------------------------------------------------------------------ animation v1 (brief section 6). References (owner
+# rule, _review/ANIM_REFERENCES_1014.md): #7 HTTYD step-freeze-scan (idle), #4 creature weight + the brief's
+# metachronal tetrapod (walk; no spider clip exists on animationreference.org / Sakugabooru), #6 Monsters University
+# scare pop (roar: crouch, explode in 5-7 f, hold), #5 "Attack" cocked tell -> 2-frame snap + hard stop (act cast).
+# Rules: no head shakes, no spins, no jumps, no thread-hanging; every leg solved every frame; same pole all clip;
+# any swing > 60 deg between two frames gets an in-between.
+import petkit as pk
+import _common as cm
+
+AZ = {i: LEGP[i][0] for i in LEGP}
+WALK_OFF = [("Leg4_R", 0.18), ("Leg3_L", 0.12), ("Leg2_R", 0.06), ("Leg1_L", 0.00),
+            ("Leg4_L", 0.68), ("Leg3_R", 0.62), ("Leg2_L", 0.56), ("Leg1_R", 0.50)]
+WALK_LIFT = {1: 0.075, 2: 0.060, 3: 0.055, 4: 0.050}
+
+
+def curve(keys, f):
+    """smoothstep through (frame, value) keys"""
+    for (f0, v0), (f1, v1) in zip(keys, keys[1:]):
+        if f0 <= f <= f1:
+            u = (f - f0) / float(f1 - f0) if f1 > f0 else 1.0
+            return v0 + (v1 - v0) * u * u * (3 - 2 * u)
+    return keys[-1][1] if f > keys[-1][0] else keys[0][1]
+
+
+def body(k, f, z=0.0, pitch=0.0, yaw=0.0, roll=0.0, y=0.0):
+    """Spine = the whole body (Root move); pitch + = nose DOWN"""
+    k.key("Spine", f, rot=(pitch, yaw, roll), loc=(0, y, z))
+
+
+def head(k, f, pitch=0.0, yaw=0.0):
+    k.key("Head", f, rot=(pitch, yaw, 0))
+
+
+def abdomen(k, f, lift=0.0, yaw=0.0, ped=0.0, ped_yaw=0.0, spin=0.0):
+    """+Y bones: lift + = rear UP (rift to the front), - = rear DOWN (rift to the game camera); ped_yaw + swings the
+    abdomen toward -x (the R side)"""
+    k.key("Pedicel", f, rot=(ped, ped_yaw, 0))
+    k.key("Abd", f, rot=(lift, yaw, 0))
+    k.key("Spinner", f, rot=(spin, 0, 0))
+
+
+def fangs(k, f, spread=0.0, lift=0.0, unfold=0.0):
+    """chelicerae spread OUT (yaw) and lift forward; fangs unfold forward (- pitch on the -Z fang bones)"""
+    for s, sd in ((1, "L"), (-1, "R")):
+        k.key("Chel_" + sd, f, rot=(-lift, s * spread, 0))
+        k.key("Fang_" + sd, f, rot=(-unfold, 0, 0))
+
+
+def palps(k, f, spread=0.0, pitch=0.0, alt=0.0, l_extra=0.0):
+    """spread OUT (yaw); pitch + = the tips swing DOWN-back, - = up-forward; alt = alternating pitch (L +alt, R -alt:
+    the rasp / stride swing)"""
+    k.key("Palp_L", f, rot=(pitch + alt + l_extra, spread, 0))
+    k.key("Palp_R", f, rot=(pitch - alt, -spread, 0))
+
+
+def leg_raise(k, f, i, side, fem=0.0, shin=0.0, foot=0.0, shin_fwd=0.0):
+    """FK about the leg-plane axis (brief 5.7, review W4): fem + = the femur leans OUT, shin / foot + = the knee /
+    ankle OPEN (the shin swings up). R = the mirrored axis with the opposite angle. shin_fwd = a forward yaw on the
+    SHIN only (review 1 s6.2: legs 1 read as a raised V, not the banned sideways T; never yaw the femur)."""
+    from mathutils import Quaternion
+    a = math.radians(AZ[i])
+    s = 1 if side == "L" else -1
+    t = Vector((-s * math.sin(a), math.cos(a), 0))
+    cm.key_axis(k, "Leg%d_%s" % (i, side), f, t, s * fem)
+    cm.key_axis(k, "Shin%d_%s" % (i, side), f, t, -s * shin,
+                extra=Quaternion((0, 0, 1), math.radians(-s * shin_fwd)) if shin_fwd else None)
+    cm.key_axis(k, "Foot%d_%s" % (i, side), f, t, -s * foot)
+
+
+def ankle_to(k, leg, f, P, toe=None):
+    """raised-ankle helper (brief 5.3): put the ANKLE of `leg` at world point P (call after frame_set(f))"""
+    hipR, ankR = k.J[leg], k.J[k.legs2[leg]["foot"]]
+    k.solve_leg(leg, f, Vector((P.x - (ankR.x - hipR.x), P.y - (ankR.y - hipR.y), P.z - ankR.z)), toe=toe)
+
+
+def plant8(k, frames, legs=None):
+    """every listed leg keeps its claw on its rest spot (no slide)"""
+    import bpy
+    k.bake_bezier_now()
+    for f in frames:
+        bpy.context.scene.frame_set(f)
+        for leg in (legs or LEGS8):
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y, 0.0)))
+
+
+def tap(k, leg, f, keys):
+    """a planted leg's claw lifted by curve(keys) (web-line test taps)"""
+    k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y, curve(keys, f))))
+
+
+# ---- idle
+def idle(k):
+    """STILL HUNTER (ref #7): long holds; an L1 web tap (2 taps); the whole body turns toward a sound (+8, one way per
+    loop, the head leading by 2 f); a fang flex with a palp rasp; an R2 double tap with a rift pump; exact rest f120."""
+    import bpy
+    n = 120
+    k.new_action("idle", n, True)
+    yaw_c = [(0, 0), (30, 0), (38, 8), (50, 8), (60, 0), (120, 0)]
+    head_c = [(0, 0), (28, 0), (36, 6), (48, 6), (58, 0), (120, 0)]
+    chel = [(0, 0), (64, 0), (70, 8), (80, 8), (86, 0), (120, 0)]
+    unf = [(0, 0), (64, 0), (70, 25), (76, 25), (84, 0), (120, 0)]
+    pump = [(0, 0), (98, 0), (100, 3), (106, 0), (120, 0)]
+    twitch = [(0, 0), (11, 0), (12, -10), (15, 0), (120, 0)]
+    for f in range(0, n + 1, 2):
+        body(k, f, z=0.006 * pk.wave(f, n, 0.0, 2), yaw=curve(yaw_c, f))
+        head(k, f, yaw=curve(head_c, f))
+        abdomen(k, f, lift=1.5 * pk.wave(f, n, 0.1, 2) + curve(pump, f), ped=0.5 * pk.wave(f, n, 0.05, 2))
+        rasp = (6 if (f // 2) % 2 else -6) if 70 <= f <= 78 else 0
+        palps(k, f, alt=rasp, l_extra=curve(twitch, f))
+        fangs(k, f, spread=curve(chel, f), unfold=curve(unf, f))
+    for f in (11, 13):                                      # the palp twitch lands between the 2-f keys
+        palps(k, f, l_extra=curve(twitch, f))
+    k.bake_bezier_now()
+    tap1 = [(0, 0), (8, 0), (10, 0.05), (13, 0), (15, 0.05), (18, 0), (22, 0), (120, 0)]
+    tap2 = [(0, 0), (92, 0), (94, 0.05), (97, 0), (99, 0.05), (102, 0), (106, 0), (120, 0)]
+    for f in range(0, n + 1):
+        bpy.context.scene.frame_set(f)
+        for leg in LEGS8:
+            if leg == "Leg1_L":
+                tap(k, leg, f, tap1)
+            elif leg == "Leg2_R":
+                tap(k, leg, f, tap2)
+            else:
+                k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y, 0.0)))
+    k.finish()
+    k.meta["planted"] = [l for l in LEGS8 if l not in ("Leg1_L", "Leg2_R")]
+    k.events["idle"] = {"pulse1": round(40 / n, 3), "flex": round(70 / n, 3), "pulse2": round(100 / n, 3)}
+
+
+# ---- walk
+def walk(k):
+    """SCUTTLE: metachronal tetrapod (brief 5.4), duty 0.58, stride half 0.085, per-pair lift; one body bob per
+    tetrapod, yaw +-1.2 / roll +-0.8, the head counter-yaws, the abdomen lags 2 f (ref #4), palps swing with legs 1."""
+    import bpy
+    n, S, duty = 32, 0.085, 0.58
+    k.new_action("walk", n, True)
+    for f in range(0, n + 1, 2):
+        yw = 1.2 * pk.wave(f, n, 0.0, 1)
+        body(k, f, z=0.006 * pk.wave(f, n, 0.10, 2), yaw=yw, roll=0.8 * pk.wave(f, n, 0.25, 1))
+        head(k, f, yaw=-0.5 * yw)
+        abdomen(k, f, lift=1.0 * pk.wave(f, n, 0.04, 2), yaw=-1.5 * pk.wave(f, n, -0.06, 1))
+        palps(k, f, alt=6 * pk.wave(f, n, 0.0, 1))
+        fangs(k, f)
+    k.bake_bezier_now()
+    for f in range(0, n + 1):
+        bpy.context.scene.frame_set(f)
+        for leg, off in WALK_OFF:
+            k.solve_leg(leg, f, pk.gait_target(k, leg, f, n, off, S, WALK_LIFT[int(leg[3])], duty))
+    k.finish()
+    k.meta["walk_cycle"] = n
+    k.meta["legs"] = list(WALK_OFF)
+    k.meta["duty"] = duty
+    return 2 * S / duty
+
+
+# ---- roar
+def roar(k):
+    """FANG FLARE (ref #6): gather (crouch, palps tuck) -> rear (Spine -14 nose-up, ABDOMEN LEVEL RULE) -> legs 1 raise
+    by OPENING the knee (LEG-1 RULE), legs 2 lower and 2 f later -> fang flare (`flare` f22) -> stridulation rasp hold
+    with one fang stab -> legs 2 land, then legs 1 (shin closes before the femur) -> exact rest f72."""
+    import bpy
+    n = 72
+    k.new_action("roar", n, False)
+    zc = [(0, 0), (10, -0.04), (20, 0.06), (54, 0.06), (62, 0.01), (66, 0.0), (68, -0.01), (72, 0)]
+    pc = [(0, 0), (10, 5), (20, -14), (54, -14), (62, -4), (66, 0), (72, 0)]
+    ped = [(0, 0), (10, 0), (20, 6), (54, 6), (66, 0), (72, 0)]
+    abd = [(0, 0), (10, 0), (20, 8), (54, 8), (66, 0), (72, 0)]
+    chs = [(0, 0), (18, 0), (24, 12), (54, 12), (62, 0), (72, 0)]
+    chl = [(0, 0), (18, 0), (24, 18), (54, 18), (62, 0), (72, 0)]
+    unf = [(0, 0), (18, 0), (22, 45), (24, 65), (38, 65), (40, 53), (44, 65), (54, 65), (62, 0), (72, 0)]
+    pls = [(0, 0), (18, 0), (24, 28), (54, 28), (62, 0), (72, 0)]
+    # palps lift a little in the crouch (+ pitch swings their tips DOWN into the ground), flare at +12 so the
+    # +-7 rasp stays inside the femur-clear band +5..+19 (W4 static tests)
+    plp = [(0, 0), (10, -6), (18, -6), (24, 12), (54, 12), (62, 0), (72, 0)]
+    for f in range(0, n + 1):
+        thrum = (2 if (f // 3) % 2 else -2) if 24 <= f <= 54 else 0
+        body(k, f, z=curve(zc, f), pitch=curve(pc, f))
+        head(k, f)
+        abdomen(k, f, lift=curve(abd, f) + thrum, ped=curve(ped, f))
+        rasp = (7 if (f // 2) % 2 else -7) if 26 <= f <= 50 else 0
+        palps(k, f, spread=curve(pls, f), pitch=curve(plp, f), alt=rasp)
+        fangs(k, f, spread=curve(chs, f), lift=curve(chl, f), unfold=curve(unf, f))
+    # legs 1: FK raise f12 -> f22 (keys every 2 f), hold + shin tremble, land f60 -> f66 (shin closes first)
+    # (FK starts at the rest shape once the rear has lifted the front: at f12 the gather crouch would dip the claws)
+    L1 = [(14, (0, 0, 0)), (16, (3, 16, 4)), (18, (7, 40, 10)), (20, (12, 65, 16)), (22, (15, 80, 20)),
+          (60, (15, 80, 20)), (62, (15, 55, 14)), (64, (12, 25, 8)), (65, (3, 8, 3))]
+    L2 = [(16, (0, 0, 0)), (18, (2, 14, 4)), (20, (4, 30, 8)), (22, (5, 40, 10)),
+          (58, (5, 40, 10)), (60, (3, 18, 5)), (61, (1, 6, 2))]
+    for side in ("L", "R"):
+        for f, (fe, sh, fo) in L1:
+            tr = (2 if (f // 3) % 2 else -2) if 24 <= f <= 54 else 0
+            leg_raise(k, f, 1, side, fe, sh + tr, fo, shin_fwd=35.0 * sh / 80.0)
+        for f in range(24, 55, 3):                              # the leg-1 shin tremble keys
+            leg_raise(k, f, 1, side, 15, 80 + (2 if (f // 3) % 2 else -2), 20, shin_fwd=35.0)
+        for f, (fe, sh, fo) in L2:
+            leg_raise(k, f, 2, side, fe, sh, fo)
+    plant8(k, range(0, n + 1), ["Leg3_L", "Leg3_R", "Leg4_L", "Leg4_R"])
+    plant8(k, list(range(0, 14)) + list(range(66, n + 1)), ["Leg1_L", "Leg1_R"])
+    plant8(k, list(range(0, 16)) + list(range(62, n + 1)), ["Leg2_L", "Leg2_R"])
+    k.finish()
+    k.events["roar"] = {"flare": round(22 / n, 3), "rasp": round(26 / n, 3), "pulse": round(36 / n, 3),
+                        "stab": round(40 / n, 3)}
+
+
+# ---- act
+def act_riftweave(k):
+    """RIFT WEAVE (signature; ref #5 for the cast): wind-up (rear up) -> PRESENT: the abdomen tilts rear-DOWN so the
+    rift faces the game camera (`rift` f24) -> three silk draws by the hind legs (L4, R4, L4: out-back-up to
+    (+-1.02, 0.70, 0.45), `silk1-3`), each with a spinner flick, an abdomen pump and the pedicel turning AWAY from the
+    drawing leg -> CAST: the abdomen whips down-up -8 -> +10 in 6 f with an in-between, a hard stop at f80 (`cast`)
+    -> settle, exact rest f120."""
+    import bpy
+    n = 120
+    k.new_action("act_riftweave", n, False)
+    draws = [("Leg4_L", 28, 1), ("Leg4_R", 42, -1), ("Leg4_L", 56, 1)]
+    zc = [(0, 0), (12, 0.02), (24, 0.06), (74, 0.06), (80, 0.05), (100, 0.01), (120, 0)]
+    yc = [(0, 0), (74, 0), (78, 0.03), (84, 0), (120, 0)]
+    pc = [(0, 0), (12, 3), (24, -6), (74, -6), (80, 2), (96, 0), (120, 0)]
+    ped = [(0, 0), (12, 0), (24, -4), (74, -4), (80, 2), (100, 0), (120, 0)]
+    abd = [(0, 0), (12, 8), (18, 0), (24, -8), (74, -8), (77, 1), (80, 10), (92, -2), (100, 0), (120, 0)]
+    unf = [(0, 0), (74, 0), (78, 25), (80, 35), (84, 35), (96, 0), (120, 0)]
+    plp = [(0, 0), (12, 12), (72, 12), (84, 0), (120, 0)]
+    spin, pump, pyaw = [(0, 0)], [(0, 0)], [(0, 0)]
+    for leg, d0, s in draws:
+        spin += [(d0 + 4, 0), (d0 + 6, -12), (d0 + 9, 0)]
+        pump += [(d0 + 4, 0), (d0 + 6, -3), (d0 + 8, 0)]
+        pyaw += [(d0, 0), (d0 + 4, 4 * s), (d0 + 10, 4 * s), (d0 + 14, 0)]
+    spin, pump, pyaw = spin + [(n, 0)], pump + [(n, 0)], pyaw + [(n, 0)]
+    for f in range(0, n + 1):
+        body(k, f, z=curve(zc, f), pitch=curve(pc, f), y=curve(yc, f))
+        head(k, f)
+        abdomen(k, f, lift=curve(abd, f) + curve(pump, f), ped=curve(ped, f), ped_yaw=curve(pyaw, f),
+                spin=curve(spin, f))
+        palps(k, f, pitch=curve(plp, f))
+        fangs(k, f, unfold=curve(unf, f))
+    k.bake_bezier_now()
+    for f in range(0, n + 1):
+        bpy.context.scene.frame_set(f)
+        busy = None
+        for leg, d0, s in draws:
+            if d0 <= f <= d0 + 12:
+                busy = (leg, d0, s)
+        for leg in LEGS8:
+            if busy and leg == busy[0]:
+                _, d0, s = busy
+                A0 = k.J[k.legs2[leg]["foot"]].copy()
+                T = Vector((s * 1.02, 0.70, 0.45))
+                up = A0 + Vector((0, 0, 0.04))
+                path = [(d0, A0), (d0 + 2, up), (d0 + 6, T), (d0 + 8, T), (d0 + 12, A0)]
+                toe = curve([(d0, 0), (d0 + 6, 30), (d0 + 8, 30), (d0 + 12, 0)], f)
+                for (f0, P0), (f1, P1) in zip(path, path[1:]):
+                    if f0 <= f <= f1:
+                        u = (f - f0) / float(f1 - f0)
+                        P = P0.lerp(P1, u * u * (3 - 2 * u))
+                        break
+                ankle_to(k, leg, f, P, toe=toe)
+            else:
+                k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y, 0.0)))
+    k.finish()
+    k.events["act_riftweave"] = {"rift": round(24 / n, 3), "silk1": round(34 / n, 3), "silk2": round(48 / n, 3),
+                                 "silk3": round(62 / n, 3), "cast": round(80 / n, 3)}
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    roar(k)
+    act_riftweave(k)
+    return stride

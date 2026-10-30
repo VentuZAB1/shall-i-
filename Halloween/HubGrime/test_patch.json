@@ -1,0 +1,413 @@
+{
+ "about": "HubGrime owner test patch (round 2). CFrame = CFrame.new(position) * CFrame.Angles(0, math.rad(rotation_y_deg), 0). Parent: Workspace.HalloweenDecor.Grime.TestPatch. Every carrier: Transparency 1, no collision/touch/query, CastShadow false. Wall carriers: identity rotation, so the Front face looks at the hub (-Z). 'left'/'right' = as seen FROM THE HUB looking +Z (+X is on the viewer's LEFT).",
+ "assumptions": {
+  "wall_inner_face_z": 104.0,
+  "floor_top_y": 0.0,
+  "trim_bottom_y": 22.9,
+  "bay_pillar_centres_x": [
+   39.8,
+   66.4
+  ],
+  "pillar_size_x_z": [
+   2.5,
+   1.6
+  ],
+  "pillar_centre_z": 103.1,
+  "pillar_front_z": 102.3,
+  "pillar_faces_x": {
+   "left_seen_from_hub": 65.15,
+   "right_seen_from_hub": 41.05
+  },
+  "bay_centre_x": 53.1,
+  "bay_clear_width": 24.1,
+  "stay_out_of": {
+   "Base2": {
+    "x": [
+     -38.0,
+     26.0
+    ],
+    "margin": 4.0
+   },
+   "Base3": {
+    "x": [
+     76.0,
+     140.0
+    ],
+    "margin": 4.0
+   }
+  }
+ },
+ "verify": [
+  "floor top y = 0 (stand a 1-stud test part on the floor in the bay and read its bottom)",
+  "back wall inner face z = 104.00 (BackWall centre z 107, 6 thick)",
+  "top trim bottom y = 22.9 (the drip's hidden 0.35 band must sit behind it)",
+  "pillar depth: centres z 103.1, 1.6 deep -> they stand proud of the wall from z 104 to 102.3; the floor moss runs into the corner beside them",
+  "pillar faces x 41.05 (right, seen from the hub) and 65.15 (left); the MossBase carrier spans exactly between them",
+  "if the wall face or a pillar face is off, shift every wall part (z, or x) and the wall-foot floor parts (z) by the same delta"
+ ],
+ "checks": {
+  "wall_content_clearance_studs (>= 2)": {
+   "MossBase_Bay | Crack_Diag": 2.13,
+   "MossBase_Bay | Drip_Damp": 9.26,
+   "Crack_FloorUp | Crack_Diag": 6.15,
+   "Crack_FloorUp | Drip_Damp": 5.05,
+   "Crack_Diag | Drip_Damp": 12.72
+  },
+  "floor_moss_gap_to_wall_foot (<= 0.5; negative = tucked under the wall)": [
+   {
+    "part": "Moss_UnderCrack",
+    "gap_to_wall_foot_studs": [
+     0.4,
+     0.025
+    ],
+    "orientations": [
+     "image top toward the wall (+Z)",
+     "the other way round (negative = runs under the wall, hidden)"
+    ]
+   },
+   {
+    "part": "Moss_WallFoot",
+    "gap_to_wall_foot_studs": [
+     0.4,
+     -0.072
+    ],
+    "orientations": [
+     "image top toward the wall (+Z)",
+     "the other way round (negative = runs under the wall, hidden)"
+    ]
+   }
+  ],
+  "clear_of_Base2_Base3_with_margin": true,
+  "patch_x_range": [
+   41.05,
+   65.15
+  ],
+  "pillar_x_ranges": [
+   [
+    38.55,
+    41.05
+   ],
+   [
+    65.15,
+    67.65
+   ]
+  ]
+ },
+ "after_building": [
+  "DELETE the GrimeTestPatch ModuleScript (it is only the JSON carrier for the command-bar snippet)",
+  "show the owner TWO views: eye height (first person, about 25 studs back) AND the default THIRD-PERSON camera (character about 12 studs from the wall). From eye height the floor grime is faint and the stains vanish beyond about 25 studs - the third-person view is how players actually see the floor",
+  "night check: switch to Moonlit and look again"
+ ],
+ "wall": [
+  {
+   "name": "MossBase_Bay",
+   "texture": "W_MossBase_A",
+   "kind": "Texture",
+   "face": "Front",
+   "size": [
+    24.1,
+    6.375,
+    0.05
+   ],
+   "position": [
+    53.1,
+    2.8125,
+    103.975
+   ],
+   "rotation_y_deg": 0,
+   "layer_studs": 0.05,
+   "part": {
+    "Anchored": true,
+    "CanCollide": false,
+    "CanTouch": false,
+    "CanQuery": false,
+    "CastShadow": false,
+    "Transparency": 1,
+    "Material": "SmoothPlastic"
+   },
+   "texture_props": {
+    "StudsPerTileU": 24,
+    "StudsPerTileV": 6.375,
+    "OffsetStudsU": 0,
+    "OffsetStudsV": 0
+   },
+   "note": "Texture: ONE carrier from pillar face to pillar face (24.1 wide; the last 0.1 stud repeats the seamless start of the tile). Bottom 0.375 below the floor top: the hidden band sinks into the floor. Both ends meet pillars, so no end caps here."
+  },
+  {
+   "name": "Crack_FloorUp",
+   "texture": "W_Crack_C",
+   "kind": "Decal",
+   "face": "Front",
+   "size": [
+    6,
+    12.375,
+    0.05
+   ],
+   "position": [
+    56.65,
+    5.8125,
+    103.985
+   ],
+   "rotation_y_deg": 0,
+   "layer_studs": 0.04,
+   "part": {
+    "Anchored": true,
+    "CanCollide": false,
+    "CanTouch": false,
+    "CanQuery": false,
+    "CastShadow": false,
+    "Transparency": 1,
+    "Material": "SmoothPlastic"
+   },
+   "note": "LEFT pillar face - 8.5: the centre of MossBase_A's low-moss slot (6.7-10.3 studs from where the tile starts; u = 0 is the viewer's LEFT end). Its notch sits on the floor line. If the strip shows mirrored in Studio (a tall moss plume under the crack), mirror this x about the bay centre 53.1."
+  },
+  {
+   "name": "Crack_Diag",
+   "texture": "W_Crack_B",
+   "kind": "Decal",
+   "face": "Front",
+   "size": [
+    8,
+    10,
+    0.05
+   ],
+   "position": [
+    47.05,
+    10.25,
+    103.985
+   ],
+   "rotation_y_deg": 0,
+   "layer_studs": 0.04,
+   "part": {
+    "Anchored": true,
+    "CanCollide": false,
+    "CanTouch": false,
+    "CanQuery": false,
+    "CastShadow": false,
+    "Transparency": 1,
+    "Material": "SmoothPlastic"
+   },
+   "note": "RIGHT pillar face + 6, lower half of the bay, clear of the garland swag. Round 4: raised just enough to keep 2 studs above the taller moss (see checks)"
+  },
+  {
+   "name": "Drip_Damp",
+   "texture": "W_Drip_A",
+   "kind": "Decal",
+   "face": "Front",
+   "size": [
+    4,
+    11.35,
+    0.05
+   ],
+   "position": [
+    61.0375,
+    17.575,
+    103.975
+   ],
+   "rotation_y_deg": 0,
+   "layer_studs": 0.05,
+   "part": {
+    "Anchored": true,
+    "CanCollide": false,
+    "CanTouch": false,
+    "CanQuery": false,
+    "CastShadow": false,
+    "Transparency": 1,
+    "Material": "SmoothPlastic"
+   },
+   "note": "by the LEFT pillar: visible content starts 2 studs from the pillar face; top 0.35 hides behind the top trim (bottom y 22.9). If a garland pennant covers its top, slide it up to 0.5 stud toward the pillar (never onto the crack)."
+  }
+ ],
+ "floor": [
+  {
+   "name": "Stain_WallFoot",
+   "texture": "G_Stain_A",
+   "kind": "Decal",
+   "face": "Top",
+   "size": [
+    10,
+    0.05,
+    10
+   ],
+   "position": [
+    53.5,
+    0.005,
+    97.6
+   ],
+   "rotation_y_deg": 20,
+   "layer_studs": 0.03,
+   "decal": {
+    "Transparency": 0.0
+   },
+   "part": {
+    "Anchored": true,
+    "CanCollide": false,
+    "CanTouch": false,
+    "CanQuery": false,
+    "CastShadow": false,
+    "Transparency": 1,
+    "Material": "SmoothPlastic"
+   },
+   "note": "damp watermark where the wall foot drains; its back edge runs under Moss_UnderCrack (layer 0.03 < 0.05, both draw orders are fine)"
+  },
+  {
+   "name": "Moss_UnderCrack",
+   "texture": "G_Moss_A",
+   "kind": "Decal",
+   "face": "Top",
+   "size": [
+    8,
+    0.05,
+    8
+   ],
+   "position": [
+    56.65,
+    0.025,
+    101.4194
+   ],
+   "rotation_y_deg": 0,
+   "layer_studs": 0.05,
+   "decal": {
+    "Transparency": 0.0
+   },
+   "part": {
+    "Anchored": true,
+    "CanCollide": false,
+    "CanTouch": false,
+    "CanQuery": false,
+    "CastShadow": false,
+    "Transparency": 1,
+    "Material": "SmoothPlastic"
+   },
+   "note": "wall-foot moss: reaches the wall foot so it joins the wall moss (rotation 0 on purpose: a yaw would lift one corner off the foot)"
+  },
+  {
+   "name": "Moss_WallFoot",
+   "texture": "G_Moss_B",
+   "kind": "Decal",
+   "face": "Top",
+   "size": [
+    10,
+    0.05,
+    6
+   ],
+   "position": [
+    46.65,
+    0.025,
+    101.85
+   ],
+   "rotation_y_deg": 0,
+   "layer_studs": 0.05,
+   "decal": {
+    "Transparency": 0.0
+   },
+   "part": {
+    "Anchored": true,
+    "CanCollide": false,
+    "CanTouch": false,
+    "CanQuery": false,
+    "CastShadow": false,
+    "Transparency": 1,
+    "Material": "SmoothPlastic"
+   },
+   "note": "wall-foot moss: reaches the wall foot so it joins the wall moss (rotation 0 on purpose: a yaw would lift one corner off the foot)"
+  },
+  {
+   "name": "Crack_Long",
+   "texture": "G_Crack_A",
+   "kind": "Decal",
+   "face": "Top",
+   "size": [
+    14,
+    0.05,
+    7
+   ],
+   "position": [
+    52.1,
+    0.015,
+    89.5
+   ],
+   "rotation_y_deg": -25,
+   "layer_studs": 0.04,
+   "decal": {
+    "Transparency": 0.0
+   },
+   "part": {
+    "Anchored": true,
+    "CanCollide": false,
+    "CanTouch": false,
+    "CanQuery": false,
+    "CastShadow": false,
+    "Transparency": 1,
+    "Material": "SmoothPlastic"
+   },
+   "note": "away from the wall foot, crossing the walk line toward the bay"
+  }
+ ],
+ "optional_plaza_rim": {
+  "note": "a second small spot on the plaza rim (plaza centre (0,-33), r about 25), seen from spawn, outside every base slot. Check that nothing stands there; the crack is on cream so it gets Decal.Transparency 0.12.",
+  "parts": [
+   {
+    "name": "Crack_Star_Rim",
+    "texture": "G_Crack_B",
+    "kind": "Decal",
+    "face": "Top",
+    "size": [
+     10,
+     0.05,
+     10
+    ],
+    "position": [
+     17.0,
+     0.015,
+     -46.0
+    ],
+    "rotation_y_deg": 15,
+    "layer_studs": 0.04,
+    "decal": {
+     "Transparency": 0.12
+    },
+    "part": {
+     "Anchored": true,
+     "CanCollide": false,
+     "CanTouch": false,
+     "CanQuery": false,
+     "CastShadow": false,
+     "Transparency": 1,
+     "Material": "SmoothPlastic"
+    }
+   },
+   {
+    "name": "Slime_Rim",
+    "texture": "G_Slime_A",
+    "kind": "Decal",
+    "face": "Top",
+    "size": [
+     6,
+     0.05,
+     6
+    ],
+    "position": [
+     21.5,
+     0.025,
+     -41.0
+    ],
+    "rotation_y_deg": 0,
+    "layer_studs": 0.05,
+    "decal": {
+     "Transparency": 0.0
+    },
+    "part": {
+     "Anchored": true,
+     "CanCollide": false,
+     "CanTouch": false,
+     "CanQuery": false,
+     "CastShadow": false,
+     "Transparency": 1,
+     "Material": "SmoothPlastic"
+    }
+   }
+  ]
+ },
+ "luau_snippet": "-- run in the Studio command bar after pasting the JSON into a ModuleScript 'GrimeTestPatch' (returns HttpService:JSONDecode(json)) and uploading the PNGs; fill IDS[texture] with the asset ids.\nlocal P = require(workspace.GrimeTestPatch); local IDS = {} -- IDS['W_MossBase_A'] = 'rbxassetid://...'\nlocal root = workspace.HalloweenDecor:FindFirstChild('Grime') or Instance.new('Folder', workspace.HalloweenDecor); root.Name = 'Grime'\nlocal tp = Instance.new('Folder'); tp.Name = 'TestPatch'; tp.Parent = root\nlocal function make(e) local p = Instance.new('Part'); p.Name = e.name\n  for k, v in pairs(e.part) do if k == 'Material' then p.Material = Enum.Material[v] else p[k] = v end end\n  p.Size = Vector3.new(table.unpack(e.size))\n  p.CFrame = CFrame.new(table.unpack(e.position)) * CFrame.Angles(0, math.rad(e.rotation_y_deg), 0)\n  local d = Instance.new(e.kind == 'Texture' and 'Texture' or 'Decal'); d.Face = Enum.NormalId[e.face]\n  d.Texture = IDS[e.texture] or ''\n  for k, v in pairs(e.texture_props or {}) do d[k] = v end\n  for k, v in pairs(e.decal or {}) do d[k] = v end\n  d.Parent = p; p.Parent = tp end\nfor _, e in ipairs(P.wall) do make(e) end; for _, e in ipairs(P.floor) do make(e) end\nworkspace.GrimeTestPatch:Destroy() -- the ModuleScript is not needed once the parts exist"
+}

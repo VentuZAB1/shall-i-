@@ -1,0 +1,34 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.RebirthClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "\tlocal value = B.text(face, \"Value\", B.LUCKY, WHITE, UDim2.fromScale(0.5, 0.38), UDim2.fromScale(0.72, 0.32), 0.09)\n\tvalue.ZIndex = 3\n\tlocal name = B.text(face, \"Name\", B.LUCKY, Color3.fromRGB(255, 250, 225), UDim2.fromScale(0.5, 0.2), UDim2.fromScale(0.72, 0.63), 0.08)\n\tname.Text = t.name\n\tname.ZIndex = 3\n\tlocal line = B.text(face, \"Line\", B.FRED, WHITE, UDim2.fromScale(0.92, 0.21), UDim2.fromScale(0.5, 0.855), 0.07)",
+   "new_string": "\t-- (2026-10-22 UI polish, M5) value 0.32 / name 0.24 / line 0.24 (were 0.38 / 0.2 / 0.21: name + line were 10-11 px base)\n\tlocal value = B.text(face, \"Value\", B.LUCKY, WHITE, UDim2.fromScale(0.5, 0.32), UDim2.fromScale(0.72, 0.21), 0.09)\n\tvalue.ZIndex = 3\n\tlocal name = B.text(face, \"Name\", B.LUCKY, Color3.fromRGB(255, 250, 225), UDim2.fromScale(0.52, 0.24), UDim2.fromScale(0.72, 0.5), 0.08)\n\tname.Text = t.name\n\tname.ZIndex = 3\n\tlocal line = B.text(face, \"Line\", B.FRED, WHITE, UDim2.fromScale(0.94, 0.24), UDim2.fromScale(0.5, 0.835), 0.07)"
+  },
+  {
+   "old_string": "\tlocal icon = square(B.image(face, \"Icon\", t.icon, UDim2.fromScale(1, 0.62), UDim2.fromScale(0.05, 0.43), Vector2.new(0, 0.5)))",
+   "new_string": "\tlocal icon = square(B.image(face, \"Icon\", t.icon, UDim2.fromScale(1, 0.5), UDim2.fromScale(0.05, 0.36), Vector2.new(0, 0.5))) -- (M5: 0.62 at 0.43)"
+  },
+  {
+   "old_string": "local petSub = left(B.text(petCard, \"Sub\", B.FRED, Color3.fromRGB(205, 212, 240), UDim2.fromScale(0.62, 0.3), UDim2.fromScale(0.2, 0.73), 0.06, Vector2.new(0, 0.5)))",
+   "new_string": "local petSub = left(B.text(petCard, \"Sub\", B.FRED, Color3.fromRGB(205, 212, 240), UDim2.fromScale(0.62, 0.36), UDim2.fromScale(0.2, 0.72), 0.06, Vector2.new(0, 0.5))) -- (M5: 0.3)"
+  },
+  {
+   "old_string": "local function setButton(color, text)\n\tbtn.BackgroundColor3 = color\n\tbtnHolder.Depth.BackgroundColor3 = color:Lerp(Color3.new(0, 0, 0), 0.4)\n\tif os.clock() > flashUntil then btnLabel.Text = text end\nend",
+   "new_string": "-- (2026-10-22 UI polish, M4) not ready = a solid silver button (the CLAIMED palette) with an INK label and no checkerboard\n-- behind it; ready = lime with its checker and the white outlined label, as before\nlocal SILVER_OFF = Color3.fromRGB(200, 205, 212)\nlocal function setButton(color, text)\n\tlocal off = color == GREY\n\tbtn.BackgroundColor3 = off and SILVER_OFF or color\n\tbtnHolder.Depth.BackgroundColor3 = (off and SILVER_OFF or color):Lerp(Color3.new(0, 0, 0), 0.4)\n\tlocal studs = btn:FindFirstChild(\"Studs\")\n\tif studs then studs.Visible = not off end\n\tbtnLabel.TextColor3 = off and B.INK or WHITE\n\tlocal ls = btnLabel:FindFirstChildOfClass(\"UIStroke\")\n\tif ls then ls.Enabled = not off end\n\tif os.clock() > flashUntil then btnLabel.Text = text end\nend"
+  },
+  {
+   "old_string": "btn.Activated:Connect(press)\nif RunService:IsStudio() then -- (2026-10-21 tests) RebirthPage.TestPress:Fire() = one press of the REBIRTH button",
+   "new_string": "btn.Activated:Connect(press)\nB.tapArea(btn, press) -- (2026-10-22 UI polish, M7)\nif RunService:IsStudio() then -- (2026-10-21 tests) RebirthPage.TestPress:Fire() = one press of the REBIRTH button"
+  },
+  {
+   "old_string": "local skipBusy = false\nskipBtn.Activated:Connect(function()\n\tif skipBusy or RebirthConfig.isMax(player:GetAttribute(\"Rebirths\") or 0) then return end",
+   "new_string": "local skipBusy = false\nlocal function pressSkip()\n\tif skipBusy or RebirthConfig.isMax(player:GetAttribute(\"Rebirths\") or 0) then return end"
+  },
+  {
+   "old_string": "\t\ttask.delay(1.35, refresh)\n\tend\nend)\n\n---------------------------------------------------------------- motion: spinning rays",
+   "new_string": "\t\ttask.delay(1.35, refresh)\n\tend\nend\nskipBtn.Activated:Connect(pressSkip)\nB.tapArea(skipBtn, pressSkip) -- (2026-10-22 UI polish, M7)\n\n---------------------------------------------------------------- motion: spinning rays"
+  }
+ ]
+}

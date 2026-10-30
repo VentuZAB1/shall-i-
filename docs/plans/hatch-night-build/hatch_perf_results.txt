@@ -1,0 +1,53 @@
+hatch_perf.lua, Play solo (TestFreshSave), Studio viewport 1519x753, window scale 1.1787, 2026-10-21
+DAILY  StreakClient 300 frames avg 0.0324 ms max 0.2343 ms
+DAILY  bats 300 frames avg 0.0079 ms max 0.0400 ms
+PLAYTIME PlaytimeClient 300 frames avg 0.0345 ms max 0.6036 ms
+PLAYTIME StreakClient (tabs/dots) 300 frames avg 0.0038 ms max 0.0091 ms
+IDLE 3 s closed: daily 30570->30570 play 4140->4140 bats 30570->30570 BatLoop false
+INSTANCES window+pages+celebrate+fly: 867 GuiObjects, 2 ViewportFrames (bats), 1634 instances; PlayerGui 7891
+LEAK x30: GuiObjects 867->867, VPF 2->2, instances 1634->1634, PlayerGui 7891->7891, BatLoop after close false
+MEMORY total 2419.6->2422.9 MB, LuaHeap 848.2->850.1 MB, Gui 103.0->103.1 MB
+idle ok true, instances flat true
+(build before the PLAYTIME-layout change; re-run after it below)
+
+RE-RUN after the PLAYTIME layout restore (old 4x3 arrangement, HATCH NIGHT look), session 4, same viewport, scale 1.1787.
+NOTE: Studio was throttled in the background during this run (RenderStepped measured at 15 fps), so the 0.1 s
+card refresh lands on ~every 2nd frame instead of every 6th: the per-frame averages are pessimistic vs a 60 fps client.
+DAILY  StreakClient 300 frames avg 0.0834 ms max 0.4105 ms
+DAILY  bats 300 frames avg 0.0077 ms max 0.0338 ms
+PLAYTIME PlaytimeClient 300 frames avg 0.0447 ms max 0.1212 ms
+PLAYTIME StreakClient (tabs/dots) 300 frames avg 0.0046 ms max 0.0343 ms
+IDLE 3 s closed: daily 8670->8670 play 5010->5010 bats 8670->8670 BatLoop false
+INSTANCES window+pages+celebrate+fly: 816 GuiObjects, 2 ViewportFrames (bats), 1532 instances; PlayerGui 7735
+LEAK x30: GuiObjects 816->816, VPF 2->2, instances 1532->1532, PlayerGui 7735->7735, BatLoop after close false
+MEMORY total 2460.0->2461.3 MB, LuaHeap 880.6->881.1 MB, Gui 101.0->101.0 MB
+idle ok true, instances flat true
+
+LOW-END (code review, not toggled: changing Studio's Rendering.QualityLevel is a persistent Studio setting):
+- no quality branches in BrickUI.Hatch / StreakClient / PlaytimeClient; the only CanvasGroup is the celebration's
+  egg TopHalf (182x106, alive 0.55 s, then Visible=false). If a device can't allocate its texture, Roblox draws the
+  children unclipped and without GroupTransparency: the falling top half shows as a whole egg oval for 0.55 s, then
+  hides. Nothing else depends on it.
+- the 2 bat ViewportFrames (47x24 + 31x15 px at 1.18) hold one skinned mesh each, no lights; the loop runs only
+  while the Gift window is open (BatLoop false when closed). On low quality a VPF may refresh less often = the wing
+  bob steps; the window is unaffected.
+
+======== FIX ROUND (2026-10-21, visual review MUST 1-7 + SHOULDs, perf review I-1 / I-2 / minors) ========
+Gift window re-run (hatch_perf.lua, Studio throttled in the background at ~15 fps, scale 1.1787):
+DAILY  StreakClient 300 frames avg 0.0777 ms max 0.2676 ms
+DAILY  bats 300 frames avg 0.0106 ms max 0.0844 ms
+PLAYTIME PlaytimeClient 300 frames avg 0.0547 ms max 0.4338 ms   (+ PlayBar, pet-slot prism rotation, clock timers)
+PLAYTIME StreakClient (tabs/dots) 300 frames avg 0.0051 ms max 0.0683 ms
+IDLE 3 s closed: daily 9360->9360 play 3090->3090 bats 9360->9360 BatLoop false
+INSTANCES window+pages+celebrate+fly: 843 GuiObjects (+27: PlayBar, 12 slot clocks, burst, 6 stars...), 2 VPF, 1571 instances
+LEAK x30: GuiObjects 843->843, VPF 2->2, instances 1571->1571, PlayerGui 7808->7808, BatLoop after close false
+MEMORY total 2521.5->2523.1 MB, LuaHeap 949.4->952.0 MB, Gui 105.6->105.6 MB
+Gift tile badge: pulses through a UIScale (BadgePulse); badge.Size no longer written per frame (verified unchanged)
+
+RebirthClient canRebirth() poll, BEFORE (RebirthClient_prePerf code) vs AFTER, same harness, Server datamodel, veteran-size
+save (BaseData 2748 chars = 20 pets + 20 eggs, PetInventory 2058 chars = 30 pets), Rebirths 3 (has a pet requirement):
+  0.5 s poll tick, can't afford yet (common case): before 0.1098 ms (2 calls x 2 JSON decodes)   after 0.0001 ms (money check only)
+  0.5 s poll tick, affordable, save unchanged:     before 0.1096 ms                             after 0.0011 ms (cached pets)
+  0.5 s poll tick, affordable, save changed:                                                    after 0.0540 ms (1 decode pair)
+  step 11 arrow RenderStepped, per FRAME:          before 0.0559 ms (decodes every frame)       after 0 (reads the cached canNow)
+  old vs new answers: identical in 126 of 126 cases (rebirth 0-20 x 6 money levels)

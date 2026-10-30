@@ -1,0 +1,34 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.ShopClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "page.Size = UDim2.fromScale(0.86, 0.95)\npage.AnchorPoint = Vector2.new(0.5, 0.5)\npage.Position = UDim2.fromScale(0.44, 0.5)",
+   "new_string": "page.Size = UDim2.fromScale(0.83, 0.95)\npage.AnchorPoint = Vector2.new(0.5, 0.5)\npage.Position = UDim2.fromScale(0.425, 0.5)"
+  },
+  {
+   "old_string": "tabs.Position = UDim2.fromScale(0.947, 0.5)\ntabs.Size = UDim2.fromScale(0.095, 0.96)",
+   "new_string": "tabs.Position = UDim2.fromScale(0.925, 0.5)\ntabs.Size = UDim2.fromScale(0.13, 0.96) -- (round 2: 0.095; wider tiles so \"Treadmill\" reads at 16 px)"
+  },
+  {
+   "old_string": "tl.Padding = UDim.new(0.012, 0)",
+   "new_string": "tl.Padding = UDim.new(0.008, 0)"
+  },
+  {
+   "old_string": "\t\tslot.Size = UDim2.fromScale(1, 0.185)\n\t\tslot.LayoutOrder = i\n\t\tslot.Parent = tabs",
+   "new_string": "\t\tslot.Size = UDim2.fromScale(1, 0.192)\n\t\tslot.LayoutOrder = i\n\t\tslot.Parent = tabs"
+  },
+  {
+   "old_string": "\t\tlocal tar = Instance.new(\"UIAspectRatioConstraint\") tar.Parent = tile\n\t\ticon = B.image(b, \"Icon\", s.icon, UDim2.fromScale(0.74, 0.58), UDim2.fromScale(0.5, 0.4))",
+   "new_string": "\t\tlocal tar = Instance.new(\"UIAspectRatioConstraint\") tar.AspectRatio = 1.5 tar.Parent = tile -- (round 2: wider than tall)\n\t\ticon = B.image(b, \"Icon\", s.icon, UDim2.fromScale(0.6, 0.56), UDim2.fromScale(0.5, 0.36))"
+  },
+  {
+   "old_string": "\tB.tapArea(b, go) -- (2026-10-22 UI polish, M7)",
+   "new_string": "\tB.tapArea(b, go, nil, b.Parent.Parent) -- (2026-10-22 UI polish, M7; inside its slot)"
+  },
+  {
+   "old_string": "\tlabel.Size = UDim2.fromScale(0.7, 0.56)",
+   "new_string": "\tlabel.Size = UDim2.fromScale(0.7, 0.66) -- (2026-10-22 UI polish, M5: 0.56, OWNED was 13 px)"
+  }
+ ]
+}

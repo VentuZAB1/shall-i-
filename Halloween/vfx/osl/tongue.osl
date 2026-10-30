@@ -1,0 +1,102 @@
+// SLINGSHOT Halloween - FireTongue 8x8 flipbook: a 64-frame one-shot (vfx.py prepends common.h).
+// A tongue of fire is born at the bottom (bright bulb), licks upward into a tall swaying tongue whose top tears into
+// licking tips, its waist is eaten through so the upper part breaks away and keeps rising, then everything cools and
+// burns out. Used many at once (rising, different sizes) for the big fire inside the giant jack-o'-lantern, so the root
+// fades out softly (overlapping tongues merge into one fire bed).
+// Shape = a round-cone chain along a whipping axis (the envelope) eroded by domain-warped fbm that scrolls upward faster
+// than the tongue (= licking). Colour = heat: hot low and inside, cooler up the tongue and at the torn tips; a narrower
+// inner tongue gives the white-yellow core, ridged noise gives the bright internal ribbons/folds.
+
+color fire_ramp(float h)
+{
+    float K[7] = { 0.0, 0.14, 0.32, 0.52, 0.72, 0.88, 1.0 };
+    color C[7] = { color(0.55, 0.05, 0.01), color(0.90, 0.17, 0.02), color(1.0, 0.36, 0.04),
+                   color(1.0, 0.55, 0.08), color(1.0, 0.75, 0.22), color(1.0, 0.90, 0.52), color(1.0, 0.98, 0.84) };
+    return ramp7(h, K, C);
+}
+
+float axis_x(float T, float s, float seed, float amp)
+{
+    float a = noise("perlin", point(s * 1.5 - T * 2.4, seed, 0.37));
+    float b = noise("perlin", point(s * 3.6 - T * 5.2, seed + 4.0, 1.71));
+    return amp * (a + 0.30 * b) * pow(max(s, 0.0), 1.2);
+}
+
+// envelope: round-cone chain through 9 circles
+float tongue_sd(float x, float y, float T, float ybot, float ytop, float W, float seed, float amp)
+{
+    float S[9] = { 0.0, 0.13, 0.27, 0.41, 0.55, 0.68, 0.80, 0.91, 1.0 };
+    float R[9] = { 0.86, 1.00, 0.97, 0.88, 0.74, 0.58, 0.41, 0.23, 0.06 };
+    float L = max(ytop - ybot, 0.05);
+    float sd = 1e6;
+    float pcx = 0, pcy = 0, pr = 0;
+    for (int i = 0; i < 9; i++) {
+        float r = max(R[i] * W, 0.004);
+        float cy = (i == 0) ? ybot + r : ybot + S[i] * L - ((i == 8) ? r : 0.0);
+        float cx = axis_x(T, S[i], seed, amp);
+        if (i > 0) sd = min(sd, sd_round_cone(x, y, pcx, pcy, cx, cy, pr, r));
+        pcx = cx; pcy = cy; pr = r;
+    }
+    return sd;
+}
+
+shader fire_tongue(int mode = 0, int cols = 8, float seed = 2.3, output color Out = 0)
+{
+    float x, y, T, frame;
+    tile(transform("object", P), cols, x, y, T, frame);
+
+    // ---- timeline
+    float born = smoothstep(0.0, 0.15, T);
+    float burn = smoothstep(0.48, 1.0, T);                       // burn-out progress
+    float ytop = -0.50 + 1.22 * (1.0 - pow(1.0 - smoothstep(0.0, 0.48, T), 1.7)) + 0.24 * smoothstep(0.48, 1.0, T);
+    float ybot = -0.84 + 0.62 * pow(smoothstep(0.40, 1.0, T), 1.4);
+    float W = mix(0.13, 0.29, born) * (1.0 - 0.40 * burn);
+    float amp = 0.15 + 0.07 * T;
+
+    float L = max(ytop - ybot, 0.05);
+    float s = (y - ybot) / L;
+    float sc = clamp(s, 0.0, 1.0);
+
+    float sd = tongue_sd(x, y, T, ybot, ytop, W, seed, amp);
+
+    // ---- licking turbulence: domain-warped fbm scrolling upward (faster than the tongue), stretched vertically
+    point q = point(x * 2.5, (y - 1.8 * T) * 1.05, seed * 3.1);
+    float wx = fbm(q * 0.75 + point(0.0, 0.0, 7.0), 3, 0.5);
+    float wy = fbm(q * 0.75 + point(0.0, 0.0, 13.0), 3, 0.5);
+    point q2 = q + point(0.75 * wx, 0.30 * wy, 0.0);
+    float n = fbm(q2 * 1.5, 6, 0.57);                              // ~[-0.6, 0.6]
+
+    // the waist gets eaten through (split) from T ~0.38, the top tears more and more
+    float waist = exp(-sq((sc - 0.47) / 0.12)) * smoothstep(0.34, 0.58, T);
+    float k = (0.30 + 0.55 * burn + 1.15 * pow(sc, 1.15)) * (1.0 + 0.9 * burn) + 1.7 * waist;
+    float thr = 0.55 * smoothstep(0.58, 1.0, T) + 0.75 * waist;
+    float F = -sd / 0.22 + 0.22 - k * (n + 0.10) - thr;
+
+    // ---- inner tongue: shorter, its own whip + strong erosion -> a licking white-yellow core
+    float sdi = tongue_sd(x, y, T, ybot + 0.03, mix(ybot, ytop, 0.58), W * 0.62, seed + 9.0, amp * 0.7);
+    float ni = fbm(point(x * 3.0, (y - 2.0 * T) * 1.2, seed * 3.1 + 40.0), 4, 0.55);
+    float Fi = -sdi / 0.14 - (0.55 + 1.1 * sc) * (ni + 0.05) - 1.6 * burn - 1.2 * waist;
+
+    // ---- colour (heat)
+    float edge_heat = mix(0.40, 0.04, pow(sc, 0.75));                // warm low edges, deep-red torn tips
+    float depth = max(F, 0.0);
+    float heat = edge_heat + (0.80 - edge_heat) * (1.0 - exp(-depth * 1.5));
+    heat = mix(heat, 1.0, 0.80 * smoothstep(-0.15, 0.9, Fi));        // white-yellow inner core
+    float rib = 1.0 - abs(noise("perlin", point(x * 4.2, (y - 2.3 * T) * 1.3, seed + 70.0)));
+    float fold = fbm(point(x * 5.5, (y - 2.6 * T) * 1.8, seed + 90.0), 3, 0.5);
+    heat += (0.16 * (pow(rib, 4.0) - 0.25) + 0.22 * fold) * smoothstep(0.0, 0.4, F);   // ribbons + darker folds
+    float root = smoothstep(-0.04, 0.20, sc + 0.10 * n + 0.04);     // ragged soft root: tongues merge into a fire bed
+    heat *= mix(0.45, 1.0, root);                                   // the fading root cools to orange (no grey smear)
+    heat *= 1.0 - 0.50 * burn;
+    heat = clamp(heat, 0.0, 1.0);
+    color col = fire_ramp(heat);
+
+    // ---- alpha: translucent outer flame, opaque hot body
+    float A = pow(smoothstep(-0.03, 0.50, F), 0.70);
+    A = max(A, smoothstep(0.0, 0.5, Fi));
+    A *= root;
+    A *= 1.0 - smoothstep(0.80, 1.0, T);
+    A *= border(x, y, 0.09);
+
+    Out = (mode == 0) ? col : color(A);
+}

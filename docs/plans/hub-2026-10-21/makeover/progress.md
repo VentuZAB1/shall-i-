@@ -1,0 +1,474 @@
+# Hub makeover: ledger (2026-10-21 night)
+
+Brief from the coordinator, for the owner (asleep):
+- big walls on all sides, with the pumpkin hands on them
+- fix the example placements and their rotations
+- decor only on walls / ground
+- OWNER RULE #1 (late message): no trees, bushes or seats
+
+Design: `DESIGN.md`. Plan picture: `plan_annotated.png`. Numbers: `plan.json` (`tools/makeover_plan.py`). Shots: `shots/`.
+
+**Resume recipe:** read this file top to bottom. The last "Pass N done" line is the checkpoint. Backups live in
+`ServerStorage._Backup_HubMakeover.Before` (CFrames / Removed / Scripts / Revert).
+
+## Rulings
+Format: **Ruling** – why – cost if wrong.
+
+1. **"Pumpkin hands" = the VineGrip pumpkin-vine fingers on the back wall, not the garlands.**
+   - Why: `Halloween/Vines/NOTES.md` describes them as "giant pumpkin-vine 'fingers' gripping the back wall". The old hub had VineGrip_L/R on its back wall.
+   - The garlands go up too, so both readings are covered.
+   - Cost if wrong: 2 models to remove.
+2. **Owner rule #1 overrides the brief's "a couple of big trees" allowance.**
+   - Why: owner message relayed by the coordinator.
+   - Effect: no tree, bush, flower or bench is left; the backdrop island goes too.
+   - Cost if wrong: everything sits in `.Removed` with `_From`.
+3. **Stalls face +Z (rotY 180), not toed in.**
+   - Why: square to the walls and the 24×24 decks; both signs are double-sided anyway.
+   - Cost if wrong: one rotY per stall.
+4. **Stall rings stay on the gate-edge → plot 1/2 (5/6) fan lines** (owner placement).
+   - Why: no front-corner spot clears those lines.
+   - Validator rule becomes "ring fully on its deck".
+   - Cost if wrong: a brief window pop on walk-through; the fix is moving the stalls about 40 studs.
+5. **The Sell PadRing + SellZone move 1.13 forward** (ring 5.63 in front of the plinth, like the Upgrade stall).
+   - Why: exact mirror stalls.
+   - Cost if wrong: one CFrame.
+6. **Boards keep the owner's inward 45° arena and become double-sided** (back screen = a screen-part clone in its own `<Board>_Back` model).
+   - Why: the arena reads from the chest; the backs face the walking lines. The scripts draw any model with the attribute.
+   - Cost if wrong: delete 4 `_Back` models.
+7. **Front boards at x ±26 (owner ±22.7 / 25.2).**
+   - Why: about 3.8 studs from the intro's side-dolly camera, which looks away from them.
+   - Cost if wrong: Stage C freezes show it; then move the boards to ±31.
+8. **Spawn moves to (0, -0.4, 52).**
+   - Why: it was inside the chest. It only matters for the first frame, the MapGuard fallback and players without a plot.
+   - Cost if wrong: one CFrame.
+9. **Lamps become 8 wall lanterns.**
+   - Why: brief option; posts in the plaza count as clutter under rule #1. The night boost keys on light attributes, so there is no script change.
+   - Cost if wrong: posts are in `.Removed`.
+
+## Log
+- **Stage A (2026-10-21 ~23:00 local):** Studio in Edit, nobody in Play.
+  - Read: spec, plan ledger, layout tool, Validate; scripts MapGuard, FreeGiftServer/Client, Leaderboards, LeaderboardScroll, IntroCutscene (stage + shots), BaseManager (spawnAtBase), HalloweenClient (night boost), Trailer S10.
+  - Measured: every hub child, the owner's example placements, stall / board / chest fronts, old walls / garlands / bats / vines in `_Backup_Hub.Before`, runway walls (40 tall, |x| 60..80).
+  - Edit counts: workspace 4,824 parts; Hub outside plots 760; HalloweenDecor 189.
+  - Studio change: Selection cleared (the owner had `Map.Bounds` selected; its gizmo showed in the captures). No DataModel change.
+  - Before shots: C1–C11 in `shots/before_*.jpg`; `before_00_top_wide` is extra. Night "before" = `../build/final_plaza_night.png` (render) because night needs a Play client.
+  - Wrote `DESIGN.md`, `plan.json`, `plan_annotated.png`. STOP at the gate: waiting for review.
+
+## Stage B
+- **Review:** APPROVED by the coordinator (2026-10-21). Notes:
+  - do BOTH the hands and the garlands
+  - garland density A/B after pass 4
+  - paving A/B (calm, mid-tone)
+  - add a front-avenue walker check that no stall window opens
+  - check the walls from R5 plots (try 22.4 if 25.6 crushes them)
+  - static bats only
+  - write FINAL.md
+- **Pass 1 done (snap + rotate, zone + spawn, back screens, tooling):**
+  - Backups: `_Backup_HubMakeover.Before.{CFrames (16 CFrameValue + Target), Scripts (Layout, Validate, HubV2Tests)}`.
+  - Stalls:
+    - Plinths at (+-70, 0.95, -54), LookVector +Z.
+    - Sell PadRing + SellZone moved +1.131 forward.
+    - Both rings at (+-69.998, -48.364), the same offset (0, -5.636) from the plinth.
+  - Decks at (+-70, 0.3, -47.6), rotY 0.
+  - Boards at (+-26, 10.25, 3/37), rotY -135/135/-45/45, all facing the chest.
+  - Chest at (0, 1.80, 20). FREE pad Fill at (0, 0.35, 20). Zone (0, 0.95, 20); the sign is now over the chest at y 7.75.
+  - Spawn at (0, -0.4, 52).
+  - 4 back screens `<Board>_Back` (screen clone flipped 180 deg, 0.155 behind the front screen = 0.0185 off the back panel; Atomic, `BackOf` attribute). The Edit capture shows the title on the back.
+  - **Ruling:** the FreeGift PadRing's pivot carries a 90 deg roll (cylinders), so a rotation-free PivotTo stood the rings up. Fixed at once by re-applying the original rotation; the rings are flat again (RightVector = +Y on all 4). Why: rotation was dropped. Cost: none now. Lesson: keep `pivot.Rotation` for ring models.
+  - **Tooling:**
+    - `tools/hub_layout.py` patched by `makeover/tools/patch_layout_tool.py` + `patch_layout_checks.py`; originals in `makeover/tools/bak/`.
+      - Owner placements; no decor solids; lanterns, wall pumpkins and intro camera spots added.
+      - Rule 4: intro cameras ≥ 3 from posts; front boards exempt from the intro box.
+      - Rule 7: stall rings on their decks; the FreeGift ring at the centre.
+      - Rule 8: boards / stalls / chest exempt (the walker covers them).
+      - Rule 11: density replaced by no-clutter. Rules 12–13 new.
+      - Result: ALL PASS (75 checks).
+    - `make_layout_lua.py` patched (`patch_layout_lua.py`). `HubLayout.lua` pushed to `HubV2Kit.Layout`: 16030 chars, checksum 485871937 = local (LF).
+    - `Validate`:
+      - 7: intro exempt + camera spots.
+      - 8: owner placements exempt.
+      - 9: rings on decks / zone on chest.
+      - 11 + 19: new `Walls.E<i>` checks (top ≥ 24, collides, ≤ 0.15 into the floor below y 6).
+      - 15: front + `_Back` boards.
+      - 21: no-clutter.
+    - Validate live now = 22 fails, all expected: 13 x "missing Walls.E<i>" (pass 2) + 9 clutter (pass 5).
+  - Shots: `shots/p1_C1_top`, `p1_C4_upgrade`, `p1_C8_boards`, `p1_board_back_screen`.
+- **Pass 2 done (walls):**
+  - `Map.Hub.EdgeWalls` (39 parts) moved to `_Backup_HubMakeover.Before.Removed` (`_From` = Workspace.Map.Hub; no tags).
+  - New builder `ServerStorage.HubV2Kit.Makeover.Walls` (`require(clone)({top = panelTop})`) built `Map.Hub.Walls`: 13 models E1..E13, 189 parts, `_Makeover`.
+    - Base band, recessed studded panel, coping, 28 mid pillars, room-corner pilasters (legs on both walls), 2 reflex-corner blocks, 2 runway-junction towers.
+    - All CastShadow off. The arriving wall runs through room corners. Even-edge copings sit 0.02 higher (no z-fight).
+  - **Ruling:** wall height = 22.4 coping (panel top 20.8; pillars to 25.2; towers to 30.2), not 25.6.
+    - Why: A/B at R5 plots 1 and 3 (`p2_R5_plot1_wall256` vs `_wall224`, `p2_C10_alley` vs `_wall224`): both read as big walls and neither crushes the plots. At 22.4 the giant head's whole grin clears the back wall from the alley / plaza (at 25.6 the coping cut through its teeth).
+    - Cost if wrong: one rebuild with `top = 24`.
+  - Plots 1/3 were built at R5 in Edit only for the shots, from snapshots in `ServerStorage._MakeoverPlotSnap`; then restored to their exact R0 clones (floor 40x40) and the snapshot folder was removed.
+  - Validate (11 + 19 now on `Walls.E<i>`; coping ≥ 20; penetration ≤ 0.25):
+    - First run flagged the room-corner legs (parented to the wrong edge model). Fixed in the builder by parenting each leg to its own edge's model.
+    - Now 9 fails, all clutter (pass 5).
+  - Shots: `p2_C9_hero`, `p2_C10_alley`, `p2_C11_corridor`, `p2_C2_runway`, `p2_tower`, `p2_reflex_corner` + the R5 A/B set.
+- **Pass 3 done (ground):**
+  - New builder `HubV2Kit.Makeover.Ground` (`require(clone)({colours = ...})`) builds `Map.Hub.Decor.Ground` (`_Makeover`), 81 parts:
+    - 13 wall aprons (3 wide)
+    - 8 lanes with 0.8 edge lines (spine front/back, avenue L/R, 4 spokes pulled onto the medallion edge)
+    - 6 gate aprons 16x10, edged on 3 sides
+    - 20 raised 0.25 plot kerbs, plaza sides only, 14-wide gate gaps
+  - It also recolours the 3 Ground tiles + the 5 medallion discs; the originals sit in the attribute `_MakeoverOrigColor` for the Revert.
+  - Flat parts don't collide or query; the kerbs collide (walkable step).
+  - **Ruling:** paving tone C = warm mid-tan.
+    - Values: paving (172,144,108), lanes (188,162,124), lane edges (136,106,76), aprons (150,120,88), kerbs (118,92,66), medallion band (132,80,54), medallion ring (146,116,84).
+    - Why: A/B/C at C8 (`p3_C8_toneA/B/C`). A (212,190,152) still read near-white in the SOFT lighting. B is lighter beige. C is calm and warm, and the lanes stay a subtle +16 step (no new glare), per review note 3.
+    - Cost if wrong: one call with other colours.
+  - Shots: `p3_C1_toneA`, `p3_C1_toneC`, `p3_C8_toneA/B/C`, `p3_C7_toneC`.
+- **Pass 4 done (wall decor):**
+  - New builder `HubV2Kit.Makeover.WallDecor` (`require(clone)({top = 20.8, garlands = "all" | "alternate", batBays = ...})`) builds `workspace.HalloweenDecor.WallDecor` (`_Makeover`, attribute `Garlands`), folders Hands / Garlands / Bats / Webs.
+    - Templates cloned from `_Backup_Hub.Before.HalloweenDecor` and stripped again (scripts, AnimationController, Animator, InitialPoses, tags); anchored, no collide / query / touch / shadow.
+    - Pumpkin HANDS = the 2 VineGrip models on the back-wall coping in bays E7:2 and E7:4, gripping either side of the centre bay under the giant head (review note 1).
+    - Garlands: Garland_06 scaled to the bay span, hooks just under the coping.
+    - Bats: 3 static flocks of 4 (E7 bay 3 under the head, E1 bay 1 + E13 bay 5 at the runway junctions), posed flat on the panel UNDER the garland (first build had them overlapping the flags = busy; lowered to 30-48 % of the panel). No AnimationControllers (review note 6).
+    - Webs: 4 corner webs at the 4 inside corners (E7 both ends, E5/E9 ends).
+  - **Ruling:** garlands ALTERNATE (21 garlands, not 39).
+    - Pattern: count the 41 bays round the wall (E1 bay 1 = 1 ... E13 bay 5 = 41) and hang a garland on every odd one. 41 is odd, so the pattern is mirror-symmetric about x = 0 (checked: 0 unmirrored garlands). The first "alternate" (k + i parity) was NOT symmetric on the 2- and 4-bay walls, so it was replaced.
+    - Why: A/B at C2 / C9 / C10 / C11 (`p4_C*_garlands_all` vs `p4_C*_garlands_alternate`). In every bay the flags read as one continuous party string and hide the studded panels; alternating gives a garland / clean panel rhythm that reads calmer and more premium (review note 2), and the bat flocks + hands now stand out as accents.
+    - Cost if wrong: one call with `garlands = "all"`.
+  - Result: 21 garlands, 2 hands, 12 bats, 4 webs = 83 parts.
+  - Shots: `p4_backwall_close`, `p4_front_bat_bay`, `p4_C2/C9/C10/C11_garlands_all` vs `_alternate`, `p4_C10_alley_firstbuild` (bats over the flags, before the fix).
+  - **Ruling (update during pass 5):** garland parity flipped to EVEN bays (18 garlands).
+    - Why: with odd parity every corner-web bay and every bat bay also carried a garland, and the spider on its web sat on the flag line (`p5_spider_web_with_garland_REJECTED`). Even parity gives every bay at most ONE feature: garland, hands, bat flock, corner web + spider, or (E3/E11) a clean panel above the corridor-end pumpkins. The back wall now reads web | hand | bats | hand | web. Still mirror-symmetric (0 unmirrored). Bats moved back up to the middle of their clean panels (46-68 %).
+    - Cost if wrong: one call (`garlands = "all"`, or flip the parity line).
+- **Pass 5 done (clear the clutter):**
+  - Moved to `_Backup_HubMakeover.Before.Removed` (each with `_From`; renamed with `_OrigName` where names clashed; none had scripts or tags):
+    - `Hub.Decor.Trees` (incl. the corner trees + rocks), `Hub.Decor.Benches`, `Hub.Decor.Garden`, `Hub.Decor.GateBeds`, `Hub.Decor.AlleyBed`, `Hub.Decor.Backdrop` (floating island + giant tree), `HalloweenDecor.Garden`.
+    - `HalloweenDecor.Spiders (16 small)`: the tree/garden spiders; their 18 unused thread attachments in the part `HalloweenDecor.SpiderAnchors (removed threads)` (same CFrame as SpiderAnchors).
+    - `HalloweenDecor.PumpkinEggs (spares)`: Cluster12 + 2 plain eggs (swapped out so mirrored pairs use the same meshes; moved pieces carry `_FromParent`).
+  - Pumpkin clusters re-placed ON THE FLOOR (every piece's bottom at y 0; several used to float 0.8 above the floor because they had stood on the removed beds), renamed to their spots (`WallPumpkins_*`):
+    - AlleyEnd (0,164): plain | big A | plain, candles centred in front, facing the plaza, under the head between the hands. Symmetric.
+    - JunctionL/R (±88,-55): big C + plain + candles beside the runway-junction towers, facing +z; R is the exact per-piece mirror of L.
+    - CornerL/R (±209,6): big A / big B + plain + candles at the corridor ends, facing down the corridor (+x / -x), mirrored.
+    - Snapshots of every cluster + piece CFrame are in `CFrames` (51 values).
+  - Spiders 5-8 (the 4 big ones) now sit ON the 4 corner webs, flat on the wall, head down and out of the corner, silk straight up to the coping. Their `BobAmp` is 0 (original kept in `_MakeoverOrigBob`): HalloweenClient bobs along the spider's local -Y, which now points into the wall, so only its tiny noise + the slow ±20° turn remain (a spider shifting on its web). No HalloweenClient change.
+  - Validate: 1 fail left = `[21] clutter: Decor.Lamps` (pass 6). Workspace parts 5142 -> 4680.
+  - Shots: `p5_C1_top`, `p5_C9_hero`, `p5_C10_alley`, `p5_C11_corridor`, `p5_spider_web`, `p5_junction_pumpkins`, `p5_alleyend_pumpkins`, `p5_corner_pumpkins`.
+- **Pass 6 done (lamps -> wall lanterns):**
+  - The 8 free-standing lamps left the plaza. `Map.Hub.Decor.Lamps` is now `Map.Hub.Decor.Lanterns` (`_OrigName` = Lamps); each `Lamp_i` model is `Lantern_i` (`_OrigName`). Each keeps its own Cage + Bulb + both lights (SpotLight + PointLight, NightBrightness / NightRange unchanged = 16 lights); the 8 Posts went to `Removed/Hub.Decor.Lamps posts` (`_FromParent`).
+  - `HalloweenDecor.StreetLamps.StreetLamp_i` keeps only its Pumpkin (flicker light, flame + glow emitters), moved into its cage with the same offset as before; the 16 Web / WebSilk meshes went to `Removed/HalloweenDecor.StreetLamps webs`. HalloweenClient still finds and night-boosts every light (it scans HalloweenDecor by attribute).
+  - New dark-iron bracket per lantern (3 `_Makeover` parts): wall plate (flat mounts) or a 45° corner collar (outside corners), a 3.4 arm at y 16, a diagonal strut. The cage hangs from the arm tip, 3.0 out from the wall, y 11.6..15.8. Cage / Bulb / Pumpkin no longer collide (`_MakeoverOrigCollide` kept).
+  - Mounts (mirror pairs), each above or beside a ground feature:
+    - Back wall E7 pillars (±14.6): flank the bat bay, the head and the alley-end pumpkins.
+    - Alley-mouth reflex corners (±73,78): 45° collar, light the alley entrance.
+    - Runway-junction towers (±81,-60): 45° collar over the junction pumpkins and the stalls.
+    - Corridor ends: the E2 / E12 corner-pilaster legs at z 9.95, facing down the corridor over the corner pumpkins. (Ruling: not a 45° bracket in the inside corner, which would clip both walls - cost if wrong: one re-run with another mount.)
+  - **Ruling:** lantern height = arm 16 / cage centre 13.7 (first try: arm 17.3). Why: at 17.3 the alley-mouth cage met the E6 garland's hook and the back cages met the hands' outer vine curls (`p6_*_REJECTED`). Cost if wrong: 1 call.
+  - **Ruling:** hands scaled 0.9 about their grip point, so the outer curls clear the back lanterns.
+  - **Ruling:** garlands skip the even bays that already hold a feature: webs E5:1 / E9:4 (my pass-5 parity note wrongly listed these as E5:4 / E9:1, so they had a garland AND a web), alley-mouth lantern bays E6:1 / E8:3, corridor-lantern bays E2:3 / E12:1. Now 12 garlands, still mirror-symmetric, and every bay carries ONE feature. Cost if wrong: `skip = {}` in one call.
+  - Validate: **0 fails**. Parts: workspace 4662 (was 5142 before pass 5), Map.Hub 2476, HalloweenDecor 93.
+  - Shots: `p6_C10_alley`, `p6_lantern_back`, `p6_lantern_side`, `p6_lantern_alley_mouth`, `p6_lantern_tower`, `p6_lantern_corridor_end` (+ the rejected tries).
+- **Revert written:** `ServerStorage._Backup_HubMakeover.Before.Revert` (ModuleScript; README has the 2 command-bar lines).
+  - Steps: names back (14) -> destroy the 31 `_Makeover` instances -> 91 CFrames back (models first, then their parts) -> 71 removed / moved instances home -> 36 colours / BobAmp / collisions back -> 3 scripts' Source back.
+  - CFrames go back BEFORE the removed things return, so parts that never moved (lamp posts, lamp webs) aren't dragged by a model pivot.
+  - Dry run: every step resolves, **problems: none**.
+  - **Ruling:** rehearsed as a DRY RUN, not a real revert + rebuild.
+    - Why: passes 1, 5 and 6 were applied by one-shot snippets (only Walls / Ground / WallDecor are re-runnable builders), so a real round trip would mean redoing those passes by hand in the owner's place at night, which is a bigger risk than the revert itself.
+    - The dry run checks every target, parent path, script and attribute the real run touches.
+    - Cost if wrong: a real revert could stop on an unexpected state. It reports problems instead of erroring, and every backup stays in ServerStorage.
+  - Note: the Studio edit tool turned the dotted path `_Backup_HubMakeover.Before.Revert` into a stray `_Backup_HubMakeover/Before` folder. I moved the module into the real backup folder and deleted the stray (empty) folder.
+
+## Stage C (2026-10-22 ~00:05-00:15 local), one Play session
+- Before Play: Edit, `TestFreshSave` set true and read back as true. Test player: Santrinio (fresh save, BaseId 1). After: stopped Play, `TestFreshSave` set false and read back as false.
+- `HubV2Tests` got a new **T11** block (the original is backed up in `Scripts`):
+  - T11.1 placements / walls / lanterns / pumpkins / budget / Validate
+  - T11.2 avenue walker
+  - T11.3 pathfinding
+  - T11.4 walls hold
+  - T10.11 now expects 8 boards (4 + 4 back screens) and reads `Decor.Lanterns`.
+- Results:
+  - **T11.1: 16/16.**
+    - Rings at (±70, -48.36); counters face +Z.
+    - Chest (0,20); zone on the chest at run time; Spawn (0,52).
+    - 13 wall edges; coping ≥ 22.3; walls collide.
+    - 8 lanterns with brackets; 8 pumpkin flicker lights.
+    - 5 clusters, every piece on the floor.
+    - 4662 parts (< 11,000).
+    - Validate 0 fails.
+  - **T11.2 avenue walker: 2/2.**
+    - Humanoid:MoveTo along z -30 from gate 1 to gate 6 and back: closest approach 12.2 studs outside any ring's trigger radius.
+    - A client monitor (polling every 0.05 s) saw UpgradeUI / SellUI / FreeGiftUI **never open** during the walk (review note 4).
+  - **Stall rings:** standing on the Upgrade ring opened UpgradeUI only; standing on the Sell ring opened SellUI only.
+  - **Free Gift:**
+    - Walking into the chest zone opened FreeGiftUI.
+    - With `FreeGift` = true, the FREE! sign and the sparkles turn off.
+    - Observation: the very first entry, teleported straight from the Sell ring into the chest zone in one step, did NOT open the window. It opened on the next entry.
+    - This is unchanged client logic and cannot happen on foot (the ring and the chest are about 97 studs apart). I'm flagging it, not fixing it.
+  - **T11.3 pathfinding: 19/19.** From the Spawn on foot to:
+    - all 6 gates and all 6 plot centres
+    - both rings and the chest front
+    - the alley end and both corridor ends
+    - the slingshot pad
+  - **T10.11: 3/3.**
+    - 8/8 boards drew Row01.
+    - The FREE! sign anchor is over the chest.
+    - 16/16 lantern lights are at their night values.
+  - **Night:** with Settings night = on, all 8 pumpkin lights switched to their night range and back. Night shots: `final_night_*`.
+  - **T11.4 walls hold.**
+    - First run: 3 FAIL / 3 PASS. The test's "still inside" line was the floor edge, but the panel face is 0.8 behind it, so a body pressed on the wall sits about 0.3 past the edge.
+    - Re-run in the same session as an ad-hoc check with the corrected limit (1.5 past the edge, below the coping) on 5 walls (E2, E7, E1, E5 behind plot 2, E12): **5/5 PASS**. 4 s push + jump each: root at most 0.34 past the edge, max root y 15.0 (coping 22.4), walked back 13-17 studs (not stuck).
+    - The corrected limits + the 2 extra walls are now in T11.4. Note: that edited version was written after Play, so it has not been run as T11.4 itself yet.
+  - **Logs:** 0 errors on server and client (CorePackages / UIBlox noise excluded); 2 server warnings.
+- Checked statically, not in Play:
+  - intro cameras ≥ 3 from every solid (Validate 7)
+  - launch zone clear (Validate 4)
+  - Trailer S10: its line of sight crosses the back wall at y 40-48, and the wall is now LOWER than designed (coping 22.4, back pillar caps 25.2)
+  - the tutorial finds the stalls by the unchanged zone names
+- Final shots: `after_01_top` … `after_11_corridor` (Edit, the same fixed cameras as `before_*`); night `final_night_C10_alley`, `final_night_C2_runway`, `final_night_C9_hero`, `final_night_junction` (Play client, Settings night).
+
+## Fix round (2026-10-22 ~00:25 local): VISUAL_REVIEW.md = FIX THEN SHIP
+- Scope (coordinator):
+  - MUST M1-M5
+  - SHOULD 1-3, with the finial night lights kept cheap: glow or a few lights only, never 38
+  - NICE: skip, but list in FINAL
+  - Then close the unverified items in Play: saved T11.4, intro freeze frames, slingshot launch, trailer S10, tutorial 8/9/10 on plots 1 + 6, Free Gift teleport glitch
+  - Then `shots/fix_*`
+- Status lines follow per step.
+- **M2 + SHOULD 2 done (builder rebuild):**
+  - `HubV2Kit.Makeover.Walls` now builds a `Cornice` per edge: (214,112,44), d 0.45-0.80, y 20.0-20.8 (+0.02 on even edges), no collide or query.
+  - New option `towerTop`. The walls were rebuilt with `{top = 20.8, towerTop = 40}`: towers to 40, caps to 41.4, 202 parts.
+  - Webs: the WallDecor builder now places them 1.0 lower (top 19.85). Spiders 5-8 also dropped 1.0 (attribute `_FixDropped`); their silk tops are at y 19.8, under the cornice.
+- **M5 done:** the WallDecor bat spec now supports `centreS / squeeze / mirrorTo`. The E1:1 flock is centred at s 15.3 (x -95.5) and squeezed 0.65; E13 is its exact mirror.
+  - Oriented-bbox clearance: 2.19 to the tower, 2.14 to the first pillar, on both sides.
+  - Bats are now mirror-exact E1 vs E13; before, E13 just repeated the same pattern.
+- **M1 done (3 tries; captures `review/M1_R08_try1-3`, `M1_R03_try1-3`; tool `tools/measure.py`, same crops as the review):**
+
+  | Try | Panel | Pillar / Base | Cap | Foot | R08 panel | R08 pillar | R08 coping | R03 panel | R03 pillar |
+  |---|---|---|---|---|---|---|---|---|---|
+  | review | (96,132,170) | (58,84,130) | (232,222,196) | (46,66,104) | S.59 L.52 | R18 S.80 | H180 | S.75 L.41 | R1 S.99 |
+  | 1 (start values) | (108,128,164) | (78,84,124) | (242,206,146) | (56,58,92) | S.53 L.54 | R41 S.59 | H53 S.29 | S.66 L.42 | R14 S.81 |
+  | 2 | (122,134,162) | (88,94,124) | (244,190,138) | (62,64,92) | S.48 L.57 | R53 S.49 | H39 S.34 | S.55 L.45 | R23 S.71 |
+  | **3 = final** | **(128,138,162)** | **(98,104,124)** | **(244,190,138)** | **(66,68,92)** | S.45 L.59 | R65 S.41 | **H39 S.34** | S.51 L.46 | **R31 S.63** |
+
+  - Met: the coping target (H39, warm sandstone, no longer cyan); the pillar targets at both cameras (R ≥ 30, S ≤ 0.70, 0.13-0.16 L darker than the panel); the panel hue at both cameras.
+  - **Ruling:** keep try 3, even though the panel misses its window by 0.01-0.02 (R08 L 0.59, R03 S 0.51 / L 0.46).
+    - Why: the same colour renders at L 0.59 near and 0.46 far, a spread wider than the 0.10 L window, so no single colour hits both. Try 3 sits mid-window (mean L 0.525), and the 3-try cap was reached.
+    - Cost if wrong: one recolour call (the builder holds the palette).
+  - The builder's palette was updated to try 3. Note: the orange cornice reads orange, not brown, so it stays (214,112,44).
+- **M4 done:**
+  - `ServerScriptService.BaseBuilder` (a ModuleScript) was backed up first to `_Backup_HubMakeover.Before.Scripts["ServerScriptService.BaseBuilder"]`; the Revert picks it up automatically.
+  - Line 16: `slotBed` (150,172,112) → **(100,148,66)**.
+  - The 6 live `Plot.Look.SlotBed` parts were recoloured the same way (`_MakeoverOrigColor` kept).
+  - Measured at R03 (`review/M4_R03_slotbed`; R06's camera isn't in the review, so I used R03):
+    - slot bed H96-99, S 0.41-0.49, L 0.58-0.60 = in target
+    - owned plot grass H118, S 0.65, L 0.64 = still brighter and greener
+- **M3 done: pumpkin finials, all 38 kept.**
+  - The `WallDecor` builder has a new `Finials` section (`opts.finials = all | alternate | none`).
+  - Template: the lantern pumpkin mesh, keeping only its SurfaceAppearance, scaled to 3.6 wide. Each finial's face points into the hub; no collide / query / touch / shadow.
+  - Placement:
+    - 24 mid pillars; E7's 4 are skipped because the hands' leaves cover them.
+    - 8 room corners: on the inside-corner L of the two pilaster caps, 1.0 out along the bisector, bottom at 25.22. The review's v + 3.3·(na+nb) point sits over the coping (22.4), not a cap.
+    - 4 reflex blocks (bottom 25.2).
+    - 2 towers (bottom 41.4, on the new 40-tall towers).
+    - Mirror check: 0 unmirrored.
+  - **Ruling:** keep ALL 38, not every other.
+    - Why: A/B at C2 / C10 / C11 / R03 (`review/M3_*_finials_all` vs `_alternate`). One small pumpkin on every cap reads as one calm crenellation rhythm. "Alternate" leaves gaps that read as missing pieces, which is busier, not calmer (C11).
+    - Cost if wrong: one call with `finials = "alternate"`, which is mirror-safe.
+- **SHOULD 1 done: 12 gate clusters** in a new `HalloweenDecor.GateDecor` (`_Makeover`), models `Gate<i>_A/B`.
+  - Position: gate + D·2.0 ± L·8.6, using the Layout's gate → spawnSpot direction. These are exactly the review's coordinates, e.g. (-120,-38.6) / (-120,-21.4).
+  - Each cluster: a `PumpkinEgg_Plain1` at ×0.38 plus `Halloween_Candles` at ×0.6, from `ServerStorage.HalloweenTemplates`, stripped (no scripts or tags), resting on the floor. Height 1.50, 0 unmirrored.
+  - **Ruling:** the candle PointLights are DESTROYED, not disabled (the flames stay). Why: a disabled light still sits in HalloweenClient's flicker list every frame. Cost if wrong: none visible.
+  - Validate 21 now allows `GateDecor` and fails any of its models taller than 1.6 or off the ground. Validate: 0 fails. Shot: `review/S1_gate1_clusters`.
+- **SHOULD 2 done:** the junction towers rise to 40.0 (the orange runway-wall top), caps to 41.4, finials on top; the lanterns stay at 13.7. Shot: `review/S2_tower_sell`.
+- **SHOULD 3 done (cheap version): 8 PointLights** in the finials E1:2, E1:4, E13:1, E13:3, E2:1, E12:2, E5:2, E9:2. These are the long dark runs; there are none on lanterned pillars and none per finial.
+  - Settings: Range 10, Brightness 0.3, Shadows off, colour (255,150,60), NightBrightness 1.6, NightRange 14. HalloweenClient boosts them at night by attribute; no script change.
+  - The lantern lights (16 in Decor.Lanterns + 8 pumpkins) are untouched, so nothing is doubled.
+  - The other 30 finials get no light: their carved-face texture already reads lit.
+- Parts now: workspace 4,737; HalloweenDecor lights 27.
+- **Fix-round Play session (~01:00 local):** TestFreshSave set true and read back true in Edit; Play started. (If cut off here: stop Play, then set TestFreshSave false.)
+  - **T11.4 (SAVED version) 10/10:** 5 walls, push + jump held, walked back 10-14 studs. T11.1 16/16, T10.11 3/3 (with the new palette, cornice, finials, gate clusters and towers).
+  - **Free Gift teleport glitch: NOT reproduced.** Teleporting from the Sell ring (SellUI opened at 2.31 s) into the chest zone at 3.75 s closed SellUI and opened FreeGiftUI in the same frame (client monitor, every frame).
+    - Last time's miss was most likely my monitor: it used a window-scan regex that didn't list FreeGiftUI, plus a 1 s sample.
+    - **Ruling:** no code change. Cost if wrong: a teleport-only edge case (the ring and the chest are about 97 studs apart on foot).
+  - **Tutorial 8 / 9 / 10 on plot 1 AND plot 6** (driven by the attributes FreeSling / TutorialExtra / Money; plot 6 via BaseDebug reassign with dummy owners, released after): the chevron beam targets were checked from the client.
+    - Step 8 → the Upgrade ring (-70, -48.4) from both plots.
+    - Step 9 → their own treadmill: B1 (-107.7, -46) and B6 (107.7, -46).
+    - Step 10 with money → the Upgrade ring; step 10 with no money → "Hatch a PET" → the slingshot pad (0, -45).
+    - All the targets are reachable (T11.3 pathfinding). Shots: `shots/fix_tut_step8_plot1`, `fix_tut_step8_plot6`.
+    - Afterwards the test attributes went back to 0 / false.
+  - **Intro (IntroReplay + IntroDebugT freezes at 13 times: 1.2, 2.6, 3.6, 4.4, 5.5, 18.9, 19.9, 21.5, 23.5, 24.8, 26.0, 26.8, 27.5):**
+    - The camera never has a hub solid within 3 studs or within 8 studs ahead. The only thing ahead at 26.8 is the puppet itself, the subject.
+    - The puppet stays unobstructed in every frame (`shots/fix_intro_t*`).
+    - The walls + finials sit in the background, as in any hub shot.
+    - **Note:** the owner-placed boards do appear in frame:
+      - RichestBoard: background left at 1.2 and 19.9, about 44 studs away
+      - the 4-board arena around the chest in the WHEW shot (24.8)
+      - They never cover or touch the puppet.
+    - **Ruling:** acceptable, not moved.
+      - Why: these are the owner's placements (ruling 7 kept them). "No board in frame" can't hold literally in a walled hub, so I read the intent as "nothing blocks or clips the shot", and that passes.
+      - Cost if wrong: move the 2 front boards out to x ±31 (layout tool + 2 CFrames) and re-shoot 1.2 / 19.9.
+  - **Slingshot launch:**
+    - Walked onto the pad; the client boarded on its own (SlingPhase Aiming).
+    - Held + released Space through the Studio game-input tool: Loading → Flying → Landed at z -160, apex y 90.
+    - 56 samples, every 0.1 s: the camera-to-player line was never crossed by any `Map.Hub` / `HalloweenDecor` part.
+    - Shot: `fix_sling_landing`.
+  - **Trailer S10:**
+    - I ran `AdminUI.Trailer` from the client, frozen with TrailerDebugT at 24.5-27.3.
+    - The lens-to-pumpkin ray was clear at all 7 samples (it no longer crosses the wall: the glide now runs at y 7-16 down the alley), with the pumpkin centred (dot 0.97-1.00).
+    - Shots: `fix_trailer_s10_start` / `_end` (the "HALLOWEEN HUB" title over the back wall + head; finials, cornice, hands, lanterns, webs, bats all read).
+    - I ran the trailer to its end; the camera is back to Custom.
+  - **Night:** 8/8 finial lights switched to night range 14 with Settings night. Shots `fix_night_C10_alley`, `_C2_runway`, `_junction` (bats now clear of the tower), `_C11_corridor`.
+  - **Logs:** 0 errors and 0 warnings on the server; 0 errors on the client.
+  - **Play stopped (~01:20).** `TestFreshSave` set false and read back as false.
+- **Fix round finished (~01:12 local):**
+  - Shots `shots/fix_01_top` … `fix_11_corridor` are the same fixed cameras as `after_*`, plus `fix_night_*`.
+  - Validate: 0 fails. Parts: workspace 4,737, Map.Hub 2,489, HalloweenDecor 155.
+  - Revert dry run: problems none. It now also covers GateDecor, the BaseBuilder Source (4 scripts) and the SlotBed colours (42 attribute restores).
+  - Studio is in Edit with TestFreshSave false. FINAL.md has a fix-round section.
+
+## Test-order fix (2026-10-22 ~01:20 local, coordinator: test-only fix, 2 green full runs)
+- Backup: the current HubV2Tests → `_Backup_HubMakeover.Before.TestFixBackup.HubV2Tests` (outside `Scripts`, so the Revert still restores the pre-makeover version).
+- **Diagnosis (one Play session, suite run twice in order; TestFreshSave true → false):**
+  - Run 1: T10.4b 23 pets on the plot = 0 (no client "equip best"); T11.2 walker stuck at x -114.
+    - Cause of T11.2: T10.5 leaves the player WELDED to Treadmill_B1, so MoveTo can't move.
+  - Run 2:
+    - T10.1 "every base 40 x 40" fails (T10.4 left Rebirths 20).
+    - T10.4b fails twice (leftover pets and StormEggs).
+    - T11.1 15/1: Validate "[12] Treadmill_B1 pivot off the layout + jump-off spot inside its plot".
+      - Cause: T11.2 / T11.4's `put()` teleported the still-welded character, which DRAGGED the treadmill model to (-206,0.46,-39).
+      - Run 2's T10.5 saw tier 2 already, so it did no swap and left the model there.
+  - The hub itself was never at fault: the Edit-mode treadmill is at its layout pivot.
+- **Test fixes (HubV2Tests only; no game script touched):**
+  - `dismount()`: destroys the `TreadmillWeld` (TreadmillServer then dismounts by itself) and waits for TreadmillRun nil + 0.5 s. `put()` now calls it before every teleport, so a welded character can no longer drag its treadmill.
+  - `settle(player, at)`, called at the start of T11.1 (at the spawn side) and T11.2 (at gate 1). It:
+    - dismounts
+    - puts TreadmillTier back to T10.5's `tier0` and waits for the swap
+    - clears PlatformStand / Sit
+    - teleports, then waits until the player is standing still on the ground
+    - waits until the player is out of every Upgrade / Sell / Free Gift zone radius + 1, then 0.6 s more, so the client windows close
+  - T10.4 snapshots Rebirths / BaseData / PetInventory / EggInventory.
+  - T10.4 now does the plan's "Equip Best" itself: inventory pets into BaseData.pets, then `HatcheryDebug reload`. That is BaseHatchery's own loadBase + fitSlots path. New check: 23 pets in the base.
+  - The end of T10.4b restores the snapshot, reloads, and checks the plot is back at its R0 size (new check). So T10.1 "every base 40 x 40" holds on a rerun.
+- **Full suite run 1 (fresh TestFreshSave session, ~01:30): 110 pass / 0 fail.**
+  - T2 22, T10.1 5, T10.2 5, T10.3 12, T10.4 3, T10.4b 4, T10.5 9, T10.11 3, T11.1 16, T11.2 2, T11.3 19, T11.4 10.
+  - After the run: Treadmill_B1 is tier 1 and 0.000 off its layout pivot; Rebirths 0; 0 server errors.
+  - Stopped; TestFreshSave false.
+- **Full suite run 2 (a NEW fresh TestFreshSave session, ~01:38): 110 pass / 0 fail.**
+  - The same per-section counts as run 1. Treadmill_B1 is tier 1 at its layout pivot; Rebirths 0.
+- **Bonus:** the whole suite again in the SAME session, right after run 2 (the case that used to give T11.1 15/1): **110 / 0**. 0 server and client errors.
+- Play stopped. TestFreshSave false, read back. Studio in Edit; the Edit Treadmill_B1 was never touched.
+
+## Owner round (2026-10-22 morning): grime back, chest no-collide, tutorial, cutscene
+- Owner asks (relayed by the coordinator):
+  - A. bring back ONLY the grime (moss, cracks, drips, floor stains) on the new walls and ground
+  - B. the chest without collision
+  - C. fix the tutorial if needed, including the phone window shrink
+  - D. fix the cutscene if needed
+- Owner said: "I've changed the map little bit to my likings js fyi". Every owner change is intended; never revert one.
+- Start: Studio in Edit (the owner is not in Play).
+- **Owner map diff (2026-10-22, Edit).**
+  - Method:
+    - Walls / Ground / WallDecor were rebuilt DRY: builder clones with the destroy/parent lines patched out, so nothing in the place changed. Every part was compared against the live part (position, size, rotation, colour, material, transparency, collision).
+    - Everything else was checked against the Layout + the recorded makeover values: stalls, rings, decks, boards and backs, chest / zone / pad, spawn, treadmills, signs, slots, lanterns + pumpkins, wall pumpkins, spiders, gate clusters, giant head, slingshot, launch pad, ground tiles, medallion.
+    - Part counts are unchanged (workspace 4,737).
+  - **The owner changed:**
+    1. **Treadmill_B1** (-107.70,-46.00) → **(-103.65, 0.65, -14.54)**, still facing +X. **Treadmill_B6** (107.70,-46.00) → **(105.65, 0.65, -14.54)**, facing -X. Both moved from the front-corner side of the gate to the plaza side, next to the plot.
+    2. **UpgradeSign_B1** (-116,-57) → **(-109.91, 3.18, -4.89)**; **UpgradeSign_B6** (116,-57) → **(113.91, 3.18, -4.89)**. Same facings.
+    3. **The 4 spoke lanes lengthened at their gate end:** SpokeP2 +1, SpokeP5 +2, SpokeP3 +6, SpokeP4 +3 studs, with their edge lines resized to match.
+  - Notes:
+    - The owner's left / right values are not exact mirrors (treadmill 103.65 vs 105.65, sign 109.91 vs 113.91, spokes +1/+2 and +6/+3). **Ruling:** kept exactly as placed; never "re-mirror" owner edits.
+    - Nothing else changed: walls, wall decor, gate clusters, lanterns, pumpkins, spiders, boards, stalls, chest, spawn.
+    - The runway (2,073 parts) has no reference snapshot, so it isn't diffed.
+  - Validate after the owner's edits: 2 fails, both "Treadmill_B1/B6 pivot off the layout". The expectation was stale, not a fault; the Layout gets updated next.
+- **Owner changes adopted as the new expectations (nothing in the map moved):**
+  - `tools/hub_layout.py`: new `OWNER_TREAD` / `OWNER_SIGN` overrides for plots 1 / 6, with the exact owner values (patch `makeover/tools/patch_layout_owner1022.py`; original in `makeover/tools/bak/hub_layout.py.pre_owner1022`).
+    - Rule 5 relaxed for the owner's own pair: the treadmill + sign must not overlap; ≥ 1.5 is no longer required.
+      - **Ruling:** with the BIGGEST tier (Tier 11, 14.7 wide) the treadmill would come within 0.3 of its sign; today's Tier 1 is 9.1 wide.
+      - Why: accepted, because it's the owner's placement.
+      - Cost if wrong: if a Tier 11 rider clips the sign, move the sign about 1.5 out (an owner call).
+    - The tool is ALL PASS again.
+  - `HubLayout.lua` regenerated (16026 chars, checksum 196214820). Studio `HubV2Kit.Layout` was updated by replacing the 6 changed lines; checksum = local.
+  - `HubV2Kit.Makeover.Ground` got an `OWNER_LANES` table: the 12 owner-resized spoke / edge parts, exact CFrame + Size, applied after the lanes are built. The pre-edit copy is `TestFixBackup.Makeover.Ground.pre_owner1022`.
+    - A dry rebuild now matches the live Ground: 0 differences.
+  - Validate live: **0 fails**.
+- **B. Chest without collision:** all 28 parts of `Map.Hub.FreeGift.Chest` set to CanCollide false (14 had been colliding).
+  - The original flags are kept in `_MakeoverOrigCollide`, so the Revert restores them. The model is marked `NoCollide1022`.
+  - FreeGiftZone / sign / pad are untouched: the claim is a distance check, not a touch. Play test pending.
+- **PAUSED (coordinator: the owner wants the old Check-UI back, and another builder needs Studio to itself).**
+  - Stopped after the chest step. Studio is in Edit, not in Play, with TestFreshSave false (read back). No more Studio writes until "RESUME".
+  - Done before the pause: the owner diff + new expectations (Layout, layout tool, Ground builder; Validate 0 fails) and B (chest no-collide).
+  - Not started: A (grime), C (tutorial), D (cutscene).
+  - Note for C on resume: the target windows will be the OLD Check-UI Rebirth page and Upgrades window (no H.tutorialFit). The hide-guide-text fix must be built against those.
+- **RESUMED** (coordinator: the old Check-UI is back; I'm the only Studio writer again). Continuing with A, C, D and the Play test of B.
+  - For C: the target windows are the OLD Rebirth page (`RebirthClientLegacy`) and the OLD Upgrades window. MenuController has the revert builder's "plain fit" for step 11.
+- **A. Grime is back: only moss, cracks, drips and floor stains.**
+  - New builder `HubV2Kit.Makeover.Grime` (`require(clone)({mode = "check" | "build" | "scan", floor = ...})`). It builds `workspace.HalloweenDecor.Grime` (`_Makeover`, `_Grime1022`): **118 carriers**.
+    - Textures: the old round-5 ids (`HubGrime\asset_ids.json`).
+    - Carriers: transparent, no collide / query / touch / shadow, each with a `GrimeTex` attribute; moss also has `SunLit`.
+  - **Wall-foot moss on ALL 41 bays** (owner: "the greeny mush at the bottom", every bay).
+    - Each run goes between the pillar / corner / tower feet.
+    - It is split across the base-band face (y -0.375..3.6) and the recessed panel face (y 3.6..6.0), so nothing floats in front of the 0.8 recess.
+    - The texture V offset was measured in Studio: OffsetStudsV = the tile row shown at the face top, so 2.4. The first try (3.975) cut the mounds at the ledge (`shots/grime_wip_wrong_offset`).
+    - A / B textures and the U offsets follow a mirror-symmetric pattern.
+  - **Sun lesson applied:** a live sun raycast (sun (-0.37, 0.89, 0.25)). 20 sun-facing moss carriers (the east / -X-facing walls) got the olive tint (0.62, 0.72, 0.62); sunlit floor moss gets (0.70, 0.78, 0.68).
+  - **18 wall cracks / drips, as 9 mirror pairs**, all on the panel face and only in CLEAN bays (no garland, hands, bats, web or lantern):
+    - Crack A: E1:3 / E13:3, E4:2 / E10:1, E6:2 / E8:2
+    - Crack B: E2:2 / E12:2, E5:4 / E9:1
+    - Drip A: E1:5 / E13:1, E5:2 / E9:3
+    - Slime drip B: E3 / E11, E6:1 / E8:3
+    - Drips hang from just under the orange cornice.
+    - The builder checks each item against the hands, garlands, bats, webs (3.5), spiders (3.5) and lanterns (1.5): all clear.
+  - **18 floor decals, as 9 mirror pairs** (3 crack, 3 stain, 2 moss, 1 slime):
+    - Spots chosen from a mirrored free-spot scan.
+    - Validated against: plot slots +4, spawn r 12, chest pad r 9.5, the stall rings, boards +1.5, treadmills +1.5 (the owner's new spots included), signs, decks, launch pad +3, slingshot, lane centre lines (±1), gate aprons, kerbs, wall pumpkins, gate clusters, flatness (≤ 0.13 step), on the floor, and decal overlaps.
+    - Note: almost every wall foot lies inside a plot's +4 margin, so floor moss only fits at the front-wall junction feet (±104, -55.5).
+  - Validate rule 21 now allows `HalloweenDecor.Grime`. Validate: 0 fails. Workspace 4,855 parts (+118).
+  - Shots: `grime_wallfoot_close`, `grime_alley_wall`, `grime_plaza_floor`, `grime_sunlit_right_corner`.
+- **C. Tutorial guide vs windows (code; Play test next).** Backups are in `_Backup_HubMakeover.Before.OwnerRound1022`: TutorialClient, MenuController, IntroCutscene, BrickUI.Hatch. That folder is not used by the Revert.
+  - **TutorialClient:** ANY open window sends the guide (title, hint and pips) off-screen AT ONCE. That covers the MainMenu window (Shop / Index / Rebirth...) and the walk-in UpgradeUI / SellUI / FreeGiftUI / OfflineUI. It comes back with the usual 0.3 s tween.
+    - The step-11 "stay above the Rebirth page" exception is gone.
+    - New attributes on TutorialUI: `GuideHidesForWindows` = true and `GuideAway`.
+    - **Ruling:** the pips hide too. Why: they overlapped the old Rebirth header by 18 px, so they don't "fit". The windows' own cues carry the step: the bouncing arrow over FREE / SLINGSHOT POWER, and the arrow at REBIRTH, whose label turns into "TAP AGAIN!". Cost if wrong: one line (keep the pips when the window's top is low enough).
+  - **MenuController** (the revert builder's step-11 plain fit) is now skipped when `GuideHidesForWindows` is set; it stays as the fallback for an older TutorialClient. **Ruling:** neutralised rather than left as a fallback in force, because it runs in the same frame the window opens, before the guide's (deferred) sync, so it would still have shrunk the window.
+  - **BrickUI.Hatch `guideClear`** returns nil under the same attribute, so a HATCH window also keeps its full size.
+- Play session 1 of the owner round (B / C / D checks): TestFreshSave set true and read back.
+  - **B, Play-tested:** walked the avatar straight through the chest. The root never rose above y 3.24 (no lift, no block). FreeGiftUI opened inside the zone (the tutorial guide went away) and closed on exit; the FREE! sign stayed enabled. Claim logic untouched (a distance check).
+  - **C, Play-tested on PC, plots 1 AND 6** (tutorial attributes reset; plot 6 via BaseDebug with dummy owners, released after):
+    - Step 8: beam lands on the Upgrade ring (-70, 2.7, -48.4). Step 9: the arrow lands on the plot's own treadmill at the owner's new spot (B1 -103.7, -14.5 / B6 105.7, -14.5). Walk-on works from the back, the sides and the gate spawn spot. The treadmill FRONT blocks walk-on, as on every treadmill (by design, unchanged). Step 10: back to the ring. Step 11: TileArrow under the Rebirth tile.
+    - With a window open: `GuideAway` = true, and the window is FULL size. The step-11 Rebirth window is {0.5005, 0.6315}, the same as the no-tutorial reference. FreeArrow, the $500 arrow and the REBIRTH arrow stay visible. The guide comes back on close.
+    - Shots: `tut_step8_upgrades_plot1`, `tut_step10_upgrades_plot1`, `tut_step11_rebirth_plot1`.
+    - **Phone scale, ruling:** checked at the logic level, not on an emulated phone. Studio's device emulator needs UI clicks (forbidden by the owner's no-Studio-UI rule). Why it's enough: the fix doesn't depend on the viewport. It is the same attribute path on every screen, and the old Upgrades window keeps its own PHONE_SIZE 0.8 × 0.82 (unchanged). Cost if wrong: on a real phone the window would still be shrunk. The owner can check in the Device emulator (Test > Device) and I'd adjust.
+  - **D. Intro cutscene (IntroDebugT freeze frames, all stages + WHEW 24.8 + handover 27.5):**
+    - No camera inside walls. No blocked puppet path. 0 client / server errors.
+    - Board clutter, measured as each leaderboard's on-screen area inside the letterbox:
+      - **shot 2**, the side dolly at t 1.25-1.75: Richest 14% + Time 22% of the frame → **fix**
+      - **skid**, t 20.0-20.25: 6-11% → **fix**
+      - t 18-19.25, the distant overview: 1-4% → keep
+      - t 20.5-26.5, the arena backdrop: 4-10% each, symmetric behind the subject → **keep**. **Ruling:** it reads as the arena; cutting it needs a new shot (cost if wrong: the owner asks; it's a one-line nudge).
+      - t 26.75, during the outro swing: 16% for one frame → keep
+    - **Fix (camera path only, no boards moved; backup in OwnerRound1022.IntroCutscene):**
+      - shot 2: `p+V(13,1.2,6)` FOV 62 → `p+V(8,1.5,4)`, look `p+V(0,0.6,-5)`, FOV 44
+      - skid: `V(p.X+15,3.6,p.Z+3)` FOV 58 → `V(p.X+13,3.2,p.Z+9)`, look `p+V(0,-0.5,-2)`, FOV 54
+    - Shots before the fix: `intro_0_5`, `intro_1_6_before`, `intro_20_2_before`. Re-measure + after-shots next (Play session 2).
+- Play session 1 stopped; TestFreshSave false (read back). IntroCutscene edited in Edit.
+- Day shots in Edit (the 11 fixed cameras + 4 grime close-ups): `shots/grime_day_*` (15).
+- Play session 2 (re-measure the intro, the full HubV2Tests run, night grime shots): TestFreshSave set true and read back.
+- **Play session 2 results:**
+  - **Full HubV2Tests: 110 / 0** (T2 22, T10.1 5, T10.2 5, T10.3 12, T10.4 3, T10.4b 4, T10.5 9, T10.11 3, T11.1 16, T11.2 2, T11.3 19, T11.4 10). Treadmill_B1 on its (owner) layout spot, 0 server errors.
+  - Intro re-measured: shot 2 and the skid are board-free, but the first shot-2 try (8, 1.5, 4, FOV 44) framed the avatar far too big (cut off at the frame edge; `shots/intro_1_6_after_v1_rejected` not kept).
+    - Why the old shot 2 was bad: at t 1.15-1.25 the lens sat at x 17.8, on the edge of the TimeBoard's bounding box (inside the board structure). That's the "camera in the boards" problem.
+    - New shot 2 chosen by a projection search over 6,385 camera offsets (subject size, subject x, slingshot in frame, 0 board area, lens ≥ 3 from any board, angle ≥ 55° so it doesn't jump-cut from shot 1): `p + V(10, 1.5 (+3 ramp), 7)`, look `p + V(0, 0.6, -11)`, FOV 55. Subject ≈ 0.6 of the letterbox height on the left third, slingshot on the right, 0% boards, lens 3.2 from the Time board.
+    - The skid shot `V(p.X+13, 3.2, p.Z+9)` FOV 54 frames well (subject centred, mid-size, slingshot right, 0% boards). Kept.
+    - LaunchGate "hit" at t 19.25 (lens 1.7 from it): it's the runway's invisible gate plane (not rendered in the client frame, checked by screenshot). No fix needed.
+    - Removed the misnamed `intro_20_2_before` (it was a post-handover HUD frame, not the skid).
+  - Session stopped; TestFreshSave false (read back). Shot 2 edited in Edit (same backup).
+- **Play session 3 (TestFreshSave true, read back → stopped → false):**
+  - Intro re-measured after the shot-2 change, t 0.25-4.5 every 0.125 s and 17-26.5 every 0.25 s:
+    - shots 1-4: 0% boards; the lens is never closer than 3.2 to a board box
+    - skid: 0%
+    - arena backdrop: unchanged (kept, ruling above)
+    - 0 client errors; the handover returns to the Custom camera
+  - Frames saved: `shots/intro_t00_5 … intro_t27_5_handover` (12) + `intro_t01_6_try1_REJECTED_too_tight`.
+  - The floating "Santrinio" card in two frames is plot 1's OwnerSign card (the map's owner card), not a stray player tag. Left alone.
+  - Night grime shots (session-only Settings night): `shots/grime_night_*` (6).
+- `tools/hub_layout.py` INTRO_CAMS updated to the new shot-2 / skid camera points (backup `makeover/tools/bak/hub_layout.py.pre_intro1022`): ALL PASS. `HubLayout.lua` regenerated, and Studio `HubV2Kit.Layout` matches it (16129 chars, hash 583559434).
+- Validate live: 0 fails. Grime: 100 wall + 18 floor carriers, 20 sunlit tinted. Workspace 4,855 parts.
+- FINAL.md: new "Owner round" section.
+- **End state: Edit, TestFreshSave false, nothing saved or published.**
+- Revert note for this round: `_Backup_HubMakeover.Before.OwnerRound1022.REVERT_NOTE`. Final check: Edit, TestFreshSave false.
+
+- **2026-10-22: OVERWORLD CANCELLED BY THE OWNER** ("just forget the ground to have clouds etc, just test the needed things"). Nothing built was kept: `ServerStorage._OverworldPreview` (my test pieces only: the Toolbox candidates with their scripts stripped, the templates and a cloud-sea builder) was deleted. Nothing overworld-related is in workspace. Studio is idle in Edit with TestFreshSave false.

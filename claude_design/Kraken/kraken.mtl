@@ -1,0 +1,31 @@
+# Exported by three-d-stage
+newmtl Kraken_Skin
+Kd 0.1946 0.0168 0.0356
+Ks 0.2000 0.2000 0.2000
+Ns 110
+d 1.0000
+
+newmtl Kraken_Eye
+Kd 0.8714 0.4564 0.0222
+Ks 0.2000 0.2000 0.2000
+Ns 150
+d 1.0000
+
+newmtl Kraken_Pupil
+Kd 0.0037 0.0037 0.0044
+Ks 0.2000 0.2000 0.2000
+Ns 160
+d 1.0000
+
+newmtl Kraken_Beak
+Kd 0.0232 0.0160 0.0144
+Ks 0.2000 0.2000 0.2000
+Ns 120
+d 1.0000
+
+newmtl Kraken_Suckers
+Kd 0.6939 0.3231 0.2542
+Ks 0.2000 0.2000 0.2000
+Ns 90
+d 1.0000
+

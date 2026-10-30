@@ -1,0 +1,33 @@
+{
+ "tag": "tuck_y30",
+ "res": 250,
+ "40": {
+  "Leg_L": {
+   "alone_px": 13234,
+   "visible_px": 8083,
+   "share": 0.611,
+   "occluders": {
+    "Shin_L": 229,
+    "Spine": 215,
+    "Arm_L": 186
+   }
+  },
+  "Shin_L": {
+   "alone_px": 8208,
+   "visible_px": 5245,
+   "share": 0.639,
+   "occluders": {
+    "Leg_L": 204,
+    "Foot_L": 174
+   }
+  },
+  "Foot_L": {
+   "alone_px": 8914,
+   "visible_px": 7158,
+   "share": 0.803,
+   "occluders": {
+    "Shin_L": 224
+   }
+  }
+ }
+}

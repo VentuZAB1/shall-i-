@@ -1,0 +1,11 @@
+00:03.703  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\debug_GraveC_normal_r34.png'
+00:03.953  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\debug_GraveC_normal_right.png'
+00:04.297  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\debug_GraveC_albedo_r34.png'
+00:04.531  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\debug_GraveC_albedo_right.png'
+FBX version: 7400
+N faces in band 171
+centroid bbox [-1.75 -0.71 -0.06] [2.27 0.98 3.65]
+mean normal [ 0.27432749 -0.0625731   0.34467836]
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

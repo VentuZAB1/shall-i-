@@ -1,0 +1,168 @@
+
+
+# ------------------------------------------------------------------ animation (FrostfangLynx/ANIM_REFS.md)
+import petkit as pk
+import _common as cm
+
+LEGS4 = ["Leg_FL", "Leg_FR", "Leg_BL", "Leg_BR"]
+TAILB = ["Tail1", "Tail2", "Tail3"]
+H_U = 1.18                       # model height in units (ear-tuft tips, HEIGHT 7.0 studs): 0.05H = 0.059
+
+
+def tab(T, f):
+    """eased (smoothstep) interpolation through [(frame, value | tuple)]"""
+    if f <= T[0][0]:
+        return T[0][1]
+    for (f0, v0), (f1, v1) in zip(T, T[1:]):
+        if f0 <= f <= f1:
+            u = (f - f0) / (f1 - f0) if f1 > f0 else 1.0
+            u = u * u * (3 - 2 * u)
+            if isinstance(v0, tuple):
+                return tuple(a + (b - a) * u for a, b in zip(v0, v1))
+            return v0 + (v1 - v0) * u
+    return T[-1][1]
+
+
+def feet(k, f, T=None):
+    """solve all four legs at frame f; T = {leg: (dx, dy, lift)} offsets from the rest ground spot"""
+    import bpy
+    T = T or {}
+    bpy.context.scene.frame_set(f)
+    for leg in LEGS4:
+        dx, dy, lift = T.get(leg, (0.0, 0.0, 0.0))
+        k.solve_leg(leg, f, Vector((k.J[leg].x + dx, k.J[leg].y + dy, lift)))
+
+
+def ears(k, f, p=0.0, splay=0.0, pr=None):
+    """ear tufts: p = pitch (+ forward / pricked, - flattened back), splay = outward roll"""
+    k.key("Ear_L", f, rot=(p, 0, -splay))
+    k.key("Ear_R", f, rot=(p if pr is None else pr, 0, splay))
+
+
+def ruffs(k, f, flare=0.0):
+    """cheek ruffs (the lynx beard): flare = degrees the ruff lifts out to the side"""
+    k.key("Ruff_L", f, rot=(0, 0, -flare))
+    k.key("Ruff_R", f, rot=(0, 0, flare))
+
+
+def bobtail(k, f, lift=0.0, flick=0.0, sway=0.0):
+    """short bobtail: lift (- = up), sway on the base, a flick on the black tip"""
+    k.key("Tail1", f, rot=(lift, sway, 0))
+    k.key("Tail2", f, rot=(0.5 * lift, 0.6 * sway + 0.4 * flick, 0))
+    k.key("Tail3", f, rot=(0, flick, 0))
+
+
+def idle(k):
+    """WATCHFUL LOOK-AROUND (ref L1, Figaro): head turns of ~18 f with 10-12 f holds, the neck takes at most 6 deg
+    of the yaw, ears follow 4 f late; ear twitch at f70, tail-tip flick at f90; slow breathing."""
+    n = 120
+    k.new_action("idle", n, True)
+    YAW = [(0, 0.0), (8, 0.0), (26, 14.0), (40, 14.0), (58, -8.0), (68, -8.0), (84, 0.0), (120, 0.0)]
+    TW = [(0, 0.0), (68, 0.0), (70, 1.0), (72, -0.5), (75, 0.0), (120, 0.0)]           # ear twitch
+    FL = [(0, 0.0), (88, 0.0), (91, 1.0), (94, -0.4), (98, 0.0), (120, 0.0)]          # tail-tip flick
+    for f in range(0, n + 1, 2):
+        yw = tab(YAW, f)
+        ylag = tab(YAW, max(0, f - 4))
+        b = pk.wave(f, n, 0, 3)
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0.003 * b))
+        k.key("Chest", f, rot=(-0.6 * b, 0, 0))
+        k.key("Neck", f, rot=(0.6 * b, 0.40 * yw, 0))
+        k.key("Head", f, rot=(-0.4 * b, 0.60 * yw, -0.15 * yw))
+        k.key("Jaw", f, rot=(1.0, 0, 0))
+        tw = 3.0 * tab(TW, f)
+        ears(k, f, 2.0 + tw, splay=0.15 * ylag, pr=2.0 - 0.6 * tw)
+        ruffs(k, f, 0.0)
+        bobtail(k, f, lift=-2.0 * b, flick=10.0 * tab(FL, f))
+    cm.plant(k, n)
+    k.finish()
+    k.meta["planted"] = list(LEGS4)
+
+
+def walk(k):
+    """LIGHT SNOWSHOE WALK: lateral-sequence cat walk, a springy body (two small lifts per cycle), the head steady
+    (cat gyro head), the bobtail lifted a little and bobbing late."""
+    n = 24
+
+    def body(f):
+        bob = 0.5 - 0.5 * math.cos(4 * math.pi * f / n)
+        k.key("Spine", f, rot=(0.5 * pk.wave(f, n, 0.1, 2), 1.8 * pk.wave(f, n), 1.6 * pk.wave(f, n)),
+              loc=(0, 0, -0.016 * bob))
+        k.key("Chest", f, rot=(0, -2.4 * pk.wave(f, n, 0.25), -1.2 * pk.wave(f, n, 0.25)))
+        k.key("Neck", f, rot=(1.0 + 1.0 * pk.wave(f, n, 0.15, 2), 0.8 * pk.wave(f, n, 0.25), 0))
+        k.key("Head", f, rot=(-1.0 - 1.4 * pk.wave(f, n, 0.20, 2), -1.6 * pk.wave(f, n, 0.25), 0))
+        k.key("Jaw", f, rot=(1.0, 0, 0))
+        ears(k, f, 3.0 + 1.0 * pk.wave(f, n, 0.3, 2))
+        ruffs(k, f, 1.5 * pk.wave(f, n, 0.3, 2))
+        bobtail(k, f, lift=-6.0 + 3.0 * pk.wave(f, n, 0.35, 2), sway=4.0 * pk.wave(f, n, 0.3))
+    return cm.quad_walk(k, n, 0.11, 0.050, body, gait="walk")
+
+
+def roar(k):
+    """RUFF-FLARE THREAT (refs L4 + L5): the shoulders drop 0.05H and the cheek ruffs + ear tufts flare out fast
+    (6-8 f, then held); the head drops 8 deg and pushes forward 0.04H twice while the jaw opens to the frost fangs
+    (a hiss with a small tremble); it closes and settles, rising slower than it dropped."""
+    n = 60
+    k.new_action("roar", n, False)
+    SH = [(0, 0.0), (14, 1.0), (46, 1.0), (58, 0.0), (60, 0.0)]          # shoulders drop (0.05H)
+    FLR = [(0, 0.0), (6, 0.0), (13, 1.0), (48, 1.0), (57, 0.0), (60, 0.0)]  # ruff / tuft flare
+    HD = [(0, 0.0), (20, 0.0), (25, 1.0), (46, 1.0), (55, 0.0), (60, 0.0)]  # head drop 8 deg
+    PU = [(0, 0.0), (20, 0.0), (26, 1.0), (31, 0.35), (38, 1.0), (44, 0.25), (50, 0.0), (60, 0.0)]  # 2 pushes
+    JW = [(0, 1.0), (22, 1.0), (30, 24.0), (44, 24.0), (52, 1.0), (60, 1.0)]
+    drop = 0.05 * H_U
+    for f in range(0, n + 1):
+        sh, fl, hd, pu = tab(SH, f), tab(FLR, f), tab(HD, f), tab(PU, f)
+        tr = 1.2 * math.sin(2 * math.pi * f / 4) if 30 <= f <= 44 else 0.0
+        k.key("Spine", f, rot=(3.0 * sh, 0, 0), loc=(0, -0.022 * pu, -drop * sh))
+        k.key("Chest", f, rot=(2.0 * sh, 0, 0))
+        k.key("Neck", f, rot=(-4.0 * sh + 5.0 * pu, 0, 0))
+        k.key("Head", f, rot=(8.0 * hd - 1.0 * sh + 0.5 * tr, 0, 0))
+        k.key("Jaw", f, rot=(tab(JW, f) + tr, 0, 0))
+        ears(k, f, -24.0 * fl, splay=12.0 * fl)
+        ruffs(k, f, 20.0 * fl + 0.6 * tr)
+        bobtail(k, f, lift=-10.0 * fl, flick=4.0 * math.sin(2 * math.pi * f / 6) * fl)
+    cm.plant(k, n)
+    k.finish(loop=False)
+    k.events["roar"] = {"ruff_flare": round(13 / n, 3), "hiss": round(30 / n, 3)}
+
+
+def clawflex(k):
+    """SIGNATURE act_clawflex - THE CLAW FLEX (refs L2 + L3, Figaro): a fast crouch into a low stare (front lower than
+    the rump) with the head turned 14 deg and the tufts flattened; the tufts rise; the left then the right forepaw
+    flexes its ice claws up and out (paws stay on the ground, a small knead on the hold, an ICE spark each); the claws
+    retract, the bobtail flicks once, it rises back to the exact rest pose. All four paws planted every frame."""
+    n = 96
+    k.new_action("act_clawflex", n, False)
+    CR = [(0, 0.0), (10, 1.0), (72, 1.0), (88, 0.0), (96, 0.0)]                 # crouch 0.05H (L2: ~8-10 f)
+    YW = [(0, 0.0), (4, 0.0), (16, 14.0), (40, 14.0), (48, 0.0), (96, 0.0)]     # stare at the camera side
+    LK = [(0, 0.0), (40, 0.0), (48, 1.0), (72, 1.0), (84, 0.0), (96, 0.0)]      # look down at the claws
+    TF = [(0, 0.0), (4, 0.0), (14, -8.0), (22, -8.0), (34, 4.0), (72, 4.0), (86, 0.0), (96, 0.0)]  # tufts
+    CL = [(0, 0.0), (40, 0.0), (48, 1.0), (72, 1.0), (82, 0.0), (96, 0.0)]      # left claws (claw1 f48)
+    CRt = [(0, 0.0), (52, 0.0), (60, 1.0), (72, 1.0), (84, 0.0), (96, 0.0)]     # right claws (claw2 f60)
+    PR = [(0, 0.0), (40, 0.0), (47, 1.0), (54, 0.0), (59, -1.0), (66, 0.0), (96, 0.0)]  # shoulder press L / R
+    FL = [(0, 0.0), (74, 0.0), (77, 1.0), (80, -0.5), (84, 0.0), (96, 0.0)]     # tail flick
+    drop = 0.05 * H_U
+    for f in range(0, n + 1):
+        c, yw, lk, pr = tab(CR, f), tab(YW, f), tab(LK, f), tab(PR, f)
+        kn = math.sin(2 * math.pi * (f - 48) / 8) if 50 <= f <= 70 else 0.0       # knead on the hold
+        k.key("Spine", f, rot=(3.5 * c, 0, -1.5 * pr), loc=(0, 0, -drop * c))
+        k.key("Chest", f, rot=(1.5 * c, 0, -1.5 * pr))
+        k.key("Neck", f, rot=(-5.0 * c + 4.0 * lk, 0.35 * yw, 0))
+        k.key("Head", f, rot=(-1.5 * c + 6.0 * lk, 0.65 * yw, -0.2 * yw))
+        k.key("Jaw", f, rot=(1.0, 0, 0))
+        ears(k, f, tab(TF, f))
+        ruffs(k, f, 4.0 * lk)
+        k.key("Claw_FL", f, rot=(-35.0 * tab(CL, f) + 4.0 * kn * tab(CL, f), 0, 0))
+        k.key("Claw_FR", f, rot=(-35.0 * tab(CRt, f) - 4.0 * kn * tab(CRt, f), 0, 0))
+        bobtail(k, f, lift=-4.0 * c, flick=10.0 * tab(FL, f))
+    cm.plant(k, n)
+    k.finish(loop=False)
+    k.events["act_clawflex"] = {"claw1": round(48 / n, 3), "claw2": round(60 / n, 3),
+                                "snow_flick": round(77 / n, 3)}
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    roar(k)
+    clawflex(k)
+    return stride

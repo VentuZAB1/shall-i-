@@ -1,0 +1,17 @@
+{
+ "note": "Build review 2 (2026-10-29): exact old -> new edits for ServerStorage.HatchRISTests.index_client as it was after build review 1 (41023 chars; backup ServerStorage._Backup_GlacierS2.IndexBuild3). Result: 42388 chars, hash 907712311 (h = (h*31 + byte) % 2147483647).",
+ "ServerStorage.HatchRISTests.index_client": [
+  {
+   "old_string": "review 5 M1 amber (214,98,0)",
+   "new_string": "review 5 M1 burnt orange (214,98,0)"
+  },
+  {
+   "old_string": "-- v8 7 (build review 1 M1): the phone text floor on a 308 px window (the phone size with a 58 px top bar), on PC\nfunction S.v8phone()",
+   "new_string": "-- v8 7 (build review 1 M1 + review 2 MUST 1): the phone text floor on phone-sized windows (308 px = 844 x 390 with the\n-- 58 px top bar, 299 px = the iPhone 17 Pro emulator, 330 px = a 36 px bar), on PC\n-- every shown phone label keeps >= 3 px between its text (outline included) and its box (a chip's text >= 1 px from\n-- its icon), the CLAIM labels also above / below their letters, the CLAIM ALL count badge clear of the letters\nlocal function v8clear(pp)\n\tlocal bad, worst, n = {}, math.huge, 0\n\tfor _, row in pp.PhoneClear:Invoke() do\n\t\tif row.badgeGap then\n\t\t\tif row.badgeGap < 0 then table.insert(bad, (\"badge %.1f\"):format(row.badgeGap)) end\n\t\telseif not row.keep then\n\t\t\tn += 1\n\t\t\tfor side, need in {left = row.gapL or 3, right = 3, top = 3, bottom = 3} do\n\t\t\t\tlocal v = row[side]\n\t\t\t\tif v then\n\t\t\t\t\tworst = math.min(worst, v - need)\n\t\t\t\t\tif v < need - 0.05 then table.insert(bad, (\"%s %s %.1f\"):format(row.path, side, v)) end\n\t\t\t\tend\n\t\t\tend\n\t\tend\n\tend\n\treturn bad, worst, n\nend\nfunction S.v8phone()"
+  },
+  {
+   "old_string": "\tlocal grew = 0\n\tfor _, t in {pp.Inspect.Stat3.L, pp.Total.Bar.Text, pp.Reward.Title} do",
+   "new_string": "\tfor _, h in {299, 330, 308} do\n\t\tlocal n0 = pp:GetAttribute(\"PhoneClearN\") or 0\n\t\twin.Size = UDim2.fromScale(0.95, h / mm.AbsoluteSize.Y)\n\t\twaitFor(function() return (pp:GetAttribute(\"PhoneClearN\") or 0) > n0 end, 2)\n\t\ttask.wait(0.3)\n\t\tlocal bad, worst, n = v8clear(pp)\n\t\tr.check((\"%d px: every label >= 3 px inside its box, badge clear of CLAIM ALL\"):format(h), #bad == 0 and n > 30,\n\t\t\t#bad == 0 and (\"%d labels, worst +%.2f px\"):format(n, worst) or table.concat(bad, \"; \"))\n\tend\n\tlocal grew = 0\n\tfor _, t in {pp.Inspect.Stat3.L, pp.Total.Bar.Text, pp.Reward.Title} do"
+  }
+ ]
+}

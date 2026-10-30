@@ -1,0 +1,21 @@
+[tp     6.2s]   lobes 265 on CanopyBase
+[tp     8.7s] canopy base 225536 area 563.4 leaves 14086
+[tp     9.0s] leaves 253548
+[tp    31.2s] trunk hi 437724 lo 5200 canopy lo 16600
+[tp    32.6s]   ribbon OverA      len 33.16  sections  267  contact 0.62  zmin 2.86  lift 0.000
+[tp    34.1s]   ribbon OverB      len 33.89  sections  276  contact 0.55  zmin 3.48  lift 0.202
+[tp    34.9s]   ribbon FestFront  len 10.55  sections   81  contact 0.71  zmin 6.22  lift 0.000
+[tp    35.7s]   ribbon FestRight  len 10.63  sections   92  contact 0.24  zmin 4.46  lift 0.000
+[tp    36.7s]   ribbon FestBack   len 11.96  sections   97  contact 0.17  zmin 3.94  lift 0.000
+[tp    37.5s]   ribbon FestLeft   len 11.60  sections   74  contact 0.40  zmin 4.14  lift 0.000
+[tp    38.1s]   ribbon TwigBack   len  4.40  sections   59  contact 0.37  zmin 4.08  lift 0.168
+[tp    38.8s]   ribbon TwigLeft   len  3.65  sections   50  contact 0.65  zmin 4.80  lift 0.331
+[tp    39.3s]   ribbon TwigRoll   len  5.08  sections   45  contact 0.45  zmin 3.22  lift 0.135
+[tp    39.8s]   ribbon FallenRoll len  3.90  sections   36  contact 1.00  zmin 0.03  lift 0.000
+[tp    39.9s]   TP section spacing <= 0.38, turn <= 15 deg -> ~7916 tris (budget 8150)
+[tp    40.4s] TP {'ribbons': 10, 'length': 128.8, 'px_per_stud': 78, 'tris': 7880, 'hi_tris': 283864, 'atlas_rows': 11, 'atlas_bottom_px': 1006, 'spacing': 0.38, 'turn': 15.0}
+Info: Saved as "tree_wip.blend"
+[tp    40.7s] HW_REPORT {"roll_twig": {"centre": [3.109, -5.348, 7.33], "axis": [0.678, -0.722, -0.138], "canopy_clear": 0.748, "inside": false}, "roll_fallen": {"centre": [-1.342, -1.99, 0.545], "axis": [0.5, -0.866, 0.0], "radius": 2.4}, "tp": {"ribbons": 10, "length": 128.8, "px_per_stud": 78, "tris": 7880, "hi_tris": 283864, "atlas_rows": 11, "atlas_bottom_px": 1006, "spacing": 0.38, "turn": 15.0}, "slivers_removed": {"CanopyA": 2, "CanopyB": 0}, "tris": {"Trunk": 5200, "CanopyA": 8257, "CanopyB": 8341, "TP": 7880, "total": 29678}, "hi_tris": {"TrunkHi": 437724, "CanopyHi": 451072, "LeavesHi": 253548, "TPHi": 283864}, "bbox": {"min": [-7.378, -6.935, -0.156], "max": [6.875, 7.268, 15.791], "size_blender": [14.253, 14.203, 15.946], "size_roblox_XYZ": [14.25, 15.95, 14.2]}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

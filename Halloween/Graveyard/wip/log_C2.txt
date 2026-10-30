@@ -1,0 +1,26 @@
+[grave    1.2s] Grave_C_hi remeshed verts 248242
+[grave   15.3s] stone hi tris 496472
+[grave   15.5s] Grave_C_StoneLo remeshed verts 27510
+[grave   16.7s] stone lo tris 2328
+[grave   19.8s] mound lo tris 462 mound hi faces 54000
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\graveyard.py:912: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Saved as "Grave_C.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Grave_C.fbx'
+export finished in 0.0143 sec.
+[grave   32.9s] done {'name': 'Grave_C', 'tris': 3314, 'parts_tris': {'stone': 2328, 'mound': 462, 'blades': 524}, 'texture': 512, 'uv_cover': 0.634, 'bbox_min': [-2.326, -1.914, -0.238], 'bbox_max': [2.426, 1.996, 3.693], 'size_blender_xyz': [4.752, 3.909, 3.931], 'export': {'fbx': 'C:\\cdimp\\Halloween_Grave_C.fbx', 'kb': 958.6, 'tris': {'Grave_C': 2883}}}
+GRAVE_REPORT {"grave_C": {"name": "Grave_C", "tris": 3314, "parts_tris": {"stone": 2328, "mound": 462, "blades": 524}, "texture": 512, "uv_cover": 0.634, "bbox_min": [-2.326, -1.914, -0.238], "bbox_max": [2.426, 1.996, 3.693], "size_blender_xyz": [4.752, 3.909, 3.931], "export": {"fbx": "C:\\cdimp\\Halloween_Grave_C.fbx", "kb": 958.6, "tris": {"Grave_C": 2883}}}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

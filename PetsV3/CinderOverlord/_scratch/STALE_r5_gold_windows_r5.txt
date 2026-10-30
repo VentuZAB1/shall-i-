@@ -1,0 +1,4 @@
+CinderOverlord {"portrait": {"kit_29-58_s.5_v.45": [27, 11], "review_38-48_s.6": [7, 1], "rendered_40-62_s.6_v.55": [21, 7]}, "game": {"kit_29-58_s.5_v.45": [19, 12], "review_38-48_s.6": [8, 1], "rendered_40-62_s.6_v.55": [8, 1]}}
+ThunderRex {"portrait": {"kit_29-58_s.5_v.45": [14, 8], "review_38-48_s.6": [1, 0], "rendered_40-62_s.6_v.55": [8, 2]}}
+CosmicLeviathan {"portrait": {"kit_29-58_s.5_v.45": [22, 10], "review_38-48_s.6": [5, 2], "rendered_40-62_s.6_v.55": [10, 3]}}
+InfernoPhoenix {"portrait": {"kit_29-58_s.5_v.45": [94, 61], "review_38-48_s.6": [8, 0], "rendered_40-62_s.6_v.55": [23, 11]}}

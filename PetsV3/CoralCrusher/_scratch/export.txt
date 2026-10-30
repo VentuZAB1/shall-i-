@@ -1,0 +1,12 @@
+00:22.031  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\CoralCrusher\CoralCrusher_portrait_raw.png'
+Info: Saved as "CoralCrusher_rigged.blend"
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+
+FBX export starting... 'C:\\cdimp\\CoralCrusher.fbx'
+export finished in 0.0291 sec.
+Info: Saved as "CoralCrusher_rigged.blend"
+HEADLESS_RESULT {"audit": {"idle": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "idle_foot_drift": 0.0}, "walk": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0, "slide": 0.002, "foot_z_var": 0.001}, "roar": {"linear": 0}, "act_semaphore": {"linear": 0}}, "stride": 0.3091, "lua_bytes": 58671, "clips": {"idle": [120, true], "walk": [30, true], "roar": [60, false], "act_semaphore": [120, false]}, "events": {"idle": {"tap": 0.583}, "walk": {"sand1": 0.46, "sand2": 0.96}, "roar": {"clack1": 0.367, "clack2": 0.5, "clack3": 0.633, "bubble": 0.4}, "act_semaphore": {"wave1": 0.25, "wave2": 0.442, "wave3": 0.633, "tap1": 0.75, "tap2": 0.8}}, "tris_body": 11900, "tris_glow": {}, "bones": ["Root", "Spine", "Mouth", "Eye_L", "Arm_L", "Fore_L", "Claw_L", "Pincer_L", "Claw_Tip_L", "Leg_1", "Shin_1", "Foot_1", "Leg_2", "Shin_2", "Foot_2", "Leg_3", "Shin_3", "Foot_3", "Eye_R", "Arm_R", "Fore_R", "Claw_R", "Pincer_R", "Claw_Tip_R", "Leg_4", "Shin_4", "Foot_4", "Leg_5", "Shin_5", "Foot_5", "Leg_6", "Shin_6", "Foot_6"], "ground_min_z": {"idle": [-0.013, 0], "walk": [-0.013, 0], "roar": [-0.013, 0], "act_semaphore": [-0.013, 0]}, "collisions": {}, "collision_free": true, "export": {"meta": {"name": "CoralCrusher", "display": "Coral Crusher", "motion": "Walk", "rig": "quad", "height": 6.1, "stride": 0.3090909090909091, "walk_len": 1.0, "glow": [], "lights": {}}, "portrait": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\CoralCrusher\\CoralCrusher_portrait_raw.png"}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

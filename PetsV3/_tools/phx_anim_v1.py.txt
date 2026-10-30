@@ -1,0 +1,429 @@
+# ------------------------------------------------------------------ animation v1 (brief section 7). References (owner
+# rule, _review/ANIM_REFERENCES_1014.md): #5 bird flapping + #8 banshee stroke (fly, takeoff, land, the rebirth rise;
+# the body rises on the downstroke, the plumes stream nearly straight), #3 Sea Beasts (the jaw lags the head lift),
+# #6 Monsters University (the train rise: crouch, then the spread in 5-7 f), #7 HTTYD (the look-back hold), #9 humpback
+# mass timing (the pyre slump falls 2-3x slower than the rise), #4 dragon walk (strut weight, the head settles late).
+# Rules: every ground clip starts and ends at FOLD and fold <-> open runs LIFT1..4 in order; head gyro in walk + fly;
+# streamer motion is a travelling wave (X1 -> X2 -> X3 lag), L / C / R never in unison; any swing > 60 deg in one frame
+# gets an in-between; no head shakes, no airborne spins, no stoop (Thunderbird). Model-round limits (v1 report D7-D9):
+# planted crouches stay at Spine z >= -0.05 (the trouser tops reach the lower body), streamers on the ground at rest
+# stay at X1 >= -4 (vanes >= -0.02), the fly tuck is THI 60 / roll 18, the rising legs spread 15.
+import petkit as pk
+import _common as cm
+
+LEGS = ["Leg_L", "Leg_R"]
+OPEN = (30.0, 0.0, 0.0, 0.0)
+BOT = (-38.0, 8.0, 6.0, 4.0)
+BRAKE = (24.0, 16.0, -10.0, -4.0)
+DROOP1, DROOP2 = (-20.0, -10.0, 4.0, -6.0), (-45.0, -15.0, 6.0, -8.0)
+PYRE = (-60.0, -22.0, 10.0, -6.0)
+CH = "LCR"
+PH = {"L": 0.0, "C": 0.33, "R": 0.66}
+LAG = {"L": 0, "C": 1, "R": 2}          # frame offsets so the three plumes never move in unison
+CROUCH = -0.05                         # deepest planted Spine z (v1 report D7)
+
+
+def curve(keys, f):
+    """smoothstep through (frame, value) keys"""
+    for (f0, v0), (f1, v1) in zip(keys, keys[1:]):
+        if f0 <= f <= f1:
+            u = (f - f0) / float(f1 - f0) if f1 > f0 else 1.0
+            return v0 + (v1 - v0) * u * u * (3 - 2 * u)
+    return keys[-1][1] if f > keys[-1][0] else keys[0][1]
+
+
+def ease(u):
+    u = max(0.0, min(1.0, u))
+    return 0.5 - 0.5 * math.cos(math.pi * u)
+
+
+def wp(k, f, P, side=None):
+    wings(k, f, *P, side=side)
+
+
+def blend(a, b, t):
+    return tuple(x + (y - x) * t for x, y in zip(a, b))
+
+
+def stream(k, f, c, x1=0.0, x2=0.0, x3=0.0, y1=0.0, y2=0.0, y3=0.0):
+    """one plume chain c (L / C / R): pitch + LIFTS (+Y bones); yaw + swings the tip toward -x"""
+    k.key("Streamer%s1" % c, f, rot=(x1, y1, 0))
+    k.key("Streamer%s2" % c, f, rot=(x2, y2, 0))
+    k.key("Streamer%s3" % c, f, rot=(x3, y3, 0))
+
+
+def neck(k, f, n1=0.0, n2=0.0, hd=0.0, y1=0.0, y2=0.0, yh=0.0, jaw=0.0, crest=0.0):
+    """Neck / Neck2 / Head pitch + = nose DOWN, yaw + = toward the bird's LEFT; Jaw + = open; Crest + = ERECT"""
+    k.key("Neck", f, rot=(n1, y1, 0))
+    k.key("Neck2", f, rot=(n2, y2, 0))
+    k.key("Head", f, rot=(hd, yh, 0))
+    k.key("Jaw", f, rot=(jaw, 0, 0))
+    k.key("Crest", f, rot=(crest, 0, 0))
+
+
+def rest_keys(k, f, z=0.0, pitch=0.0):
+    k.key("Spine", f, rot=(pitch, 0, 0), loc=(0, 0, z))
+    k.key("Chest", f, rot=(0, 0, 0))
+    neck(k, f)
+    wp(k, f, FOLD)
+    for c in CH:
+        stream(k, f, c)
+
+
+def plant_frames(k, frames, dy=0.0, regrip=None, amp=0.07):
+    """feet on their rest spots (+dy); regrip = {leg: (f0, f1)}: that foot lifts `amp` and curls its toes"""
+    import bpy
+    k.bake_bezier_now()
+    for f in frames:
+        bpy.context.scene.frame_set(f)
+        for leg in LEGS:
+            z, toe = FOOT_LIFT, 0.0
+            if regrip and leg in regrip and regrip[leg][0] <= f <= regrip[leg][1]:
+                u = (f - regrip[leg][0]) / float(regrip[leg][1] - regrip[leg][0])
+                z, toe = FOOT_LIFT + amp * math.sin(math.pi * u), 14 * math.sin(math.pi * u)
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y + dy, z)), toe=toe)
+
+
+def lift_air_frames(k, frames, target=0.02):
+    """airborne frames: raise the Spine just enough that no vertex goes below `target` (keeps its x/y and rotation)"""
+    import bpy
+    sc = bpy.context.scene
+    pb = k.arm.pose.bones["Spine"]
+    R0 = k.arm.data.bones["Spine"].matrix_local.to_quaternion()
+    k.bake_bezier_now()
+    rows = []
+    for f in frames:
+        sc.frame_set(f)
+        dg = bpy.context.evaluated_depsgraph_get()
+        ev = k.main.evaluated_get(dg)
+        me = ev.to_mesh()
+        mw = ev.matrix_world
+        mz = min((mw @ v.co).z for v in me.vertices)
+        ev.to_mesh_clear()
+        rows.append((f, mz, pb.rotation_quaternion.copy(), (R0 @ pb.location).copy()))
+    for f, mz, q, loc in rows:
+        if mz < target:
+            pb.rotation_quaternion = q
+            pb.keyframe_insert("rotation_quaternion", frame=f, group="Spine")
+            k.key("Spine", f, loc=(loc.x, loc.y, loc.z + target - mz))
+
+
+def legs_fk(k, f, thigh, shin, foot, spread=5.0):
+    for s, side in ((1, "L"), (-1, "R")):
+        k.key("Leg_" + side, f, rot=(thigh, 0, -s * spread), loc=(0, 0, 0))
+        k.key("Shin_" + side, f, rot=(shin, 0, 0))
+        k.key("Foot_" + side, f, rot=(foot, 0, 0))
+
+
+# ---- idle
+def idle(k):
+    """SMOULDER (refs #7, #9): a bellows breath (2 cycles, the head kept level) with the crest swelling on each inhale;
+    a constant streamer drift (travelling wave, L / C / R phases 0 / .33 / .66); the proud rise (the S straightens);
+    a LICK up each plume in turn (L f18, C f48, R f78); the 44-deg LOOK BACK over the left shoulder at the follow
+    camera, held dead still 18 f; a crest flare + glare with a crack of gape; a heat lift of the cloak (FOLD <-> LIFT1);
+    a right talon re-grip; exact rest f120."""
+    n = 120
+    k.new_action("idle", n, True)
+    prise = [(0, 0), (10, 0), (22, 1), (64, 1), (74, 0), (120, 0)]
+    look = [(0, 0), (38, 0), (46, 1), (64, 1), (74, 0), (120, 0)]
+    crest = [(0, 0), (84, 0), (88, 12), (94, 12), (100, 0), (120, 0)]
+    glare = [(0, 0), (84, 0), (88, 6), (96, 6), (100, 0), (120, 0)]
+    jaw = [(0, 0), (86, 0), (88, 4), (96, 4), (98, 0), (120, 0)]
+    heat = [(0, 0), (92, 0), (98, 0.5), (104, 0), (120, 0)]
+    LICK0 = {"L": 18, "C": 48, "R": 78}
+    for f in range(n + 1):
+        b = 0.5 + 0.5 * math.cos(2 * math.pi * (f - 22) / 60.0)          # inhale peaks f22 / f82
+        pr, lk = curve(prise, f), curve(look, f)
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0.008 * b))
+        k.key("Chest", f, rot=(-1.5 * b, 0, 0))
+        neck(k, f, n1=-4 * pr, n2=-4 * pr, hd=7 * pr + 1.5 * b + curve(glare, f), y1=8 * lk, y2=12 * lk, yh=24 * lk,
+             jaw=curve(jaw, f), crest=4 * b + curve(crest, f))
+        wp(k, f, blend(FOLD, LIFT1, curve(heat, f)))
+        for c in CH:
+            ph, l0 = PH[c], LICK0[c]
+            a2 = curve([(0, 0), (l0, 0), (l0 + 5, 8), (l0 + 12, -1), (l0 + 16, 0), (n, 0)], f)      # (ground floor:
+            a3 = curve([(0, 0), (l0, 0), (l0 + 5, 18), (l0 + 12, -1), (l0 + 16, 0), (n, 0)], f)     # review 1 s6.2)
+            stream(k, f, c, 1.5 + 1.5 * pk.wave(f, n, ph, 2), 1 + 2 * pk.wave(f, n, ph - 0.08, 2) + a2,
+                   2 + 3 * pk.wave(f, n, ph - 0.16, 2) + a3, y3=3 * pk.wave(f, n, ph - 0.16 + 0.25, 2))
+    plant_frames(k, range(0, n + 1), regrip={"Leg_R": (56, 62)}, amp=0.03)
+    k.finish()
+    k.meta["planted"] = ["Leg_L"]
+    k.events["idle"] = {"lick1": round(23 / n, 3), "ember1": round(24 / n, 3), "lick2": round(53 / n, 3),
+                        "lick3": round(83 / n, 3), "ember2": round(84 / n, 3), "flare": round(88 / n, 3)}
+
+
+# ---- walk
+def walk(k):
+    """STALKING STRUT (ref #4, the Thunderbird's approved ROLLING STRUT machinery): the body rolls +-4 / yaws +-3 over
+    the stance leg with an asymmetric contact dip (-0.04 within 3 f), the head gyro-stabilised (cancels 75 %: Neck .2 /
+    Neck2 .25 / Head .3), high-stepping (lift 0.10) toes curled in the swing; the cloak folded with a 0-15 % LIFT1
+    blend on contacts; the plumes trail on X1 +3 with a travelling yaw / pitch wave (lags 3 / 6 / 9 and 3 / 5 / 7 f)
+    and the crest follows through 3 f after each contact."""
+    n = 28
+
+    def dip(f):
+        t = f % (n // 2)
+        if t <= 3:
+            u = t / 3.0
+            return -0.04 * (u * u * (3 - 2 * u))
+        u = (t - 3) / (n / 2 - 3)
+        return -0.04 * (1 - u * u * (3 - 2 * u))
+
+    def body(f):
+        sp = 1.2 * pk.wave(f, n, 0.1, 2)
+        sy = 3 * pk.wave(f, n, 0.0)
+        sr = 4 * pk.wave(f, n, 0.05)
+        cy, cr = -1.5 * pk.wave(f, n, 0.05), -1.5 * pk.wave(f, n, 0.05)
+        k.key("Spine", f, rot=(sp, sy, sr), loc=(0, 0, dip(f)))
+        k.key("Chest", f, rot=(0, cy, cr))
+        P, Y, R = sp, sy + cy, sr + cr
+        k.key("Neck", f, rot=(-0.2 * P, -0.2 * Y, -0.2 * R))
+        k.key("Neck2", f, rot=(-0.25 * P, -0.25 * Y, -0.25 * R))
+        k.key("Head", f, rot=(-0.3 * P, -0.3 * Y, -0.3 * R))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Crest", f, rot=(2 * dip(f - 3) / -0.04, 0, 0))
+        c = max(0.0, math.cos(2 * math.pi * (2 * f / n)))           # contact pulse (2 per cycle)
+        wp(k, f, blend(FOLD, LIFT1, 0.15 * c ** 3))
+        for ch in CH:
+            o = LAG[ch]
+            yb = [3 * pk.wave(f - lag - o, n, 0.0) for lag in (3, 6, 9)]
+            dn = [dip(f - lag - o) / -0.04 for lag in (3, 5, 7)]
+            stream(k, f, ch, 4 - 2 * (2 * dn[0] - 1), -3 * (2 * dn[1] - 1), 2 - 4 * (2 * dn[2] - 1),
+                   y1=0.5 * yb[0], y2=1.0 * yb[1], y3=1.5 * yb[2])
+    orig = k.solve_leg
+
+    def strut(leg, f, T, foot_z=0.0, toe=None):
+        lift = max(0.0, T.z)
+        sx = 1.0 if leg.endswith("L") else -1.0                   # the passing foot swings wide of the keel
+        T = Vector(T) + Vector((sx * 0.025 * min(1.0, lift / 0.05), 0, FOOT_LIFT))
+        return orig(leg, f, T, foot_z, toe=22.0 * min(1.0, lift / 0.09))
+    k.solve_leg = strut
+    try:
+        return cm.biped_walk(k, n, 0.15, 0.10, body, legs=(("Leg_L", 0.0), ("Leg_R", 0.5)), duty=0.6)
+    finally:
+        del k.solve_leg
+
+
+# ---- flight
+FPITCH, FN1, FN2, FHEAD = 45.0, -8.0, -8.0, -28.0
+THI, SHI, FOO, FSPREAD = 60.0, -40.0, 70.0, 18.0            # the tuck (v1 report D9)
+
+
+def fly_legs(k, f, ph, amt=1.0):
+    for s, side in ((1, "L"), (-1, "R")):
+        p = ph + 0.03 * s
+        k.key("Leg_" + side, f, rot=((THI + 3 * math.sin(2 * math.pi * (p - 0.15))) * amt, 0, -s * FSPREAD * amt),
+              loc=(0, 0, 0))
+        k.key("Shin_" + side, f, rot=((SHI - 4 * math.sin(2 * math.pi * (p - 0.30))) * amt, 0, 0))
+        k.key("Foot_" + side, f, rot=((FOO + 6 * math.sin(2 * math.pi * (p - 0.42))) * amt, 0, 0))
+
+
+def fly_stream(ph, c):
+    """the BURNING WAKE: X1 -22 with a travelling S (+-5 / 9 / 13, lag 0.10 cycle, X1 peaking 0.15 after the
+    downstroke starts); a forked fan (L -8 / R +8); X3 lateral +-3 offset 0.25; the chains offset 0.03 cycle"""
+    q = ph - 0.03 * LAG[c]
+    fan = {"L": -8.0, "C": 0.0, "R": 8.0}[c]
+    w = lambda d: math.cos(2 * math.pi * (q - d))
+    return dict(x1=-22 + 5 * w(0.15), x2=9 * w(0.25), x3=13 * w(0.35), y1=fan, y3=3 * w(0.60))
+
+
+def fly_pose(k, f, ph, legs=True, plumes=True):
+    w = wing3.stroke(ph, top=34, bot=-40, down=0.45, sweep=10, twist=10, fold=36)
+    wings(k, f, w["up"], w["fwd"], w["twist"], w["tip"])
+    rise = math.cos(2 * math.pi * (ph - 0.45))               # the body rises on the downstroke
+    sp = FPITCH - 3 * math.sin(2 * math.pi * (ph - 0.1))
+    g = 1.5 * math.sin(2 * math.pi * (ph - 0.1))
+    k.key("Spine", f, rot=(sp, 0, 0), loc=(0, 0, 0.10 + 0.07 * rise))
+    k.key("Chest", f, rot=(-2 * math.sin(2 * math.pi * (ph - 0.2)), 0, 0))
+    neck(k, f, n1=FN1 + 0.75 * g, n2=FN2 + 0.75 * g, hd=FHEAD - 1.5 * g + 2 * math.sin(2 * math.pi * (ph - 0.2)),
+         crest=-6 + 2 * math.sin(2 * math.pi * (ph - 0.1)))
+    if plumes:
+        for c in CH:
+            stream(k, f, c, **fly_stream(ph, c))
+    if legs:
+        fly_legs(k, f, ph)
+
+
+def fly(k):
+    """BURNING WAKE (refs #5 + #8): a regal 32-f beat (slower than the Thunderbird's 28), the outer wing tucks on the
+    upstroke, the body rises on the downstroke, the head level; three plumes trail a travelling S-wave fire wake."""
+    n = 32
+    k.new_action("fly", n, True)
+    for f in range(0, n + 1):
+        fly_pose(k, f, f / n)
+    k.finish()
+
+
+def takeoff(k):
+    """(refs #5 + #8) the Thunderbird keys: crouch (D7 depth) with the cloak opening FOLD -> LIFT1..4 -> OPEN, LAUNCH on
+    the big downbeat (f11), legs push then tuck, into the flight cycle; the plumes DRAG (sag, hang at the launch with a
+    2-f lag down the chain, swing back into the trail with a +6 overshoot); the crest erects at the crouch."""
+    n = 30
+    k.new_action("takeoff", n, False)
+    rest_keys(k, 0)
+    for f, z, p, ch, hd, w in ((3, -0.02, 4, 2, -2, LIFT1), (6, -0.035, 8, 4, -6, LIFT2), (8, -0.045, 9, 5, -9, LIFT3),
+                               (9, -0.05, 10, 6, -11, LIFT4), (10, -0.05, 10, 6, -12, OPEN),
+                               (13, 0.08, 20, 0, -20, (-14, 8, 8, -6)), (16, 0.14, 30, -2, -26, BOT)):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(ch, 0, 0))
+        neck(k, f, n1=-p * 0.12, n2=-p * 0.13, hd=hd, crest=curve([(0, 0), (10, 8), (16, 0)], f))
+        wp(k, f, w)
+    tr = fly_stream(0.0, "C")
+    for f in range(1, 23):
+        for c in CH:
+            o = LAG[c]
+            x1 = curve([(0, 0), (3, -4), (10, -4), (13, -12), (16, -12), (21, tr["x1"] + 6), (23, fly_stream(0.0, c)["x1"])],
+                       f - o)
+            x2 = curve([(0, 0), (5, 0), (15, -8), (18, -8), (21, 4), (23, fly_stream(0.0, c)["x2"])], f - o)
+            x3 = curve([(0, 0), (7, 0), (17, -4), (20, -4), (22, 2), (23, fly_stream(0.0, c)["x3"])], f - o)
+            stream(k, f, c, x1, x2, x3, y1=curve([(0, 0), (16, 0), (23, fly_stream(0.0, c)["y1"])], f))
+    fly_pose(k, 23, 0.0)
+    fly_pose(k, n, 0.45)
+    plant_frames(k, range(0, 13))
+    legs_fk(k, 15, 24, -10, 40)
+    legs_fk(k, 19, 50, -30, 66, spread=15)
+    fly_legs(k, 23, 0.0)
+    fly_legs(k, n, 0.45)
+    lift_air_frames(k, range(13, n + 1))
+    k.finish(loop=False)
+    k.events["takeoff"] = {"launch": round(11 / n, 3)}
+
+
+def land(k):
+    """(ref #5: the tail fans to brake) the Thunderbird flare + brake + reaching talons to f15 with the plumes FLARED up
+    (+20 / +10 / +6); TOUCH f17 with the cloak at LIFT4 (never the raised V), a D7-depth absorb, then LIFT4 -> LIFT3 ->
+    LIFT2 -> LIFT1 -> FOLD (the tested brake path); the plumes swing down with the momentum and settle."""
+    n = 32
+    k.new_action("land", n, False)
+    fly_pose(k, 0, 0.0)
+    for f, p, z, nk, hd, w, lg in (
+            (6, 16, 0.10, -4, -18, BRAKE, (40, -20, 50)),
+            (10, -4, 0.10, 0, -8, (-24, 22, -10, 8), (-24, 4, -8)),
+            (13, -6, 0.08, 0, -6, (22, 18, -8, -6), (-24, 10, -20)),
+            (15, -4, 0.04, 0, -4, (30, 10, -6, -8), (-14, 6, -20))):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(-3, 0, 0))
+        neck(k, f, n1=nk * 0.5, n2=nk * 0.5, hd=hd)
+        wp(k, f, w)
+        legs_fk(k, f, *lg)
+    for f, z, p, w in ((17, -0.04, 6, LIFT4), (22, -0.03, 4, LIFT4), (24, -0.02, 3, LIFT3), (26, -0.012, 2, LIFT2),
+                       (28, -0.005, 1, LIFT1), (31, 0.0, 0, FOLD)):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(2, 0, 0))
+        neck(k, f, n1=p * 0.25, n2=p * 0.25, hd=-p * 0.4)
+        wp(k, f, w)
+    for f in range(1, n + 1):
+        for c in CH:
+            o = LAG[c]
+            x1 = curve([(0, fly_stream(0.0, c)["x1"]), (6, 20), (15, 20), (20, -3), (26, 1), (30, 0)], f - o)
+            x2 = curve([(0, fly_stream(0.0, c)["x2"]), (8, 10), (16, 10), (22, -2), (28, 0)], f - o)
+            x3 = curve([(0, fly_stream(0.0, c)["x3"]), (9, 6), (17, 6), (23, -2), (29, 0)], f - o)
+            stream(k, f, c, x1, x2, x3, y1=curve([(0, fly_stream(0.0, c)["y1"]), (10, 0)], f))
+    rest_keys(k, n)
+    lift_air_frames(k, range(0, 17))
+    plant_frames(k, range(17, n + 1))
+    k.finish(loop=False)
+    k.events["land"] = {"touch": round(17 / n, 3)}
+
+
+# ---- roar
+def roar(k):
+    """FIRE-TRAIN SCREECH (refs #6, #3): gather (head in, LIFT1 -> LIFT2, the plumes sag); the TRAIN RISE: the cloak
+    lifts to BREATH (never the V) while the three plumes rise into a fire train behind the hips (X1 +56 / X2 +24 /
+    X3 -14, 2-f lag down the chain), the crest erects; the head thrusts forward and the jaw opens 3 f after it
+    (SCREECH f25); a jaw buzz + the TRAIN RATTLE (plume shiver, L / C / R 1 f apart); release with a drop overshoot,
+    the cloak back through LIFT1 to FOLD; exact rest f66."""
+    n = 66
+    k.new_action("roar", n, False)
+    zc = [(0, 0), (10, -0.04), (20, 0), (56, 0), (66, 0)]
+    pc = [(0, 0), (10, 4), (20, -4), (46, -4), (56, 0), (66, 0)]
+    n1 = [(0, 0), (10, 6), (20, 6), (24, 8), (46, 8), (56, 0), (66, 0)]
+    n2 = [(0, 0), (10, 4), (20, 4), (24, -6), (46, -6), (56, 0), (66, 0)]
+    hd = [(0, 0), (10, 4), (20, 4), (24, -6), (46, -6), (56, 0), (66, 0)]
+    jw = [(0, 0), (23, 0), (26, 34), (46, 34), (52, 0), (66, 0)]
+    cr = [(0, 0), (12, 0), (18, 14), (50, 14), (56, 0), (66, 0)]
+    wk = [(0, FOLD), (5, LIFT1), (52, LIFT1), (56, FOLD), (66, FOLD)]     # the train in front of LIFT1 (review 1 s6.4)
+    for f, w in wk:
+        wp(k, f, w)
+    for f in range(n + 1):
+        k.key("Spine", f, rot=(curve(pc, f), 0, 0), loc=(0, 0, curve(zc, f)))
+        k.key("Chest", f, rot=(0, 0, 0))
+        buzz = (2 if (f // 3) % 2 else -2) if 27 <= f <= 45 else 0
+        neck(k, f, n1=curve(n1, f), n2=curve(n2, f), hd=curve(hd, f), jaw=curve(jw, f) + buzz, crest=curve(cr, f))
+        for c in CH:
+            o = LAG[c]
+            sh2 = (3 if ((f + o) // 2) % 2 else -3) if 27 <= f <= 46 else 0
+            sh3 = (5 if ((f + o) // 2) % 2 else -5) if 27 <= f <= 46 else 0
+            x1 = curve([(0, 0), (8, -4), (10, -4), (17, 56), (46, 56), (54, -4), (59, 3), (62, 0), (66, 0)], f)
+            x2 = curve([(0, 0), (10, -2), (12, -2), (19, 24), (48, 24), (56, -2), (61, 2), (64, 0), (66, 0)], f)
+            x3 = curve([(0, 0), (12, 0), (14, 0), (20, -14), (50, -14), (58, 0), (66, 0)], f)
+            stream(k, f, c, x1, x2 + sh2, x3 + sh3)
+    plant_frames(k, range(0, n + 1))
+    k.finish(loop=False)
+    k.events["roar"] = {"screech": round(25 / n, 3), "rattle": round(30 / n, 3)}
+
+
+# ---- act
+def act_rebirth(k):
+    """ASHES TO FLAME (signature; refs #9, #5 + #8, #3): IGNITE (crest flares, the neck straightens, the plumes lift);
+    the PYRE: the cloak opens and sinks back into a wide burning droop around the bird (LIFT1..4 -> OPEN -> DROOP1 ->
+    DROOP2 -> PYRE), the head bows to the breast, the crest lies back, the plumes settle on the ground; EMBER SLEEP dead
+    still; two HEARTBEATS; AWAKEN (the head snaps up first); a wind-up and LAUNCH on one huge sweep, two beats lift it
+    into the heraldic PHOENIX RISING with a screech (the plumes hang and swing); descend + brake, TOUCH on LIFT4, fold
+    LIFT3..1 -> FOLD; a slow breath; exact rest f104."""
+    n = 104
+    k.new_action("act_rebirth", n, False)
+    wk = [(0, FOLD), (4, LIFT1), (8, LIFT2), (10, LIFT3), (11, LIFT4), (13, OPEN), (17, DROOP1), (21, DROOP2),
+          (26, PYRE), (50, PYRE), (51, DROOP2), (52, DROOP1), (54, OPEN), (58, BOT), (64, OPEN), (68, BOT), (72, OPEN),
+          (76, OPEN), (80, BRAKE), (82, LIFT4), (85, LIFT3), (87, LIFT2), (89, LIFT1), (92, FOLD), (104, FOLD)]
+    for f, w in wk:
+        wp(k, f, w)
+    zc = [(0, 0), (10, -0.02), (26, CROUCH), (34, CROUCH), (36, CROUCH + 0.012), (40, CROUCH), (42, CROUCH + 0.018),
+          (46, CROUCH), (53, CROUCH), (58, 0.14), (64, 0.30), (68, 0.44), (72, 0.46), (76, 0.46), (80, 0.16),
+          (82, CROUCH), (88, -0.01), (96, 0.0), (104, 0)]
+    pc = [(0, 0), (10, 0), (26, 9), (46, 9), (50, 6), (53, 4), (58, -2), (68, -2), (72, -4), (76, -4), (80, 6),
+          (82, 4), (92, 0), (104, 0)]
+    chest = [(0, 0), (34, 0), (36, -3), (40, 0), (42, -5), (46, 0), (96, 0), (98, -1.5), (102, 0), (104, 0)]
+    n1 = [(0, 0), (10, -4), (13, -4), (26, 12), (46, 12), (50, -4), (68, -4), (72, -6), (76, -6), (82, 0), (104, 0)]
+    n2 = [(0, 0), (10, -2), (13, -2), (26, 12), (46, 12), (50, -4), (68, -4), (72, -4), (76, -4), (82, 0), (104, 0)]
+    hd = [(0, 0), (10, 6), (13, 6), (26, 20), (46, 20), (48, 8), (50, -6), (68, -6), (72, -4), (76, -4), (82, 0),
+          (104, 0)]
+    cr = [(0, 0), (8, 14), (13, 14), (26, -10), (34, -10), (36, -6), (40, -10), (42, -2), (46, -10), (49, 16),
+          (76, 16), (82, 6), (92, 0), (96, -3), (100, 0), (104, 0)]
+    jw = [(0, 0), (69, 0), (72, 30), (76, 30), (80, 0), (104, 0)]
+    for f in range(n + 1):
+        k.key("Spine", f, rot=(curve(pc, f), 0, 0), loc=(0, 0, curve(zc, f)))
+        k.key("Chest", f, rot=(curve(chest, f), 0, 0))
+        buzz = (2 if (f // 2) % 2 else -2) if 72 <= f <= 76 else 0
+        neck(k, f, n1=curve(n1, f), n2=curve(n2, f), hd=curve(hd, f), jaw=curve(jw, f) + buzz, crest=curve(cr, f))
+        for c in CH:
+            o = LAG[c]
+            x1 = curve([(0, 0), (8, 8), (13, 8), (26, -4), (53, -4), (54, 10), (57, -6), (61, 6), (66, -10),
+                        (70, -18), (76, -18), (80, 16), (84, -4), (88, 0), (104, 0)], f - o)    # hang -18 (review s6.3)
+            x2 = curve([(0, 0), (10, 6), (15, 6), (28, -4), (55, 6), (59, -4), (62, 14), (68, -6), (72, -6), (76, -6),
+                        (82, 10), (86, -3), (90, 0), (104, 0)], f - o)
+            x3 = curve([(0, 0), (12, 4), (17, 4), (30, -2), (34, -2), (36, 3), (40, -2), (42, 6), (46, -2), (57, 4),
+                        (60, -8), (64, 18), (70, 4), (76, 4), (84, 6), (88, -2), (92, 0), (104, 0)], f - o)
+            stream(k, f, c, x1, x2, x3)
+    plant_frames(k, range(0, 54))
+    legs_fk(k, 57, 24, -10, 40)
+    legs_fk(k, 66, 50, -30, 66, spread=15)
+    legs_fk(k, 76, 50, -30, 66, spread=15)
+    legs_fk(k, 80, -14, 6, -20)
+    lift_air_frames(k, range(54, 82))
+    plant_frames(k, range(82, n + 1))
+    k.finish(loop=False)
+    k.events["act_rebirth"] = {"ignite": round(8 / n, 3), "pyre": round(20 / n, 3), "ash": round(30 / n, 3),
+                               "heartbeat1": round(36 / n, 3), "heartbeat2": round(42 / n, 3),
+                               "rebirth": round(54 / n, 3), "reborn": round(72 / n, 3), "touch": round(82 / n, 3)}
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    fly(k)
+    takeoff(k)
+    land(k)
+    roar(k)
+    act_rebirth(k)
+    return stride

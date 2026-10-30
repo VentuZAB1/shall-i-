@@ -1,0 +1,2 @@
+# probe_feet.py on pets/VoltRhino.py saved 2026-10-28T08:25:08; run 2026-10-28T08:32:07
+PROBE {"30": {"bones": {"Horn_Tip": [-0.0, -1.917, 0.008]}, "low": {"Foot_FL": 0.0, "Foot_BL": 0.0, "Foot_FR": -0.0, "Foot_BR": 0.0}}, "42": {"bones": {"Horn_Tip": [-0.0, -1.924, 0.008]}, "low": {"Foot_FL": 0.0, "Foot_BL": 0.0, "Foot_FR": -0.0, "Foot_BR": 0.0}}, "54": {"bones": {"Horn_Tip": [-0.0, -1.93, 0.004]}, "low": {"Foot_FL": 0.0, "Foot_BL": 0.0, "Foot_FR": -0.0, "Foot_BR": 0.0}}}

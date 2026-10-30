@@ -1,0 +1,285 @@
+# ------------------------------------------------------------------ animation (clip round 1, 2026-10-27)
+# References (owner rule; EclipseSeraph/ANIM_REFS.md): The Boy and the Heron (Sakugabooru #260711 takeoff, #260630
+# threat display), The Cat Returns (#256671, cat walk), ANIM_REFERENCES_1014 #8 (banshee stroke) + #3 (Sea Beasts
+# roar: the jaw lags the head lift), ANIM_REFERENCES_1027 W0 (Wolf's Rain: mouth opens ~15 f, then holds).
+# Rest pose on the ground = DISPLAY_POSE (the model-gate pose). Tested wing ranges (`_scratch/path6.py`, wing pairs +
+# body, every frame): A up <= 54 (higher: the hand meets the halo), A down >= ~18 at twist 24 (lower: the root rows
+# press into the shoulders); B up <= 10 (higher: the arm root cuts the chest top); C fwd >= -10 (further back: the
+# root rows meet the thigh); B and C move IN PHASE with C = B + 6 (C - B > 15 or C twist < 0 = a cut).
+# Rules: Neck <= 8 deg, head + neck pitch-up <= 30, no head shakes, no spins, acts end exactly in the rest pose.
+import petkit as pk
+
+TOP = {"A": (52.0, -4.0, 24.0, 0.0), "B": (10.0, -8.0, 20.0, 0.0), "C": (16.0, -10.0, 4.0, -6.0)}    # stroke top
+LOW = {"A": (18.0, -4.0, 24.0, 4.0), "B": (0.0, -8.0, 20.0, 0.0), "C": (6.0, -10.0, 4.0, -6.0)}      # stroke bottom
+ROAR_W = {"A": (30.0, 8.0, 20.0, 0.0), "B": (8.0, -2.0, 20.0, 0.0), "C": (14.0, -6.0, 4.0, -6.0)}   # open to half
+FAN = {"A": (54.0, -4.0, 24.0, -16.0), "B": (10.0, -8.0, 20.0, -20.0), "C": (16.0, -10.0, 4.0, -20.0)}  # full fan
+BRAKE = {"A": (36.0, 6.0, 26.0, 0.0), "B": (8.0, -6.0, 20.0, 0.0), "C": (14.0, -8.0, 4.0, -6.0)}     # landing flare
+FLY_N = 28
+FPITCH = 6.0
+FLY_LIFT = 0.30
+
+
+def wset(k, f, poses):
+    for P, w in poses.items():
+        wings(k, f, P, *w)
+
+
+def mix(a, b, t):
+    return {P: tuple(x + (y - x) * t for x, y in zip(a[P], b[P])) for P in a}
+
+
+def head(k, f, pitch=0.0, yaw=0.0):
+    """neck chain: Neck 0.4 / Head 0.6 of the total (pitch + = nose down); Neck <= 8 for |total| <= 20"""
+    k.key("Neck", f, rot=(pitch * 0.4, yaw * 0.4, 0))
+    k.key("Head", f, rot=(pitch * 0.6, yaw * 0.6, 0))
+
+
+def halo_key(k, f, pitch=0.0, roll=0.0, z=0.0):
+    k.key("Halo", f, rot=(pitch, 0, roll), loc=(0, 0, z))
+
+
+def tail_keys(k, f, pitch=0.0, yaw=0.0):
+    for i, b in enumerate(TAIL):
+        k.key(b, f, rot=(pitch * (1 - 0.15 * i), yaw * (0.6 + 0.2 * i), 0))
+
+
+def rest_keys(k, f, z=0.0, pitch=0.0):
+    k.key("Spine", f, rot=(pitch, 0, 0), loc=(0, 0, z))
+    k.key("Chest", f, rot=(0, 0, 0))
+    head(k, f)
+    k.key("Jaw", f, rot=(0, 0, 0))
+    k.key("Mane", f, rot=(0, 0, 0))
+    halo_key(k, f)
+    wset(k, f, DISPLAY_POSE)
+    tail_keys(k, f)
+
+
+def plant_frames(k, frames):
+    cm.plant(k, 0, legs=LEGS4, frames=list(frames))
+
+
+# ---- ground
+def idle(k):
+    """HALO DRIFT (120 f): slow breath; the halo tilts +-5 side to side; the six wings breathe (the upper pair lifts
+    44 -> 50 and falls, f10-60; middle + lower pairs 4 f behind, in phase); the head turns slowly (yaw +-10, quick
+    turn then a long hold); the blood corona pulses (event `corona` f80, VFX); settles."""
+    n = 120
+    k.new_action("idle", n, True)
+    for f in range(0, n + 1, 3):
+        b = pk.wave(f, n, 0, 2)
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0.006 * b))
+        k.key("Chest", f, rot=(0.8 * b, 0, 0))
+        halo_key(k, f, 0, 5 * pk.wave(f, n, 0.1, 1))
+        cm.chain(k, f, n, TAIL, sway=4, pitch=0, cycles=1, lag=0.2, grow=0.5)
+    for f, y in ((0, 0), (14, 0), (24, 10), (50, 10), (60, 0), (74, 0), (84, -10), (108, -10), (120, 0)):
+        head(k, f, 0, y)
+    for f, t in ((0, 0), (10, 0), (35, 1), (60, 0), (120, 0)):
+        A = DISPLAY_POSE["A"]
+        wings(k, f, "A", A[0] + 6 * t, *A[1:])
+    for f, t in ((0, 0), (14, 0), (39, 1), (64, 0), (120, 0)):
+        for P in ("B", "C"):
+            W = DISPLAY_POSE[P]
+            wings(k, f, P, W[0] + 4 * t, *W[1:])
+    for f in (0, n):
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Mane", f, rot=(0, 0, 0))
+    plant_frames(k, range(0, n + 1))
+    k.finish()
+    k.meta["planted"] = LEGS4
+    k.events["idle"] = {"corona": round(80 / n, 3)}
+
+
+def walk(k):
+    """lateral-sequence lion walk (The Cat Returns): the back and head stay level, the wings stay in the display
+    fan (the upper pair 4 lower), the halo trails the head by 3 f (a small counter-roll), the tail sways"""
+    n = 40
+
+    def body(f):
+        b = 0.5 - 0.5 * math.cos(4 * math.pi * f / n)
+        k.key("Spine", f, rot=(0.6 * pk.wave(f, n, 0.1, 2), 1.5 * pk.wave(f, n, 0.1), 1.6 * pk.wave(f, n)),
+              loc=(0, 0, 0.012 * b))
+        k.key("Chest", f, rot=(0.5, 1.0 * pk.wave(f, n, 0.25), -0.6 * pk.wave(f, n)))
+        head(k, f, -1.0 * pk.wave(f, n, 0.2, 2), -2.5 * pk.wave(f, n, 0.25))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Mane", f, rot=(0, 0, 0))
+        halo_key(k, f, 0, -2.0 * pk.wave(f, n, 3.0 / n))
+        A = DISPLAY_POSE["A"]
+        wings(k, f, "A", A[0] - 4 + 2 * pk.wave(f, n, 0.1, 2), *A[1:])
+        for P in ("B", "C"):
+            wings(k, f, P, *DISPLAY_POSE[P])
+        cm.chain(k, f, n, TAIL, sway=6, pitch=0, cycles=1, lag=0.15, grow=0.5)
+    return cm.quad_walk(k, n, 0.15, 0.08, body, gait="walk")
+
+
+# ---- flight (banshee #8: ~0.9 s stroke, the head level, the tail streams; the upper pair flaps, the middle and lower
+# pairs flap 4 f behind in phase, a smaller echo of the upper stroke)
+def stroke6(ph):
+    out = {}
+    wa = wing3.stroke(ph, top=52.0, bot=18.0, down=0.45, sweep=6.0, twist=6.0, fold=20.0)
+    out["A"] = (wa["up"], wa["fwd"] - 2.0, wa["twist"] + 24.0, 0.5 * wa["tip"])
+    wb = wing3.stroke(ph - 4.0 / FLY_N, top=10.0, bot=0.0, down=0.45, sweep=0.0, twist=0.0, fold=0.0)
+    out["B"] = (wb["up"], -8.0, 20.0, 0.0)
+    out["C"] = (wb["up"] + 6.0, -10.0, 4.0, -6.0)
+    return out
+
+
+def fly_legs(k, f, ph, amt=1.0):
+    """front paws tucked like a cat's, hind legs trailing with a small pump"""
+    w = math.sin(2 * math.pi * (ph - 0.25))
+    for s in ("L", "R"):
+        k.key("Leg_F" + s, f, rot=(-40 * amt, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_F" + s, f, rot=((100 + 4 * w) * amt, 0, 0))
+        k.key("Foot_F" + s, f, rot=(30 * amt, 0, 0))
+        k.key("Leg_B" + s, f, rot=((16 + 6 * w) * amt, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_B" + s, f, rot=((10 - 8 * w) * amt, 0, 0))
+        k.key("Foot_B" + s, f, rot=((40 + 6 * w) * amt, 0, 0))
+
+
+def fly_pose(k, f, ph, legs=True):
+    wset(k, f, stroke6(ph))
+    rise = math.cos(2 * math.pi * (ph - 0.45))
+    k.key("Spine", f, rot=(FPITCH - 2 * math.sin(2 * math.pi * ph), 0, 0), loc=(0, 0, FLY_LIFT + 0.04 * rise))
+    k.key("Chest", f, rot=(0, 0, 0))
+    head(k, f, -FPITCH + 1.5 * math.sin(2 * math.pi * (ph - 0.25)))          # the head stays level (gyro)
+    k.key("Jaw", f, rot=(0, 0, 0))
+    k.key("Mane", f, rot=(0, 0, 0))
+    halo_key(k, f, 2 * math.sin(2 * math.pi * (ph - 0.3)), 0)               # the halo trails the body bob
+    for i, b in enumerate(TAIL):                                           # streams back, a small lagging wave
+        k.key(b, f, rot=(14 - 2 * i + 3 * math.sin(2 * math.pi * (ph - 0.12 * (i + 1))),
+                         2 * math.sin(2 * math.pi * (ph - 0.2 * i)), 0))
+    if legs:
+        fly_legs(k, f, ph)
+
+
+def fly(k):
+    k.new_action("fly", FLY_N, True)
+    for f in range(0, FLY_N + 1):
+        fly_pose(k, f, f / FLY_N)
+    k.finish()
+
+
+def takeoff(k):
+    """(heron #260711) a short crouch while all six wings rise to the stroke top (f0-10); LAUNCH f11 on the first
+    downstroke + the hind-leg push; the legs tuck; into the flight cycle"""
+    n = 28
+    k.new_action("takeoff", n, False)
+    rest_keys(k, 0)
+    for f, z, p, w in ((6, -0.05, -3, mix(DISPLAY_POSE, TOP, 0.6)), (10, -0.07, -5, TOP), (13, 0.18, 4, LOW),
+                       (17, 0.30, 6, TOP)):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(0, 0, 0))
+        head(k, f, -p)
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Mane", f, rot=(0, 0, 0))
+        halo_key(k, f, 0, 0)
+        wset(k, f, w)
+        tail_keys(k, f, 8 + p, 0)
+    fly_pose(k, 22, 0.0, legs=False)
+    fly_pose(k, n, 0.2, legs=False)
+    plant_frames(k, range(0, 12))
+    for f, a in ((14, 0.45), (18, 0.85)):
+        fly_legs(k, f, 0.0, a)
+    fly_legs(k, 22, 0.0)
+    fly_legs(k, n, 0.2)
+    k.finish(loop=False)
+    k.events["takeoff"] = {"launch": round(11 / n, 3)}
+
+
+def land(k):
+    """flare (the chest lifts, the wings brake forward), the legs reach, TOUCH f16, absorb, back to the display fan"""
+    n = 28
+    k.new_action("land", n, False)
+    fly_pose(k, 0, 0.0)
+    for f, z, p, w in ((7, 0.12, -8, BRAKE), (12, 0.06, -5, LOW), (16, -0.05, 2, TOP),
+                       (21, 0.01, -1, mix(TOP, DISPLAY_POSE, 0.6))):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(0, 0, 0))
+        head(k, f, -p)
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Mane", f, rot=(0, 0, 0))
+        halo_key(k, f, 0, 0)
+        wset(k, f, w)
+        tail_keys(k, f, 6 + p * 0.5, 0)
+    rest_keys(k, n)
+    for s in ("L", "R"):                                       # the legs reach for the ground
+        k.key("Leg_F" + s, 7, rot=(-24, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_F" + s, 7, rot=(10, 0, 0))
+        k.key("Foot_F" + s, 7, rot=(20, 0, 0))
+        k.key("Leg_B" + s, 7, rot=(-8, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_B" + s, 7, rot=(0, 0, 0))
+        k.key("Foot_B" + s, 7, rot=(20, 0, 0))
+    plant_frames(k, range(16, n + 1))
+    k.finish(loop=False)
+    k.events["land"] = {"touch": round(16 / n, 3)}
+
+
+def roar(k):
+    """HALO LIFT (66 f; Sea Beasts #3 + W0): f0-14 the halo lifts 0.20 on its bone and tilts forward 15, the head
+    rises 15 (Neck -6 / Head -9); f14-26 the jaw opens (lags the head), the outer mane ring flares 6; event `roar` f24
+    (corona ring at the Mouth); f26-50 hold, the wings open to half (the span to the front), the jaw rumbles; f50-66
+    the halo settles, the head returns, the jaw closes, the wings back to the display fan."""
+    n = 66
+    k.new_action("roar", n, False)
+    rest_keys(k, 0)
+    for f, hp, jw, mn, hz, ht, w in ((8, -7, 0, 0, 0.10, 6, DISPLAY_POSE), (14, -15, 4, 0, 0.20, 15, DISPLAY_POSE),
+                                     (22, -15, 24, 5, 0.20, 15, mix(DISPLAY_POSE, ROAR_W, 0.5)),
+                                     (26, -15, 32, 6, 0.20, 15, mix(DISPLAY_POSE, ROAR_W, 0.8)),
+                                     (30, -15, 32, 6, 0.20, 15, ROAR_W), (50, -15, 32, 6, 0.20, 15, ROAR_W),
+                                     (58, -6, 10, 2, 0.08, 6, mix(DISPLAY_POSE, ROAR_W, 0.4)),
+                                     (64, 0, 0, 0, 0.0, 0, DISPLAY_POSE)):
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0))
+        k.key("Chest", f, rot=(-2 if 14 <= f <= 50 else 0, 0, 0))
+        head(k, f, hp)
+        k.key("Jaw", f, rot=(jw, 0, 0))
+        k.key("Mane", f, rot=(mn, 0, 0))
+        halo_key(k, f, ht, 0, hz)
+        wset(k, f, w)
+        tail_keys(k, f, 4 if 14 <= f <= 50 else 0, 0)
+    for f in range(30, 50, 2):                                 # the jaw rumble while the roar holds
+        k.key("Jaw", f, rot=(32 + (1.5 if (f // 2) % 2 else -1.5), 0, 0))
+    rest_keys(k, n)
+    plant_frames(k, range(0, n + 1))
+    k.finish(loop=False)
+    k.events["roar"] = {"roar": round(24 / n, 3)}
+
+
+def wingcascade(k):
+    """SIGNATURE - SIX-WING CASCADE (110 f, in place): f0-14 the Seraph bows its crown (head down 6, the halo tilts
+    with it); each pair then lifts with a TIP-TO-ROOT ripple (the hand rises first, the arm follows 6 f later): upper
+    pair f14-28 (event `ripple1` f22), middle pair f30-44 (`ripple2` f40), lower pair f44-58 (`ripple3` f54); the six
+    wings hold the full fan f58-64; f64-94 the reverse ripple (lower pair folds first, then the middle, then the
+    upper); the head lifts, the halo levels; the exact rest pose from f100."""
+    n = 110
+    k.new_action("act_wingcascade", n, False)
+    rest_keys(k, 0)
+    sched = {"A": (14, 22, 28, 78, 86, 94), "B": (30, 38, 44, 70, 78, 86), "C": (44, 52, 58, 64, 72, 80)}
+    for P, (t0, t1, t2, r0, r1, r2) in sched.items():
+        d, fa = DISPLAY_POSE[P], FAN[P]
+        for f, w in ((0, d), (t0, d), (t1, (d[0], d[1], d[2], fa[3])), (t2, fa), (r0, fa),
+                     (r1, (d[0] + (fa[0] - d[0]) * 0.5, fa[1], fa[2], fa[3])), (r2, d), (n, d)):
+            wings(k, f, P, *w)
+    for f, hp, hz, ch in ((14, 6, -0.02, 0), (28, 6, -0.02, -1.5), (58, 6, -0.02, -2.5), (64, 6, -0.02, -2.5),
+                          (90, 0, 0.0, -1), (100, 0, 0.0, 0)):
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0))
+        k.key("Chest", f, rot=(ch, 0, 0))
+        head(k, f, hp)
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Mane", f, rot=(0, 0, 0))
+        halo_key(k, f, hp, 0, hz)
+        tail_keys(k, f, 3 if 28 <= f <= 64 else 0, 0)
+    rest_keys(k, n)
+    plant_frames(k, range(0, n + 1))
+    k.finish(loop=False)
+    k.events["act_wingcascade"] = {"ripple1": round(22 / n, 3), "ripple2": round(40 / n, 3),
+                                   "ripple3": round(54 / n, 3)}
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    fly(k)
+    takeoff(k)
+    land(k)
+    roar(k)
+    wingcascade(k)
+    return stride

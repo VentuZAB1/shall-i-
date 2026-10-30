@@ -1,0 +1,239 @@
+{
+ "written": "2026-10-28 04:41",
+ "round": "9+ round (_review/CoralCrusher_final85_r3.md, PASS 8.5 / 8.5)",
+ "export": "C:\\cdimp\\CoralCrusher.fbx",
+ "step1": {
+  "collision_free": true,
+  "ground_min_z": {
+   "idle": [
+    -0.013,
+    0
+   ],
+   "walk": [
+    -0.013,
+    0
+   ],
+   "roar": [
+    -0.013,
+    0
+   ],
+   "act_semaphore": [
+    -0.013,
+    0
+   ]
+  },
+  "audit": {
+   "idle": {
+    "linear": 0,
+    "loop_pos": 0.0,
+    "loop_rot": 0.0,
+    "idle_foot_drift": 0.0
+   },
+   "walk": {
+    "linear": 0,
+    "loop_pos": 0.0,
+    "loop_rot": 0.0,
+    "slide": 0.002,
+    "foot_z_var": 0.001
+   },
+   "roar": {
+    "linear": 0
+   },
+   "act_semaphore": {
+    "linear": 0
+   }
+  },
+  "clips": {
+   "idle": [
+    120,
+    true
+   ],
+   "walk": [
+    30,
+    true
+   ],
+   "roar": [
+    60,
+    false
+   ],
+   "act_semaphore": [
+    120,
+    false
+   ]
+  },
+  "events": {
+   "idle": {
+    "tap": 0.583
+   },
+   "walk": {
+    "sand1": 0.46,
+    "sand2": 0.96
+   },
+   "roar": {
+    "clack1": 0.367,
+    "clack2": 0.5,
+    "clack3": 0.633,
+    "bubble": 0.4
+   },
+   "act_semaphore": {
+    "wave1": 0.25,
+    "wave2": 0.442,
+    "wave3": 0.633,
+    "tap1": 0.75,
+    "tap2": 0.8
+   }
+  }
+ },
+ "tris": 12452,
+ "lua_bytes": 58671,
+ "shares_all_pct": {
+  "side": {
+   "BRONZE": 47.0,
+   "BRONZE_D": 12.4,
+   "SHELL_D": 19.2,
+   "BELLY_PALE": 1.6,
+   "ROSE": 9.6,
+   "ROSE_D": 3.9,
+   "BLACK": 5.8,
+   "MOUTH": 0.4,
+   "_edge_px_skipped_pct": 0.0
+  },
+  "tq": {
+   "BRONZE": 50.2,
+   "BRONZE_D": 8.1,
+   "SHELL_D": 19.7,
+   "BELLY_PALE": 0.8,
+   "ROSE": 10.8,
+   "ROSE_D": 4.5,
+   "BLACK": 5.5,
+   "MOUTH": 0.5,
+   "_edge_px_skipped_pct": 0.0
+  },
+  "game": {
+   "BRONZE": 51.4,
+   "BRONZE_D": 12.6,
+   "SHELL_D": 16.6,
+   "BELLY_PALE": 2.2,
+   "ROSE": 8.9,
+   "ROSE_D": 4.4,
+   "BLACK": 3.6,
+   "MOUTH": 0.3,
+   "_edge_px_skipped_pct": 0.0
+  },
+  "back": {
+   "BRONZE": 44.2,
+   "BRONZE_D": 15.3,
+   "SHELL_D": 15.4,
+   "BELLY_PALE": 5.6,
+   "ROSE": 9.9,
+   "ROSE_D": 6.1,
+   "BLACK": 3.0,
+   "MOUTH": 0.4,
+   "_edge_px_skipped_pct": 0.0
+  }
+ },
+ "shares_strict_pct": {
+  "side": {
+   "BRONZE": 47.5,
+   "BRONZE_D": 12.4,
+   "SHELL_D": 19.5,
+   "BELLY_PALE": 1.6,
+   "ROSE": 9.7,
+   "ROSE_D": 3.0,
+   "BLACK": 5.9,
+   "MOUTH": 0.4,
+   "_edge_px_skipped_pct": 2.0
+  },
+  "tq": {
+   "BRONZE": 51.1,
+   "BRONZE_D": 7.7,
+   "SHELL_D": 20.0,
+   "BELLY_PALE": 0.6,
+   "ROSE": 11.1,
+   "ROSE_D": 3.4,
+   "BLACK": 5.5,
+   "MOUTH": 0.5,
+   "_edge_px_skipped_pct": 2.6
+  },
+  "game": {
+   "BRONZE": 52.5,
+   "BRONZE_D": 12.6,
+   "SHELL_D": 16.8,
+   "BELLY_PALE": 2.2,
+   "ROSE": 8.5,
+   "ROSE_D": 3.6,
+   "BLACK": 3.6,
+   "MOUTH": 0.3,
+   "_edge_px_skipped_pct": 2.2
+  },
+  "back": {
+   "BRONZE": 45.2,
+   "BRONZE_D": 15.4,
+   "SHELL_D": 15.6,
+   "BELLY_PALE": 5.5,
+   "ROSE": 9.7,
+   "ROSE_D": 5.2,
+   "BLACK": 3.1,
+   "MOUTH": 0.4,
+   "_edge_px_skipped_pct": 3.0
+  }
+ },
+ "act_eye_tracking_and_roll": {
+  "0": {
+   "Eye_L": 50.9,
+   "Eye_L_heading": 63.4,
+   "Eye_R": 4.6,
+   "Eye_R_heading": 26.6,
+   "shoulder_zR_minus_zL": 0.0
+  },
+  "30": {
+   "Eye_L": 44.0,
+   "Eye_L_heading": 34.5,
+   "Eye_R": 3.0,
+   "Eye_R_heading": 39.3,
+   "shoulder_zR_minus_zL": -0.0625
+  },
+  "36": {
+   "Eye_L": 41.8,
+   "Eye_L_heading": 34.5,
+   "Eye_R": 23.4,
+   "Eye_R_heading": 39.3,
+   "shoulder_zR_minus_zL": -0.0625
+  },
+  "41": {
+   "Eye_L": 64.1,
+   "Eye_L_heading": 72.7,
+   "Eye_R": 3.5,
+   "Eye_R_heading": 23.7,
+   "shoulder_zR_minus_zL": 0.0209
+  },
+  "53": {
+   "Eye_L": 44.0,
+   "Eye_L_heading": 34.5,
+   "Eye_R": 3.0,
+   "Eye_R_heading": 39.3,
+   "shoulder_zR_minus_zL": -0.0625
+  },
+  "64": {
+   "Eye_L": 64.1,
+   "Eye_L_heading": 72.7,
+   "Eye_R": 3.5,
+   "Eye_R_heading": 23.7,
+   "shoulder_zR_minus_zL": 0.0209
+  },
+  "76": {
+   "Eye_L": 44.0,
+   "Eye_L_heading": 34.5,
+   "Eye_R": 3.0,
+   "Eye_R_heading": 39.3,
+   "shoulder_zR_minus_zL": -0.0625
+  },
+  "110": {
+   "Eye_L": 50.9,
+   "Eye_L_heading": 63.4,
+   "Eye_R": 4.6,
+   "Eye_R_heading": 26.6,
+   "shoulder_zR_minus_zL": 0.0
+  }
+ }
+}

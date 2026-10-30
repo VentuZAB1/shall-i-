@@ -1,0 +1,46 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\review\rv.py:268: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\review\rv.py:310: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\review\rv.py:338: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+00:03.562  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_front_25.png'
+FBX version: 7400
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_front_25.png
+00:03.906  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_back_25.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_back_25.png
+00:04.234  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_left_25.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_left_25.png
+00:04.547  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_right_25.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_right_25.png
+00:04.875  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_front_45.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_front_45.png
+00:05.187  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_left_45.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_left_45.png
+00:05.516  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_q34_40.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_q34_40.png
+00:05.875  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_close_hollow_7.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_close_hollow_7.png
+00:06.203  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_close_web1_7.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_close_web1_7.png
+00:06.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_close_web2_10.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_close_web2_10.png
+00:06.844  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_close_bark_6.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_close_bark_6.png
+00:07.156  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_close_crown_12.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_close_crown_12.png
+00:07.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_seam_5.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_seam_5.png
+00:07.859  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_seam_back_5.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_seam_back_5.png
+00:08.203  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_base_5.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_base_5.png
+00:08.547  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_hole_z3.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_hole_z3.png
+00:08.875  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_limbhole_7.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_limbhole_7.png
+00:09.187  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\rv3_dead_limbhole_8.png'
+RV: wrote C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/Halloween/DeadTrees/wip/rv3_dead_limbhole_8.png
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

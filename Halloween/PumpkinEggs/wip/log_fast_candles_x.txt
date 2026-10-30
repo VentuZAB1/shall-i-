@@ -1,0 +1,48 @@
+[eggs    5.4s] Candles game mesh tris 2124
+[eggs    5.4s]   uv smart done
+[eggs    5.4s]   uv unwrap+average done, packing
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:791: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  bmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:795: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  cmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:819: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs  173.9s]   baked LoWax1 {'texels': 5457, 'miss': 0.0}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs  174.1s]   baked LoWax2 {'texels': 8973, 'miss': 0.0}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs  174.4s]   baked LoWax3 {'texels': 12956, 'miss': 0.0}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs  174.7s]   baked LoPuddle {'texels': 10285, 'miss': 0.0008}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs  174.9s]   baked LoWick {'texels': 286, 'miss': 0.0}
+Info: Saved as "candles_fast.blend"
+[eggs  175.1s] Candles done {"name": "Candles", "tris": 2124, "texture": 256, "size_blender_xyz": [3.559, 3.154, 2.399], "bottom_offset_z": -1.2, "wick_tips": [[-0.103, 0.743, 0.001], [0.4, -0.317, 0.527], [-0.762, -0.342, 1.093]], "wick_tops": [[-0.119, 0.71, 0.015], [0.435, -0.306, 0.541], [-0.726, -0.351, 1.107]], "candle_heights": [1.2, 1.8, 2.4], "bake": {"LoWax1": {"texels": 5457, "miss": 0.0}, "LoWax2": {"texels": 8973, "miss": 0.0}, "LoWax3": {"texels": 12956, "miss": 0.0}, "LoPuddle": {"texels": 10285, "miss": 0.0008}, "LoWick": {"texels": 286, "miss": 0.0}}, "blender_shift": [-0.245, -0.0677, -1.1997]}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+unknown step x

@@ -1,0 +1,1 @@
+CLEAR {"bone": "Halo", "verts": 462, "nearest": [["Head", 0.055], ["Mane", 0.078], ["Wing_A_L", 0.078], ["Wing_A_R", 0.095], ["WingTip_A_R", 0.108], ["WingTip_A_L", 0.115]]}

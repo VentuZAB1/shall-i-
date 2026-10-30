@@ -1,0 +1,1 @@
+IDLE_RESULT {"tris": 11264, "top": 2.939, "low": -0.003, "span": 3.057, "files": 5}

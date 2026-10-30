@@ -1,0 +1,2 @@
+ARMCAM [1.596, 3.495, 4.044]
+ARMROW {"out": -6, "fwd": 14, "bend": 14, "40": {"vis_Shin_L": 0.478, "occ_Shin_L": {"Leg_L": 19, "Foot_L": 52}, "vis_Foot_L": 0.5, "occ_Foot_L": {"Shin_L": 76, "Leg_L": 4}, "coll": 0, "gap": 0.126, "fist_z": 0.491, "chest_z": 0.802, "fist_to_knee": 0.728}, "50": {"vis_Shin_L": 0.478, "occ_Shin_L": {"Leg_L": 19, "Foot_L": 52}, "vis_Foot_L": 0.494, "occ_Foot_L": {"Shin_L": 75, "Leg_L": 6}, "coll": 0, "gap": 0.126, "fist_z": 0.487, "chest_z": 0.798, "fist_to_knee": 0.728}}

@@ -1,0 +1,79 @@
+[bush    1.3s] thorn body hi 145892
+[bush    1.8s] thorn body lo 2600
+[bush    2.9s] thorn hi leaves 3245 area 131.7
+[bush    3.0s] thorn leaves: outline 79 inner 3 base 18 cane 8
+[bush    3.4s] thorn game mesh by material {'_Body': 2600, '_Wood': 2399, '_LeafTop': 1640, '_LeafBot': 1640, '_Berry': 480}
+[bush    3.5s] thorn game mesh tris 8759 hi: 181720 6048 52764 39480
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:775: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  bmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:779: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  cmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:805: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   24.8s]   baked G_Body {'texels': 367125, 'miss': 0.0, 's': 9.5}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   27.5s]   baked G_Leaf {'texels': 75686, 'miss': 0.0015, 's': 2.7}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   29.8s]   baked G_Wood {'texels': 70743, 'miss': 0.0022, 's': 2.3}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   31.4s]   baked G_Berry {'texels': 15360, 'miss': 0.0, 's': 1.6}
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:673: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+Info: Saved as "thorn.blend"
+[bush   34.4s] thorn done {"tris": {"Bush": 8759, "Web": 696, "WebSilk": 336}, "texture": 1024, "bake": {"G_Body": {"texels": 367125, "miss": 0.0, "s": 9.5}, "G_Leaf": {"texels": 75686, "miss": 0.0015, "s": 2.7}, "G_Wood": {"texels": 70743, "miss": 0.0022, "s": 2.3}, "G_Berry": {"texels": 15360, "miss": 0.0, "s": 1.6}}, "atlas_coverage": 0.504, "hi_leaves": 3245, "game_leaves": {"outline": 79, "inner": 3, "base": 18, "cane": 8}, "berries": 10, "spider_point_blender": [2.57, -1.733, 3.79], "spider_point_roblox": [2.57, 3.79, 1.733], "spider_free_drop": 3.79, "web_lines": 21, "webs": {"front": {"size_studs": [2.91, 2.55], "hub_roblox": [-0.135, 3.518, 2.803], "corners_roblox": {"BL": [-1.55, 2.05, 2.95], "BR": [1.45, 2.15, 3.0], "TL": [-1.449, 4.502, 2.451], "TR": [1.356, 4.689, 2.512]}}, "left": {"size_studs": [2.53, 2.66], "hub_roblox": [-2.643, 3.002, -0.014], "corners_roblox": {"BL": [-2.85, 1.65, -1.15], "BR": [-2.95, 1.55, 1.15], "TL": [-2.087, 4.268, -1.488], "TR": [-2.355, 4.043, 1.251]}}}, "bbox_blender": [[-3.195, -3.178, -0.351], [3.156, 3.062, 5.81]], "size_roblox_XYZ": [6.351, 6.161, 6.24]}
+00:36.359  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\thorn.blend"
+00:37.969  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_thorn_40_front.png'
+00:38.344  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_thorn_40_back.png'
+00:38.687  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_thorn_40_left.png'
+00:39.109  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_thorn_25_frame.png'
+00:39.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_thorn_close_low.png'
+00:39.578  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_thorn_sil_0.png'
+00:39.625  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_thorn_sil_90.png'
+00:39.672  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_thorn_sil_200.png'
+00:40.203  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review_lineup_25.png'
+00:40.562  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review_lineup_50.png'
+00:40.953  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review_thorn_close.png'
+00:41.344  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review_autumn_close.png'
+00:41.750  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review_bramble_close.png'
+00:42.141  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\review_thorn_back34.png'
+00:42.141  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\thorn.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Bush_Thorn.fbx'
+export finished in 0.0133 sec.
+[bush   40.5s] exported {'fbx': 'C:\\cdimp\\Halloween_Bush_Thorn.fbx', 'kb': 3944.6, 'tris': {'Bush': 8759, 'Web': 696, 'WebSilk': 336}}
+00:42.391  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\autumn.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Bush_Autumn.fbx'
+export finished in 0.0144 sec.
+[bush   40.6s] exported {'fbx': 'C:\\cdimp\\Halloween_Bush_Autumn.fbx', 'kb': 4294.2, 'tris': {'Bush': 8088, 'Gourds': 1520}}
+00:42.484  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bramble.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Bramble.fbx'
+export finished in 0.0079 sec.
+[bush   40.6s] exported {'fbx': 'C:\\cdimp\\Halloween_Bramble.fbx', 'kb': 881.3, 'tris': {'Bramble': 4515}}
+BUSH_REPORT {"thorn": {"tris": {"Bush": 8759, "Web": 696, "WebSilk": 336}, "texture": 1024, "bake": {"G_Body": {"texels": 367125, "miss": 0.0, "s": 9.5}, "G_Leaf": {"texels": 75686, "miss": 0.0015, "s": 2.7}, "G_Wood": {"texels": 70743, "miss": 0.0022, "s": 2.3}, "G_Berry": {"texels": 15360, "miss": 0.0, "s": 1.6}}, "atlas_coverage": 0.504, "hi_leaves": 3245, "game_leaves": {"outline": 79, "inner": 3, "base": 18, "cane": 8}, "berries": 10, "spider_point_blender": [2.57, -1.733, 3.79], "spider_point_roblox": [2.57, 3.79, 1.733], "spider_free_drop": 3.79, "web_lines": 21, "webs": {"front": {"size_studs": [2.91, 2.55], "hub_roblox": [-0.135, 3.518, 2.803], "corners_roblox": {"BL": [-1.55, 2.05, 2.95], "BR": [1.45, 2.15, 3.0], "TL": [-1.449, 4.502, 2.451], "TR": [1.356, 4.689, 2.512]}}, "left": {"size_studs": [2.53, 2.66], "hub_roblox": [-2.643, 3.002, -0.014], "corners_roblox": {"BL": [-2.85, 1.65, -1.15], "BR": [-2.95, 1.55, 1.15], "TL": [-2.087, 4.268, -1.488], "TR": [-2.355, 4.043, 1.251]}}}, "bbox_blender": [[-3.195, -3.178, -0.351], [3.156, 3.062, 5.81]], "size_roblox_XYZ": [6.351, 6.161, 6.24]}, "eye": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_thorn_40_front.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_thorn_40_back.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_thorn_40_left.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_thorn_25_frame.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_thorn_close_low.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_thorn_sil_0.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_thorn_sil_90.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_thorn_sil_200.png"], "render": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\review_lineup_25.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\review_lineup_50.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\review_thorn_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\review_autumn_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\review_bramble_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\review_thorn_back34.png"], "export": {"thorn": {"fbx": "C:\\cdimp\\Halloween_Bush_Thorn.fbx", "kb": 3944.6, "tris": {"Bush": 8759, "Web": 696, "WebSilk": 336}}, "autumn": {"fbx": "C:\\cdimp\\Halloween_Bush_Autumn.fbx", "kb": 4294.2, "tris": {"Bush": 8088, "Gourds": 1520}}, "bramble": {"fbx": "C:\\cdimp\\Halloween_Bramble.fbx", "kb": 881.3, "tris": {"Bramble": 4515}}}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
+EXIT 0

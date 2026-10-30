@@ -1,0 +1,164 @@
+
+
+# ------------------------------------------------------------------ animation (WraithHound/ANIM_REFS.md)
+import petkit as pk
+import _common as cm
+
+LEGS4 = ["Leg_FL", "Leg_FR", "Leg_BL", "Leg_BR"]
+ROWS = ["Mane1", "Mane2", "Mane3"]
+TAILB = ["Tail1", "Tail2", "Tail3", "Tail4"]
+H_U = 1.27                       # model height in units (ear tips, HEIGHT 9.0 studs): 0.05H = 0.064
+CROUCH = 0.20                    # act_smokecloak body drop (units)
+
+
+def tab(T, f):
+    """eased (smoothstep) interpolation through [(frame, value | tuple)]"""
+    if f <= T[0][0]:
+        return T[0][1]
+    for (f0, v0), (f1, v1) in zip(T, T[1:]):
+        if f0 <= f <= f1:
+            u = (f - f0) / (f1 - f0) if f1 > f0 else 1.0
+            u = u * u * (3 - 2 * u)
+            if isinstance(v0, tuple):
+                return tuple(a + (b - a) * u for a, b in zip(v0, v1))
+            return v0 + (v1 - v0) * u
+    return T[-1][1]
+
+
+def ears(k, f, p=0.0, splay=0.0):
+    """tall pinned ears: p = pitch (+ forward, - back), splay = outward roll"""
+    k.key("Ear_L", f, rot=(p, 0, splay))
+    k.key("Ear_R", f, rot=(p, 0, -splay))
+
+
+def mane(k, f, lift, splay, sway):
+    """the smoke mane, row by row (lists of 3, Mane1 = the front row): lift = pitch (+ = the plumes rise),
+    splay = the side wisps roll outward, sway = yaw"""
+    for i, r in enumerate(ROWS):
+        k.key(r, f, rot=(lift[i], sway[i], 0))
+        k.key(r + "_L", f, rot=(0, 0, splay[i]))
+        k.key(r + "_R", f, rot=(0, 0, -splay[i]))
+
+
+def tail(k, f, n, lift=0.0, sway=0.0, cycles=1, phase=0.0, lag=0.10):
+    """the long smoke tail: a lagging sway down the chain (+ lift = the tail rises)"""
+    for i, b in enumerate(TAILB):
+        y = sway * (0.6 + 0.3 * i) * pk.wave(f, n, phase - lag * i, cycles) if sway else 0.0
+        k.key(b, f, rot=(lift * (1.0 - 0.15 * i), y, 0))
+
+
+def idle(k):
+    """SCENT DRIFT (ref W2, The Pointer): the nose lowers and lifts in slow 15-20 f moves while the body stays
+    still, the ears flick back (f40) and forward (f80), the mane rows drift with a 3 f lag per row, the tail
+    streams slowly."""
+    n = 120
+    k.new_action("idle", n, True)
+    HP = [(0, 0.0), (10, 0.0), (28, 10.0), (42, 10.0), (60, -8.0), (72, -8.0), (90, 5.0), (100, 5.0), (116, 0.0),
+          (120, 0.0)]
+    SN = [(0, 0.0), (30, 0.0), (33, 1.0), (36, 0.0), (39, 1.0), (42, 0.0), (120, 0.0)]          # sniffs (low)
+    EF = [(0, 0.0), (38, 0.0), (41, -14.0), (47, -14.0), (54, 0.0), (78, 0.0), (81, 8.0), (86, 8.0), (92, 0.0),
+          (120, 0.0)]
+    for f in range(0, n + 1, 2):
+        hp = tab(HP, f)
+        b = pk.wave(f, n, 0, 3)
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0.003 * b))
+        k.key("Chest", f, rot=(-0.6 * b, 0, 0))
+        k.key("Neck", f, rot=(0.35 * hp, 0, 0))
+        k.key("Head", f, rot=(0.65 * hp - 2.0 * tab(SN, f), 0, 0))
+        k.key("Jaw", f, rot=(1.5, 0, 0))
+        ears(k, f, tab(EF, f))
+        mane(k, f, [3.0 * pk.wave(f, n, -0.025 * i, 2) for i in range(3)], [2.0 * pk.wave(f, n, 0.25 - 0.025 * i, 2)
+             for i in range(3)], [4.0 * pk.wave(f, n, 0.1 - 0.025 * i, 1) for i in range(3)])
+        tail(k, f, n, lift=1.5 * b, sway=5.0, cycles=1)
+    cm.plant(k, n)
+    k.finish()
+    k.meta["planted"] = list(LEGS4)
+
+
+def walk(k):
+    """LEAN TROT-WALK (refs W1 + W4): long diagonal steps, the head low and level, the mane rows lag the body by
+    4 f (2 lifts per cycle), the tail streams behind with a lagging sway."""
+    n = 30
+
+    def body(f):
+        bob = 0.5 - 0.5 * math.cos(4 * math.pi * f / n)
+        k.key("Spine", f, rot=(0.6 * pk.wave(f, n, 0.1, 2), 2.0 * pk.wave(f, n), 2.0 * pk.wave(f, n)),
+              loc=(0, 0, -0.014 * bob))
+        k.key("Chest", f, rot=(0, -2.5 * pk.wave(f, n, 0.25), -1.5 * pk.wave(f, n, 0.25)))
+        k.key("Neck", f, rot=(3.0 + 1.0 * pk.wave(f, n, 0.15, 2), 0, 0))
+        k.key("Head", f, rot=(1.0 - 1.5 * pk.wave(f, n, 0.20, 2), -1.5 * pk.wave(f, n, 0.25), 0))
+        k.key("Jaw", f, rot=(1.5, 0, 0))
+        ears(k, f, -4.0)
+        lagc = 4.0 / n                                   # the mane lags the body by 4 f
+        mane(k, f, [-3.0 + 3.0 * pk.wave(f, n, 0.1 - lagc - 0.03 * i, 2) for i in range(3)],
+             [3.0 + 2.0 * pk.wave(f, n, 0.35 - lagc - 0.03 * i, 2) for i in range(3)],
+             [-3.0 * pk.wave(f, n, 0.25 - lagc - 0.03 * i) for i in range(3)])
+        tail(k, f, n, lift=2.0 + 2.0 * pk.wave(f, n, 0.3, 2), sway=6.0, cycles=1, phase=0.3)
+    return cm.quad_walk(k, n, 0.15, 0.060, body, gait="trot")
+
+
+def roar(k):
+    """MANE FLARE (refs W1 + W3): the smoke mane lifts and splays out 25 deg row by row (2 f lag) and the ears go
+    back; the chest pushes forward 0.05H, the head pitches down 10 deg and the jaw opens 25 deg (a silent snarl,
+    fangs out, ears follow the mouth); hold with a 2 deg mane tremble; the mane falls back and the jaw closes."""
+    n = 60
+    k.new_action("roar", n, False)
+    MF = [(0, 0.0), (12, 1.0), (44, 1.0), (56, 0.0), (60, 0.0)]
+    EA = [(0, 0.0), (14, -24.0), (46, -24.0), (56, 0.0), (60, 0.0)]
+    PU = [(0, 0.0), (14, 0.0), (26, 1.0), (44, 1.0), (56, 0.0), (60, 0.0)]
+    JW = [(0, 1.5), (14, 1.5), (26, 25.0), (44, 25.0), (54, 1.5), (60, 1.5)]
+    push = 0.05 * H_U
+    for f in range(0, n + 1):
+        pu = tab(PU, f)
+        tr = 2.0 * math.sin(2 * math.pi * f / 4) if 26 <= f <= 44 else 0.0
+        k.key("Spine", f, rot=(2.0 * pu, 0, 0), loc=(0, -push * pu, -0.020 * pu))
+        k.key("Chest", f, rot=(1.5 * pu, 0, 0))
+        k.key("Neck", f, rot=(4.0 * pu, 0, 0))
+        k.key("Head", f, rot=(6.0 * pu + 0.3 * tr, 0, 0))
+        k.key("Jaw", f, rot=(tab(JW, f) + 0.5 * tr, 0, 0))
+        ears(k, f, tab(EA, max(0, f - 3)), splay=6.0 * tab(MF, f))           # the ears follow ~3 f late
+        mf = [tab(MF, max(0, f - 2 * i)) for i in range(3)]
+        mane(k, f, [18.0 * m + (tr if i == 1 else -tr) * m for i, m in enumerate(mf)],
+             [25.0 * m for m in mf], [0.0, 0.0, 0.0])
+        tail(k, f, n, lift=8.0 * tab(MF, f), sway=0.0)
+    cm.plant(k, n)
+    k.finish(loop=False)
+    k.events["roar"] = {"fog": round(14 / n, 3), "snarl": round(26 / n, 3)}
+
+
+def smokecloak(k):
+    """SIGNATURE act_smokecloak - THE CLOAK SPREADS (refs W3 + W4): the hound crouches flat, the smoke mane lifts and
+    fans out wide row by row (3 f lag) like a cloak, holds and drifts (two slow sway cycles), folds back in as the
+    hound rises, and settles to the exact rest pose. All four paws planted every frame."""
+    n = 100
+    k.new_action("act_smokecloak", n, False)
+    CR = [(0, 0.0), (18, 1.0), (68, 1.0), (86, 0.0), (100, 0.0)]
+    FAN = [(0, 0.0), (18, 0.0), (32, 1.0), (68, 1.0), (84, 0.0), (100, 0.0)]
+    HOLD = [(0, 0.0), (38, 0.0), (44, 1.0), (64, 1.0), (70, 0.0), (100, 0.0)]
+    EA = [(0, 0.0), (14, -18.0), (66, -18.0), (84, 0.0), (100, 0.0)]
+    for f in range(0, n + 1):
+        c, hd = tab(CR, f), tab(HOLD, f)
+        k.key("Spine", f, rot=(2.0 * c, 0, 0), loc=(0, 0.015 * c, -CROUCH * c))
+        k.key("Chest", f, rot=(1.5 * c, 0, 0))
+        k.key("Neck", f, rot=(-5.0 * c, 0, 0))
+        k.key("Head", f, rot=(-2.0 * c, 0, 0))
+        k.key("Jaw", f, rot=(1.5 + 3.0 * c, 0, 0))
+        ears(k, f, tab(EA, f))
+        fan = [tab(FAN, max(0, f - 3 * i)) for i in range(3)]
+        dr = [6.0 * hd * math.sin(2 * math.pi * (f - 40 - 3 * i) / 14.0) for i in range(3)]   # two drift cycles
+        mane(k, f, [22.0 * a for a in fan], [40.0 * a + 0.5 * d for a, d in zip(fan, dr)], dr)
+        for i, b in enumerate(TAILB):                    # the tail fans with the cloak (a slow lagging sway)
+            k.key(b, f, rot=(-6.0 * c * (1.0 - 0.15 * i), 4.0 * hd * math.sin(2 * math.pi * (f - 44 - 3 * i) / 14.0),
+                             0))
+    cm.plant(k, n)
+    k.finish(loop=False)
+    k.events["act_smokecloak"] = {"smoke_puff": round(16 / n, 3), "cloak": round(28 / n, 3),
+                                  "drift": round(54 / n, 3)}
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    roar(k)
+    smokecloak(k)
+    return stride

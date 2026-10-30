@@ -1,0 +1,778 @@
+{
+ "Halloween_Bush_Thorn.fbx": {
+  "objects": {
+   "Bush": {
+    "tris": 8759,
+    "verts": 6054,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "dims_world": [
+     6.351,
+     6.015,
+     5.935
+    ],
+    "min": [
+     -3.195,
+     -2.953,
+     -0.125
+    ],
+    "max": [
+     3.156,
+     3.062,
+     5.81
+    ],
+    "uv_layers": [
+     "UVMap"
+    ],
+    "color_attrs": [],
+    "smooth_frac": 1.0,
+    "materials": [
+     {
+      "name": "BushThorn_PBR",
+      "tex": [
+       {
+        "img": "BushThorn_albedo",
+        "links": [
+         "BSDF_PRINCIPLED:Base Color"
+        ]
+       },
+       {
+        "img": "BushThorn_normal",
+        "links": [
+         "NORMAL_MAP:Color"
+        ]
+       },
+       {
+        "img": "BushThorn_rough",
+        "links": [
+         "BSDF_PRINCIPLED:Roughness"
+        ]
+       }
+      ],
+      "blend_method": "HASHED"
+     }
+    ],
+    "n_verts_below_-0.3": 0
+   },
+   "Web": {
+    "tris": 576,
+    "verts": 336,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "dims_world": [
+     4.425,
+     4.726,
+     3.485
+    ],
+    "min": [
+     -3.05,
+     -3.024,
+     1.302
+    ],
+    "max": [
+     1.375,
+     1.702,
+     4.787
+    ],
+    "uv_layers": [
+     "UVMap"
+    ],
+    "color_attrs": [],
+    "smooth_frac": 1.0,
+    "materials": [
+     {
+      "name": "BushThornWeb_Mat",
+      "tex": [
+       {
+        "img": "BushThornWeb_albedo",
+        "links": [
+         "BSDF_PRINCIPLED:Base Color"
+        ]
+       },
+       {
+        "img": "BushThornWeb_albedo.001",
+        "links": [
+         "BSDF_PRINCIPLED:Alpha"
+        ]
+       }
+      ],
+      "blend_method": "HASHED"
+     }
+    ],
+    "n_verts_below_-0.3": 0
+   },
+   "WebSilk": {
+    "tris": 336,
+    "verts": 224,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "dims_world": [
+     4.4,
+     4.488,
+     3.139
+    ],
+    "min": [
+     -2.95,
+     -3.0,
+     1.55
+    ],
+    "max": [
+     1.45,
+     1.488,
+     4.689
+    ],
+    "uv_layers": [
+     "UVMap"
+    ],
+    "color_attrs": [],
+    "smooth_frac": 1.0,
+    "materials": [
+     {
+      "name": "BushThornSilk_Mat",
+      "tex": [
+       {
+        "img": "BushThornSilk_albedo",
+        "links": [
+         "BSDF_PRINCIPLED:Base Color"
+        ]
+       },
+       {
+        "img": "BushThornSilk_albedo.002",
+        "links": [
+         "BSDF_PRINCIPLED:Alpha"
+        ]
+       }
+      ],
+      "blend_method": "HASHED"
+     }
+    ],
+    "n_verts_below_-0.3": 0
+   }
+  },
+  "images": {
+   "BushThorn_albedo": {
+    "size": [
+     1024,
+     1024
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Thorn.fbm\\BushThorn_albedo.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.189,
+     0.151,
+     0.194
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushThorn_normal": {
+    "size": [
+     1024,
+     1024
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Thorn.fbm\\BushThorn_normal.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.498,
+     0.494,
+     0.846
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushThorn_rough": {
+    "size": [
+     1024,
+     1024
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Thorn.fbm\\BushThorn_rough.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.711,
+     0.711,
+     0.711
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushThornSilk_albedo": {
+    "size": [
+     1024,
+     1024
+    ],
+    "channels": 4,
+    "depth": 32,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Thorn.fbm\\BushThornSilk_albedo.png",
+    "alpha_min": 0.0,
+    "alpha_mean": 0.1,
+    "frac_alpha_lt_0.5": 0.896,
+    "rgb_mean": [
+     0.77,
+     0.771,
+     0.805
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushThornSilk_albedo.001": {
+    "size": [
+     1024,
+     1024
+    ],
+    "channels": 4,
+    "depth": 32,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Thorn.fbm\\BushThornSilk_albedo.png",
+    "alpha_min": 0.0,
+    "alpha_mean": 0.1,
+    "frac_alpha_lt_0.5": 0.896,
+    "rgb_mean": [
+     0.77,
+     0.771,
+     0.805
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushThornSilk_albedo.002": {
+    "size": [
+     1024,
+     1024
+    ],
+    "channels": 4,
+    "depth": 32,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Thorn.fbm\\BushThornSilk_albedo.png",
+    "alpha_min": 0.0,
+    "alpha_mean": 0.1,
+    "frac_alpha_lt_0.5": 0.896,
+    "rgb_mean": [
+     0.77,
+     0.771,
+     0.805
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushThornWeb_albedo": {
+    "size": [
+     128,
+     128
+    ],
+    "channels": 4,
+    "depth": 32,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Thorn.fbm\\BushThornWeb_albedo.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.808,
+     0.814,
+     0.842
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushThornWeb_albedo.001": {
+    "size": [
+     128,
+     128
+    ],
+    "channels": 4,
+    "depth": 32,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Thorn.fbm\\BushThornWeb_albedo.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.808,
+     0.814,
+     0.842
+    ],
+    "frac_near_black": 0.0
+   }
+  },
+  "total_tris": 9671,
+  "bbox_min": [
+   -3.195,
+   -3.024,
+   -0.125
+  ],
+  "bbox_max": [
+   3.156,
+   3.062,
+   5.81
+  ],
+  "size_roblox_XYZ": [
+   6.351,
+   5.935,
+   6.086
+  ],
+  "unit_scale": 1.0
+ },
+ "Halloween_Bush_Autumn.fbx": {
+  "objects": {
+   "Bush": {
+    "tris": 8088,
+    "verts": 5924,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "dims_world": [
+     6.188,
+     6.074,
+     5.208
+    ],
+    "min": [
+     -3.044,
+     -3.169,
+     -0.179
+    ],
+    "max": [
+     3.144,
+     2.905,
+     5.03
+    ],
+    "uv_layers": [
+     "UVMap"
+    ],
+    "color_attrs": [],
+    "smooth_frac": 1.0,
+    "materials": [
+     {
+      "name": "BushAutumn_PBR",
+      "tex": [
+       {
+        "img": "BushAutumn_albedo",
+        "links": [
+         "BSDF_PRINCIPLED:Base Color"
+        ]
+       },
+       {
+        "img": "BushAutumn_normal",
+        "links": [
+         "NORMAL_MAP:Color"
+        ]
+       },
+       {
+        "img": "BushAutumn_rough",
+        "links": [
+         "BSDF_PRINCIPLED:Roughness"
+        ]
+       }
+      ],
+      "blend_method": "HASHED"
+     }
+    ],
+    "n_verts_below_-0.3": 0
+   },
+   "Gourds": {
+    "tris": 1520,
+    "verts": 768,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "dims_world": [
+     2.283,
+     1.261,
+     1.299
+    ],
+    "min": [
+     -1.237,
+     -1.958,
+     -0.03
+    ],
+    "max": [
+     1.046,
+     -0.697,
+     1.269
+    ],
+    "uv_layers": [
+     "UVMap"
+    ],
+    "color_attrs": [],
+    "smooth_frac": 1.0,
+    "materials": [
+     {
+      "name": "BushAutumnGourds_PBR",
+      "tex": [
+       {
+        "img": "BushAutumnGourds_albedo",
+        "links": [
+         "BSDF_PRINCIPLED:Base Color"
+        ]
+       },
+       {
+        "img": "BushAutumnGourds_normal",
+        "links": [
+         "NORMAL_MAP:Color"
+        ]
+       },
+       {
+        "img": "BushAutumnGourds_rough",
+        "links": [
+         "BSDF_PRINCIPLED:Roughness"
+        ]
+       }
+      ],
+      "blend_method": "HASHED"
+     }
+    ],
+    "n_verts_below_-0.3": 0
+   }
+  },
+  "images": {
+   "BushAutumn_albedo": {
+    "size": [
+     1024,
+     1024
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Autumn.fbm\\BushAutumn_albedo.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.603,
+     0.179,
+     0.035
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushAutumn_normal": {
+    "size": [
+     1024,
+     1024
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Autumn.fbm\\BushAutumn_normal.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.501,
+     0.503,
+     0.925
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushAutumn_rough": {
+    "size": [
+     1024,
+     1024
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Autumn.fbm\\BushAutumn_rough.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.818,
+     0.818,
+     0.818
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushAutumnGourds_albedo": {
+    "size": [
+     512,
+     512
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Autumn.fbm\\BushAutumnGourds_albedo.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.659,
+     0.398,
+     0.093
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushAutumnGourds_normal": {
+    "size": [
+     512,
+     512
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Autumn.fbm\\BushAutumnGourds_normal.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.501,
+     0.499,
+     0.973
+    ],
+    "frac_near_black": 0.0
+   },
+   "BushAutumnGourds_rough": {
+    "size": [
+     512,
+     512
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bush_Autumn.fbm\\BushAutumnGourds_rough.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.52,
+     0.52,
+     0.52
+    ],
+    "frac_near_black": 0.0
+   }
+  },
+  "total_tris": 9608,
+  "bbox_min": [
+   -3.044,
+   -3.169,
+   -0.179
+  ],
+  "bbox_max": [
+   3.144,
+   2.905,
+   5.03
+  ],
+  "size_roblox_XYZ": [
+   6.188,
+   5.208,
+   6.074
+  ],
+  "unit_scale": 1.0
+ },
+ "Halloween_Bramble.fbx": {
+  "objects": {
+   "Bramble": {
+    "tris": 4515,
+    "verts": 2761,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.01,
+     0.01,
+     0.01
+    ],
+    "dims_world": [
+     3.881,
+     3.846,
+     3.064
+    ],
+    "min": [
+     -1.916,
+     -1.895,
+     -0.157
+    ],
+    "max": [
+     1.965,
+     1.951,
+     2.908
+    ],
+    "uv_layers": [
+     "UVMap"
+    ],
+    "color_attrs": [],
+    "smooth_frac": 1.0,
+    "materials": [
+     {
+      "name": "Bramble_PBR",
+      "tex": [
+       {
+        "img": "Bramble_albedo",
+        "links": [
+         "BSDF_PRINCIPLED:Base Color"
+        ]
+       },
+       {
+        "img": "Bramble_normal",
+        "links": [
+         "NORMAL_MAP:Color"
+        ]
+       },
+       {
+        "img": "Bramble_rough",
+        "links": [
+         "BSDF_PRINCIPLED:Roughness"
+        ]
+       }
+      ],
+      "blend_method": "HASHED"
+     }
+    ],
+    "n_verts_below_-0.3": 0
+   }
+  },
+  "images": {
+   "Bramble_albedo": {
+    "size": [
+     512,
+     512
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bramble.fbm\\Bramble_albedo.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.421,
+     0.343,
+     0.267
+    ],
+    "frac_near_black": 0.0
+   },
+   "Bramble_normal": {
+    "size": [
+     512,
+     512
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bramble.fbm\\Bramble_normal.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.5,
+     0.501,
+     0.957
+    ],
+    "frac_near_black": 0.0
+   },
+   "Bramble_rough": {
+    "size": [
+     512,
+     512
+    ],
+    "channels": 4,
+    "depth": 24,
+    "packed": true,
+    "filepath": "C:\\cdimp\\Halloween_Bramble.fbm\\Bramble_rough.png",
+    "alpha_min": 1.0,
+    "alpha_mean": 1.0,
+    "frac_alpha_lt_0.5": 0.0,
+    "rgb_mean": [
+     0.837,
+     0.837,
+     0.837
+    ],
+    "frac_near_black": 0.0
+   }
+  },
+  "total_tris": 4515,
+  "bbox_min": [
+   -1.916,
+   -1.895,
+   -0.157
+  ],
+  "bbox_max": [
+   1.965,
+   1.951,
+   2.908
+  ],
+  "size_roblox_XYZ": [
+   3.881,
+   3.064,
+   3.846
+  ],
+  "unit_scale": 1.0
+ }
+}

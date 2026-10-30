@@ -1,0 +1,1 @@
+VIS {"cur": {"visible": 15, "x_min": -0.163, "cuts": {}}, "asym1": {"visible": 13, "x_min": -0.157, "cuts": {}}, "sym1": {"visible": 9, "x_min": -0.148, "cuts": {}}, "sym2": {"visible": 16, "x_min": -0.15, "cuts": {}}, "asym2": {"visible": 14, "x_min": -0.155, "cuts": {}}}

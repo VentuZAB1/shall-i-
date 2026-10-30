@@ -1,0 +1,1 @@
+L5drop=WINGS:86,6,-80,10;StreamerC1:-24,0,0;StreamerC2:0,0,0;StreamerC3:0,0,0;StreamerL1:-24,-0,0;StreamerL2:0,0,0;StreamerL3:0,0,0;StreamerR1:-24,0,0;StreamerR2:0,0,0;StreamerR3:0,0,0

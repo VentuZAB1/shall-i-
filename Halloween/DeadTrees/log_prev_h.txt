@@ -1,0 +1,13 @@
+[    0.2] skeleton {'bmin': [np.float64(-6.55), np.float64(-5.59), np.float64(-0.67)], 'bmax': [np.float64(6.39), np.float64(5.19), np.float64(14.98)], 'levels': {0: 1, 1: 13, 2: 23, 3: 56, 4: 112}, 'n': 205} scale 1.015 seed 51
+[   22.4]   sdf branches 36 22.2s
+[   46.8] core mesh 329196
+[   54.9] tubes hi 79762
+00:58.437  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\haunted_prev_25.png'
+00:58.828  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\haunted_prev_side.png'
+00:59.172  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\haunted_prev_close.png'
+00:59.515  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\wip\haunted_prev_40.png'
+Info: Saved as "haunted_preview.blend"
+[   57.9] DONE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

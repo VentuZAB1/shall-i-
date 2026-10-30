@@ -1,0 +1,18 @@
+{
+ "twist_srgb": [
+  47.1,
+  49.6,
+  56.1
+ ],
+ "twist_Y": 0.03143,
+ "pole_srgb": [
+  47.5,
+  49.3,
+  55.8
+ ],
+ "pole_Y": 0.03126,
+ "twist_vs_pole_Y": 1.005,
+ "twist_vs_pole_srgb_mean": 1.001,
+ "chroma_twist_R_minus_B": -9.0,
+ "chroma_pole_R_minus_B": -8.3
+}

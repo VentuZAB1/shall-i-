@@ -1,0 +1,76 @@
+--- QA popup pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 77% "29.4%"@20, 74% "18.4%"@20, 66% "41.1%"@20, 64% "ENDS IN 23:59:48"@22, 62% "1 HOUR OF INCOME"@22
+fill <= 83% everywhere
+view popup dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("10K KG - A RANDOM PET!")
+--- QA popup_restricted pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 64% "ENDS IN 23:59:48"@22, 62% "1 HOUR OF INCOME"@22, 61% "10x EVERY POTION"@22, 60% "MONEY + HATCH + SPEED"@16, 55% "NO THANKS"@20
+fill <= 83% everywhere
+view popup_restricted dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("MONEY + HATCH + SPEED")
+--- QA popup_thanks pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 77% "29.4%"@20, 74% "18.4%"@20, 66% "41.1%"@20, 64% "ENDS IN 23:59:48"@22, 62% "1 HOUR OF INCOME"@22
+fill <= 83% everywhere
+view popup_thanks dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("10K KG - A RANDOM PET!")
+--- QA popup_error pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 77% "29.4%"@20, 74% "18.4%"@20, 66% "41.1%"@20, 64% "ENDS IN 23:59:48"@22, 62% "1 HOUR OF INCOME"@22
+fill <= 83% everywhere
+view popup_error dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("10K KG - A RANDOM PET!")
+--- QA popup_urgent pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 77% "29.4%"@20, 74% "18.4%"@20, 66% "41.1%"@20, 62% "1 HOUR OF INCOME"@22, 60% "MONEY + HATCH + SPEED"@16
+fill <= 83% everywhere
+view popup_urgent dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("10K KG - A RANDOM PET!")
+--- QA shop_top pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 81% "TREADMILL"@16, 75% "FEATURED"@16, 64% "POTIONS"@16, 49% "X"@21, 46% "SPEED"@16
+fill <= 83% everywhere
+view shop_top dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("FEATURED")
+scroll 0 of 1248 (CanvasSize 1634, List H 1626; no starter: 1492)
+--- QA shop_speed pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 81% "TREADMILL"@16, 75% "FEATURED"@16, 64% "POTIONS"@16, 49% "X"@21, 46% "SPEED"@16
+fill <= 83% everywhere
+view shop_speed dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("FEATURED")
+scroll 504 of 1248 (CanvasSize 1634, List H 1626; no starter: 1492)
+--- QA shop_potions pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 81% "TREADMILL"@16, 75% "FEATURED"@16, 64% "POTIONS"@16, 49% "X"@21, 46% "SPEED"@16
+fill <= 83% everywhere
+view shop_potions dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("FEATURED")
+scroll 866 of 1248 (CanvasSize 1634, List H 1626; no starter: 1492)
+--- QA shop_bottom pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 81% "TREADMILL"@16, 75% "FEATURED"@16, 64% "POTIONS"@16, 49% "X"@21, 46% "SPEED"@16
+fill <= 83% everywhere
+view shop_bottom dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("FEATURED")
+scroll 1248 of 1248 (CanvasSize 1634, List H 1626; no starter: 1492)
+--- QA shop_gift pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 81% "TREADMILL"@16, 75% "FEATURED"@16, 74% "@rocketboy2012"@16, 64% "POTIONS"@16, 63% "PICK A PLAYER IN THIS SERVER"@16
+fill <= 83% everywhere
+view shop_gift dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("FEATURED")
+scroll 0 of 1248 (CanvasSize 1634, List H 1626; no starter: 1492)
+--- QA popup phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 77% "29.4%"@20, 74% "18.4%"@20, 66% "41.1%"@20, 64% "ENDS IN 23:59:48"@22, 62% "1 HOUR OF INCOME"@22
+fill <= 83% everywhere
+view popup dev phone: scale 0.7106  window 526x334 at gui cx 366.00  min text 11.4 px ("10K KG - A RANDOM PET!")
+--- QA popup_restricted phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 64% "ENDS IN 23:59:48"@22, 62% "1 HOUR OF INCOME"@22, 61% "10x EVERY POTION"@22, 60% "MONEY + HATCH + SPEED"@16, 55% "NO THANKS"@20
+fill <= 83% everywhere
+view popup_restricted dev phone: scale 0.7106  window 526x334 at gui cx 366.00  min text 11.4 px ("MONEY + HATCH + SPEED")
+--- QA shop_top phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 81% "TREADMILL"@16, 75% "FEATURED"@16, 64% "POTIONS"@16, 49% "X"@21, 46% "SPEED"@16
+fill <= 83% everywhere
+view shop_top dev phone: scale 0.7106  window 526x334 at gui cx 407.24  min text 11.4 px ("FEATURED")
+scroll 0 of 1248 (CanvasSize 1634, List H 1626; no starter: 1492)
+--- QA shop_potions phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 81% "TREADMILL"@16, 75% "FEATURED"@16, 64% "POTIONS"@16, 49% "X"@21, 46% "SPEED"@16
+fill <= 83% everywhere
+view shop_potions dev phone: scale 0.7106  window 526x334 at gui cx 407.24  min text 11.4 px ("FEATURED")
+scroll 866 of 1248 (CanvasSize 1634, List H 1626; no starter: 1492)
+--- QA shop_gift phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 81% "TREADMILL"@16, 75% "FEATURED"@16, 74% "@rocketboy2012"@16, 64% "POTIONS"@16, 63% "PICK A PLAYER IN THIS SERVER"@16
+fill <= 83% everywhere
+view shop_gift dev phone: scale 0.7106  window 526x334 at gui cx 407.24  min text 11.4 px ("FEATURED")
+scroll 0 of 1248 (CanvasSize 1634, List H 1626; no starter: 1492)
+--- QA shop_long
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 82% "EVERY EGG IN YOUR BASE"@16, 81% "KEPT ON REBIRTH"@16, 81% "HATCH ALL EGGS"@24, 80% "BEST VALUE"@16, 80% "BEST VALUE"@16
+fill <= 83% everywhere
+view shop_long dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 16.0 px ("5x EVERY POTION")
+--- QA sheet
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 81% "TREADMILL"@16, 80% "NEED MORE $!"@18, 80% "BEST VALUE"@16, 75% "FEATURED"@16, 71% "$200T"@26
+fill <= 83% everywhere
+view sheet dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 20.0 px ("BEST VALUE")

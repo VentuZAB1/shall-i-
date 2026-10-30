@@ -1,0 +1,14 @@
+[    0.3] skeleton {'bmin': [np.float64(-6.13), np.float64(-6.85), np.float64(-0.69)], 'bmax': [np.float64(7.13), np.float64(6.12), np.float64(15.98)], 'levels': {0: 1, 1: 12, 2: 22, 3: 57, 4: 114}, 'n': 206} scale 1.066 seed 34
+[    4.0]   sdf branches 38 3.7s
+[    7.6] hi core 194312
+[    9.2] hi tubes 162934
+[   10.0]   sdf branches 38 0.7s
+[   11.0] lo core 130208 -> 13800
+[   11.2] lo tubes 6418
+[   52.4] forks scored 11 chosen [(2.1, (-0.1, -0.2, 5.8)), (0.94, (0.5, 2.2, 12.0))]
+Info: Saved as "dead_tree.blend"
+[   55.5] BUILD {"trunk_hi_tris": 194312, "branches_hi_tris": 162934, "trunk_tris": 13800, "branches_tris": 6418, "split_z": 6.554, "DeadTree_Trunk_uv": {"side_faces": 7022, "misc_faces": 571, "hidden_faces": 332}, "Trunk_tris": 7593, "DeadTree_Limbs_uv": {"side_faces": 6158, "misc_faces": 49, "hidden_faces": 0}, "Limbs_tris": 6207, "texel": {"DeadTree_Trunk": {"uv_fill": 0.434, "px_per_stud": 67.2, "area": 100.7}, "DeadTree_Limbs": {"uv_fill": 0.613, "px_per_stud": 104.9, "area": 58.4}, "DeadTree_Branches": {"uv_fill": 0.612, "px_per_stud": 122.8, "area": 42.6}}, "web_tris": 2972, "silk_tris": 564, "spiders": [{"point": [-5.464, 5.648, 8.912], "free_drop": 8.0, "clear_ring": 8.0, "branch_radius": 0.12}, {"point": [5.951, 1.767, 10.138], "free_drop": 8.0, "clear_ring": 8.0, "branch_radius": 0.123}, {"point": [-3.531, -4.585, 11.218], "free_drop": 8.0, "clear_ring": 8.0, "branch_radius": 0.119}], "build_s": 55.1}
+[   55.5] DONE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

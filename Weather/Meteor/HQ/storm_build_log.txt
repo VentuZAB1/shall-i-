@@ -1,0 +1,37 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\build_storm_hq.py:373: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  bm_.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\build_storm_hq.py:380: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  hm.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\build_storm_hq.py:410: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+00:45.875  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\storm_hq.blend"
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\build_storm_hq.py:444: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\build_storm_hq.py:459: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mfl.use_nodes = True
+00:47.610  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\storm_hq_player.png'
+00:48.000  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\storm_hq_below.png'
+00:48.313  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\storm_hq_side.png'
+00:48.688  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\storm_hq_close.png'
+00:48.703  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Weather\Meteor\HQ\storm_hq.blend"
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Saved as "storm_hq.blend"
+
+FBX export starting... 'C:\\cdimp\\StormCloudHQ.fbx'
+export finished in 0.0672 sec.
+STORM_REPORT {"build": {"hi_tris": 2132200, "size": [207.1, 404.7, 93.4], "base_above_bottom": 9.92, "levels": [203, 1100, 6500, 46], "pieces": [{"name": "StormCloud1", "tris": 18999, "size": [161.8, 110.4, 88.1], "loc": [0.0, 0.0, 0.0]}, {"name": "StormCloud2", "tris": 19000, "size": [206.1, 108.5, 92.8], "loc": [0.0, 0.0, 0.0]}, {"name": "StormCloud3", "tris": 19000, "size": [206.6, 111.2, 86.0], "loc": [0.0, 0.0, 0.0]}, {"name": "StormCloud4", "tris": 19000, "size": [173.3, 108.5, 86.8], "loc": [0.0, 0.0, 0.0]}]}, "render": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\storm_hq_player.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\storm_hq_below.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\storm_hq_side.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Weather\\Meteor\\HQ\\storm_hq_close.png"], "export": {"fbx": "C:\\cdimp\\StormCloudHQ.fbx", "kb": 12499.2}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
+DONE

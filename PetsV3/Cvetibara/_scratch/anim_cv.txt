@@ -1,0 +1,296 @@
+# ------------------------------------------------------------------ animation
+import petkit as pk
+import _common as cm
+FOLD = dict(up=24, fwd=-6, twist=0, tip=110)          # ground pose: folded bird wing, magenta band down the flank
+BUD = dict(up=-12, fwd=14, twist=8, tip=120)          # bloom act: wings wrapped forward round the body like petals
+LID_N = {s: Euler((0, math.radians(-s * 14), math.radians(s * 22)), "XYZ").to_matrix() @ Vector((0, -1, 0))
+         for s in (1, -1)}
+
+
+def wings(k, f, up, fwd=0.0, twist=0.0, tip=0.0, side=None):
+    WING.key(k, f, up, fwd, twist, tip, side=side)
+
+
+def folded(k, f, du=0.0, dfwd=0.0, dtip=0.0, side=None):
+    wings(k, f, FOLD["up"] + du, FOLD["fwd"] + dfwd, FOLD["twist"], FOLD["tip"] + dtip, side)
+
+
+def blend_w(k, f, A, Bd, t, dtip=0.0):
+    wings(k, f, *(A[x] + (Bd[x] - A[x]) * t for x in ("up", "fwd", "twist")), A["tip"] + (Bd["tip"] - A["tip"]) * t
+          + dtip)
+
+
+def lids(k, f, amt):
+    """0 = open (plates hidden in the head), 0.5 = heavy half lid, 1 = shut"""
+    for s, side in ((1, "L"), (-1, "R")):
+        if amt <= 0:
+            v = Vector((0, 0, 0))
+        else:
+            v = LID_N[s] * 0.061 + Vector((0, 0, 0.016 * min(1.0, (1 - amt) / 0.5)))
+        k.key("Lid_" + side, f, rot=(0, 0, 0), loc=tuple(v))
+
+
+def ears(k, f, l=0.0, r=None, fwd=0.0):
+    r = l if r is None else r
+    k.key("Ear_L", f, rot=(fwd, 0, l))
+    k.key("Ear_R", f, rot=(fwd, 0, -r))
+
+
+def petals(k, f, close=0.0):
+    """close + folds the 5 lotus petals up toward a bud (deg), - opens them wider"""
+    for i in range(5):
+        a = math.radians(90 + 72 * i)
+        d = Vector((math.cos(a), math.sin(a), 0.8)).normalized()
+        cm.key_axis(k, "Petal%d" % (i + 1), f, d.cross(Vector((0, 0, 1))), close)
+
+
+def halo(k, f, z=0.0, tilt=0.0, spin=0.0):
+    cm.key_axis(k, "Halo", f, (0, 0, 1), spin, loc=(0, 0, z))
+
+
+def idle(k):
+    """ZEN EAR FLICK: stands calm with heavy half lids and a slow sway; 3 rapid ear flicks (left ear at f30, right
+    at f75); little nose twitches; the halo bobs and the lotus sways."""
+    n = 120
+    k.new_action("idle", n, True)
+    for f in range(0, n + 1, 3):
+        b = pk.wave(f, n, 0, 2)
+        k.key("Spine", f, rot=(0, 0, 1.2 * pk.wave(f, n, 0.1)), loc=(0, 0, 0.008 * b))
+        k.key("Neck", f, rot=(0, 0, 0))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        lids(k, f, 0.5)
+        halo(k, f, z=0.03 * pk.wave(f, n, 0.2, 2))
+        k.key("Flower", f, rot=(0, 0, 6 * pk.wave(f, n, 0.35, 2)))
+        petals(k, f, 0)
+        folded(k, f, du=1.5 * pk.wave(f, n, 0.15, 2))
+    for f, p in ((0, 0), (12, 0), (14, 1.5), (16, 0), (18, 1.5), (20, 0), (52, 0), (54, 1.5), (56, 0), (96, 0),
+                 (98, 1.5), (100, 0), (102, 1.5), (104, 0), (120, 0)):
+        k.key("Head", f, rot=(p, 2 * pk.wave(f, n, 0.1), 0))                   # nose twitches
+    for f, l, r in ((0, 0, 0), (29, 0, 0), (30, 26, 0), (32, -4, 0), (34, 26, 0), (36, -4, 0), (38, 24, 0),
+                    (41, 0, 0), (74, 0, 0), (75, 0, 26), (77, 0, -4), (79, 0, 26), (81, 0, -4), (83, 0, 24),
+                    (86, 0, 0), (120, 0, 0)):
+        ears(k, f, l, r)
+    cm.plant(k, n, legs=LEGS4)
+    k.finish()
+    k.meta["planted"] = LEGS4
+
+
+def walk(k):
+    n = 24
+
+    def body(f):
+        b = 0.5 - 0.5 * math.cos(4 * math.pi * f / n)
+        k.key("Spine", f, rot=(1.0 * pk.wave(f, n, 0, 2), 1.5 * pk.wave(f, n, 0.1), 2.0 * pk.wave(f, n)),
+              loc=(0, 0, 0.02 * b))
+        k.key("Neck", f, rot=(1 * pk.wave(f, n, 0.1, 2), 0, 0))
+        k.key("Head", f, rot=(-1.5 * pk.wave(f, n, 0.15, 2), 2 * pk.wave(f, n, 0.1), 0))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        folded(k, f, du=2 * pk.wave(f, n, 0.1, 2))
+        ears(k, f, 4 * pk.wave(f, n, 0.2, 2), 4 * pk.wave(f, n, 0.2, 2))
+        lids(k, f, 0.5)
+        halo(k, f, z=0.025 * pk.wave(f, n, 0.3, 2))
+        k.key("Flower", f, rot=(0, 0, 6 * pk.wave(f, n, 0.35, 2)))
+        petals(k, f, 0)
+    return cm.quad_walk(k, n, 0.13, 0.08, body, gait="trot")
+
+
+# ---- flight: "swims" through the air - quick short wingbeats, all four legs paddle, head level
+FLY_N = 18
+PITCH = 6.0
+FLY_LIFT = 0.30
+
+
+def fly_legs(k, f, ph, amt=1.0):
+    for leg, off in (("FL", 0.0), ("BR", 0.0), ("FR", 0.5), ("BL", 0.5)):
+        w = math.sin(2 * math.pi * (ph + off))
+        fr = leg[0] == "F"
+        k.key("Leg_" + leg, f, rot=((-10 + 28 * w if fr else 22 + 26 * w) * amt, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_" + leg, f, rot=((30 - 20 * w if fr else -10 - 16 * w) * amt, 0, 0))
+        k.key("Foot_" + leg, f, rot=((20 + 15 * w) * amt, 0, 0))
+
+
+def fly_pose(k, f, ph, legs=True):
+    w = wing3.stroke(ph, top=32.0, bot=-10.0, down=0.45, sweep=10.0, twist=10.0, fold=26.0)
+    wings(k, f, w["up"], w["fwd"], w["twist"], w["tip"])
+    k.key("Spine", f, rot=(PITCH - 1.5 * math.sin(2 * math.pi * (ph - 0.1)), 0, 0),
+          loc=(0, 0, FLY_LIFT + 0.05 * math.cos(2 * math.pi * (ph - 0.45))))
+    k.key("Neck", f, rot=(-2, 0, 0))
+    k.key("Head", f, rot=(-PITCH + 1.5 * math.sin(2 * math.pi * (ph - 0.1)), 0, 0))     # head stays level
+    k.key("Jaw", f, rot=(0, 0, 0))
+    lag = math.cos(2 * math.pi * (ph - 0.13))
+    ears(k, f, 0, 0, fwd=-14 - 3 * lag)
+    lids(k, f, 0.5)
+    halo(k, f, z=-0.02 * lag)
+    k.key("Flower", f, rot=(6 + 4 * lag, 0, 0))
+    petals(k, f, 0)
+    if legs:
+        fly_legs(k, f, ph)
+
+
+def fly(k):
+    n = FLY_N
+    k.new_action("fly", n, True)
+    for f in range(0, n + 1):
+        fly_pose(k, f, f / n)
+    k.finish()
+
+
+def rest_keys(k, f, z=0.0, pitch=0.0):
+    k.key("Spine", f, rot=(pitch, 0, 0), loc=(0, 0, z))
+    for b in ("Neck", "Head", "Jaw"):
+        k.key(b, f, rot=(0, 0, 0))
+    folded(k, f)
+    ears(k, f, 0, 0)
+    lids(k, f, 0.5)
+    halo(k, f)
+    k.key("Flower", f, rot=(0, 0, 0))
+    petals(k, f, 0)
+
+
+def plant_frames(k, frames):
+    import bpy
+    k.bake_bezier_now()
+    for f in frames:
+        bpy.context.scene.frame_set(f)
+        for leg in LEGS4:
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y, 0.0)))
+
+
+def takeoff(k):
+    """crouch with the wings lifting high (0-10), LAUNCH at 11 on a big downstroke + leg push, into flight"""
+    n = 27
+    k.new_action("takeoff", n, False)
+    rest_keys(k, 0)
+    for f, z, p, w in ((6, -0.07, 3, (34, -6, -4, 60)), (10, -0.09, 4, (40, -4, -6, 0)),
+                       (13, 0.22, -4, (-20, 10, 8, 4)), (17, 0.34, 4, (22, 0, 0, -8))):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Neck", f, rot=(0, 0, 0))
+        k.key("Head", f, rot=(-4 - p * 0.5, 0, 0))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        wings(k, f, *w)
+        ears(k, f, 0, 0, fwd=-10 if f >= 13 else 0)
+        lids(k, f, 0.5)
+        halo(k, f, z=0.02)
+        k.key("Flower", f, rot=(0, 0, 0))
+        petals(k, f, 0)
+    fly_pose(k, 22, 0.0, legs=False)
+    fly_pose(k, n, 0.3, legs=False)
+    plant_frames(k, range(0, 13))
+    for f, a in ((15, 0.45), (19, 0.85)):
+        fly_legs(k, f, 0.0, a)
+    fly_legs(k, 22, 0.0)
+    fly_legs(k, n, 0.3)
+    k.finish(loop=False)
+    k.events["takeoff"] = {"launch": round(11 / n, 3)}
+
+
+def land(k):
+    """flare (nose up, wings forward as an air brake, legs reach), touch down at 16, absorb, settle"""
+    n = 27
+    k.new_action("land", n, False)
+    fly_pose(k, 0, 0.0)
+    for f, z, p, w in ((7, 0.12, -10, (30, 16, -10, -8)), (12, 0.06, -6, (-8, 10, -6, 4)),
+                       (16, -0.06, 3, (16, -4, 0, 40)), (21, 0.02, -1, (22, -6, 0, 96))):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Neck", f, rot=(0, 0, 0))
+        k.key("Head", f, rot=(-4 - p * 0.3, 0, 0))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        wings(k, f, *w)
+        ears(k, f, 0, 0, fwd=-10 if f < 16 else 0)
+        lids(k, f, 0.5)
+        halo(k, f, z=0.03 if f < 21 else 0.0)
+        k.key("Flower", f, rot=(0, 0, 0))
+        petals(k, f, 0)
+    rest_keys(k, n)
+    for s in ("L", "R"):                                   # legs reach for the ground
+        k.key("Leg_F" + s, 7, rot=(-20, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_F" + s, 7, rot=(10, 0, 0))
+        k.key("Foot_F" + s, 7, rot=(20, 0, 0))
+        k.key("Leg_B" + s, 7, rot=(-6, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_B" + s, 7, rot=(0, 0, 0))
+        k.key("Foot_B" + s, 7, rot=(20, 0, 0))
+    plant_frames(k, range(16, n + 1))
+    k.finish(loop=False)
+    k.events["land"] = {"touch": round(16 / n, 3)}
+
+
+def roar(k):
+    """ALARM BARK: 3 sharp barks - each one jolts the body forward, the jaw pops open, the wings snap half open,
+    the ears snap forward - then she settles."""
+    n = 54
+    k.new_action("roar", n, False)
+    rest_keys(k, 0)
+    for i, b0 in enumerate((8, 20, 32)):
+        for df, jolt, jw, wo, ef in ((0, 0.0, 0, 0.0, 0), (3, 0.03, 25, 1.0, 16), (7, 0.01, 6, 0.6, 10),
+                                     (10, 0.0, 0, 0.3, 4)):
+            f = b0 + df
+            k.key("Spine", f, rot=(1.5 * jolt / 0.03, 0, 0), loc=(0, -jolt, 0))
+            k.key("Neck", f, rot=(-2 * jolt / 0.03, 0, 0))
+            k.key("Head", f, rot=(-4 * jolt / 0.03, 0, 0))
+            k.key("Jaw", f, rot=(jw, 0, 0))
+            blend_w(k, f, FOLD, dict(up=34, fwd=-2, twist=0, tip=40), wo)
+            ears(k, f, 0, 0, fwd=ef)
+            lids(k, f, 0.0 if wo > 0.5 else 0.3)
+            halo(k, f, z=0.02 * wo)
+            k.key("Flower", f, rot=(0, 0, 0))
+            petals(k, f, -8 * wo)
+    rest_keys(k, 50)
+    rest_keys(k, n)
+    cm.plant(k, n, legs=LEGS4)
+    k.finish(loop=False)
+
+
+def bloom(k):
+    """SIGNATURE (Cvetibara only) - HOT-SPRING BLOOM: sinks belly-down as into a hot spring (lids shut, one ear
+    flick), curls into a BUD (wings wrap forward round the body like closing petals, head tucks, the lotus folds
+    shut), holds it with a small quiver, then BLOOMS - springs up, wings burst open wide and up, petals snap open,
+    head up - holds the bloom with a slow head turn and a wing shimmer, then folds and settles."""
+    n = 100
+    k.new_action("act_bloom", n, False)
+    OPEN = dict(up=40, fwd=0, twist=0, tip=-8)
+    P = [(0, 0.0, 0, 0, 0.5, 0, "F", 0.0, 0), (16, -0.22, 2, 4, 1.0, 0, "F", 0.0, 0),
+         (30, -0.22, 10, 16, 1.0, 34, "B", 1.0, 0), (44, -0.22, 10, 16, 1.0, 34, "B", 1.0, 0),
+         (50, 0.04, -8, -10, 0.0, -10, "O", 1.0, 0), (54, 0.0, -6, -8, 0.0, -10, "O", 1.0, 0),
+         (64, 0.0, -6, -8, 0.0, -10, "O", 1.0, 14), (74, 0.0, -6, -8, 0.0, -10, "O", 1.0, -14),
+         (88, 0.0, 0, 0, 0.5, 0, "F", 0.0, 0), (100, 0.0, 0, 0, 0.5, 0, "F", 0.0, 0)]
+    for f, z, nk, hd, lid, pet, wmode, wt, yaw in P:
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, z))
+        k.key("Neck", f, rot=(nk, yaw * 0.4, 0))
+        k.key("Head", f, rot=(hd, yaw * 0.6, 0))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        lids(k, f, lid)
+        petals(k, f, pet)
+        if wmode == "F":
+            folded(k, f)
+        elif wmode == "B":
+            blend_w(k, f, FOLD, BUD, wt)
+        else:
+            wings(k, f, OPEN["up"], OPEN["fwd"], OPEN["twist"], OPEN["tip"])
+        halo(k, f, z=0.06 if wmode == "O" else 0.0, spin=0.0)
+        k.key("Flower", f, rot=(0, 0, 0))
+        ears(k, f, 0, 0)
+    for f, l in ((8, 0), (10, 24), (12, -4), (14, 0)):                        # one ear flick in the spa
+        ears(k, f, l, 0)
+    for f in range(34, 44, 2):                                                # the bud quivers
+        w = 1 if (f // 2) % 2 else -1
+        blend_w(k, f, FOLD, BUD, 1.0, dtip=2.5 * w)
+    for f in range(56, 72, 4):                                                # the open wings shimmer
+        w = 1 if (f // 4) % 2 else -1
+        wings(k, f, OPEN["up"] + 3 * w, 0, 0, OPEN["tip"] - 4 * w)
+    for f, a in ((44, 0), (52, 180), (60, 360), (100, 360)):                  # the halo spins once as she blooms
+        halo(k, f, z=0.06 if 48 <= f <= 74 else 0.0, spin=a)
+    cm.plant(k, n, legs=LEGS4)
+    k.finish(loop=False)
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    fly(k)
+    takeoff(k)
+    land(k)
+    roar(k)
+    bloom(k)
+    return stride
+
+

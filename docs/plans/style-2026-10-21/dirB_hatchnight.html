@@ -1,0 +1,313 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>SLINGSHOT style B - HATCH NIGHT</title>
+<style>
+@font-face{font-family:GB;src:url("assets/fonts/Montserrat-Black.ttf")}   /* stand-in for GothamBlack */
+:root{
+  --ink:#0D0B1C;
+  --night-top:#2E2566; --night-bot:#1B1642; --night-side:#0F0B28; --night-rim:#6153C2;
+  --card-top:#3A3082; --card-bot:#29215F; --card-side:#151032; --card-hl:#7062D8;
+  --lav:#D2CAFF; --lav-dim:#A79FE0;
+  --gold:#FFD23A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#000;overflow:hidden}
+.stage{position:relative;overflow:hidden;background-size:cover;background-position:left top}
+.stage-dim{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(8,6,25,.34),rgba(8,6,25,.14) 70%)}
+.guide-safe{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,rgba(0,0,0,.28) 0 6px,rgba(0,0,0,.12) 6px 12px)}
+.win{position:absolute;transform-origin:50% 50%}
+.abs{position:absolute}
+.txt{position:absolute;white-space:nowrap;color:#fff;text-align:center;line-height:1;font-family:GB}
+.s2{-webkit-text-stroke:4px var(--ink);paint-order:stroke fill}
+.s25{-webkit-text-stroke:5px var(--ink);paint-order:stroke fill}
+.s3{-webkit-text-stroke:6px var(--ink);paint-order:stroke fill}
+.stk{position:absolute;filter:drop-shadow(0 3px 0 rgba(6,4,20,.55))}
+
+/* window: solid night canvas, soft top-left sheen, 7 px depth */
+.win>.side{position:absolute;left:0;right:0;top:7px;bottom:0;border-radius:18px;background:var(--night-side);box-shadow:0 0 0 3.5px var(--ink)}
+.win>.face{position:absolute;left:0;right:0;top:0;height:463px;border-radius:18px;overflow:hidden;
+  background:radial-gradient(ellipse 60% 50% at 18% 0%,rgba(140,120,255,.22),transparent 70%),linear-gradient(180deg,var(--night-top),var(--night-bot));
+  box-shadow:0 0 0 3.5px var(--ink),inset 0 0 0 1.5px rgba(97,83,194,.55)}
+
+/* header: full-bleed band; its bottom edge is a cracked eggshell (rotated squares, outlined) */
+.hdr{position:absolute;left:0;top:0;width:740px;height:46px;background:linear-gradient(180deg,#FFB43C 0%,#FF8A1C 55%,#F2620A 100%)}
+.hdr-gloss{position:absolute;left:0;top:0;width:740px;height:20px;background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0))}
+.tooth{position:absolute;transform:rotate(45deg)}
+.title{font-size:26px;letter-spacing:.5px}
+
+/* glossy buttons: holder{side, face} - rounder than A, a white gloss band, no studs */
+.gb{position:absolute}
+.gb>.side{position:absolute;left:0;right:0;bottom:0;top:var(--d);border-radius:var(--r);background:var(--cs);box-shadow:0 0 0 var(--ol) var(--ink)}
+.gb>.face{position:absolute;left:0;right:0;top:0;bottom:var(--d);border-radius:var(--r);overflow:hidden;
+  background:linear-gradient(180deg,var(--ct),var(--c));box-shadow:0 0 0 var(--ol) var(--ink),inset 0 1.5px 0 var(--hl)}
+.gb>.face::after{content:"";position:absolute;left:3px;right:3px;top:2px;height:42%;border-radius:calc(var(--r) - 2px) calc(var(--r) - 2px) 40% 40%/calc(var(--r) - 2px) calc(var(--r) - 2px) 6px 6px;
+  background:linear-gradient(180deg,rgba(255,255,255,.42),rgba(255,255,255,.08))}
+.p-lime{--c:#4FCB10;--ct:#B4FF4A;--cs:#2A7608;--hl:#E8FFB4}
+.p-red{--c:#E01A34;--ct:#FF5A6E;--cs:#7A0816;--hl:#FFB8C2}
+.p-silver{--c:#9F98C8;--ct:#DEDAF4;--cs:#575184;--hl:#FFFFFF}
+.p-off{--c:#352D6C;--ct:#463E88;--cs:#1B1640;--hl:#6A60B8}
+.p-gold{--c:#F59A00;--ct:#FFE070;--cs:#8E5600;--hl:#FFF3B0}
+.p-dusk{--c:#2C2560;--ct:#3A3280;--cs:#161236;--hl:#6A60B8}
+.btn .label{font-size:18px}
+
+/* tabs = segmented pill in a recessed track */
+.recess{position:absolute;background:linear-gradient(180deg,#120E30,#1C1746);box-shadow:0 0 0 2px var(--ink),inset 0 3px 0 rgba(0,0,0,.4),inset 0 -1.5px 0 rgba(140,125,255,.35)}
+.seg-off{color:var(--lav-dim)}
+.dot{position:absolute;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FF6A74,#E0102A 70%);box-shadow:0 0 0 2px var(--ink)}
+.dot span{position:absolute;inset:0;font-family:GB;font-size:15px;line-height:20px;text-align:center;color:#fff;-webkit-text-stroke:3px var(--ink);paint-order:stroke fill}
+
+/* egg pips (streak) */
+.pip{position:absolute;width:18px;height:23px;border-radius:50% 50% 50% 50%/58% 58% 42% 42%}
+.pip.done{background:radial-gradient(circle at 38% 30%,#E6FFB0 0 2.5px,#8EF03A 5px,#3E9A0E 100%);box-shadow:0 0 0 2px var(--ink)}
+.pip.today{background:radial-gradient(circle at 38% 30%,#FFF8C8 0 2.5px,#FFD21C 6px,#E08A00 100%);box-shadow:0 0 0 2px var(--ink),0 0 0 5px rgba(255,214,40,.35),0 0 10px 6px rgba(255,214,40,.25)}
+.pip.lock{background:radial-gradient(circle at 38% 30%,#4E4690 0 2px,#2D2763 6px,#1C173F 100%);box-shadow:0 0 0 2px var(--ink)}
+.pip.hero{background:conic-gradient(from 20deg,#FF2E63,#FF8A00,#FFD000,#33D14A,#00B7FF,#5B4BFF,#D400E0,#FF2E63);box-shadow:0 0 0 2px var(--ink)}
+.pip .crack{position:absolute;left:1px;right:1px;top:9px;height:5px}
+.link{position:absolute;height:3px;border-radius:2px;background:#0B0820}
+.link.on{background:#8EF03A}
+
+/* shell cards */
+.card{position:absolute}
+.card>.inner{position:absolute;inset:0}
+.card>.inner>.side{position:absolute;left:0;right:0;bottom:0;top:5px;border-radius:14px;background:var(--card-side);box-shadow:0 0 0 2.5px var(--ink)}
+.card>.inner>.face{position:absolute;left:0;right:0;top:0;bottom:5px;border-radius:14px;overflow:hidden;
+  background:linear-gradient(180deg,var(--card-top),var(--card-bot));box-shadow:0 0 0 2.5px var(--ink),inset 0 1.5px 0 var(--card-hl)}
+.card.today>.inner>.face{background:linear-gradient(180deg,#4C3FAA,#30267A)}
+.glowdisc{position:absolute;border-radius:50%}
+.daypill{position:absolute;border-radius:10px;background:rgba(10,8,28,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.daypill.today{background:linear-gradient(180deg,#B4FF4A,#4FCB10);box-shadow:0 0 0 2px var(--ink)}
+.val{font-size:20px}
+.sub{font-size:16px;color:var(--lav)}
+.st-claimed>.inner{filter:brightness(.6) saturate(.65)}
+.st-locked>.inner{filter:brightness(.45) saturate(.55)}
+.st-tomorrow>.inner{filter:brightness(.85)}
+.hero.st-locked>.inner{filter:brightness(.95)}
+.ring{position:absolute;left:0;right:0;top:0;bottom:5px;border-radius:14px;box-shadow:inset 0 0 0 3px #B4FF4A,inset 0 0 18px 4px rgba(150,255,60,.45)}
+.prismrim{position:absolute;inset:0;border-radius:inherit;padding:4px;pointer-events:none;
+  background:conic-gradient(from 200deg at 50% 50%,#FF2E63,#FF8A00,#FFD000,#33D14A,#00B7FF,#5B4BFF,#D400E0,#FF2E63);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.chip{position:absolute;border-radius:16px;background:rgba(8,6,24,.6);box-shadow:0 0 0 2px var(--ink),inset 0 1.5px 0 rgba(255,255,255,.14)}
+.chip .txt{font-size:16px}
+.tag{position:absolute;border-radius:8px;background:linear-gradient(180deg,#FF5A6E,#D9142E);box-shadow:0 0 0 2px var(--ink),inset 0 1.5px 0 #FFB8C2}
+.goldtxt{background:linear-gradient(180deg,#FFF8C4 0%,#FFE04A 45%,#FFAE00 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;-webkit-text-stroke:0}
+.note{position:absolute;font-family:'Segoe UI',sans-serif;font-weight:600;font-size:12px;color:#c9cde0;line-height:1.25}
+#qa{position:absolute;left:8px;top:8px;background:#000c;color:#0f0;font:12px monospace;padding:6px;z-index:99;white-space:pre}
+</style></head>
+<body>
+<script src="common.js"></script>
+<script>
+function pos(e, x, y, w, hh) { Object.assign(e.style, { left: x + 'px', top: y + 'px', width: w + 'px', height: hh + 'px' }); return e; }
+function txt(parent, cls, s, x, y, w, size) {
+  const t = h('div', 'txt ' + cls, parent, { textContent: s });
+  pos(t, x, y, w, size + 2); t.style.lineHeight = (size + 2) + 'px'; t.style.fontSize = size + 'px';
+  return t;
+}
+function gbtn(parent, cls, x, y, w, hh, d, r, ol, name, tile) {
+  const b = h('div', 'gb ' + cls, parent, { data: { ol: ol, name: name } });
+  if (tile) b.dataset.tile = tile;
+  pos(b, x, y, w, hh);
+  b.style.setProperty('--d', d + 'px'); b.style.setProperty('--r', r + 'px'); b.style.setProperty('--ol', ol + 'px');
+  const side = h('div', 'side', b);
+  const face = h('div', 'face', b, { data: { c: '1', name: name + '.face' } });
+  return { b, face, side };
+}
+// a labelled glossy button (optional icon on the left of the label)
+function button(parent, pal, label, x, y, w, hh, opts) {
+  opts = opts || {};
+  const d = opts.d || 3;
+  const B = gbtn(parent, 'btn ' + pal, x, y, w, hh, d, opts.r || 9, 2.5, opts.name || ('btn_' + label));
+  if (opts.pressed) { B.face.style.top = d + 'px'; B.face.style.bottom = '0px'; B.side.style.display = 'none'; }
+  const size = opts.size || 18;
+  const lab = txt(B.face, 'label s25', label, 0, Math.round((hh - d - size) / 2) - 1, w, size);
+  if (opts.color) lab.style.color = opts.color;
+  if (opts.icon) {
+    const is = opts.iconSize || 19;
+    img(opts.icon, '', B.face, is, { position: 'absolute', left: (opts.iconX || 12) + 'px', top: Math.round((hh - d - is) / 2) + 'px' });
+    lab.style.paddingLeft = (opts.pad || 26) + 'px';
+  }
+  return { B, lab };
+}
+// cracked-shell edge: rotated squares (ink first, colour on top); whatever is drawn next covers their inner halves
+function crackEdge(parent, x0, x1, yLine, color, seed, base) {
+  let x = x0, i = 0;
+  const sizes = [];
+  while (x < x1 + (base ? 0 : 20)) { const s = (base || 11) + ((i * 7 + seed) % 5) * 1.6; sizes.push([x, s]); x += s * 1.414 * 0.98; i++; }
+  for (const [cx, s] of sizes) { const t = h('div', 'tooth', parent, { data: { ol: 0, name: 'tooth' } }); pos(t, cx - (s + 5) / 2, yLine - (s + 5) / 2, s + 5, s + 5); t.style.background = 'var(--ink)'; }
+  for (const [cx, s] of sizes) { const t = h('div', 'tooth', parent); pos(t, cx - s / 2, yLine - s / 2, s, s); t.style.background = color; }
+}
+const BATS = `<svg width="84" height="42" viewBox="0 0 60 30"><g fill="#1A1030" stroke="#0D0B1C" stroke-width="1"><path d="M14 14c-3-5-8-6-12-4 3 1 4 3 4 5 2-1 4 0 5 2 1-2 2-2 3-3 1 1 2 1 3 3 1-2 3-3 5-2 0-2 1-4 4-5-4-2-9-1-12 4-.5-1.5-1.5-2.5-2-3-.5.5-1.5 1.5-2 3z"/><path d="M44 8c-2-3-5-4-8-2.5 2 .6 2.6 2 2.6 3.2 1.3-.6 2.6 0 3.2 1.3.6-1.3 1.3-1.3 2-2 .6.6 1.3.6 2 2 .6-1.3 2-2 3.2-1.3 0-1.2.6-2.6 2.6-3.2-2.6-1.5-6-.5-8 2.5z"/></g></svg>`;
+
+const LABEL = { claim: 'CLAIM!', claimed: 'CLAIMED', tomorrow: TIMER, locked: 'LOCKED' };
+const BTN = { claim: 'p-lime', claimed: 'p-silver', tomorrow: 'p-dusk', locked: 'p-off' };
+// one small shell card (158 x 166)
+function buildCard(parent, day, state, x, y, tile) {
+  const C = h('div', 'card st-' + state + (state === 'claim' ? ' today' : ''), parent, { data: { ol: 2.5, name: 'card' + day.d + state, c: '1' } });
+  if (tile) C.dataset.tile = tile;
+  pos(C, x, y, 158, 166);
+  const inner = h('div', 'inner', C);
+  h('div', 'side', inner);
+  const f = h('div', 'face', inner, { data: { c: '1', name: 'face' + day.d } });
+  const gd = h('div', 'glowdisc', f); pos(gd, 79 - 48, 56 - 44, 96, 88);
+  gd.style.background = `radial-gradient(closest-side,${day.glow}88,${day.glow}22 60%,transparent)`;
+  const dp = h('div', 'daypill' + (state === 'claim' ? ' today' : ''), f, { data: { ol: state === 'claim' ? 2 : 0, name: 'daypill' + day.d } });
+  pos(dp, 79 - 34, 6, 68, 20);
+  txt(dp, 's2', 'DAY ' + day.d, 0, 1, 68, 16);
+  // locked: the card goes dark, the reward preview stays readable (desire)
+  const g = h('div', 'abs', state === 'locked' ? C : f, { data: { ol: 0, name: 'icons' + day.d, c: '1' } }); pos(g, 9, 26, 140, 62);
+  if (state === 'locked') g.style.filter = 'brightness(.78) saturate(.85)';
+  for (const [src, size, dx, dy, badge] of day.icons) {
+    const k = 1.06, sz = Math.round(size * k);
+    const im = img(src, 'stk', g, sz); im.style.left = (70 - sz / 2 + dx * k) + 'px'; im.style.top = (30 - sz / 2 + dy * 0.75) + 'px';
+    if (badge) { const b = txt(g, 's25', badge, Math.min(140 - 28, 70 + dx * k + sz / 2 - 20), 62 - 21, 26, 16); b.dataset.ol = 2.5; b.dataset.name = 'badge' + day.d; }
+  }
+  txt(f, 'val s25', day.val, 4, 89, 150, 20);
+  txt(f, 'sub s25', day.sub, 4, 111, 150, 16);
+  const { lab } = button(f, BTN[state], LABEL[state], 8, 130, 142, 27, { name: 'btn' + day.d });
+  if (state === 'tomorrow') { lab.style.fontSize = '17px'; lab.style.color = '#B8FF6A'; lab.style.paddingLeft = '22px';
+    img('clock', '', lab.parentElement, 18, { position: 'absolute', left: '22px', top: '3px' }); }
+  if (state === 'locked') lab.style.color = 'var(--lav-dim)';
+  if (state === 'claim') h('div', 'ring', C);
+  if (state === 'claimed') { const ck = img('check', 'stk', C, 58, { left: '50px', top: '27px', transform: 'rotate(-8deg)' }); ck.dataset.ol = 0; ck.dataset.name = 'check' + day.d; }
+  if (state === 'locked') { const lk = img('lock', 'stk', C, 22, { right: '9px', top: '6px' }); lk.dataset.ol = 0; lk.dataset.name = 'lock' + day.d; }
+  return C;
+}
+// segmented tabs in a recessed pill track
+function tabs(parent, x, y, tile) {
+  const TR = h('div', 'recess', parent, { data: { ol: 2, name: 'tabs', c: '1' } }); pos(TR, x, y, 308, 38); TR.style.borderRadius = '19px';
+  if (tile) TR.dataset.tile = tile;
+  const A = gbtn(TR, 'p-lime', 3, 3, 148, 32, 3, 15, 2, 'tabDaily'); txt(A.face, 's25', 'DAILY', 0, 5, 148, 18);
+  txt(TR, 's25 seg-off', 'PLAYTIME', 152, 10, 120, 18);
+  const d = h('div', 'dot', TR, { data: { ol: 2, name: 'dot' } }); d.style.left = '278px'; d.style.top = '9px'; h('span', '', d, { textContent: '!' });
+  return TR;
+}
+// streak = 7 egg pips on a recessed pill; done eggs are cracked
+function streak(parent, x, y, done, today, tile) {
+  const SR = h('div', 'recess', parent, { data: { ol: 2, name: 'streak', c: '1' } }); pos(SR, x, y, 400, 38); SR.style.borderRadius = '19px';
+  if (tile) SR.dataset.tile = tile;
+  txt(SR, 's2', 'STREAK', 14, 11, 76, 16).style.color = 'var(--lav)';
+  const x0 = 104, step = 34;
+  for (let i = 1; i < 7; i++) { const l = h('div', 'link' + (i < (today || done + 1) ? ' on' : ''), SR); pos(l, x0 + (i - 1) * step + 16, 18, step - 14, 3); }
+  for (let i = 1; i <= 7; i++) {
+    const cls = i === 7 ? 'hero' : i <= done ? 'done' : i === today ? 'today' : 'lock';
+    const p = h('div', 'pip ' + cls, SR, { data: { ol: i === today ? 5 : 2, name: 'pip' + i } });
+    pos(p, x0 + (i - 1) * step, 7, 18, 23);
+    if (cls === 'done') p.innerHTML = `<svg class="crack" viewBox="0 0 16 5"><path d="M0 2.5l3-2 3 4 3-4 3 4 4-3" fill="none" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
+  }
+  txt(SR, 's25', Math.max(done, today) + '/7', 340, 10, 48, 18);
+  return SR;
+}
+
+function buildWindow() {
+  const { st, win } = stage();
+  h('div', 'side', win);
+  const F = h('div', 'face', win, { data: { c: '1', name: 'winface' } });
+  // HEADER: full-bleed band with a cracked-eggshell bottom edge (Halloween skin = pumpkin band + bats)
+  crackEdge(F, 16, 724, 46, '#F2620A', 3, 11); // every tooth stays inside the canvas: no clipping needed in Roblox
+  h('div', 'hdr', F); h('div', 'hdr-gloss', F);
+  img('gift', 'stk', F, 38, { left: '12px', top: '4px' });
+  const sh = txt(F, 'title', 'DAILY REWARDS', 58, 13, 260, 26); sh.style.textAlign = 'left'; sh.style.color = 'var(--ink)'; sh.style.webkitTextStroke = '6px var(--ink)';
+  const t = txt(F, 'title s3', 'DAILY REWARDS', 58, 10, 260, 26); t.style.textAlign = 'left';
+  const bats = h('div', 'abs', F, { innerHTML: BATS }); pos(bats, 600, 3, 84, 42);
+  const X = gbtn(F, 'p-red', 694, 6, 34, 34, 4, 9, 2, 'close'); txt(X.face, 's25', 'X', 0, 4, 34, 21);
+  // ROW 2
+  tabs(F, 10, 66, 'row2');
+  streak(F, 330, 66, STATE === 'mid' ? 2 : 3, STATE === 'mid' ? 3 : 0, 'row2');
+  // GRID
+  const COLX = [10, 176, 342], ROWY = [112, 286];
+  DAYS.forEach((day, i) => buildCard(F, day, ST[i], COLX[i % 3], ROWY[Math.floor(i / 3)], 'grid'));
+  // DAY 7: the secret pet hatching out of a cracked golden shell
+  const state = ST[6];
+  const C = h('div', 'card hero st-' + state, F, { data: { ol: 2.5, name: 'card7', tile: 'grid', c: '1' } });
+  pos(C, 508, 112, 222, 340);
+  const inner = h('div', 'inner', C);
+  h('div', 'side', inner);
+  const f = h('div', 'face', inner, { data: { c: '1', name: 'face7' } });
+  f.style.background = 'radial-gradient(ellipse 70% 45% at 50% 42%,#6B4CE6 0%,#3B2B92 50%,#1F1852 100%)';
+  img('rays', '', f, 206, { position: 'absolute', left: '8px', top: '30px', opacity: .45, filter: 'sepia(1) saturate(4) hue-rotate(-12deg) brightness(1.2)' });
+  const halo = h('div', 'abs', f); pos(halo, 46, 56, 130, 160);
+  halo.style.borderRadius = '50% 50% 50% 50%/58% 58% 42% 42%';
+  halo.style.background = 'radial-gradient(ellipse at 50% 45%,rgba(255,240,170,.55),rgba(255,200,60,.18) 60%,transparent 75%)';
+  const dp = h('div', 'daypill', f, { data: { ol: 0, name: 'daypill7' } }); pos(dp, 10, 8, 68, 20);
+  txt(dp, 's2', 'DAY 7', 0, 1, 68, 16);
+  const tg = h('div', 'tag', f, { data: { ol: 2, name: 'tag' } }); pos(tg, 124, 7, 88, 22);
+  txt(tg, 's25', 'SECRET!', 0, 2, 88, 16);
+  txt(f, 's3', 'SECRET PET!', 0, 34, 222, 24).style.color = 'var(--ink)';
+  txt(f, 'goldtxt', 'SECRET PET!', 0, 34, 222, 24);
+  const pet = img('mantis', 'stk', f, 148, { left: '37px', top: '58px' }); pet.dataset.ol = 0; pet.dataset.name = 'pet';
+  // teeth point UP: ink + colour diamonds on the crack line, then the clipped lower half of an oval covers their lower halves
+  const shellBox = h('div', 'abs', f, { data: { ol: 0, name: 'shell', c: '1' } }); pos(shellBox, 59, 158, 104, 60);
+  crackEdge(shellBox, 18, 88, 17, '#FFE680', 2, 12);
+  const clip = h('div', 'abs', shellBox); pos(clip, 0, 17, 104, 43); clip.style.overflow = 'hidden';
+  const shell = h('div', 'abs', clip); pos(shell, 2, -44, 100, 88);
+  shell.style.borderRadius = '50%'; shell.style.background = 'linear-gradient(180deg,#FFE680 0%,#FFE680 50%,#FFB000 80%,#D88A00 100%)';
+  shell.style.boxShadow = 'inset 0 0 0 2.5px var(--ink), inset 0 -7px 0 rgba(150,80,0,.35)';
+  const spec = h('div', 'abs', clip); pos(spec, 18, 10, 14, 7); spec.style.borderRadius = '50%'; spec.style.background = 'rgba(255,255,255,.7)';
+  txt(f, 's25', 'THORNBLADE MANTIS', 4, 220, 214, 16);
+  txt(f, 's25', '15K KG', 4, 240, 214, 16).style.color = 'var(--gold)';
+  const c1 = h('div', 'chip', f, { data: { ol: 2, name: 'chip1', tile: 'chips' } }); pos(c1, 10, 264, 98, 30);
+  img('potion_gold', '', c1, 22, { position: 'absolute', left: '6px', top: '4px' });
+  img('potion_green', '', c1, 22, { position: 'absolute', left: '17px', top: '4px' });
+  img('potion_blue', '', c1, 22, { position: 'absolute', left: '28px', top: '4px' });
+  txt(c1, '', 'x5', 52, 6, 40, 16);
+  const c2 = h('div', 'chip', f, { data: { ol: 2, name: 'chip2', tile: 'chips' } }); pos(c2, 114, 264, 98, 30);
+  img('cash', '', c2, 26, { position: 'absolute', left: '6px', top: '2px' });
+  txt(c2, '', '$72K', 36, 6, 58, 16);
+  if (state === 'claim') button(f, 'p-lime', 'CLAIM!', 10, 300, 202, 29, { name: 'btn7', r: 10 });
+  else button(f, 'p-off', 'IN 4 DAYS', 10, 300, 202, 29, { name: 'btn7', r: 10, color: 'var(--gold)', icon: 'lock', iconX: 40, pad: 34 });
+  h('div', 'prismrim', f);
+  qa();
+}
+
+// ---------------- COMPONENT SHEET ----------------
+function buildSheet() {
+  const bd = sheetStage('STYLE B  -  HATCH NIGHT', 'night shell canvas, cracked-eggshell header edge, glossy rounded buttons, reward-coloured glows; GothamBlack everywhere (mockup font: Montserrat Black)');
+  note(bd, 'BUTTONS  (h 44, depth 4, radius 10, outline 2.5, gloss band = top 42% white 42% -> 8%, label GothamBlack 19)', 24, 74, 800);
+  const row = (x, label, pal, o) => button(bd, pal, label, x, 94, 168, 44, Object.assign({ d: 4, r: 10, size: 19 }, o || {}));
+  row(24, 'CLAIM!', 'p-lime'); note(bd, 'primary / claim', 24, 144);
+  row(204, '49', 'p-gold', { icon: 'robux', iconX: 52, iconSize: 22, pad: 30 }); note(bd, 'purchase (gold + Robux)', 204, 144);
+  row(384, 'NO THANKS', 'p-dusk', { color: 'var(--lav)' }); note(bd, 'secondary', 384, 144);
+  row(564, 'CLAIMED', 'p-silver'); note(bd, 'disabled / done', 564, 144);
+  row(744, 'LOCKED', 'p-off', { color: 'var(--lav-dim)', icon: 'lock', iconX: 26, pad: 24 }); note(bd, 'locked', 744, 144);
+  row(924, '09:41:27', 'p-dusk', { size: 18, color: '#B8FF6A', icon: 'clock', iconX: 18, pad: 26 }); note(bd, 'tomorrow / timer', 924, 144);
+  button(bd, 'p-lime', 'GO', 1104, 94, 72, 44, { d: 4, r: 10, size: 19, pressed: true });
+  note(bd, 'pressed: face sinks onto the depth', 1100, 144, 90);
+  note(bd, 'TABS / CLOSE / BADGES', 24, 182, 400);
+  tabs(bd, 24, 202);
+  note(bd, 'segmented pill: active = lime gloss pill, inactive = text only (#A79FE0); "!" dot inside the track', 24, 248, 320);
+  const X = gbtn(bd, 'p-red', 360, 204, 34, 34, 4, 9, 2, 'closeX'); txt(X.face, 's25', 'X', 0, 4, 34, 21);
+  note(bd, 'close: 34 red gloss', 402, 212, 90);
+  const pt = h('div', 'tag', bd); pos(pt, 506, 208, 84, 26); pt.style.background = 'linear-gradient(180deg,#FFE070,#F59A00)'; pt.style.boxShadow = '0 0 0 2px var(--ink),inset 0 1.5px 0 #FFF3B0'; pt.style.borderRadius = '13px';
+  img('robux', '', pt, 18, { position: 'absolute', left: '12px', top: '4px' }); txt(pt, 's25', '49', 34, 4, 40, 18);
+  note(bd, 'price tag', 506, 242);
+  const tp = h('div', 'chip', bd); pos(tp, 608, 208, 124, 26); tp.style.borderRadius = '13px'; img('clock', '', tp, 18, { position: 'absolute', left: '8px', top: '4px' });
+  txt(tp, 's25', '09:41:27', 30, 4, 88, 16).style.color = '#B8FF6A';
+  note(bd, 'timer pill', 608, 242);
+  const tg = h('div', 'tag', bd); pos(tg, 750, 208, 88, 22); txt(tg, 's25', 'SECRET!', 0, 2, 88, 16);
+  note(bd, 'tag', 750, 242);
+  txt(bd, 's25', 'x2', 852, 210, 30, 16); note(bd, 'count', 850, 242);
+  const ex = h('div', 'dot', bd); pos(ex, 904, 210, 20, 20); h('span', '', ex, { textContent: '!' }); note(bd, 'alert dot', 896, 242);
+  const dpl = h('div', 'daypill today', bd); pos(dpl, 968, 209, 68, 20); txt(dpl, 's2', 'DAY 3', 0, 1, 68, 16); note(bd, 'day pill (today)', 960, 242);
+  note(bd, 'PROGRESS  (7 egg pips: cracked lime = done, glowing gold = today, dark = locked, prism = Day 7; bar = pill trough + lime gloss fill)', 24, 292, 790);
+  streak(bd, 24, 312, 2, 3);
+  const tr = h('div', 'recess', bd); pos(tr, 444, 312, 360, 38); tr.style.borderRadius = '19px';
+  const fill = gbtn(tr, 'p-lime', 4, 4, 216, 30, 3, 15, 0, 'fill');
+  txt(tr, 's25', '12 / 20 EGGS', 0, 10, 360, 18);
+  note(bd, 'HEADER EDGE  (rotated squares: ink row, colour row, then the band covers their upper halves)', 830, 292, 340);
+  const hd = h('div', 'abs', bd); pos(hd, 830, 322, 340, 40); hd.style.overflow = 'hidden'; hd.style.borderRadius = '10px 10px 0 0';
+  crackEdge(hd, 0, 340, 24, '#F2620A', 3); const band = h('div', 'hdr', hd); band.style.width = '340px'; band.style.height = '24px';
+  note(bd, 'TYPE  (logical px; x1.18 on PC, x0.71 on a 844x390 phone)', 24, 394, 500);
+  const ty = [['title s3', 'DAILY REWARDS', 26, 'Title: GothamBlack 26, stroke 3 + ink drop copy +3'], ['val s25', '$18K  +2M SPEED', 20, 'Value: GothamBlack 20, stroke 2.5'], ['label s25', 'CLAIM!', 18, 'Button: GothamBlack 18-19, stroke 2.5'], ['sub s25', '+2 POTIONS  DAY 3', 16, 'Body / label: GothamBlack 16 = MINIMUM, stroke 2.5']];
+  ty.forEach(([c, s, z, n], i) => { const t = txt(bd, c, s, 24, 416 + i * 38, 330, z); t.style.textAlign = 'left'; note(bd, n, 370, 422 + i * 38, 250); });
+  note(bd, 'PALETTE', 640, 394, 200);
+  const sw = [['#0D0B1C', 'ink'], ['linear-gradient(#2E2566,#1B1642)', 'canvas'], ['#3A3082', 'card'], ['#120E30', 'recess'], ['#D2CAFF', 'lavender text'], ['#4FCB10', 'claim lime'], ['#9F98C8', 'claimed'], ['#352D6C', 'off'],
+    ['#FFC21A', 'gold / buy'], ['#E01A34', 'close / alert'], ['linear-gradient(#FFB43C,#F2620A)', 'Halloween band'], ['#6CFF5A', 'glow: cash'], ['#55C8FF', 'glow: speed'], ['#C78BFF', 'glow: potions'], ['#FFE680', 'shell gold'], ['conic-gradient(#FF2E63,#FF8A00,#FFD000,#33D14A,#00B7FF,#5B4BFF,#D400E0,#FF2E63)', 'Prism rim']];
+  sw.forEach(([c, n], i) => { const x = 640 + (i % 8) * 66, y = 416 + Math.floor(i / 8) * 62; const b = h('div', 'abs', bd); pos(b, x, y, 52, 34);
+    b.style.background = c; b.style.borderRadius = '9px'; b.style.boxShadow = '0 0 0 2px #0D0B1C'; note(bd, n, x - 4, y + 38, 66).style.fontSize = '11px'; });
+  note(bd, 'Area colours (Grass 120,240,90 / Water 80,195,255 / Thunder 250,240,90 / Fire 255,140,50 / Shadow 190,110,255 / Celestial 255,205,95) appear only as glows, egg tints and name text.', 640, 548, 540);
+  note(bd, 'CARD STATES  (claimable = lighter face + lime rim + lime day pill + pulsing button; claimed 0.6 + check; tomorrow 0.85 + timer; locked 0.45 card, reward preview stays 0.78)', 24, 586, 1150);
+  ['claim', 'claimed', 'tomorrow', 'locked'].forEach((s, i) => buildCard(bd, DAYS[2], s, 24 + i * 176, 606));
+  note(bd, 'No studs, no checkerboard: depth comes from the 4-5 px depth slab, the gloss band and the glow behind each reward. Stickers = frameless art + ink drop shadow (a black copy at 0.55, +3 px).', 744, 622, 430);
+  note(bd, 'Halloween skin = pumpkin header band + bat sticker. Off-season the Daily band is HATCH GOLD (#FFD84A -> #FFA800); the night canvas stays all year.', 744, 702, 430);
+}
+if (SHEET) buildSheet(); else buildWindow();
+</script>
+</body></html>

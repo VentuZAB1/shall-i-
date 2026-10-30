@@ -1,0 +1,14 @@
+item 7 (perf review: the start-up viewport race), 2026-10-21 fix round. PC viewport 1519 x 753 (deviceScale 1.18).
+Session A (fresh Play): hatch_chrome_snapshot (+ _G.HATCH_SNAP_MENU) = item7_snapA.txt. Shop / Rebirth / Index / Settings hashes
+  a4144d2d / acc02f70 / fcdc2fe0 / 758c87b8, Menu 871e7e30; first 209 lines IDENTICAL to hatch_chrome_after_v2_fresh.txt (the 1.18
+  run of the build), 106 lines differ from hatch_chrome_before_v2.txt (the 0.52 run).
+  item7_proof: deviceScale 1.18 | menu UIScale none | menu right 173.88 | menu tile stroke 3.07 (2.6 x 1.18) | Rebirth / Index /
+  Settings Window.Face stroke 4.13 (3.5 x 1.18).
+Session B (second fresh Play): Shop / Rebirth / Index / Settings hashes identical to A; Menu 97 / 99 lines identical, the 2 others =
+  Menu.Gift.Face.Badge + its BadgePulse UIScale (1.08 at that frame: the "!" badge's pulse animation, volatile). item7_proof
+  identical to A.
+Session C (forced: Edit workspace TestViewport1x1 = 20 before Play): at t 10.5 s the live UI read deviceScale 1 (not 0.52): menu
+  UIScale 1.30, menu tile stroke 2.60, Window.Face stroke 3.50. At t 20.9 s (the fake viewport ended) everything re-applied: menu
+  UIScale 1.00, tile stroke 3.07, Face stroke 4.13, menu right 173.88; the chrome snapshot after: Shop / Rebirth / Index / Settings
+  hashes identical to A and B; Menu identical to A except the volatile Badge pulse lines and one extra line "Menu.UIScale Scale=1"
+  (the UIScale made while the fake viewport said "small", now back at 1).

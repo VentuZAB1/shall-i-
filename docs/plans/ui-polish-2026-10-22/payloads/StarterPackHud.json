@@ -1,0 +1,38 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.StarterPackHud",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "local FULL, COMPACT = V(150, 170), V(150, 156) -- Root at the 1050x620 baseline: art + caption / art only (incl. the motion envelope)",
+   "new_string": "local FULL, COMPACT = V(150, 186), V(150, 156) -- Root at the 1050x620 baseline: art + caption / art only (incl. the motion envelope)\n-- (2026-10-22 UI polish: FULL 170 -> 186, the timer moved BELOW the egg and the caption under it)"
+  },
+  {
+   "old_string": "local CAPTION_Y = 156 -- the caption's centre in Root px (FULL only): right under the art like reference 1",
+   "new_string": "local CAPTION_Y = 175 -- the caption's centre in Root px (FULL only): under the timer (2026-10-22 UI polish: was 156)"
+  },
+  {
+   "old_string": "local PRICE_OFF, PRICE_OFF_COMPACT = V(38, 50), V(38, 53)",
+   "new_string": "local PRICE_OFF, PRICE_OFF_COMPACT = V(44, 18), V(44, 18) -- (2026-10-22 UI polish: the egg's right flank, clear of the timer below)"
+  },
+  {
+   "old_string": "new(\"ImageLabel\", {Name = \"RobuxOutline\", Image = ROBUX, ImageColor3 = BLACK, BackgroundTransparency = 1, AnchorPoint = V(0.5, 0.5),\n\tScaleType = Enum.ScaleType.Fit, Size = UDim2.fromOffset(22, 22), Position = UDim2.fromOffset(10, 12), ZIndex = 9}, price)\nnew(\"ImageLabel\", {Name = \"Robux\", Image = ROBUX, ImageColor3 = C(150, 255, 40), BackgroundTransparency = 1, AnchorPoint = V(0.5, 0.5),\n\tScaleType = Enum.ScaleType.Fit, Size = UDim2.fromOffset(18, 18), Position = UDim2.fromOffset(10, 12), ZIndex = 10}, price)\nlocal amount = new(\"TextLabel\", {Name = \"Amount\", Text = tostring(ShopConfig.StarterPackPrice), Font = FONT, TextSize = 22,\n\tTextColor3 = WHITE, TextXAlignment = Enum.TextXAlignment.Left, BackgroundTransparency = 1, AnchorPoint = V(0, 0.5),\n\tPosition = UDim2.fromOffset(20, 12), Size = UDim2.fromOffset(32, 24), ZIndex = 10}, price)\nnew(\"UIGradient\", {Rotation = 90, Color = ColorSequence.new(C(200, 255, 80), C(90, 220, 0))}, amount) -- the Check-UI lime\nstroke(amount, 3)",
+   "new_string": "-- (2026-10-22 UI polish) a GOLD pill (Check-UI Skip amber) with an INK Robux glyph + price: it no longer sits lime on the\n-- green potion\nprice.BackgroundTransparency = 0\nprice.BackgroundColor3 = WHITE\nnew(\"UIGradient\", {Rotation = 90, Color = ColorSequence.new(C(255, 208, 0), C(255, 140, 0))}, price)\nnew(\"UICorner\", {CornerRadius = UDim.new(0.5, 0)}, price)\nnew(\"UIStroke\", {Thickness = 2, Color = BLACK, ApplyStrokeMode = Enum.ApplyStrokeMode.Border}, price)\nnew(\"ImageLabel\", {Name = \"Robux\", Image = ROBUX, ImageColor3 = C(17, 23, 26), BackgroundTransparency = 1, AnchorPoint = V(0.5, 0.5),\n\tScaleType = Enum.ScaleType.Fit, Size = UDim2.fromOffset(16, 16), Position = UDim2.fromOffset(12, 12), ZIndex = 10}, price)\nlocal amount = new(\"TextLabel\", {Name = \"Amount\", Text = tostring(ShopConfig.StarterPackPrice), Font = FONT, TextSize = 20,\n\tTextColor3 = C(17, 23, 26), TextXAlignment = Enum.TextXAlignment.Left, BackgroundTransparency = 1, AnchorPoint = V(0, 0.5),\n\tPosition = UDim2.fromOffset(22, 12), Size = UDim2.fromOffset(28, 24), ZIndex = 10}, price)"
+  },
+  {
+   "old_string": "local TIMER_OFF, TIMER_OFF_COMPACT = V(0, 33), V(0, 33) -- from the egg's centre (Float px)",
+   "new_string": "local TIMER_OFF, TIMER_OFF_COMPACT = V(0, 69), V(0, 69) -- from the egg's centre (Float px): BELOW the egg, 6 px clear of its outline (2026-10-22 UI polish: was ON the egg at (0, 33))"
+  },
+  {
+   "old_string": "\tif urgent ~= was or force then timerGrad.Color = urgent and TIMER_RED or TIMER_GOLD end",
+   "new_string": "\tif urgent ~= was or force then timerGrad.Color = TIMER_GOLD end -- (2026-10-22 UI polish: no red last hour)"
+  },
+  {
+   "old_string": "\ttimerScale.Scale = timerBase * ((urgent and not reduced) and (1 + 0.10 * (0.5 - 0.5 * math.cos(TAU * t))) or 1)",
+   "new_string": "\ttimerScale.Scale = timerBase -- (2026-10-22 UI polish: no last-hour pulse)"
+  },
+  {
+   "old_string": "\tcolRight = math.min(colRight, gs.X)",
+   "new_string": "\tcolRight = math.min(colRight, gs.X - 8 * k) -- (2026-10-22 UI polish: 8 px inside the right edge on phones, the egg was clipped)"
+  }
+ ]
+}

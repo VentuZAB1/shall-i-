@@ -1,0 +1,16 @@
+[    0.2] skeleton {'bmin': [np.float64(-6.24), np.float64(-6.93), np.float64(-0.7)], 'bmax': [np.float64(7.17), np.float64(6.26), np.float64(15.98)], 'levels': {0: 1, 1: 12, 2: 22, 3: 57, 4: 114}, 'n': 206} scale 1.084 seed 34
+[   30.0]   sdf branches 38 29.8s
+[   43.8] hi core 807540
+[   45.2] hi tubes 162482
+[   46.0]   sdf branches 38 0.8s
+[   47.9] lo core 235788 -> 13413
+[   48.0] lo tubes 7647
+[   81.9] web pick {'orient': 'front', 'r': 2.7, 'zmin': 6.0, 'zmax': 10.5} score -0.64 hub (1.17, 0.8, 7.93) n (0.07, -0.94, 0.34) width max 4.89 min 3.72 spokes 12 pierced 0
+[   82.4] web pick {'orient': 'side', 'r': 2.6, 'zmin': 8.0, 'zmax': 13.0} score -0.04 hub (-0.68, -0.82, 7.99) n (-0.89, 0.45, -0.07) width max 5.18 min 3.45 spokes 12 pierced 0
+[   82.7] web pick {'orient': 'front', 'r': 2.1, 'zmin': 3.8, 'zmax': 6.8, 'in_back': True} score -2.90 hub (-0.88, 1.3, 7.13) n (-0.72, -0.64, 0.27) width max 4.13 min 2.70 spokes 12 pierced 0
+Info: Saved as "dead_tree.blend"
+[   84.4] BUILD {"core_hi_clean": {"removed_faces": 562, "filled_faces": 0, "pinch_faces": 0}, "trunk_hi_tris": 807540, "branches_hi_tris": 162482, "core_lo_clean": {"removed_faces": 110, "filled_faces": 0, "pinch_faces": 0}, "core_lo_clean2": {"removed_faces": 0, "filled_faces": 0, "pinch_faces": 25}, "ground_cap_faces": 370, "core_lo_clean3": {"removed_faces": 5, "filled_faces": 0, "pinch_faces": 0}, "trunk_tris": 13413, "branches_tris": 7647, "split_z": 6.654, "DeadTree_Trunk_uv": {"side_faces": 6517, "misc_faces": 739, "hidden_faces": 4, "bad_faces": 356}, "Trunk_tris": 7256, "DeadTree_Limbs_uv": {"side_faces": 5609, "misc_faces": 548, "hidden_faces": 0, "bad_faces": 463}, "Limbs_tris": 6157, "texel": {"DeadTree_Trunk": {"uv_fill": 0.417, "px_per_stud": 69.4, "area": 90.6}, "DeadTree_Limbs": {"uv_fill": 0.645, "px_per_stud": 106.0, "area": 60.2}, "DeadTree_Branches": {"uv_fill": 0.639, "px_per_stud": 123.9, "area": 43.7}}, "web_tris": 5996, "silk_tris": 1292, "joints": [[4.104368686676025, 0.5116643309593201, 7.101876735687256], [2.1162514686584473, 2.016676664352417, 7.879875659942627], [-5.255873203277588, 5.6302809715271, 9.093759536743164], [-3.00761342048645, 2.599566698074341, 8.275415420532227]], "spiders": [{"point": [4.4, -6.793, 5.968], "free_drop": 8.0, "clear_ring": 8.0, "branch_radius": 0.114}, {"point": [-5.455, 5.692, 9.061], "free_drop": 8.0, "clear_ring": 8.0, "branch_radius": 0.122}, {"point": [5.993, 1.769, 10.183], "free_drop": 8.0, "clear_ring": 8.0, "branch_radius": 0.125}], "build_s": 84.3}
+[   84.4] DONE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,260 @@
+### python glacier_sim.py --tables
+Odds tables (sum) and money bonus per pet, today -> new:
+      Grass: today sum 100, new sum 100
+      Water: today sum 100, new sum 100
+    Thunder: today sum 100, new sum 100
+       Fire: today sum 100, new sum 100
+     Shadow: today sum 100, new sum 100
+  Celestial: today sum 100, new sum 100
+    Glacier: new sum 100
+
+Glacier hatch times (AREA_HATCH 2.0) vs Celestial (1.0):
+       1 KG: Glacier    6 min   Celestial    3 min
+     100 KG: Glacier   41 min   Celestial   21 min
+      1K KG: Glacier    1.8 h   Celestial   55 min
+     10K KG: Glacier    5.0 h   Celestial    2.5 h
+    100K KG: Glacier   13.4 h   Celestial    6.7 h
+    200K KG: Glacier   18.0 h   Celestial    9.0 h
+    800K KG: Glacier   32.7 h   Celestial   16.3 h
+      1M KG: Glacier   36.0 h   Celestial   18.0 h
+    2.5M KG: Glacier   53.3 h   Celestial   26.7 h
+     10M KG: Glacier   96.8 h   Celestial   48.4 h
+
+Glacier egg KG odds (one egg; normal roll + 1 in 180 lucky):
+  >=    1K KG: 1 in 3 eggs
+  >=   10K KG: 1 in 6 eggs
+  >=  100K KG: 1 in 12 eggs
+  >=    1M KG: 1 in 258 eggs
+  >=  2.5M KG: 1 in 1,039 eggs
+  (Celestial >= 1M KG today: 1 in 703 eggs)
+
+Per pet: odds today -> new, money bonus (rarityMult) today -> new, change for owned pets (* = new pet)
+  Grass (AREA_INCOME $20):
+           Bramble Badger*:    new ->    40%   x1.08   1 KG $22/s
+         Mossback Tortoise:    52% ->    30%   x1.00 -> x1.20  (+20%)
+               Forest Stag:    28% ->    16%   x1.22 -> x1.49  (+22%)
+                    Treant:    13% ->   8.5%   x1.60 -> x1.86  (+16%)
+            Venom Basilisk:     5% ->   3.5%   x2.24 -> x2.54  (+13%)
+         Thornblade Mantis:     2% ->     2%   x3.09 -> x3.09  (+0%)
+    average money bonus of a 1 KG egg: x1.245 -> x1.338 (+7.5%); egg sell value (1st pet) x1.081 (was x1.000)
+  Water (AREA_INCOME $120):
+                     Kappa:    53% ->    45%   x1.00 -> x1.04  (+4%)
+        Sea Turtle Warrior:    27% ->    25%   x1.24 -> x1.27  (+3%)
+       Coral Crusher Crab*:    new ->    15%   x1.52   1 KG $183/s
+                    Kraken:    13% ->     9%   x1.60 -> x1.82  (+14%)
+           Hammerjaw Shark:   5.5% ->   4.5%   x2.17 -> x2.32  (+7%)
+              Abyssal Orca:   1.5% ->   1.5%   x3.41 -> x3.41  (+0%)
+    average money bonus of a 1 KG egg: x1.244 -> x1.334 (+7.3%); egg sell value (1st pet) x1.038 (was x1.000)
+  Thunder (AREA_INCOME $300):
+                     Raiju:    54% ->    50%   x1.00 -> x1.00  (+0%)
+              Thunder Bull:    26% ->    25%   x1.26 -> x1.27  (+1%)
+              Storm Wyvern:    14% ->    14%   x1.56 -> x1.56  (+0%)
+               Volt Rhino*:    new ->     6%   x2.10   1 KG $630/s
+               Thunderbird:     5% ->     4%   x2.24 -> x2.42  (+8%)
+               Thunder Rex:     1% ->     1%   x3.93 -> x3.93  (+0%)
+    average money bonus of a 1 KG egg: x1.237 -> x1.299 (+5.1%); egg sell value (1st pet) x1.000 (was x1.000)
+  Fire (AREA_INCOME $1.8K):
+               Molten Boar:    54% ->  53.5%   x1.00 -> x1.00  (+0%)
+                Lava Golem:    27% ->    27%   x1.24 -> x1.24  (+0%)
+                  Cerberus:    13% ->    13%   x1.60 -> x1.60  (+0%)
+                  Ivonrath:     4% ->     4%   x2.42 -> x2.42  (+0%)
+           Inferno Phoenix:     2% ->     2%   x3.09 -> x3.09  (+0%)
+     Cinder Wyrm Overlord*:    new ->   0.5%   x5.01   1 KG $9.02K/s
+    average money bonus of a 1 KG egg: x1.242 -> x1.262 (+1.6%); egg sell value (1st pet) x1.000 (was x1.000)
+  Shadow (AREA_INCOME $10K):
+             Shade Panther:    54% ->    50%   x1.00 -> x1.00  (+0%)
+        Nightmare Stallion:    27% ->    25%   x1.24 -> x1.27  (+3%)
+             Wraith Hound*:    new ->    10%   x1.76   1 KG $17.6K/s
+      Black Eastern Dragon:  13.5% ->   9.5%   x1.58 -> x1.79  (+13%)
+           Pharaoh Asparuh:     4% ->     4%   x2.42 -> x2.42  (+0%)
+              Abyss Weaver:   1.5% ->   1.5%   x3.41 -> x3.41  (+0%)
+    average money bonus of a 1 KG egg: x1.236 -> x1.312 (+6.1%); egg sell value (1st pet) x1.000 (was x1.000)
+  Celestial (AREA_INCOME $55K):
+                Solar Lion:    55% ->  54.9%   x1.00 -> x1.00  (+0%)
+                   Griffin:    27% ->    27%   x1.24 -> x1.24  (+0%)
+          Celestial Dragon:    13% ->    13%   x1.60 -> x1.60  (+0%)
+                 Cvetibara:     4% ->     4%   x2.42 -> x2.42  (+0%)
+          Cosmic Leviathan:     1% ->     1%   x3.93 -> x3.93  (+0%)
+           Eclipse Seraph*:    new ->   0.1%   x8.80   1 KG $484K/s
+    average money bonus of a 1 KG egg: x1.229 -> x1.237 (+0.6%); egg sell value (1st pet) x1.000 (was x1.000)
+  Glacier (AREA_INCOME $300K):
+           Frostfang Lynx*:    new ->    50%   x1.00   1 KG $300K/s
+              Ice Mammoth*:    new ->    26%   x1.26   1 KG $377K/s
+             Glacier Yeti*:    new ->    14%   x1.56   1 KG $468K/s
+             Blizzard Roc*:    new ->   7.4%   x1.95   1 KG $586K/s
+         Permafrost Titan*:    new ->   2.5%   x2.85   1 KG $856K/s
+     Absolute Zero Dragon*:    new ->   0.1%   x8.80   1 KG $2.64M/s
+    average money bonus of a 1 KG egg: x1.270; egg sell value (1st pet) x1.000
+
+Glacier pets: $/s (raw, before rebirth/Index boosts) and pet sell value (120 s) by KG
+         Frostfang Lynx*   50% x1.00 |    1: $  300K    1K: $ 1.69M  100K: $ 5.33M    1M: $ 9.49M | sell 1 KG $36M
+            Ice Mammoth*   26% x1.26 |    1: $  377K    1K: $ 2.12M  100K: $ 6.71M    1M: $ 11.9M | sell 1 KG $45.3M
+           Glacier Yeti*   14% x1.56 |    1: $  468K    1K: $ 2.63M  100K: $ 8.33M    1M: $ 14.8M | sell 1 KG $56.2M
+           Blizzard Roc*  7.4% x1.95 |    1: $  586K    1K: $ 3.29M  100K: $ 10.4M    1M: $ 18.5M | sell 1 KG $70.3M
+       Permafrost Titan*  2.5% x2.85 |    1: $  856K    1K: $ 4.81M  100K: $ 15.2M    1M: $ 27.1M | sell 1 KG $103M
+   Absolute Zero Dragon*  0.1% x8.80 |    1: $ 2.64M    1K: $ 14.9M  100K: $   47M    1M: $ 83.5M | sell 1 KG $317M
+  Glacier EGG sell value (60 s of Frostfang Lynx at that KG): 1 KG $18M, 1K KG $101M, 100K KG $320M, 1M KG $569M, 10M KG $1.01B
+
+Chance of the rarest pet per egg, by egg KG (heavy eggs are luckier):
+   Cinder Wyrm Overlord*:    1 KG 0.50%    1K KG 0.96%  100K KG 1.19%    1M KG 1.29%   10M KG 1.38%
+         Eclipse Seraph*:    1 KG 0.10%    1K KG 0.19%  100K KG 0.24%    1M KG 0.26%   10M KG 0.28%
+   Absolute Zero Dragon*:    1 KG 0.10%    1K KG 0.19%  100K KG 0.23%    1M KG 0.25%   10M KG 0.26%
+
+Eggs to hatch until every pet of an area is found (Index claim), median of 2000 tries, 1 KG eggs / best-of-4 eggs:
+      Grass today:     43 /     27 eggs
+      Grass   new:     50 /     31 eggs
+      Water today:     51 /     31 eggs
+      Water   new:     54 /     34 eggs
+    Thunder today:     74 /     40 eggs
+    Thunder   new:     74 /     43 eggs
+       Fire today:     46 /     25 eggs
+       Fire   new:    147 /     82 eggs
+     Shadow today:     52 /     30 eggs
+     Shadow   new:     58 /     32 eggs
+  Celestial today:     75 /     40 eggs
+  Celestial   new:    700 /    322 eggs
+    Glacier   new:    680 /    326 eggs
+
+### python glacier_sim.py   (3 h/day + offline hatching)
+Sessions: 3 h play + 21 h offline per day (offline hatching ON); 24 seeds, medians.
+
+  R    cost                needs | TODAY run  total h | GLACIER run  total h real d
+  1     25K           money only |      0.1h      0.1 |        0.1h      0.1    0.0
+  2    1.2M          Water 1+ KG |      0.2h      0.3 |        0.2h      0.3    0.0
+  3      4M        Thunder 1+ KG |      0.3h      0.5 |        0.3h      0.5    0.0
+  4     18M      Thunder 100+ KG |      0.5h      1.0 |        0.5h      1.1    0.0
+  5     90M           Fire 1+ KG |      1.0h      2.0 |        1.1h      2.1    0.1
+  6    550M         Fire 100+ KG |      1.0h      3.0 |        0.9h      3.0    1.0
+  7    1.3B          Fire 1K+ KG |      0.5h      3.5 |        0.4h      3.4    1.0
+  8      3B         Shadow 1+ KG |      2.5h      6.0 |        2.6h      6.0    2.0
+  9     15B       Shadow 100+ KG |      1.0h      7.0 |        1.0h      7.0    2.0
+ 10     38B        Shadow 1K+ KG |      1.8h      9.0 |        1.9h      9.0    3.0
+ 11    120B       Shadow 10K+ KG |      2.6h     12.0 |        3.0h     12.0    4.0
+ 12    400B      Celestial 1+ KG |      3.4h     15.0 |        3.9h     15.3    5.0
+ 13    1.5T    Celestial 100+ KG |      5.2h     21.0 |        4.4h     20.9    6.6
+ 14    2.6T     Celestial 1K+ KG |      4.4h     25.1 |        4.5h     24.6    8.0
+ 15      4T     Celestial 5K+ KG |      4.3h     30.0 |        4.4h     30.0   10.0
+ 16    6.5T    Celestial 10K+ KG |      6.0h     36.0 |        6.4h     36.0   12.0
+ 17    9.5T    Celestial 25K+ KG |      5.9h     42.0 |        6.0h     42.0   14.0
+ 18     13T    Celestial 50K+ KG |      6.0h     48.0 |        6.4h     48.0   16.0
+ 19     19T   Celestial 100K+ KG |      8.0h     56.1 |        8.5h     57.0   18.1
+ 20     32T     Celestial 1M+ KG |     13.4h     69.0 |       14.9h     71.5   23.5
+ 21     40T        Glacier 1+ KG |         -        - |       12.3h     83.9   27.6
+ 22    130T       Glacier 1K+ KG |         -        - |       14.0h     97.5   32.5
+ 23    230T      Glacier 10K+ KG |         -        - |       18.0h    115.8   38.5
+ 24    350T     Glacier 100K+ KG |         -        - |       17.9h    133.1   44.0
+ 25    500T       Glacier 1M+ KG |         -        - |       22.3h    154.4   51.1
+
+Milestones (median PLAY hours; d = real days since joining):
+             milestone |          TODAY |        GLACIER
+       first Water egg |    0.1 h  0.0 d |    0.1 h  0.0 d
+     first Thunder egg |    0.5 h  0.0 d |    0.5 h  0.0 d
+        first Fire egg |    1.2 h  0.0 d |    1.2 h  0.0 d
+      first Shadow egg |    3.6 h  1.0 d |    3.5 h  1.0 d
+   first Celestial egg |   12.1 h  4.0 d |   12.2 h  4.0 d
+            Sling Lv25 |   21.4 h  7.0 d |   21.3 h  7.0 d
+         Treadmill x10 |   15.0 h  5.0 d |   15.0 h  5.0 d
+         Treadmill x12 |   32.4 h 10.1 d |   32.3 h 10.1 d
+         Treadmill x14 |   58.6 h 19.1 d |   59.9 h 19.6 d
+         Treadmill x16 |          never |   86.7 h 28.6 d
+         Treadmill x18 |          never |  103.5 h 34.5 d
+         Treadmill x20 |          never |          never
+                   R20 |   69.0 h 23.0 d |   71.5 h 23.5 d
+            Sling Lv26 |          never |   36.4 h 12.0 d
+            Sling Lv27 |          never |   72.1 h 23.6 d
+     first Glacier egg |          never |   71.7 h 23.6 d
+                   R21 |          never |   83.9 h 27.6 d
+            Sling Lv30 |          never |   98.6 h 32.5 d
+                   R25 |          never |  154.4 h 51.1 d
+            Index Fire |        - (11/24) |        - (2/24)
+       Index Celestial |   16.6 h  5.1 d |        - (6/24)
+         Index Glacier |          never |        - (2/24)
+
+Player at the moment of R20 / end (GLACIER scenario, medians):
+     TODAY end (R20): income $592M/s ($2.13T/h), treadmill tier 8, Index claims 2
+   GLACIER end (R25): income $4.18B/s ($15T/h), treadmill tier 10, Index claims 1
+
+Glacier entry (GLACIER scenario, the moment R20 is done):
+  income $533M/s, treadmill x14, Speed mult x6.30, sling Lv26
+  Glacier walk 156 needs Speed 3.17B = 12 min on that treadmill (Celestial 141 needs 750M)
+  Sling Lv26 $450B = 14 min of R20 income
+  Sling Lv27 $870B = 27 min of R20 income
+  Sling Lv28 $1.7T = 53 min of R20 income
+  Sling Lv29 $3.3T = 103 min of R20 income
+  Sling Lv30 $6.4T = 200 min of R20 income
+
+### python glacier_sim.py --continuous   (no breaks)
+Sessions: 3 h play + 0 h offline per day (continuous play); 24 seeds, medians.
+
+  R    cost                needs | TODAY run  total h | GLACIER run  total h real d
+  1     25K           money only |      0.1h      0.1 |        0.1h      0.1    0.0
+  2    1.2M          Water 1+ KG |      0.2h      0.3 |        0.2h      0.3    0.0
+  3      4M        Thunder 1+ KG |      0.3h      0.5 |        0.3h      0.5    0.0
+  4     18M      Thunder 100+ KG |      0.5h      1.0 |        0.5h      1.1    0.0
+  5     90M           Fire 1+ KG |      1.0h      2.0 |        1.1h      2.1    0.1
+  6    550M         Fire 100+ KG |      1.8h      3.8 |        1.6h      3.6    0.2
+  7    1.3B          Fire 1K+ KG |      1.0h      4.8 |        1.0h      4.7    0.2
+  8      3B         Shadow 1+ KG |      4.7h      9.2 |        4.3h      9.0    0.4
+  9     15B       Shadow 100+ KG |      2.4h     12.2 |        2.4h     11.9    0.5
+ 10     38B        Shadow 1K+ KG |      2.3h     15.5 |        2.2h     14.3    0.6
+ 11    120B       Shadow 10K+ KG |      4.6h     20.3 |        5.2h     20.4    0.8
+ 12    400B      Celestial 1+ KG |     18.2h     38.8 |       18.6h     40.6    1.7
+ 13    1.5T    Celestial 100+ KG |      8.8h     49.0 |       10.2h     51.2    2.1
+ 14    2.6T     Celestial 1K+ KG |     10.5h     59.6 |       10.3h     63.1    2.6
+ 15      4T     Celestial 5K+ KG |      9.8h     68.7 |       10.1h     71.2    3.0
+ 16    6.5T    Celestial 10K+ KG |     13.0h     81.4 |       13.7h     82.7    3.4
+ 17    9.5T    Celestial 25K+ KG |     10.9h     92.3 |       11.8h     95.1    4.0
+ 18     13T    Celestial 50K+ KG |     12.7h    104.8 |       12.7h    107.7    4.5
+ 19     19T   Celestial 100K+ KG |     15.0h    120.0 |       15.7h    124.4    5.2
+ 20     32T     Celestial 1M+ KG |     24.7h    144.1 |       26.9h    151.9    6.3
+ 21     40T        Glacier 1+ KG |         -        - |       38.4h    189.1    7.9
+ 22    130T       Glacier 1K+ KG |         -        - |       30.9h    220.1    9.2
+ 23    230T      Glacier 10K+ KG |         -        - |       41.4h    260.4   10.8
+ 24    350T     Glacier 100K+ KG |         -        - |       40.7h    299.6   12.5
+ 25    500T       Glacier 1M+ KG |         -        - |       52.9h    353.3   14.7
+
+Milestones (median PLAY hours; d = real days since joining):
+             milestone |          TODAY |        GLACIER
+       first Water egg |    0.1 h  0.0 d |    0.1 h  0.0 d
+     first Thunder egg |    0.5 h  0.0 d |    0.5 h  0.0 d
+        first Fire egg |    1.2 h  0.0 d |    1.2 h  0.0 d
+      first Shadow egg |    5.0 h  0.2 d |    4.9 h  0.2 d
+   first Celestial egg |   20.4 h  0.9 d |   20.5 h  0.9 d
+            Sling Lv25 |   50.8 h  2.1 d |   53.1 h  2.2 d
+         Treadmill x10 |   31.7 h  1.3 d |   33.9 h  1.4 d
+         Treadmill x12 |   72.4 h  3.0 d |   74.0 h  3.1 d
+         Treadmill x14 |  125.0 h  5.2 d |  130.2 h  5.4 d
+         Treadmill x16 |          never |  196.7 h  8.2 d
+         Treadmill x18 |          never |  231.6 h  9.6 d
+         Treadmill x20 |          never |          never
+                   R20 |  144.1 h  6.0 d |  151.9 h  6.3 d
+            Sling Lv26 |          never |   83.3 h  3.5 d
+            Sling Lv27 |          never |  156.9 h  6.5 d
+     first Glacier egg |          never |  152.1 h  6.3 d
+                   R21 |          never |  189.1 h  7.9 d
+            Sling Lv30 |          never |  221.5 h  9.2 d
+                   R25 |          never |  353.3 h 14.7 d
+            Index Fire |    3.0 h  0.1 d |        - (5/24)
+       Index Celestial |   27.6 h  1.2 d |        - (4/24)
+         Index Glacier |          never |        - (2/24)
+
+Player at the moment of R20 / end (GLACIER scenario, medians):
+     TODAY end (R20): income $557M/s ($2.01T/h), treadmill tier 8, Index claims 3
+   GLACIER end (R25): income $2.83B/s ($10.2T/h), treadmill tier 10, Index claims 1
+
+Glacier entry (GLACIER scenario, the moment R20 is done):
+  income $530M/s, treadmill x14, Speed mult x6.30, sling Lv26
+  Glacier walk 156 needs Speed 3.17B = 12 min on that treadmill (Celestial 141 needs 750M)
+  Sling Lv26 $450B = 14 min of R20 income
+  Sling Lv27 $870B = 27 min of R20 income
+  Sling Lv28 $1.7T = 53 min of R20 income
+  Sling Lv29 $3.3T = 104 min of R20 income
+  Sling Lv30 $6.4T = 201 min of R20 income
+3h/day + offline 40 seeds
+R20: run P25  13.3  med  15.0  P90  16.9 h | total med   71.5  P90   78.0 h
+R21: run P25  11.9  med  12.2  P90  14.0 h | total med   84.0  P90   91.0 h
+R22: run P25  12.6  med  14.0  P90  15.0 h | total med   96.6  P90  105.0 h
+R23: run P25  17.4  med  18.0  P90  20.1 h | total med  114.4  P90  125.1 h
+R24: run P25  16.9  med  18.0  P90  19.5 h | total med  132.7  P90  143.6 h
+R25: run P25  21.3  med  22.5  P90  24.1 h | total med  154.4  P90  167.7 h
+first Glacier egg: med 71.7 h  P90 78.2

@@ -1,0 +1,50 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.FreeGiftClientLegacy",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "local SFX = require(RS:WaitForChild(\"SFX\"))\nlocal PotionConfig = require(RS:WaitForChild(\"PotionConfig\"))",
+   "new_string": "local SFX = require(RS:WaitForChild(\"SFX\"))\nlocal PotionConfig = require(RS:WaitForChild(\"PotionConfig\"))\nlocal B = require(RS:WaitForChild(\"BrickUI\")) -- (2026-10-22 UI polish: B.tapArea)"
+  },
+  {
+   "old_string": "local likeCard, likeWell = card(\"Like\", UDim2.fromOffset(145, 290), \"1. Like the game!\")\nnew(\"TextLabel\", {Name = \"Thumb\", Text = \"👍\", TextScaled = true, Font = FONT, BackgroundTransparency = 1, Size = UDim2.fromOffset(56, 56),\n\tPosition = UDim2.fromOffset(42, 40), AnchorPoint = Vector2.new(0.5, 0.5), ZIndex = 6}, likeWell)\nlocal how = text(likeWell, {Name = \"How\", Text = TOUCH and \"Tap LIKE on the game page!\" or \"Click LIKE on the game page!\", Size = UDim2.fromOffset(150, 50),\n\tPosition = UDim2.fromOffset(150, 40), ZIndex = 6, Stroke = 2})\nnew(\"UITextSizeConstraint\", {MaxTextSize = 20}, how)\n\nlocal groupCard, groupWell, groupDone = card(\"Group\", UDim2.fromOffset(415, 290), \"2. Join the group!\")",
+   "new_string": "-- (2026-10-22 owner: the like step is NO LONGER required) the reward needs the group only. A small friendly like ask stays\n-- under the reward lines: no tick, no number, never checked, it never changes CLAIM. The group card is the one step.\nlocal likeAsk = text(win, {Name = \"LikeAsk\", Text = \"Like the game too! 👍\", Size = UDim2.fromOffset(260, 18), Position = UDim2.fromOffset(378, 223),\n\tTextColor3 = Color3.fromRGB(255, 225, 120), ZIndex = 5, Stroke = 2})\n\nlocal groupCard, groupWell, groupDone = card(\"Group\", UDim2.fromOffset(280, 301), \"Join the group!\")"
+  },
+  {
+   "old_string": "local hint = text(win, {Name = \"Hint\", Text = \"\", Size = UDim2.fromOffset(420, 18), Position = UDim2.fromOffset(280, 367),",
+   "new_string": "local hint = text(win, {Name = \"Hint\", Text = \"\", Size = UDim2.fromOffset(420, 16), Position = UDim2.fromOffset(280, 376),"
+  },
+  {
+   "old_string": "local claimBtn, claimLabel, claimGrad = standardButton(win, \"Claim\", UDim2.fromOffset(236, 56), UDim2.fromOffset(280, 408), \"CLAIM!\", CLAIM_GRAD, 34)",
+   "new_string": "local claimBtn, claimLabel, claimGrad = standardButton(win, \"Claim\", UDim2.fromOffset(236, 56), UDim2.fromOffset(280, 416), \"CLAIM!\", CLAIM_GRAD, 34)"
+  },
+  {
+   "old_string": "local joined = false\nlocal function checkGroup()\n\tlocal ok, member = pcall(player.IsInGroup, player, GROUP_ID)\n\tif ok and member then joined = true end\nend",
+   "new_string": "local joined = false\n-- (2026-10-22 owner: the reward needs the group only) the SERVER's group check decides (FreeGift.InGroup runs the same\n-- inGroup() as the claim, uncached), so the UI and the claim always agree; IsInGroup (cached per session) is the fallback\nlocal InGroup = folder:WaitForChild(\"InGroup\", 10)\nlocal function checkGroup()\n\tif InGroup then\n\t\tlocal ok, member = pcall(InGroup.InvokeServer, InGroup)\n\t\tif ok and type(member) == \"boolean\" then joined = member return end\n\tend\n\tlocal ok, member = pcall(player.IsInGroup, player, GROUP_ID)\n\tif ok and member then joined = true end\nend"
+  },
+  {
+   "old_string": "\tlocal done = claimed()\n\tclaimLabel.Text = done and \"CLAIMED!\" or \"CLAIM!\"\n\tclaimGrad.Color = done and CLAIMED_GRAD or CLAIM_GRAD\n\tclaimBtn.Active = not done",
+   "new_string": "\tlocal done = claimed()\n\t-- CLAIM! lime when you're in the group, silver JOIN FIRST when not (a press then opens the join prompt), CLAIMED! after\n\tclaimLabel.Text = done and \"CLAIMED!\" or (joined and \"CLAIM!\" or \"JOIN FIRST\")\n\tclaimGrad.Color = (done or not joined) and CLAIMED_GRAD or CLAIM_GRAD\n\tclaimBtn.Active = not done"
+  },
+  {
+   "old_string": "claimBtn.Activated:Connect(function()\n\tif busy or claimed() then return end\n\tbusy = true",
+   "new_string": "local function pressClaim()\n\tif busy or claimed() then return end\n\tif not joined then promptJoin() return end -- (the group is the one step)\n\tbusy = true"
+  },
+  {
+   "old_string": "\telseif ok and why == \"wait\" then\n\t\tshowHint(\"Loading your data... try again in a second!\")\n\tend\nend)",
+   "new_string": "\telseif ok and why == \"wait\" then\n\t\tshowHint(\"Loading your data... try again in a second!\")\n\tend\nend\nclaimBtn.Activated:Connect(pressClaim)\nB.tapArea(claimBtn, pressClaim) B.tapArea(joinBtn, promptJoin) -- (2026-10-22 UI polish, M7: >= 44 pt on a phone)"
+  },
+  {
+   "old_string": "\t\tcheckGroup()\n\t\trefresh()\n\t\twindowScale.Scale = deviceScale()",
+   "new_string": "\t\trefresh() -- (2026-10-22 UI polish) opens at once with the last answer; the server check follows\n\t\ttask.spawn(function() checkGroup() refresh() end)\n\t\twindowScale.Scale = deviceScale()"
+  },
+  {
+   "old_string": "\treturn math.clamp(math.min(vp.X / 1050, vp.Y / 620), 0.52, 1.18)\nend\nworkspace.CurrentCamera:GetPropertyChangedSignal(\"ViewportSize\"):Connect(function() windowScale.Scale = deviceScale() end)",
+   "new_string": "\treturn math.clamp(math.min(vp.X / 1050, vp.Y / 620), 0.7, 1.18) -- (2026-10-22 UI polish, M5: phone floor 0.7, was 0.52)\nend\nworkspace.CurrentCamera:GetPropertyChangedSignal(\"ViewportSize\"):Connect(function() windowScale.Scale = deviceScale() end)"
+  },
+  {
+   "old_string": "close.Activated:Connect(function() setOpen(false) end)\ntask.spawn(function()\n\tlocal opened = mainMenu:WaitForChild(\"WindowOpened\", 30)",
+   "new_string": "close.Activated:Connect(function() setOpen(false) end)\nB.tapArea(close, function() setOpen(false) end) -- (2026-10-22 UI polish, M7)\ntask.spawn(function()\n\tlocal opened = mainMenu:WaitForChild(\"WindowOpened\", 30)"
+  }
+ ]
+}

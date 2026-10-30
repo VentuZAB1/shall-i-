@@ -1,0 +1,10 @@
+00:04.422  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\GlacierYeti\GlacierYeti_portrait_raw.png'
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\_tools\headless_pack.py:46: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  flat.use_nodes = True
+00:04.562  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\GlacierYeti\renders\flat_side.png'
+00:04.687  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\GlacierYeti\renders\flat_tq.png'
+00:04.781  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\GlacierYeti\renders\flat_game.png'
+HEADLESS_RESULT {"portrait": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\GlacierYeti\\GlacierYeti_portrait_raw.png", "flat": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\GlacierYeti\\renders\\flat_side.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\GlacierYeti\\renders\\flat_tq.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\GlacierYeti\\renders\\flat_game.png"]}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

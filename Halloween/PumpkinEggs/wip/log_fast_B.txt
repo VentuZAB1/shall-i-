@@ -1,0 +1,48 @@
+[eggs    0.6s] PumpkinEgg_B hi sculpt 28800
+[eggs    1.2s] PumpkinEgg_B repaired cut-vertex attributes (fixed, left): (1055, 0)
+[eggs    1.4s] PumpkinEgg_B carved 28853 hi faces; holes {'hi': 4.0, 'lo': 4.0, 'cut': 4}
+[eggs    1.5s] PumpkinEgg_B game mesh tris 7840
+[eggs    1.6s]   uv smart done
+Warning: Unwrap failed to solve 2 of 12 island(s), edge seams may need to be added
+[eggs    1.8s]   uv unwrap+average done, packing
+[eggs   68.5s] PumpkinEgg_B uv seams at [30.0, 150.0, 270.0] edges 168
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:784: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  bmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:788: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  cmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:812: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs   70.9s]   baked LoSkin {'texels': 24778, 'miss': 0.0002}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs   71.8s]   baked LoWall {'texels': 1300, 'miss': 0.0454}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[eggs   72.9s]   baked LoInner {'texels': 5726, 'miss': 0.0012}
+Info: Saved as "egg_B_fast.blend"
+[eggs   73.5s] PumpkinEgg_B done {"name": "PumpkinEgg_B", "tris": 7840, "texture": 256, "size_studs_roblox": [5.305, 7.299, 5.28], "bottom_offset_y": -3.649, "cavity_centre": [-0.034, -0.541, 0.005], "cavity_floor": [-0.034, -3.461, 0.005], "shell": 0.3, "holes": {"hi": 4.0, "lo": 4.0, "cut": 4}, "bake": {"LoSkin": {"texels": 24778, "miss": 0.0002}, "LoWall": {"texels": 1300, "miss": 0.0454}, "LoInner": {"texels": 5726, "miss": 0.0012}}, "blender_shift": [-0.0343, -0.0047, -0.5768]}
+01:20.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\fB_25.png'
+01:21.063  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\fB_close.png'
+01:21.657  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\fB_34.png'
+01:22.125  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\fB_back.png'
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\eggs.py:1371: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  em.use_nodes = True
+01:22.813  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\PumpkinEggs\wip\fB_lit.png'
+EGGS_REPORT {"egg_B": {"name": "PumpkinEgg_B", "tris": 7840, "texture": 256, "size_studs_roblox": [5.305, 7.299, 5.28], "bottom_offset_y": -3.649, "cavity_centre": [-0.034, -0.541, 0.005], "cavity_floor": [-0.034, -3.461, 0.005], "shell": 0.3, "holes": {"hi": 4.0, "lo": 4.0, "cut": 4}, "bake": {"LoSkin": {"texels": 24778, "miss": 0.0002}, "LoWall": {"texels": 1300, "miss": 0.0454}, "LoInner": {"texels": 5726, "miss": 0.0012}}, "blender_shift": [-0.0343, -0.0047, -0.5768]}, "preview": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\fB_25.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\fB_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\fB_34.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\fB_back.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\PumpkinEggs\\wip\\fB_lit.png"]}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

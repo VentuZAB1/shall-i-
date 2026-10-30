@@ -1,0 +1,11 @@
+00:03.188  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\Grave_C.blend"
+00:05.703  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\compare_GraveC_corner_hi.png'
+00:06.063  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\compare_GraveC_corner_lo.png'
+OBJ Grave_C MESH False 2877
+OBJ Grave_C_hi MESH True 248628
+OBJ Grave_C_mound_hi MESH True 54000
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\compare_GraveC_corner_hi.png
+WROTE C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review\compare_GraveC_corner_lo.png
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

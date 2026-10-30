@@ -1,0 +1,99 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\gen\mock_preview.py:172: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\gen\mock_preview.py:202: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\gen\mock_preview.py:211: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\gen\mock_preview.py:385: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+00:03.140  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\game_tp_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\game_tp_day.png
+00:03.671  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\game_close_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\game_close_day.png
+00:04.312  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\game_tp_night.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\game_tp_night.png
+00:04.718  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\game_tp_day_before.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\game_tp_day_before.png
+00:05.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye25_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye25_day.png
+00:05.859  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye25_day_half.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye25_day_half.png
+00:06.375  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye60_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye60_day.png
+00:06.656  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye60_day_crop.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye60_day_crop.png
+00:07.234  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_tp_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_tp_day.png
+00:07.921  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_top_ortho.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_top_ortho.png
+00:08.578  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_close6_slime.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_close6_slime.png
+00:09.296  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_close6_crack.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_close6_crack.png
+00:09.921  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye25_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye25_day.png
+00:10.265  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye25_day_half.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye25_day_half.png
+00:10.812  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye60_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye60_day.png
+00:11.078  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye60_day_crop.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye60_day_crop.png
+00:11.640  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_oblique20_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_oblique20_day.png
+00:12.343  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_close8_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_close8_day.png
+00:13.000  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_tp4_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_tp4_day.png
+00:13.687  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\moss_close6_floor.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\moss_close6_floor.png
+00:14.375  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\moss_close6_wall.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\moss_close6_wall.png
+00:14.953  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_foot_top_ortho.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_foot_top_ortho.png
+00:15.562  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_floor_moss_over_stain.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_floor_moss_over_stain.png
+00:16.171  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_floor_stain_over_moss.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_floor_stain_over_moss.png
+00:16.828  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_floor_crack_over_stain.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_floor_crack_over_stain.png
+00:17.484  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_floor_stain_over_crack.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_floor_stain_over_crack.png
+00:18.140  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_wall_moss_over_crack.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_wall_moss_over_crack.png
+00:18.812  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_wall_crack_over_moss.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_wall_crack_over_moss.png
+00:19.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_wallfoot_moss_over_stain.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_wallfoot_moss_over_stain.png
+00:20.203  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_wallfoot_stain_over_moss.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\order_wallfoot_stain_over_moss.png
+00:20.921  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye25_night.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye25_night.png
+00:21.437  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye60_night.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye60_night.png
+00:22.031  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_tp_night.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_tp_night.png
+00:22.640  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye25_night.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye25_night.png
+00:23.171  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye60_night.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye60_night.png
+00:23.687  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye25_day_before.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye25_day_before.png
+00:24.062  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye60_day_before.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye60_day_before.png
+00:24.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye25_day_before.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye25_day_before.png
+00:24.921  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye60_day_before.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye60_day_before.png
+00:25.453  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye25_night_before.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_eye25_night_before.png
+00:25.890  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye25_night_before.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_eye25_night_before.png
+00:26.656  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_tp_day.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_tp_day.png
+00:27.437  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_tp_night.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\wall_tp_night.png
+00:28.140  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_night_lamp.png'
+RENDERED C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\HubGrime\renders\floor_night_lamp.png
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

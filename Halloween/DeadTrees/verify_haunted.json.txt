@@ -1,0 +1,363 @@
+FBX version: 7400
+VERIFY {
+ "fbx": "C:/cdimp/Halloween_HauntedTree.fbx",
+ "kb": 12829.8,
+ "objects": [
+  {
+   "name": "HauntedTree_Branches",
+   "tris": 7160,
+   "size_xyz": [
+    0.13,
+    0.108,
+    0.081
+   ],
+   "min": [
+    -0.066,
+    -0.056,
+    0.069
+   ],
+   "max": [
+    0.065,
+    0.052,
+    0.15
+   ],
+   "uv_layers": 1,
+   "materials": [
+    {
+     "name": "HauntedTree_Branches_PBR",
+     "textures": [
+      {
+       "image": "HauntedTree_Branches_albedo",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Base Color"
+       ]
+      },
+      {
+       "image": "HauntedTree_Branches_normal",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Color"
+       ]
+      },
+      {
+       "image": "HauntedTree_Branches_rough",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Roughness"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "HauntedTree_Leaves",
+   "tris": 5852,
+   "size_xyz": [
+    0.128,
+    0.093,
+    0.079
+   ],
+   "min": [
+    -0.066,
+    -0.053,
+    0.065
+   ],
+   "max": [
+    0.062,
+    0.04,
+    0.145
+   ],
+   "uv_layers": 1,
+   "materials": [
+    {
+     "name": "HauntedTree_Leaves_PBR",
+     "textures": [
+      {
+       "image": "HauntedTree_Leaves_albedo",
+       "size": [
+        512,
+        512
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Base Color"
+       ]
+      },
+      {
+       "image": "HauntedTree_Leaves_normal",
+       "size": [
+        512,
+        512
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Color"
+       ]
+      },
+      {
+       "image": "HauntedTree_Leaves_rough",
+       "size": [
+        512,
+        512
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Roughness"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "HauntedTree_Limbs",
+   "tris": 4175,
+   "size_xyz": [
+    0.103,
+    0.066,
+    0.048
+   ],
+   "min": [
+    -0.05,
+    -0.034,
+    0.072
+   ],
+   "max": [
+    0.053,
+    0.032,
+    0.12
+   ],
+   "uv_layers": 1,
+   "materials": [
+    {
+     "name": "HauntedTree_Limbs_PBR",
+     "textures": [
+      {
+       "image": "HauntedTree_Limbs_albedo",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Base Color"
+       ]
+      },
+      {
+       "image": "HauntedTree_Limbs_normal",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Color"
+       ]
+      },
+      {
+       "image": "HauntedTree_Limbs_rough",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Roughness"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "HauntedTree_Trunk",
+   "tris": 9049,
+   "size_xyz": [
+    0.087,
+    0.058,
+    0.078
+   ],
+   "min": [
+    -0.04,
+    -0.03,
+    -0.003
+   ],
+   "max": [
+    0.047,
+    0.028,
+    0.076
+   ],
+   "uv_layers": 1,
+   "materials": [
+    {
+     "name": "HauntedTree_Trunk_PBR",
+     "textures": [
+      {
+       "image": "HauntedTree_Trunk_albedo",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Base Color"
+       ]
+      },
+      {
+       "image": "HauntedTree_Trunk_normal",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Color"
+       ]
+      },
+      {
+       "image": "HauntedTree_Trunk_rough",
+       "size": [
+        1024,
+        1024
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Roughness"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "HauntedTree_Web",
+   "tris": 1962,
+   "size_xyz": [
+    0.034,
+    0.026,
+    0.039
+   ],
+   "min": [
+    -0.039,
+    -0.028,
+    0.066
+   ],
+   "max": [
+    -0.005,
+    -0.003,
+    0.105
+   ],
+   "uv_layers": 1,
+   "materials": [
+    {
+     "name": "HauntedTree_WebMat",
+     "textures": [
+      {
+       "image": "HauntedTree_Web_albedo",
+       "size": [
+        256,
+        256
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Base Color"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "HauntedTree_WebSilk",
+   "tris": 440,
+   "size_xyz": [
+    0.035,
+    0.022,
+    0.035
+   ],
+   "min": [
+    -0.035,
+    -0.025,
+    0.067
+   ],
+   "max": [
+    0.0,
+    -0.004,
+    0.101
+   ],
+   "uv_layers": 1,
+   "materials": [
+    {
+     "name": "HauntedTree_SilkMat",
+     "textures": [
+      {
+       "image": "HauntedTree_WebSilk_albedo",
+       "size": [
+        512,
+        512
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Base Color"
+       ]
+      },
+      {
+       "image": "HauntedTree_WebSilk_albedo.002",
+       "size": [
+        512,
+        512
+       ],
+       "packed": true,
+       "channels": 4,
+       "to": [
+        "Alpha"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "total_tris": 28638,
+ "bbox_min": [
+  -0.066,
+  -0.056,
+  -0.003
+ ],
+ "bbox_max": [
+  0.065,
+  0.052,
+  0.15
+ ]
+}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

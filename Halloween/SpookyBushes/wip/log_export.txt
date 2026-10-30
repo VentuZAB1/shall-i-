@@ -1,0 +1,20 @@
+00:03.172  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\thorn.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Bush_Thorn.fbx'
+export finished in 0.0214 sec.
+[bush    0.2s] exported {'fbx': 'C:\\cdimp\\Halloween_Bush_Thorn.fbx', 'kb': 4190.5, 'tris': {'Bush': 8528, 'Web': 558, 'WebSilk': 572}}
+00:03.328  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\autumn.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Bush_Autumn.fbx'
+export finished in 0.0162 sec.
+[bush    0.3s] exported {'fbx': 'C:\\cdimp\\Halloween_Bush_Autumn.fbx', 'kb': 4404.4, 'tris': {'Bush': 8232, 'Gourds': 1520}}
+00:03.422  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bramble.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Bramble.fbx'
+export finished in 0.0104 sec.
+[bush    0.3s] exported {'fbx': 'C:\\cdimp\\Halloween_Bramble.fbx', 'kb': 875.7, 'tris': {'Bramble': 4515}}
+BUSH_REPORT {"export": {"thorn": {"fbx": "C:\\cdimp\\Halloween_Bush_Thorn.fbx", "kb": 4190.5, "tris": {"Bush": 8528, "Web": 558, "WebSilk": 572}}, "autumn": {"fbx": "C:\\cdimp\\Halloween_Bush_Autumn.fbx", "kb": 4404.4, "tris": {"Bush": 8232, "Gourds": 1520}}, "bramble": {"fbx": "C:\\cdimp\\Halloween_Bramble.fbx", "kb": 875.7, "tris": {"Bramble": 4515}}}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
+EXIT 0

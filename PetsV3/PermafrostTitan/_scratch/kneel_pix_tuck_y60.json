@@ -1,0 +1,35 @@
+{
+ "tag": "tuck_y60",
+ "res": 250,
+ "40": {
+  "Leg_L": {
+   "alone_px": 11854,
+   "visible_px": 3395,
+   "share": 0.286,
+   "occluders": {
+    "Arm_L": 724,
+    "Fore_L": 247,
+    "Shin_L": 104
+   }
+  },
+  "Shin_L": {
+   "alone_px": 8138,
+   "visible_px": 5206,
+   "share": 0.64,
+   "occluders": {
+    "Leg_L": 247,
+    "Foot_L": 70,
+    "Fore_L": 56
+   }
+  },
+  "Foot_L": {
+   "alone_px": 10247,
+   "visible_px": 6609,
+   "share": 0.645,
+   "occluders": {
+    "Shin_L": 430,
+    "Leg_L": 34
+   }
+  }
+ }
+}

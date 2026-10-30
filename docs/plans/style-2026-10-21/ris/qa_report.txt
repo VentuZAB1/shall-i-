@@ -1,0 +1,75 @@
+rendered settings_pc.png
+rendered settings_off_pc.png
+rendered index_pc.png
+rendered index_claim_pc.png
+rendered rebirth_pc.png
+rendered rebirth_ready_pc.png
+rendered rebirth_need_pc.png
+rendered rebirth_confirm_pc.png
+rendered rebirth_max_pc.png
+rendered settings_phone.png
+rendered index_phone.png
+rendered rebirth_need_phone.png
+rendered settings_1050.png
+rendered index_1050.png
+rendered rebirth_need_1050.png
+--- QA settings pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 56% "BACKGROUND MUSIC"@16, 56% "ALL SONGS"@18, 49% "DAY OR NIGHT SKY"@16, 49% "X"@21, 47% "MUSIC LOUDNESS"@16
+fill <= 83% everywhere
+view settings dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("BACKGROUND MUSIC")
+--- QA settings_off pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 79% "RACE TO FINISH"@18, 56% "BACKGROUND MUSIC"@16, 49% "DAY OR NIGHT SKY"@16, 49% "X"@21, 47% "MUSIC LOUDNESS"@16
+fill <= 83% everywhere
+view settings_off dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("BACKGROUND MUSIC")
+--- QA index pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 79% "HATCHED"@16, 78% "+5%"@16, 78% "+5%"@16, 78% "x1.6"@16, 77% "CELESTIAL"@16
+fill <= 83% everywhere
+view index dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 17.7 px ("!")
+--- QA index_claim pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 79% "HATCHED"@16, 78% "+5%"@16, 78% "+5%"@16, 77% "CELESTIAL"@16, 75% "x3.1"@16
+fill <= 83% everywhere
+view index_claim dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 17.7 px ("!")
+--- QA rebirth pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 75% "x1.25"@28, 75% "x1.25"@28, 64% "YOU WILL GET"@18, 52% "BASE SIZE"@16, 49% "X"@21
+fill <= 83% everywhere
+view rebirth dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("PET SLOT")
+--- QA rebirth_ready pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 75% "x1.25"@28, 75% "x1.25"@28, 64% "YOU WILL GET"@18, 52% "BASE SIZE"@16, 49% "X"@21
+fill <= 83% everywhere
+view rebirth_ready dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("PET SLOT")
+--- QA rebirth_need pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 64% "YOU WILL GET"@18, 52% "BASE SIZE"@16, 50% "THUNDER PET"@18, 49% "X"@21, 48% "PET SLOT"@16
+fill <= 83% everywhere
+view rebirth_need dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("PET SLOT")
+--- QA rebirth_confirm pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 78% "YOU HAVE ONE: 12.5K KG"@16, 64% "YOU WILL GET"@18, 52% "BASE SIZE"@16, 50% "THUNDER PET"@18, 49% "X"@21
+fill <= 83% everywhere
+view rebirth_confirm dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("PET SLOT")
+--- QA rebirth_max pc
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 74% "YOUR REWARDS"@18, 73% "BIGGEST BASE"@16, 71% "MAX"@28, 68% "MAX"@24, 52% "BASE SIZE"@16
+fill <= 83% everywhere
+view rebirth_max dev pc: scale 1.1800  window 873x555 at gui cx 960.00  min text 18.9 px ("PET SLOT")
+--- QA settings phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 56% "BACKGROUND MUSIC"@16, 56% "ALL SONGS"@18, 49% "DAY OR NIGHT SKY"@16, 49% "X"@21, 47% "MUSIC LOUDNESS"@16
+fill <= 83% everywhere
+view settings dev phone: scale 0.7106  window 526x334 at gui cx 407.24  min text 11.4 px ("BACKGROUND MUSIC")
+--- QA index phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 79% "HATCHED"@16, 78% "+5%"@16, 78% "+5%"@16, 78% "x1.6"@16, 77% "CELESTIAL"@16
+fill <= 83% everywhere
+view index dev phone: scale 0.7106  window 526x334 at gui cx 407.24  min text 10.7 px ("!")
+--- QA rebirth_need phone
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 64% "YOU WILL GET"@18, 52% "BASE SIZE"@16, 50% "THUNDER PET"@18, 49% "X"@21, 48% "PET SLOT"@16
+fill <= 83% everywhere
+view rebirth_need dev phone: scale 0.7106  window 526x334 at gui cx 407.24  min text 11.4 px ("PET SLOT")
+--- QA settings 1050
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 56% "BACKGROUND MUSIC"@16, 56% "ALL SONGS"@18, 49% "DAY OR NIGHT SKY"@16, 49% "X"@21, 47% "MUSIC LOUDNESS"@16
+fill <= 83% everywhere
+view settings dev pc1050: scale 1.0982  window 813x516 at gui cx 635.65  min text 17.6 px ("BACKGROUND MUSIC")
+--- QA index 1050
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 79% "HATCHED"@16, 78% "+5%"@16, 78% "+5%"@16, 78% "x1.6"@16, 77% "CELESTIAL"@16
+fill <= 83% everywhere
+view index dev pc1050: scale 1.0982  window 813x516 at gui cx 635.65  min text 16.5 px ("!")
+--- QA rebirth_need 1050
+tightest est. GothamBlack fill (glyph x 0.889 / box - 2 x stroke): 64% "YOU WILL GET"@18, 52% "BASE SIZE"@16, 50% "THUNDER PET"@18, 49% "X"@21, 48% "PET SLOT"@16
+fill <= 83% everywhere
+view rebirth_need dev pc1050: scale 1.0982  window 813x516 at gui cx 635.65  min text 17.6 px ("PET SLOT")

@@ -1,0 +1,70 @@
+
+
+# ------------------------------------------------------------------ animation helpers (v0: model-gate stub only - the
+# real clips follow the brief section 7 after the model review)
+import petkit as pk
+
+LEGS = ["Leg_L", "Leg_R"]
+
+
+def ease(u):
+    u = max(0.0, min(1.0, u))
+    return 0.5 - 0.5 * math.cos(math.pi * u)
+
+
+def wp(k, f, P, side=None):
+    wings(k, f, *P, side=side)
+
+
+def folded(k, f, du=0.0, dfwd=0.0, dtw=0.0, dtip=0.0, side=None):
+    wings(k, f, FOLD[0] + du, FOLD[1] + dfwd, FOLD[2] + dtw, FOLD[3] + dtip, side)
+
+
+def blend(a, b, t):
+    return tuple(x + (y - x) * t for x, y in zip(a, b))
+
+
+def streamers(k, f, x1=0.0, x2=0.0, x3=0.0, yaw=0.0, spread=0.0):
+    """kit pitch + LIFTS a +Y streamer; spread fans L / R out (yaw)"""
+    for c, s in (("C", 0), ("L", 1), ("R", -1)):
+        k.key("Streamer%s1" % c, f, rot=(x1, yaw * 0.5 + s * spread, 0))
+        k.key("Streamer%s2" % c, f, rot=(x2, yaw * 0.3, 0))
+        k.key("Streamer%s3" % c, f, rot=(x3, yaw * 0.2, 0))
+
+
+def rest_keys(k, f, z=0.0, pitch=0.0):
+    k.key("Spine", f, rot=(pitch, 0, 0), loc=(0, 0, z))
+    for b in ("Chest", "Neck", "Neck2", "Head", "Jaw", "Crest"):
+        k.key(b, f, rot=(0, 0, 0))
+    folded(k, f)
+    streamers(k, f)
+
+
+def plant_frames(k, frames, dy=0.0, regrip=None):
+    """feet on their rest spots (+dy); regrip = {leg: (f0, f1)}: that foot lifts 0.07 and curls its toes"""
+    import bpy
+    k.bake_bezier_now()
+    for f in frames:
+        bpy.context.scene.frame_set(f)
+        for leg in LEGS:
+            z, toe = FOOT_LIFT, 0.0
+            if regrip and leg in regrip and regrip[leg][0] <= f <= regrip[leg][1]:
+                u = (f - regrip[leg][0]) / float(regrip[leg][1] - regrip[leg][0])
+                z, toe = FOOT_LIFT + 0.07 * math.sin(math.pi * u), 14 * math.sin(math.pi * u)
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y + dy, z)), toe=toe)
+
+
+def idle(k):
+    """v0 STUB: the cloak fold held (model gate shares / portrait at idle f0)"""
+    n = 120
+    k.new_action("idle", n, True)
+    for f in (0, 60, n):
+        rest_keys(k, f)
+    plant_frames(k, range(0, n + 1, 10))
+    k.finish()
+    k.meta["planted"] = LEGS
+
+
+def anim(k):
+    idle(k)
+    return 0.0

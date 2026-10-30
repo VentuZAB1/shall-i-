@@ -1,0 +1,33 @@
+{
+ "tag": "g",
+ "res": 250,
+ "40": {
+  "Leg_L": {
+   "alone_px": 13352,
+   "visible_px": 7832,
+   "share": 0.587,
+   "occluders": {
+    "Spine": 270,
+    "Shin_L": 214,
+    "Arm_L": 192
+   }
+  },
+  "Shin_L": {
+   "alone_px": 8177,
+   "visible_px": 4869,
+   "share": 0.595,
+   "occluders": {
+    "Foot_L": 216,
+    "Leg_L": 206
+   }
+  },
+  "Foot_L": {
+   "alone_px": 9761,
+   "visible_px": 7299,
+   "share": 0.748,
+   "occluders": {
+    "Shin_L": 314
+   }
+  }
+ }
+}

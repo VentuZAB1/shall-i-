@@ -1,0 +1,12 @@
+Slingshot Power per level (learned aim, 6th launch): range studs / P(lands in Water) / P(near miss <= 105 studs short)
+  today  Lv0  370   0%/19%  Lv1  448   2%/50%  Lv2  525  30%/41%  Lv3  602  52%/30%  Lv4  679  66%/22%  Lv5  756  76%/16%
+  B      Lv0  370   0%/19%  Lv1  478  13%/49%  Lv2  560  41%/36%  Lv3  632  58%/26%  Lv4  694  69%/20%  Lv5  756  76%/16%
+
+(median minute since joining)                  Lv2   Lv3 Water  WEgg    R1    R2  Water ladder   Water egg 25%..75%, by 10 min
+TODAY (fix 1 built)                            5.5   7.4   8.6   8.6  11.7  32.4     36%       6.5..12.4,  56%
+A  Lv2 $600 + Lv3 $1.5K                        5.5   5.7   8.5   8.5  10.7  32.1     38%       6.4..11.7,  61%
+B  Lv1-4 range +30/+35/+30/+15                 5.5   7.5   8.4   8.4  11.0  31.7     39%       6.3..10.8,  64%
+A + B                                          5.5   5.7   8.3   8.3  10.7  31.5     40%       6.4..10.7,  67%
+A + B + near-miss banner (assumed effect)      5.5   5.7   8.2   8.3  10.7  31.0     42%       6.3..10.4,  72%
+near-miss banner only (assumed effect)         5.5   7.4   8.6   8.6  11.6  31.7     37%       6.5..11.0,  62%
+A + B + banner + C first-Water egg assist      5.5   5.7   8.2   8.3  10.7  31.1     42%       6.3..10.2,  73%

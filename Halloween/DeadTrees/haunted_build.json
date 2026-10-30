@@ -1,0 +1,159 @@
+{
+ "core_hi_clean": {
+  "removed_faces": 320,
+  "filled_faces": 0,
+  "pinch_faces": 0
+ },
+ "trunk_hi_tris": 824976,
+ "branches_hi_tris": 151284,
+ "core_lo_clean": {
+  "removed_faces": 56,
+  "filled_faces": 0,
+  "pinch_faces": 0
+ },
+ "core_lo_clean2": {
+  "removed_faces": 0,
+  "filled_faces": 0,
+  "pinch_faces": 0
+ },
+ "ground_cap_faces": 268,
+ "core_lo_clean3": {
+  "removed_faces": 8,
+  "filled_faces": 0,
+  "pinch_faces": 0
+ },
+ "trunk_tris": 13224,
+ "branches_tris": 7160,
+ "split_z": 7.395,
+ "HauntedTree_Trunk_uv": {
+  "side_faces": 7445,
+  "misc_faces": 1604,
+  "hidden_faces": 0,
+  "bad_faces": 522
+ },
+ "Trunk_tris": 9049,
+ "HauntedTree_Limbs_uv": {
+  "side_faces": 3715,
+  "misc_faces": 460,
+  "hidden_faces": 0,
+  "bad_faces": 404
+ },
+ "Limbs_tris": 4175,
+ "texel": {
+  "HauntedTree_Trunk": {
+   "uv_fill": 0.495,
+   "px_per_stud": 70.2,
+   "area": 105.4
+  },
+  "HauntedTree_Limbs": {
+   "uv_fill": 0.671,
+   "px_per_stud": 125.1,
+   "area": 44.9
+  },
+  "HauntedTree_Branches": {
+   "uv_fill": 0.643,
+   "px_per_stud": 130.5,
+   "area": 39.5
+  }
+ },
+ "web_tris": 1962,
+ "silk_tris": 440,
+ "webs": [
+  {
+   "hub": [
+    -1.3303956985473633,
+    -1.0819109678268433,
+    8.114214897155762
+   ],
+   "normal": [
+    -0.03646070882678032,
+    0.8614843487739563,
+    0.5064734220504761
+   ],
+   "centre": [
+    -1.6281810998916626,
+    -1.5255485773086548,
+    8.326129913330078
+   ],
+   "radius": 2.99,
+   "spokes": 12,
+   "fork": [
+    -0.018281901255249977,
+    -0.18934157490730286,
+    6.595040798187256
+   ],
+   "anchors": [
+    [
+     -0.5363174080848694,
+     -0.6108326315879822,
+     7.175562381744385
+    ],
+    [
+     -3.8229150772094727,
+     -1.2706350088119507,
+     7.893555641174316
+    ],
+    [
+     -0.7892000675201416,
+     -2.829688310623169,
+     10.505167961120605
+    ]
+   ],
+   "request": {
+    "orient": "front",
+    "r": 2.4,
+    "zmin": 7.6,
+    "zmax": 11.0,
+    "in_front": true
+   },
+   "span_max": 4.56,
+   "span_min": 3.23
+  }
+ ],
+ "leaves_tris": 5852,
+ "joints": [
+  [
+   5.150134086608887,
+   -1.1357160806655884,
+   7.59583854675293
+  ],
+  [
+   -4.914259910583496,
+   -1.7066458463668823,
+   8.030269622802734
+  ],
+  [
+   -2.9701669216156006,
+   -0.8571634888648987,
+   7.535783290863037
+  ],
+  [
+   0.922207236289978,
+   1.3337403535842896,
+   9.16620922088623
+  ]
+ ],
+ "spiders": [
+  {
+   "point": [
+    -5.976,
+    -1.64,
+    7.758
+   ],
+   "free_drop": 8.0,
+   "clear_ring": 8.0,
+   "branch_radius": 0.073
+  },
+  {
+   "point": [
+    5.951,
+    -1.214,
+    7.628
+   ],
+   "free_drop": 8.0,
+   "clear_ring": 8.0,
+   "branch_radius": 0.102
+  }
+ ],
+ "build_s": 130.9
+}

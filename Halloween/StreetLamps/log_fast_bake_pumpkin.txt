@@ -1,0 +1,42 @@
+00:02.906  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\lamp_src.blend"
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[lamp     1.7s]   baked LoSkin {'texels': 29542, 'miss': 0.0014}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[lamp     2.4s]   baked LoWall {'texels': 2927, 'miss': 0.108}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[lamp     3.1s]   baked LoInner {'texels': 6346, 'miss': 0.0028}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[lamp     4.0s]   baked LoWax {'texels': 407, 'miss': 0.0049}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[lamp     4.8s]   baked LoWick {'texels': 9, 'miss': 0.0}
+[lamp     5.0s] bake {'part': 'Pumpkin', 'size': 256, 'stats': {'LoSkin': {'texels': 29542, 'miss': 0.0014}, 'LoWall': {'texels': 2927, 'miss': 0.108}, 'LoInner': {'texels': 6346, 'miss': 0.0028}, 'LoWax': {'texels': 407, 'miss': 0.0049}, 'LoWick': {'texels': 9, 'miss': 0.0}}, 'albedo_mean_srgb': [208.3, 125.8, 41.7]}
+Info: Saved as "lamp_src.blend"
+[lamp     5.1s] done bake
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,7 @@
+{"name": "WraithHound",
+ "picks": [["idle", 0], ["idle", 20], ["idle", 40], ["idle", 60], ["idle", 80], ["idle", 100],
+           ["walk", 0], ["walk", 4], ["walk", 8], ["walk", 12], ["walk", 16], ["walk", 20], ["walk", 24], ["walk", 28], ["walk", 32],
+           ["roar", 0], ["roar", 12], ["roar", 20], ["roar", 30], ["roar", 44], ["roar", 54],
+           ["act_smokecloak", 0], ["act_smokecloak", 16], ["act_smokecloak", 28], ["act_smokecloak", 44], ["act_smokecloak", 54], ["act_smokecloak", 70], ["act_smokecloak", 84], ["act_smokecloak", 100]],
+ "target": [0, -0.10, 0.55], "res": 360, "prefix": "wc",
+ "views": {"game": [[0.45, 1.0, 0.85], 5.4], "tq": [[0.8, -1, 0.35], 4.2]}, "out": "C:/Users/ventu/OneDrive/Desktop/SLINGSHOT Creatures/PetsV3/WraithHound/_scratch/r9"}

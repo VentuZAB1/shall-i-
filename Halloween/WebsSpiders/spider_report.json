@@ -1,0 +1,29 @@
+{
+ "hi_tris": {
+  "Sp_Ceph_hi": 34228,
+  "Sp_Abd_hi": 66596,
+  "Sp_Legs_hi": 143102,
+  "Sp_Head_hi": 19216
+ },
+ "Spider": 7122,
+ "SpiderThread": 24,
+ "size": [
+  5.853,
+  2.267,
+  6.753
+ ],
+ "attach_blender": [
+  -0.055,
+  0.562,
+  2.921
+ ],
+ "eyes_blender": [
+  -0.056,
+  -0.05,
+  0.075
+ ],
+ "px_per_stud": 166.5,
+ "miss": 0.0637,
+ "sculpt_s": 12.7,
+ "total_s": 121.0
+}

@@ -1,0 +1,22 @@
+{
+ "file_path": "game.ServerScriptService.FreeGiftServer",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "-- ONCE per player (saved PlayerData.FreeGift). A game can't see likes, so the like step is on trust.",
+   "new_string": "-- ONCE per player (saved PlayerData.FreeGift). (2026-10-22 owner) The like is a friendly ask only: never checked, never\n-- required. The reward needs the group. FreeGift.InGroup() lets the window show the SAME check the claim runs.\n-- Studio only: player attribute FreeGiftTestNotInGroup = true makes inGroup() answer false (tests)."
+  },
+  {
+   "old_string": "local function inGroup(player)\n\tlocal ok, groups = pcall(GroupService.GetGroupsAsync, GroupService, player.UserId)",
+   "new_string": "local function inGroup(player)\n\tif game:GetService(\"RunService\"):IsStudio() and player:GetAttribute(\"FreeGiftTestNotInGroup\") == true then return false end\n\tlocal ok, groups = pcall(GroupService.GetGroupsAsync, GroupService, player.UserId)"
+  },
+  {
+   "old_string": "local busy, last = {}, {}\nClaim.OnServerInvoke = function(player)",
+   "new_string": "-- the window's group state = the claim's own check (1 call per 2 s per player; a faster call gets the last answer)\nlocal InGroup = folder:FindFirstChild(\"InGroup\") or Instance.new(\"RemoteFunction\")\nInGroup.Name = \"InGroup\"\nInGroup.Parent = folder\nlocal lastCheck, lastAnswer = {}, {}\nInGroup.OnServerInvoke = function(player)\n\tlocal now = os.clock()\n\tif lastCheck[player] and now - lastCheck[player] < 2 and lastAnswer[player] ~= nil then return lastAnswer[player] end\n\tlastCheck[player] = now\n\tlastAnswer[player] = inGroup(player)\n\treturn lastAnswer[player]\nend\n\nlocal busy, last = {}, {}\nClaim.OnServerInvoke = function(player)"
+  },
+  {
+   "old_string": "Players.PlayerRemoving:Connect(function(p)\n\tbusy[p], last[p] = nil, nil\nend)",
+   "new_string": "Players.PlayerRemoving:Connect(function(p)\n\tbusy[p], last[p] = nil, nil\n\tlastCheck[p], lastAnswer[p] = nil, nil\nend)"
+  }
+ ]
+}

@@ -1,0 +1,1 @@
+ANGALL {"idle": {"Chest": [4.85, 30], "Head": [13.52, 84]}, "walk": {"Chest": [4.03, 36], "Head": [1.41, 22]}, "roar": {"Chest": [3.0, 10], "Head": [15.0, 22]}, "act_kneelrise": {"Chest": [4.68, 57], "Head": [14.11, 20]}}

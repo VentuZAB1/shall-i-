@@ -1,0 +1,4 @@
+TRAVEL {"Ear_L": {"verts": 40, "max_side_plane": 0.0619, "max_dx": 0.0643, "at": [0.329, -0.768, 1.286]}, "Ear_R": {"verts": 40, "max_side_plane": 0.0619, "max_dx": 0.0643, "at": [-0.329, -0.768, 1.286]}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

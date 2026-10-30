@@ -1,0 +1,320 @@
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+{
+ "Halloween_Grave_C": {
+  "uv_bounds": [
+   [
+    0.0036725772079080343,
+    0.004105752799659967
+   ],
+   [
+    0.9970703125,
+    0.9958942532539368
+   ]
+  ],
+  "uv_coverage_frac": 0.7029647827148438,
+  "texel_ratio_median_px_per_stud": 56.79406069420271,
+  "area_frac_texel_lt_half_median": 0.0,
+  "area_frac_texel_gt_2x_median": 0.09717771223309973,
+  "area_frac_aniso_gt_2": 0.09717771223309973,
+  "area_frac_aniso_gt_4": 0.08277656825520709,
+  "albedo": {
+   "alpha_min_all": 1.0,
+   "alpha_lt1_frac_all": 0.0,
+   "alpha_lt1_frac_in_uv": 0.0,
+   "alpha_min_in_uv": 1.0,
+   "in_uv_mean_rgb_srgb255": [
+    114.9,
+    109.8,
+    94.1
+   ],
+   "in_uv_lum_pcts": [
+    0.176,
+    0.243,
+    0.449,
+    0.585,
+    0.751
+   ],
+   "in_uv_frac_lum_lt_0.05": 0.0,
+   "in_uv_frac_lum_lt_0.10": 0.0,
+   "in_uv_sat_pcts": [
+    0.031,
+    0.151,
+    0.549
+   ],
+   "outside_uv_mean": [
+    0.456,
+    0.447,
+    0.369
+   ]
+  },
+  "normal": {
+   "alpha_min_all": 1.0,
+   "alpha_lt1_frac_all": 0.0,
+   "alpha_lt1_frac_in_uv": 0.0,
+   "alpha_min_in_uv": 1.0,
+   "in_uv_mean_rgb_srgb255": [
+    127.7,
+    127.6,
+    250.9
+   ],
+   "in_uv_lum_pcts": [
+    0.352,
+    0.45,
+    0.536,
+    0.62,
+    0.718
+   ],
+   "in_uv_frac_lum_lt_0.05": 0.0,
+   "in_uv_frac_lum_lt_0.10": 0.0,
+   "normal_z_pcts": [
+    0.553,
+    0.859,
+    0.992
+   ],
+   "normal_frac_z_lt_0.3": 0.0012752471808897426,
+   "outside_uv_mean": [
+    0.503,
+    0.503,
+    0.974
+   ]
+  },
+  "rough": {
+   "alpha_min_all": 1.0,
+   "alpha_lt1_frac_all": 0.0,
+   "alpha_lt1_frac_in_uv": 0.0,
+   "alpha_min_in_uv": 1.0,
+   "in_uv_mean_rgb_srgb255": [
+    219.3,
+    219.3,
+    219.3
+   ],
+   "in_uv_lum_pcts": [
+    0.773,
+    0.812,
+    0.851,
+    0.929,
+    0.953
+   ],
+   "in_uv_frac_lum_lt_0.05": 0.0,
+   "in_uv_frac_lum_lt_0.10": 0.0,
+   "outside_uv_mean": [
+    0.862,
+    0.862,
+    0.862
+   ]
+  }
+ },
+ "Halloween_DeadGrass_A": {
+  "uv_bounds": [
+   [
+    0.0029296875,
+    0.009999999776482582
+   ],
+   [
+    0.9970703125,
+    0.9900000095367432
+   ]
+  ],
+  "uv_coverage_frac": 0.896514892578125,
+  "texel_ratio_median_px_per_stud": 304.9763279254709,
+  "area_frac_texel_lt_half_median": 0.0,
+  "area_frac_texel_gt_2x_median": 0.0024178365623093775,
+  "area_frac_aniso_gt_2": 0.16642258637567592,
+  "area_frac_aniso_gt_4": 0.011110465513415425,
+  "albedo": {
+   "alpha_min_all": 1.0,
+   "alpha_lt1_frac_all": 0.0,
+   "alpha_lt1_frac_in_uv": 0.0,
+   "alpha_min_in_uv": 1.0,
+   "in_uv_mean_rgb_srgb255": [
+    156.6,
+    141.2,
+    90.1
+   ],
+   "in_uv_lum_pcts": [
+    0.171,
+    0.214,
+    0.58,
+    0.788,
+    0.835
+   ],
+   "in_uv_frac_lum_lt_0.05": 0.0,
+   "in_uv_frac_lum_lt_0.10": 0.0,
+   "in_uv_sat_pcts": [
+    0.132,
+    0.472,
+    0.582
+   ],
+   "outside_uv_mean": [
+    0.597,
+    0.531,
+    0.356
+   ]
+  },
+  "normal": {
+   "alpha_min_all": 1.0,
+   "alpha_lt1_frac_all": 0.0,
+   "alpha_lt1_frac_in_uv": 0.0,
+   "alpha_min_in_uv": 1.0,
+   "in_uv_mean_rgb_srgb255": [
+    127.5,
+    127.8,
+    252.7
+   ],
+   "in_uv_lum_pcts": [
+    0.494,
+    0.503,
+    0.537,
+    0.567,
+    0.575
+   ],
+   "in_uv_frac_lum_lt_0.05": 0.0,
+   "in_uv_frac_lum_lt_0.10": 0.0,
+   "normal_z_pcts": [
+    0.929,
+    0.937,
+    0.984
+   ],
+   "normal_frac_z_lt_0.3": 0.0,
+   "outside_uv_mean": [
+    0.5,
+    0.501,
+    0.995
+   ]
+  },
+  "rough": {
+   "alpha_min_all": 1.0,
+   "alpha_lt1_frac_all": 0.0,
+   "alpha_lt1_frac_in_uv": 0.0,
+   "alpha_min_in_uv": 1.0,
+   "in_uv_mean_rgb_srgb255": [
+    216.6,
+    216.6,
+    216.6
+   ],
+   "in_uv_lum_pcts": [
+    0.827,
+    0.831,
+    0.843,
+    0.894,
+    0.906
+   ],
+   "in_uv_frac_lum_lt_0.05": 0.0,
+   "in_uv_frac_lum_lt_0.10": 0.0,
+   "outside_uv_mean": [
+    0.866,
+    0.866,
+    0.866
+   ]
+  }
+ },
+ "Halloween_DeadGrass_B": {
+  "uv_bounds": [
+   [
+    0.0029296875,
+    0.009999999776482582
+   ],
+   [
+    0.9970703125,
+    0.9900000095367432
+   ]
+  ],
+  "uv_coverage_frac": 0.9031219482421875,
+  "texel_ratio_median_px_per_stud": 343.25157288025406,
+  "area_frac_texel_lt_half_median": 0.0,
+  "area_frac_texel_gt_2x_median": 0.003849297228915854,
+  "area_frac_aniso_gt_2": 0.13624353736605785,
+  "area_frac_aniso_gt_4": 0.007859846860205503,
+  "albedo": {
+   "alpha_min_all": 1.0,
+   "alpha_lt1_frac_all": 0.0,
+   "alpha_lt1_frac_in_uv": 0.0,
+   "alpha_min_in_uv": 1.0,
+   "in_uv_mean_rgb_srgb255": [
+    157.2,
+    141.7,
+    90.4
+   ],
+   "in_uv_lum_pcts": [
+    0.172,
+    0.215,
+    0.583,
+    0.788,
+    0.835
+   ],
+   "in_uv_frac_lum_lt_0.05": 0.0,
+   "in_uv_frac_lum_lt_0.10": 0.0,
+   "in_uv_sat_pcts": [
+    0.131,
+    0.471,
+    0.582
+   ],
+   "outside_uv_mean": [
+    0.577,
+    0.512,
+    0.346
+   ]
+  },
+  "normal": {
+   "alpha_min_all": 1.0,
+   "alpha_lt1_frac_all": 0.0,
+   "alpha_lt1_frac_in_uv": 0.0,
+   "alpha_min_in_uv": 1.0,
+   "in_uv_mean_rgb_srgb255": [
+    127.5,
+    127.8,
+    252.7
+   ],
+   "in_uv_lum_pcts": [
+    0.494,
+    0.503,
+    0.537,
+    0.567,
+    0.575
+   ],
+   "in_uv_frac_lum_lt_0.05": 0.0,
+   "in_uv_frac_lum_lt_0.10": 0.0,
+   "normal_z_pcts": [
+    0.929,
+    0.937,
+    0.984
+   ],
+   "normal_frac_z_lt_0.3": 0.0,
+   "outside_uv_mean": [
+    0.5,
+    0.501,
+    0.995
+   ]
+  },
+  "rough": {
+   "alpha_min_all": 1.0,
+   "alpha_lt1_frac_all": 0.0,
+   "alpha_lt1_frac_in_uv": 0.0,
+   "alpha_min_in_uv": 1.0,
+   "in_uv_mean_rgb_srgb255": [
+    216.8,
+    216.8,
+    216.8
+   ],
+   "in_uv_lum_pcts": [
+    0.827,
+    0.831,
+    0.843,
+    0.894,
+    0.906
+   ],
+   "in_uv_frac_lum_lt_0.05": 0.0,
+   "in_uv_frac_lum_lt_0.10": 0.0,
+   "outside_uv_mean": [
+    0.862,
+    0.862,
+    0.862
+   ]
+  }
+ }
+}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

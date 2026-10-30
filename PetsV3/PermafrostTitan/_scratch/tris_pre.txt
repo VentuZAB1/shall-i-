@@ -1,0 +1,1 @@
+TRIS {"total": 7664, "by_bone": {"Arm_L": 600, "Arm_R": 600, "Chest": 2140, "Foot_L": 288, "Foot_R": 288, "Fore_L": 488, "Fore_R": 488, "Hand_L": 364, "Hand_R": 364, "Head": 660, "Jaw": 56, "Leg_L": 152, "Leg_R": 152, "Shin_L": 252, "Shin_R": 252, "Spine": 520}}

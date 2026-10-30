@@ -1,0 +1,89 @@
+{
+ "breath": {
+  "BREATH": "1",
+  "rows": {
+   "0": {
+    "mantle_top": 0.5412,
+    "hull_top": 0.514,
+    "centre_top": 0.548,
+    "mantle_minus_hull": 0.0272,
+    "snout": 0.304
+   },
+   "10": {
+    "mantle_top": 0.5399,
+    "hull_top": 0.521,
+    "centre_top": 0.5439,
+    "mantle_minus_hull": 0.0188,
+    "snout": 0.165
+   },
+   "30": {
+    "mantle_top": 0.4756,
+    "hull_top": 0.4615,
+    "centre_top": 0.4713,
+    "mantle_minus_hull": 0.0142,
+    "snout": 0.0442
+   },
+   "40": {
+    "mantle_top": 0.4995,
+    "hull_top": 0.4848,
+    "centre_top": 0.4944,
+    "mantle_minus_hull": 0.0147,
+    "snout": 0.0304
+   },
+   "50": {
+    "mantle_top": 0.505,
+    "hull_top": 0.5006,
+    "centre_top": 0.5144,
+    "mantle_minus_hull": 0.0043,
+    "snout": 0.0625
+   },
+   "70": {
+    "mantle_top": 0.4754,
+    "hull_top": 0.4613,
+    "centre_top": 0.4713,
+    "mantle_minus_hull": 0.014,
+    "snout": 0.0922
+   },
+   "90": {
+    "mantle_top": 0.5365,
+    "hull_top": 0.5189,
+    "centre_top": 0.5401,
+    "mantle_minus_hull": 0.0177,
+    "snout": 0.1467
+   },
+   "110": {
+    "mantle_top": 0.5182,
+    "hull_top": 0.491,
+    "centre_top": 0.525,
+    "mantle_minus_hull": 0.0272,
+    "snout": 0.3042
+   }
+  },
+  "head_jaw_min_z": [
+   0.0206,
+   28
+  ],
+  "rest_points": {
+   "mantle_top": [
+    -0.178,
+    -0.331,
+    0.541
+   ],
+   "hull_top": [
+    -0.072,
+    -0.15,
+    0.514
+   ],
+   "centre_top": [
+    -0.029,
+    -0.395,
+    0.548
+   ],
+   "snout": [
+    -0.03,
+    -0.957,
+    0.304
+   ]
+  }
+ }
+}

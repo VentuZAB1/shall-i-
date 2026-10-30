@@ -1,0 +1,1488 @@
+{
+ "written": "2026-10-28 14:56",
+ "round": "final 8.5 round 14 (_review/CinderOverlord_final85_r14.md + coordinator: micro-fix); the ONLY gate file",
+ "export": {
+  "fbx": "C:\\cdimp\\CinderOverlord.fbx",
+  "run": "_scratch/export_r14.txt",
+  "meta_stride_BU_per_48f": 5.0089,
+  "HEIGHT_studs": 11.72,
+  "portrait_exported_with_the_fbx": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\CinderOverlord\\CinderOverlord_portrait_raw.png"
+ },
+ "step1": {
+  "collision_free": true,
+  "pairs": 85,
+  "ground_min_z": {
+   "idle": [
+    -0.006,
+    0
+   ],
+   "walk": [
+    -0.006,
+    0
+   ],
+   "roar": [
+    -0.006,
+    0
+   ],
+   "act_molt": [
+    -0.006,
+    0
+   ]
+  },
+  "audit": {
+   "idle": {
+    "linear": 0,
+    "loop_pos": 0.0,
+    "loop_rot": 0.0
+   },
+   "walk": {
+    "linear": 0,
+    "loop_pos": 0.0,
+    "loop_rot": 0.0
+   },
+   "roar": {
+    "linear": 0
+   },
+   "act_molt": {
+    "linear": 0
+   }
+  },
+  "tris": 13580,
+  "lua_bytes": 39607,
+  "events": {
+   "idle": {
+    "smoke1": 0.25,
+    "flick": 0.667,
+    "smoke2": 0.75
+   },
+   "walk": {
+    "paddle1": 0.25,
+    "paddle2": 0.75
+   },
+   "roar": {
+    "flare": 0.303,
+    "roar": 0.455
+   },
+   "act_molt": {
+    "lift1": 0.2,
+    "lift2": 0.436,
+    "shed": 0.509
+   }
+  }
+ },
+ "icons_64_128": {
+  "portrait_alt": {
+   "64": {
+    "kit_29-58": 126,
+    "wide_29-60": 126,
+    "lemon_59-61": 0,
+    "fill_h": 0.906,
+    "fill_w": 0.688,
+    "area": 0.369
+   },
+   "128": {
+    "kit_29-58": 514,
+    "wide_29-60": 514,
+    "lemon_59-61": 1,
+    "fill_h": 0.898,
+    "fill_w": 0.688,
+    "area": 0.37
+   }
+  },
+  "kit_portrait": {
+   "64": {
+    "kit_29-58": 117,
+    "wide_29-60": 120,
+    "lemon_59-61": 1,
+    "fill_h": 0.906,
+    "fill_w": 0.688,
+    "area": 0.378
+   },
+   "128": {
+    "kit_29-58": 483,
+    "wide_29-60": 486,
+    "lemon_59-61": 2,
+    "fill_h": 0.891,
+    "fill_w": 0.688,
+    "area": 0.377
+   }
+  },
+  "game": {
+   "64": {
+    "kit_29-58": 54,
+    "wide_29-60": 54,
+    "lemon_59-61": 0,
+    "fill_h": 0.906,
+    "fill_w": 0.531,
+    "area": 0.212
+   },
+   "128": {
+    "kit_29-58": 215,
+    "wide_29-60": 215,
+    "lemon_59-61": 0,
+    "fill_h": 0.891,
+    "fill_w": 0.531,
+    "area": 0.212
+   }
+  },
+  "InfernoPhoenix": {
+   "64": {
+    "kit_29-58": 93,
+    "wide_29-60": 109,
+    "lemon_59-61": 14,
+    "fill_h": 0.906,
+    "fill_w": 0.797,
+    "area": 0.267
+   },
+   "128": {
+    "kit_29-58": 357,
+    "wide_29-60": 436,
+    "lemon_59-61": 68,
+    "fill_h": 0.922,
+    "fill_w": 0.812,
+    "area": 0.267
+   }
+  },
+  "Ivonrath": {
+   "64": {
+    "kit_29-58": 25,
+    "wide_29-60": 25,
+    "lemon_59-61": 0,
+    "fill_h": 0.672,
+    "fill_w": 0.906,
+    "area": 0.295
+   },
+   "128": {
+    "kit_29-58": 112,
+    "wide_29-60": 111,
+    "lemon_59-61": 0,
+    "fill_h": 0.672,
+    "fill_w": 0.891,
+    "area": 0.295
+   }
+  },
+  "ThunderRex": {
+   "64": {
+    "kit_29-58": 13,
+    "wide_29-60": 14,
+    "lemon_59-61": 1,
+    "fill_h": 0.906,
+    "fill_w": 0.906,
+    "area": 0.372
+   },
+   "128": {
+    "kit_29-58": 65,
+    "wide_29-60": 71,
+    "lemon_59-61": 6,
+    "fill_h": 0.906,
+    "fill_w": 0.922,
+    "area": 0.374
+   }
+  },
+  "CosmicLeviathan": {
+   "64": {
+    "kit_29-58": 20,
+    "wide_29-60": 31,
+    "lemon_59-61": 8,
+    "fill_h": 0.562,
+    "fill_w": 0.906,
+    "area": 0.208
+   },
+   "128": {
+    "kit_29-58": 89,
+    "wide_29-60": 132,
+    "lemon_59-61": 39,
+    "fill_h": 0.562,
+    "fill_w": 0.914,
+    "area": 0.208
+   }
+  }
+ },
+ "game_icon_head_share": {
+  "head_crown_of_icon_h": 0.276,
+  "head_crown_of_figure_h": 0.32
+ },
+ "paws_past_body_outline_game_cam_BU": {
+  "L": 0.388,
+  "R": 0.164
+ },
+ "gold_gate": {
+  "THE gate counter": "_tools/game_icon.py gold_px_portrait_64 (hue 0.08-0.16, s > 0.5, v > 0.45, 64 px) on CinderOverlord_icon.png (the shipping kit portrait icon, idle f0)",
+  "value": 117,
+  "floor": 103,
+  "pass": true
+ },
+ "history_pre_r12": {
+  "note": "older rounds' non-gold measurements, reference only (NOT gates). Gold: superseded by gold_gate (round 12); the old per-round gold fields are deleted.",
+  "shares_method": "flat palette ID renders renders/flat_<view>.png (idle f0), every figure pixel -> nearest palette colour",
+  "shares_pct": {
+   "side": {
+    "PLUM_OBS": 55.1,
+    "OBS_D": 18.1,
+    "PALE_S": 12.4,
+    "CROWN_IN": 6.3,
+    "LAVA": 0.2,
+    "GOLD": 2.4,
+    "GOLD_D": 0.4,
+    "BLACK": 3.5,
+    "IVORY": 0.3,
+    "MOUTH": 1.4,
+    "_edge_px_skipped_pct": 0.0
+   },
+   "tq": {
+    "PLUM_OBS": 44.7,
+    "OBS_D": 23.2,
+    "PALE_S": 12.9,
+    "CROWN_IN": 5.1,
+    "LAVA": 0.1,
+    "GOLD": 7.5,
+    "GOLD_D": 0.8,
+    "BLACK": 3.7,
+    "IVORY": 0.4,
+    "MOUTH": 1.6,
+    "_edge_px_skipped_pct": 0.0
+   },
+   "game": {
+    "PLUM_OBS": 53.0,
+    "OBS_D": 25.0,
+    "PALE_S": 2.7,
+    "CROWN_IN": 6.5,
+    "LAVA": 0.3,
+    "GOLD": 5.6,
+    "GOLD_D": 0.8,
+    "BLACK": 3.5,
+    "IVORY": 0.0,
+    "MOUTH": 2.6,
+    "_edge_px_skipped_pct": 0.0
+   },
+   "back": {
+    "PLUM_OBS": 52.7,
+    "OBS_D": 23.7,
+    "PALE_S": 4.6,
+    "CROWN_IN": 6.2,
+    "LAVA": 0.3,
+    "GOLD": 5.7,
+    "GOLD_D": 0.8,
+    "BLACK": 3.2,
+    "IVORY": 0.1,
+    "MOUTH": 2.6,
+    "_edge_px_skipped_pct": 0.0
+   }
+  },
+  "molt_front_fan_spread_1_5_deg": {
+   "0": 48.0,
+   "22": 66.9,
+   "34": 85.0,
+   "40": 85.0,
+   "56": 55.4,
+   "84": 55.4,
+   "100": 49.2,
+   "110": 48.0
+  },
+  "molt_blade_speed_deg_per_f": {
+   "Crown_1": {
+    "max": 55.84,
+    "rise_peak": 8.29,
+    "fall_peak": 6.62,
+    "fall_peak_frame": 49
+   },
+   "Crown_2": {
+    "max": 53.61,
+    "rise_peak": 7.88,
+    "fall_peak": 6.35,
+    "fall_peak_frame": 49
+   },
+   "Crown_3": {
+    "max": 40.0,
+    "rise_peak": 5.18,
+    "fall_peak": 3.17,
+    "fall_peak_frame": 92
+   },
+   "Crown_4": {
+    "max": 53.61,
+    "rise_peak": 7.88,
+    "fall_peak": 6.35,
+    "fall_peak_frame": 49
+   },
+   "Crown_5": {
+    "max": 55.84,
+    "rise_peak": 8.29,
+    "fall_peak": 6.62,
+    "fall_peak_frame": 49
+   }
+  },
+  "collision_proof_r11": {
+   "probe": "_scratch/coll_probe.py -> coll_probe_r11.txt; per-frame depths _scratch/coll_depths_r11.json",
+   "kit_gate": {
+    "what": "blockkit.overlap_report with the pet's joints() (JOINT-AWARE: crossings inside a hinge proxy are ignored)",
+    "pairs": 83,
+    "collision_free": true
+   },
+   "strict_run_A2": {
+    "what": "the same 83 pairs, each with ONLY its own parent-hinge proxy",
+    "collision_free": false,
+    "NOT collision-free as an A2 count": true,
+    "only_entries": {
+     "idle": {
+      "Arm_L|Neck1": [
+       4,
+       20
+      ],
+      "Arm_R|Neck1": [
+       6,
+       20
+      ]
+     },
+     "walk": {
+      "Arm_L|Neck1": [
+       4,
+       3
+      ],
+      "Arm_R|Neck1": [
+       8,
+       32
+      ]
+     },
+     "roar": {
+      "Arm_L|Neck1": [
+       6,
+       31
+      ],
+      "Arm_R|Neck1": [
+       8,
+       32
+      ]
+     }
+    },
+    "listed_seats": {
+     "Arm_L|Neck1": "left shoulder ball seated on the neck side (root)",
+     "Arm_R|Neck1": "right shoulder ball seated on the neck side (root)"
+    }
+   },
+   "seat_depth_BU": {
+    "rest": {
+     "Arm_L|Neck1": 0.0264,
+     "Arm_R|Neck1": 0.0264,
+     "Arm_L|Neck2": 0.0,
+     "Arm_R|Neck2": 0.0,
+     "Arm_L|Spine": 0.0,
+     "Arm_R|Spine": 0.0,
+     "Neck2|Spine": 0.0,
+     "Body4|Body2": 0.0
+    },
+    "max_over_all_clips": {
+     "Arm_L|Neck1": [
+      "walk:10",
+      0.0277
+     ],
+     "Arm_R|Neck1": [
+      "walk:34",
+      0.0277
+     ],
+     "Arm_L|Neck2": [
+      "idle:0",
+      0.0
+     ],
+     "Arm_R|Neck2": [
+      "idle:0",
+      0.0
+     ],
+     "Arm_L|Spine": [
+      "idle:0",
+      0.0
+     ],
+     "Arm_R|Spine": [
+      "idle:0",
+      0.0
+     ],
+     "Neck2|Spine": [
+      "idle:0",
+      0.0
+     ],
+     "Body4|Body2": [
+      "idle:0",
+      0.0
+     ]
+    },
+    "limit": 0.035
+   },
+   "min_surface_clearance_all_frames": {
+    "Claw_L|Neck1": [
+     0.148,
+     "walk",
+     12
+    ],
+    "Claw_L|Neck2": [
+     0.2919,
+     "roar",
+     32
+    ],
+    "Claw_L|Spine": [
+     0.16,
+     "walk",
+     11
+    ],
+    "Claw_L|Body1": [
+     0.6503,
+     "idle",
+     30
+    ],
+    "Claw_L|Jaw": [
+     0.5802,
+     "roar",
+     32
+    ],
+    "Claw_L|Head": [
+     0.7366,
+     "act_molt",
+     18
+    ],
+    "Claw_R|Neck1": [
+     0.148,
+     "walk",
+     36
+    ],
+    "Claw_R|Neck2": [
+     0.2919,
+     "roar",
+     32
+    ],
+    "Claw_R|Spine": [
+     0.16,
+     "walk",
+     35
+    ],
+    "Claw_R|Body1": [
+     0.8078,
+     "walk",
+     37
+    ],
+    "Claw_R|Jaw": [
+     0.5802,
+     "roar",
+     32
+    ],
+    "Claw_R|Head": [
+     0.7366,
+     "act_molt",
+     18
+    ],
+    "Claw_L|Claw_R": [
+     0.64,
+     "act_molt",
+     110
+    ],
+    "Arm_L|Neck2": [
+     0.0535,
+     "idle",
+     32
+    ],
+    "Arm_R|Neck2": [
+     0.0535,
+     "idle",
+     92
+    ],
+    "Head|Neck1": [
+     0.5164,
+     "act_molt",
+     84
+    ],
+    "Head|Neck2": [
+     0.1973,
+     "act_molt",
+     84
+    ],
+    "Jaw|Neck2": [
+     0.0769,
+     "roar",
+     30
+    ],
+    "Head|Arm_L": [
+     0.5936,
+     "act_molt",
+     18
+    ],
+    "Head|Arm_R": [
+     0.5936,
+     "act_molt",
+     18
+    ],
+    "SPIKES|Crown_1": [
+     0.1349,
+     "roar",
+     44
+    ],
+    "SPIKES|Crown_2": [
+     0.2318,
+     "roar",
+     24
+    ],
+    "SPIKES|Crown_4": [
+     0.2318,
+     "roar",
+     24
+    ],
+    "SPIKES|Crown_5": [
+     0.1349,
+     "roar",
+     44
+    ],
+    "SPIKES|Neck2": [
+     0.4481,
+     "idle",
+     97
+    ],
+    "SPIKES|Neck3": [
+     0.3324,
+     "walk",
+     44
+    ],
+    "Crown_1|Crown_2": [
+     0.0307,
+     "roar",
+     21
+    ],
+    "Crown_2|Crown_3": [
+     0.0311,
+     "idle",
+     26
+    ],
+    "Crown_3|Crown_4": [
+     0.0311,
+     "idle",
+     26
+    ],
+    "Crown_4|Crown_5": [
+     0.0307,
+     "roar",
+     21
+    ]
+   },
+   "sensitivity": {
+    "paw_in_0.10": {
+     "no_proxies": 0,
+     "pet_joints": 0,
+     "plus_paw_proxies": 0
+    },
+    "paw_in_0.16": {
+     "no_proxies": 51,
+     "pet_joints": 0,
+     "plus_paw_proxies": 0
+    },
+    "paw_in_0.22": {
+     "no_proxies": 89,
+     "pet_joints": 0,
+     "plus_paw_proxies": 0
+    },
+    "crown5_down_60": {
+     "no_proxies": 53,
+     "pet_joints": 0,
+     "plus_skull_proxies": 0
+    },
+    "crown5_down_80": {
+     "no_proxies": 51,
+     "pet_joints": 3,
+     "plus_skull_proxies": 3
+    },
+    "crown5_down_100": {
+     "no_proxies": 99,
+     "pet_joints": 20,
+     "plus_skull_proxies": 20
+    }
+   }
+  },
+  "stance_r11": {
+   "probe": "_scratch/stance_probe.py -> stance_r11.txt (r10: stance_r10.txt)",
+   "per_clip": {
+    "idle": {
+     "max_angle": {
+      "Head": [
+       5.36,
+       34
+      ],
+      "neck_pitch_sum": [
+       -3.05,
+       0.0
+      ],
+      "head_pitch_up": [
+       0.0,
+       1.82
+      ],
+      "Neck1": [
+       2.45,
+       30
+      ],
+      "Neck2": [
+       2.45,
+       30
+      ],
+      "Neck3": [
+       2.45,
+       30
+      ]
+     },
+     "screen": {
+      "head_cy": [
+       155.2,
+       162.8
+      ],
+      "gap": [
+       50.9,
+       66.1
+      ],
+      "top": [
+       76.4,
+       84.3
+      ]
+     },
+     "screen_f0": {
+      "head_cy": 156.3,
+      "gap": 61.7,
+      "top": 78.0
+     }
+    },
+    "walk": {
+     "max_angle": {
+      "Neck1": [
+       1.12,
+       16
+      ],
+      "Neck2": [
+       1.12,
+       16
+      ],
+      "Neck3": [
+       1.12,
+       16
+      ],
+      "Head": [
+       0.74,
+       4
+      ],
+      "neck_pitch_sum": [
+       0.0,
+       0.0
+      ],
+      "head_pitch_up": [
+       -0.6,
+       0.6
+      ],
+      "Spine": [
+       3.0,
+       12
+      ]
+     },
+     "screen": {
+      "head_cy": [
+       155.7,
+       156.7
+      ],
+      "gap": [
+       62.0,
+       63.3
+      ],
+      "top": [
+       76.4,
+       78.8
+      ]
+     },
+     "screen_f0": {
+      "head_cy": 156.3,
+      "gap": 62.1,
+      "top": 76.8
+     }
+    },
+    "roar": {
+     "max_angle": {
+      "neck_pitch_sum": [
+       -12.0,
+       0.0
+      ],
+      "head_pitch_up": [
+       0.0,
+       4.0
+      ],
+      "Neck1": [
+       4.0,
+       14
+      ],
+      "Neck2": [
+       4.0,
+       14
+      ],
+      "Neck3": [
+       4.0,
+       14
+      ],
+      "Head": [
+       10.0,
+       14
+      ]
+     },
+     "screen": {
+      "head_cy": [
+       156.1,
+       169.9
+      ],
+      "gap": [
+       47.7,
+       62.5
+      ],
+      "top": [
+       77.2,
+       92.9
+      ]
+     },
+     "screen_f0": {
+      "head_cy": 156.1,
+      "gap": 62.5,
+      "top": 77.4
+     }
+    },
+    "act_molt": {
+     "max_angle": {
+      "neck_pitch_sum": [
+       -22.5,
+       0.0
+      ],
+      "head_pitch_up": [
+       0.0,
+       2.0
+      ],
+      "Neck1": [
+       7.5,
+       18
+      ],
+      "Neck2": [
+       7.5,
+       18
+      ],
+      "Neck3": [
+       7.5,
+       18
+      ],
+      "Head": [
+       20.5,
+       84
+      ],
+      "Spine": [
+       4.5,
+       92
+      ]
+     },
+     "screen": {
+      "head_cy": [
+       156.1,
+       180.0
+      ],
+      "gap": [
+       34.9,
+       62.5
+      ],
+      "top": [
+       62.9,
+       106.2
+      ]
+     },
+     "screen_f0": {
+      "head_cy": 156.1,
+      "gap": 62.5,
+      "top": 77.4
+     }
+    }
+   }
+  }
+ },
+ "area_gate": {
+  "what": "the shipping kit portrait icon (icon-3 recipe, 64 px) opaque share; outclass Thunder Rex",
+  "value": 0.378,
+  "ThunderRex": 0.372,
+  "pass": true
+ },
+ "shipping_portrait": {
+  "ships": "CinderOverlord/CinderOverlord_portrait_raw.png (kit portrait, idle f0) -> icon CinderOverlord/CinderOverlord_icon.png",
+  "why": "the kit export writes this portrait with the FBX; its icon is the gold / area gate icon",
+  "icon_64": {
+   "gold (gate counter)": 117,
+   "area": 0.378
+  },
+  "not shipped": {
+   "file": "CinderOverlord/CinderOverlord_portrait_alt.png (molt f40, reference render only)",
+   "area_64": 0.369,
+   "reframe trials (molt f40, dir 1,-1.36,0.62 / 0.70 / 1.2,-1.36,0.80)": [
+    0.362,
+    0.366,
+    0.37
+   ],
+   "note": "never >= 0.372, so it is dropped from the outclass claim"
+  }
+ },
+ "collision_proof_r14": {
+  "probe": "_scratch/coll_probe.py -> coll_probe_r14.txt; per-frame seat depths _scratch/coll_depths_r14.json",
+  "kit_gate": {
+   "what": "blockkit.overlap_report with joints() (JOINT-AWARE)",
+   "pairs": 85,
+   "collision_free": true
+  },
+  "strict_run_A2": {
+   "what": "the same pairs, each with ONLY its own parent-hinge proxy",
+   "collision_free": false,
+   "NOT collision-free as an A2 count": true,
+   "only_entries": {
+    "idle": {
+     "Arm_L|Neck1": [
+      4,
+      20
+     ],
+     "Arm_R|Neck1": [
+      6,
+      20
+     ]
+    },
+    "walk": {
+     "Arm_L|Neck1": [
+      4,
+      3
+     ],
+     "Arm_R|Neck1": [
+      8,
+      32
+     ]
+    },
+    "roar": {
+     "Arm_L|Neck1": [
+      6,
+      31
+     ],
+     "Arm_R|Neck1": [
+      8,
+      32
+     ]
+    }
+   },
+   "listed_seats": {
+    "Arm_L|Neck1": "left shoulder ball seated on the neck side (root)",
+    "Arm_R|Neck1": "right shoulder ball seated on the neck side (root)"
+   },
+   "Crown_1..5|Head": "no entries: each blade socket stays inside its own hinge zone in the mount"
+  },
+  "seat_depth_BU": {
+   "rest": {
+    "Arm_L|Neck1": 0.0264,
+    "Arm_R|Neck1": 0.0264,
+    "Arm_L|Neck2": 0.0,
+    "Arm_R|Neck2": 0.0,
+    "Arm_L|Spine": 0.0,
+    "Arm_R|Spine": 0.0,
+    "Neck2|Spine": 0.0,
+    "Body4|Body2": 0.0
+   },
+   "max_over_all_clips": {
+    "Arm_L|Neck1": [
+     "walk:10",
+     0.0277
+    ],
+    "Arm_R|Neck1": [
+     "walk:34",
+     0.0277
+    ],
+    "Arm_L|Neck2": [
+     "idle:0",
+     0.0
+    ],
+    "Arm_R|Neck2": [
+     "idle:0",
+     0.0
+    ],
+    "Arm_L|Spine": [
+     "idle:0",
+     0.0
+    ],
+    "Arm_R|Spine": [
+     "idle:0",
+     0.0
+    ],
+    "Neck2|Spine": [
+     "idle:0",
+     0.0
+    ],
+    "Body4|Body2": [
+     "idle:0",
+     0.0
+    ]
+   },
+   "limit": 0.035
+  },
+  "crown_vs_head_all_frames": {
+   "what": "Crown_i BLADE (every vertex > 0.07 above its hinge = above the crown mount) vs the Head group (skull, mount, cap, brows, eyes; the frill / cheek spikes are SPIKES|Crown_i). The socket below is seated in the mount by design (strict run: no crossing outside its hinge zone).",
+   "Crown_1|Head": [
+    0.1813,
+    "act_molt",
+    110
+   ],
+   "Crown_2|Head": [
+    0.1661,
+    "act_molt",
+    26
+   ],
+   "Crown_3|Head": [
+    0.0527,
+    "roar",
+    44
+   ],
+   "Crown_4|Head": [
+    0.1661,
+    "act_molt",
+    32
+   ],
+   "Crown_5|Head": [
+    0.1813,
+    "act_molt",
+    110
+   ],
+   "pass_>=0.02": true
+  },
+  "crown_neighbours_all_frames": {
+   "Crown_1|Crown_2": [
+    0.0386,
+    "roar",
+    21
+   ],
+   "Crown_2|Crown_3": [
+    0.0357,
+    "act_molt",
+    21
+   ],
+   "Crown_3|Crown_4": [
+    0.0364,
+    "act_molt",
+    110
+   ],
+   "Crown_4|Crown_5": [
+    0.0371,
+    "act_molt",
+    26
+   ]
+  },
+  "hood_clearance_all_frames": {
+   "HOOD|Head": [
+    0.0509,
+    "idle",
+    96
+   ],
+   "HOOD|Jaw": [
+    0.0783,
+    "roar",
+    31
+   ],
+   "HOOD|SPIKES": [
+    0.0894,
+    "idle",
+    34
+   ],
+   "HOOD|Crown_1": [
+    0.4662,
+    "idle",
+    36
+   ],
+   "HOOD|Crown_2": [
+    0.4616,
+    "idle",
+    36
+   ],
+   "HOOD|Crown_3": [
+    0.4903,
+    "idle",
+    102
+   ],
+   "HOOD|Crown_4": [
+    0.4616,
+    "idle",
+    96
+   ],
+   "HOOD|Crown_5": [
+    0.4662,
+    "idle",
+    96
+   ],
+   "HOOD|Claw_L": [
+    0.4855,
+    "roar",
+    44
+   ],
+   "HOOD|Claw_R": [
+    0.4855,
+    "roar",
+    44
+   ],
+   "HOOD|Arm_L": [
+    0.3245,
+    "idle",
+    29
+   ],
+   "HOOD|Arm_R": [
+    0.3245,
+    "idle",
+    89
+   ],
+   "HOOD|Spine": [
+    0.3933,
+    "idle",
+    29
+   ],
+   "HOOD|Neck1": [
+    0.1552,
+    "idle",
+    29
+   ]
+  },
+  "min_surface_clearance_all_frames": {
+   "Claw_L|Neck1": [
+    0.148,
+    "walk",
+    12
+   ],
+   "Claw_L|Neck2": [
+    0.2919,
+    "roar",
+    32
+   ],
+   "Claw_L|Spine": [
+    0.16,
+    "walk",
+    11
+   ],
+   "Claw_L|Body1": [
+    0.6503,
+    "idle",
+    30
+   ],
+   "Claw_L|Jaw": [
+    0.5802,
+    "roar",
+    32
+   ],
+   "Claw_L|Head": [
+    0.7999,
+    "roar",
+    44
+   ],
+   "Claw_R|Neck1": [
+    0.148,
+    "walk",
+    36
+   ],
+   "Claw_R|Neck2": [
+    0.2919,
+    "roar",
+    32
+   ],
+   "Claw_R|Spine": [
+    0.16,
+    "walk",
+    35
+   ],
+   "Claw_R|Body1": [
+    0.8078,
+    "walk",
+    37
+   ],
+   "Claw_R|Jaw": [
+    0.5802,
+    "roar",
+    32
+   ],
+   "Claw_R|Head": [
+    0.7999,
+    "roar",
+    44
+   ],
+   "Claw_L|Claw_R": [
+    0.64,
+    "act_molt",
+    109
+   ],
+   "Arm_L|Neck2": [
+    0.0535,
+    "idle",
+    32
+   ],
+   "Arm_R|Neck2": [
+    0.0535,
+    "idle",
+    92
+   ],
+   "Head|Neck1": [
+    0.5899,
+    "act_molt",
+    84
+   ],
+   "Head|Neck2": [
+    0.2242,
+    "roar",
+    14
+   ],
+   "Jaw|Neck2": [
+    0.0769,
+    "roar",
+    30
+   ],
+   "Head|Arm_L": [
+    0.6777,
+    "act_molt",
+    84
+   ],
+   "Head|Arm_R": [
+    0.6777,
+    "act_molt",
+    84
+   ],
+   "SPIKES|Crown_1": [
+    0.1349,
+    "roar",
+    44
+   ],
+   "SPIKES|Crown_2": [
+    0.2318,
+    "roar",
+    24
+   ],
+   "SPIKES|Crown_4": [
+    0.2318,
+    "roar",
+    24
+   ],
+   "SPIKES|Crown_5": [
+    0.1349,
+    "roar",
+    44
+   ],
+   "SPIKES|Neck2": [
+    0.3732,
+    "idle",
+    98
+   ],
+   "SPIKES|Neck3": [
+    0.2385,
+    "idle",
+    96
+   ],
+   "Crown_1|Crown_2": [
+    0.0386,
+    "roar",
+    21
+   ],
+   "Crown_2|Crown_3": [
+    0.0357,
+    "act_molt",
+    21
+   ],
+   "Crown_3|Crown_4": [
+    0.0364,
+    "act_molt",
+    110
+   ],
+   "Crown_4|Crown_5": [
+    0.0371,
+    "act_molt",
+    26
+   ],
+   "HOOD|Head": [
+    0.0509,
+    "idle",
+    96
+   ],
+   "HOOD|Jaw": [
+    0.0783,
+    "roar",
+    31
+   ],
+   "HOOD|SPIKES": [
+    0.0894,
+    "idle",
+    34
+   ],
+   "HOOD|Crown_1": [
+    0.4662,
+    "idle",
+    36
+   ],
+   "HOOD|Crown_2": [
+    0.4616,
+    "idle",
+    36
+   ],
+   "HOOD|Crown_3": [
+    0.4903,
+    "idle",
+    102
+   ],
+   "HOOD|Crown_4": [
+    0.4616,
+    "idle",
+    96
+   ],
+   "HOOD|Crown_5": [
+    0.4662,
+    "idle",
+    96
+   ],
+   "HOOD|Claw_L": [
+    0.4855,
+    "roar",
+    44
+   ],
+   "HOOD|Claw_R": [
+    0.4855,
+    "roar",
+    44
+   ],
+   "HOOD|Arm_L": [
+    0.3245,
+    "idle",
+    29
+   ],
+   "HOOD|Arm_R": [
+    0.3245,
+    "idle",
+    89
+   ],
+   "HOOD|Spine": [
+    0.3933,
+    "idle",
+    29
+   ],
+   "HOOD|Neck1": [
+    0.1552,
+    "idle",
+    29
+   ],
+   "BLADE_1|Head": [
+    0.1813,
+    "act_molt",
+    110
+   ],
+   "BLADE_2|Head": [
+    0.1661,
+    "act_molt",
+    26
+   ],
+   "BLADE_3|Head": [
+    0.0527,
+    "roar",
+    44
+   ],
+   "BLADE_4|Head": [
+    0.1661,
+    "act_molt",
+    32
+   ],
+   "BLADE_5|Head": [
+    0.1813,
+    "act_molt",
+    110
+   ]
+  }
+ },
+ "stance_r14": {
+  "probe": "_scratch/stance_probe.py -> stance_r14.txt",
+  "per_clip": {
+   "idle": {
+    "max_angle": {
+     "Head": [
+      5.36,
+      34
+     ],
+     "neck_pitch_sum": [
+      -3.05,
+      0.0
+     ],
+     "head_pitch_up": [
+      0.0,
+      1.82
+     ],
+     "Neck1": [
+      2.45,
+      30
+     ],
+     "Neck2": [
+      2.45,
+      30
+     ],
+     "Neck3": [
+      2.45,
+      30
+     ]
+    },
+    "screen": {
+     "head_cy": [
+      155.0,
+      162.5
+     ],
+     "gap": [
+      50.7,
+      65.8
+     ],
+     "top": [
+      77.2,
+      85.1
+     ]
+    },
+    "screen_f0": {
+     "head_cy": 156.1,
+     "gap": 61.5,
+     "top": 78.9
+    }
+   },
+   "walk": {
+    "max_angle": {
+     "Neck1": [
+      1.12,
+      16
+     ],
+     "Neck2": [
+      1.12,
+      16
+     ],
+     "Neck3": [
+      1.12,
+      16
+     ],
+     "Head": [
+      0.74,
+      4
+     ],
+     "neck_pitch_sum": [
+      0.0,
+      0.0
+     ],
+     "head_pitch_up": [
+      -0.6,
+      0.6
+     ],
+     "Spine": [
+      3.0,
+      12
+     ]
+    },
+    "screen": {
+     "head_cy": [
+      155.5,
+      156.5
+     ],
+     "gap": [
+      61.8,
+      63.0
+     ],
+     "top": [
+      77.2,
+      79.7
+     ]
+    },
+    "screen_f0": {
+     "head_cy": 156.1,
+     "gap": 61.8,
+     "top": 77.6
+    }
+   },
+   "roar": {
+    "max_angle": {
+     "neck_pitch_sum": [
+      -12.0,
+      0.0
+     ],
+     "head_pitch_up": [
+      0.0,
+      4.0
+     ],
+     "Neck1": [
+      4.0,
+      14
+     ],
+     "Neck2": [
+      4.0,
+      14
+     ],
+     "Neck3": [
+      4.0,
+      14
+     ],
+     "Head": [
+      10.0,
+      14
+     ]
+    },
+    "screen": {
+     "head_cy": [
+      156.0,
+      169.5
+     ],
+     "gap": [
+      47.5,
+      62.2
+     ],
+     "top": [
+      78.0,
+      93.7
+     ]
+    },
+    "screen_f0": {
+     "head_cy": 156.0,
+     "gap": 62.2,
+     "top": 78.3
+    }
+   },
+   "act_molt": {
+    "max_angle": {
+     "neck_pitch_sum": [
+      -9.0,
+      0.0
+     ],
+     "head_pitch_up": [
+      -0.0,
+      1.0
+     ],
+     "Neck1": [
+      3.0,
+      18
+     ],
+     "Neck2": [
+      3.0,
+      18
+     ],
+     "Neck3": [
+      3.0,
+      18
+     ],
+     "Head": [
+      9.0,
+      18
+     ],
+     "Spine": [
+      4.5,
+      92
+     ]
+    },
+    "screen": {
+     "head_cy": [
+      156.0,
+      164.0
+     ],
+     "gap": [
+      52.5,
+      62.2
+     ],
+     "top": [
+      47.9,
+      87.1
+     ]
+    },
+    "screen_f0": {
+     "head_cy": 156.0,
+     "gap": 62.2,
+     "top": 78.3
+    }
+   }
+  }
+ }
+}

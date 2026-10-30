@@ -1,0 +1,186 @@
+-- HubLayout (generated 2026-10-21 by docs/plans/hub-2026-10-21/tools/make_layout_lua.py from hub_layout.py - do not hand-edit)
+-- The redesigned hub (A HORSESHOE): FINAL world CFrames. Staging builds at Layout.OFFSET + these (Layout.stage(cf)).
+-- (2026-10-21 makeover) owner-placed stalls / boards / Free Gift snapped, spawn moved, no trees / bushes / benches,
+-- lamps = wall lanterns, wall-foot pumpkin clusters. Docs: docs/plans/hub-2026-10-21/makeover/DESIGN.md
+local Layout = {}
+Layout.OFFSET = Vector3.new(2000, 0, 0) -- Map.HubV2 is built here while the live hub keeps running; the swap moves it by -OFFSET
+function Layout.stage(cf) return CFrame.new(Layout.OFFSET) * cf end
+Layout.SLING = Vector3.new(0.530, 1.000, -44.970) -- Hub.Slingshot pivot (fixed, never moved)
+Layout.PAD_CENTRE = Vector3.new(0.5, 0.5, -45) -- Hub.LaunchPlatform (fixed)
+Layout.ENTRY = Vector3.new(0.500, 0.000, -56.000) -- just inside the LaunchGate: walking lines start here
+Layout.GATE_EDGES = {Vector3.new(-50.000, 0.000, -58.000), Vector3.new(50.000, 0.000, -58.000)}
+Layout.LINE_HALF = {main = 6.0, fan = 3.0}
+Layout.LAUNCH_ZONE = {min = Vector3.new(-14.0, 0, -62.0), max = Vector3.new(15.0, 40, -30.0)} -- nothing collidable inside
+Layout.INTRO_ZONE = {min = Vector3.new(-12.0, 0, -40.0), max = Vector3.new(24.0, 12, 12.0)} -- IntroCutscene path + cameras: nothing taller than 0.8 inside
+Layout.PLOT_MAX = Vector2.new(60, 90) -- MaxWidth x MaxLength
+
+-- plots: Slot = 60 x 0.2 x 90 at y 0.1 (LookVector = towards the plaza); gate = Slot front edge centre
+Layout.PLOTS = {
+	[1] = {
+		slot = CFrame.lookAt(Vector3.new(-167.000, 0.100, -30.000), Vector3.new(-166.000, 0.100, -30.000)),
+		gate = Vector3.new(-122.000, 0.000, -30.000),
+		spawnSpot = Vector3.new(-114.000, 0.000, -30.000), -- BaseManager.spawnAtBase (8 out from the gate)
+		treadmill = CFrame.lookAt(Vector3.new(-103.650, 0.650, -14.540), Vector3.new(-102.650, 0.650, -14.540)), -- Treadmill_B1 pivot (LookVector = F, runner faces the plaza)
+		treadExit = Vector3.new(-111.150, 0.000, -14.540), -- where a jump-off lands (7.5 behind the belt)
+		sign = CFrame.lookAt(Vector3.new(-109.908, 3.180, -4.894), Vector3.new(-110.908, 3.180, -4.894)), -- UpgradeSign_B1 pivot (LookVector = -F, board front faces the gate)
+		toSling = 123.4,
+	},
+	[2] = {
+		slot = CFrame.lookAt(Vector3.new(-135.000, 0.100, 42.000), Vector3.new(-134.000, 0.100, 42.000)),
+		gate = Vector3.new(-90.000, 0.000, 42.000),
+		spawnSpot = Vector3.new(-82.000, 0.000, 42.000), -- BaseManager.spawnAtBase (8 out from the gate)
+		treadmill = CFrame.lookAt(Vector3.new(-75.700, 0.650, 26.000), Vector3.new(-74.700, 0.650, 26.000)), -- Treadmill_B2 pivot (LookVector = F, runner faces the plaza)
+		treadExit = Vector3.new(-83.200, 0.000, 26.000), -- where a jump-off lands (7.5 behind the belt)
+		sign = CFrame.lookAt(Vector3.new(-84.000, 3.180, 15.000), Vector3.new(-85.000, 3.180, 15.000)), -- UpgradeSign_B2 pivot (LookVector = -F, board front faces the gate)
+		toSling = 125.5,
+	},
+	[3] = {
+		slot = CFrame.lookAt(Vector3.new(-40.000, 0.100, 123.000), Vector3.new(-40.000, 0.100, 122.000)),
+		gate = Vector3.new(-40.000, 0.000, 78.000),
+		spawnSpot = Vector3.new(-40.000, 0.000, 70.000), -- BaseManager.spawnAtBase (8 out from the gate)
+		treadmill = CFrame.lookAt(Vector3.new(-56.000, 0.650, 63.700), Vector3.new(-56.000, 0.650, 62.700)), -- Treadmill_B3 pivot (LookVector = F, runner faces the plaza)
+		treadExit = Vector3.new(-56.000, 0.000, 71.200), -- where a jump-off lands (7.5 behind the belt)
+		sign = CFrame.lookAt(Vector3.new(-67.000, 3.180, 72.000), Vector3.new(-67.000, 3.180, 73.000)), -- UpgradeSign_B3 pivot (LookVector = -F, board front faces the gate)
+		toSling = 129.5,
+	},
+	[4] = {
+		slot = CFrame.lookAt(Vector3.new(40.000, 0.100, 123.000), Vector3.new(40.000, 0.100, 122.000)),
+		gate = Vector3.new(40.000, 0.000, 78.000),
+		spawnSpot = Vector3.new(40.000, 0.000, 70.000), -- BaseManager.spawnAtBase (8 out from the gate)
+		treadmill = CFrame.lookAt(Vector3.new(56.000, 0.650, 63.700), Vector3.new(56.000, 0.650, 62.700)), -- Treadmill_B4 pivot (LookVector = F, runner faces the plaza)
+		treadExit = Vector3.new(56.000, 0.000, 71.200), -- where a jump-off lands (7.5 behind the belt)
+		sign = CFrame.lookAt(Vector3.new(67.000, 3.180, 72.000), Vector3.new(67.000, 3.180, 73.000)), -- UpgradeSign_B4 pivot (LookVector = -F, board front faces the gate)
+		toSling = 129.1,
+	},
+	[5] = {
+		slot = CFrame.lookAt(Vector3.new(135.000, 0.100, 42.000), Vector3.new(134.000, 0.100, 42.000)),
+		gate = Vector3.new(90.000, 0.000, 42.000),
+		spawnSpot = Vector3.new(82.000, 0.000, 42.000), -- BaseManager.spawnAtBase (8 out from the gate)
+		treadmill = CFrame.lookAt(Vector3.new(75.700, 0.650, 26.000), Vector3.new(74.700, 0.650, 26.000)), -- Treadmill_B5 pivot (LookVector = F, runner faces the plaza)
+		treadExit = Vector3.new(83.200, 0.000, 26.000), -- where a jump-off lands (7.5 behind the belt)
+		sign = CFrame.lookAt(Vector3.new(84.000, 3.180, 15.000), Vector3.new(85.000, 3.180, 15.000)), -- UpgradeSign_B5 pivot (LookVector = -F, board front faces the gate)
+		toSling = 124.8,
+	},
+	[6] = {
+		slot = CFrame.lookAt(Vector3.new(167.000, 0.100, -30.000), Vector3.new(166.000, 0.100, -30.000)),
+		gate = Vector3.new(122.000, 0.000, -30.000),
+		spawnSpot = Vector3.new(114.000, 0.000, -30.000), -- BaseManager.spawnAtBase (8 out from the gate)
+		treadmill = CFrame.lookAt(Vector3.new(105.650, 0.650, -14.540), Vector3.new(104.650, 0.650, -14.540)), -- Treadmill_B6 pivot (LookVector = F, runner faces the plaza)
+		treadExit = Vector3.new(113.150, 0.000, -14.540), -- where a jump-off lands (7.5 behind the belt)
+		sign = CFrame.lookAt(Vector3.new(113.908, 3.180, -4.894), Vector3.new(114.908, 3.180, -4.894)), -- UpgradeSign_B6 pivot (LookVector = -F, board front faces the gate)
+		toSling = 122.4,
+	},
+}
+
+-- stalls: model pivot = Plinth centre at y 0.9 (LookVector = the way the counter faces); deck = MarketCorners deck
+Layout.STALLS = {
+	UpgradeStall = {pivot = CFrame.lookAt(Vector3.new(-70.000, 0.900, -54.000), Vector3.new(-70.000, 0.900, -53.000)), ring = Vector3.new(-70.000, 0.600, -48.364), deck = CFrame.lookAt(Vector3.new(-70.000, 0.300, -47.600), Vector3.new(-70.000, 0.300, -46.600)), deckSize = Vector3.new(24, 0.6, 24)},
+	SellStall = {pivot = CFrame.lookAt(Vector3.new(70.000, 0.900, -54.000), Vector3.new(70.000, 0.900, -53.000)), ring = Vector3.new(70.000, 0.600, -48.364), deck = CFrame.lookAt(Vector3.new(70.000, 0.300, -47.600), Vector3.new(70.000, 0.300, -46.600)), deckSize = Vector3.new(24, 0.6, 24)},
+}
+-- leaderboards: model pivot at y 10.2, LookVector = the way the screen faces
+Layout.BOARDS = {
+	RichestBoard = CFrame.lookAt(Vector3.new(-26.000, 10.200, 3.000), Vector3.new(-25.293, 10.200, 3.707)),
+	TimeBoard = CFrame.lookAt(Vector3.new(26.000, 10.200, 3.000), Vector3.new(25.293, 10.200, 3.707)),
+	SpeedBoard = CFrame.lookAt(Vector3.new(-26.000, 10.200, 37.000), Vector3.new(-25.293, 10.200, 36.293)),
+	HeaviestBoard = CFrame.lookAt(Vector3.new(26.000, 10.200, 37.000), Vector3.new(25.293, 10.200, 36.293)),
+}
+Layout.FREE_GIFT = {pad = Vector3.new(0.000, 0.000, 20.000), look = Vector3.new(0.0, 0, -1.0)} -- PadRing.Fill centre; chest faces -Z
+Layout.SPAWN = CFrame.new(0.0, -0.4, 52.0) -- SpawnLocation 16 x 1 x 16 (LookVector -Z)
+Layout.MEDALLION = Vector3.new(0.0, 0.2, 20.0) -- Decor.Plaza (5 studded discs) centre
+
+-- permanent decor (Hub.Decor): kind = template name in ServerStorage.HubV2Kit.Templates; pos = ground point; look = facing
+Layout.DECOR = {
+}
+-- (2026-10-21 builder, review MUST 13b) permanent garden clusters (Hub.Decor.Garden): centrepiece kind + footprint r;
+-- deck = true: stands on the MarketCorners deck (top y 0.6) behind its stall counter
+Layout.GARDEN = {
+}
+-- (2026-10-21 builder, review MUST 14) the seasonal Halloween garden spots (HalloweenDecor.Garden): tree = live garden
+-- tree moved there with its spiders (nil = none), extra = bush kinds, r = ground footprint (nothing collides)
+Layout.HALLOWEEN_GARDEN = {
+}
+Layout.BACKDROP = nil -- (makeover) the floating island + tree went to ServerStorage._Backup_HubMakeover.Before
+Layout.TREAD_ENVELOPE = {rHalf = 7.35, fPlot = 9.25, fPlaza = 11.64} -- (MUST 4) all 11 tiers, pivot space
+Layout.LANTERN_PILLARS = { -- (makeover) the 8 lamps = wall lanterns on these pillars (floor-edge points)
+	Vector3.new(-14.600, 0.000, 171.000),
+	Vector3.new(14.600, 0.000, 171.000),
+	Vector3.new(-73.000, 0.000, 78.000),
+	Vector3.new(73.000, 0.000, 78.000),
+	Vector3.new(-81.000, 0.000, -60.000),
+	Vector3.new(81.000, 0.000, -60.000),
+	Vector3.new(-215.000, 0.000, 12.000),
+	Vector3.new(215.000, 0.000, 12.000),
+}
+Layout.LAMP_SPOTS = { -- (makeover) floor point 2 in front of each lantern pillar (its light pool; on the ground)
+	CFrame.lookAt(Vector3.new(-14.600, 0.000, 169.000), Vector3.new(-14.502, 0.000, 168.005)),
+	CFrame.lookAt(Vector3.new(14.600, 0.000, 169.000), Vector3.new(14.502, 0.000, 168.005)),
+	CFrame.lookAt(Vector3.new(-71.600, 0.000, 76.600), Vector3.new(-70.816, 0.000, 75.980)),
+	CFrame.lookAt(Vector3.new(71.600, 0.000, 76.600), Vector3.new(70.816, 0.000, 75.980)),
+	CFrame.lookAt(Vector3.new(-83.000, 0.000, -58.000), Vector3.new(-82.271, 0.000, -57.315)),
+	CFrame.lookAt(Vector3.new(83.000, 0.000, -58.000), Vector3.new(82.271, 0.000, -57.315)),
+	CFrame.lookAt(Vector3.new(-213.000, 0.000, 10.000), Vector3.new(-212.001, 0.000, 10.047)),
+	CFrame.lookAt(Vector3.new(213.000, 0.000, 10.000), Vector3.new(212.001, 0.000, 10.047)),
+}
+Layout.ALLEY_BED = nil -- (makeover) the alley is the paved spine lane
+Layout.WALL_PUMPKINS = { -- (makeover) pumpkin-egg clusters at the wall foot: footprint centre + radius (no collision)
+	{pos = Vector3.new(0.000, 0.000, 164.000), r = 6.0},
+	{pos = Vector3.new(-88.000, 0.000, -55.000), r = 4.5},
+	{pos = Vector3.new(88.000, 0.000, -55.000), r = 4.5},
+	{pos = Vector3.new(-209.000, 0.000, 6.000), r = 5.0},
+	{pos = Vector3.new(209.000, 0.000, 6.000), r = 5.0},
+}
+Layout.INTRO_CAMS = { -- (makeover) IntroCutscene camera positions in the hub (x, z): solids keep 3+ studs away
+	Vector2.new(9.5, 4.5),
+	Vector2.new(9.5, 2.5),
+	Vector2.new(14.9, 2.7),
+	Vector2.new(14.1, -2.3),
+	Vector2.new(13.2, -7.0),
+	Vector2.new(12.4, -11.7),
+	Vector2.new(11.0, -21.0),
+	Vector2.new(-1.5, -34.9),
+	Vector2.new(1.2, -27.4),
+	Vector2.new(3.9, -20.0),
+	Vector2.new(6.0, -15.0),
+	Vector2.new(7.5, -12.0),
+	Vector2.new(9.0, -30.0),
+	Vector2.new(-3.6, -33.0),
+	Vector2.new(-5.2, -31.0),
+	Vector2.new(-13.5, -23.5),
+	Vector2.new(-12.0, -14.0),
+	Vector2.new(-6.0, -9.0),
+}
+Layout.INTRO_EXEMPT = {TimeBoard = true, RichestBoard = true} -- owner-placed front boards may overlap INTRO_ZONE
+Layout.GIANT_PUMPKIN = Vector3.new(0.000, 64.000, 230.000) -- GiantPumpkin.Pivot position (keep its rotation: face -Z)
+Layout.PUMPKIN_ALLEY = { -- the 2 pumpkin-egg clusters on the alley bed (footprint centres, fronts face -Z)
+}
+Layout.HALLOWEEN_BEDS = {
+}
+
+-- ground tiles (top y 0, 8 thick, like the old Hub.Floor): {name, min, max} in x/z
+Layout.GROUND = {
+	{name = "GroundFront", cf = CFrame.new(0.0, -4, -24.0), size = Vector3.new(430.0, 8, 72.0)},
+	{name = "GroundMid", cf = CFrame.new(0.0, -4, 45.0), size = Vector3.new(366.0, 8, 66.0)},
+	{name = "GroundBack", cf = CFrame.new(0.0, -4, 124.5), size = Vector3.new(146.0, 8, 93.0)},
+}
+-- edge walls (2.0 thick x 4.0 tall, OUTSIDE the floor) + Map.Bounds columns (4.0 thick, y 0..1040, outside the walls)
+Layout.EDGES = {
+	{i = 1, wall = CFrame.fromMatrix(Vector3.new(-149.000, 2.000, -61.000), Vector3.new(-1.000, 0.000, 0.000), Vector3.yAxis), wallSize = Vector3.new(136.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(-151.000, 520.000, -64.000), Vector3.new(-1.000, 0.000, 0.000), Vector3.yAxis), boundSize = Vector3.new(140.0, 1040, 4.0)},
+	{i = 2, wall = CFrame.fromMatrix(Vector3.new(-216.000, 2.000, -24.000), Vector3.new(0.000, 0.000, 1.000), Vector3.yAxis), wallSize = Vector3.new(76.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(-219.000, 520.000, -24.000), Vector3.new(0.000, 0.000, 1.000), Vector3.yAxis), boundSize = Vector3.new(84.0, 1040, 4.0)},
+	{i = 3, wall = CFrame.fromMatrix(Vector3.new(-200.000, 2.000, 13.000), Vector3.new(1.000, 0.000, 0.000), Vector3.yAxis), wallSize = Vector3.new(34.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(-202.000, 520.000, 16.000), Vector3.new(1.000, 0.000, 0.000), Vector3.yAxis), boundSize = Vector3.new(38.0, 1040, 4.0)},
+	{i = 4, wall = CFrame.fromMatrix(Vector3.new(-184.000, 2.000, 46.000), Vector3.new(0.000, 0.000, 1.000), Vector3.yAxis), wallSize = Vector3.new(68.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(-187.000, 520.000, 48.000), Vector3.new(0.000, 0.000, 1.000), Vector3.yAxis), boundSize = Vector3.new(72.0, 1040, 4.0)},
+	{i = 5, wall = CFrame.fromMatrix(Vector3.new(-129.000, 2.000, 79.000), Vector3.new(1.000, 0.000, 0.000), Vector3.yAxis), wallSize = Vector3.new(112.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(-131.000, 520.000, 82.000), Vector3.new(1.000, 0.000, 0.000), Vector3.yAxis), boundSize = Vector3.new(116.0, 1040, 4.0)},
+	{i = 6, wall = CFrame.fromMatrix(Vector3.new(-74.000, 2.000, 125.500), Vector3.new(0.000, 0.000, 1.000), Vector3.yAxis), wallSize = Vector3.new(95.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(-77.000, 520.000, 127.500), Vector3.new(0.000, 0.000, 1.000), Vector3.yAxis), boundSize = Vector3.new(99.0, 1040, 4.0)},
+	{i = 7, wall = CFrame.fromMatrix(Vector3.new(0.000, 2.000, 172.000), Vector3.new(1.000, 0.000, 0.000), Vector3.yAxis), wallSize = Vector3.new(150.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(0.000, 520.000, 175.000), Vector3.new(1.000, 0.000, 0.000), Vector3.yAxis), boundSize = Vector3.new(158.0, 1040, 4.0)},
+	{i = 8, wall = CFrame.fromMatrix(Vector3.new(74.000, 2.000, 125.500), Vector3.new(0.000, 0.000, -1.000), Vector3.yAxis), wallSize = Vector3.new(95.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(77.000, 520.000, 127.500), Vector3.new(0.000, 0.000, -1.000), Vector3.yAxis), boundSize = Vector3.new(99.0, 1040, 4.0)},
+	{i = 9, wall = CFrame.fromMatrix(Vector3.new(129.000, 2.000, 79.000), Vector3.new(1.000, 0.000, 0.000), Vector3.yAxis), wallSize = Vector3.new(112.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(131.000, 520.000, 82.000), Vector3.new(1.000, 0.000, 0.000), Vector3.yAxis), boundSize = Vector3.new(116.0, 1040, 4.0)},
+	{i = 10, wall = CFrame.fromMatrix(Vector3.new(184.000, 2.000, 46.000), Vector3.new(0.000, 0.000, -1.000), Vector3.yAxis), wallSize = Vector3.new(68.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(187.000, 520.000, 48.000), Vector3.new(0.000, 0.000, -1.000), Vector3.yAxis), boundSize = Vector3.new(72.0, 1040, 4.0)},
+	{i = 11, wall = CFrame.fromMatrix(Vector3.new(200.000, 2.000, 13.000), Vector3.new(1.000, 0.000, 0.000), Vector3.yAxis), wallSize = Vector3.new(34.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(202.000, 520.000, 16.000), Vector3.new(1.000, 0.000, 0.000), Vector3.yAxis), boundSize = Vector3.new(38.0, 1040, 4.0)},
+	{i = 12, wall = CFrame.fromMatrix(Vector3.new(216.000, 2.000, -24.000), Vector3.new(0.000, 0.000, -1.000), Vector3.yAxis), wallSize = Vector3.new(76.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(219.000, 520.000, -24.000), Vector3.new(0.000, 0.000, -1.000), Vector3.yAxis), boundSize = Vector3.new(84.0, 1040, 4.0)},
+	{i = 13, wall = CFrame.fromMatrix(Vector3.new(149.000, 2.000, -61.000), Vector3.new(-1.000, 0.000, 0.000), Vector3.yAxis), wallSize = Vector3.new(136.0, 4.0, 2.0), bound = CFrame.fromMatrix(Vector3.new(151.000, 520.000, -64.000), Vector3.new(-1.000, 0.000, 0.000), Vector3.yAxis), boundSize = Vector3.new(140.0, 1040, 4.0)},
+}
+-- the runway bounds columns that reached into the hub (end at z -49) are cut back to end at the runway wall (z -60)
+Layout.RUNWAY_BOUNDS_FIX = {Runway_L_1 = {x = -70, zMin = -1266, zMax = -60}, Runway_R_1 = {x = 70, zMin = -1266, zMax = -60}}
+
+-- base sizes per rebirth for the new max (RebirthConfig.baseSize(r, 60, 90))
+Layout.SIZES = {[0] = Vector2.new(40, 40), [1] = Vector2.new(44, 50), [2] = Vector2.new(48, 60), [3] = Vector2.new(52, 70), [4] = Vector2.new(56, 80), [5] = Vector2.new(60, 90)}
+return Layout

@@ -1,0 +1,23 @@
+[lamp     0.1s] crook {'a2': 2.461, 'zs': np.float64(15.7737), 'apex': [0.0, np.float64(-1.873), np.float64(17.58)], 'cradle': [0.0, np.float64(-3.55), np.float64(15.872)], 'outermost_y': np.float64(-4.055), 'Rmax': 3.934, 'Rmin': 0.29, 'length': 7.697, 'curl_across': 0.95, 'curl_wrap_deg': 285.0}
+[lamp     0.1s] volute {'C': [1.075, 16.124], 'rho0': 0.8, 'gaps': (0.0031, 0.0086, 0.1614)}
+[lamp     0.1s] stack {'cradle': 15.8724, 'rc': 0.097, 'ring_c': 15.8194, 'ring_ib': 15.6694, 'l1_it': 15.6694, 'l1_ib': 15.3994, 'l2_it': 15.3994, 'l2_ib': 15.1294, 'hole_top': 15.1294, 'hole_c': 15.0744, 'neck': 14.9894, 'rim': 14.3294, 'ring_z': 14.3244, 'chain_top': 15.9694}
+[lamp     0.2s] pumpkin holes {'lo': 4.0, 'cut': 4}
+[lamp     1.5s] pumpkin {'zc': 13.0987, 'bottom': 12.2778, 'top_skin': 13.9486, 'rmax': 1.3926, 'holes': {'lo': 4.0, 'cut': 4}, 'repair': None}
+[lamp     1.5s] post tris {'column': 3064, 'feet': 784, 'crook': 1000, 'volute': 384, 'bat': 472}
+[lamp     1.5s] cage {'sauc_top': 12.2758, 'collar': [12.0758, 12.2058], 'drop_tip': 11.8658}
+[lamp     1.6s] tris (approx, pumpkin before triangulation) {'Post': 5704, 'Cage': 3184, 'Pumpkin': 3500, 'Web': 1110, 'WebSilk': 300}
+[lamp     1.6s] bbox {'min': [-1.376, -4.922, -0.01], 'max': [1.35, 1.064, 18.546]}
+00:04.907  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\pv_front34_25.png'
+00:05.203  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\pv_side_25.png'
+00:05.453  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\pv_front_25.png'
+00:05.719  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\pv_head_close.png'
+00:05.938  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\pv_head_below15.png'
+00:06.203  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\pv_crook_side.png'
+00:06.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\pv_base.png'
+00:06.657  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\pv_silhouette_side_40.png'
+00:06.813  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\wip\pv_silhouette_front34_40.png'
+Info: Saved as "preview.blend"
+[lamp     5.0s] done preview
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

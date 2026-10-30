@@ -1,0 +1,53 @@
+{
+ "name": "PumpkinEgg_C",
+ "tris": 7166,
+ "texture": 1024,
+ "size_blender_xyz": [
+  5.447,
+  5.366,
+  6.684
+ ],
+ "bottom_offset_z": -3.342,
+ "cavity_centre": [
+  0.008,
+  -0.006,
+  -0.451
+ ],
+ "cavity_floor": [
+  0.008,
+  -0.006,
+  -3.175
+ ],
+ "shell": 0.27,
+ "holes": {
+  "hi": 4.0,
+  "lo": 4.0,
+  "cut": 4
+ },
+ "bake": {
+  "LoSkin": {
+   "texels": 366834,
+   "miss": 0.0072
+  },
+  "LoWall": {
+   "texels": 22347,
+   "miss": 0.078
+  },
+  "LoInner": {
+   "texels": 86928,
+   "miss": 0.0005
+  }
+ },
+ "blender_shift": [
+  0.0083,
+  -0.0057,
+  -0.4699
+ ],
+ "export": {
+  "fbx": "C:\\cdimp\\Halloween_PumpkinEgg_C.fbx",
+  "kb": 1981.3,
+  "tris": {
+   "PumpkinEgg_C": 7166
+  }
+ }
+}

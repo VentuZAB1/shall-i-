@@ -1,0 +1,20 @@
+[   0.6] vines [('A', 31.0, 819), ('B', 32.2, 836), ('C', 29.3, 775), ('D', 28.3, 713)]
+[  10.2] vines hi 369432
+[  10.4] vines lo tris 16746 {'A': 111, 'B': 110, 'C': 133, 'D': 112, 'T101': 54, 'T102': 70, 'T103': 83, 'T104': 56, 'T105': 61, 'T106': 68, 'T107': 46, 'PetBackL': 7, 'PetBackR': 7, 'PetFarL': 19, 'PetFarR': 17, 'PetTopC': 13, 'PetSmallTop': 12, 'PetHangL': 10, 'PetHangR': 11, 'PetFingerB': 8}
+[  12.5] leaf BackL hi v 22405 lo tris 573
+[  15.0] leaf BackR hi v 26178 lo tris 580
+[  16.8] leaf FarL hi v 18042 lo tris 570
+[  18.0] leaf FarR hi v 13133 lo tris 578
+[  19.0] leaf TopC hi v 9986 lo tris 584
+[  19.6] leaf SmallTop hi v 6928 lo tris 560
+[  20.3] leaf HangL hi v 6420 lo tris 558
+[  21.0] leaf HangR hi v 7113 lo tris 572
+[  21.7] leaf FingerB hi v 5887 lo tris 570
+[  22.3] leaves lo top tris 5145 -> both sides 10290
+[  22.3] normal check: vines inward faces 8 | leaves faces against Z 0
+[  26.4] uv packed {'uv_used_VineGrip_Vines': 0.706, 'uv_used_VineGrip_Leaves_top': 0.57}
+[ 125.3] vines baked 98.9 s, miss 0.1423
+[ 241.2] leaves baked 115.9 s, miss 0.3823
+HW_REPORT {"build": {"vines_lo": 16746, "leaves_lo_2sided": 10290, "vines_hi": 369432, "leaves_hi": 222581}, "bake": {"uv_used_VineGrip_Vines": 0.706, "uv_used_VineGrip_Leaves_top": 0.57, "vines_miss": 0.1423, "leaves_miss": 0.3823, "tris_VineGrip_Vines": 16746, "bbox_VineGrip_Vines": {"min": [-14.37, -15.89, -11.59], "max": [14.14, 2.84, 5.19]}, "tris_VineGrip_Leaves": 10290, "bbox_VineGrip_Leaves": {"min": [-18.1, -9.22, -5.57], "max": [17.1, 2.76, 7.69]}}, "render": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Vines\\review_hub.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Vines\\review_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Vines\\review_34.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Vines\\review_hub_backlit.png"], "export": {"fbx": "C:\\cdimp\\Halloween_VineGrip.fbx", "kb": 7409.1, "tris": {"VineGrip_Vines": 16746, "VineGrip_Leaves": 10290}}}
+
+HW_REPORT {"mirror": {"fbx": "C:\\cdimp\\Halloween_VineGripMirror.fbx", "kb": 7410.9, "tris": {"VineGripM_Vines": 16746, "VineGripM_Leaves": 10290}}, "pair": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Vines\\review_pair_culled.png"], "points": {"A": {"knuckle_top": [-9.28, -1.5, 4.01], "finger_joint": [-10.81, 1.39, -2.54], "claw_tip": [-12.3, 0.45, -5.6], "coil_end": [-12.19, 1.46, -6.15]}, "B": {"knuckle_top": [-3.8, -1.44, 4.33], "finger_joint": [-3.62, 1.68, -2.88], "claw_tip": [-3.1, 0.5, -6.9], "coil_end": [-3.29, 1.5, -7.37]}, "C": {"knuckle_top": [3.71, -1.33, 3.75], "finger_joint": [4.58, 1.47, -2.61], "claw_tip": [5.5, 0.45, -5.8], "coil_end": [6.39, 2.05, -7.08]}, "D": {"knuckle_top": [10.08, -1.4, 3.26], "finger_joint": [11.34, 1.17, -2.13], "claw_tip": [12.4, 0.4, -4.6], "coil_end": [12.33, 1.16, -4.99]}}}

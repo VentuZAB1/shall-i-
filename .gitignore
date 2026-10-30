@@ -1,0 +1,30 @@
+# Keep source and documentation in Git; generated assets remain local.
+*
+!*/
+!.gitignore
+!*.py
+!*.txt
+!*.json
+!*.md
+!*.lua
+!*.luau
+!*.sh
+!*.svg
+!*.osl
+!*.html
+!*.js
+!*.ps1
+!*.h
+!*.mtl
+
+# Secrets and generated dependencies
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+node_modules/
+.venv/
+venv/
+__pycache__/
+.git/

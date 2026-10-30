@@ -1,0 +1,166 @@
+    # ------------------------------------------------------------------ style-bible plates (STYLE_BIBLE.md 2b)
+    def _plate_faces(self, blk):
+        """faces that get plates: explicit blk.studs, else all but the bottom; limbs only outer side + front"""
+        out = []
+        for key in (blk.studs if blk.studs is not None else ["+x", "-x", "+y", "-y", "+z"]):
+            P = blk.face_corners(key)
+            n = (P[1] - P[0]).cross(P[3] - P[0])
+            if n.length < 1e-9:
+                continue
+            n.normalize()
+            ctr = sum(P, Vector()) / 4
+            if (ctr - blk.c).dot(n) < 0:
+                n = -n
+            if blk.studs is None:
+                if n.z < -0.5:
+                    continue
+                if blk._role == "limb":
+                    sx = 1 if blk.c.x > 0.02 else -1 if blk.c.x < -0.02 else 0
+                    if not ((sx and n.x * sx > 0.5) or n.y < -0.5 or (not sx and abs(n.x) > 0.5)):
+                        continue
+            out.append((P, n))
+        return out
+
+    def _studs_for(self, blk, bm, L):
+        if blk._role == "detail":
+            return
+        cell = self.pcell
+        fill = STYLE["fill"].get(self.tier, 0.60) * blk.density / 0.5
+        others = [o for o in self.items if o is not blk and not o.glow]
+        stud_h = self.pstud_h
+        for P, n in self._plate_faces(blk):
+            lu = ((P[1] - P[0]).length + (P[2] - P[3]).length) / 2
+            lv = ((P[3] - P[0]).length + (P[2] - P[1]).length) / 2
+            margin = blk._off + STYLE["plate_margin"] * cell
+            ua, uc = lu - 2 * margin, lv - 2 * margin
+            along_u = ua >= uc
+            if not along_u:
+                ua, uc = uc, ua
+            N = int((ua - 0.5 * cell) / cell)
+            R_ = int(uc / cell)
+            if N < 2 or R_ < 2:
+                continue
+            a0 = (ua - (N + 0.5) * cell) / 2               # along-start of row 0 (rows shift by half a cell)
+            c0 = (uc - R_ * cell) / 2
+            big = N >= 4 and R_ >= 4 and self.tier in STYLE["big_tiers"]
+            used = set()
+
+            def span(r, i):
+                s = (r % 2) * 0.5
+                return a0 + (i + s) * cell, a0 + (i + 1 + s) * cell
+
+            def cells_over(r, lo, hi):
+                s = (r % 2) * 0.5
+                return [i for i in range(N) if a0 + (i + s) * cell < hi - 1e-6 and a0 + (i + 1 + s) * cell > lo + 1e-6]
+
+            for r in range(R_):
+                for i in range(N):
+                    if (r, i) in used or self.rnd.random() > fill:
+                        continue
+                    x = self.rnd.random()
+                    if big and x < STYLE["mix2x2"]:
+                        kind = "2x2"
+                    else:
+                        x = self.rnd.random()
+                        kind = "1x1" if x < STYLE["mix"][0] else "1x2" if x < STYLE["mix"][0] + STYLE["mix"][1] else "2x1"
+                    lo, hi = span(r, i)
+                    rows = [r]
+                    if kind in ("2x1", "2x2"):
+                        if i + 1 >= N or (r, i + 1) in used:
+                            kind = "1x1"
+                        else:
+                            hi = span(r, i + 1)[1]
+                    if kind in ("1x2", "2x2"):
+                        nxt = cells_over(r + 1, lo, hi) if r + 1 < R_ else []
+                        if not nxt or any((r + 1, j) in used for j in nxt):
+                            kind = "1x1" if kind == "1x2" else "2x1"
+                            if kind == "2x1" and (i + 1 >= N or (r, i + 1) in used):
+                                kind = "1x1"
+                                hi = span(r, i)[1]
+                        else:
+                            rows = [r, r + 1]
+                    occ = [(r, j) for j in cells_over(r, lo, hi)]
+                    if len(rows) == 2:
+                        occ += [(r + 1, j) for j in cells_over(r + 1, lo, hi)]
+                    # plate centre in face coordinates
+                    am = (lo + hi) / 2 + margin
+                    cm_ = c0 + (r + len(rows) / 2) * cell + margin
+                    ha = (hi - lo - STYLE["plate_gap"] * cell) / 2
+                    hc = (len(rows) * cell - STYLE["plate_gap"] * cell) / 2
+                    s0, t0 = (am / lu, cm_ / lv) if along_u else (cm_ / lu, am / lv)
+                    p = (P[0].lerp(P[1], s0)).lerp(P[3].lerp(P[2], s0), t0)
+                    u = (P[1] - P[0]).lerp(P[2] - P[3], t0).normalized()
+                    v = n.cross(u).normalized()
+                    a, b = (ha, hc) if along_u else (hc, ha)
+                    if blk.pvar == "diamond":
+                        u, v = ((u + v).normalized(), (v - u).normalized())
+                        a = b = min(a, b) * 0.78
+                    if any(o.contains(p + n * 0.02 + u * su * a + v * sv * b, pad=0.01) for o in others
+                           for su, sv in ((0, 0), (1, 1), (-1, -1), (1, -1), (-1, 1))):
+                        continue
+                    used.update(occ)
+                    jit = 1.0 + (self.rnd.random() * 2 - 1) * STYLE["plate_jit"]
+                    hgt = stud_h * (0.25 if blk.pvar == "flush" else 1.0)
+                    _plate(bm, L, p, u, v, n, a, b, hgt, blk.color, jit, flush=blk.pvar == "flush")
+                    self.stud_count += 1
+
+    def face_eyes(self, head, mood, iris, base=None, brow=None, lids=0.0, look=(0.0, 0.0), z=None, x=None,
+                  scale=1.0, highlight=(250, 250, 255), pupil=(16, 12, 24), outline=None, key="-y", sclera=False):
+        """STYLE_BIBLE 2c eyes on the FRONT face of `head` (a Block): mood 'lovely' | 'bold' | 'fierce'.
+        Sizes are fractions of HW (head width). base = head colour (dark-face rule + lids). brow = rgb or None.
+        Returns {"L": centre, "R": centre, "top": outline top v, "HW": HW}."""
+        spec = STYLE["eyes"][mood]
+        HW = 2 * head.h.x
+        HH = 2 * head.h.z
+        if outline is None:
+            outline = (24, 20, 34)
+            if base is not None and max(base) / 255.0 < 0.30:
+                outline = (232, 226, 255)
+        ow, oh = spec["outline"][0] * HW * scale, spec["outline"][1] * HW * scale
+        iw, ih = spec["iris"][0] * HW * scale, spec["iris"][1] * HW * scale
+        pw, ph = spec["pupil"][0] * HW * scale, spec["pupil"][1] * HW * scale
+        cx = (x if x is not None else spec["x"]) * HW
+        cz = -head.h.z + (z if z is not None else spec["z"]) * HH
+        t0, st = 0.011 * HW, 0.0045 * HW
+        res = {"HW": HW}
+        ax, sg = FACES[key]
+        for s, side in ((1, "L"), (-1, "R")):
+            # face point: local (u, sg * face_y(v), v); account for the block taper at that height
+            v = cz
+            f = (v / head.h.z + 1) / 2
+            sy = head.bot[1] + (head.top[1] - head.bot[1]) * f
+            fy = sg * head.h.y * sy + head.ts[1] * f
+            ang = -s * spec["tilt"]                         # inner corner down
+            Rl = head.R @ Euler((0, math.radians(ang), 0), "XYZ").to_matrix()
+            def lay(du, dv, hu, hv, thick, col, **kw):
+                loc = Vector((s * cx + du, fy + sg * (thick / 2 + 0.002), cz + dv))
+                kw.setdefault("studs", [])
+                kw.setdefault("rnd", 0.0)
+                kw.setdefault("bevel", min(hu, hv) * 0.22)
+                return self.add(head.world(loc), (hu, thick / 2, hv), col, head.bone, R=Rl, **kw)
+            wedge = dict(top=(spec["wedge"], 1.0)) if spec["wedge"] < 1 else {}
+            lay(0, 0, ow / 2, oh / 2, t0, outline, **wedge)
+            if sclera:
+                lay(0, 0, iw / 2 * 1.12, ih / 2 * 1.08, t0 + st * 0.5, (246, 244, 250), **wedge)
+            lay(0, 0, iw / 2, ih / 2, t0 + st, iris, **wedge)
+            pdx = (-s * 0.02 + look[0] * 0.04) * HW
+            pdz = (-0.02 + look[1] * 0.03) * HW
+            lay(pdx, pdz, pw / 2, ph / 2, t0 + 2 * st, pupil)
+            h1, h2 = spec["hl"][0] * HW * scale, spec["hl"][1] * HW * scale
+            ins = 0.02 * HW
+            # highlight 1 upper-LEFT as seen from the front (-x) on BOTH eyes, highlight 2 lower-right
+            lay(-(iw / 2 - ins - h1 / 2), ih / 2 - ins - h1 / 2, h1 / 2, h1 / 2, t0 + 3 * st, highlight, rnd=0.1)
+            if h2 > 0:
+                lay((iw / 2 - ins - h2 / 2), -(ih / 2 - ins - h2 / 2), h2 / 2, h2 / 2, t0 + 3 * st, highlight, rnd=0.1)
+            if lids > 0 and base is not None:
+                lh = oh * lids
+                lay(0, oh / 2 - lh / 2 + 0.004, ow / 2 * 1.04, lh / 2, t0 + 3.6 * st, base)
+            if brow is not None and spec["brow"]:
+                bw, bh, bang = spec["brow"]
+                Rb = head.R @ Euler((0, math.radians(-s * bang), 0), "XYZ").to_matrix()
+                loc = Vector((s * cx, fy + sg * (0.03 * HW / 2 + 0.002), cz + oh / 2 + 0.03 * HW + bh * HW / 2))
+                self.add(head.world(loc), (bw * HW / 2, 0.03 * HW / 2, bh * HW / 2), brow, head.bone, R=Rb, studs=[],
+                         rnd=0.15, bevel=bh * HW * 0.2)
+            res[side] = head.world(Vector((s * cx, fy, cz)))
+        res["top"] = cz + oh / 2
+        return res

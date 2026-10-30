@@ -1,0 +1,18 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Bats\bat.py:1055: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Saved as "bat.blend"
+BAT_REPORT {"build": {"hi_tris": 128388, "lo_s": 0.3, "tris": 5740, "bake_s": 252.1, "miss_fraction": 0.4565, "bone_texels": 371583, "anim": {"audit": {"fly": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0}, "glide": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0}}, "lua_bytes": 6403, "clips": {"fly": [12, 0.4], "glide": [72, 2.4]}, "ref": {"bone": "Head", "dist": 0.37681}}, "size": [5.002, 1.524, 0.665], "bounds": [[-2.501, -0.741, -0.156], [2.501, 0.783, 0.509]], "vgroups": ["Body", "Ear_L", "Ear_R", "Head", "Leg_L", "Leg_R", "WingTip_L", "WingTip_R", "Wing_L", "Wing_R"], "max_influences": 4, "unweighted": 0, "total_s": 314.3}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

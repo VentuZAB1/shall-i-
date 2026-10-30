@@ -1,0 +1,4 @@
+yaw 30 arm(4,30,0): L {'gap_px': 0, 'tri_px': 3842, 'knee_angle_2d': 65.4} thigh 0.756 0.613 shin 0.639 0.618 foot 0.772 knee {'band': [-0.003, -0.0001], 'land': 18, 'toes': -0.0172} occT {"Shin_L":1905,"Spine":1231,"Arm_L":47}
+yaw 45 arm(4,30,0): L {'gap_px': 24, 'tri_px': 4171, 'knee_angle_2d': 65.5} thigh 0.725 0.487 shin 0.647 0.5 foot 0.689 knee {'band': [-0.003, -0.0001], 'land': 18, 'toes': -0.0172} occT {"Arm_L":1450,"Shin_L":1247,"Spine":666}
+yaw 60 arm(4,30,0): L {'gap_px': 47, 'tri_px': 4163, 'knee_angle_2d': 65.1} thigh 0.482 0.362 shin 0.644 0.544 foot 0.602 knee {'band': [-0.003, -0.0001], 'land': 18, 'toes': -0.0172} occT {"Arm_L":5072,"Shin_L":745,"Fore_L":141}
+yaw 75 arm(4,30,0): L {'gap_px': 0, 'tri_px': 3904, 'knee_angle_2d': 63.2} thigh 0.191 0.325 shin 0.6 0.618 foot 0.506 knee {'band': [-0.003, -0.0001], 'land': 17, 'toes': -0.0172} occT {"Arm_L":6311,"Fore_L":2775,"Shin_L":549}

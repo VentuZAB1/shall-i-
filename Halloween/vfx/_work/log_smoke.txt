@@ -1,0 +1,25 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx.py:177: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  w.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx.py:210: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+00:05.657  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f00.exr'
+00:09.219  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f01.exr'
+00:13.438  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f02.exr'
+00:17.328  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f03.exr'
+00:22.547  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f04.exr'
+00:28.235  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f05.exr'
+00:33.172  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f06.exr'
+00:37.563  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f07.exr'
+00:41.907  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f08.exr'
+00:46.000  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f09.exr'
+00:51.188  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f10.exr'
+00:55.938  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f11.exr'
+01:02.516  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f12.exr'
+01:08.282  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f13.exr'
+01:14.391  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f14.exr'
+01:20.485  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\SmokeWisp_4x4_f15.exr'
+VFX_DONE smoke {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.162, "step_mean": 0.00888, "step_max": 0.0177, "seam_last_to_first": 0.04059, "seconds": 78.6, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\SmokeWisp_4x4.png"}
+VFX_REPORT {"smoke": {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.162, "step_mean": 0.00888, "step_max": 0.0177, "seam_last_to_first": 0.04059, "seconds": 78.6, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\SmokeWisp_4x4.png"}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

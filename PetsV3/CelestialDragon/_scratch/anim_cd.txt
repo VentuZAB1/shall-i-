@@ -1,0 +1,306 @@
+# ------------------------------------------------------------------ animation
+import petkit as pk
+import _common as cm
+from mathutils import Quaternion
+FOLD = dict(up=20, fwd=-8, twist=0, tip=130)          # ground pose: wrist high, outer wing tucked under (no sail)
+
+
+def wings(k, f, up, fwd=0.0, twist=0.0, tip=0.0, side=None):
+    WING.key(k, f, up, fwd, twist, tip, side=side)
+
+
+def folded(k, f, du=0.0, dfwd=0.0, dtip=0.0, dtw=0.0, side=None):
+    wings(k, f, FOLD["up"] + du, FOLD["fwd"] + dfwd, FOLD["twist"] + dtw, FOLD["tip"] + dtip, side)
+
+
+def anchors(k, f):
+    k.key("Breath", f, rot=(0, 0, 0), loc=(0, 0, 0))
+    k.key("Flame", f, rot=(0, 0, 0))
+
+
+def orbit(k, f, n, turns=1, lift=0.0, bob=0.03):
+    """the 5 star shards circle (whole turns per clip so loops close) and bob"""
+    cm.key_axis(k, "Orbit", f, (0, 0, 1), 360.0 * turns * f / n, loc=(0, 0, lift + bob * pk.wave(f, n, 0.0, 2)))
+
+
+def keys_orbit(k, n, turns=1, step=5):
+    for f in list(range(0, n + 1, step)) + [n]:
+        orbit(k, f, n, turns)
+
+
+def key_q(k, bone, f, q):
+    pb = k.arm.pose.bones[bone]
+    R0 = k.arm.data.bones[bone].matrix_local.to_quaternion()
+    pb.rotation_quaternion = R0.inverted() @ q @ R0
+    pb.keyframe_insert("rotation_quaternion", frame=f, group=bone)
+
+
+def tail_aim(k, f, dirs):
+    """key Tail1-4 so each segment points along the given armature-space direction (Spine level)"""
+    T = [Vector(p) for p in TAILP]
+    prev = Quaternion()
+    for i, d in enumerate(dirs):
+        rest = (T[i + 1] - T[i]).normalized()
+        qw = rest.rotation_difference(Vector(d).normalized())
+        key_q(k, TAIL[i], f, prev.inverted() @ qw)
+        prev = qw
+
+
+def rest_dirs():
+    T = [Vector(p) for p in TAILP]
+    return [(T[i + 1] - T[i]).normalized() for i in range(4)]
+
+
+def idle(k):
+    """STARGAZE: slow breathing; the head tilts up following the circling star shards, holds the gaze, comes back;
+    the tail draws a slow S-curl along the ground; the wings tighten their fold before settling."""
+    n = 120
+    k.new_action("idle", n, True)
+    for f in range(0, n + 1, 3):
+        b = pk.wave(f, n, 0, 2)
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0.008 * b))
+        k.key("Chest", f, rot=(-1.0 - 1.0 * b, 0, 0))
+        cm.chain(k, f, n, TAIL, sway=6, pitch=0, cycles=1, lag=0.2, grow=0.55)
+        k.key("Jaw", f, rot=(2, 0, 0))
+        anchors(k, f)
+    for f, n1, n2, hd, yaw in ((0, 0, 0, 0, 0), (10, -2, -3, -6, 4), (40, -6, -10, -26, 14), (55, -6, -10, -28, 0),
+                               (70, -6, -10, -26, -14), (90, 0, 0, 0, -4), (120, 0, 0, 0, 0)):
+        k.key("Neck", f, rot=(n1, yaw * 0.25, 0))
+        k.key("Neck2", f, rot=(n2, yaw * 0.3, 0))
+        k.key("Head", f, rot=(hd, yaw * 0.45, 0))
+    for f, du, df in ((0, 0, 0), (88, 0, 0), (98, 5, -2), (110, 5, -2), (118, 0, 0), (120, 0, 0)):
+        folded(k, f, du=du, dfwd=df)
+    keys_orbit(k, n, 1)
+    cm.plant(k, n, legs=LEGS4)
+    k.finish()
+    k.meta["planted"] = LEGS4
+
+
+def walk(k):
+    n = 26
+
+    def body(f):
+        b = 0.5 - 0.5 * math.cos(4 * math.pi * f / n)
+        k.key("Spine", f, rot=(0.8 * pk.wave(f, n, 0.1, 2), 1.5 * pk.wave(f, n, 0.1), 1.8 * pk.wave(f, n)),
+              loc=(0, 0, 0.02 * b))
+        k.key("Chest", f, rot=(-1.0, 2.5 * pk.wave(f, n, 0.25), -1.5 * pk.wave(f, n)))
+        k.key("Neck", f, rot=(2 + 2 * pk.wave(f, n, 0.15, 2), -2 * pk.wave(f, n, 0.2), 0))
+        k.key("Neck2", f, rot=(-1 - 1.5 * pk.wave(f, n, 0.2, 2), -1.5 * pk.wave(f, n, 0.25), 0))
+        k.key("Head", f, rot=(-1 - 2 * pk.wave(f, n, 0.25, 2), -2 * pk.wave(f, n, 0.3), 0))
+        k.key("Jaw", f, rot=(2, 0, 0))
+        folded(k, f, du=2 * pk.wave(f, n, 0.1, 2))
+        cm.chain(k, f, n, TAIL, sway=9, pitch=1, cycles=1, lag=0.15, grow=0.5)
+        anchors(k, f)
+        orbit(k, f, n, 0)
+    return cm.quad_walk(k, n, 0.16, 0.09, body, gait="walk")
+
+
+# ---- flight: slow majestic strokes with a long glide hold
+FLY_N = 33
+PITCH = 12.0
+
+
+def stroke_slow(ph):
+    """one slow stroke in the first 62 % of the cycle, then a glide with the wings near level, raised again"""
+    ph %= 1.0
+    if ph < 0.62:
+        return wing3.stroke(ph / 0.62, top=30.0, bot=-40.0, down=0.48, sweep=10.0, twist=10.0, fold=26.0)
+    e = math.sin(math.pi * (ph - 0.62) / 0.38)
+    return dict(up=30 - 24 * e, fwd=-2 + 2 * e, twist=0.0, tip=-5 + e)
+
+
+def fly_legs(k, f, ph, amt=1.0):
+    """front legs tucked like a cat's, hind legs trailing and pumping gently"""
+    w = math.sin(2 * math.pi * (ph - 0.25))
+    for s in ("L", "R"):
+        k.key("Leg_F" + s, f, rot=(-40 * amt, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_F" + s, f, rot=((100 + 4 * w) * amt, 0, 0))
+        k.key("Foot_F" + s, f, rot=(30 * amt, 0, 0))
+        k.key("Leg_B" + s, f, rot=((55 + 10 * w) * amt, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_B" + s, f, rot=((-15 - 8 * w) * amt, 0, 0))
+        k.key("Foot_B" + s, f, rot=((40 + 6 * w) * amt, 0, 0))
+
+
+def fly_pose(k, f, ph, legs=True):
+    w = stroke_slow(ph)
+    wings(k, f, w["up"], w["fwd"], w["twist"], w["tip"])
+    u = min(ph % 1.0 / 0.62, 1.0)
+    k.key("Spine", f, rot=(PITCH - 2.5 * math.sin(2 * math.pi * u), 0, 0),
+          loc=(0, 0, 0.06 * math.sin(2 * math.pi * u)))
+    k.key("Chest", f, rot=(0, 0, 0))
+    k.key("Neck", f, rot=(16 - 2 * math.sin(2 * math.pi * (ph - 0.2)), 0, 0))
+    k.key("Neck2", f, rot=(-8, 0, 0))
+    k.key("Head", f, rot=(-16 + 2 * math.sin(2 * math.pi * (ph - 0.3)), 0, 0))
+    k.key("Jaw", f, rot=(2, 0, 0))
+    for i, b in enumerate(TAIL):
+        k.key(b, f, rot=(2 + 4 * math.sin(2 * math.pi * (ph - 0.12 * (i + 1))),
+                         3 * math.sin(2 * math.pi * (ph - 0.2 * i)), 0))
+    anchors(k, f)
+    if legs:
+        fly_legs(k, f, ph)
+
+
+def fly(k):
+    n = FLY_N
+    k.new_action("fly", n, True)
+    for f in range(0, n + 1):
+        fly_pose(k, f, f / n)
+    keys_orbit(k, n, 0, step=3)
+    k.finish()
+
+
+def rest_keys(k, f, z=0.0, pitch=0.0):
+    k.key("Spine", f, rot=(pitch, 0, 0), loc=(0, 0, z))
+    for b in ("Chest", "Neck", "Neck2", "Head"):
+        k.key(b, f, rot=(0, 0, 0))
+    k.key("Jaw", f, rot=(2, 0, 0))
+    folded(k, f)
+    for b in TAIL:
+        k.key(b, f, rot=(0, 0, 0))
+    anchors(k, f)
+
+
+def plant_frames(k, frames):
+    import bpy
+    k.bake_bezier_now()
+    for f in frames:
+        bpy.context.scene.frame_set(f)
+        for leg in LEGS4:
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y, 0.0)))
+
+
+def takeoff(k):
+    """crouch with the wings unfolding high (0-10), LAUNCH at 11 on a huge downstroke + leg push, into flight"""
+    n = 27
+    k.new_action("takeoff", n, False)
+    rest_keys(k, 0)
+    for f, z, p, w in ((6, -0.10, -6, (34, -10, -4, 70)), (10, -0.13, -8, (40, -4, -8, 0)),
+                       (13, 0.22, 8, (-36, 10, 10, 4)), (17, 0.36, 12, (18, 0, 0, -6))):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(0, 0, 0))
+        k.key("Neck", f, rot=(-6 - p * 0.4, 0, 0))
+        k.key("Neck2", f, rot=(-4, 0, 0))
+        k.key("Head", f, rot=(-6, 0, 0))
+        k.key("Jaw", f, rot=(2, 0, 0))
+        wings(k, f, *w)
+        for b in TAIL:
+            k.key(b, f, rot=(4 + p * 0.4, 0, 0))
+        anchors(k, f)
+    fly_pose(k, 22, 0.0, legs=False)
+    fly_pose(k, n, 0.18, legs=False)
+    keys_orbit(k, n, 0, step=3)
+    plant_frames(k, range(0, 12))
+    for f, a in ((14, 0.45), (19, 0.85)):
+        fly_legs(k, f, 0.0, a)
+    fly_legs(k, 22, 0.0)
+    fly_legs(k, n, 0.18)
+    k.finish(loop=False)
+    k.events["takeoff"] = {"launch": round(11 / n, 3)}
+
+
+def land(k):
+    """flare upright with braking beats, legs reach, touch down at 16, absorb, fold the wings"""
+    n = 27
+    k.new_action("land", n, False)
+    fly_pose(k, 0, 0.0)
+    for f, z, p, w in ((7, 0.12, -14, (30, 16, -10, -6)), (12, 0.06, -8, (-14, 10, -6, 4)),
+                       (16, -0.08, 4, (16, -6, 0, 40)), (21, 0.02, -1, (20, -8, 0, 100))):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(0, 0, 0))
+        k.key("Neck", f, rot=(-4 - p * 0.4, 0, 0))
+        k.key("Neck2", f, rot=(-3, 0, 0))
+        k.key("Head", f, rot=(-5, 0, 0))
+        k.key("Jaw", f, rot=(2, 0, 0))
+        wings(k, f, *w)
+        for b in TAIL:
+            k.key(b, f, rot=(4 - p * 0.3, 0, 0))
+        anchors(k, f)
+    rest_keys(k, n)
+    keys_orbit(k, n, 0, step=3)
+    for s in ("L", "R"):                                   # legs reach for the ground
+        k.key("Leg_F" + s, 7, rot=(-24, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_F" + s, 7, rot=(10, 0, 0))
+        k.key("Foot_F" + s, 7, rot=(20, 0, 0))
+        k.key("Leg_B" + s, 7, rot=(-8, 0, 0), loc=(0, 0, 0))
+        k.key("Shin_B" + s, 7, rot=(0, 0, 0))
+        k.key("Foot_B" + s, 7, rot=(20, 0, 0))
+    plant_frames(k, range(16, n + 1))
+    k.finish(loop=False)
+    k.events["land"] = {"touch": round(16 / n, 3)}
+
+
+def roar(k):
+    """ROYAL ARCH: the S-neck rises into a high arch and the head bends DOWN at the viewer, jaw wide, horns forward,
+    roaring downward; the tail lifts; the wings stay folded; settles."""
+    n = 60
+    k.new_action("roar", n, False)
+    P = [(0, 0, 0, 0, 0, 2, 0.0), (12, -4, -10, -6, 6, 6, 0.3), (20, -7, -30, -12, 40, 34, 1.0),
+         (46, -7, -30, -12, 42, 36, 1.0), (54, -2, -8, -3, 8, 6, 0.2), (60, 0, 0, 0, 0, 2, 0.0)]
+    for f, ch, n1, n2, hd, jw, t in P:
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0))
+        k.key("Chest", f, rot=(ch, 0, 0))
+        k.key("Neck", f, rot=(n1, 0, 0))
+        k.key("Neck2", f, rot=(n2, 0, 0))
+        k.key("Head", f, rot=(hd, 0, 0))
+        k.key("Jaw", f, rot=(jw, 0, 0))
+        folded(k, f, du=5 * t)
+        for i, b in enumerate(TAIL):
+            k.key(b, f, rot=(10 * t * (1 - 0.2 * i), 0, 0))
+        anchors(k, f)
+    for f in range(22, 46, 3):                          # the roar rumbles in the jaw (no head shake)
+        w = 1 if (f // 3) % 2 else -1
+        k.key("Jaw", f, rot=(36 + 2 * w, 0, 0))
+    keys_orbit(k, n, 1)
+    cm.plant(k, n, legs=LEGS4)
+    k.finish(loop=False)
+
+
+ARC = [(0, -0.10, 1.0), (0, -0.62, 0.78), (0, -0.98, 0.18), (0, -0.80, -0.60)]
+ARC_HI = [(0, -0.02, 1.0), (0, -0.55, 0.84), (0, -0.96, 0.28), (0, -0.85, -0.52)]
+ECL_HEAD = [(0, 0, 0, 0, 2, 0), (12, 0, 0, 0, 2, 0), (30, -8, -14, -20, 4, 0.6), (42, -14, -24, -40, 30, 1.0),
+            (50, -16, -26, -44, 34, 1.0), (55, -16, -26, -44, 10, 1.0), (70, -16, -26, -44, 10, 1.0),
+            (76, -10, -16, -26, 30, 0.8), (84, -2, -4, -4, 6, 0.3), (100, 0, 0, 0, 2, 0)]
+
+
+def eclipse(k):
+    """SIGNATURE (CelestialDragon only) - SWALLOW THE MOON: the tail sweeps round along the ground, rises in a high
+    arc over the back until the crescent hangs above the head like the moon, the head rises and gazes up at it with
+    the wings half open as a frame, the jaws open wide and SNAP shut round the crescent's horn (the eclipse), hold
+    it, release; the tail whips back down; settle and fold."""
+    n = 100
+    k.new_action("act_eclipse", n, False)
+    RD = rest_dirs()
+
+    def yawed(dirs, degs):
+        return [Quaternion((0, 0, 1), math.radians(d)) @ v for v, d in zip(dirs, degs)]
+    tails = {0: RD, 12: yawed(RD, (-12, -28, -42, -50)),
+             22: [(0.0, 0.5, 0.86), (0, -0.2, 0.98), (0, -0.85, 0.5), (0, -0.9, -0.2)],
+             30: ARC_HI, 42: ARC_HI, 50: ARC, 70: ARC, 80: yawed(RD, (8, 18, 26, 30)), 90: RD, 100: RD}
+    for f, d in tails.items():
+        tail_aim(k, f, d)
+    for f, n1, n2, hd, jw, wo in ECL_HEAD:
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0))
+        k.key("Chest", f, rot=(-3 * wo, 0, 0))
+        k.key("Neck", f, rot=(n1, 0, 0))
+        k.key("Neck2", f, rot=(n2, 0, 0))
+        k.key("Head", f, rot=(hd, 0, 0))
+        k.key("Jaw", f, rot=(jw, 0, 0))
+        wings(k, f, FOLD["up"] + 14 * wo, FOLD["fwd"] + 6 * wo, 0, FOLD["tip"] * (1 - 0.75 * wo))   # half open
+        anchors(k, f)
+    for f, z in ((0, 0.0), (14, 0.0), (26, 0.30), (74, 0.30), (88, 0.0), (100, 0.0)):   # the stars make room
+        cm.key_axis(k, "Orbit", f, (0, 0, 1), 360.0 * f / n, loc=(0, 0.10 * z / 0.3, z))
+    cm.plant(k, n, legs=LEGS4)
+    k.finish(loop=False)
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    fly(k)
+    takeoff(k)
+    land(k)
+    roar(k)
+    eclipse(k)
+    return stride
+
+

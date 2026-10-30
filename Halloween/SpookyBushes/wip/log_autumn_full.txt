@@ -1,0 +1,55 @@
+[bush    0.8s] autumn body hi 80760
+[bush    1.9s] autumn hi leaves 3100 area 73.3
+[bush    2.0s] autumn protruding leaves 143 hanging 18 fallen 8
+[bush    3.7s] autumn game mesh by material {'_Body': 3100, '_Wood': 300, '_LeafTop': 2344, '_LeafBot': 2344}
+[bush    3.7s] autumn game mesh tris 8088 gourds 1520 hi: 173600 9464 5640 109408
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:775: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  bmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:779: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  cmat.use_nodes = True
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\bushes.py:805: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if m and m.use_nodes:
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   34.9s]   baked G_Body {'texels': 372080, 'miss': 0.0, 's': 9.1}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   39.3s]   baked G_Leaf {'texels': 170708, 'miss': 0.0015, 's': 4.4}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   41.1s]   baked G_Wood {'texels': 22971, 'miss': 0.0013, 's': 1.9}
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+[bush   45.1s]   baked G_Gourds {'texels': 139023, 'miss': 0.0, 's': 1.8}
+Info: Saved as "autumn.blend"
+[bush   45.6s] autumn done {"tris": {"Bush": 8088, "Gourds": 1520}, "texture": {"Bush": 1024, "Gourds": 512}, "bake": {"G_Body": {"texels": 372080, "miss": 0.0, "s": 9.1}, "G_Leaf": {"texels": 170708, "miss": 0.0015, "s": 4.4}, "G_Wood": {"texels": 22971, "miss": 0.0013, "s": 1.9}}, "bake_gourds": {"G_Gourds": {"texels": 139023, "miss": 0.0, "s": 1.8}}, "atlas_coverage": 0.54, "hi_leaves": 3100, "protruding_leaves": 143, "hanging_leaves": 18, "fallen_leaves": 8, "gourd_stem_tops_roblox": [[-0.658, 0.686, 1.292], [0.379, 1.032, 1.629]], "bbox_blender": [[-3.044, -3.169, -0.179], [3.144, 2.905, 5.03]], "size_roblox_XYZ": [6.188, 5.208, 6.074]}
+00:49.813  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\autumn.blend"
+00:51.860  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_autumn_40_front.png'
+00:52.250  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_autumn_40_back.png'
+00:52.625  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_autumn_40_left.png'
+00:53.063  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_autumn_25_frame.png'
+00:53.454  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_autumn_close_low.png'
+00:53.547  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_autumn_sil_0.png'
+00:53.610  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_autumn_sil_90.png'
+00:53.657  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\SpookyBushes\wip\eye_autumn_sil_200.png'
+BUSH_REPORT {"autumn": {"tris": {"Bush": 8088, "Gourds": 1520}, "texture": {"Bush": 1024, "Gourds": 512}, "bake": {"G_Body": {"texels": 372080, "miss": 0.0, "s": 9.1}, "G_Leaf": {"texels": 170708, "miss": 0.0015, "s": 4.4}, "G_Wood": {"texels": 22971, "miss": 0.0013, "s": 1.9}}, "bake_gourds": {"G_Gourds": {"texels": 139023, "miss": 0.0, "s": 1.8}}, "atlas_coverage": 0.54, "hi_leaves": 3100, "protruding_leaves": 143, "hanging_leaves": 18, "fallen_leaves": 8, "gourd_stem_tops_roblox": [[-0.658, 0.686, 1.292], [0.379, 1.032, 1.629]], "bbox_blender": [[-3.044, -3.169, -0.179], [3.144, 2.905, 5.03]], "size_roblox_XYZ": [6.188, 5.208, 6.074]}, "eye": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_autumn_40_front.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_autumn_40_back.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_autumn_40_left.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_autumn_25_frame.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_autumn_close_low.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_autumn_sil_0.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_autumn_sil_90.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\SpookyBushes\\wip\\eye_autumn_sil_200.png"]}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
+EXIT 0

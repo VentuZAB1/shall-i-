@@ -1,0 +1,152 @@
+{
+  "Thunderbird": {
+    "preview": "01a0f2ec-f5a8-730a-aa83-9ac119d8983d",
+    "refine": "01a0f2ee-717b-7241-b580-c64399f326d1",
+    "done": true
+  },
+  "Ember Hound": {
+    "preview": "01a0f2ef-7323-72e5-b5a7-0ffa6ccfdbbf",
+    "refine": "01a0f2f0-71f5-73b2-a131-9c72faf9d8c8",
+    "done": true
+  },
+  "Storm Wyvern": {
+    "preview": "01a0f2ef-7323-7133-8ed5-62fff2bacff1",
+    "refine": "01a0f2f1-2a4f-7160-85bc-fafe3b14b1e0",
+    "done": true
+  },
+  "Magma Salamander": {
+    "preview": "01a0f2ef-7323-745a-8d98-27d30b573e11",
+    "refine": "01a0f2f1-6772-716a-aa0e-2f0996fca38b",
+    "done": true
+  },
+  "Cinder Scorpion": {
+    "preview": "01a0f2f1-3b30-7142-bc3f-cc428d8ce40f",
+    "refine": "01a0f2f2-3a3d-74ce-85ec-0ceb19ee1a48",
+    "done": true
+  },
+  "Molten Boar": {
+    "preview": "01a0f2f1-f445-72b1-80f4-d6b310f6d0c3",
+    "refine": "01a0f2f2-f26e-707b-953f-98dea825811d",
+    "done": true
+  },
+  "Flame Lynx": {
+    "preview": "01a0f2f2-3090-712f-bd86-fd7ff83af924",
+    "refine": "01a0f2f3-2eec-74e5-9fd2-0b7945b85761",
+    "done": true
+  },
+  "Lava Golem": {
+    "preview": "01a0f2f3-03a2-7269-a195-cf95b38b2488",
+    "refine": "01a0f2f4-3ebb-774a-a650-89324020e649",
+    "done": true
+  },
+  "Phoenix": {
+    "preview": "01a0f2f3-bd0d-744a-ac68-67cf9ff8c3ac",
+    "refine": "01a0f2f4-f7f3-748f-8abd-c7030fb74160",
+    "done": true
+  },
+  "Inferno Drake": {
+    "preview": "01a0f2f3-f818-7797-a988-cee820aea64c",
+    "refine": "01a0f2f4-f604-712d-974f-54ad73923e93",
+    "done": true
+  },
+  "Nightwing Bat": {
+    "preview": "01a0f2f5-49f1-7033-a50a-0a7d2026e914",
+    "refine": "01a0f2f6-c3fd-76e4-b4c6-77ae9367dee0",
+    "done": true
+  },
+  "Gloom Spider": {
+    "preview": "01a0f2f5-bfa2-71de-9e43-ac7260dbe8d9",
+    "refine": "01a0f2f7-b2c6-72cd-ad5b-bc902cf6c298",
+    "done": true
+  },
+  "Shade Panther": {
+    "preview": "01a0f2f5-c01c-74bd-a952-daa8b572c4d6",
+    "refine": "01a0f2f6-fdd0-7381-be18-11dc3f1ac006",
+    "done": true
+  },
+  "Bone Raven": {
+    "preview": "01a0f2f7-8c74-7716-8046-559bb9691bbf",
+    "refine": "01a0f2f9-0554-76a5-af93-f7962ae1e30d",
+    "done": true
+  },
+  "Wraith Hound": {
+    "preview": "01a0f2f8-0679-7285-a1b4-f7b1e0ee4519",
+    "refine": "01a0f2f9-bfdf-71ae-881a-39e6dc211043",
+    "done": true
+  },
+  "Nightmare Stallion": {
+    "preview": "01a0f2f8-b703-73c4-bd0b-5149096b720a",
+    "refine": "01a0f2f9-f717-77b9-85f6-2b7a0c641fea",
+    "done": true
+  },
+  "Void Serpent": {
+    "preview": "01a0f2f9-cf01-70f3-b4d3-9910873f4de1",
+    "refine": "01a0f2fb-4e04-750e-86eb-02c7504d765c",
+    "done": true
+  },
+  "Shadow Mantis": {
+    "preview": "01a0f2fa-8bca-719e-acbd-6d629e15c27d",
+    "refine": "01a0f2fb-914f-72b4-83e2-91c5477c881a",
+    "done": true
+  },
+  "Abyss Behemoth": {
+    "preview": "01a0f2fb-05ac-7290-a20f-c9e269a2321a",
+    "refine": "01a0f2fc-435c-7707-9ef0-4be90c54a734",
+    "done": true
+  },
+  "Void Dragon": {
+    "preview": "01a0f2fc-5559-74ea-86c8-342e20094195",
+    "refine": "01a0f2fd-5396-756d-b017-cf6b8afb5d8b",
+    "done": true
+  },
+  "Star Moth": {
+    "preview": "01a0f2fc-9ae6-7443-8efe-e7170a245d88",
+    "refine": "01a0f2fd-d64d-7186-9317-a915893dfbc8",
+    "done": true
+  },
+  "Lunar Jackal": {
+    "preview": "01a0f2fd-8833-72ad-aeb0-58cd22e73dc5",
+    "refine": "01a0f2fe-c331-7447-984d-7df679931175",
+    "done": true
+  },
+  "Solar Lion": {
+    "preview": "01a0f2fe-584f-71cf-a7f0-285cacef8063",
+    "refine": "01a0f2ff-59b2-726c-b9d4-58254d6ee97c",
+    "done": true
+  },
+  "Nebula Jelly": {
+    "preview": "01a0f2fe-dcd1-760d-bc1e-f116a6af62ae",
+    "refine": "01a0f300-5817-77f7-ad03-c6a4ffcb5b29",
+    "done": true
+  },
+  "Griffin": {
+    "preview": "01a0f2ff-c8b3-7311-912a-61bcef75ecb5",
+    "refine": "01a0f301-8018-74f2-ae12-d5f8a0340701",
+    "done": true
+  },
+  "Star Pegasus": {
+    "preview": "01a0f300-9a19-75a6-9f03-ce819f6d114a",
+    "refine": "01a0f302-4f77-7341-a754-31215bc26c34",
+    "done": true
+  },
+  "Celestial Tiger": {
+    "preview": "01a0f301-62ad-7249-8a65-9bef5be88823",
+    "refine": "01a0f302-dd21-73d7-b196-327539cafd83",
+    "done": true
+  },
+  "Seraph Owl": {
+    "preview": "01a0f302-c15b-762e-ba47-855b86daca30",
+    "refine": "01a0f304-75e4-7632-8819-05220dc6d10b",
+    "done": true
+  },
+  "Qilin": {
+    "preview": "01a0f303-925d-75b4-b07c-ce8a132dba01",
+    "refine": "01a0f304-cd82-762b-a1a7-b12d3354a63a",
+    "done": true
+  },
+  "Celestial Dragon": {
+    "preview": "01a0f304-5e09-7298-8b19-719fc392aea6",
+    "refine": "01a0f5d0-e1da-76e4-a310-65c3ce6929ea",
+    "done": true
+  }
+}

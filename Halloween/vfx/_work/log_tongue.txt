@@ -1,0 +1,9 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx.py:85: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+00:18.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\FireTongue_8x8_col.exr'
+00:34.875  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\vfx\_work\FireTongue_8x8_alpha.exr'
+VFX_DONE tongue {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.125, "step_mean": 0.00468, "step_max": 0.00705, "seam_last_to_first": 0.00929, "seconds": 33.2, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\FireTongue_8x8.png"}
+VFX_REPORT {"tongue": {"max_border_alpha": 0.0, "max_alpha": 1.0, "coverage": 0.125, "step_mean": 0.00468, "step_max": 0.00705, "seam_last_to_first": 0.00929, "seconds": 33.2, "file": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\vfx\\FireTongue_8x8.png"}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

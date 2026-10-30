@@ -1,0 +1,18 @@
+{
+ "file_path": "game.StarterPlayer.StarterPlayerScripts.StreakClient",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "\t\tlocal title = text(face, \"Secret\", UDim2.fromScale(0.48, 0.15), UDim2.fromScale(0.73, 0.37), 0.1)",
+   "new_string": "\t\tlocal title = text(face, \"Secret\", UDim2.fromScale(0.48, 0.15), UDim2.fromScale(0.73, 0.405), 0.1)"
+  },
+  {
+   "old_string": "\t\tc.lines[1] = text(face, \"Line1\", UDim2.fromScale(0.48, 0.14), UDim2.fromScale(0.73, 0.53))\n\t\tc.lines[2] = text(face, \"Line2\", UDim2.fromScale(0.48, 0.14), UDim2.fromScale(0.73, 0.68))\n\t\tc.lines[3] = text(face, \"Line3\", UDim2.fromScale(0.48, 0.14), UDim2.fromScale(0.73, 0.83))\n\t\tlocal rh, rf = B.brick(face, \"Ribbon\", UDim2.fromScale(0.32, 0.19), UDim2.fromScale(0.81, 0.17), C(255, 32, 80)) -- (M1 / M5: 0.2 x 0.13 at 0.87, 0.115; its label was 11 px)\n\t\trh.Rotation = 4\n\t\trh.ZIndex = 7\n\t\tlocal rl = text(rf, \"Label\", UDim2.fromScale(0.9, 0.72), UDim2.fromScale(0.5, 0.5), 0.1)",
+   "new_string": "\t\tc.lines[1] = text(face, \"Line1\", UDim2.fromScale(0.48, 0.14), UDim2.fromScale(0.73, 0.555))\n\t\tc.lines[2] = text(face, \"Line2\", UDim2.fromScale(0.48, 0.14), UDim2.fromScale(0.73, 0.7))\n\t\tc.lines[3] = text(face, \"Line3\", UDim2.fromScale(0.48, 0.14), UDim2.fromScale(0.73, 0.845))\n\t\tlocal rh, rf = B.brick(face, \"Ribbon\", UDim2.fromScale(0.36, 0.19), UDim2.fromScale(0.79, 0.185), C(255, 32, 80)) -- (M1 / M5: 0.2 x 0.13 at 0.87, 0.115; its label was 11 px)\n\t\trh.Rotation = 4\n\t\trh.ZIndex = 7\n\t\tlocal rl = text(rf, \"Label\", UDim2.fromScale(0.9, 0.8), UDim2.fromScale(0.5, 0.5), 0.1)"
+  },
+  {
+   "old_string": "\tlocal bh, bf = B.brick(face, \"Claim\", UDim2.fromScale(big and 0.42 or 0.86, 0.24), UDim2.fromScale(big and 0.24 or 0.5, 0.83), OFF, nil, {button = true})",
+   "new_string": "\tlocal bh, bf = B.brick(face, \"Claim\", UDim2.fromScale(big and 0.42 or 0.86, 0.23), UDim2.fromScale(big and 0.24 or 0.5, 0.825), OFF, nil, {button = true})"
+  }
+ ]
+}

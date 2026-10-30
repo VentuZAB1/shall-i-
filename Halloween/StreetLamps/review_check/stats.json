@@ -1,0 +1,388 @@
+{
+ "Cage": {
+  "tris": 3016,
+  "verts": 1564,
+  "min": [
+   -1.29,
+   -4.84,
+   12.061
+  ],
+  "max": [
+   1.29,
+   -2.26,
+   16.044
+  ],
+  "size": [
+   2.58,
+   2.58,
+   3.983
+  ],
+  "loc": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "rot": [
+   -0.0,
+   0.0,
+   0.0
+  ],
+  "images": [
+   {
+    "name": "Cage_albedo",
+    "size": [
+     512,
+     512
+    ],
+    "packed": true,
+    "to": [
+     "Base Color@BSDF_PRINCIPLED"
+    ]
+   },
+   {
+    "name": "Cage_normal",
+    "size": [
+     512,
+     512
+    ],
+    "packed": true,
+    "to": [
+     "Color@NORMAL_MAP"
+    ]
+   },
+   {
+    "name": "Cage_rough",
+    "size": [
+     512,
+     512
+    ],
+    "packed": true,
+    "to": [
+     "Roughness@BSDF_PRINCIPLED"
+    ]
+   }
+  ],
+  "edge_angle_p50": 6.5,
+  "edge_angle_p95": 72.2,
+  "edges_over_30": 1293,
+  "edges_over_45": 1161,
+  "edges": 4476,
+  "uv_aniso_area_over2": 0.413,
+  "uv_aniso_area_over4": 0.297,
+  "uv_aniso4_area_by_z": {
+   "12": 0.129,
+   "14": 0.168
+  },
+  "texel_px_per_stud_median": 109.0,
+  "sharp_edges": 0,
+  "custom_normals": true
+ },
+ "Post": {
+  "tris": 5716,
+  "verts": 2980,
+  "min": [
+   -1.064,
+   -4.175,
+   -0.01
+  ],
+  "max": [
+   1.064,
+   1.064,
+   18.546
+  ],
+  "size": [
+   2.128,
+   5.239,
+   18.556
+  ],
+  "loc": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "rot": [
+   -0.0,
+   0.0,
+   0.0
+  ],
+  "images": [
+   {
+    "name": "Post_albedo",
+    "size": [
+     1024,
+     1024
+    ],
+    "packed": true,
+    "to": [
+     "Base Color@BSDF_PRINCIPLED"
+    ]
+   },
+   {
+    "name": "Post_normal",
+    "size": [
+     1024,
+     1024
+    ],
+    "packed": true,
+    "to": [
+     "Color@NORMAL_MAP"
+    ]
+   },
+   {
+    "name": "Post_rough",
+    "size": [
+     1024,
+     1024
+    ],
+    "packed": true,
+    "to": [
+     "Roughness@BSDF_PRINCIPLED"
+    ]
+   }
+  ],
+  "edge_angle_p50": 15.0,
+  "edge_angle_p95": 73.9,
+  "edges_over_30": 2488,
+  "edges_over_45": 1264,
+  "edges": 8490,
+  "uv_aniso_area_over2": 0.143,
+  "uv_aniso_area_over4": 0.057,
+  "uv_aniso4_area_by_z": {
+   "0": 0.021,
+   "6": 0.012,
+   "7": 0.015
+  },
+  "texel_px_per_stud_median": 119.4,
+  "sharp_edges": 0,
+  "custom_normals": true
+ },
+ "Pumpkin": {
+  "tris": 3610,
+  "verts": 1820,
+  "min": [
+   -1.376,
+   -4.922,
+   12.538
+  ],
+  "max": [
+   1.35,
+   -2.177,
+   14.439
+  ],
+  "size": [
+   2.726,
+   2.744,
+   1.901
+  ],
+  "loc": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "rot": [
+   -0.0,
+   0.0,
+   0.0
+  ],
+  "images": [
+   {
+    "name": "Pumpkin_albedo",
+    "size": [
+     1024,
+     1024
+    ],
+    "packed": true,
+    "to": [
+     "Base Color@BSDF_PRINCIPLED"
+    ]
+   },
+   {
+    "name": "Pumpkin_normal",
+    "size": [
+     1024,
+     1024
+    ],
+    "packed": true,
+    "to": [
+     "Color@NORMAL_MAP"
+    ]
+   },
+   {
+    "name": "Pumpkin_rough",
+    "size": [
+     1024,
+     1024
+    ],
+    "packed": true,
+    "to": [
+     "Roughness@BSDF_PRINCIPLED"
+    ]
+   }
+  ],
+  "edge_angle_p50": 7.7,
+  "edge_angle_p95": 93.3,
+  "edges_over_30": 1008,
+  "edges_over_45": 795,
+  "edges": 5401,
+  "uv_aniso_area_over2": 0.01,
+  "uv_aniso_area_over4": 0.001,
+  "uv_aniso4_area_by_z": {},
+  "texel_px_per_stud_median": 149.3,
+  "sharp_edges": 0,
+  "custom_normals": true
+ },
+ "Web": {
+  "tris": 1284,
+  "verts": 974,
+  "min": [
+   -0.062,
+   -3.479,
+   13.025
+  ],
+  "max": [
+   0.174,
+   -0.155,
+   17.407
+  ],
+  "size": [
+   0.236,
+   3.324,
+   4.382
+  ],
+  "loc": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "rot": [
+   -0.0,
+   0.0,
+   0.0
+  ],
+  "images": [
+   {
+    "name": "Web_albedo.001",
+    "size": [
+     512,
+     512
+    ],
+    "packed": true,
+    "to": [
+     "Base Color@BSDF_PRINCIPLED"
+    ]
+   },
+   {
+    "name": "Web_rough.001",
+    "size": [
+     512,
+     512
+    ],
+    "packed": true,
+    "to": [
+     "Roughness@BSDF_PRINCIPLED"
+    ]
+   }
+  ],
+  "edge_angle_p50": 0.9,
+  "edge_angle_p95": 120.0,
+  "edges_over_30": 645,
+  "edges_over_45": 629,
+  "edges": 1596,
+  "uv_aniso_area_over2": 0.463,
+  "uv_aniso_area_over4": 0.0,
+  "uv_aniso4_area_by_z": {},
+  "texel_px_per_stud_median": 77.1,
+  "sharp_edges": 0,
+  "custom_normals": true
+ },
+ "WebSilk": {
+  "tris": 284,
+  "verts": 210,
+  "min": [
+   0.029,
+   -2.083,
+   13.067
+  ],
+  "max": [
+   0.107,
+   -0.231,
+   15.939
+  ],
+  "size": [
+   0.079,
+   1.852,
+   2.872
+  ],
+  "loc": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "scale": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "rot": [
+   -0.0,
+   0.0,
+   0.0
+  ],
+  "images": [
+   {
+    "name": "WebSilk_albedo.001",
+    "size": [
+     512,
+     512
+    ],
+    "packed": true,
+    "to": [
+     "Base Color@BSDF_PRINCIPLED"
+    ]
+   },
+   {
+    "name": "WebSilk_albedo.003",
+    "size": [
+     512,
+     512
+    ],
+    "packed": true,
+    "to": [
+     "Alpha@BSDF_PRINCIPLED"
+    ]
+   }
+  ],
+  "edge_angle_p50": 0.5,
+  "edge_angle_p95": 60.0,
+  "edges_over_30": 30,
+  "edges_over_45": 30,
+  "edges": 364,
+  "uv_aniso_area_over2": 0.513,
+  "uv_aniso_area_over4": 0.0,
+  "uv_aniso4_area_by_z": {},
+  "texel_px_per_stud_median": 353.7,
+  "sharp_edges": 0,
+  "custom_normals": true
+ },
+ "total_tris": 13910
+}

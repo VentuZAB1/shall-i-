@@ -1,0 +1,24 @@
+{
+ "fbx": "C:\\cdimp\\Halloween_DeadTree.fbx",
+ "kb": 11457.3,
+ "tris": {
+  "DeadTree_Trunk": 7256,
+  "DeadTree_Limbs": 6157,
+  "DeadTree_Branches": 7647,
+  "DeadTree_Web": 5996,
+  "DeadTree_WebSilk": 1292
+ },
+ "bbox_blender": [
+  [
+   -6.273,
+   -7.026,
+   -0.25
+  ],
+  [
+   7.18,
+   6.275,
+   15.991
+  ]
+ ],
+ "total_tris": 28348
+}

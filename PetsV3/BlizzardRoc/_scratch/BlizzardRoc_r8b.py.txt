@@ -1,0 +1,833 @@
+# Blizzard Roc (Glacier egg, HIGH 7.4 %, flyer, 2026-10-27) - plan _review/BlizzardRoc_plan.md (v2). A giant snowy
+# raptor on the approved wing-biped kit (Thunderbird / Inferno Phoenix: wing3 3-row feather wing, 2-bone S-neck, cloak
+# fold + LIFT waypoints). Read: a white-breasted bird of prey with a storm-grey back and mantle, charcoal flight
+# feathers barred frost-violet at the tips, an ERECT 3-plume frost crest, an osprey CHAR eye mask + heavy CHAR brow
+# around a black socket with a frost-violet slit, a dark steel hook beak, three CHAR snowy-owl bars across the breast,
+# FOUR tail feathers in a fan (outer pair +-14, faces tilted) and snow-feathered trousers over charcoal scaled tarsi with black talons.
+# No glow (frost trails / sparkles = Studio VFX anchors FX_*).
+import math
+from mathutils import Vector, Euler, Matrix
+import wing3
+
+DISPLAY = "Blizzard Roc"
+MOTION = "Fly"
+RIG = "wingbiped"
+HEIGHT = 9.0
+
+# Blender colours (Roblox renders ~0.6x darker) - plan section 4
+SNOW = (238, 242, 250)       # head, breast, belly, crest, trousers, wing shoulder
+STORM_GREY = (176, 178, 186)  # nape, coverts, secondaries, tail feathers
+MANTLE = (158, 160, 170)      # review 6 M3: the back saddles + back shingles, one step darker (STORM_GREY <= 40 % in game)
+CHAR = (58, 64, 80)          # primaries, secondary trailing edge, tail tips, tarsi, eye mask, brow, breast bars
+PALE_G = (206, 214, 226)     # breast / belly shading strip that follows the slope, cuff alternates
+FROST_V = (176, 140, 255)    # THE accent: eye slits, primary-tip bars, crest tips, tail-tip bars
+BEAK = (62, 60, 72)          # beak, cere, mandible
+BLACK = (14, 14, 22)         # talons, eye sockets, pupils, nostrils
+MOUTH = (96, 26, 30)
+
+HC = Vector((0, -0.50, 1.60))                      # cranium centre
+H_MODEL = 2.0                                      # crest top (measured in model())
+HIP, KNEE, ANKLE, TOE = (0.13, 0.10, 0.68), (0.15, -0.06, 0.55), (0.15, 0.06, 0.27), (0.15, -0.06, 0.035)
+FOOT_LIFT = 0.017                                   # planted claws >= -0.014 (talon hooks modelled 0.031 under z 0)
+TAILP = [(0, 0.30, 0.62), (0, 0.44, 0.54), (0, 1.10, 0.30)]
+ANCH = {}
+
+# wing: designed flat, raised ELEV deg about the root line for the bind pose (Griffin / Thunderbird recipe); a broader
+# roc wing than the Thunderbird's (span ~2.2 H)
+ELEV = 14.0
+WDX = 0.05                                       # wing root outside the flank (Thunderbird WDX)
+_S0, _BB0 = Vector((0.25 + WDX, -0.10, 1.20)), Vector((0.21 + WDX, 0.22, 1.02))
+_ROT = Matrix.Rotation(math.radians(-ELEV), 3, (_BB0 - _S0).normalized())
+
+
+def _raise(p):
+    return _S0 + _ROT @ (Vector(p) - _S0)
+
+
+_W, _H2, _T = _raise((0.98 + WDX, -0.06, 1.34)), _raise((0.84 + WDX, 0.68, 1.14)), _raise((2.11 + WDX, 0.30, 1.40))
+_N = (_T - _W).cross(_H2 - _W).normalized()
+if _N.z < 0:
+    _N = -_N
+WING = wing3.Wing(S=tuple(_S0), W=tuple(_W), H=tuple(_W + _N * 0.30), BB=tuple(_BB0))
+H2 = tuple(_H2)
+TIP = tuple(_T)
+
+
+def X(p, s):
+    return Vector((s * p[0], p[1], p[2]))
+
+
+def frame(z, n):
+    z = Vector(z).normalized()
+    x = Vector(n)
+    x = (x - z * x.dot(z)).normalized()
+    return Matrix((x, z.cross(x), z)).transposed()
+
+
+def feather(B, root, tip, nrm, width, thick, color, bone, taper=0.22, bars=None):
+    """flat tapered feather in the wing plane. bars = [(colour, frac), ...] from the tip backwards: the last fracs of
+    the length change colour (e.g. [(CHAR, .16), (FROST_V, .12)] = a violet bar then a charcoal point)."""
+    root, tip = Vector(root), Vector(tip)
+    R = frame(tip - root, nrm)
+    L = (tip - root).length
+    d = (tip - root).normalized()
+    if not bars:
+        return B.add((root + tip) / 2, (thick / 2, width / 2, L / 2), color, bone, R=R, top=(1.0, taper),
+                     role="limb", bevel=0.008)
+    tot = sum(f for _, f in bars)
+    cuts = [(color, 1.0 - tot)] + list(reversed(bars))          # root -> tip
+    t0 = 0.0
+    w0 = 1.0
+    for i, (c, fr) in enumerate(cuts):
+        t1 = t0 + fr
+        a, b = root + d * (L * t0), root + d * (L * t1)
+        w1 = 1.0 - (1.0 - taper) * t1                           # width falls linearly to `taper` at the tip
+        last = i == len(cuts) - 1
+        ext = 0.006 if i else 0.0
+        B.add((a + b) / 2 - d * ext / 2, (thick / 2 + 0.0015 * i, width * w0 / 2, (b - a).length / 2 + ext / 2), c,
+              bone, R=R, top=(1.0, (w1 / w0) if not last else taper / w0), role="limb", bevel=0.006 if i else 0.008,
+              studs=[], nostud=i > 0)
+        t0, w0 = t1, w1
+    return tip
+
+
+PBARS = [(CHAR, 0.11), (FROST_V, 0.17), (CHAR, 0.32)]   # primaries: grey root, CHAR band, violet bar, CHAR point
+
+
+def wing(B, s, side):
+    """3-row wing: SNOW shoulder (marginal coverts) -> CHAR arm bar (r8), STORM_GREY coverts over STORM_GREY
+    secondaries with a CHAR trailing edge; primaries fanned from the wrist: grey root, CHAR band, FROST_V bar, CHAR point."""
+    S0, W, H, bb = X(WING.S, s), X(WING.W, s), X(H2, s), X(WING.BB, s)
+    T = X(TIP, s)
+    wb, tb = "Wing_" + side, "WingTip_" + side
+    nrm = (T - W).cross(H - W).normalized()
+    if nrm.z < 0:
+        nrm = -nrm
+
+    def pl(p):
+        p = Vector(p)
+        return p - nrm * (p - W).dot(nrm)
+
+    S, H, bb = pl(S0), pl(H), pl(bb)
+    Wm = S0.lerp(W, 0.40)
+    Wa = S0.lerp(W, 0.24)
+    B.seg(S0, Wa, 0.065, 0.095, SNOW, wb, side=nrm, ext=0.05, role="limb", top=(0.98, 0.98))
+    B.seg(Wa, Wm, 0.064, 0.093, CHAR, wb, side=nrm, ext=0.005, role="limb", top=(0.97, 0.97))      # r6 M3b: dark
+    # leading edge (the arm bar + wrist are CHAR: STORM + MANTLE <= 40 % on the game camera)
+    B.seg(Wm, W, 0.061, 0.09, CHAR, wb, side=nrm, ext=0.01, role="limb", top=(0.85, 0.8))
+    B.add(W, (0.055, 0.07, 0.07), CHAR, wb, R=frame(W - S, nrm), role="limb")
+    B.seg(W + nrm * 0.08, W.lerp(T, 0.28) + nrm * 0.08, 0.028, 0.05, CHAR, tb, side=nrm, role="limb",
+          top=(0.7, 0.7))
+    n_sec = 8
+    for i in range(n_sec):                                       # secondaries: grey with a charcoal trailing edge
+        t = (i + 0.5) / n_sec
+        a = S.lerp(W, 0.04 + 0.92 * t)
+        end = bb.lerp(H, t)
+        d = end - a
+        end = end + d.normalized() * (0.07 + 0.04 * ((i % 2) * 2 - 1))
+        feather(B, a - nrm * 0.016, end - nrm * 0.016, nrm, 0.27, 0.034, STORM_GREY, wb, taper=0.35,
+                bars=[(CHAR, 0.18)])
+    for i in range(7):                                           # coverts: plain grey row over the secondaries
+        t = (i + 0.5) / 7
+        a = S.lerp(W, 0.03 + 0.94 * t)
+        end = a.lerp(bb.lerp(H, t), 0.50)
+        feather(B, a + nrm * 0.02, end + nrm * 0.02, nrm, 0.22, 0.034, STORM_GREY if t > 0.45 else SNOW, wb,
+                taper=0.5, bars=[(FROST_V, 0.24)] if t > 0.22 else None)
+    for i, (t, f) in enumerate(((0.12, 0.66), (0.32, 0.77), (0.50, 0.86))):   # inner primaries (arm bone)
+        dv = (H - W).normalized().lerp((T - W).normalized(), t).normalized()
+        ln = (T - W).length * f
+        feather(B, W + dv * 0.04 - nrm * 0.016, W + dv * ln - nrm * 0.016, nrm, 0.25, 0.034, STORM_GREY, wb, bars=PBARS)
+    n_pri = 5
+    for i in range(n_pri):                                       # outer primaries (tip bone)
+        t = i / (n_pri - 1)
+        dv = (H - W).normalized().lerp((T - W).normalized(), 0.66 + 0.34 * t).normalized()
+        ln = (T - W).length * (0.92 + 0.10 * t) * (1.0 + 0.04 * ((i % 2) * 2 - 1))
+        o = nrm * (0.065 + 0.004 * (n_pri - 1 - i))
+        tipp = feather(B, W + dv * 0.04 + o, W + dv * ln + o, nrm, 0.23, 0.034, STORM_GREY, tb, bars=PBARS)
+        if i == 2:
+            ANCH["FX_FrostTrail_" + side] = tuple(tipp)
+    for i in range(4):                                           # hand coverts (grey)
+        t = (i + 0.5) / 4
+        dv = (H - W).normalized().lerp((T - W).normalized(), 0.60 + 0.40 * t).normalized()
+        o = nrm * 0.11
+        feather(B, W + dv * 0.03 + o, W + dv * 0.38 + o, nrm, 0.20, 0.034, STORM_GREY, tb, taper=0.5)
+
+
+def eye(B, c, s, yaw=26, bone="Head", sc=1.0):
+    """BLACK lid-heavy socket, FROST_V slit iris (review 6 M4b: the pale hot-spot bar is gone) and a BLACK slit pupil
+    (no glint, no round pupil); tilted 18 deg, inner corner low"""
+    R = Euler((0, math.radians(-s * 18), math.radians(s * yaw)), "XYZ").to_matrix()
+    c = Vector(c)
+    B.add(c + R @ Vector((s * 0.002, 0, 0.004 * sc)), (0.046 * sc, 0.008, 0.011 * sc), BLACK, bone, R=R, studs=[],
+          role="detail", bevel=0.004)
+    B.add(c + R @ Vector((0.002 * s, -0.006, -0.006 * sc)), (0.045 * sc, 0.006, 0.0085 * sc), FROST_V, bone, R=R,
+          studs=[], role="detail", bevel=0.003)
+    B.add(c + R @ Vector((-s * 0.004 * sc, -0.0105, -0.006 * sc)), (0.005 * sc, 0.004, 0.0085 * sc), BLACK, bone, R=R,
+          studs=[], role="detail", bevel=0.002)                                                # slit pupil
+
+
+def face_shingles(B, blk, face, rows, color_of, bone, size=(0.055, 0.02, 0.07), tip=None):
+    """down-pointing shingles on the -y (face=-1, breast) or +y (face=+1, back) face of a rotated tapered block;
+    tip = a colour for a pointed lower tip (barred feathers)"""
+    h = blk.h
+    tilt = math.degrees(math.atan(h.y * (blk.top[1] - blk.bot[1]) / (2 * h.z)))
+    Rf = blk.R @ Euler((math.radians(-face * tilt), 0, 0), "XYZ").to_matrix()
+    for r, (lz, xs) in enumerate(rows):
+        t = (lz / h.z + 1) / 2
+        fy = blk.bot[1] + (blk.top[1] - blk.bot[1]) * t
+        fx = blk.bot[0] + (blk.top[0] - blk.bot[0]) * t
+        for x in xs:
+            p = blk.world(Vector((x * fx, face * (h.y * fy + 0.012), lz)))
+            B.add(p, size, color_of(r, x), bone, R=Rf, bot=(0.2, 1.0), role="detail", bevel=0.008)
+            if tip:
+                q = p + Rf @ Vector((0, face * 0.004, -size[2] * 0.62))
+                B.add(q, (size[0] * 0.52, size[1] * 0.75, size[2] * 0.40), tip, bone, R=Rf, bot=(0.15, 1.0),
+                      top=(0.75, 1.0), role="detail", bevel=0.006)
+
+
+def face_bar(B, blk, face, lz, half_w, thick, color, bone, vee=10.0, proud=0.004):
+    """a flush chevron bar (two halves meeting in a shallow V pointing DOWN) lying on the -y / +y face of a rotated
+    tapered block at local height lz: the snowy-owl breast bar"""
+    h = blk.h
+    tilt = math.degrees(math.atan(h.y * (blk.top[1] - blk.bot[1]) / (2 * h.z)))
+    t = (lz / h.z + 1) / 2
+    fy = blk.bot[1] + (blk.top[1] - blk.bot[1]) * t
+    fx = blk.bot[0] + (blk.top[0] - blk.bot[0]) * t
+    hw = half_w * fx
+    for sg in (1, -1):
+        Rf = blk.R @ Euler((math.radians(-face * tilt), 0, 0), "XYZ").to_matrix() @ \
+            Euler((0, math.radians(sg * vee), 0), "XYZ").to_matrix()
+        p = blk.world(Vector((sg * hw / 2, face * (h.y * fy + proud), lz + math.tan(math.radians(vee)) * hw / 2)))
+        B.add(p, (hw / 2 + 0.01, 0.008, thick / 2), color, bone, R=Rf, role="detail", bevel=0.004, studs=[])
+
+
+def neck_cape(B, a, b, r, rows, bone, col=STORM_GREY, size=(0.06, 0.02, 0.09)):
+    """flat-laid hackle cape: down-pointing shingles on the nape side of a neck segment"""
+    a, b = Vector(a), Vector(b)
+    dn = (b - a).normalized()
+    xa = Vector((1, 0, 0))
+    nn = (Vector((0, 1, 0)) - dn * dn.y).normalized()
+    Rn = Matrix.Rotation(math.radians(-14), 3, xa) @ Matrix((xa, nn, dn)).transposed()
+    for t, xs in rows:
+        c = a.lerp(b, t)
+        for x in xs:
+            p = c + xa * x + nn * max(0.03, math.sqrt(max(0.0, r * r - x * x)) - 0.004)
+            B.add(p, size, col, bone, R=Rn, bot=(0.2, 1.0), role="limb", bevel=0.008)
+
+
+def plume(B, root, d, L, w, bone, cols=(SNOW, FROST_V), fracs=(0.40, 0.60)):
+    """a flat crest plume in the plane facing sideways-ish: SNOW blade, FROST_V pointed tip"""
+    d = Vector(d).normalized()
+    nrm = Vector((1, 0, 0)) - d * d.x
+    nrm.normalize()
+    cur = Vector(root) - d * 0.03
+    wi = w
+    for i, (c, fr) in enumerate(zip(cols, fracs)):
+        last = i == len(cols) - 1
+        end = cur + d * (L * fr + (0.03 if i == 0 else 0.0))
+        w1 = wi * (0.72 if not last else 0.12)
+        B.add((cur + end) / 2, (wi * 0.30 + 0.002 * i, wi / 2, (end - cur).length / 2 + 0.005), c, bone,
+              R=frame(end - cur, nrm), top=(0.9, w1 / wi), role="limb", bevel=0.005, studs=[], nostud=True)
+        cur = end - d * 0.006
+        wi = w1
+    return cur + d * 0.006
+
+
+def model(k):
+    import blockkit as bk
+    B = bk.Blocks(k, seed=727, tier=3, plates=False)
+    # ================= body: a deep SNOW breast leaning 35 deg, keel, the lower body swallowing the knee, grey saddles
+    chest = B.add((0, -0.13, 1.00), (0.25, 0.24, 0.29), SNOW, "Chest", rot=(35, 0, 0), bot=(0.60, 0.55),
+                  top=(0.90, 0.90), rnd=0.40)
+    keel = B.seg((0, -0.25, 0.70), (0, -0.40, 1.14), 0.16, 0.08, SNOW, "Chest", bot=(0.55, 0.8), ext1=0.02,
+                 rnd=0.4)                                          # keel (local z UP the keel: face -1 = its front)
+    low = B.add((0, 0.08, 0.70), (0.19, 0.18, 0.17), SNOW, "Spine", rot=(44, 0, 0), bot=(0.22, 0.66),
+                top=(0.92, 0.90), rnd=0.38)
+    B.add(chest.world(Vector((0, 0.09, 0.02))), (0.23, 0.17, 0.27), MANTLE, "Chest", R=chest.R, bot=(0.60, 0.55),
+          top=(0.90, 0.90), rnd=0.40)                      # dorsal saddle: chest back (mantle)
+    B.add(low.world(Vector((0, 0.065, 0.0))), (0.175, 0.13, 0.16), MANTLE, "Spine", R=low.R, bot=(0.72, 0.66),
+          top=(0.92, 0.9), rnd=0.38)                       # dorsal saddle: lower back
+    B.add((0, 0.31, 0.62), (0.12, 0.11, 0.08), SNOW, "Spine", rot=(30, 0, 0), rnd=0.4)        # rump
+    B.seg((0, -0.07, 0.585), (0, 0.22, 0.51), 0.13, 0.03, PALE_G, "Spine", top=(0.7, 1.0))       # belly shade strip
+    # breast: SNOW shingles on the keel front + chest front (PALE_G lowest row = the shading strip up the slope)
+    xs4, xs3 = (-0.13, -0.045, 0.045, 0.13), (-0.09, 0.0, 0.09)
+    face_shingles(B, keel, -1, [(0.15, (-0.10, 0.0, 0.10)), (0.045, xs4), (-0.06, (-0.10, 0.0, 0.10)),
+                                (-0.165, xs4)], lambda r, x: PALE_G if r == 3 else SNOW, "Chest",
+                  size=(0.06, 0.02, 0.075))
+    face_shingles(B, chest, -1, [(0.17, xs4), (0.06, xs3), (-0.05, xs4), (-0.16, xs3)],
+                  lambda r, x: SNOW if r < 3 else PALE_G, "Chest", size=(0.06, 0.02, 0.075))
+    # the three CHAR snowy-owl bars across the breast (flush chevrons on the keel front, the most forward mass)
+    for lz, hw, c in ((0.12, 0.46, CHAR), (0.01, 0.56, FROST_V), (-0.10, 0.46, CHAR)):
+        face_bar(B, keel, -1, lz, hw * keel.h.x * 2, 0.03, c, "Chest", vee=20.0, proud=0.026)
+    # storm mantle: brick rows of darker MANTLE shingles down the back (nape -> tail base); review 6 M3b: the middle
+    # row on the Chest and the upper row on the Spine are CHAR (a dark band across the mantle)
+    face_shingles(B, chest, 1, [(0.20, (0.0,)), (0.08, xs4), (-0.06, xs3)], lambda r, x: CHAR if r == 1 else MANTLE,
+                  "Chest",
+                  size=(0.065, 0.022, 0.09), tip=CHAR)
+    face_shingles(B, low, 1, [(0.08, (-0.09, 0.0, 0.09)), (-0.06, (-0.045, 0.045))],
+                  lambda r, x: CHAR if r == 0 else MANTLE,
+                  "Spine", size=(0.06, 0.02, 0.08), tip=CHAR)
+    # flank skirt over the knee: SNOW top spikes, PALE_G blades hung outside the trousers' swing band
+    for s in (1, -1):
+        for dy in (-0.06, 0.04):
+            B.spike((s * 0.16, dy, 0.72), (s * 0.25, 0.65, -0.72), 0.19, 0.055, SNOW, "Spine", side=(s, 0, 0),
+                    top=(0.2, 0.3))
+        dv = Vector((s * 0.40, 0.62, -0.68)).normalized()
+        for dy in (-0.06, 0.04):
+            b0 = Vector((s * 0.235, dy, 0.63))
+            B.bar(b0, b0 + dv * 0.15, Vector((s, 0, 0)), 0.10, 0.02, PALE_G, "Spine", top=(0.2, 0.5), studs=[])
+    # ================= the S-neck (2 bones): SNOW front, STORM_GREY nape cape joining the mantle
+    n1a, n1b = (0, -0.22, 1.12), (0, -0.42, 1.36)
+    n2a, n2b = (0, -0.43, 1.32), (0, -0.42, 1.54)
+    B.seg(n1a, n1b, 0.155, 0.15, SNOW, "Neck", ext=0.06, rnd=0.35)
+    B.seg(n2a, n2b, 0.135, 0.13, SNOW, "Neck2", ext=0.03, ext1=0.03, rnd=0.35)
+    neck_cape(B, n2a, n2b, 0.13, [(0.85, (-0.065, 0.0, 0.065))], "Neck2", col=SNOW)        # white nape collar
+    neck_cape(B, n2a, n2b, 0.13, [(0.50, (-0.065, 0.0, 0.065))], "Neck2", col=SNOW)
+    neck_cape(B, n1a, n1b, 0.155, [(0.85, (-0.09, -0.03, 0.03, 0.09))], "Neck", col=SNOW)
+    neck_cape(B, n1a, n1b, 0.155, [(0.45, (-0.06, 0.06))], "Neck")
+    # ================= head: rounded SNOW skull, osprey CHAR eye mask, heavy CHAR brow, dark steel hook beak
+    B.add(HC, (0.135, 0.13, 0.12), SNOW, "Head", top=(0.85, 0.85), rnd=0.42)                         # cranium
+    B.add(HC + Vector((0, -0.10, -0.045)), (0.105, 0.06, 0.08), SNOW, "Head", top=(0.9, 1))           # face
+    B.add(HC + Vector((0, -0.02, -0.08)), (0.12, 0.10, 0.055), SNOW, "Head", rnd=0.35)                # cheeks/throat
+    for s in (1, -1):
+        # osprey mask: ONE CHAR stripe from the eye back along the skull side to the nape (no box round the eye, no
+        # piece in front of it): the side band + the nape tail
+        ec = HC + Vector((s * 0.104, -0.128, 0.022))
+        B.bar(HC + Vector((s * 0.120, -0.105, 0.012)), HC + Vector((s * 0.124, 0.07, -0.010)), Vector((s, 0, 0)),
+              0.058, 0.018, CHAR, "Head", studs=[], role="detail", bevel=0.005, top=(1, 0.5))
+        B.bar(HC + Vector((s * 0.10, 0.10, -0.02)), HC + Vector((s * 0.085, 0.16, -0.10)), Vector((s, 0.6, 0)),
+              0.05, 0.012, CHAR, "Head", studs=[], role="detail", bevel=0.004, top=(1, 0.3))
+        eye(B, ec, s, sc=1.25)
+        B.add(HC + Vector((s * 0.080, -0.094, 0.066)), (0.072, 0.020, 0.018), CHAR, "Head",
+              rot=(0, -s * 21, s * 22), top=(0.8, 0.85), role="detail", bevel=0.008)            # slim V brow
+    B.add(HC + Vector((0, -0.16, -0.015)), (0.07, 0.035, 0.038), CHAR, "Head", top=(0.85, 1))          # cere
+    for s in (1, -1):
+        B.add(HC + Vector((s * 0.072, -0.168, -0.005)), (0.004, 0.011, 0.008), BLACK, "Head", studs=[],
+              role="detail", bevel=0.003)
+    B.seg(HC + Vector((0, -0.155, -0.012)), HC + Vector((0, -0.29, -0.036)), 0.066, 0.058, BEAK, "Head",
+          top=(0.6, 0.6), role="limb", nostud=True)                                                  # upper bill
+    B.seg(HC + Vector((0, -0.26, -0.024)), HC + Vector((0, -0.34, -0.060)), 0.041, 0.037, BEAK, "Head",
+          top=(0.8, 0.8), role="limb", nostud=True)                                                  # hook segment
+    B.spike(HC + Vector((0, -0.337, -0.056)), (0, -0.45, -1), 0.075, 0.033, BLACK, "Head", top=(0.15, 0.2))  # hook
+    for s in (1, -1):
+        B.spike(HC + Vector((s * 0.053, -0.265, -0.060)), (0, 0, -1), 0.028, 0.020, BEAK, "Head", top=(0.2, 0.3))
+    B.add(HC + Vector((0, -0.225, -0.068)), (0.052, 0.072, 0.005), MOUTH, "Head", studs=[], role="detail",
+          bevel=0.003)
+    for s in (1, -1):
+        B.add(HC + Vector((s * 0.050, -0.215, -0.062)), (0.004, 0.058, 0.007), MOUTH, "Head", rot=(-8, 0, 0),
+              studs=[], role="detail", bevel=0.002)
+    B.seg(HC + Vector((0, -0.155, -0.090)), HC + Vector((0, -0.28, -0.090)), 0.052, 0.020, BEAK, "Jaw",
+          top=(0.7, 1), role="limb", nostud=True)                                                    # mandible
+    B.add(HC + Vector((0, -0.215, -0.074)), (0.04, 0.056, 0.004), MOUTH, "Jaw", studs=[], role="detail", bevel=0.002)
+    ANCH["FX_BreathCloud"] = tuple(HC + Vector((0, -0.36, -0.09)))
+    # ================= the ERECT frost crest: 3 flat plumes standing 60-75 deg up from the crown
+    for nm, root, d, L, w in (("C", (0, -0.47, 1.70), (0, 0.30, 0.95), 0.31, 0.115),
+                              ("L", (0.055, -0.45, 1.69), (0.36, 0.34, 0.87), 0.25, 0.105),
+                              ("R", (-0.055, -0.45, 1.69), (-0.36, 0.34, 0.87), 0.25, 0.105)):
+        tp = plume(B, root, d, L, w, "Crest")
+        if nm == "C":
+            ANCH["FX_CrestSparkle"] = tuple(tp)
+    # ================= wings
+    for s, side in ((1, "L"), (-1, "R")):
+        wing(B, s, side)
+    # ================= legs: SNOW feathered trousers with a ragged cuff, bare CHAR scaled tarsus, black talons
+    for s, side in ((1, "L"), (-1, "R")):
+        H, K, A, T = X(HIP, s), X(KNEE, s), X(ANKLE, s), X(TOE, s)
+        B.seg(H, K, 0.075, 0.085, SNOW, "Leg_" + side, ext=0.02, ext1=0.04, rnd=0.4)                    # hidden thigh
+        B.seg(K, A + Vector((0, 0, 0.04)), 0.07, 0.072, SNOW, "Shin_" + side, ext=0.05, top=(1.23, 1.18), rnd=0.45)
+        for i in range(7):                                                                    # ragged trouser cuff
+            ang = 2 * math.pi * i / 7 + 0.3
+            rv = Vector((s * math.cos(ang) * 0.076, math.sin(ang) * 0.08, 0))
+            L = 0.11 + 0.03 * ((i * 3) % 4) / 3.0
+            B.spike(A + rv + Vector((0, 0, 0.11)), (rv.x * (3 if rv.x * s > 0 else 0), rv.y * 6 - 0.15, -1), L, 0.04,
+                    SNOW if i % 2 == 0 else PALE_G, "Shin_" + side, top=(0.2, 0.4))
+        B.seg(A, T + Vector((0, 0.0, 0.03)), 0.054, 0.054, CHAR, "Foot_" + side, ext=0.03, role="limb")  # tarsus
+        for t in (0.25, 0.5, 0.75):
+            B.add(A.lerp(T + Vector((0, 0, 0.03)), t), (0.057, 0.058, 0.008), BEAK, "Foot_" + side,
+                  rot=(-30, 0, 0), studs=[], role="detail", bevel=0.004)
+        B.add(T + Vector((0, 0.005, 0.0)), (0.06, 0.06, 0.035), CHAR, "Foot_" + side, role="limb")
+        for dx, spl in ((-0.042, -14.0), (0.0, 0.0), (0.047, 20.0)):          # inner / middle / outer, mirrored
+            d = Vector((s * math.sin(math.radians(spl)), -math.cos(math.radians(spl)), 0))
+            tb = T + Vector((s * dx, 0, 0)) + d * 0.105 + Vector((0, 0, -0.005))
+            B.seg(T + Vector((s * dx * 0.5, -0.02, 0.0)), tb, 0.027, 0.025, CHAR, "Foot_" + side, role="limb")
+            h0 = tb + d * 0.005 + Vector((0, 0, 0.008))
+            B.spike(h0, d - Vector((0, 0, 0.62)), 0.08, 0.024, BLACK, "Foot_" + side)               # talon
+            B.spike(h0 + (d - Vector((0, 0, 0.62))).normalized() * 0.064, Vector((0, 0, -1)) + d * 0.3, 0.036, 0.016,
+                    BLACK, "Foot_" + side)                                                       # hooked tip
+        B.spike(T + Vector((0, 0.05, 0.0)), (0, 1, -0.55), 0.12, 0.027, BLACK, "Foot_" + side)    # hallux talon
+    # ================= tail: white rump + covert shingles, FOUR feathers in a FAN (outer pair +-14 with their faces
+    # tilted 40 deg about the tail axis so the side view shows blades; inner pair flat): grey, FROST_V bar, CHAR tip
+    T = [Vector(p) for p in TAILP]
+    B.seg(T[0], T[1], 0.13, 0.085, SNOW, "Tail1", ext=0.10, top=(0.9, 0.8), rnd=0.35)
+    for x in (-0.07, 0.0, 0.07):
+        B.add(T[0].lerp(T[1], 0.55) + Vector((x, 0, 0.075)), (0.06, 0.085, 0.02), SNOW, "Tail1",
+              rot=(-30, 0, 0), bot=(1, 0.3), role="limb", bevel=0.008)
+    fan_n = Vector((0, 0.34, 0.94)).normalized()
+    dmain = (T[2] - T[1]).normalized()
+    for i, (x, yaw, L) in enumerate(((-0.14, -14.0, 0.70), (-0.047, -2.5, 0.80), (0.047, 2.5, 0.80),
+                                     (0.14, 14.0, 0.70))):          # outer pair fanned +-14 (r4 N2: 12; r5 TO 9+)
+        d = Matrix.Rotation(math.radians(yaw), 3, fan_n) @ dmain
+        root = T[1] + Vector((x, -0.06, 0.0))
+        tilt = math.radians(-40.0 if abs(x) > 0.1 else 0.0)    # review 6 M1: the OUTER feather faces tilt toward -+x
+        fn = (fan_n * math.cos(tilt) + Vector((math.copysign(1.0, x), 0, 0)) * math.sin(tilt)).normalized()
+        tp = feather(B, root, root + d * L, fn, 0.22, 0.03, STORM_GREY, "Tail2", taper=0.58 if i in (0, 3) else 0.45,
+                     bars=[(CHAR, 0.22), (FROST_V, 0.10)])
+        if i == 1:
+            ANCH["FX_FrostDust"] = tuple(tp)
+    B.build()
+    mn, mx = k.bounds()
+    pitch = round(0.2243 * (mx.z - mn.z) / HEIGHT, 4)
+    bk.stud_skin(k, pitch)
+    return {"TH": round(B.th, 3), "PITCH": pitch, "H": round(mx.z, 3), "lowest": round(mn.z, 3),
+            "crest_tip": [round(v, 3) for v in ANCH.get("FX_CrestSparkle", (0, 0, 0))],
+            "wing_tip_z": round(Vector(TIP).z, 3), "span": round(2 * max(abs(mn.x), mx.x), 3)}
+
+
+# ------------------------------------------------------------------ rig (Thunderbird / Phoenix wing-biped)
+def rig(k):
+    k.joint("Spine", (0, 0.10, 0.70), "Root", tail=(0, -0.2, 0.35))
+    k.joint("Chest", (0, -0.04, 0.92), "Spine", tail=(0, -0.25, 0.3))
+    k.joint("Neck", (0, -0.22, 1.14), "Chest", tail=(0, -0.19, 0.22))
+    k.joint("Neck2", (0, -0.43, 1.34), "Neck", tail=(0, 0.01, 0.18))
+    k.joint("Head", tuple(HC + Vector((0, 0.08, -0.10))), "Neck2", tail=(0, -0.35, 0))       # throat pivot
+    k.joint("Jaw", tuple(HC + Vector((0, -0.12, -0.078))), "Head", tail=(0, -0.2, 0))
+    k.joint("Crest", (0, -0.47, 1.68), "Head", tail=(0, 0.05, 0.15))
+    k.joint("FX_CrestSparkle", ANCH.get("FX_CrestSparkle", (0, -0.40, 1.95)), "Crest", tail=(0, 0.03, 0.08))
+    k.joint("FX_BreathCloud", ANCH.get("FX_BreathCloud", tuple(HC + Vector((0, -0.36, -0.09)))), "Head",
+            tail=(0, -0.15, 0))
+    for s, side in ((1, "L"), (-1, "R")):
+        k.joint("Wing_" + side, X(WING.S, s), "Chest")
+        k.joint("WingTip_" + side, X(WING.W, s), "Wing_" + side, tail=(s * 0.6, 0.2, 0.1))
+        k.joint("FX_FrostTrail_" + side, ANCH.get("FX_FrostTrail_" + side, X(TIP, s)), "WingTip_" + side,
+                tail=(s * 0.15, 0, 0))
+        k.joint("Leg_" + side, X(HIP, s), "Spine")
+        k.joint("Shin_" + side, X(KNEE, s), "Leg_" + side)
+        k.joint("Foot_" + side, X(ANKLE, s), "Shin_" + side, tail=(0, -0.15, -0.1))
+        k.joint("FX_SnowPuff_Land" + side, X(TOE, s), "Foot_" + side, tail=(0, 0, 0.1))
+        k.add_leg2("Leg_" + side, "Shin_" + side, "Foot_" + side, knee=(0, -1, 0))
+    k.joint("Tail1", TAILP[0], "Spine")
+    k.joint("Tail2", TAILP[1], "Tail1", tail=tuple(Vector(TAILP[2]) - Vector(TAILP[1])))
+    k.joint("FX_FrostDust", ANCH.get("FX_FrostDust", (0, 1.15, 0.30)), "Tail2", tail=(0, 0.15, 0))
+
+
+HEAD_XF = []
+
+
+def check_pairs():
+    W = ["Wing_L", "WingTip_L", "Wing_R", "WingTip_R"]
+    P = [("Wing_L", "WingTip_L"), ("Wing_R", "WingTip_R"), ("WingTip_L", "WingTip_R"), ("Wing_L", "Wing_R"),
+         ("WingTip_L", "Wing_R"), ("Wing_L", "WingTip_R")]
+    for w in W:
+        for b in ("Head", "Neck", "Neck2", "Crest", "Tail1", "Tail2", "Leg_L", "Leg_R", "Shin_L", "Shin_R", "Foot_L",
+                  "Foot_R", "Chest", "Spine"):
+            P.append((w, b))
+    P += [("Leg_L", "Leg_R"), ("Shin_L", "Shin_R"), ("Foot_L", "Foot_R"), ("Shin_L", "Spine"), ("Shin_R", "Spine"),
+          ("Head", "Chest"), ("Jaw", "Chest"), ("Jaw", "Neck"), ("Head", "Neck"), ("Crest", "Neck"),
+          ("Crest", "Neck2"), ("Crest", "Chest")]
+    for b in ("Shin_L", "Shin_R", "Foot_L", "Foot_R"):
+        P.append(("Tail2", b))
+    return P
+
+
+def joints():
+    out = WING.joints()
+    for s, sd in ((1, "L"), (-1, "R")):
+        out.append((X(WING.S, s), X(WING.BB, s), 0.12, "Wing_" + sd))
+        K, A = Vector(X(KNEE, s)), Vector(X(ANKLE, s))
+        d = (A - K).normalized()
+        out.append((tuple(K - d * 0.10), tuple(K + d * 0.20), 0.13, "Shin_" + sd))     # knee (trouser top in the belly feathers, the Thunderbird's capsule)
+    out.append(((0, -0.36, 1.34), (0, -0.50, 1.34), 0.15, "Neck2"))                       # Neck -> Neck2
+    out.append(((0, -0.36, 1.50), (0, -0.58, 1.50), 0.15, "Head"))                        # throat
+    out.append(((0, -0.50, 1.70), (0, -0.42, 1.70), 0.07, "Crest"))                       # crest root
+    out.append(((-0.08, -0.62, 1.52), (0.08, -0.62, 1.52), 0.04, "Jaw"))                  # jaw hinge
+    return out
+
+
+def wings(k, f, up, fwd=0.0, twist=0.0, tip=0.0, side=None):
+    WING.key(k, f, up, fwd, twist, tip, side)
+
+
+# ------------------------------------------------------------------ ground fold (fold_search on this body, 2026-10-27:
+# 36 / 54 free in the cloak-fold grid with the wing root at WDX 0.05)
+FOLD = (86.0, 10.0, -80.0, 10.0)        # re-searched after the review-1 span change: 45 / 81 free
+# fold <-> open waypoints (the Thunderbird's, re-tested on this wing with _tools/path_test.py: every path below 0 hits)
+LIFT1 = (84.0, 16.0, -80.0, -15.0)
+LIFT2 = (70.0, 24.0, -55.0, 0.0)
+LIFT3 = (50.0, 20.0, -25.0, 10.0)
+LIFT4 = (35.0, 8.0, -8.0, 10.0)
+BREATH = (80.0, 26.0, -65.0, -10.0)    # half-open, lifted at the sides (idle frost shed)
+DROOP = (65.0, 26.0, -75.0, 10.0)      # half-open, hanging low at the sides (the bow, R3)
+SPAN = (25.0, 0.0, -45.0, 0.0)          # FULL SPAN, surfaces to the front (the roar snap-open; not a raised V)
+
+
+# ------------------------------------------------------------------ animation (clip round 4, reviews 5 + 6, 2026-10-28)
+# References (owner rule; notes in BlizzardRoc/ANIM_REFS.md): site item H1 = The Boy and the Heron, Sakugabooru
+# #260630 (takeoff 97-99 s, land 12.6-17 s, roar = threat display, act_bow = hunched droop, walk = wading walk, idle);
+# the Bird Flight flapping tutorial R5 (fly). #260711 and #260644 are supporting only and drive no clip.
+# Rules: every ground clip starts and ends at FOLD and every fold <-> open change runs the LIFT waypoints in order;
+# planted feet sit FOOT_LIFT up (the talon hooks are modelled 0.031 under z 0: planted claws >= -0.02, review 2 M5);
+# the head is gyro-stabilised in walk and fly; head turns are quick moves + holds (no head shakes).
+import petkit as pk
+import _common as cm
+
+LEGS = ["Leg_L", "Leg_R"]
+
+
+def ease(u):
+    u = max(0.0, min(1.0, u))
+    return 0.5 - 0.5 * math.cos(math.pi * u)
+
+
+def wp(k, f, P, side=None):
+    wings(k, f, *P, side=side)
+
+
+def blend(a, b, t):
+    return tuple(x + (y - x) * t for x, y in zip(a, b))
+
+
+def tail(k, f, pitch=0.0, yaw=0.0):
+    k.key("Tail1", f, rot=(pitch * 0.5, yaw * 0.5, 0))
+    k.key("Tail2", f, rot=(pitch * 0.5, yaw * 0.5, 0))
+
+
+def neck(k, f, pitch=0.0, yaw=0.0, head_extra=0.0):
+    """total head pitch / yaw split over Neck 30 % / Neck2 30 % / Head 40 % (+ head_extra on the head only)"""
+    k.key("Neck", f, rot=(pitch * 0.3, yaw * 0.3, 0))
+    k.key("Neck2", f, rot=(pitch * 0.3, yaw * 0.3, 0))
+    k.key("Head", f, rot=(pitch * 0.4 + head_extra, yaw * 0.4, 0))
+
+
+def rest_keys(k, f, z=0.0, pitch=0.0):
+    k.key("Spine", f, rot=(pitch, 0, 0), loc=(0, 0, z))
+    k.key("Chest", f, rot=(0, 0, 0))
+    neck(k, f)
+    k.key("Jaw", f, rot=(0, 0, 0))
+    k.key("Crest", f, rot=(0, 0, 0))
+    wp(k, f, FOLD)
+    tail(k, f, 0, 0)
+
+
+def splay_at(table, f):
+    """linear lookup in [(frame, amount), ...] (knee splay of the deep crouches)"""
+    for (f0, a0), (f1, a1) in zip(table, table[1:]):
+        if f0 <= f <= f1:
+            return a0 + (a1 - a0) * (f - f0) / float(f1 - f0)
+    return 0.0
+
+
+def plant_frames(k, frames, dy=0.0, regrip=None, splay=None):
+    """feet on their rest spots (+dy), FOOT_LIFT up; regrip = {leg: (f0, f1)}: that foot lifts 0.06 + curls its toes;
+    splay = [(frame, amount), ...]: the knee pole turns outward by `amount` (review 4 deep crouch: the knees open to
+    the sides so the drumsticks pass beside the belly instead of into it; the feet stay on their spots)"""
+    import bpy
+    k.bake_bezier_now()
+    for f in frames:
+        bpy.context.scene.frame_set(f)
+        for leg in LEGS:
+            z, toe = FOOT_LIFT, 0.0
+            if regrip and leg in regrip and regrip[leg][0] <= f <= regrip[leg][1]:
+                u = (f - regrip[leg][0]) / float(regrip[leg][1] - regrip[leg][0])
+                z, toe = FOOT_LIFT + 0.06 * math.sin(math.pi * u), 8 * math.sin(math.pi * u)
+            if splay:
+                k.legs2[leg]["knee"] = Vector(((1 if leg.endswith("L") else -1) * splay_at(splay, f), -1, 0))
+            k.solve_leg(leg, f, Vector((k.J[leg].x, k.J[leg].y + dy, z)), toe=toe)
+    if splay:
+        for leg in LEGS:
+            k.legs2[leg]["knee"] = Vector((0, -1, 0))
+
+
+def lift_air_frames(k, frames, target=0.02):
+    """airborne frames: raise the Spine just enough that no vertex goes below `target` (keeps its x/y and rotation)"""
+    import bpy
+    sc = bpy.context.scene
+    pb = k.arm.pose.bones["Spine"]
+    R0 = k.arm.data.bones["Spine"].matrix_local.to_quaternion()
+    k.bake_bezier_now()
+    rows = []
+    for f in frames:
+        sc.frame_set(f)
+        dg = bpy.context.evaluated_depsgraph_get()
+        ev = k.main.evaluated_get(dg)
+        me = ev.to_mesh()
+        mw = ev.matrix_world
+        mz = min((mw @ v.co).z for v in me.vertices)
+        ev.to_mesh_clear()
+        rows.append((f, mz, pb.rotation_quaternion.copy(), (R0 @ pb.location).copy()))
+    for f, mz, q, loc in rows:
+        if mz < target:
+            pb.rotation_quaternion = q
+            pb.keyframe_insert("rotation_quaternion", frame=f, group="Spine")
+            k.key("Spine", f, loc=(loc.x, loc.y, loc.z + target - mz))
+
+
+def legs_fk(k, f, thigh, shin, foot, spread=5.0):
+    for s, side in ((1, "L"), (-1, "R")):
+        k.key("Leg_" + side, f, rot=(thigh, 0, -s * spread), loc=(0, 0, 0))
+        k.key("Shin_" + side, f, rot=(shin, 0, 0))
+        k.key("Foot_" + side, f, rot=(foot, 0, 0))
+
+
+# ---- ground
+def idle(k):
+    """FROST SHED (120 f): a breath swell; bird head turns = a quick 8 f move then a long hold (R4), yaw +-10 total;
+    f10-40 the wings lift HALF-OPEN (FOLD -> LIFT1 -> BREATH), give three small tip shivers that shed the frost (event
+    `frostshed` f24 on the primary tips) and fall back; f60-84 the tail lowers 6 and comes back; a talon re-grip per
+    foot. No head shake, no watch-scan."""
+    n = 120
+    k.new_action("idle", n, True)
+    for f in range(0, n + 1, 2):
+        b = pk.wave(f, n, 0, 3)
+        k.key("Spine", f, rot=(0, 0, 0), loc=(0, 0, 0.006 * b))
+        k.key("Chest", f, rot=(-0.8 * b, 0, 0))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Crest", f, rot=(0, 0, 0))
+    for f, y in ((0, 0), (44, 0), (52, 10), (72, 10), (80, 0), (90, 0), (98, -10), (110, -10), (118, 0), (120, 0)):
+        neck(k, f, 0.0, y)
+    for f, P in ((0, FOLD), (10, FOLD), (16, LIFT1), (22, BREATH), (32, BREATH), (36, LIFT1), (40, FOLD), (120, FOLD)):
+        wp(k, f, P)
+    for f, d in ((24, -8), (26, 6), (28, -6), (30, 4)):        # frost-shedding shiver of the primaries (tip only)
+        wp(k, f, (BREATH[0], BREATH[1], BREATH[2], BREATH[3] + d))
+    for f, p in ((0, 0), (60, 0), (68, -6), (76, -6), (84, 0), (120, 0)):   # tail lowers 6 (pitch -) and back
+        tail(k, f, p, 0)
+    plant_frames(k, range(0, n + 1), regrip={"Leg_L": (88, 94), "Leg_R": (104, 110)})
+    k.finish()
+    k.meta["planted"] = LEGS
+    k.events["idle"] = {"frostshed": round(24 / n, 3)}
+
+
+def walk(k):
+    """HERON STALK (36 f = 1.2 s, no hop): the body rolls over the stance leg (+-4), yaws +-3 and SHIFTS 0.02 sideways
+    over it (review 6 MUST), a short contact dip; the HEAD BOB (H1 #260630 wading walk): the head holds in space while
+    the body walks under it (f0-12 of each step the neck swings back 10 deg), then THRUSTS forward over the 6 f before
+    the next foot plant (f12-18); the head stays level and GYRO-stabilised (the chain cancels ~75 % of the body's
+    pitch / roll / yaw); wings folded with a 0-15 % blend toward LIFT1 on each contact, the tail riding with the hips."""
+    n = 36
+
+    def dip(f):
+        t = f % (n // 2)
+        if t <= 3:
+            u = t / 3.0
+            return -0.02 * (u * u * (3 - 2 * u))
+        u = (t - 3) / (n / 2 - 3)
+        return -0.02 * (1 - u * u * (3 - 2 * u))
+
+    def body(f):
+        sp = 1.2 * pk.wave(f, n, 0.1, 2)
+        sy = 2 * pk.wave(f, n, 0.0)
+        sr = 3 * pk.wave(f, n, 0.05)
+        cy, cr = 0.0, 0.0
+        k.key("Spine", f, rot=(sp, sy, sr), loc=(0.02 * pk.wave(f, n, 0.05), 0, dip(f)))
+        k.key("Chest", f, rot=(0, cy, cr))
+        t = f % (n // 2)                                     # head bob: hold (neck back) f0-12, thrust f12-18
+        if t < 12:
+            hb = 5.0 - 10.0 * t / 12.0
+        else:
+            u = (t - 12) / 6.0
+            hb = -5.0 + 10.0 * u * u * (3 - 2 * u)
+        for b, w, add in (("Neck", 0.2, hb), ("Neck2", 0.2, hb), ("Head", 0.35, -2.0 * hb)):
+            k.key(b, f, rot=(-w * sp + add, -w * (sy + cy), -w * (sr + cr)))
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Crest", f, rot=(0, 0, 0))
+        c = max(0.0, math.cos(2 * math.pi * (2 * f / n)))
+        wp(k, f, blend(FOLD, LIFT1, 0.15 * c ** 3))
+        tail(k, f, -2.0 + 1.5 * pk.wave(f, n, 0.2, 2), cy)
+    orig = k.solve_leg
+
+    def strut(leg, f, T, foot_z=0.0, toe=None):
+        lift = max(0.0, T.z)
+        sx = 1.0 if leg.endswith("L") else -1.0                  # the passing foot swings wide of the belly keel
+        T = Vector(T) + Vector((sx * 0.06 * min(1.0, lift / 0.05), 0, FOOT_LIFT + 0.004))
+        return orig(leg, f, T, foot_z, toe=22.0 * min(1.0, lift / 0.09))
+    k.solve_leg = strut
+    try:
+        return cm.biped_walk(k, n, 0.15, 0.06, body, legs=(("Leg_L", 0.0), ("Leg_R", 0.5)), duty=0.6)
+    finally:
+        del k.solve_leg
+
+
+def roar(k):
+    """SNAP-OPEN (60 f, R2): f0-14 gather (the neck draws in and the head lifts 12 total, the crest leans back, the
+    chest swells), f14-20 the wings SNAP out to FULL SPAN through the waypoints (2 f per step), the beak opens AFTER the
+    spread (f20-24, the jaw lags), event `roar` f20; f22-40 hold - crest erect, the head still, raised ~13 deg in world (the call pose, review 4 N3); f40-60 the wings
+    fold back through LIFT4 -> FOLD and the crest settles."""
+    n = 60
+    k.new_action("roar", n, False)
+    rest_keys(k, 0)
+    K = [  # f, spine pitch, z, chest, neck pitch (total), jaw, crest, tail
+        (8, 2, -0.01, -2, -6, 0, -6, 2), (14, -3, 0.0, -3, -12, 0, -8, 4), (20, -4, 0.0, -3, -10, 18, 10, 6),
+        (24, -4, 0.0, -3, -10, 30, 12, 6), (38, -4, 0.0, -3, -10, 30, 12, 6), (42, -2, 0.0, -2, -8, 14, 8, 4),
+        (48, 0, 0.0, 0, -2, 0, 2, 1), (56, 0, 0.0, 0, 0, 0, 0, 0)]
+    for f, p, z, ch, nk, jw, cr, tp in K:
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(ch, 0, 0))
+        neck(k, f, nk, 0.0, -p)                                 # the head stays level against the body
+        k.key("Jaw", f, rot=(jw, 0, 0))
+        k.key("Crest", f, rot=(cr, 0, 0))
+        tail(k, f, tp, 0)
+    for f in (28, 30, 32, 34):                                   # call buzz in the jaw only (the head stays still)
+        k.key("Jaw", f, rot=(30 + (2 if (f // 2) % 2 else -2), 0, 0))
+    for f, P in ((0, FOLD), (14, FOLD), (15, LIFT1), (16, LIFT2), (17, LIFT3), (18, LIFT4), (20, SPAN), (38, SPAN),
+                 (42, LIFT4), (45, LIFT3), (48, LIFT2), (51, LIFT1), (54, FOLD)):
+        wp(k, f, P)
+    rest_keys(k, n)
+    plant_frames(k, range(0, n + 1))
+    k.finish(loop=False)
+    k.events["roar"] = {"roar": round(20 / n, 3)}
+
+
+def bow(k):
+    """SIGNATURE - COURTSHIP BOW (110 f, in place, zero net root travel, R3): f0-22 the chest lowers, the head and neck
+    bend forward (head pitch down 25), the tail lifts; f22-44 two vertical BOBS (Spine z -0.06 and back, feet planted)
+    with the wings drooped half-open; f44-64 the neck rises, the crest FLARES erect, the wings lift and SNAP closed
+    (event `snap` f58, frost puff on the wing tips); f64-88 two 6 deg tail flicks; f88-110 back to rest."""
+    n = 110
+    k.new_action("act_bow", n, False)
+    rest_keys(k, 0)
+    K = [  # f, spine pitch, z, chest, neck pitch (total), crest, tail
+        (12, 6, -0.01, 2, 14, 0, 4), (22, 10, -0.02, 3, 25, 0, 8),
+        (28, 10, -0.06, 3, 25, 0, 8), (33, 10, -0.02, 3, 25, 0, 8), (38, 10, -0.06, 3, 25, 0, 8), (44, 10, -0.02, 3, 25, 0, 8),
+        (52, 2, 0.0, 0, 4, 8, 4), (58, -2, 0.0, -2, -6, 14, 2), (64, -2, 0.0, -2, -6, 14, 0),
+        (72, -1, 0.0, -1, -4, 10, 0), (88, 0, 0.0, 0, 0, 6, 0), (100, 0, 0.0, 0, 0, 0, 0)]
+    for f, p, z, ch, nk, cr, tp in K:
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(ch, 0, 0))
+        neck(k, f, nk, 0.0)
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Crest", f, rot=(cr, 0, 0))
+        tail(k, f, tp, 0)
+    for f, tp in ((64, 0), (68, 6), (72, 0), (76, 6), (80, 0)):    # two tail flicks (the four feathers snap up)
+        tail(k, f, tp, 0)
+    for f, P in ((0, FOLD), (14, LIFT1), (22, DROOP), (44, DROOP), (48, LIFT2), (52, LIFT3), (55, LIFT2),
+                 (57, LIFT1), (58, FOLD), (n, FOLD)):
+        wp(k, f, P)
+    for f, d in ((30, -5), (32, 5), (40, -5), (42, 5)):       # the drooped wings shudder on each bob (tips only)
+        wp(k, f, (DROOP[0], DROOP[1], DROOP[2], DROOP[3] + d))
+    rest_keys(k, n)
+    plant_frames(k, range(0, n + 1))
+    k.finish(loop=False)
+    k.events["act_bow"] = {"snap": round(58 / n, 3)}
+
+
+# ---- flight (R1 + R5: a high V on the upstroke, a deep downstroke past the body, the arm leads the tips, the body
+# rises on the downstroke, the legs trail with a small pump, the head level)
+FPITCH = 28.0
+THI, SHI, FOO = 62.0, -32.0, 64.0
+
+
+def fly_legs(k, f, ph, amt=1.0):
+    for s, side in ((1, "L"), (-1, "R")):
+        p = ph + 0.03 * s
+        k.key("Leg_" + side, f, rot=((THI + 4 * math.sin(2 * math.pi * (p - 0.15))) * amt, 0, -s * 9 * amt),
+              loc=(0, 0, 0))
+        k.key("Shin_" + side, f, rot=((SHI - 5 * math.sin(2 * math.pi * (p - 0.30))) * amt, 0, 0))
+        k.key("Foot_" + side, f, rot=((FOO + 6 * math.sin(2 * math.pi * (p - 0.42))) * amt, 0, 0))
+
+
+def fly_pose(k, f, ph, legs=True):
+    w = wing3.stroke(ph, top=36, bot=-38, down=0.45, sweep=10, twist=10, fold=34)
+    wings(k, f, w["up"], w["fwd"], w["twist"], w["tip"])
+    rise = math.cos(2 * math.pi * (ph - 0.45))
+    sp = FPITCH - 3 * math.sin(2 * math.pi * (ph - 0.1))
+    k.key("Spine", f, rot=(sp, 0, 0), loc=(0, 0, 0.10 + 0.06 * rise))
+    k.key("Chest", f, rot=(-2 * math.sin(2 * math.pi * (ph - 0.2)), 0, 0))
+    neck(k, f, -(sp - 6.0), 0.0)                               # head near level (gyro), a raptor's 6 deg look-down
+    k.key("Jaw", f, rot=(0, 0, 0))
+    k.key("Crest", f, rot=(-4, 0, 0))                          # streamlined back in flight
+    tail(k, f, 4 + 3 * math.sin(2 * math.pi * (ph - 0.3)), 0)
+    if legs:
+        fly_legs(k, f, ph)
+
+
+def fly(k):
+    n = 30
+    k.new_action("fly", n, True)
+    for f in range(0, n + 1):
+        fly_pose(k, f, f / n)
+    k.finish()
+
+
+def takeoff(k):
+    """(H1 97.0-99.0 s) a DEEP crouch (7 % H) while the wings open FOLD -> LIFT1 -> LIFT2 -> LIFT3 -> LIFT4 -> the
+    stroke top (f0-10); HOLD the coil at the bottom f10-13 (wings at the top); LAUNCH = the push (event f14) + the
+    first big downstroke over 8 frames (f13-21) while the body rises over 8 frames (f14-22, 0.6 studs in 0.27 s);
+    the feet leave at f18; f25-36 the flight cycle at its own tempo, ending EXACTLY on fly f0 (review 5 MUST 1 + 2;
+    review 6 C1: 36 f, so the post-launch recovery runs at the fly tempo)"""
+    n = 36
+    k.new_action("takeoff", n, False)
+    rest_keys(k, 0)
+    for f, z, p, ch, w in ((3, -0.03, 6, 3, LIFT1), (6, -0.06, 13, 4, LIFT2), (8, -0.07, 16, 4, LIFT3),
+                           (9, -0.07, 17, 4, LIFT4), (10, -0.075, 17, 4, (34, 0, 0, 0)),
+                           (13, -0.075, 17, 4, (36, 0, 0, 0)), (14, -0.075, 17, 3, None),
+                           (17, None, None, None, (-8, 8, 24, -6)),       # TO 9+: the feather plane turned 16 deg
+                           (18, -0.01, 20, 1, None),
+                           (21, None, None, None, (-36, 8, 22, 4)),
+                           (22, 0.07, 24, -2, None)):
+        if z is not None:
+            k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+            k.key("Chest", f, rot=(ch, 0, 0))
+            neck(k, f, -p, 0.0)
+            k.key("Jaw", f, rot=(0, 0, 0))
+            k.key("Crest", f, rot=(-2, 0, 0))
+            tail(k, f, 4 + p * 0.15, 0)
+        if w is not None:
+            wp(k, f, w)
+    for f in range(25, n + 1):                 # phase 0.633 -> 1.0 at the fly tempo (1/30) = fly f0 at f36
+        ph = 1.0 + (f - n) / 30.0
+        fly_pose(k, f, ph, legs=False)
+        fly_legs(k, f, ph)
+    plant_frames(k, range(0, 18), splay=[(0, 0.0), (3, 0.3), (6, 1.0), (8, 1.6), (10, 1.8), (13, 1.8), (15, 1.2),
+                                         (17, 0.6), (18, 0.4)])
+    legs_fk(k, 20, 24, -10, 40)
+    legs_fk(k, 23, 50, -28, 62)
+    lift_air_frames(k, range(18, n + 1))
+    k.finish(loop=False)
+    k.events["takeoff"] = {"launch": round(14 / n, 3)}
+
+
+def land(k):
+    """(H1 12.6-17.0 s) flares upright with the wings spread wide and the tail lifted to brake, the legs reach forward,
+    TOUCH (event f17), absorbs DEEP (7 % H, f19-22 hold) holding the spread, then folds through LIFT4 -> LIFT1 -> FOLD
+    (review 4 MUST 2: heavier; N1: the flare and LIFT4 keys turn the feathers to the front)"""
+    n = 32
+    k.new_action("land", n, False)
+    fly_pose(k, 0, 0.0)
+    for f, p, z, w, lg in (
+            (6, 14, 0.10, (24, 16, -28, -4), (40, -20, 50)),             # review 4 N1: feathers face front
+            (10, -4, 0.10, (-20, 20, -10, 8), (-24, 4, -8)),
+            (13, -6, 0.08, (22, 18, -8, -6), (-24, 10, -20)),
+            (15, -4, 0.04, (30, 10, -6, -8), (-14, 6, -20))):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(-3, 0, 0))
+        neck(k, f, -p, 0.0)
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Crest", f, rot=(-2, 0, 0))
+        wp(k, f, w)
+        tail(k, f, 12, 0)
+        legs_fk(k, f, *lg)
+    for f, z, p, ch, w in ((17, -0.05, 7, 3, SPAN), (19, -0.08, 16, 4, SPAN), (22, -0.08, 15, 4, SPAN),  # absorb + hold
+                           (24, -0.06, 8, 4, (35, 8, -40, 10)), (26, -0.04, 5, 3, LIFT3), (28, -0.02, 2, 2, LIFT2),
+                           (30, -0.008, 0, 1, LIFT1)):
+        k.key("Spine", f, rot=(p, 0, 0), loc=(0, 0, z))
+        k.key("Chest", f, rot=(ch, 0, 0))
+        neck(k, f, -p * 0.5, 0.0)
+        k.key("Jaw", f, rot=(0, 0, 0))
+        k.key("Crest", f, rot=(0, 0, 0))
+        wp(k, f, w)
+        tail(k, f, 8 if f < 24 else 2, 0)
+    rest_keys(k, n)
+    lift_air_frames(k, range(0, 17))
+    plant_frames(k, range(17, n + 1), splay=[(17, 0.6), (19, 1.8), (22, 1.8), (24, 1.2), (26, 0.6), (28, 0.3), (30, 0.0), (32, 0.0)])
+    k.finish(loop=False)
+    k.events["land"] = {"touch": round(17 / n, 3)}
+
+
+def anim(k):
+    idle(k)
+    stride = walk(k)
+    fly(k)
+    takeoff(k)
+    land(k)
+    roar(k)
+    bow(k)
+    return stride

@@ -1,0 +1,4 @@
+GARLAND_REPORT {"tex": {"paths": {"albedo": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Garlands\\maps\\Garland_albedo.png", "normal": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Garlands\\maps\\Garland_normal.png", "rough": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Garlands\\maps\\Garland_rough.png", "ao": "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Garlands\\maps\\Garland_ao.png"}, "setup_s": 0.3, "total_s": 5.4}, "tex_s": 5.5}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

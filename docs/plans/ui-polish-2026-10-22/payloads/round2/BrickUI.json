@@ -1,0 +1,14 @@
+{
+ "file_path": "game.ReplicatedStorage.BrickUI",
+ "datamodel_type": "Edit",
+ "edits": [
+  {
+   "old_string": "function BrickUI.tapArea(button, onActivate, minPx)\n\tminPx = minPx or 44\n",
+   "new_string": "-- (round 2) default 46 (pixel rounding left some at 43 px); clampTo = a frame the area must not outgrow (a Settings row,\n-- a Shop rail slot), so neighbouring buttons' areas never overlap\nfunction BrickUI.tapArea(button, onActivate, minPx, clampTo)\n\tminPx = minPx or 46\n"
+  },
+  {
+   "old_string": "\t\tlocal fx, fy = math.max(1, minPx / a.X), math.max(1, minPx / a.Y)\n",
+   "new_string": "\t\tlocal fx, fy = math.max(1, minPx / a.X), math.max(1, minPx / a.Y)\n\t\tif clampTo and clampTo.AbsoluteSize.X > 0 then\n\t\t\tfx = math.min(fx, math.max(1, clampTo.AbsoluteSize.X / a.X))\n\t\t\tfy = math.min(fy, math.max(1, clampTo.AbsoluteSize.Y / a.Y))\n\t\tend\n"
+  }
+ ]
+}

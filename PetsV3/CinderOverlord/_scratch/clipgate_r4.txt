@@ -1,0 +1,5 @@
+Info: Saved as "CinderOverlord_rigged.blend"
+HEADLESS_RESULT {"audit": {"idle": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0}, "walk": {"linear": 0, "loop_pos": 0.0, "loop_rot": 0.0}, "roar": {"linear": 0}, "act_molt": {"linear": 0}}, "stride": 5.0089, "lua_bytes": 39607, "clips": {"idle": [120, true], "walk": [48, true], "roar": [66, false], "act_molt": [110, false]}, "events": {"idle": {"smoke1": 0.25, "flick": 0.667, "smoke2": 0.75}, "walk": {"paddle1": 0.25, "paddle2": 0.75}, "roar": {"flare": 0.303, "roar": 0.455}, "act_molt": {"lift1": 0.2, "lift2": 0.436, "shed": 0.509}}, "tris_body": 10228, "tris_glow": {}, "bones": ["Root", "Spine", "Body1", "Body2", "Body3", "Body4", "Tail1", "Tail2", "Tail3", "Tail4", "Tail_Tip", "Vent_6", "Vent_5", "Vent_4", "Vent_3", "Vent_2", "Neck1", "Neck2", "Neck3", "Head", "Jaw", "Mouth", "Crown_1", "Crown_2", "Crown_3", "Crown_4", "Crown_5", "Arm_L", "Claw_L", "Arm_R", "Claw_R", "Vent_1"], "ground_min_z": {"idle": [-0.006, 0], "walk": [-0.006, 0], "roar": [-0.006, 0], "act_molt": [-0.006, 0]}, "collisions": {}, "collision_free": true}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

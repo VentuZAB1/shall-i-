@@ -1,0 +1,38 @@
+{
+ "tris": {
+  "Bramble": 4515
+ },
+ "texture": 512,
+ "bake": {
+  "G_Wood": {
+   "texels": 143005,
+   "miss": 0.0034,
+   "s": 1.5
+  },
+  "G_Leaf": {
+   "texels": 16455,
+   "miss": 0.0016,
+   "s": 0.6
+  }
+ },
+ "atlas_coverage": 0.608,
+ "branches": 108,
+ "dead_leaves": 13,
+ "bbox_blender": [
+  [
+   -1.916,
+   -1.895,
+   -0.157
+  ],
+  [
+   1.965,
+   1.951,
+   2.908
+  ]
+ ],
+ "size_roblox_XYZ": [
+  3.881,
+  3.064,
+  3.846
+ ]
+}

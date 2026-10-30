@@ -1,0 +1,9 @@
+00:01.672  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\DeadTrees\haunted_tree.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_HauntedTree.fbx'
+export finished in 0.0340 sec.
+[    0.2] EXPORT {"fbx": "C:\\cdimp\\Halloween_HauntedTree.fbx", "kb": 12829.8, "tris": {"HauntedTree_Trunk": 9049, "HauntedTree_Limbs": 4175, "HauntedTree_Branches": 7160, "HauntedTree_Leaves": 5852, "HauntedTree_Web": 1962, "HauntedTree_WebSilk": 440}, "bbox_blender": [[-6.605, -5.609, -0.25], [6.456, 5.204, 14.991]], "total_tris": 28638}
+[    0.2] DONE
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

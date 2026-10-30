@@ -1,0 +1,29 @@
+Info: Saved as "DeadGrass_B.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_DeadGrass_B.fbx'
+export finished in 0.0108 sec.
+[grave    0.7s] done {'name': 'DeadGrass_B', 'blades': 101, 'tris': 2234, 'texture': 512, 'scale': [0.947, 1.052], 'bbox_min': [-1.261, -1.532, -0.158], 'bbox_max': [1.585, 1.398, 2.5], 'size_blender_xyz': [2.847, 2.93, 2.658], 'export': {'fbx': 'C:\\cdimp\\Halloween_DeadGrass_B.fbx', 'kb': 282.5, 'tris': {'DeadGrass_B': 1211}}}
+00:06.063  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review_25studs.png'
+00:06.594  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review_50studs.png'
+00:07.094  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\review_back.png'
+00:07.578  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\review_34.png'
+00:08.047  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review_close_Grave_A.png'
+00:08.516  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\review_close_Grave_B.png'
+00:09.031  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\wip\review_close_Grave_C.png'
+00:09.563  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\Graveyard\review_close_grass.png'
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+FBX version: 7400
+GRAVE_REPORT {"grass_B": {"name": "DeadGrass_B", "blades": 101, "tris": 2234, "texture": 512, "scale": [0.947, 1.052], "bbox_min": [-1.261, -1.532, -0.158], "bbox_max": [1.585, 1.398, 2.5], "size_blender_xyz": [2.847, 2.93, 2.658], "export": {"fbx": "C:\\cdimp\\Halloween_DeadGrass_B.fbx", "kb": 282.5, "tris": {"DeadGrass_B": 1211}}}, "review": {"shots": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\review_25studs.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\review_50studs.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\review_back.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\review_34.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\review_close_Grave_A.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\review_close_Grave_B.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\wip\\review_close_Grave_C.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\Graveyard\\review_close_grass.png"], "info": {"Grave_A": {"dims": [4.783, 3.473, 4.243], "scale": [1.0, 1.0, 1.0], "loc": [0.0, 0.0, 0.0], "rot": [-0.0, 0.0, 0.0]}, "Grave_B": {"dims": [3.912, 2.808, 4.45], "scale": [1.0, 1.0, 1.0], "loc": [0.0, 0.0, 0.0], "rot": [-0.0, 0.0, 0.0]}, "Grave_C": {"dims": [4.752, 3.909, 3.931], "scale": [1.0, 1.0, 1.0], "loc": [0.0, 0.0, 0.0], "rot": [-0.0, 0.0, 0.0]}, "DeadGrass_A": {"dims": [4.126, 3.597, 3.151], "scale": [1.0, 1.0, 1.0], "loc": [0.0, 0.0, 0.0], "rot": [-0.0, 0.0, 0.0]}, "DeadGrass_B": {"dims": [2.847, 2.93, 2.658], "scale": [1.0, 1.0, 1.0], "loc": [0.0, 0.0, 0.0], "rot": [-0.0, 0.0, 0.0]}}}, "verify": {"Grave_A": [{"name": "Grave_A", "tris": 3279, "dims": [0.048, 0.035, 0.042], "world_min": [-0.024, -0.018, -0.002], "world_max": [0.024, 0.017, 0.04], "textures": ["Grave_A_albedo 512x512 packed=True", "Grave_A_normal 512x512 packed=True", "Grave_A_rough 512x512 packed=True"]}], "Grave_B": [{"name": "Grave_B", "tris": 3150, "dims": [0.039, 0.028, 0.044], "world_min": [-0.02, -0.017, -0.002], "world_max": [0.019, 0.012, 0.042], "textures": ["Grave_B_albedo 512x512 packed=True", "Grave_B_normal 512x512 packed=True", "Grave_B_rough 512x512 packed=True"]}], "Grave_C": [{"name": "Grave_C", "tris": 3314, "dims": [0.048, 0.039, 0.039], "world_min": [-0.023, -0.019, -0.002], "world_max": [0.024, 0.02, 0.037], "textures": ["Grave_C_albedo 512x512 packed=True", "Grave_C_normal 512x512 packed=True", "Grave_C_rough 512x512 packed=True"]}], "DeadGrass_A": [{"name": "DeadGrass_A", "tris": 2478, "dims": [0.041, 0.036, 0.032], "world_min": [-0.02, -0.018, -0.002], "world_max": [0.021, 0.018, 0.03], "textures": ["DeadGrass_A_albedo 512x512 packed=True", "DeadGrass_A_normal 512x512 packed=True", "DeadGrass_A_rough 512x512 packed=True"]}], "DeadGrass_B": [{"name": "DeadGrass_B", "tris": 2234, "dims": [0.028, 0.029, 0.027], "world_min": [-0.013, -0.015, -0.002], "world_max": [0.016, 0.014, 0.025], "textures": ["DeadGrass_B_albedo 512x512 packed=True", "DeadGrass_B_normal 512x512 packed=True", "DeadGrass_B_rough 512x512 packed=True"]}]}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

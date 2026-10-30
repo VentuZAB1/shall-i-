@@ -1,0 +1,522 @@
+{
+ "Halloween_Grave_A": {
+  "objects": [
+   {
+    "name": "Grave_A",
+    "tris": 3279,
+    "verts": 2170,
+    "faces": 2829,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.009999999776482582,
+     0.009999999776482582,
+     0.009999999776482582
+    ],
+    "dims": [
+     0.048,
+     0.035,
+     0.042
+    ],
+    "bbox_min": [
+     -0.024,
+     -0.018,
+     -0.002
+    ],
+    "bbox_max": [
+     0.024,
+     0.017,
+     0.04
+    ],
+    "materials": [
+     {
+      "mat": "Grave_A_PBR",
+      "imgs": [
+       {
+        "img": "Grave_A_albedo",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_Grave_A.fbm\\Grave_A_albedo.png",
+        "cs": "sRGB",
+        "links": [
+         "Base Color@Principled BSDF"
+        ],
+        "channels": 4
+       },
+       {
+        "img": "Grave_A_normal",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_Grave_A.fbm\\Grave_A_normal.png",
+        "cs": "Non-Color",
+        "links": [
+         "Color@Normal Map"
+        ],
+        "channels": 4
+       },
+       {
+        "img": "Grave_A_rough",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_Grave_A.fbm\\Grave_A_rough.png",
+        "cs": "Non-Color",
+        "links": [
+         "Roughness@Principled BSDF"
+        ],
+        "channels": 4
+       }
+      ]
+     }
+    ],
+    "color_attrs": [],
+    "uvs": [
+     "UVMap"
+    ],
+    "smooth_frac": 1.0,
+    "area_facing": {
+     "-Y": 11.523,
+     "+Y": 11.46
+    },
+    "verts_below_-0.3": 0,
+    "verts_below_0": 220,
+    "ground_centroid_xy": [
+     -0.0,
+     -0.001
+    ]
+   }
+  ]
+ },
+ "Halloween_Grave_B": {
+  "objects": [
+   {
+    "name": "Grave_B",
+    "tris": 3150,
+    "verts": 1983,
+    "faces": 2756,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.009999999776482582,
+     0.009999999776482582,
+     0.009999999776482582
+    ],
+    "dims": [
+     0.039,
+     0.028,
+     0.044
+    ],
+    "bbox_min": [
+     -0.02,
+     -0.017,
+     -0.002
+    ],
+    "bbox_max": [
+     0.019,
+     0.012,
+     0.042
+    ],
+    "materials": [
+     {
+      "mat": "Grave_B_PBR",
+      "imgs": [
+       {
+        "img": "Grave_B_albedo",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_Grave_B.fbm\\Grave_B_albedo.png",
+        "cs": "sRGB",
+        "links": [
+         "Base Color@Principled BSDF"
+        ],
+        "channels": 4
+       },
+       {
+        "img": "Grave_B_normal",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_Grave_B.fbm\\Grave_B_normal.png",
+        "cs": "Non-Color",
+        "links": [
+         "Color@Normal Map"
+        ],
+        "channels": 4
+       },
+       {
+        "img": "Grave_B_rough",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_Grave_B.fbm\\Grave_B_rough.png",
+        "cs": "Non-Color",
+        "links": [
+         "Roughness@Principled BSDF"
+        ],
+        "channels": 4
+       }
+      ]
+     }
+    ],
+    "color_attrs": [],
+    "uvs": [
+     "UVMap"
+    ],
+    "smooth_frac": 1.0,
+    "area_facing": {
+     "-Y": 5.142,
+     "+Y": 5.219
+    },
+    "verts_below_-0.3": 0,
+    "verts_below_0": 198,
+    "ground_centroid_xy": [
+     0.001,
+     -0.001
+    ]
+   }
+  ]
+ },
+ "Halloween_Grave_C": {
+  "objects": [
+   {
+    "name": "Grave_C",
+    "tris": 3308,
+    "verts": 2146,
+    "faces": 2877,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.009999999776482582,
+     0.009999999776482582,
+     0.009999999776482582
+    ],
+    "dims": [
+     0.048,
+     0.039,
+     0.039
+    ],
+    "bbox_min": [
+     -0.023,
+     -0.019,
+     -0.002
+    ],
+    "bbox_max": [
+     0.024,
+     0.02,
+     0.037
+    ],
+    "materials": [
+     {
+      "mat": "Grave_C_PBR",
+      "imgs": [
+       {
+        "img": "Grave_C_albedo",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_Grave_C.fbm\\Grave_C_albedo.png",
+        "cs": "sRGB",
+        "links": [
+         "Base Color@Principled BSDF"
+        ],
+        "channels": 4
+       },
+       {
+        "img": "Grave_C_normal",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_Grave_C.fbm\\Grave_C_normal.png",
+        "cs": "Non-Color",
+        "links": [
+         "Color@Normal Map"
+        ],
+        "channels": 4
+       },
+       {
+        "img": "Grave_C_rough",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_Grave_C.fbm\\Grave_C_rough.png",
+        "cs": "Non-Color",
+        "links": [
+         "Roughness@Principled BSDF"
+        ],
+        "channels": 4
+       }
+      ]
+     }
+    ],
+    "color_attrs": [],
+    "uvs": [
+     "UVMap"
+    ],
+    "smooth_frac": 1.0,
+    "area_facing": {
+     "-Y": 11.527,
+     "+Y": 11.316
+    },
+    "verts_below_-0.3": 0,
+    "verts_below_0": 227,
+    "ground_centroid_xy": [
+     -0.001,
+     0.001
+    ]
+   }
+  ]
+ },
+ "Halloween_DeadGrass_A": {
+  "objects": [
+   {
+    "name": "DeadGrass_A",
+    "tris": 2464,
+    "verts": 2904,
+    "faces": 1336,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.009999999776482582,
+     0.009999999776482582,
+     0.009999999776482582
+    ],
+    "dims": [
+     0.041,
+     0.043,
+     0.032
+    ],
+    "bbox_min": [
+     -0.021,
+     -0.021,
+     -0.002
+    ],
+    "bbox_max": [
+     0.02,
+     0.022,
+     0.03
+    ],
+    "materials": [
+     {
+      "mat": "DeadGrass_A_PBR",
+      "imgs": [
+       {
+        "img": "DeadGrass_A_albedo",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_DeadGrass_A.fbm\\DeadGrass_A_albedo.png",
+        "cs": "sRGB",
+        "links": [
+         "Base Color@Principled BSDF"
+        ],
+        "channels": 4
+       },
+       {
+        "img": "DeadGrass_A_normal",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_DeadGrass_A.fbm\\DeadGrass_A_normal.png",
+        "cs": "Non-Color",
+        "links": [
+         "Color@Normal Map"
+        ],
+        "channels": 4
+       },
+       {
+        "img": "DeadGrass_A_rough",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_DeadGrass_A.fbm\\DeadGrass_A_rough.png",
+        "cs": "Non-Color",
+        "links": [
+         "Roughness@Principled BSDF"
+        ],
+        "channels": 4
+       }
+      ]
+     }
+    ],
+    "color_attrs": [],
+    "uvs": [
+     "UVMap"
+    ],
+    "smooth_frac": 1.0,
+    "area_facing": {
+     "-Y": 7.595,
+     "+Y": 7.594
+    },
+    "verts_below_-0.3": 0,
+    "verts_below_0": 518,
+    "ground_centroid_xy": [
+     -0.0,
+     0.0
+    ]
+   }
+  ]
+ },
+ "Halloween_DeadGrass_B": {
+  "objects": [
+   {
+    "name": "DeadGrass_B",
+    "tris": 2268,
+    "verts": 2718,
+    "faces": 1239,
+    "loc": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "rot": [
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "scale": [
+     0.009999999776482582,
+     0.009999999776482582,
+     0.009999999776482582
+    ],
+    "dims": [
+     0.03,
+     0.032,
+     0.027
+    ],
+    "bbox_min": [
+     -0.014,
+     -0.015,
+     -0.002
+    ],
+    "bbox_max": [
+     0.016,
+     0.016,
+     0.025
+    ],
+    "materials": [
+     {
+      "mat": "DeadGrass_B_PBR",
+      "imgs": [
+       {
+        "img": "DeadGrass_B_albedo",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_DeadGrass_B.fbm\\DeadGrass_B_albedo.png",
+        "cs": "sRGB",
+        "links": [
+         "Base Color@Principled BSDF"
+        ],
+        "channels": 4
+       },
+       {
+        "img": "DeadGrass_B_normal",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_DeadGrass_B.fbm\\DeadGrass_B_normal.png",
+        "cs": "Non-Color",
+        "links": [
+         "Color@Normal Map"
+        ],
+        "channels": 4
+       },
+       {
+        "img": "DeadGrass_B_rough",
+        "size": [
+         512,
+         512
+        ],
+        "packed": true,
+        "file": "C:\\cdimp\\Halloween_DeadGrass_B.fbm\\DeadGrass_B_rough.png",
+        "cs": "Non-Color",
+        "links": [
+         "Roughness@Principled BSDF"
+        ],
+        "channels": 4
+       }
+      ]
+     }
+    ],
+    "color_attrs": [],
+    "uvs": [
+     "UVMap"
+    ],
+    "smooth_frac": 1.0,
+    "area_facing": {
+     "-Y": 5.942,
+     "+Y": 5.942
+    },
+    "verts_below_-0.3": 0,
+    "verts_below_0": 597,
+    "ground_centroid_xy": [
+     0.0,
+     -0.0
+    ]
+   }
+  ]
+ }
+}

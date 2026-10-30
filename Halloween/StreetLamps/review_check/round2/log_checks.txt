@@ -1,0 +1,33 @@
+00:04.594  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C01_albedo_head_front.png'
+FBX version: 7400
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C01_albedo_head_front.png
+00:05.282  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C02_albedo_head_below.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C02_albedo_head_below.png
+00:05.938  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C03_albedo_crook.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C03_albedo_crook.png
+00:06.469  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C04_albedo_base.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C04_albedo_base.png
+00:07.063  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C05_albedo_head_top.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C05_albedo_head_top.png
+00:07.641  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C06_clay_head_front12.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C06_clay_head_front12.png
+00:08.141  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C07_clay_head_34_8.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C07_clay_head_34_8.png
+00:08.610  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C08_clay_crook12.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C08_clay_crook12.png
+00:09.219  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C09_clay_base8.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C09_clay_base8.png
+00:09.688  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C10_clay_full25_side.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C10_clay_full25_side.png
+00:10.344  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C11_nrm_head_front.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C11_nrm_head_front.png
+00:10.844  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C12_nrm_crook.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C12_nrm_crook.png
+00:11.391  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C13_nrm_base.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C13_nrm_base.png
+00:12.078  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C14_nrm_mid_pole.png'
+[rv] shot C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\StreetLamps\review_check\round2\C14_nrm_mid_pole.png
+[rv] done checks
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

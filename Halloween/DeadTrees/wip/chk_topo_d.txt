@@ -1,0 +1,20 @@
+FBX version: 7400
+TOPO DeadTree_Branches faces 7647 boundary_edges 1125 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    signed volume 5.396
+TOPO DeadTree_Limbs faces 6140 boundary_edges 154 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    z 6.0-6.5: 1 boundary edges, centre (-2.05, 1.67, 6.49)
+TOPO    z 6.5-7.0: 143 boundary edges, centre (-0.11, 0.36, 6.66)
+TOPO    z 7.0-7.5: 10 boundary edges, centre (2.24, -0.19, 7.06)
+TOPO    signed volume 19.101
+TOPO DeadTree_Trunk faces 7256 boundary_edges 378 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    z -0.5-0.0: 239 boundary edges, centre (0.17, 0.12, -0.23)
+TOPO    z 6.0-6.5: 1 boundary edges, centre (-2.05, 1.67, 6.49)
+TOPO    z 6.5-7.0: 138 boundary edges, centre (-0.20, 0.38, 6.65)
+TOPO    signed volume 23.381
+TOPO DeadTree_Web faces 3019 boundary_edges 2066 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    signed volume 0.533
+TOPO DeadTree_WebSilk faces 646 boundary_edges 492 nonmanifold 0 inconsistent_winding_edges 0
+TOPO    signed volume 0.002
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

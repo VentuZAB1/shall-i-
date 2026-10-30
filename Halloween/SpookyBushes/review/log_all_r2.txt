@@ -1,0 +1,7 @@
+DONE lineup 3
+DONE player 27
+DONE zoom 12
+DONE close 9
+DONE web 5
+DONE clay 9
+DONE sil 9

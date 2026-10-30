@@ -1,0 +1,8 @@
+00:05.797  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\GlacierYeti\renders\pclose_front_idle_00.png'
+00:06.015  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\GlacierYeti\renders\pclose_side_idle_00.png'
+00:06.172  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\GlacierYeti\renders\pclose_front_roar_30.png'
+00:06.297  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\PetsV3\GlacierYeti\renders\pclose_side_roar_30.png'
+HEADLESS_RESULT ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\GlacierYeti\\renders\\pclose_front_idle_00.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\GlacierYeti\\renders\\pclose_side_idle_00.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\GlacierYeti\\renders\\pclose_front_roar_30.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\PetsV3\\GlacierYeti\\renders\\pclose_side_roar_30.png"]
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit

@@ -1,0 +1,50 @@
+C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\webs_spiders.py:80: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+Info: Saved as "webs.blend"
+HW_STEP webs 16.1 s
+00:31.375  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\webs.blend"
+00:45.250  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_webs_sky_30.png'
+00:47.672  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_corner_wall_30.png'
+00:49.406  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_corner_close.png'
+00:51.063  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_torn_wall_30.png'
+00:54.500  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_torn_close.png'
+00:56.188  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_webs_60.png'
+HW_STEP render_webs 25.0 s
+00:56.313  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\webs.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_SpiderWeb_Corner.fbx'
+export finished in 0.2349 sec.
+
+FBX export starting... 'C:\\cdimp\\Halloween_SpiderWeb_Torn.fbx'
+export finished in 0.1749 sec.
+
+FBX export starting... 'C:\\cdimp\\Halloween_SpiderWeb_Corner_Mirror.fbx'
+export finished in 0.1085 sec.
+
+FBX export starting... 'C:\\cdimp\\Halloween_SpiderWeb_Torn_Mirror.fbx'
+export finished in 0.2186 sec.
+Info: Saved as "webs.blend"
+HW_STEP export_webs 3.3 s
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Baking map saved to internal image, save it externally or pack it
+Info: Saved as "spider.blend"
+HW_STEP spider 121.2 s
+03:00.859  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\spider.blend"
+03:02.313  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_spider_30.png'
+03:03.609  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_spider_close.png'
+03:04.609  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_spider_34.png'
+03:05.719  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_spider_face.png'
+03:06.594  render           | Saved: 'C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\review_spider_wall_30.png'
+HW_STEP render_spider 5.8 s
+03:06.641  blend            | Read blend: "C:\Users\ventu\OneDrive\Desktop\SLINGSHOT Creatures\Halloween\WebsSpiders\spider.blend"
+
+FBX export starting... 'C:\\cdimp\\Halloween_Spider.fbx'
+export finished in 0.1519 sec.
+HW_STEP export_spider 0.4 s
+HW_REPORT {"webs": {"SpiderWeb_Corner": 6472, "SpiderWeb_Torn": 8112, "SpiderWeb_Torn_Silk": 1168, "SpiderWeb_Corner_bbox": [[-0.049, -0.305, -12.857], [13.109, 0.554, 0.049]], "SpiderWeb_Torn_bbox": [[-0.051, -0.309, -17.914], [17.966, 0.802, 0.051]], "SpiderWeb_Torn_Silk_bbox": [[0.0, -0.11, -10.123], [16.673, 1.08, 0.0]], "s": 15.5}, "render_webs": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_webs_sky_30.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_corner_wall_30.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_corner_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_torn_wall_30.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_torn_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_webs_60.png"], "export_webs": [{"fbx": "C:\\cdimp\\Halloween_SpiderWeb_Corner.fbx", "kb": 263.6, "tris": {"SpiderWeb_Corner": 6472}}, {"fbx": "C:\\cdimp\\Halloween_SpiderWeb_Torn.fbx", "kb": 918.4, "tris": {"SpiderWeb_Torn": 8112, "SpiderWeb_Torn_Silk": 1168}}, {"fbx": "C:\\cdimp\\Halloween_SpiderWeb_Corner_Mirror.fbx", "kb": 263.4, "tris": {"SpiderWeb_Corner_Mirror": 6472}}, {"fbx": "C:\\cdimp\\Halloween_SpiderWeb_Torn_Mirror.fbx", "kb": 918.3, "tris": {"SpiderWeb_Torn_Mirror": 8112, "SpiderWeb_Torn_Mirror_Silk": 1168}}], "spider": {"hi_tris": {"Sp_Ceph_hi": 34228, "Sp_Abd_hi": 66596, "Sp_Legs_hi": 143102, "Sp_Head_hi": 19216}, "Spider": 7122, "SpiderThread": 24, "size": [5.853, 2.267, 6.753], "attach_blender": [-0.055, 0.562, 2.921], "eyes_blender": [-0.056, -0.05, 0.075], "px_per_stud": 166.5, "miss": 0.0637, "sculpt_s": 12.7, "total_s": 121.0}, "render_spider": ["C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_spider_30.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_spider_close.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_spider_34.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_spider_face.png", "C:\\Users\\ventu\\OneDrive\\Desktop\\SLINGSHOT Creatures\\Halloween\\WebsSpiders\\review_spider_wall_30.png"], "export_spider": {"fbx": "C:\\cdimp\\Halloween_Spider.fbx", "kb": 4070.1, "tris": {"Spider": 7122, "SpiderThread": 24}}}
+Blender 5.2.2 LTS (hash d13f752e3b9c built 2026-09-15 01:37:04)
+
+Blender quit
